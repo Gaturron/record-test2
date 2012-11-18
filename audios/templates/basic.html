@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+<!-- swfobject is a commonly used library to embed Flash content -->
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+<!-- Setup the recorder interface -->
+<script type="text/javascript" src="/static/js/recorder.js"></script>
+
+<script>
+        function setup() {
+                Wami.setup("wami");
+        }
+        
+        function record() {
+                status("Recording...");
+                Wami.startRecording("http://localhost:8000/audios/wamihandler/");
+                //Wami.startRecording("http://record-test.appspot.com/wamihandler");
+        }
+
+        function play() {
+                Wami.startPlaying("http://localhost:8000/audios/wamihandler/");
+                //Wami.startPlaying("http://record-test.appspot.com/wamihandler");
+        }
+
+        function stop() {
+                status("");
+                Wami.stopRecording();
+                Wami.stopPlaying();
+        }
+
+        function status(msg) {
+                document.getElementById('status').innerHTML = msg;
+        }
+</script>
+</head>
+
+<body onload="setup()">
+        <input type="button" value="Record" onclick="record()"></input>
+        <input type="button" value="Stop" onclick="stop()"></input>
+        <input type="button" value="Play" onclick="play()"></input>
+        <div id="status"></div>
+        <div id="wami"></div>
+</body>
+</html>

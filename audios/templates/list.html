@@ -1,0 +1,34 @@
+{% load url from future %}
+
+<a href="{% url 'home' %}">Home</a>
+
+{% if speakers_list %}
+    <table border="1">
+        <tr>
+            <td>Fecha</td>
+            <td>Lugar</td>
+            <td>Acento</td>
+            <td>session</td>
+            <td>audios</td>
+        </tr>
+    {% for speaker in speakers_list %}
+        <tr>
+            <td>{{ speaker.date }}</td>
+            <td>{{ speaker.location }}</td>
+            <td>{{ speaker.accent }}</td>
+            <td>{{ speaker.session }}</td>
+            <td>
+            {% for audio in audios_list %}
+                {% if audio.speaker == speaker %}
+                    <ul>
+                        <a href="{% url 'audio_url' audio.id %}">{{ audio.text }}</a>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No speakers are available.</p>
+{% endif %}
