@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test de grabacion - comienzo</title>
+  <link href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
+  <script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script>
+</head>
+
+<body>
+<h2>¡Bienvenido a test de grabación!</h2>
+
+<div>
+Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
+</div>
+
+<form action="/audios/add_speaker/" method=post>
+  <select name="accent">
+    <option value="bsas">Buenos Aires</option>
+    <option value="cba">Córdoba</option>
+  </select>
+
+  <input hidden id="location" name="location">
+
+  <div>
+    <input type="submit" value="¡Empezar!">
+  </div>
+</form>
+
+<script type="text/javascript">
+  var loc = geo.getLocation();
+  $("input#location").val(loc.city+" ("+loc.country+")");
+</script>
+
+</body>
+</html>

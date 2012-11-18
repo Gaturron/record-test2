@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test de grabacion - comienzo</title>
+  <link href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
+
+  <script type="text/javascript"
+  src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" src="/static/js/recorder.js"></script>
+
+  <style>
+  body{
+    font: 62.5% "Trebuchet MS", sans-serif;
+    margin: 50px;
+  }
+  .demoHeaders {
+    margin-top: 2em;
+  }
+  /*.ui-dialog-titlebar-close {
+    visibility: hidden;
+  }*/
+}
+  </style>
+</head>
+
+<body onload="setup()">
+
+<h2>Configurando el microfono</h2>
+
+<h2>Grabando</h2>
+
+<h3>Sino carga el flash aprete F5</h3>
+
+<table>
+  <tr>
+    <td style="width: 300px; height: 0px; min-width:300px; min-height:80px;">
+      <div id="wami"></div> 
+    </td>
+    <td style="width: 600px; height: 300px; min-width:300px; min-height:80px;">
+
+      <div>
+      Cada solapa tiene distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
+      </div>
+
+      <div id="tabs">
+        <ul>
+          <li><a href="#tabs-1">Test 1</a></li>
+          <li><a href="#tabs-2">Test 2</a></li>
+          <li><a href="#tabs-3">Test 3</a></li>
+        </ul>
+
+        <div id="tabs-1">Diga: fernet
+          <input type="button" value="Record" onclick="record('test1')"></input>
+          <input type="button" value="Stop" onclick="stop('test1')"></input>
+          <input type="button" value="Play" onclick="play('test1')"></input>
+        </div>
+        <div id="tabs-2">Diga: camioneta
+          <input type="button" value="Record" onclick="record('test2')"></input>
+          <input type="button" value="Stop" onclick="stop('test2')"></input>
+          <input type="button" value="Play" onclick="play('test2')"></input>
+        </div>
+        <div id="tabs-3">Diga: El cuarteto es lo mejor que hay!
+          <input type="button" value="Record" onclick="record('test3')"></input>
+          <input type="button" value="Stop" onclick="stop('test3')"></input>
+          <input type="button" value="Play" onclick="play('test3')"></input>
+        </div>
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+<table>
+<tr>
+<td>Test 1</td>
+<td id="test1">No grabado</td>
+</tr>
+<tr>
+<td>Test 2</td>
+<td id="test2">No grabado</td>
+</tr>
+<tr>
+<td>Test 3</td>
+<td id="test3">No grabado</td>
+</tr>
+</table>
+
+<form action="/audios/confirm_audios/" method=post>
+  <div>
+    <input id="confirm" type="submit" disabled value="Confirmar grabación">
+  </div>
+</form>
+
+</body>
+
+<script type="text/javascript">
+
+  function setup() {
+    $( "#tabs").tabs();
+    Wami.setup("wami");
+    check_test = { 'test1': 0, 'test2': 0, 'test3': 0 };
+  }
+
+  function record(name_test) {
+    //Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
+    Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test);
+  }
+
+  function play(name_test) {
+    //Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
+    Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test);
+  }
+
+  function stop(name_test) {
+    Wami.stopRecording();
+    Wami.stopPlaying();
+    check_test[name_test] = 1;
+    $( "#"+name_test ).html("OK");
+
+    var total_test = 1;
+    $.each(check_test, function(index, value) { 
+      total_test = total_test & value; 
+    });
+
+    if(total_test == 1){
+      $("#confirm").prop('disabled', false);
+    }
+  }
+
+</script>
+
+</html>
