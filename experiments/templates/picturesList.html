@@ -1,0 +1,39 @@
+{% load url from future %}
+
+{% if picture_list %}
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td>Enabled</td>
+            <td>Description</td>
+            <td>Borrar</td>
+            <td>Mostrar</td>
+        </tr>
+    {% for picture in picture_list %}
+        <tr>
+            <td>
+                <a href="{% url 'editPicture' picture.id %}">{{ picture.id }}</a>
+            </td>
+            <td>{{ picture.enabled }}</td>
+            <td>{{ picture.description }}</td>
+            <td>
+                <form name="input" action="{% url 'deletepicture' picture.id %}" method="post">
+                    <input type="submit" value="Eliminar?">
+                </form>
+            </td>
+            <td>
+                <form name="input" action="{% url 'enablepicture' picture.id %}" method="post">
+                    
+                    {% if picture.enabled %}
+                        <input type="submit" value="Desabilitar?">
+                    {% else %}        
+                        <input type="submit" value="Habilitar?">        
+                    {% endif %}
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No pictures are available in experiments</p>
+{% endif %}
