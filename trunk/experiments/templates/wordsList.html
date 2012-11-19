@@ -1,0 +1,41 @@
+{% load url from future %}
+
+{% if word_list %}
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td>Enabled</td>
+            <td>Text</td>
+            <td>Description</td>
+            <td>Borrar</td>
+            <td>Mostrar</td>
+        </tr>
+    {% for word in word_list %}
+        <tr>
+            <td>
+                <a href="{% url 'editWord' word.id %}">{{ word.id }}</a>
+            </td>
+            <td>{{ word.enabled }}</td>
+            <td>{{ word.text }}</td>
+            <td>{{ word.description }}</td>
+            <td>
+                <form name="input" action="{% url 'deleteWord' word.id %}" method="post">
+                    <input type="submit" value="Eliminar?">
+                </form>
+            </td>
+            <td>
+                <form name="input" action="{% url 'enableWord' word.id %}" method="post">
+                    
+                    {% if word.enabled %}
+                        <input type="submit" value="Desabilitar?">
+                    {% else %}        
+                        <input type="submit" value="Habilitar?">        
+                    {% endif %}
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No words are available in experiments</p>
+{% endif %}

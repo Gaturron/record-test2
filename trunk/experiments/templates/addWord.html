@@ -1,0 +1,12 @@
+<h2>Agregar palabra para experimento</h2>
+<form name="input" action="/experiments/words/add/" method="post">
+
+    {% if word.id %}
+    <input type="hidden" name="id" value="{{ word.id }}">
+    {% endif %}
+
+    Text: <input type="text" name="text" value="{{ word.text }}"><br>
+    Description: <input type="text" name="description" value="{{ word.description }}"><br>
+    Enabled: <input type="checkbox" name="enabled" value="{{ word.enabled }}"><br>
+<input type="submit" value="Submit">
+</form>
