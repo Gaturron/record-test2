@@ -14,6 +14,7 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
 from audios.models import Speaker, Audio
+from experiments.models import Word, Phrase, Picture
 
 def _generate_random_string(length, stringset=string.ascii_letters):
     return ''.join([stringset[i%len(stringset)] \
@@ -81,26 +82,20 @@ def add_speaker(request):
         session = request.session['session-id']
         speaker = Speaker(date= now, location= location, accent= accent, session= session)
         speaker.save()
-
-        tests = Context({ 
-            '1':'fernet', 
-            '2':'camioneta', 
-            '3':'El cuarteto es lo mejor que hay!'
-            #'tests_list' :
-            #    {
-            #        '1':'fernet', 
-            #        '2':'camioneta', 
-            #        '3':'El cuarteto es lo mejor que hay!'
-            #    }
-        })
         
         return HttpResponseRedirect("/audios/record_tests/")
 
 def record_tests(request):
     if request.method == 'GET':
-        tests_list = Context({ '1':'fernet', '2':'camioneta', '3':'El cuarteto es lo mejor que hay!',})
+        
+        #Agarro los Pictures que se guardaron
+        pictures_list = Picture.objects.all()[:]
         t = loader.get_template('record_tests.html')
-        return HttpResponse(t.render(tests_list))
+        c = Context({ 
+            'pictures_list': pictures_list 
+        })
+
+        return HttpResponse(t.render(c))
 
 @csrf_exempt
 def wami_handler2(request):
