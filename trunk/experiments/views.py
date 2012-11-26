@@ -115,14 +115,14 @@ def addPicture(request):
             p.description = description
             
             form = UploadFileForm(request.POST, request.FILES)
-            if "imagen" in request.POST.keys() and form.is_valid():
+            if form.is_valid():
                 p.image = request.FILES['imagen']
 
             p.save()
         else:
 
             form = UploadFileForm(request.POST, request.FILES)
-            if "imagen" in request.POST.keys() and form.is_valid():
+            if form.is_valid():
                 image = request.FILES['imagen']
 
             p = Picture(enabled= enabled, image= image, description= description)

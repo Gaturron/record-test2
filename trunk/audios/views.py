@@ -82,8 +82,6 @@ def add_speaker(request):
         speaker = Speaker(date= now, location= location, accent= accent, session= session)
         speaker.save()
 
-        #request.session['speaker.id'] = speaker.id
-
         tests = Context({ 
             '1':'fernet', 
             '2':'camioneta', 
@@ -96,8 +94,6 @@ def add_speaker(request):
             #    }
         })
         
-        #t = loader.get_template('record_tests.html')
-        #return HttpResponse(t.render(Context({tests})))
         return HttpResponseRedirect("/audios/record_tests/")
 
 def record_tests(request):
@@ -133,7 +129,6 @@ def wami_handler2(request):
         f.close()
 
         return HttpResponse('Ok')
-        #yield HttpResponse('Ok')
 
 @csrf_exempt
 def confirm_audios(request):
