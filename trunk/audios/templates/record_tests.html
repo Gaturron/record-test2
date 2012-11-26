@@ -47,26 +47,25 @@
 
       <div id="tabs">
         <ul>
-          <li><a href="#tabs-1">Test 1</a></li>
-          <li><a href="#tabs-2">Test 2</a></li>
-          <li><a href="#tabs-3">Test 3</a></li>
+          {% for picture in pictures_list %}
+            <li><a href="#tabs-{{ picture.id }}">Test Imagen {{ picture.description }}</a></li>
+          {% endfor %}
+          
         </ul>
 
-        <div id="tabs-1">Diga: fernet
-          <input type="button" value="Record" onclick="record('test1')"></input>
-          <input type="button" value="Stop" onclick="stop('test1')"></input>
-          <input type="button" value="Play" onclick="play('test1')"></input>
-        </div>
-        <div id="tabs-2">Diga: camioneta
-          <input type="button" value="Record" onclick="record('test2')"></input>
-          <input type="button" value="Stop" onclick="stop('test2')"></input>
-          <input type="button" value="Play" onclick="play('test2')"></input>
-        </div>
-        <div id="tabs-3">Diga: El cuarteto es lo mejor que hay!
-          <input type="button" value="Record" onclick="record('test3')"></input>
-          <input type="button" value="Stop" onclick="stop('test3')"></input>
-          <input type="button" value="Play" onclick="play('test3')"></input>
-        </div>
+        {% for picture in pictures_list %}
+          <div id="tabs-{{ picture.id }}">Describa la imagen:
+
+            <div style="text-align: center;">
+              <img height="300px" width="auto" src="/media/{{ picture.image }}">
+            </div>
+
+            <input type="button" value="Record" onclick="record('test{{ picture.id }}')"></input>
+            <input type="button" value="Stop" onclick="stop('test{{ picture.id }}')"></input>
+            <input type="button" value="Play" onclick="play('test{{ picture.id }}')"></input>
+          </div>
+        {% endfor %}
+
       </div>
 
     </td>
@@ -74,18 +73,13 @@
 </table>
 
 <table>
-<tr>
-<td>Test 1</td>
-<td id="test1">No grabado</td>
-</tr>
-<tr>
-<td>Test 2</td>
-<td id="test2">No grabado</td>
-</tr>
-<tr>
-<td>Test 3</td>
-<td id="test3">No grabado</td>
-</tr>
+
+  {% for picture in pictures_list %}
+  <tr>
+    <td>Test {{picture.description}}</td>
+    <td id="test{{picture.id}}">No grabado</td>
+  </tr>
+  {% endfor %}
 </table>
 
 <form action="/audios/confirm_audios/" method=post>
