@@ -1,28 +1,37 @@
 {% load url from future %}
 
-{% if picture_list %}
+{% if pictures_list %}
     <table border="1">
         <tr>
             <td>Id</td>
             <td>Enabled</td>
             <td>Description</td>
+            <td>Cantidad de grabaciones</td>
+            <td>Imagen</td>
             <td>Borrar</td>
             <td>Mostrar</td>
         </tr>
-    {% for picture in picture_list %}
+    {% for picture in pictures_list %}
         <tr>
             <td>
                 <a href="{% url 'editPicture' picture.id %}">{{ picture.id }}</a>
             </td>
             <td>{{ picture.enabled }}</td>
             <td>{{ picture.description }}</td>
+            <td>{{ picture.amount }}</td>
             <td>
-                <form name="input" action="{% url 'deletepicture' picture.id %}" method="post">
+                <div style="text-align: center;">
+                    <img height="100px" width="auto" src="/media/{{ picture.image }}">
+                </div>
+                <a href="/media/{{ picture.image }}">Mostrar</a>
+            </td>
+            <td>
+                <form name="input" action="{% url 'deletePicture' picture.id %}" method="post">
                     <input type="submit" value="Eliminar?">
                 </form>
             </td>
             <td>
-                <form name="input" action="{% url 'enablepicture' picture.id %}" method="post">
+                <form name="input" action="{% url 'enablePicture' picture.id %}" method="post">
                     
                     {% if picture.enabled %}
                         <input type="submit" value="Desabilitar?">

@@ -83,6 +83,18 @@ def picturesList(request):
         return HttpResponse(t.render(c))
 
 @csrf_exempt
+def showPicture(request, id):
+    if request.method == 'GET':
+        picture = Picture.objects.get(id=id)
+        image = picture.image
+
+        filename = image.name.split('/')[-1]
+        response = HttpResponse(image, content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename=%s' % filename
+
+        return response
+
+@csrf_exempt
 def addPicture(request):
     if request.method == 'GET':
         t = loader.get_template('addPicture.html')
@@ -96,17 +108,23 @@ def addPicture(request):
             
         description = request.POST['description']
         
-        form = UploadFileForm(request.POST, request.FILES)
-        image = request.FILES['uploadField']
-
         if "id" in request.POST.keys():
             p = Picture.objects.get(id=request.POST['id'])
             
             p.enabled = enabled
             p.description = description
-            p.image = image 
+            
+            form = UploadFileForm(request.POST, request.FILES)
+            if "imagen" in request.POST.keys() and form.is_valid():
+                p.image = request.FILES['imagen']
+
             p.save()
         else:
+
+            form = UploadFileForm(request.POST, request.FILES)
+            if "imagen" in request.POST.keys() and form.is_valid():
+                image = request.FILES['imagen']
+
             p = Picture(enabled= enabled, image= image, description= description)
             p.save()
 
@@ -118,9 +136,11 @@ def editPicture(request, id):
 
         picture = Picture.objects.get(id=id)
 
-        t = loader.get_template('addWord.html')
+        t = loader.get_template('addPicture.html')
+        form = UploadFileForm()
         c = Context({
             'id': id,
+            'form': form,
             'picture': picture
         })
         return HttpResponse(t.render(c))

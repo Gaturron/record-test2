@@ -7,7 +7,15 @@
 
 	{% csrf_token %}
 
-    <p>Imagen: <input type="file" name="uploadField" /></p>
+    <p>
+        {{ form.imagen }} 
+
+        {% if picture.image %}
+            <p>Imagen seteada: <b>{{ picture.image }}</b> </p>
+            <img height="100px" width="auto" src="/media/{{ picture.image }}">
+            <a href="/media/{{ picture.image }}">Mostrar</a>
+        {% endif %}
+    </p>
     <p>Description: <input type="text" name="description" value="{{ picture.description }}"></p>
     <p>Enabled: <input type="checkbox" name="enabled" value="{{ picture.enabled }}"></p>
 <input type="submit" value="Submit">

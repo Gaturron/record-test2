@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     # Pictures
     url(r'^experiments/pictures/list/$',               'experiments.views.picturesList'),
     url(r'^experiments/pictures/add/$',                'experiments.views.addPicture'),
+    url(r'^experiments/pictures/show/(?P<id>\d+)/$',   'experiments.views.showPicture', name="showPicture"),
     url(r'^experiments/pictures/edit/(?P<id>\d+)/$',   'experiments.views.editPicture', name="editPicture"), 
     url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
     url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 

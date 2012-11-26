@@ -7,6 +7,7 @@
             <td>Enabled</td>
             <td>Text</td>
             <td>Description</td>
+            <td>Cantidad de grabaciones</td>
             <td>Borrar</td>
             <td>Mostrar</td>
         </tr>
@@ -18,6 +19,7 @@
             <td>{{ word.enabled }}</td>
             <td>{{ word.text }}</td>
             <td>{{ word.description }}</td>
+            <td>{{ word.amount }}</td>
             <td>
                 <form name="input" action="{% url 'deleteWord' word.id %}" method="post">
                     <input type="submit" value="Eliminar?">
