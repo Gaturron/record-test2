@@ -60,9 +60,9 @@
               <img height="300px" width="auto" src="/media/{{ picture.image }}">
             </div>
 
-            <input type="button" value="Record" onclick="record('test{{ picture.id }}')"></input>
+            <input type="button" value="Record" onclick="record('test{{ picture.id }}', {{ picture.id }})"></input>
             <input type="button" value="Stop" onclick="stop('test{{ picture.id }}')"></input>
-            <input type="button" value="Play" onclick="play('test{{ picture.id }}')"></input>
+            <input type="button" value="Play" onclick="play('test{{ picture.id }}', {{ picture.id }})"></input>
           </div>
         {% endfor %}
 
@@ -95,17 +95,21 @@
   function setup() {
     $( "#tabs").tabs();
     Wami.setup("wami");
-    check_test = { 'test1': 0, 'test2': 0, 'test3': 0 };
+    check_test = { 
+      {% for picture in pictures_list %}
+        'test{{picture.id}}': 0,
+      {% endfor %}
+    };
   }
 
-  function record(name_test) {
+  function record(name_test, id_test) {
     //Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
-    Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test);
+    Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
   }
 
-  function play(name_test) {
+  function play(name_test, id_test) {
     //Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
-    Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test);
+    Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
   }
 
   function stop(name_test) {
