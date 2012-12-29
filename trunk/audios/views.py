@@ -123,6 +123,11 @@ def wami_handler2(request):
         myfile.close()
         f.close()
 
+        id_test = request.GET['id_test']
+        picture = Picture.objects.get(id=id_test)
+        picture.amount += 1
+        picture.save()
+
         return HttpResponse('Ok')
 
 @csrf_exempt
