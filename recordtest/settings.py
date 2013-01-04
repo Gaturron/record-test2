@@ -153,3 +153,8 @@ LOGGING = {
         },
     }
 }
+
+#================================================================
+# Configuracion Session
+# Close the session when user closes the browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

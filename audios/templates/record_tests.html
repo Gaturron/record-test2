@@ -3,74 +3,99 @@
 <head>
   <meta charset="utf-8">
   <title>Test de grabacion - comienzo</title>
-  <link href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+  <link type="text/css" href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
+  <link type="text/css" href="/static/css/style.css" rel="stylesheet"/>
+
   <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
-
-  <script type="text/javascript"
-  src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-  <script type="text/javascript" src="/static/js/recorder.js"></script>
-
-  <style>
-  body{
-    font: 62.5% "Trebuchet MS", sans-serif;
-    margin: 50px;
-  }
-  .demoHeaders {
-    margin-top: 2em;
-  }
-  /*.ui-dialog-titlebar-close {
-    visibility: hidden;
-  }*/
-}
-  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" src="/static/js/recorder.js"/></script>
 </head>
 
 <body onload="setup()">
-
-<h2>Configurando el microfono</h2>
 
 <h2>Grabando</h2>
 
 <h3>Sino carga el flash aprete F5</h3>
 
-<table>
-  <tr>
-    <td style="width: 300px; height: 0px; min-width:300px; min-height:80px;">
-      <div id="wami"></div> 
-    </td>
-    <td style="width: 600px; height: 300px; min-width:300px; min-height:80px;">
+<div id="wami_container">
+  Hacé click en "Permitir" para acceder al microfono
+  <div id="wami"></div> 
+</div>
 
-      <div>
-      Cada solapa tiene distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
+<div>
+  Cada solapa tiene distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
+</div>
+
+<div id="tabs">
+  <ul>
+    {% for word in word_list %}
+      <li><a href="#tabs-word-{{ word.id }}">Test word {{ word.description }}</a></li>
+    {% endfor %}
+
+    {% for phrase in phrase_list %}
+      <li><a href="#tabs-phrase-{{ picture.id }}">Test Phrase {{ phrase.description }}</a></li>
+    {% endfor %}
+
+    {% for picture in pictures_list %}
+      <li><a href="#tabs-pictures-{{ picture.id }}">Test Imagen {{ picture.description }}</a></li>
+    {% endfor %}
+    
+  </ul>
+
+  {% for word in word_list %}
+    <div id="tabs-word-{{ word.id }}">Diga la siguiente palabra:
+
+      <div style="text-align: center;">
+        {{ word.text }}
       </div>
 
-      <div id="tabs">
-        <ul>
-          {% for picture in pictures_list %}
-            <li><a href="#tabs-{{ picture.id }}">Test Imagen {{ picture.description }}</a></li>
-          {% endfor %}
-          
-        </ul>
-
-        {% for picture in pictures_list %}
-          <div id="tabs-{{ picture.id }}">Describa la imagen:
-
-            <div style="text-align: center;">
-              <img height="300px" width="auto" src="/media/{{ picture.image }}">
-            </div>
-
-            <input type="button" value="Record" onclick="record('test{{ picture.id }}', {{ picture.id }})"></input>
-            <input type="button" value="Stop" onclick="stop('test{{ picture.id }}')"></input>
-            <input type="button" value="Play" onclick="play('test{{ picture.id }}', {{ picture.id }})"></input>
-          </div>
-        {% endfor %}
-
+      <div style="text-align: center;">
+        <input class="ui-button" type="button" value="Record" onclick="record('test{{ word.id }}', {{ word.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ word.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test{{ phrase.id }}', {{ phrase.id }})"></input>
       </div>
 
-    </td>
-  </tr>
-</table>
+    </div>
+  {% endfor %}
+
+  {% for phrase in phrase_list %}
+    <div id="tabs-phrase-{{ phrase.id }}">Diga la siguiente frase:
+
+      <div style="text-align: center;">
+        {{ phrase.text }}
+      </div>
+
+      <div style="text-align: center;">
+        <input class="ui-button" type="button" value="Record" onclick="record('test{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ phrase.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test{{ word.id }}', {{ word.id }})"></input>
+      </div>
+
+    </div>
+  {% endfor %}
+
+
+  {% for picture in pictures_list %}
+    <div id="tabs-pictures-{{ picture.id }}">Describa la imagen:
+
+      <div style="text-align: center;">
+        <img height="200px" width="auto" src="/media/{{ picture.image }}">
+      </div>
+
+      <div style="text-align: center;">
+        <input class="ui-button" type="button" value="Record" onclick="record('test{{ picture.id }}', {{ picture.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ picture.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test{{ picture.id }}', {{ picture.id }})"></input>
+      </div>
+
+    </div>
+  {% endfor %}
+
+</div>
+
+<button class="ui-button" id="previous-product"><</button>
+<button class="ui-button" id="next-product">></button>​
 
 <table>
 
@@ -82,7 +107,7 @@
   {% endfor %}
 </table>
 
-<form action="/audios/confirm_audios/" method=post>
+<form action="/audios/confirm_audios/" method="post">
   <div>
     <input id="confirm" type="submit" disabled value="Confirmar grabación">
   </div>
@@ -93,8 +118,24 @@
 <script type="text/javascript">
 
   function setup() {
-    $( "#tabs").tabs();
+    $( "#tabs").tabs({ 
+      fx:[ { width: 'toggle', opacity: 'toggle' }, 
+           { opacity: 'toggle' }]  });
+
     Wami.setup("wami");
+
+    $('#next-product').click(function(){ 
+      var $tabs = $('#tabs').tabs();
+      var selected = $tabs.tabs('option', 'selected');
+      $tabs.tabs('select', selected+1);
+    });
+
+    $('#previous-product').click(function() {
+      var $tabs = $('#tabs').tabs();
+      var selected = $tabs.tabs('option', 'selected');
+      $tabs.tabs('select', selected-1);
+    });
+
     check_test = { 
       {% for picture in pictures_list %}
         'test{{picture.id}}': 0,
