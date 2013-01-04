@@ -1,0 +1,26 @@
+Ayuda de comandos a tener en cuenta:
+
+Postgress:
+#entrar al cliente
+sudo -u postgres psql
+#cambiar bd django_db
+\c django_db
+#mostrar tablas
+\dt
+#help
+\?
+#salir
+\q
+
+Django:
+#para actualizar los datos de la BD
+python manage.py sqlclear audios
+python manage.py reset audios
+python manage.py syncdb
+
+#para subir y bajar el servidor
+sudo service apache2 stop
+sudo service apache2 reload
+sudo service apache2 start
+
+

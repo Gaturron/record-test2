@@ -15,8 +15,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^audios/record/$',         'audios.views.record'),
-    url(r'^audios/wamihandler/$',    'audios.views.wami_handler'),
+    #prueba
+    #url(r'^audios/record/$',         'audios.views.record'),
+    #url(r'^audios/wamihandler/$',    'audios.views.wami_handler'),
 
     url(r'^audios/start/$',          'audios.views.start', name="home"),
     url(r'^audios/add_speaker/$',    'audios.views.add_speaker'), 

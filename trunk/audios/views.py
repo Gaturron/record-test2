@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from django.core.files import File
 from django.core.files.base import ContentFile
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
@@ -20,42 +21,41 @@ def _generate_random_string(length, stringset=string.ascii_letters):
     return ''.join([stringset[i%len(stringset)] \
         for i in [ord(x) for x in os.urandom(length)]])
 
-def record(request):
-    if request.method == 'GET':
+# def record(request):
+#     if request.method == 'GET':
 
-        request.session['session-id'] = _generate_random_string(20)
+#         request.session['session-id'] = _generate_random_string(20)
 
-        t = loader.get_template('basic.html')
-        return HttpResponse(t.render(Context({})))
+#         t = loader.get_template('basic.html')
+#         return HttpResponse(t.render(Context({})))
 
-@csrf_exempt
-def wami_handler(request):
+# @csrf_exempt
+# def wami_handler(request):
 
-    if request.method == 'GET':
+#     if request.method == 'GET':
 
-        filename = request.session['session-id'] 
-        f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
-        myfile = File(f)
-        data = myfile.read()
-        myfile.close()
-        f.close()
+#         filename = request.session['session-id'] 
+#         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
+#         myfile = File(f)
+#         data = myfile.read()
+#         myfile.close()
+#         f.close()
 
-        Ctype = 'audio/x-wav'        
-        response = HttpResponse(data, content_type=Ctype)
+#         Ctype = 'audio/x-wav'        
+#         response = HttpResponse(data, content_type=Ctype)
 
-        return response
+#         return response
     
-    if request.method == 'POST':
+#     if request.method == 'POST':
 
-        filename = request.session['session-id'] 
-        f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
-        myfile = File(f) 
-        myfile.write(request.body)
-        myfile.close()
-        f.close()
+#         filename = request.session['session-id'] 
+#         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
+#         myfile = File(f) 
+#         myfile.write(request.body)
+#         myfile.close()
+#         f.close()
 
-        return HttpResponse('Ok')
-	#yield HttpResponse('Ok')
+#        return HttpResponse('Ok')
 
 #def list(request):
 #    if request.method == 'GET':
@@ -65,7 +65,9 @@ def wami_handler(request):
 
 def start(request):
     if request.method == 'GET':
-        request.session['session-id'] = _generate_random_string(20)
+
+        request.session['session-rmz'] = _generate_random_string(20)
+        # numero generado al azar para identificar a un hablante nuevo
 
         t = loader.get_template('start.html')
         return HttpResponse(t.render(Context({})))
@@ -78,31 +80,52 @@ def add_speaker(request):
         now = timezone.now()
         accent = request.POST['accent']
         location = request.POST['location']
-
-        session = request.session['session-id']
-        speaker = Speaker(date= now, location= location, accent= accent, session= session)
+        session = request.session['session-rmz']
+ 
+        #TODO: Arreglar birthdate y demas datos erroneos
+        speaker = Speaker(birthDate=now, date= now, location= location, accent= accent, session= session)
         speaker.save()
         
         return HttpResponseRedirect("/audios/record_tests/")
 
 def record_tests(request):
     if request.method == 'GET':
-        
-        #Agarro los Pictures que se guardaron
-        pictures_list = Picture.objects.all()[:]
-        t = loader.get_template('record_tests.html')
-        c = Context({ 
-            'pictures_list': pictures_list 
-        })
 
-        return HttpResponse(t.render(c))
+        try:
+            #Chequear que es un usuario que recien lleno los datos
+            if 'session-rmz' in request.session:
+                session = request.session['session-rmz']
+                speaker = Speaker.objects.get(session=session, finish=False)
+
+                #Agarro los Pictures que se guardaron
+                word_list = Word.objects.all()[:]
+                phrase_list = Phrase.objects.all()[:]
+                pictures_list = Picture.objects.all()[:]
+
+                t = loader.get_template('record_tests.html')
+                c = Context({ 
+                    'word_list' : word_list,
+                    'phrase_list' : phrase_list,
+                    'pictures_list': pictures_list 
+                })
+
+                del request.session['session-rmz']
+                request.session['speaker-id'] = speaker.id 
+
+                return HttpResponse(t.render(c))
+
+            else:
+                return HttpResponseRedirect("/audios/start/")
+
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect("/audios/start/")
 
 @csrf_exempt
 def wami_handler2(request):
 
     if request.method == 'GET':
 
-        filename = request.session['session-id']+"_"+request.GET['name_test']
+        filename = request.session['speaker-id']+"_"+request.GET['name_test']
         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
         myfile = File(f)
         data = myfile.read()
@@ -116,7 +139,7 @@ def wami_handler2(request):
     
     if request.method == 'POST':
 
-        filename = request.session['session-id']+"_"+request.GET['name_test']
+        filename = request.session['speaker-id']+"_"+request.GET['name_test']
         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
         myfile = File(f) 
         myfile.write(request.body)
@@ -135,11 +158,11 @@ def confirm_audios(request):
     if request.method == 'POST':
 
         # sacar speaker id
-        speaker = Speaker.objects.filter(session= request.session['session-id'])[0]
+        speaker = Speaker.objects.filter(session= request.session['speaker-id'])[0]
 
         # Grabar los audios con usando el modelo        
         for name_test in ['test1', 'test2', 'test3']:
-            filename = request.session['session-id']+"_"+name_test
+            filename = request.session['speaker-id']+"_"+name_test
             f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
             myfile = File(f)
             data = myfile.read()
