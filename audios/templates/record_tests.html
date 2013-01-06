@@ -51,9 +51,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test{{ word.id }}', {{ word.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ word.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="ui-button" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
       </div>
 
     </div>
@@ -67,9 +67,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test{{ phrase.id }}', {{ phrase.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ phrase.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test{{ word.id }}', {{ word.id }})"></input>
+        <input class="ui-button" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
       </div>
 
     </div>
@@ -84,9 +84,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test{{ picture.id }}', {{ picture.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test{{ picture.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test{{ picture.id }}', {{ picture.id }})"></input>
+        <input class="ui-button" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
+        <input class="ui-button" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
+        <input class="ui-button" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
       </div>
 
     </div>
@@ -97,15 +97,32 @@
 <button class="ui-button" id="previous-product"><</button>
 <button class="ui-button" id="next-product">></button>​
 
-<table>
+<table style="display: 0;">
+
+  {% for word in word_list %}
+  <tr>
+    <td>Test {{word.description}}</td>
+    <td id="test-w{{word.id}}">No grabado</td>
+  </tr>
+  {% endfor %}
+
+  {% for phrase in phrase_list %}
+  <tr>
+    <td>Test {{phrase.description}}</td>
+    <td id="test-ph{{phrase.id}}">No grabado</td>
+  </tr>
+  {% endfor %}
 
   {% for picture in pictures_list %}
   <tr>
     <td>Test {{picture.description}}</td>
-    <td id="test{{picture.id}}">No grabado</td>
+    <td id="test-pic{{picture.id}}">No grabado</td>
   </tr>
   {% endfor %}
 </table>
+
+<div id="test-contador">
+</div>
 
 <form action="/audios/confirm_audios/" method="post">
   <div>
@@ -116,6 +133,18 @@
 </body>
 
 <script type="text/javascript">
+
+  var check_test = { 
+    {% for word in word_list %}
+      'test-w{{word.id}}': 0,
+    {% endfor %}
+    {% for phrase in phrase_list %}
+      'test-ph{{phrase.id}}': 0,
+    {% endfor %}
+    {% for picture in pictures_list %}
+      'test-pic{{picture.id}}': 0,
+    {% endfor %}
+  };
 
   function setup() {
     $( "#tabs").tabs({ 
@@ -136,11 +165,7 @@
       $tabs.tabs('select', selected-1);
     });
 
-    check_test = { 
-      {% for picture in pictures_list %}
-        'test{{picture.id}}': 0,
-      {% endfor %}
-    };
+    $('#test-contador').html("Tests: 0 de "+(Object.keys(check_test).length));
   }
 
   function record(name_test, id_test) {
@@ -157,12 +182,17 @@
     Wami.stopRecording();
     Wami.stopPlaying();
     check_test[name_test] = 1;
+
     $( "#"+name_test ).html("OK");
 
     var total_test = 1;
+    var cant_test_ok = 0;
     $.each(check_test, function(index, value) { 
       total_test = total_test & value; 
+      cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
     });
+
+    $( "#test-contador").html("Tests: "+cant_test_ok+" de "+(Object.keys(check_test).length));
 
     if(total_test == 1){
       $("#confirm").prop('disabled', false);

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Create your views here.
 
 import os, string
@@ -85,7 +87,7 @@ def add_speaker(request):
         #TODO: Arreglar birthdate y demas datos erroneos
         speaker = Speaker(birthDate=now, date= now, location= location, accent= accent, session= session)
         speaker.save()
-        
+
         return HttpResponseRedirect("/audios/record_tests/")
 
 def record_tests(request):
@@ -97,7 +99,7 @@ def record_tests(request):
                 session = request.session['session-rmz']
                 speaker = Speaker.objects.get(session=session, finish=False)
 
-                #Agarro los Pictures que se guardaron
+                #Agarro los experimentos que se guardaron
                 word_list = Word.objects.all()[:]
                 phrase_list = Phrase.objects.all()[:]
                 pictures_list = Picture.objects.all()[:]
@@ -125,7 +127,7 @@ def wami_handler2(request):
 
     if request.method == 'GET':
 
-        filename = request.session['speaker-id']+"_"+request.GET['name_test']
+        filename = "u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
         myfile = File(f)
         data = myfile.read()
@@ -139,17 +141,12 @@ def wami_handler2(request):
     
     if request.method == 'POST':
 
-        filename = request.session['speaker-id']+"_"+request.GET['name_test']
+        filename = "u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
         myfile = File(f) 
         myfile.write(request.body)
         myfile.close()
         f.close()
-
-        id_test = request.GET['id_test']
-        picture = Picture.objects.get(id=id_test)
-        picture.amount += 1
-        picture.save()
 
         return HttpResponse('Ok')
 
@@ -158,29 +155,61 @@ def confirm_audios(request):
     if request.method == 'POST':
 
         # sacar speaker id
-        speaker = Speaker.objects.filter(session= request.session['speaker-id'])[0]
+        speaker = Speaker.objects.get(id= request.session['speaker-id'])
 
-        # Grabar los audios con usando el modelo        
-        for name_test in ['test1', 'test2', 'test3']:
-            filename = request.session['speaker-id']+"_"+name_test
-            f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
-            myfile = File(f)
-            data = myfile.read()
-            myfile.close()
-            f.close()
-                        
-            # grabar audios
-            audio = Audio(text=name_test, speaker=speaker)
+        # Grabar los audios con usando el modelo  
+        word_list = Word.objects.all()[:]
+        phrase_list = Phrase.objects.all()[:]
+        pictures_list = Picture.objects.all()[:]
 
-            #f = open(os.path.join(settings.MEDIA_ROOT+'confirmados/', filename+'.wav'), 'wb')
-            #myfile = File(f) 
-            #myfile.write(data)
+        exp_list = []
 
-            file_content = ContentFile(data)
-            audio.audio.save(filename+'.wav', file_content) 
+        for test in word_list:
+            exp_list.append({'type': 'w', 'id': str(test.id)})
+        for test in phrase_list:
+            exp_list.append({'type': 'ph', 'id': str(test.id)})
+        for test in pictures_list:
+            exp_list.append({'type': 'pic', 'id': str(test.id)})
+        
+        for exp in exp_list:
+            filename = "u"+str(speaker.id)+"_"+"test-"+exp['type']+exp['id']
+            
+            if os.path.isfile(os.path.join(settings.MEDIA_ROOT, filename+'.wav')):
+                
+                #grabo el audio definitivo
+                f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
+                myfile = File(f)
+                data = myfile.read()
+                myfile.close()
+                f.close()
+                            
+                # grabar audios
+                audio = Audio(text=filename, speaker=speaker)
 
-            #myfile.close()
-            #f.close()
+                file_content = ContentFile(data)
+                audio.audio.save(filename+'.wav', file_content) 
+
+                #borro el archivo temporal
+                os.remove(os.path.join(settings.MEDIA_ROOT, filename+'.wav'))
+
+                #guardo que ese experimento se hizo una vez
+                if(exp['type'] == 'w'):
+                    word = Word.objects.get(id=exp['id'])
+                    word.amount += 1
+                    word.save()
+
+                if(exp['type'] == 'ph'):
+                    phrase = Phrase.objects.get(id=exp['id'])
+                    phrase.amount += 1
+                    phrase.save()
+
+                if(exp['type'] == 'pic'):
+                    picture = Picture.objects.get(id=exp['id'])
+                    picture.amount += 1
+                    picture.save()
+
+        speaker.finish = True
+        speaker.save()
 
         return HttpResponse("Gracias por colaborar!")
 
