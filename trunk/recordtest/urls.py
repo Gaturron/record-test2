@@ -43,4 +43,9 @@ urlpatterns = patterns('',
     url(r'^experiments/pictures/edit/(?P<id>\d+)/$',   'experiments.views.editPicture', name="editPicture"), 
     url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
     url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
+
+    # Backup
+    url(r'^experiments/backup/$',                      'experiments.views.speakersToCSV'),
+    url(r'^experiments/zip_audios/$',                  'experiments.views.zipAudios')
+    
 )
