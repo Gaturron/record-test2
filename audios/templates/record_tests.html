@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Test de grabacion - comienzo</title>
+
   <link type="text/css" href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
+  <link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
   <link type="text/css" href="/static/css/style.css" rel="stylesheet"/>
 
   <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
@@ -14,21 +16,22 @@
 
 <body onload="setup()">
 
-<h2>Grabando</h2>
+<div class="container">
 
-<h3>Sino carga el flash aprete F5</h3>
+<h2 class="input">Grabando</h2>
 
-<div id="wami_container">
+<div class="container" id="wami_container">
   Hacé click en "Permitir" para acceder al microfono
   <div id="wami"></div> 
 </div>
 
-<div>
-  Cada solapa tiene distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
+<div class="input">
+  Hay que realizar distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
 </div>
 
 <div id="tabs">
-  <ul>
+
+  <ul style="display: none;">
     {% for word in word_list %}
       <li><a href="#tabs-word-{{ word.id }}">Test word {{ word.description }}</a></li>
     {% endfor %}
@@ -40,7 +43,6 @@
     {% for picture in pictures_list %}
       <li><a href="#tabs-pictures-{{ picture.id }}">Test Imagen {{ picture.description }}</a></li>
     {% endfor %}
-    
   </ul>
 
   {% for word in word_list %}
@@ -51,9 +53,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
+        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
+        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
+        <input class="btn btn-success" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
       </div>
 
     </div>
@@ -67,9 +69,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
+        <input class="btn btn-success" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
       </div>
 
     </div>
@@ -80,13 +82,13 @@
     <div id="tabs-pictures-{{ picture.id }}">Describa la imagen:
 
       <div style="text-align: center;">
-        <img height="200px" width="auto" src="/media/{{ picture.image }}">
+        <img class="img-rounded" height="200px" width="auto" src="/media/{{ picture.image }}">
       </div>
 
-      <div style="text-align: center;">
-        <input class="ui-button" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
-        <input class="ui-button" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
-        <input class="ui-button" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
+      <div style="text-align: center;" class="input">
+        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
+        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
+        <input class="btn btn-success" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
       </div>
 
     </div>
@@ -94,10 +96,10 @@
 
 </div>
 
-<button class="ui-button" id="previous-product"><</button>
-<button class="ui-button" id="next-product">></button>​
+<button style="display: none;" class="input" id="previous-product"><</button>
+<button class="btn btn-primary .btn-large input" id="next-product">Proxima grabacion></button>​
 
-<table style="display: 0;">
+<table style="display: none;">
 
   {% for word in word_list %}
   <tr>
@@ -121,14 +123,16 @@
   {% endfor %}
 </table>
 
-<div id="test-contador">
+<div id="test-contador" class="input">
 </div>
 
 <form action="/audios/confirm_audios/" method="post">
-  <div>
-    <input id="confirm" type="submit" disabled value="Confirmar grabación">
+  <div class="input">
+    <input class="btn btn-primary .btn-large" id="confirm" type="submit" disabled value="Confirmar grabación">
   </div>
 </form>
+
+</div>
 
 </body>
 
