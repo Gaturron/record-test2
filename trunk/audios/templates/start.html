@@ -3,37 +3,65 @@
 <head>
   <meta charset="utf-8">
   <title>Test de grabacion - comienzo</title>
-  <link href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
   <link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/bootstrap/datepicker.css" rel="stylesheet">
   <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script>
 </head>
 
-<body>
-<h2>¡Bienvenido a test de grabación!</h2>
+<body onload="setup()">
+  <div class="container">
+    <h2>¡Bienvenido a test de grabación!</h2>
 
-<div>
-Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
-</div>
+    <div>
+    Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
+    </div>
 
-<form action="/audios/add_speaker/" method=post>
-  <select name="accent">
-    <option value="bsas">Buenos Aires</option>
-    <option value="cba">Córdoba</option>
-  </select>
+    <form action="/audios/add_speaker/" method=post>
+      
+      <div class="input">
+        <select name="genre">
+          <option value="man">Masculino</option>
+          <option value="woman">Femenico</option>
+        </select>
+      </div>
 
-  <input hidden id="location" name="location">
+      <div class="input">
+        <select name="accent">
+          <option value="bsas">Buenos Aires</option>
+          <option value="cba">Córdoba</option>
+        </select>
+      </div>
 
-  <div>
-    <input class="btn btn-primary" type="submit" value="¡Empezar!">
+      <input hidden id="location" name="location">
+
+      <div class="input">
+        Fecha de nacimiento:
+        <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" name="birthDate">
+            <input class="span2" size="16" type="text" value="12-02-2012">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+        </div>
+      </div>
+      <div class="input">
+        <input class="btn btn-primary" type="submit" value="¡Empezar!">
+      </div>
+     
+    </form>
+
   </div>
-</form>
+</body>
 
 <script type="text/javascript">
-  var loc = geo.getLocation();
-  $("input#location").val(loc.city+" ("+loc.country+")");
+  
+  function setup() {
+    var loc = geo.getLocation();
+    $("input#location").val(loc.city+" ("+loc.country+")");
+    $('#datepicker').datepicker();
+  }
+
 </script>
 
-</body>
 </html>
