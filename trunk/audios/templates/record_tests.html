@@ -7,14 +7,20 @@
   <link type="text/css" href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
   <link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
   <link type="text/css" href="/static/css/style.css" rel="stylesheet"/>
+  <link type="text/css" href="/static/css/jgrowl/jquery.jgrowl.css" rel="stylesheet"/>
 
   <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
   <script type="text/javascript" src="/static/js/recorder.js"/></script>
+  <script type="text/javascript" src="/static/js/jquery.jgrowl.js"></script>
 </head>
 
 <body onload="setup()">
+
+<div id="jGrowl" class="jGrowl top-right">
+  <div class="jGlowl-notification"></div>
+</div>
 
 <div class="container">
 
@@ -53,9 +59,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
-        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
-        <input class="btn btn-success" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
+        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
+        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
+        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
       </div>
 
     </div>
@@ -69,9 +75,9 @@
       </div>
 
       <div style="text-align: center;">
-        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
-        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
-        <input class="btn btn-success" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
+        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
+        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
       </div>
 
     </div>
@@ -86,9 +92,9 @@
       </div>
 
       <div style="text-align: center;" class="input">
-        <input class="btn btn-danger" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
-        <input class="btn btn-inverse" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
-        <input class="btn btn-success" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
+        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
+        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
+        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
       </div>
 
     </div>
@@ -97,7 +103,7 @@
 </div>
 
 <button style="display: none;" class="input" id="previous-product"><</button>
-<button class="btn btn-primary .btn-large input" id="next-product">Proxima grabacion></button>​
+<button class="btn btn-primary .btn-large input" id="next-product" onclick="$.jGrowl('Pasando proxima grabación');">Proxima grabacion</button>​
 
 <table style="display: none;">
 
@@ -175,17 +181,44 @@
   function record(name_test, id_test) {
     //Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
     Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
+    
+    $.jGrowl('Grabando');
+
+    $(".record").each( function() { $(this).hide() });
+    $(".stop").each( function() { $(this).show() });
+    $(".stop").each( function() { $(this).prop("disabled", false) });
+    $(".play").each( function() { $(this).show() });
+    $(".play").each( function() { $(this).prop("disabled", true) });
   }
 
   function play(name_test, id_test) {
     //Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
     Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
+  
+    $.jGrowl('Reproduciendo');
+
+    $(".play").each( function() { $(this).hide() });
+    $(".stop").each( function() { $(this).show() });
+    $(".stop").each( function() { $(this).prop("disabled", false) });
+    $(".record").each( function() { $(this).show()});
+    $(".record").each( function() { $(this).prop("disabled", true) });
   }
 
   function stop(name_test) {
     Wami.stopRecording();
     Wami.stopPlaying();
     check_test[name_test] = 1;
+
+    $.jGrowl('Parar');
+
+    $(".stop").each( function() { $(this).hide() });
+    $(".record").each( function() { $(this).show() });
+    $(".record").each( function() { $(this).prop("disabled", false) });
+    $(".play").each( function() { $(this).show() });
+    $(".play").each( function() { $(this).prop("disabled", false) });
+
+    $(".record").show();
+    $(".")  
 
     $( "#"+name_test ).html("OK");
 
