@@ -10,6 +10,7 @@
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
   <script type="text/javascript" src="/static/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script>
+  <script type="text/javascript" src="/static/js/flash_detect.js"></script>
 </head>
 
 <body onload="setup()">
@@ -45,8 +46,13 @@
             <span class="add-on"><i class="icon-calendar"></i></span>
         </div>
       </div>
+
+      <div id="flash-detect">
+        Detectando Flash ...
+      </div>
+
       <div class="input">
-        <input class="btn btn-primary" type="submit" value="¡Empezar!">
+        <input id="start" class="btn btn-primary" type="submit" value="¡Empezar!" disabled>
       </div>
      
     </form>
@@ -60,6 +66,25 @@
     var loc = geo.getLocation();
     $("input#location").val(loc.city+" ("+loc.country+")");
     $('#datepicker').datepicker();
+
+    $("div#flash-detect").html(""); 
+    if(FlashDetect.versionAtLeast(11, 5)){
+
+        var img = $('<img id="dynamic">'); 
+        img.attr('src', "/static/css/img/ok.png");
+        img.appendTo('div#flash-detect');
+
+        $("div#flash-detect").html( $("div#flash-detect").html() + "Tiene la version Flash > 11.5");
+
+        $("#start").prop("disabled", false);
+    }else{
+
+        var img = $('<img id="dynamic">'); 
+        img.attr('src', "/static/css/img/cancel.png");
+        img.appendTo('div#flash-detect');
+
+        $("div#flash-detect").html( $("div#flash-detect").html() + "No puede continuar. Debe tener Flash 11.5 o superior");
+    } 
   }
 
 </script>
