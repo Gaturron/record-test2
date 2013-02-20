@@ -29,20 +29,22 @@ urlpatterns = patterns('',
     url(r'^audios/list/$',           'audios.views.list'),
 
     #================================================================
+    #Admin
+
     # Words
-    url(r'^experiments/words/list/$',               'experiments.views.wordsList'),
-    url(r'^experiments/words/add/$',                'experiments.views.addWord'),
-    url(r'^experiments/words/edit/(?P<id>\d+)/$',   'experiments.views.editWord', name="editWord"), 
-    url(r'^experiments/words/delete/(?P<id>\d+)/$', 'experiments.views.deleteWord', name="deleteWord"), 
-    url(r'^experiments/words/enable/(?P<id>\d+)/$', 'experiments.views.enableWord', name="enableWord"), 
+    #url(r'^experiments/words/list/$',               'experiments.views.wordsList'),
+    #url(r'^experiments/words/add/$',                'experiments.views.addWord'),
+    #url(r'^experiments/words/edit/(?P<id>\d+)/$',   'experiments.views.editWord', name="editWord"), 
+    #url(r'^experiments/words/delete/(?P<id>\d+)/$', 'experiments.views.deleteWord', name="deleteWord"), 
+    #url(r'^experiments/words/enable/(?P<id>\d+)/$', 'experiments.views.enableWord', name="enableWord"), 
  
     # Pictures
-    url(r'^experiments/pictures/list/$',               'experiments.views.picturesList'),
-    url(r'^experiments/pictures/add/$',                'experiments.views.addPicture'),
-    url(r'^experiments/pictures/show/(?P<id>\d+)/$',   'experiments.views.showPicture', name="showPicture"),
-    url(r'^experiments/pictures/edit/(?P<id>\d+)/$',   'experiments.views.editPicture', name="editPicture"), 
-    url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
-    url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
+    #url(r'^experiments/pictures/list/$',               'experiments.views.picturesList'),
+    #url(r'^experiments/pictures/add/$',                'experiments.views.addPicture'),
+    #url(r'^experiments/pictures/show/(?P<id>\d+)/$',   'experiments.views.showPicture', name="showPicture"),
+    #url(r'^experiments/pictures/edit/(?P<id>\d+)/$',   'experiments.views.editPicture', name="editPicture"), 
+    #url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
+    #url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
 
     # Backup
     url(r'^experiments/backup/$',                      'experiments.views.speakersToCSV'),

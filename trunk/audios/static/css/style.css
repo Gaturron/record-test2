@@ -30,10 +30,10 @@ body{
 
 #wami_container {
     position: fixed;
-    top: 75%; 
+    top: 65%; 
     right: 0%;
     width: 20%;
-    height: 25%;
+    height: 35%;
     z-index: 99999;    
     background-color: silver;
     text-align: center;
