@@ -28,7 +28,18 @@
 
 <div class="container" id="wami_container">
   Hacé click en "Permitir" para acceder al microfono
-  <div id="wami"></div> 
+  <div id="volume">
+    <div id="saturation">Nivel de grabación: ---</div>
+    <div id="meter" style="
+      width: 0px;
+      height: 10px;
+      background-image:  url('/static/css/img/meter.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 0% 100%;">
+    </div>
+    <div id="wami"></div> 
+  </div>
 </div>
 
 <div class="input">
@@ -178,9 +189,34 @@
     $('#test-contador').html("Tests: 0 de "+(Object.keys(check_test).length));
   }
 
+  var checkSaturation = null;
+
   function record(name_test, id_test) {
     //Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
-    Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
+
+    var startfn = function() { console.debug("Grabando") };
+    var finishedfn = function() { console.debug("Fin grabacion") };
+    Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+      startfn(),
+      finishedfn()
+    );
+
+    checkSaturation = function() {
+      if (Wami !== undefined) {
+        var level = Wami.getRecordingLevel();
+        console.debug("Nivel de grabación: "+level);
+        $("#saturation").html("Nivel de grabación: "+level);
+        $("#meter").width(level);
+        
+        setTimeout(checkSaturation, 5);
+
+        if (level > 80) {
+          alert("Graba devuelta");
+        };
+      }
+    };
+    
+    checkSaturation();
     
     $.jGrowl('Grabando');
 
@@ -193,7 +229,25 @@
 
   function play(name_test, id_test) {
     //Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
-    Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test);
+
+    var startfn = function() { console.debug("Reproduciendo") };
+    var finishedfn = function() { console.debug("Fin Reproduccion") };
+    Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+      startfn(), 
+      finishedfn()
+    );
+
+    checkSaturation = function() {
+      if (Wami !== undefined) {
+        var level = Wami.getPlayingLevel();
+        console.debug("Nivel de grabación: "+level);
+        $("#saturation").html("Nivel de grabación: "+level);
+        $("#meter").width(level);
+        
+        setTimeout(checkSaturation, 5);
+      }
+    };
+    checkSaturation();
   
     $.jGrowl('Reproduciendo');
 
@@ -207,6 +261,10 @@
   function stop(name_test) {
     Wami.stopRecording();
     Wami.stopPlaying();
+    
+    checkSaturation = null;
+    $("#saturation").html("Nivel de grabación: ---");
+
     check_test[name_test] = 1;
 
     $.jGrowl('Parar');
@@ -218,7 +276,6 @@
     $(".play").each( function() { $(this).prop("disabled", false) });
 
     $(".record").show();
-    $(".")  
 
     $( "#"+name_test ).html("OK");
 
