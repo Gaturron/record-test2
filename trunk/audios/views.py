@@ -88,7 +88,7 @@ def add_speaker(request):
         speaker = Speaker(birthDate=now, date= now, location= location, accent= accent, session= session)
         speaker.save()
 
-        return HttpResponseRedirect("/audios/record_tests/")
+        return HttpResponseRedirect("/audios/record_tests1/")
 
 def record_tests(request):
     if request.method == 'GET':
@@ -105,6 +105,38 @@ def record_tests(request):
                 pictures_list = Picture.objects.all()[:]
 
                 t = loader.get_template('record_tests.html')
+                c = Context({ 
+                    'word_list' : word_list,
+                    'phrase_list' : phrase_list,
+                    'pictures_list': pictures_list 
+                })
+
+                del request.session['session-rmz']
+                request.session['speaker-id'] = speaker.id 
+
+                return HttpResponse(t.render(c))
+
+            else:
+                return HttpResponseRedirect("/audios/start/")
+
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect("/audios/start/")
+
+def record_tests1(request):
+    if request.method == 'GET':
+
+        try:
+            #Chequear que es un usuario que recien lleno los datos
+            if 'session-rmz' in request.session:
+                session = request.session['session-rmz']
+                speaker = Speaker.objects.get(session=session, finish=False)
+
+                #Agarro los experimentos que se guardaron
+                word_list = Word.objects.all()[:]
+                phrase_list = Phrase.objects.all()[:]
+                pictures_list = Picture.objects.all()[:]
+
+                t = loader.get_template('record_tests1.html')
                 c = Context({ 
                     'word_list' : word_list,
                     'phrase_list' : phrase_list,
@@ -235,4 +267,9 @@ def list(request):
             'audios_list': audios_list
         })
         return HttpResponse(t.render(c))
+
+def end(request):
+    if request.method == 'GET':
+        t = loader.get_template('end.html')
+        return HttpResponse(t.render(Context({ })))
                 

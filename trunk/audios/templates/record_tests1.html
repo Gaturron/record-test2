@@ -27,7 +27,7 @@
 <h2 class="input">Grabando</h2>
 
 <div class="container" id="wami_container">
-  Hacé click en "Permitir" para acceder al microfono
+  <div id="status">Estado: --- </div>
   <div id="volume">
     <div id="saturation">Nivel de grabación: ---</div>
     <div id="meter" style="
@@ -38,8 +38,9 @@
       background-repeat: no-repeat;
       background-position: 0% 100%;">
     </div>
-    <div id="wami"></div> 
   </div>
+  Hacé click en "Permitir" para acceder al microfono
+  <div id="wami"></div> 
 </div>
 
 <div class="input">
@@ -65,7 +66,10 @@
   {% for word in word_list %}
     <div id="tabs-word-{{ word.id }}">Diga la siguiente palabra:
 
-      <div style="text-align: center;">
+      <div style="text-align: center;
+                  font: 120% 'Trebuchet MS', sans-serif;
+                  font-weight:bold;
+                  margin: 20px;">
         {{ word.text }}
       </div>
 
@@ -114,7 +118,8 @@
 </div>
 
 <button style="display: none;" class="input" id="previous-product"><</button>
-<button class="btn btn-primary .btn-large input" id="next-product" onclick="$.jGrowl('Pasando proxima grabación');">Proxima grabacion</button>​
+<button disabled class="btn btn-primary .btn-large input" id="next-product" 
+        onclick="$('#next-product').each( function() { $(this).prop('disabled', true) });">Proxima grabación</button>​
 
 <table style="display: none;">
 
@@ -142,12 +147,6 @@
 
 <div id="test-contador" class="input">
 </div>
-
-<form action="/audios/confirm_audios/" method="post">
-  <div class="input">
-    <input class="btn btn-primary .btn-large" id="confirm" type="submit" disabled value="Confirmar grabación">
-  </div>
-</form>
 
 </div>
 
@@ -190,6 +189,7 @@
   }
 
   var checkSaturation = null;
+  var minVolumenLevel = 20;
 
   function record(name_test, id_test) {
     //Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test);
@@ -204,36 +204,41 @@
     checkSaturation = function() {
       if (Wami !== undefined) {
         var level = Wami.getRecordingLevel();
-        console.debug("Nivel de grabación: "+level);
         $("#saturation").html("Nivel de grabación: "+level);
         $("#meter").width(level);
         
         setTimeout(checkSaturation, 5);
 
         if (level > 50) {
-          alert("Graba devuelta: mucha saturación");
-        };
+          $("#status").html('Estado: Graba devuelta: mucha saturación');
+          $("#next-product").each( function() { $(this).prop("disabled", true) });
+        }
+
+        if (minVolumenLevel > level) {
+          minVolumenLevel = level;
+        }
       }
     };
     
     checkSaturation();
 
-    sleep1000 = function( part ) {
+    sleep1000Rec = function( part ) {
       if( part == 0 ) {
-          setTimeout( function() { sleep1000( 1 ); }, 1000 );
+          setTimeout( function() { sleep1000Rec( 1 ); }, 1000 );
       } else if( part == 1 ) {
-        $.jGrowl('Grabando');
+        $("#status").html('Estado: Grabando');
 
         $(".record").each( function() { $(this).hide() });
         $(".stop").each( function() { $(this).show() });
         $(".stop").each( function() { $(this).prop("disabled", false) });
         $(".play").each( function() { $(this).show() });
         $(".play").each( function() { $(this).prop("disabled", true) });
+
+        $("#next-product").each( function() { $(this).prop("disabled", false) });
       }
     }
     
-    sleep1000(0);
-    //$.jGrowl('Grabando');
+    sleep1000Rec(0);
   }
 
   function play(name_test, id_test) {
@@ -258,7 +263,7 @@
     };
     checkSaturation();
   
-    $.jGrowl('Reproduciendo');
+    $("#status").html('Estado: Reproduciendo');
 
     $(".play").each( function() { $(this).hide() });
     $(".stop").each( function() { $(this).show() });
@@ -268,38 +273,55 @@
   }
 
   function stop(name_test) {
-    Wami.stopRecording();
-    Wami.stopPlaying();
-    
-    checkSaturation = null;
-    $("#saturation").html("Nivel de grabación: ---");
 
-    check_test[name_test] = 1;
+    sleep1000Stop = function( part ) {
+      if( part == 0 ) {
+          setTimeout( function() { sleep1000Stop( 1 ); }, 1000 );
+      } else if( part == 1 ) {
 
-    $.jGrowl('Parar');
+        Wami.stopRecording();
+        Wami.stopPlaying();
+        
+        checkSaturation = null;
+        $("#saturation").html("Nivel de grabación: ---");
 
-    $(".stop").each( function() { $(this).hide() });
-    $(".record").each( function() { $(this).show() });
-    $(".record").each( function() { $(this).prop("disabled", false) });
-    $(".play").each( function() { $(this).show() });
-    $(".play").each( function() { $(this).prop("disabled", false) });
+        check_test[name_test] = 1;
 
-    $(".record").show();
+        $("#status").html('Estado: Parado');
 
-    $( "#"+name_test ).html("OK");
+        $(".stop").each( function() { $(this).hide() });
+        $(".record").each( function() { $(this).show() });
+        $(".record").each( function() { $(this).prop("disabled", false) });
+        $(".play").each( function() { $(this).show() });
+        $(".play").each( function() { $(this).prop("disabled", false) });
 
-    var total_test = 1;
-    var cant_test_ok = 0;
-    $.each(check_test, function(index, value) { 
-      total_test = total_test & value; 
-      cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
-    });
+        $(".record").show();
 
-    $( "#test-contador").html("Tests: "+cant_test_ok+" de "+(Object.keys(check_test).length));
+        $( "#"+name_test ).html("OK");
 
-    if(total_test == 1){
-      $("#confirm").prop('disabled', false);
+        var total_test = 1;
+        var cant_test_ok = 0;
+        $.each(check_test, function(index, value) { 
+          total_test = total_test & value; 
+          cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
+        });
+
+        $( "#test-contador").html("Tests: "+cant_test_ok+" de "+(Object.keys(check_test).length));
+
+        if(total_test == 1){
+          $("#confirm").prop('disabled', false);
+        }
+
+        //chequeo el ruido ambiente
+        if (minVolumenLevel > 20) {
+          $("#status").html('Estado: Graba devuelta: mucho ruido ambiente');
+          $("#next-product").each( function() { $(this).prop("disabled", true) });         
+        }
+
+      }
     }
+    
+    sleep1000Stop(0);
   }
 
 </script>
