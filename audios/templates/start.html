@@ -40,9 +40,9 @@
       <input hidden id="location" name="location">
 
       <div class="input">
-        Fecha de nacimiento:
-        <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" name="birthDate">
-            <input class="span2" size="16" type="text" value="12-02-2012">
+        Mes de nacimiento:
+        <div class="input-append date" id="datepicker" data-date="02-2012" data-date-format="mm-yyyy" name="birthDate" data-date-minViewMode="1" data-date-viewMode="1">
+            <input class="span2" size="16" type="text" value="02-2012">
             <span class="add-on"><i class="icon-calendar"></i></span>
         </div>
       </div>
@@ -64,7 +64,9 @@
   
   function setup() {
     var loc = geo.getLocation();
-    $("input#location").val(loc.city+" ("+loc.country+")");
+    if (loc !== undefined) {
+      $("input#location").val(loc.city+" ("+loc.country+")");
+    }
     $('#datepicker').datepicker();
 
     $("div#flash-detect").html(""); 

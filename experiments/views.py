@@ -9,6 +9,7 @@ from experiments.models import Word, Phrase, Picture
 from audios.models import Speaker, Audio
 from experiments.forms import UploadFileForm
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import simplejson
 
 #======================================================================
 # Experimentos de palabras
@@ -60,6 +61,21 @@ def editWord(request, id):
         })
         return HttpResponse(t.render(c))
 
+
+@csrf_exempt
+def showWordExp(request, id):
+    if request.method == 'GET':
+
+        word = Word.objects.get(id=id)
+
+        t = loader.get_template('showWordExp.html')
+        c = Context({
+            'id': id,
+            'word': word
+        })
+        return HttpResponse(t.render(c))
+
+
 @csrf_exempt
 def deleteWord(request, id):
     if request.method == 'POST':
@@ -74,6 +90,13 @@ def enableWord(request, id):
         word.enabled = not word.enabled
         word.save()
         return HttpResponseRedirect("/experiments/words/list/")
+
+def arrayIdWords(request):
+    word_list = Word.objects.all()[:]
+    ids = {}
+    for w in word_list:
+        ids[w.id] = w.text
+    return HttpResponse(simplejson.dumps(ids), content_type="application/json")
         
 #======================================================================
 # Experimentos de Imagenes
@@ -151,6 +174,20 @@ def editPicture(request, id):
         return HttpResponse(t.render(c))
 
 @csrf_exempt
+def showPicExp(request, id):
+    if request.method == 'GET':
+
+        picture = Picture.objects.get(id=id)
+
+        t = loader.get_template('showPicExp.html')
+        form = UploadFileForm()
+        c = Context({
+            'id': id,
+            'picture': picture
+        })
+        return HttpResponse(t.render(c))
+
+@csrf_exempt
 def deletePicture(request, id):
     if request.method == 'POST':
         picture = Picture.objects.get(id=id)
@@ -164,6 +201,13 @@ def enablePicture(request, id):
         picture.enabled = not picture.enabled
         picture.save()
         return HttpResponseRedirect("/experiments/pictures/list/")
+
+def arrayIdPics(request):
+    pic_list = Picture.objects.all()[:]
+    ids = {}
+    for p in pic_list:
+        ids[p.id] = p.description
+    return HttpResponse(simplejson.dumps(ids), content_type="application/json")
 
 #======================================================================
 # Backup
