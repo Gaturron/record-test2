@@ -29,7 +29,11 @@ urlpatterns = patterns('',
     url(r'^audios/audio_url/(?P<id>\d+)/$',      'audios.views.audio_url', name="audio_url"), 
     url(r'^audios/list/$',           'audios.views.list'),
 
-    url(r'^audios/end/$',           'audios.views.end'),
+    url(r'^audios/end/$',            'audios.views.end'),
+
+    # Backup
+    url(r'^speakers/backup/$',       'audios.views.speakersToCSV'),
+    url(r'^speakers/zip_audios/$',   'audios.views.zipAudios'),    
 
     #================================================================
     #Admin
@@ -51,9 +55,5 @@ urlpatterns = patterns('',
     url(r'^experiments/pictures/edit/(?P<id>\d+)/$',   'experiments.views.editPicture', name="editPicture"), 
     url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
     url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
-    url(r'^experiments/arrayIdPics/$',                 'experiments.views.arrayIdPics'), 
-
-    # Backup
-    url(r'^experiments/backup/$',                      'experiments.views.speakersToCSV'),
-    url(r'^experiments/zip_audios/$',                  'experiments.views.zipAudios')    
+    url(r'^experiments/arrayIdPics/$',                 'experiments.views.arrayIdPics')
 )

@@ -148,8 +148,11 @@
 <div id="test-contador" class="input">
 </div>
 
-</div>
+<form action="/audios/end/" method="get">
+  <button style="display: none;" class="btn btn-primary .btn-large input" id="exit">Salir</button>​
+</form>
 
+</div>
 </body>
 
 <script type="text/javascript">
@@ -310,6 +313,9 @@
 
         if(total_test == 1){
           $("#confirm").prop('disabled', false);
+
+          $("#next-product").each( function() { $(this).prop("disabled", true) });
+          $("#exit").show();
         }
 
         //chequeo el ruido ambiente
