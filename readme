@@ -3,6 +3,8 @@ Ayuda de comandos a tener en cuenta:
 Postgress:
 #entrar al cliente
 sudo -u postgres psql
+#mostrar base de datos
+\l
 #cambiar bd django_db
 \c django_db
 #mostrar tablas

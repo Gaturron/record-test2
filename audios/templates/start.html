@@ -7,6 +7,7 @@
   <link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
   <link href="/static/css/bootstrap/datepicker.css" rel="stylesheet">
   <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
   <script type="text/javascript" src="/static/js/bootstrap-datepicker.js"></script>
   <script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script>
@@ -21,7 +22,7 @@
     Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
     </div>
 
-    <form action="/audios/add_speaker/" method=post>
+    <form id="speaker-form" action="/audios/add_speaker/" method="post"  novalidate="novalidate">
       
       <div class="input">
         <select name="genre">
@@ -41,10 +42,11 @@
 
       <div class="input">
         Mes de nacimiento:
-        <div class="input-append date" id="datepicker" data-date="02-2012" data-date-format="mm-yyyy" name="birthDate" data-date-minViewMode="1" data-date-viewMode="1">
-            <input class="span2" size="16" type="text" value="02-2012">
+        <div class="input-append date" id="datepicker" data-date="02-2012" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
+            <input id="date" name="birthDate" class="span2" size="16" type="text" value="02-2012">
             <span class="add-on"><i class="icon-calendar"></i></span>
         </div>
+        <div id="errorContainer"></div> 
       </div>
 
       <div id="flash-detect">
@@ -68,6 +70,32 @@
       $("input#location").val(loc.city+" ("+loc.country+")");
     }
     $('#datepicker').datepicker();
+
+    //validate speaker-form
+    $("#speaker-form").validate( {
+      errorContainer: '#errorContainer', 
+      errorLabelContainer: '#errorContainer',
+      
+      rules: {
+        birthDate: {
+            required: true
+/*          required: function(element) {
+            console.log(element.val);
+            var birthDate = $("input#birthDate");
+            var re = new RegExp("^[0-9]{2}-[0-9]{4}$", "g");
+            if (!re.test(element.val)){
+              $(element).html("Por favor poné una fecha válida");
+            }
+          }*/
+        }
+      },
+      messages: {
+        birthDate: "Por favor poné una fecha válida"
+      },
+      submitHandler: function(form) {
+        form.submit();
+      }
+    });
 
     $("div#flash-detect").html(""); 
     if(FlashDetect.versionAtLeast(11, 5)){

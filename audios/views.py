@@ -2,8 +2,8 @@
 
 # Create your views here.
 
-import os, string
-import datetime
+import csv, os, zipfile, StringIO, glob, string
+from datetime import datetime
 from django.utils import timezone 
 
 from django.template import Context, loader
@@ -80,12 +80,13 @@ def add_speaker(request):
 
         # save the speaker
         now = timezone.now()
-        accent = request.POST['accent']
+        birthDate = datetime.strptime(str(request.POST['birthDate']), "%m-%Y")
         location = request.POST['location']
+        accent = request.POST['accent']
         session = request.session['session-rmz']
  
         #TODO: Arreglar birthdate y demas datos erroneos
-        speaker = Speaker(birthDate=now, date= now, location= location, accent= accent, session= session)
+        speaker = Speaker(birthDate=birthDate, date= now, location= location, accent= accent, session= session)
         speaker.save()
 
         return HttpResponseRedirect("/audios/record_tests1/")
@@ -145,6 +146,7 @@ def record_tests1(request):
 
                 del request.session['session-rmz']
                 request.session['speaker-id'] = speaker.id 
+                request.session['speaker-accent'] = speaker.accent
 
                 return HttpResponse(t.render(c))
 
@@ -159,8 +161,8 @@ def wami_handler2(request):
 
     if request.method == 'GET':
 
-        filename = "u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
-        f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
+        filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
+        f = open(os.path.join(settings.MEDIA_ROOT, "audiosPreliminares/"+filename+'.wav'), 'r')
         myfile = File(f)
         data = myfile.read()
         myfile.close()
@@ -173,8 +175,8 @@ def wami_handler2(request):
     
     if request.method == 'POST':
 
-        filename = "u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
-        f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
+        filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
+        f = open(os.path.join(settings.MEDIA_ROOT, "audiosPreliminares/"+filename+'.wav'), 'wb')
         myfile = File(f) 
         myfile.write(request.body)
         myfile.close()
@@ -206,10 +208,10 @@ def confirm_audios(request):
         for exp in exp_list:
             filename = "u"+str(speaker.id)+"_"+"test-"+exp['type']+exp['id']
             
-            if os.path.isfile(os.path.join(settings.MEDIA_ROOT, filename+'.wav')):
+            if os.path.isfile(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav')):
                 
                 #grabo el audio definitivo
-                f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
+                f = open(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav'), 'r')
                 myfile = File(f)
                 data = myfile.read()
                 myfile.close()
@@ -222,7 +224,7 @@ def confirm_audios(request):
                 audio.audio.save(filename+'.wav', file_content) 
 
                 #borro el archivo temporal
-                os.remove(os.path.join(settings.MEDIA_ROOT, filename+'.wav'))
+                os.remove(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav'))
 
                 #guardo que ese experimento se hizo una vez
                 if(exp['type'] == 'w'):
@@ -272,4 +274,41 @@ def end(request):
     if request.method == 'GET':
         t = loader.get_template('end.html')
         return HttpResponse(t.render(Context({ })))
+
+#======================================================================
+# Backup
+def speakersToCSV(request):
+    if request.method == 'GET':
+        speakers = Speaker.objects.all()
+
+        response = HttpResponse(mimetype='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="backup-speakers'+str(timezone.now())+'.csv"'
+
+        writer = csv.writer(response)
+
+        for speaker in speakers:
+            writer.writerow([str(speaker.id), str(speaker.date), str(speaker.location), str(speaker.accent), str(speaker.birthDate), str(speaker.age), str(speaker.finish), str(speaker.session)])
+
+        return response
+
+def zipAudios(request):
+
+    if request.method == 'GET':
+
+        o = StringIO.StringIO()
+        zf = zipfile.ZipFile(o, mode='w')
+        
+        #for audio in glob.glob(settings.MEDIA_ROOT+'/audios/*.wav'):
+        for audio in glob.glob(settings.MEDIA_ROOT+'/audiosPreliminares/*.wav'):
+            i = open(str(audio), 'rb').read()
+            zf.writestr(os.path.basename(str(audio)), i)
+        
+        zf.close()
+        o.seek(0)
+        response = HttpResponse(o.read())
+        o.close()
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment; filename="backup-audios'+str(timezone.now())+'.zip"'
+        return response
+
                 
