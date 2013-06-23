@@ -18,3 +18,8 @@ class Picture(models.Model):
     image = models.FileField(upload_to='imagenesExperimentos')
     description = models.TextField(blank=True, null=True)
     amount = models.IntegerField(default=0)
+
+class trace(models.Model):
+    phrases = models.CommaSeparatedIntegerField(max_length=200)
+    used = models.BooleanField(default=False)
+    

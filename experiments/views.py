@@ -1,11 +1,11 @@
 # Create your views here.
 
-import datetime, os, zipfile, StringIO, glob
+import datetime, os, zipfile, StringIO, glob, csv
 from django.utils import timezone 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.template import Context, loader
-from experiments.models import Word, Phrase, Picture
+from experiments.models import Word, Phrase, Picture, trace
 from audios.models import Speaker, Audio
 from experiments.forms import UploadFileForm
 from django.views.decorators.csrf import csrf_exempt
@@ -208,3 +208,42 @@ def arrayIdPics(request):
     for p in pic_list:
         ids[p.id] = p.description
     return HttpResponse(simplejson.dumps(ids), content_type="application/json")
+
+#======================================================================
+# Admin
+
+@csrf_exempt
+def populateDB(request):
+    if request.method == 'POST':
+        ifile  = open(settings.MEDIA_ROOT+'/settings/data.csv', "rb")
+        reader = csv.reader(ifile)
+        
+        phrases = []
+        trazas = [] 
+
+        for row in reader:
+            if len(row) == 2:
+                phrases.append([row[0], row[1]])
+            if len(row) > 2:
+                trazas.append(row)
+
+        ifile.close()
+
+        trazas = [ map(int, i) for i in trazas ]
+
+        #populemos la base de datos del lado de django
+        for phrase in phrases:
+            w = Word(id = phrase[0], text = phrase[1])
+            w.save()
+
+        for traza in trazas:
+            t = trace(phrases = str(traza))
+            t.save()
+
+        return HttpResponseRedirect("/experiments/admin/")
+
+def admin(request):
+    if request.method == 'GET':
+        t = loader.get_template('admin.html')
+        return HttpResponse(t.render(Context({ })))
+

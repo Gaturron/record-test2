@@ -31,12 +31,16 @@ urlpatterns = patterns('',
 
     url(r'^audios/end/$',            'audios.views.end'),
 
+    #================================================================
     # Backup
+    
     url(r'^speakers/backup/$',       'audios.views.speakersToCSV'),
     url(r'^speakers/zip_audios/$',   'audios.views.zipAudios'),    
 
     #================================================================
     #Admin
+    url(r'^experiments/admin/$',                   'experiments.views.admin'),
+    url(r'^experiments/populate/$',                'experiments.views.populateDB'),
 
     # Words
     url(r'^experiments/words/list/$',               'experiments.views.wordsList'),
