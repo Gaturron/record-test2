@@ -17,7 +17,7 @@ from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
 from audios.models import Speaker, Audio
-from experiments.models import Word, Phrase, Picture
+from experiments.models import Word, Phrase, Picture, trace
 
 def _generate_random_string(length, stringset=string.ascii_letters):
     return ''.join([stringset[i%len(stringset)] \
@@ -310,5 +310,3 @@ def zipAudios(request):
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment; filename="backup-audios'+str(timezone.now())+'.zip"'
         return response
-
-                
