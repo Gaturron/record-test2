@@ -53,14 +53,6 @@
     {% for word in word_list %}
       <li><a href="#tabs-word-{{ word.id }}">Test word {{ word.description }}</a></li>
     {% endfor %}
-
-    {% for phrase in phrase_list %}
-      <li><a href="#tabs-phrase-{{ picture.id }}">Test Phrase {{ phrase.description }}</a></li>
-    {% endfor %}
-
-    {% for picture in pictures_list %}
-      <li><a href="#tabs-pictures-{{ picture.id }}">Test Imagen {{ picture.description }}</a></li>
-    {% endfor %}
   </ul>
 
   {% for word in word_list %}
@@ -82,39 +74,6 @@
     </div>
   {% endfor %}
 
-  {% for phrase in phrase_list %}
-    <div id="tabs-phrase-{{ phrase.id }}">Diga la siguiente frase:
-
-      <div style="text-align: center;">
-        {{ phrase.text }}
-      </div>
-
-      <div style="text-align: center;">
-        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
-        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-ph{{ phrase.id }}')"></input>
-        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-ph{{ phrase.id }}', {{ phrase.id }})"></input>
-      </div>
-
-    </div>
-  {% endfor %}
-
-
-  {% for picture in pictures_list %}
-    <div id="tabs-pictures-{{ picture.id }}">Describa la imagen:
-
-      <div style="text-align: center;">
-        <img class="img-rounded" height="200px" width="auto" src="/media/{{ picture.image }}">
-      </div>
-
-      <div style="text-align: center;" class="input">
-        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-pic{{ picture.id }}', {{ picture.id }})"></input>
-        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-pic{{ picture.id }}')"></input>
-        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-pic{{ picture.id }}', {{ picture.id }})"></input>
-      </div>
-
-    </div>
-  {% endfor %}
-
 </div>
 
 <button style="display: none;" class="input" id="previous-product"><</button>
@@ -130,19 +89,6 @@
   </tr>
   {% endfor %}
 
-  {% for phrase in phrase_list %}
-  <tr>
-    <td>Test {{phrase.description}}</td>
-    <td id="test-ph{{phrase.id}}">No grabado</td>
-  </tr>
-  {% endfor %}
-
-  {% for picture in pictures_list %}
-  <tr>
-    <td>Test {{picture.description}}</td>
-    <td id="test-pic{{picture.id}}">No grabado</td>
-  </tr>
-  {% endfor %}
 </table>
 
 <div id="test-contador" class="input">
@@ -160,12 +106,6 @@
   var check_test = { 
     {% for word in word_list %}
       'test-w{{word.id}}': 0,
-    {% endfor %}
-    {% for phrase in phrase_list %}
-      'test-ph{{phrase.id}}': 0,
-    {% endfor %}
-    {% for picture in pictures_list %}
-      'test-pic{{picture.id}}': 0,
     {% endfor %}
   };
 

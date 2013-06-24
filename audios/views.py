@@ -2,7 +2,7 @@
 
 # Create your views here.
 
-import csv, os, zipfile, StringIO, glob, string
+import csv, os, zipfile, StringIO, glob, string, ast
 from datetime import datetime
 from django.utils import timezone 
 
@@ -91,37 +91,37 @@ def add_speaker(request):
 
         return HttpResponseRedirect("/audios/record_tests1/")
 
-def record_tests(request):
-    if request.method == 'GET':
+# def record_tests(request):
+#     if request.method == 'GET':
 
-        try:
-            #Chequear que es un usuario que recien lleno los datos
-            if 'session-rmz' in request.session:
-                session = request.session['session-rmz']
-                speaker = Speaker.objects.get(session=session, finish=False)
+#         try:
+#             #Chequear que es un usuario que recien lleno los datos
+#             if 'session-rmz' in request.session:
+#                 session = request.session['session-rmz']
+#                 speaker = Speaker.objects.get(session=session, finish=False)
 
-                #Agarro los experimentos que se guardaron
-                word_list = Word.objects.all()[:]
-                phrase_list = Phrase.objects.all()[:]
-                pictures_list = Picture.objects.all()[:]
+#                 #Agarro los experimentos que se guardaron
+#                 word_list = Word.objects.all()[:]
+#                 phrase_list = Phrase.objects.all()[:]
+#                 pictures_list = Picture.objects.all()[:]
 
-                t = loader.get_template('record_tests.html')
-                c = Context({ 
-                    'word_list' : word_list,
-                    'phrase_list' : phrase_list,
-                    'pictures_list': pictures_list 
-                })
+#                 t = loader.get_template('record_tests.html')
+#                 c = Context({ 
+#                     'word_list' : word_list,
+#                     'phrase_list' : phrase_list,
+#                     'pictures_list': pictures_list 
+#                 })
 
-                del request.session['session-rmz']
-                request.session['speaker-id'] = speaker.id 
+#                 del request.session['session-rmz']
+#                 request.session['speaker-id'] = speaker.id 
 
-                return HttpResponse(t.render(c))
+#                 return HttpResponse(t.render(c))
 
-            else:
-                return HttpResponseRedirect("/audios/start/")
+#             else:
+#                 return HttpResponseRedirect("/audios/start/")
 
-        except ObjectDoesNotExist:
-            return HttpResponseRedirect("/audios/start/")
+#         except ObjectDoesNotExist:
+#             return HttpResponseRedirect("/audios/start/")
 
 def record_tests1(request):
     if request.method == 'GET':
@@ -133,15 +133,19 @@ def record_tests1(request):
                 speaker = Speaker.objects.get(session=session, finish=False)
 
                 #Agarro los experimentos que se guardaron
-                word_list = Word.objects.all()[:]
-                phrase_list = Phrase.objects.all()[:]
-                pictures_list = Picture.objects.all()[:]
+                path = trace.objects.filter(used= False)[0]
+                trace_list = ast.literal_eval(path.phrases)
+                path.used = True
+                path.save()
+
+                experiments = []
+                for ti in trace_list:
+                    word = Word.objects.get(id= ti)
+                    experiments.append(word)
 
                 t = loader.get_template('record_tests1.html')
                 c = Context({ 
-                    'word_list' : word_list,
-                    'phrase_list' : phrase_list,
-                    'pictures_list': pictures_list 
+                    'word_list' : experiments 
                 })
 
                 del request.session['session-rmz']
