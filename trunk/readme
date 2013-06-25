@@ -25,4 +25,9 @@ sudo service apache2 stop
 sudo service apache2 reload
 sudo service apache2 start
 
+#para cambiar facilmente de publicar para afuera y de development localmente hacer (sobre ~/Tesis/record-test2)
+find . -type f -exec sed -i 's/elgatoloco.no-ip.org/localhost/g' {} \;
+
+#si queremos volver a antes hacemos
+find . -type f -exec sed -i 's/localhost/elgatoloco.no-ip.org/g' {} \;
 
