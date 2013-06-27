@@ -1,6 +1,6 @@
 import subprocess
 
-s1 = "localhost"
+s1 = "localhost:8000"
 s2 = "elgatoloco.no-ip.org"
 dir = "~/Tesis/record-test2/audios/templates/record_tests.html ~/Tesis/record-test2/audios/templates/record_tests1.html"
 
