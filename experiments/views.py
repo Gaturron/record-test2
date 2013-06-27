@@ -1,6 +1,6 @@
 # Create your views here.
 
-import datetime, os, zipfile, StringIO, glob, csv
+import datetime, os, zipfile, StringIO, glob, csv, sys
 from django.utils import timezone 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
@@ -215,9 +215,16 @@ def arrayIdPics(request):
 @csrf_exempt
 def populateDB(request):
     if request.method == 'POST':
-        ifile  = open(settings.MEDIA_ROOT+'/settings/data.csv', "rb")
-        reader = csv.reader(ifile)
-        
+        try:
+            ifile  = open(settings.MEDIA_ROOT+'/settings/data.csv', "rb")
+            reader = csv.reader(ifile)
+        except IOError as e:
+            print "I/O Error({0}): {1}".format(e.errno, e.strerror)
+            HttpResponse("I/O Error: Try again")
+        except:
+            print "Unexpected error:", sys.exc_info()[0]
+            HttpResponse("Unexpected Error: Try again")
+
         phrases = []
         trazas = [] 
 
@@ -226,12 +233,15 @@ def populateDB(request):
                 phrases.append([row[0], row[1]])
             if len(row) > 2:
                 trazas.append(row)
-
+                
         ifile.close()
 
         trazas = [ map(int, i) for i in trazas ]
 
         #populemos la base de datos del lado de django
+        Word.objects.all().delete()
+        trace.objects.all().delete()
+
         for phrase in phrases:
             w = Word(id = phrase[0], text = phrase[1])
             w.save()
