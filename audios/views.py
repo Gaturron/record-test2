@@ -166,7 +166,7 @@ def wami_handler2(request):
     if request.method == 'GET':
 
         filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
-        f = open(os.path.join(settings.MEDIA_ROOT, "audiosPreliminares/"+filename+'.wav'), 'r')
+        f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'r')
         myfile = File(f)
         data = myfile.read()
         myfile.close()
@@ -180,7 +180,7 @@ def wami_handler2(request):
     if request.method == 'POST':
 
         filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_"+request.GET['name_test']
-        f = open(os.path.join(settings.MEDIA_ROOT, "audiosPreliminares/"+filename+'.wav'), 'wb')
+        f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'wb')
         myfile = File(f) 
         myfile.write(request.body)
         myfile.close()
