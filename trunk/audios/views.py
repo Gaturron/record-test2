@@ -23,46 +23,6 @@ def _generate_random_string(length, stringset=string.ascii_letters):
     return ''.join([stringset[i%len(stringset)] \
         for i in [ord(x) for x in os.urandom(length)]])
 
-# def record(request):
-#     if request.method == 'GET':
-
-#         request.session['session-id'] = _generate_random_string(20)
-
-#         t = loader.get_template('basic.html')
-#         return HttpResponse(t.render(Context({})))
-
-# @csrf_exempt
-# def wami_handler(request):
-
-#     if request.method == 'GET':
-
-#         filename = request.session['session-id'] 
-#         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'r')
-#         myfile = File(f)
-#         data = myfile.read()
-#         myfile.close()
-#         f.close()
-
-#         Ctype = 'audio/x-wav'        
-#         response = HttpResponse(data, content_type=Ctype)
-
-#         return response
-    
-#     if request.method == 'POST':
-
-#         filename = request.session['session-id'] 
-#         f = open(os.path.join(settings.MEDIA_ROOT, filename+'.wav'), 'wb')
-#         myfile = File(f) 
-#         myfile.write(request.body)
-#         myfile.close()
-#         f.close()
-
-#        return HttpResponse('Ok')
-
-#def list(request):
-#    if request.method == 'GET':
-#        return HttpResponse("Hello, world.")
-
 #=================================================================
 
 def start(request):
@@ -90,38 +50,6 @@ def add_speaker(request):
         speaker.save()
 
         return HttpResponseRedirect("/audios/record_tests1/")
-
-# def record_tests(request):
-#     if request.method == 'GET':
-
-#         try:
-#             #Chequear que es un usuario que recien lleno los datos
-#             if 'session-rmz' in request.session:
-#                 session = request.session['session-rmz']
-#                 speaker = Speaker.objects.get(session=session, finish=False)
-
-#                 #Agarro los experimentos que se guardaron
-#                 word_list = Word.objects.all()[:]
-#                 phrase_list = Phrase.objects.all()[:]
-#                 pictures_list = Picture.objects.all()[:]
-
-#                 t = loader.get_template('record_tests.html')
-#                 c = Context({ 
-#                     'word_list' : word_list,
-#                     'phrase_list' : phrase_list,
-#                     'pictures_list': pictures_list 
-#                 })
-
-#                 del request.session['session-rmz']
-#                 request.session['speaker-id'] = speaker.id 
-
-#                 return HttpResponse(t.render(c))
-
-#             else:
-#                 return HttpResponseRedirect("/audios/start/")
-
-#         except ObjectDoesNotExist:
-#             return HttpResponseRedirect("/audios/start/")
 
 def record_tests1(request):
     if request.method == 'GET':
@@ -188,69 +116,6 @@ def wami_handler2(request):
 
         return HttpResponse('Ok')
 
-@csrf_exempt
-def confirm_audios(request):
-    if request.method == 'POST':
-
-        # sacar speaker id
-        speaker = Speaker.objects.get(id= request.session['speaker-id'])
-
-        # Grabar los audios con usando el modelo  
-        word_list = Word.objects.all()[:]
-        phrase_list = Phrase.objects.all()[:]
-        pictures_list = Picture.objects.all()[:]
-
-        exp_list = []
-
-        for test in word_list:
-            exp_list.append({'type': 'w', 'id': str(test.id)})
-        for test in phrase_list:
-            exp_list.append({'type': 'ph', 'id': str(test.id)})
-        for test in pictures_list:
-            exp_list.append({'type': 'pic', 'id': str(test.id)})
-        
-        for exp in exp_list:
-            filename = "u"+str(speaker.id)+"_"+"test-"+exp['type']+exp['id']
-            
-            if os.path.isfile(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav')):
-                
-                #grabo el audio definitivo
-                f = open(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav'), 'r')
-                myfile = File(f)
-                data = myfile.read()
-                myfile.close()
-                f.close()
-                            
-                # grabar audios
-                audio = Audio(text=filename, speaker=speaker)
-
-                file_content = ContentFile(data)
-                audio.audio.save(filename+'.wav', file_content) 
-
-                #borro el archivo temporal
-                os.remove(os.path.join(settings.MEDIA_ROOT+"audiosPreliminares/", filename+'.wav'))
-
-                #guardo que ese experimento se hizo una vez
-                if(exp['type'] == 'w'):
-                    word = Word.objects.get(id=exp['id'])
-                    word.amount += 1
-                    word.save()
-
-                if(exp['type'] == 'ph'):
-                    phrase = Phrase.objects.get(id=exp['id'])
-                    phrase.amount += 1
-                    phrase.save()
-
-                if(exp['type'] == 'pic'):
-                    picture = Picture.objects.get(id=exp['id'])
-                    picture.amount += 1
-                    picture.save()
-
-        speaker.finish = True
-        speaker.save()
-
-        return HttpResponse("Gracias por colaborar!")
-
 def audio_url(request, id):
     if request.method == 'GET':
         #audio = Audio.objects.get(id= request.GET['id'])
@@ -302,8 +167,7 @@ def zipAudios(request):
         o = StringIO.StringIO()
         zf = zipfile.ZipFile(o, mode='w')
         
-        #for audio in glob.glob(settings.MEDIA_ROOT+'/audios/*.wav'):
-        for audio in glob.glob(settings.MEDIA_ROOT+'/audiosPreliminares/*.wav'):
+        for audio in glob.glob(settings.MEDIA_ROOT+'/audios/*.wav'):
             i = open(str(audio), 'rb').read()
             zf.writestr(os.path.basename(str(audio)), i)
         
