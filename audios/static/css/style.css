@@ -78,3 +78,17 @@ body{
     border-radius: 10px;
     margin: 5% 5% 5% 5%;
 }
+
+#meter {
+    width: 0px;
+    height: 10px;
+    background-image:  url('/static/css/img/meter.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+}
+
+#word.presentation {
+    text-align: center;
+    margin: 20px;    
+}
