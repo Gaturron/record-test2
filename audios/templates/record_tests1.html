@@ -4,92 +4,111 @@
   <meta charset="utf-8">
   <title>Test de grabacion - comienzo</title>
 
-  <link type="text/css" href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
-  <link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
-  <link type="text/css" href="/static/css/style.css" rel="stylesheet"/>
-  <link type="text/css" href="/static/css/jgrowl/jquery.jgrowl.css" rel="stylesheet"/>
+  <link type="text/css" 
+        href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
+  <link type="text/css" 
+        href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
+  <link type="text/css" 
+        href="/static/css/style.css" rel="stylesheet"/>
+  <link type="text/css" 
+        href="/static/css/jgrowl/jquery.jgrowl.css" rel="stylesheet"/>
 
-  <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
-  <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-  <script type="text/javascript" src="/static/js/recorder.js"/></script>
-  <script type="text/javascript" src="/static/js/jquery.jgrowl.js"></script>
-  <script type="text/javascript" src="/static/js/record_functions.js"></script>
+  <script type="text/javascript" 
+        src="/static/js/jquery-1.8.2.js"></script>
+  <script type="text/javascript" 
+        src="/static/js/jquery-ui-1.9.1.js"></script>
+  <script type="text/javascript" 
+        src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" 
+        src="/static/js/recorder.js"/></script>
+  <script type="text/javascript" 
+        src="/static/js/jquery.jgrowl.js"></script>
+  <script type="text/javascript" 
+        src="/static/js/record_functions.js"></script>
 </head>
 
 <body onload="setup()">
 
-<div id="jGrowl" class="jGrowl top-right">
-  <div class="jGlowl-notification"></div>
-</div>
-
-<div class="container">
-
-<h2 class="input">Grabando</h2>
-
-<div class="container" id="wami_container">
-  <div id="status">Estado: --- </div>
-  <div id="volume">
-    <div id="saturation">Nivel de grabación: ---</div>
-    <div id="meter"></div>
+  <div id="jGrowl" class="jGrowl top-right">
+    <div class="jGlowl-notification"></div>
   </div>
-  Hacé click en "Permitir" para acceder al microfono
-  <div id="wami"></div> 
-</div>
 
-<div class="input">
-  Hay que realizar distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
-</div>
+  <div class="container">
 
-<div id="tabs">
+    <h2 class="input">Grabando</h2>
 
-  <ul style="display: none;">
-    {% for word in word_list %}
-      <li><a href="#tabs-word-{{ word.id }}">Test word {{ word.description }}</a></li>
-    {% endfor %}
-  </ul>
-
-  {% for word in word_list %}
-    <div id="tabs-word-{{ word.id }}">Diga la siguiente palabra:
-
-      <div id="word.presentation">
-        {{ word.text }}
+    <div class="container" id="wami_container">
+      <div id="status">Estado: --- </div>
+      <div id="volume">
+        <div id="saturation">Nivel de grabación: ---</div>
+        <div id="meter"></div>
       </div>
+      Hacé click en "Permitir" para acceder al microfono
+      <div id="wami"></div> 
+    </div>
 
-      <div style="text-align: center;">
-        <input class="btn btn-danger record" type="button" value="Record" onclick="record('test-w{{ word.id }}', {{ word.id }})"></input>
-        <input style="display: none;" class="btn btn-inverse stop" type="button" value="Stop" onclick="stop('test-w{{ word.id }}')"></input>
-        <input disabled class="btn btn-success play" type="button" value="Play" onclick="play('test-w{{ word.id }}', {{ word.id }})"></input>
-      </div>
+    <div class="input">
+      Hay que realizar distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
+    </div>
+
+    <div id="tabs">
+
+      <ul style="display: none;">
+        {% for word in word_list %}
+          <li><a href="#tabs-word-{{ word.id }}">Test word {{ word.description }}</a></li>
+        {% endfor %}
+      </ul>
+
+      {% for word in word_list %}
+        <div id="tabs-word-{{ word.id }}">Diga la siguiente frase:
+
+          <div id="word.presentation">
+            {{ word.text }}
+          </div>
+
+          <div style="text-align: center;">
+            <input  class="btn btn-danger record" 
+                    type="button" value="Record" 
+                    onclick="record('test-w{{ word.id }}', {{ word.id }})">
+            </input>
+            <input  style="display: none;" class="btn btn-inverse stop" 
+                    type="button" value="Stop" 
+                    onclick="stop('test-w{{ word.id }}')">
+            </input>
+            <input  disabled class="btn btn-success play" 
+                    type="button" value="Play" 
+                    onclick="play('test-w{{ word.id }}', {{ word.id }})">
+            </input>
+          </div>
+
+        </div>
+      {% endfor %}
 
     </div>
-  {% endfor %}
 
-</div>
+    <button style="display: none;" class="input" id="previous-product"><</button>
+    <button disabled class="btn btn-primary .btn-large input" id="next-product" 
+            onclick="next_product()">Proxima grabación</button>​
 
-<button style="display: none;" class="input" id="previous-product"><</button>
-<button disabled class="btn btn-primary .btn-large input" id="next-product" 
-        onclick="$('#next-product').each( function() { $(this).prop('disabled', true) });">Proxima grabación</button>​
+    <table style="display: none;">
 
-<table style="display: none;">
+      {% for word in word_list %}
+      <tr>
+        <td>Test {{word.description}}</td>
+        <td id="test-w{{word.id}}">No grabado</td>
+      </tr>
+      {% endfor %}
 
-  {% for word in word_list %}
-  <tr>
-    <td>Test {{word.description}}</td>
-    <td id="test-w{{word.id}}">No grabado</td>
-  </tr>
-  {% endfor %}
+    </table>
 
-</table>
+    <div id="test-contador" class="input">
+    </div>
 
-<div id="test-contador" class="input">
-</div>
+    <form action="/audios/end/" method="get">
+      <button style="display: none;" class="btn btn-primary .btn-large input" id="exit">Salir</button>​
+    </form>
 
-<form action="/audios/end/" method="get">
-  <button style="display: none;" class="btn btn-primary .btn-large input" id="exit">Salir</button>​
-</form>
-
-</div>
+  </div>
 </body>
 
 <script type="text/javascript">
@@ -103,5 +122,4 @@
   var minVolumenLevel = 20;
   
 </script>
-
 </html>
