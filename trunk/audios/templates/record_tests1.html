@@ -60,7 +60,7 @@
       </ul>
 
       {% for word in word_list %}
-        <div id="tabs-word-{{ word.id }}">Diga la siguiente frase:
+        <div class="wordexp" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">Diga la siguiente frase:
 
           <div id="word.presentation">
             {{ word.text }}
@@ -90,23 +90,16 @@
     <button disabled class="btn btn-primary .btn-large input" id="next-product" 
             onclick="next_product()">Proxima grabación</button>​
 
-    <table style="display: none;">
-
-      {% for word in word_list %}
-      <tr>
-        <td>Test {{word.description}}</td>
-        <td id="test-w{{word.id}}">No grabado</td>
-      </tr>
-      {% endfor %}
-
-    </table>
-
     <div id="test-contador" class="input">
     </div>
 
     <form action="/audios/end/" method="get">
       <button style="display: none;" class="btn btn-primary .btn-large input" id="exit">Salir</button>​
     </form>
+
+    <div style="display: none;" id="dialog-confirm" title="Grabaciones">
+      <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Llegó a realizar cinco grabaciones. ¿Quiere realizar otras cinco más?</p>
+    </div>
 
   </div>
 </body>
@@ -121,5 +114,7 @@
   var checkSaturation = null;
   var minVolumenLevel = 20;
   
+  var minNumberExperiments = 6;
+
 </script>
 </html>
