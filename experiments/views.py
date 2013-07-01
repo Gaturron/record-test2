@@ -220,10 +220,10 @@ def populateDB(request):
             reader = csv.reader(ifile)
         except IOError as e:
             print "I/O Error({0}): {1}".format(e.errno, e.strerror)
-            HttpResponse("I/O Error: Try again")
+            return HttpResponse("I/O Error: Try again")
         except:
             print "Unexpected error:", sys.exc_info()[0]
-            HttpResponse("Unexpected Error: Try again")
+            return HttpResponse("Unexpected Error: Try again")
 
         phrases = []
         trazas = [] 
