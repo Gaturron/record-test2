@@ -1,3 +1,4 @@
+var time_rec = 0;
 
 function setup() {
   $( "#tabs").tabs({ 
@@ -5,6 +6,9 @@ function setup() {
          { opacity: 'toggle' }]  });
 
   Wami.setup("wami");
+  $('#runner').runner({
+    milliseconds: false
+  });
 
   $('#next-product').click(function(){ 
     var tabs = $('#tabs').tabs();
@@ -65,6 +69,8 @@ function record(name_test, id_test) {
       $(".play").each( function() { $(this).prop("disabled", true) });
 
       $("#next-product").each( function() { $(this).prop("disabled", false) });
+    
+      $('#runner').runner("start");
     }
   }
   
@@ -100,10 +106,21 @@ function play(name_test, id_test) {
   $(".stop").each( function() { $(this).prop("disabled", false) });
   $(".record").each( function() { $(this).show()});
   $(".record").each( function() { $(this).prop("disabled", true) });
+
+  var me = this;
+  $("#runner").runner("reset");
+  $("#runner").runner({
+    stopAt: time_rec * 1000,
+    milliseconds: false
+  }).on("runnerFinish", function(eventObject, info){
+    me.stop();
+  });
+  $("#runner").runner("start");
 }
 
 function stop(name_test) {
 
+  var me = this;
   sleep1000Stop = function( part ) {
     if( part == 0 ) {
       setTimeout( function() { sleep1000Stop( 1 ); }, 1000 );
@@ -125,6 +142,10 @@ function stop(name_test) {
 
       $(".record").show();
 
+      $('#runner').runner('stop');
+      me.time_rec = $('#runner').runner('lap');
+      $('#runner').runner('reset');
+      
       $("#next-product").each( function() { $(this).prop("disabled", false) });
 
       $( "#"+name_test ).html("OK");
