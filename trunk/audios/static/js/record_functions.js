@@ -115,9 +115,6 @@ function stop(name_test) {
       
       checkSaturation = null;
       $("#saturation").html("Nivel de grabación: ---");
-
-      check_test[name_test] = 1;
-
       $("#status").html('Estado: Parado');
 
       $(".stop").each( function() { $(this).hide() });
@@ -130,6 +127,7 @@ function stop(name_test) {
 
       $( "#"+name_test ).html("OK");
 
+      check_test[name_test] = 1;
       var total_test = 1;
       var cant_test_ok = 0;
       $.each(check_test, function(index, value) { 
@@ -155,4 +153,12 @@ function stop(name_test) {
   }
   
   sleep1000Stop(0);
+}
+
+function next_product(){
+  $('#next-product').each( function() { $(this).prop('disabled', true) });
+}
+
+function previous_product(){
+
 }
