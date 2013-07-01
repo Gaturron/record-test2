@@ -18,7 +18,7 @@ function setup() {
     tabs.tabs('select', selected-1);
   });
 
-  $('#test-contador').html("Tests: 0 de "+(Object.keys(check_test).length));
+  $('#test-contador').html("Tests: 0 de "+(minNumberExperiments-1));
 }
 
 function record(name_test, id_test) {
@@ -53,7 +53,7 @@ function record(name_test, id_test) {
   checkSaturation();
 
   sleep1000Rec = function( part ) {
-    if( part == 0 ) {
+    if (part == 0) {
         setTimeout( function() { sleep1000Rec( 1 ); }, 1000 );
     } else if( part == 1 ) {
       $("#status").html('Estado: Grabando');
@@ -125,24 +125,9 @@ function stop(name_test) {
 
       $(".record").show();
 
+      $("#next-product").each( function() { $(this).prop("disabled", false) });
+
       $( "#"+name_test ).html("OK");
-
-      check_test[name_test] = 1;
-      var total_test = 1;
-      var cant_test_ok = 0;
-      $.each(check_test, function(index, value) { 
-        total_test = total_test & value; 
-        cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
-      });
-
-      $( "#test-contador").html("Tests: "+cant_test_ok+" de "+(Object.keys(check_test).length));
-
-      if(total_test == 1){
-        $("#confirm").prop('disabled', false);
-
-        $("#next-product").each( function() { $(this).prop("disabled", true) });
-        $("#exit").show();
-      }
 
       //chequeo el ruido ambiente
       if (minVolumenLevel > 20) {
@@ -155,8 +140,49 @@ function stop(name_test) {
   sleep1000Stop(0);
 }
 
-function next_product(){
+function next_product() {
   $('#next-product').each( function() { $(this).prop('disabled', true) });
+
+  var word_id = $(".wordexp:visible").attr("word-id");
+  var name_test = "test-w"+word_id;
+
+  check_test[name_test] = 1;
+  var total_test = 1;
+  var cant_test_ok = 0;
+  $.each(check_test, function(index, value) { 
+    total_test = total_test & value; 
+    cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
+  });
+
+  $( "#test-contador").html("Tests: "+(cant_test_ok % minNumberExperiments)+" de "+(minNumberExperiments-1));
+
+  if (total_test == 1) {
+    $("#confirm").prop('disabled', false);
+
+    $("#next-product").each( function() { $(this).prop("disabled", true) });
+    $("#exit").show();
+  } else {
+    
+    if(cant_test_ok % minNumberExperiments == 0){
+      //pregunto por si quiere realizar mas grabaciones
+      $("#dialog-confirm").dialog({
+        resizable: false,
+        height:240,
+        weight:100,
+        modal: true,
+        buttons: {
+          "Realizar cinco más": function() {
+            $(this).dialog("close");
+          },
+          "Salir": function() {
+            document.location.href = '/audios/end/';
+            $(this).dialog("close");
+          }
+        }
+      });
+      $("#dialog-confirm").show();
+    }
+  }
 }
 
 function previous_product(){
