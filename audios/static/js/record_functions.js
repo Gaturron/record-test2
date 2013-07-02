@@ -6,7 +6,7 @@ function setup() {
          { opacity: 'toggle' }]  });
 
   Wami.setup("wami");
-  $('#runner').runner({
+  $('.runner').runner({
     milliseconds: false
   });
 
@@ -23,11 +23,17 @@ function setup() {
   });
 
   $('#test-contador').html("Tests: 0 de "+(minNumberExperiments-1));
+
+  //log
+  _writeLog("Start");
 }
 
 function record(name_test, id_test) {
-  //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
 
+  //log
+  _writeLog("Record");
+
+  //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { console.debug("Grabando") };
   var finishedfn = function() { console.debug("Fin grabacion") };
   Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
@@ -70,7 +76,7 @@ function record(name_test, id_test) {
 
       $("#next-product").each( function() { $(this).prop("disabled", false) });
     
-      $('#runner').runner("start");
+      $('.runner').runner("start");
     }
   }
   
@@ -78,6 +84,10 @@ function record(name_test, id_test) {
 }
 
 function play(name_test, id_test) {
+
+  //log
+  _writeLog("Play");
+
   //Wami.startPlaying("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
 
   var startfn = function() { console.debug("Reproduciendo") };
@@ -108,17 +118,20 @@ function play(name_test, id_test) {
   $(".record").each( function() { $(this).prop("disabled", true) });
 
   var me = this;
-  $("#runner").runner("reset");
-  $("#runner").runner({
+  $(".runner").runner("reset");
+  $(".runner").runner({
     stopAt: time_rec * 1000,
     milliseconds: false
   }).on("runnerFinish", function(eventObject, info){
     me.stop();
   });
-  $("#runner").runner("start");
+  $(".runner").runner("start");
 }
 
 function stop(name_test) {
+
+  //log
+  _writeLog("Stop");
 
   var me = this;
   sleep1000Stop = function( part ) {
@@ -142,9 +155,9 @@ function stop(name_test) {
 
       $(".record").show();
 
-      $('#runner').runner('stop');
-      me.time_rec = $('#runner').runner('lap');
-      $('#runner').runner('reset');
+      $('.runner').runner('stop');
+      me.time_rec = $('.runner').runner('lap');
+      $('.runner').runner('reset');
       
       $("#next-product").each( function() { $(this).prop("disabled", false) });
 
@@ -162,6 +175,10 @@ function stop(name_test) {
 }
 
 function next_product() {
+
+  //log
+  _writeLog("Finish");
+
   $('#next-product').each( function() { $(this).prop('disabled', true) });
 
   var word_id = $(".wordexp:visible").attr("word-id");
@@ -182,8 +199,8 @@ function next_product() {
 
     $("#next-product").each( function() { $(this).prop("disabled", true) });
     $("#exit").show();
-  } else {
-    
+
+  } else {    
     if(cant_test_ok % minNumberExperiments == 0){
       //pregunto por si quiere realizar mas grabaciones
       $("#dialog-confirm").dialog({
@@ -206,6 +223,16 @@ function next_product() {
   }
 }
 
-function previous_product(){
+function previous_product() {
 
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+//Logging
+
+function _writeLog(action) {
+  //log
+  var speakerId = $("#speaker_id").attr("speakerId");
+  var word_id = $(".wordexp:visible").attr("word-id");
+  $.post("/audios/writeLog/", {speakerId: speakerId, action: action, ItemId: word_id});
 }

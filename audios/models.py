@@ -15,3 +15,9 @@ class Audio(models.Model):
     text = models.TextField()
     audio = models.FileField(upload_to='audios')
     speaker = models.ForeignKey(Speaker)
+
+class LogSpeaker(models.Model):
+    speakerId = models.IntegerField()
+    action = models.TextField()
+    ItemId = models.IntegerField(default=0)
+    date = models.DateTimeField(auto_now=True)

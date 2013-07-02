@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^audios/record_tests1/$',   'audios.views.record_tests1'), 
     url(r'^audios/wamihandler2/$',   'audios.views.wami_handler2'),  
     url(r'^audios/confirm_audios/$', 'audios.views.confirm_audios'), 
+    url(r'^audios/writeLog/$',       'audios.views.writeLog'),
 
     url(r'^audios/audio_url/(?P<id>\d+)/$',      'audios.views.audio_url', name="audio_url"), 
     url(r'^audios/list/$',           'audios.views.list'),
