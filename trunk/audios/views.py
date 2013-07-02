@@ -16,7 +16,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
-from audios.models import Speaker, Audio
+from audios.models import Speaker, Audio, LogSpeaker
 from experiments.models import Word, Phrase, Picture, trace
 
 def _generate_random_string(length, stringset=string.ascii_letters):
@@ -73,6 +73,7 @@ def record_tests1(request):
 
                 t = loader.get_template('record_tests1.html')
                 c = Context({ 
+                    'speaker_id' : speaker.id,
                     'word_list' : experiments 
                 })
 
@@ -143,6 +144,19 @@ def end(request):
     if request.method == 'GET':
         t = loader.get_template('end.html')
         return HttpResponse(t.render(Context({ })))
+
+#======================================================================
+# Logging
+
+@csrf_exempt
+def writeLog(request):
+    if request.method == 'POST':
+        speakerId = int(request.POST['speakerId'])
+        action = request.POST['action']
+        ItemId = int(request.POST['ItemId'])
+        log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
+        log.save()
+        return HttpResponse('Ok')
 
 #======================================================================
 # Backup
