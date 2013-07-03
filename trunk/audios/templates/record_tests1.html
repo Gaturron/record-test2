@@ -68,28 +68,35 @@
         <div class="wordexp" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">Diga la siguiente frase:
 
           <div id="word.presentation">
-            {{ word.text }}
+            <h3>{{ word.text }}</h3>  
           </div>
 
-          <div class="status">Estado: --- </div>
+          <div class="wrapper">
 
-          <div class="runner" word-id="{{ word.id }}"></div>
+            <h4>
+              <div class="status">Estado: --- </div>
+            </h4>
+            
+            <h4>
+              <div class="runner" word-id="{{ word.id }}"></div>
+            </h4>
+            
+            <div style="text-align: center;">
+              <input  class="btn btn-danger record" 
+                      type="button" value="Record" 
+                      onclick="record('test-w{{ word.id }}', {{ word.id }})">
+              </input>
+              <input  style="display: none;" class="btn btn-inverse stop" 
+                      type="button" value="Stop" 
+                      onclick="stop('test-w{{ word.id }}', {{ word.id }})">
+              </input>
+              <input  disabled class="btn btn-success play" 
+                      type="button" value="Play" 
+                      onclick="play('test-w{{ word.id }}', {{ word.id }})">
+              </input>
+            </div>
 
-          <div style="text-align: center;">
-            <input  class="btn btn-danger record" 
-                    type="button" value="Record" 
-                    onclick="record('test-w{{ word.id }}', {{ word.id }})">
-            </input>
-            <input  style="display: none;" class="btn btn-inverse stop" 
-                    type="button" value="Stop" 
-                    onclick="stop('test-w{{ word.id }}', {{ word.id }})">
-            </input>
-            <input  disabled class="btn btn-success play" 
-                    type="button" value="Play" 
-                    onclick="play('test-w{{ word.id }}', {{ word.id }})">
-            </input>
-          </div>
-
+          </div>          
         </div>
       {% endfor %}
 
