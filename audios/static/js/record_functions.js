@@ -54,7 +54,7 @@ function record(name_test, id_test) {
       setTimeout(checkSaturation, 5);
 
       if (level > 50) {
-        $("#status").html('Estado: Graba devuelta: mucha saturación');
+        $(".status").html('Estado: Graba devuelta: mucha saturación');
         $("#next-product").each( function() { $(this).prop("disabled", true) });
       }
 
@@ -70,7 +70,7 @@ function record(name_test, id_test) {
     if (part == 0) {
         setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
     } else if( part == 1 ) {
-      $("#status").html('Estado: Grabando');
+      $(".status").html('Estado: Grabando');
 
       $(".record").each( function() { $(this).hide() });
       $(".stop").each( function() { $(this).show() });
@@ -116,7 +116,7 @@ function play(name_test, id_test) {
   };
   checkSaturation();
 
-  $("#status").html('Estado: Reproduciendo');
+  $(".status").html('Estado: Reproduciendo');
 
   $(".play").each( function() { $(this).hide() });
   $(".stop").each( function() { $(this).show() });
@@ -155,7 +155,7 @@ function stop(name_test, id_test) {
       
       checkSaturation = null;
       $("#saturation").html("Nivel de grabación: ---");
-      $("#status").html('Estado: Parado');
+      $(".status").html('Estado: Parado');
 
       $(".stop").each( function() { $(this).hide() });
       $(".record").each( function() { $(this).show() });
@@ -179,7 +179,7 @@ function stop(name_test, id_test) {
 
       //chequeo el ruido ambiente
       if (minVolumenLevel > 20) {
-        $("#status").html('Estado: Graba devuelta: mucho ruido ambiente');
+        $(".status").html('Estado: Graba devuelta: mucho ruido ambiente');
         $("#next-product").each( function() { $(this).prop("disabled", true) });         
       }
     }
