@@ -40,7 +40,7 @@ function record(name_test, id_test) {
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { console.debug("Grabando") };
   var finishedfn = function() { console.debug("Fin grabacion") };
-  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     startfn(),
     finishedfn()
   );
@@ -99,7 +99,7 @@ function play(name_test, id_test) {
 
   var startfn = function() { console.debug("Reproduciendo") };
   var finishedfn = function() { console.debug("Fin Reproduccion") };
-  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     startfn(), 
     finishedfn()
   );
