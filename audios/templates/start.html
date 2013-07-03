@@ -10,7 +10,7 @@
   <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
   <script type="text/javascript" src="/static/js/jquery-ui-1.9.1.js"></script>
   <script type="text/javascript" src="/static/js/bootstrap-datepicker.js"></script>
-  <!--<script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script> -->
+  <script type="text/javascript" src="http://ip-geo.appspot.com/geo_data.js"></script> 
   <script type="text/javascript" src="/static/js/flash_detect.js"></script>
 </head>
 
@@ -65,11 +65,13 @@
 <script type="text/javascript">
   
   function setup() {
-    //var loc = geo.getLocation();
-    //if (loc !== undefined) {
-    //  $("input#location").val(loc.city+" ("+loc.country+")");
-    //}
-    $("input#location").val("BS AS HARDCODEADO");
+    var loc = geo.getLocation();
+    if (loc !== undefined) {
+      $("input#location").val(loc.city+" ("+loc.country+")");
+    } else {
+      $("input#location").val("BS AS HARDCODEADO");
+    }
+      
     $('#datepicker').datepicker();
 
     //validate speaker-form
