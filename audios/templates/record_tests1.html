@@ -72,7 +72,7 @@
             {{ word.text }}
           </div>
 
-          <div class="runner"></div>
+          <div class="runner" word-id="{{ word.id }}"></div>
 
           <div style="text-align: center;">
             <input  class="btn btn-danger record" 
@@ -81,7 +81,7 @@
             </input>
             <input  style="display: none;" class="btn btn-inverse stop" 
                     type="button" value="Stop" 
-                    onclick="stop('test-w{{ word.id }}')">
+                    onclick="stop('test-w{{ word.id }}', {{ word.id }})">
             </input>
             <input  disabled class="btn btn-success play" 
                     type="button" value="Play" 

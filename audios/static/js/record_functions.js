@@ -1,4 +1,5 @@
 var time_rec = 0;
+var recording = 0;
 
 function setup() {
   $( "#tabs").tabs({ 
@@ -6,6 +7,7 @@ function setup() {
          { opacity: 'toggle' }]  });
 
   Wami.setup("wami");
+
   $('.runner').runner({
     milliseconds: false
   });
@@ -32,6 +34,8 @@ function record(name_test, id_test) {
 
   //log
   _writeLog("Record");
+
+  recording = 1;
 
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { console.debug("Grabando") };
@@ -62,9 +66,9 @@ function record(name_test, id_test) {
   
   checkSaturation();
 
-  sleep1000Rec = function( part ) {
+  sleep1000Rec = function( part, id_test ) {
     if (part == 0) {
-        setTimeout( function() { sleep1000Rec( 1 ); }, 1000 );
+        setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
     } else if( part == 1 ) {
       $("#status").html('Estado: Grabando');
 
@@ -75,12 +79,15 @@ function record(name_test, id_test) {
       $(".play").each( function() { $(this).prop("disabled", true) });
 
       $("#next-product").each( function() { $(this).prop("disabled", false) });
-    
-      $('.runner').runner("start");
+
+      $('.runner[word-id="'+id_test+'"]').runner({
+        milliseconds: false
+      });    
+      $('.runner[word-id="'+id_test+'"]').runner("start");
     }
   }
   
-  sleep1000Rec(0);
+  sleep1000Rec(0, id_test);
 }
 
 function play(name_test, id_test) {
@@ -118,25 +125,28 @@ function play(name_test, id_test) {
   $(".record").each( function() { $(this).prop("disabled", true) });
 
   var me = this;
-  $(".runner").runner("reset");
-  $(".runner").runner({
+
+  var runner = '.runner[word-id="'+id_test+'"]';
+  $(runner).runner("reset");
+  $(runner).runner({
     stopAt: time_rec * 1000,
     milliseconds: false
   }).on("runnerFinish", function(eventObject, info){
-    me.stop();
+    me.stop(name_test, id_test);
+    //$(runner).runner("reset");
   });
-  $(".runner").runner("start");
+  $(runner).runner("start");
 }
 
-function stop(name_test) {
+function stop(name_test, id_test) {
 
   //log
   _writeLog("Stop");
 
   var me = this;
-  sleep1000Stop = function( part ) {
+  sleep1000Stop = function( part, id_test ) {
     if( part == 0 ) {
-      setTimeout( function() { sleep1000Stop( 1 ); }, 1000 );
+      setTimeout( function() { sleep1000Stop( 1, id_test ); }, 1000 );
 
     } else if( part == 1 ) {
 
@@ -155,9 +165,13 @@ function stop(name_test) {
 
       $(".record").show();
 
-      $('.runner').runner('stop');
-      me.time_rec = $('.runner').runner('lap');
-      $('.runner').runner('reset');
+      var runner = '.runner[word-id="'+id_test+'"]';
+      $(runner).runner('stop');
+      if (me.recording !== 0) { 
+        me.time_rec = $(runner).runner('lap');
+      }      
+      me.recording = 0;
+      $(runner).runner('reset');
       
       $("#next-product").each( function() { $(this).prop("disabled", false) });
 
@@ -171,7 +185,7 @@ function stop(name_test) {
     }
   }
   
-  sleep1000Stop(0);
+  sleep1000Stop(0, id_test);
 }
 
 function next_product() {
