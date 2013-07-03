@@ -92,3 +92,15 @@ body{
     text-align: center;
     margin: 20px;    
 }
+
+.wrapper {
+    width: 25%;
+    background-color: silver;
+    text-align: center;
+    border-color: black;
+    border-style: ridge;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 2% 2% 2% 2%;
+    margin: auto;
+}
