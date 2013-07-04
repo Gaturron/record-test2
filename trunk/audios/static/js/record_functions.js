@@ -1,6 +1,3 @@
-var time_rec = 0;
-var recording = 0;
-
 function setup() {
   $( "#tabs").tabs({ 
     fx:[ { width: 'toggle', opacity: 'toggle' }, 
@@ -35,59 +32,62 @@ function record(name_test, id_test) {
   //log
   _writeLog("Record");
 
-  recording = 1;
-
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
-  var startfn = function() { console.debug("Grabando") };
-  var finishedfn = function() { console.debug("Fin grabacion") };
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
-    startfn(),
-    finishedfn()
-  );
+  var startfn = function() { 
+    console.debug("Grabando"); 
 
-  checkSaturation = function() {
-    if (Wami !== undefined) {
-      var level = Wami.getRecordingLevel();
-      $("#saturation").html("Nivel de grabación: "+level);
-      $("#meter").width(level);
-      
-      setTimeout(checkSaturation, 5);
+    checkSaturation = function() {
+      if (Wami !== undefined) {
+        var level = Wami.getRecordingLevel();
+        $("#meter").width(level);
+        
+        setTimeout(checkSaturation, 5);
 
-      if (level > 50) {
-        $(".status").html('Estado: Graba devuelta: mucha saturación');
-        $("#next-product").each( function() { $(this).prop("disabled", true) });
+        if (level > 50) {
+          $(".status").html('Estado: Graba devuelta: mucha saturación');
+          $("#next-product").each( function() { $(this).prop("disabled", true) });
+        }
+
+        if (minVolumenLevel > level) {
+          minVolumenLevel = level;
+        }
       }
+    };
+    
+    checkSaturation();
 
-      if (minVolumenLevel > level) {
-        minVolumenLevel = level;
+    sleep1000Rec = function( part, id_test ) {
+      if (part == 0) {
+          setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
+      } else if( part == 1 ) {
+        $(".status").html('Estado: Grabando');
+
+        $(".record").each( function() { $(this).hide() });
+        $(".stop").each( function() { $(this).show() });
+        $(".stop").each( function() { $(this).prop("disabled", false) });
+        $(".play").each( function() { $(this).show() });
+        $(".play").each( function() { $(this).prop("disabled", true) });
+
+        $("#next-product").each( function() { $(this).prop("disabled", false) });
+
+        $('.runner[word-id="'+id_test+'"]').runner({
+          milliseconds: false
+        });    
+        $('.runner[word-id="'+id_test+'"]').runner("start");
       }
     }
+    
+    sleep1000Rec(0, id_test);
   };
   
-  checkSaturation();
+  var finishedfn = function() { 
+    console.debug("Fin grabacion"); 
+  };
 
-  sleep1000Rec = function( part, id_test ) {
-    if (part == 0) {
-        setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
-    } else if( part == 1 ) {
-      $(".status").html('Estado: Grabando');
-
-      $(".record").each( function() { $(this).hide() });
-      $(".stop").each( function() { $(this).show() });
-      $(".stop").each( function() { $(this).prop("disabled", false) });
-      $(".play").each( function() { $(this).show() });
-      $(".play").each( function() { $(this).prop("disabled", true) });
-
-      $("#next-product").each( function() { $(this).prop("disabled", false) });
-
-      $('.runner[word-id="'+id_test+'"]').runner({
-        milliseconds: false
-      });    
-      $('.runner[word-id="'+id_test+'"]').runner("start");
-    }
-  }
-  
-  sleep1000Rec(0, id_test);
+  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+    Wami.nameCallback(startfn),
+    Wami.nameCallback(finishedfn)
+  );
 }
 
 function play(name_test, id_test) {
@@ -97,45 +97,53 @@ function play(name_test, id_test) {
 
   //Wami.startPlaying("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
 
-  var startfn = function() { console.debug("Reproduciendo") };
-  var finishedfn = function() { console.debug("Fin Reproduccion") };
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
-    startfn(), 
-    finishedfn()
-  );
+  var startfn = function() { 
+    console.debug("Reproduciendo"); 
 
-  checkSaturation = function() {
-    if (Wami !== undefined) {
-      var level = Wami.getPlayingLevel();
-      console.debug("Nivel de grabación: "+level);
-      $("#saturation").html("Nivel de grabación: "+level);
-      $("#meter").width(level);
-      
-      setTimeout(checkSaturation, 5);
-    }
+    checkSaturation = function() {
+      if (Wami !== undefined) {
+        var level = Wami.getPlayingLevel();
+        $("#saturation").html("Nivel de grabación: "+level);
+        $("#meter").width(level);
+        
+        setTimeout(checkSaturation, 5);
+      }
+    };
+    checkSaturation();
+
+    $(".status").html('Estado: Reproduciendo');
+
+    $(".play").each( function() { $(this).hide() });
+    $(".stop").each( function() { $(this).show() });
+    $(".stop").each( function() { $(this).prop("disabled", false) });
+    $(".record").each( function() { $(this).show()});
+    $(".record").each( function() { $(this).prop("disabled", true) });
+
+
+    var runner = '.runner[word-id="'+id_test+'"]';
+    console.debug('El nombre del reloj es: '+runner);
+    $(runner).runner("reset");
+    $(runner).runner({
+      milliseconds: false
+    });
+    $(runner).runner("start");
+
   };
-  checkSaturation();
-
-  $(".status").html('Estado: Reproduciendo');
-
-  $(".play").each( function() { $(this).hide() });
-  $(".stop").each( function() { $(this).show() });
-  $(".stop").each( function() { $(this).prop("disabled", false) });
-  $(".record").each( function() { $(this).show()});
-  $(".record").each( function() { $(this).prop("disabled", true) });
 
   var me = this;
 
-  var runner = '.runner[word-id="'+id_test+'"]';
-  $(runner).runner("reset");
-  $(runner).runner({
-    stopAt: time_rec * 1000,
-    milliseconds: false
-  }).on("runnerFinish", function(eventObject, info){
+  var finishedfn = function() { 
+    console.debug("Fin Reproduccion"); 
+
+    var runner = '.runner[word-id="'+id_test+'"]';
+    console.debug('El nombre del reloj es: '+runner);
     me.stop(name_test, id_test);
-    //$(runner).runner("reset");
-  });
-  $(runner).runner("start");
+  };
+
+  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+    Wami.nameCallback(startfn), 
+    Wami.nameCallback(finishedfn)
+  );
 }
 
 function stop(name_test, id_test) {
@@ -167,10 +175,6 @@ function stop(name_test, id_test) {
 
       var runner = '.runner[word-id="'+id_test+'"]';
       $(runner).runner('stop');
-      if (me.recording !== 0) { 
-        me.time_rec = $(runner).runner('lap');
-      }      
-      me.recording = 0;
       $(runner).runner('reset');
       
       $("#next-product").each( function() { $(this).prop("disabled", false) });
