@@ -1,3 +1,5 @@
+var maxLevel = 0;
+
 function setup() {
   $( "#tabs").tabs({ 
     fx:[ { width: 'toggle', opacity: 'toggle' }, 
@@ -32,24 +34,22 @@ function record(name_test, id_test) {
   //log
   _writeLog("Record");
 
+  var me = this;
+
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { 
     console.debug("Grabando"); 
 
     checkSaturation = function() {
       if (Wami !== undefined) {
-        var level = Wami.getRecordingLevel();
-        $("#meter").width(level);
+        var level = Wami.getRecordingLevel() * multipLevel;
+        console.debug("El volumen es: "+ level);
+        $(".meter").width(level);
         
         setTimeout(checkSaturation, 5);
 
-        if (level > 50) {
-          $(".status").html('Estado: Graba devuelta: mucha saturación');
-          $("#next-product").each( function() { $(this).prop("disabled", true) });
-        }
-
-        if (minVolumenLevel > level) {
-          minVolumenLevel = level;
+        if (level > maxLevel) {
+          maxLevel = level;
         }
       }
     };
@@ -82,9 +82,19 @@ function record(name_test, id_test) {
   
   var finishedfn = function() { 
     console.debug("Fin grabacion"); 
+
+    if (maxLevel > maxVolumenLevel) {
+      $(".status").html('Estado: Graba devuelta, mucha saturación');
+      $("#next-product").each( function() { $(this).prop("disabled", true) });
+    }
+
+    if (maxLevel < minVolumenLevel) {
+      $(".status").html('Estado: Graba devuelta, volumen muy bajo');
+      $("#next-product").each( function() { $(this).prop("disabled", true) });
+    }
   };
 
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -102,9 +112,9 @@ function play(name_test, id_test) {
 
     checkSaturation = function() {
       if (Wami !== undefined) {
-        var level = Wami.getPlayingLevel();
-        $("#saturation").html("Nivel de grabación: "+level);
-        $("#meter").width(level);
+        var level = Wami.getPlayingLevel() * multipLevel;
+        $(".saturation").html("Nivel de grabación: "+level);
+        $(".meter").width(level);
         
         setTimeout(checkSaturation, 5);
       }
@@ -121,7 +131,6 @@ function play(name_test, id_test) {
 
 
     var runner = '.runner[word-id="'+id_test+'"]';
-    console.debug('El nombre del reloj es: '+runner);
     $(runner).runner("reset");
     $(runner).runner({
       milliseconds: false
@@ -136,11 +145,10 @@ function play(name_test, id_test) {
     console.debug("Fin Reproduccion"); 
 
     var runner = '.runner[word-id="'+id_test+'"]';
-    console.debug('El nombre del reloj es: '+runner);
     me.stop(name_test, id_test);
   };
 
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
@@ -162,7 +170,7 @@ function stop(name_test, id_test) {
       Wami.stopPlaying();
       
       checkSaturation = null;
-      $("#saturation").html("Nivel de grabación: ---");
+      $(".saturation").html("Nivel de grabación: ---");
       $(".status").html('Estado: Parado');
 
       $(".stop").each( function() { $(this).hide() });
@@ -201,7 +209,6 @@ function next_product() {
 
   var word_id = $(".wordexp:visible").attr("word-id");
   var name_test = "test-w"+word_id;
-
   check_test[name_test] = 1;
   var total_test = 1;
   var cant_test_ok = 0;

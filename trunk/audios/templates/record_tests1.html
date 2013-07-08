@@ -23,8 +23,6 @@
         src="/static/js/recorder.js"/></script>
   <script type="text/javascript" 
         src="/static/js/jquery.jgrowl.js"></script>
-  <script type="text/javascript" 
-        src="/static/js/record_functions.js?v=1"></script>
   <script  type="text/javascript"
         src="/static/js/jquery.runner.js"></script>
 </head>
@@ -44,10 +42,7 @@
     <h2 class="input">Grabando</h2>
 
     <div class="container" id="wami_container">
-      <div id="volume">
-        <div id="saturation">Nivel de grabación: ---</div>
-        <div id="meter"></div>
-      </div>
+
       Hacé click en "Permitir" para acceder al microfono
       <div id="wami"></div> 
     </div>
@@ -72,6 +67,11 @@
           </div>
 
           <div class="wrapper">
+
+            <div class="volume">
+              <div class="saturation">Nivel de grabación: ---</div>
+              <div class="meter"></div>
+            </div>
 
             <h4>
               <div class="status">Estado: --- </div>
@@ -128,9 +128,16 @@
     {% endfor %}
   };
   var checkSaturation = null;
+  
+  var maxVolumenLevel = 80;
   var minVolumenLevel = 20;
+  //multiplicador de volumen level
+  var multipLevel = 5;
   
   var minNumberExperiments = 6;
 
+</script>
+<script type="text/javascript" 
+      src="/static/js/record_functions.js?v=1">
 </script>
 </html>
