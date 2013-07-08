@@ -31,6 +31,8 @@ function setup() {
 
 function record(name_test, id_test) {
 
+  $(".spinner").hide();
+
   //log
   _writeLog("Record");
 
@@ -38,6 +40,8 @@ function record(name_test, id_test) {
 
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { 
+    $(".spinner").hide();
+
     console.debug("Grabando"); 
 
     checkSaturation = function() {
@@ -102,12 +106,17 @@ function record(name_test, id_test) {
 
 function play(name_test, id_test) {
 
+  $(".spinner").show();
+
   //log
   _writeLog("Play");
 
   //Wami.startPlaying("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
 
   var startfn = function() { 
+
+    $(".spinner").hide();
+
     console.debug("Reproduciendo"); 
 
     checkSaturation = function() {
