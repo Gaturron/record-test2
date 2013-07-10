@@ -9,7 +9,7 @@
   <link type="text/css" 
         href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
   <link type="text/css" 
-        href="/static/css/style.css" rel="stylesheet"/>
+        href="/static/css/style.css?v=1" rel="stylesheet"/>
   <link type="text/css" 
         href="/static/css/jgrowl/jquery.jgrowl.css" rel="stylesheet"/>
 
@@ -20,7 +20,7 @@
   <script type="text/javascript" 
         src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
   <script type="text/javascript" 
-        src="/static/js/recorder.js"/></script>
+        src="/static/js/recorder.js?v=4"/></script>
   <script type="text/javascript" 
         src="/static/js/jquery.jgrowl.js"></script>
   <script  type="text/javascript"
@@ -40,13 +40,12 @@
   <div class="container">
 
     <h2 class="input">Grabando</h2>
-
-    <div class="container" id="wami_container">
-
-      Hacé click en "Permitir" para acceder al microfono
-      <div id="wami"></div> 
-    </div>
-
+    
+    <div id="dialog-modal" style="display: none">
+        Por favor, acepte el acceso a su microfono
+    </div>  
+    <div id="wami"></div> 
+    
     <div class="input">
       Hay que realizar distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
     </div>
@@ -141,6 +140,6 @@
 
 </script>
 <script type="text/javascript" 
-      src="/static/js/record_functions.js?v=1">
+      src="/static/js/record_functions.js?v=7">
 </script>
 </html>

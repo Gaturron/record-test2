@@ -84,7 +84,9 @@ Wami.setup = function(options) {
 			swfUrl : "/static/js/Wami.swf",
 			onReady : function() {
 				console.debug("SE CIERAAA");
+				  $('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable').css('visibility', '');
 				Wami.hide();
+				$( "#dialog-modal" ).dialog("close");
 			},
 			onSecurity : checkSecurity,
 			onError : function(error) {

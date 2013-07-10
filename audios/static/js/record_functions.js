@@ -5,6 +5,10 @@ function setup() {
     fx:[ { width: 'toggle', opacity: 'toggle' }, 
          { opacity: 'toggle' }]  });
 
+  $( "#dialog-modal" ).dialog({
+    modal: true,
+  });
+
   Wami.setup("wami");
 
   $('.runner').runner({
@@ -27,6 +31,8 @@ function setup() {
 
   //log
   _writeLog("Start");
+
+  $('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable').css('visibility', 'hidden');
 }
 
 function record(name_test, id_test) {
@@ -98,7 +104,7 @@ function record(name_test, id_test) {
     }
   };
 
-  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -157,7 +163,7 @@ function play(name_test, id_test) {
     me.stop(name_test, id_test);
   };
 
-  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
