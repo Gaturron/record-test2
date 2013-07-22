@@ -27,7 +27,7 @@ function setup() {
     tabs.tabs('select', selected-1);
   });
 
-  $(view.testContador).html("Tests: 0 de "+(minNumberExperiments-1));
+  $(view.testContador).html("Tests: 0 de "+(minNumberExperiments));
 
   //log
   _writeLog("Start");
@@ -232,7 +232,7 @@ function next_product() {
     cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
   });
 
-  $(view.testContador).html("Tests: "+(cant_test_ok % minNumberExperiments)+" de "+(minNumberExperiments-1));
+  $(view.testContador).html("Tests: "+(cant_test_ok % (minNumberExperiments + 1))+" de "+(minNumberExperiments));
 
   if (total_test == 1) {
     $(view.confirm).prop('disabled', false);
@@ -241,7 +241,7 @@ function next_product() {
     $(view.exit).show();
 
   } else {    
-    if(cant_test_ok % minNumberExperiments == 0){
+    if((cant_test_ok % (minNumberExperiments + 1)) == 0){
       //pregunto por si quiere realizar mas grabaciones
       $(view.dialogConfirm).dialog({
         resizable: false,
