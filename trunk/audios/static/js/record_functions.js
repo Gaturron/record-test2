@@ -96,11 +96,13 @@ function record(name_test, id_test) {
     if (maxLevel > maxVolumenLevel) {
       $(view.status).html('Estado: Graba devuelta, mucha saturación');
       $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
+      maxLevel = 0;
     }
 
     if (maxLevel < minVolumenLevel) {
       $(view.status).html('Estado: Graba devuelta, volumen muy bajo');
       $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
+      maxLevel = 0;
     }
   };
 
@@ -143,7 +145,6 @@ function play(name_test, id_test) {
     $(view.stop).each( function() { $(this).prop("disabled", false) });
     $(view.record).each( function() { $(this).show()});
     $(view.record).each( function() { $(this).prop("disabled", true) });
-
 
     var runner = '.runner[word-id="'+id_test+'"]';
     $(runner).runner("reset");
