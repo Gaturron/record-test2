@@ -1,43 +1,43 @@
 var maxLevel = 0;
 
 function setup() {
-  $( "#tabs").tabs({ 
+  $(view.tabs).tabs({ 
     fx:[ { width: 'toggle', opacity: 'toggle' }, 
          { opacity: 'toggle' }]  });
 
-  $( "#dialog-modal" ).dialog({
+  $(view.dialogModal).dialog({
     modal: true,
   });
 
   Wami.setup("wami");
 
-  $('.runner').runner({
+  $(view.runners).runner({
     milliseconds: false
   });
 
-  $('#next-product').click(function(){ 
-    var tabs = $('#tabs').tabs();
+  $(view.nextProduct).click(function(){ 
+    var tabs = $(view.tabs).tabs();
     var selected = tabs.tabs('option', 'selected');
     tabs.tabs('select', selected+1);
   });
 
-  $('#previous-product').click(function() {
-    var tabs = $('#tabs').tabs();
+  $(view.prevProduct).click(function() {
+    var tabs = $(view.tabs).tabs();
     var selected = tabs.tabs('option', 'selected');
     tabs.tabs('select', selected-1);
   });
 
-  $('#test-contador').html("Tests: 0 de "+(minNumberExperiments-1));
+  $(view.testContador).html("Tests: 0 de "+(minNumberExperiments-1));
 
   //log
   _writeLog("Start");
 
-  $('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable').css('visibility', 'hidden');
+  $(view.dialogPopUp).css('visibility', 'hidden');
 }
 
 function record(name_test, id_test) {
 
-  $(".spinner").hide();
+  $(view.spinners).hide();
 
   //log
   _writeLog("Record");
@@ -46,7 +46,7 @@ function record(name_test, id_test) {
 
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
   var startfn = function() { 
-    $(".spinner").hide();
+    $(view.spinners).hide();
 
     console.debug("Grabando"); 
 
@@ -54,7 +54,7 @@ function record(name_test, id_test) {
       if (Wami !== undefined) {
         var level = Wami.getRecordingLevel() * multipLevel;
         console.debug("El volumen es: "+ level);
-        $(".meter").width(level);
+        $(view.meters).width(level);
         
         setTimeout(checkSaturation, 5);
 
@@ -70,15 +70,15 @@ function record(name_test, id_test) {
       if (part == 0) {
           setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
       } else if( part == 1 ) {
-        $(".status").html('Estado: Grabando');
+        $(view.status).html('Estado: Grabando');
 
-        $(".record").each( function() { $(this).hide() });
-        $(".stop").each( function() { $(this).show() });
-        $(".stop").each( function() { $(this).prop("disabled", false) });
-        $(".play").each( function() { $(this).show() });
-        $(".play").each( function() { $(this).prop("disabled", true) });
+        $(view.record).each( function() { $(this).hide() });
+        $(view.stop).each( function() { $(this).show() });
+        $(view.stop).each( function() { $(this).prop("disabled", false) });
+        $(view.play).each( function() { $(this).show() });
+        $(view.play).each( function() { $(this).prop("disabled", true) });
 
-        $("#next-product").each( function() { $(this).prop("disabled", false) });
+        $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
         $('.runner[word-id="'+id_test+'"]').runner({
           milliseconds: false
@@ -94,13 +94,13 @@ function record(name_test, id_test) {
     console.debug("Fin grabacion"); 
 
     if (maxLevel > maxVolumenLevel) {
-      $(".status").html('Estado: Graba devuelta, mucha saturación');
-      $("#next-product").each( function() { $(this).prop("disabled", true) });
+      $(view.status).html('Estado: Graba devuelta, mucha saturación');
+      $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
     }
 
     if (maxLevel < minVolumenLevel) {
-      $(".status").html('Estado: Graba devuelta, volumen muy bajo');
-      $("#next-product").each( function() { $(this).prop("disabled", true) });
+      $(view.status).html('Estado: Graba devuelta, volumen muy bajo');
+      $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
     }
   };
 
@@ -112,7 +112,7 @@ function record(name_test, id_test) {
 
 function play(name_test, id_test) {
 
-  $(".spinner").show();
+  $(view.spinners).show();
 
   //log
   _writeLog("Play");
@@ -121,28 +121,28 @@ function play(name_test, id_test) {
 
   var startfn = function() { 
 
-    $(".spinner").hide();
+    $(view.spinners).hide();
 
     console.debug("Reproduciendo"); 
 
     checkSaturation = function() {
       if (Wami !== undefined) {
         var level = Wami.getPlayingLevel() * multipLevel;
-        $(".saturation").html("Nivel de grabación: "+level);
-        $(".meter").width(level);
+        $(view.saturation).html("Nivel de grabación: "+level);
+        $(view.meters).width(level);
         
         setTimeout(checkSaturation, 5);
       }
     };
     checkSaturation();
 
-    $(".status").html('Estado: Reproduciendo');
+    $(view.status).html('Estado: Reproduciendo');
 
-    $(".play").each( function() { $(this).hide() });
-    $(".stop").each( function() { $(this).show() });
-    $(".stop").each( function() { $(this).prop("disabled", false) });
-    $(".record").each( function() { $(this).show()});
-    $(".record").each( function() { $(this).prop("disabled", true) });
+    $(view.play).each( function() { $(this).hide() });
+    $(view.stop).each( function() { $(this).show() });
+    $(view.stop).each( function() { $(this).prop("disabled", false) });
+    $(view.record).each( function() { $(this).show()});
+    $(view.record).each( function() { $(this).prop("disabled", true) });
 
 
     var runner = '.runner[word-id="'+id_test+'"]';
@@ -185,29 +185,29 @@ function stop(name_test, id_test) {
       Wami.stopPlaying();
       
       checkSaturation = null;
-      $(".saturation").html("Nivel de grabación: ---");
-      $(".status").html('Estado: Parado');
+      $(view.saturation).html("Nivel de grabación: ---");
+      $(view.status).html('Estado: Parado');
 
-      $(".stop").each( function() { $(this).hide() });
-      $(".record").each( function() { $(this).show() });
-      $(".record").each( function() { $(this).prop("disabled", false) });
-      $(".play").each( function() { $(this).show() });
-      $(".play").each( function() { $(this).prop("disabled", false) });
+      $(view.stop).each( function() { $(this).hide() });
+      $(view.record).each( function() { $(this).show() });
+      $(view.record).each( function() { $(this).prop("disabled", false) });
+      $(view.play).each( function() { $(this).show() });
+      $(view.play).each( function() { $(this).prop("disabled", false) });
 
-      $(".record").show();
+      $(view.record).show();
 
       var runner = '.runner[word-id="'+id_test+'"]';
       $(runner).runner('stop');
       $(runner).runner('reset');
       
-      $("#next-product").each( function() { $(this).prop("disabled", false) });
+      $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
       $( "#"+name_test ).html("OK");
 
       //chequeo el ruido ambiente
       if (minVolumenLevel > 20) {
-        $(".status").html('Estado: Graba devuelta: mucho ruido ambiente');
-        $("#next-product").each( function() { $(this).prop("disabled", true) });         
+        $(view.status).html('Estado: Graba devuelta: mucho ruido ambiente');
+        $(view.nextProduct).each( function() { $(this).prop("disabled", true) });         
       }
     }
   }
@@ -220,7 +220,7 @@ function next_product() {
   //log
   _writeLog("Finish");
 
-  $('#next-product').each( function() { $(this).prop('disabled', true) });
+  $(view.nextProduct).each( function() { $(this).prop('disabled', true) });
 
   var word_id = $(".wordexp:visible").attr("word-id");
   var name_test = "test-w"+word_id;
@@ -232,18 +232,18 @@ function next_product() {
     cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
   });
 
-  $( "#test-contador").html("Tests: "+(cant_test_ok % minNumberExperiments)+" de "+(minNumberExperiments-1));
+  $(view.testContador).html("Tests: "+(cant_test_ok % minNumberExperiments)+" de "+(minNumberExperiments-1));
 
   if (total_test == 1) {
-    $("#confirm").prop('disabled', false);
+    $(view.confirm).prop('disabled', false);
 
-    $("#next-product").each( function() { $(this).prop("disabled", true) });
-    $("#exit").show();
+    $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
+    $(view.exit).show();
 
   } else {    
     if(cant_test_ok % minNumberExperiments == 0){
       //pregunto por si quiere realizar mas grabaciones
-      $("#dialog-confirm").dialog({
+      $(view.dialogConfirm).dialog({
         resizable: false,
         height:240,
         weight:100,
@@ -258,7 +258,7 @@ function next_product() {
           }
         }
       });
-      $("#dialog-confirm").show();
+      $(view.dialogConfirm).show();
     }
   }
 }
@@ -272,7 +272,7 @@ function previous_product() {
 
 function _writeLog(action) {
   //log
-  var speakerId = $("#speaker_id").attr("speakerId");
+  var speakerId = $(view.speakerId).attr("speakerId");
   var word_id = $(".wordexp:visible").attr("word-id");
   $.post("/audios/writeLog/", {speakerId: speakerId, action: action, ItemId: word_id});
 }
