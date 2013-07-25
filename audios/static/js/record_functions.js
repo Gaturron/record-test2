@@ -1,4 +1,6 @@
 var maxLevel = 0;
+var attempts = 0;
+var volumen = new Array();
 
 function setup() {
   $(view.tabs).tabs({ 
@@ -7,6 +9,8 @@ function setup() {
 
   $(view.dialogModal).dialog({
     modal: true,
+    height:240,
+    weight:100,
   });
 
   Wami.setup("wami");
@@ -35,7 +39,7 @@ function setup() {
   $(view.dialogPopUp).css('visibility', 'hidden');
 }
 
-function record(name_test, id_test) {
+function record(id_test) {
 
   $(view.spinners).hide();
 
@@ -43,8 +47,9 @@ function record(name_test, id_test) {
   _writeLog("Record");
 
   var me = this;
+  attempts = attempts + 1;
 
-  //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
+  //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+id_test);
   var startfn = function() { 
     $(view.spinners).hide();
 
@@ -55,12 +60,13 @@ function record(name_test, id_test) {
         var level = Wami.getRecordingLevel() * multipLevel;
         console.debug("El volumen es: "+ level);
         $(view.meters).width(level);
-        
-        setTimeout(checkSaturation, 5);
+        volumen = volumen.concat([level]);
 
         if (level > maxLevel) {
           maxLevel = level;
         }
+
+        setTimeout(checkSaturation, 5);
       }
     };
     
@@ -78,8 +84,6 @@ function record(name_test, id_test) {
         $(view.play).each( function() { $(this).show() });
         $(view.play).each( function() { $(this).prop("disabled", true) });
 
-        $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
-
         $('.runner[word-id="'+id_test+'"]').runner({
           milliseconds: false
         });    
@@ -92,8 +96,9 @@ function record(name_test, id_test) {
   
   var finishedfn = function() { 
     console.debug("Fin grabacion"); 
+    console.debug("El volumen fue: "+volumen);
 
-    if (maxLevel > maxVolumenLevel) {
+/*    if (maxLevel > maxVolumenLevel) {
       $(view.status).html('Estado: Graba devuelta, mucha saturación');
       $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
       maxLevel = 0;
@@ -103,23 +108,27 @@ function record(name_test, id_test) {
       $(view.status).html('Estado: Graba devuelta, volumen muy bajo');
       $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
       maxLevel = 0;
-    }
+    }*/
+
+    var res = checkFilters(volumen);
+    console.debug('checkFilters: '+res);
+    $(view.status).html('Estado: '+res);
   };
 
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
 }
 
-function play(name_test, id_test) {
+function play(id_test) {
 
   $(view.spinners).show();
 
   //log
   _writeLog("Play");
 
-  //Wami.startPlaying("http://localh0st:8000/audios/wamihandler2/?name_test="+name_test);
+  //Wami.startPlaying("http://localh0st:8000/audios/wamihandler2/?name_test="+id_test);
 
   var startfn = function() { 
 
@@ -159,18 +168,16 @@ function play(name_test, id_test) {
 
   var finishedfn = function() { 
     console.debug("Fin Reproduccion"); 
-
-    var runner = '.runner[word-id="'+id_test+'"]';
-    me.stop(name_test, id_test);
+    me.stop(id_test);
   };
 
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+name_test+"&id_test="+id_test,
+  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
 }
 
-function stop(name_test, id_test) {
+function stop(id_test) {
 
   //log
   _writeLog("Stop");
@@ -203,8 +210,6 @@ function stop(name_test, id_test) {
       
       $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
-      $( "#"+name_test ).html("OK");
-
       //chequeo el ruido ambiente
       if (minVolumenLevel > 20) {
         $(view.status).html('Estado: Graba devuelta: mucho ruido ambiente');
@@ -217,6 +222,8 @@ function stop(name_test, id_test) {
 }
 
 function next_product() {
+
+  attempts = 0;
 
   //log
   _writeLog("Finish");
