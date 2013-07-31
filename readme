@@ -17,7 +17,7 @@ sudo -u postgres psql
 Django:
 #para actualizar los datos de la BD
 python manage.py sqlclear audios
-python manage.py reset audios
+python manage.py reset audios (deprecado)
 python manage.py syncdb
 
 #para subir y bajar el servidor
