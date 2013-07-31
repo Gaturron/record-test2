@@ -66,7 +66,7 @@ function record(id_test) {
           maxLevel = level;
         }
 
-        setTimeout(checkSaturation, 5);
+        setTimeout(checkSaturation, 50);
       }
     };
     
@@ -113,6 +113,9 @@ function record(id_test) {
     var res = checkFilters(volumen);
     console.debug('checkFilters: '+res);
     $(view.status).html('Estado: '+res);
+
+    _writeLog("Record volume saved", volumen);
+    _writeLog("Record status: "+res);
   };
 
   Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
@@ -136,16 +139,16 @@ function play(id_test) {
 
     console.debug("Reproduciendo"); 
 
-    checkSaturation = function() {
+    /*checkSaturation = function() {
       if (Wami !== undefined) {
         var level = Wami.getPlayingLevel() * multipLevel;
         $(view.saturation).html("Nivel de grabación: "+level);
         $(view.meters).width(level);
         
-        setTimeout(checkSaturation, 5);
+        setTimeout(checkSaturation, 50);
       }
     };
-    checkSaturation();
+    checkSaturation();*/
 
     $(view.status).html('Estado: Reproduciendo');
 
@@ -226,7 +229,7 @@ function next_product() {
   attempts = 0;
 
   //log
-  _writeLog("Finish");
+  _writeLog("Next");
 
   $(view.nextProduct).each( function() { $(this).prop('disabled', true) });
 
@@ -278,9 +281,19 @@ function previous_product() {
 /////////////////////////////////////////////////////////////////////////////////////
 //Logging
 
-function _writeLog(action) {
-  //log
+function _writeLog(action, volumen) {
+
   var speakerId = $(view.speakerId).attr("speakerId");
   var word_id = $(".wordexp:visible").attr("word-id");
-  $.post("/audios/writeLog/", {speakerId: speakerId, action: action, ItemId: word_id});
+
+  if (volumen === undefined) {
+
+    //log común
+    $.post("/audios/writeLog/", {speakerId: speakerId, action: action, ItemId: word_id});
+
+  } else {
+    
+    //log guardando el sensado del volumen
+    $.post("/audios/writeLogVolume/", {speakerId: speakerId, action: action, ItemId: word_id, volumen: volumen.toString()});
+  }
 }

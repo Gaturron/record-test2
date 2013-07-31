@@ -16,7 +16,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
-from audios.models import Speaker, Audio, LogSpeaker
+from audios.models import Speaker, Audio, LogSpeaker, LogVolume
 from experiments.models import Word, Phrase, Picture, trace
 
 def _generate_random_string(length, stringset=string.ascii_letters):
@@ -157,6 +157,22 @@ def writeLog(request):
         log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
         log.save()
         return HttpResponse('Ok')
+
+@csrf_exempt
+def writeLogVolume(request):
+    if request.method == 'POST':
+        speakerId = int(request.POST['speakerId'])
+        action = request.POST['action']
+        ItemId = int(request.POST['ItemId'])
+        volumen = str(request.POST['volumen'])
+
+        log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
+        log.save()
+
+        logVolume = LogVolume(volume= volumen, LogSpeaker= log)
+        logVolume.save()
+
+        return HttpResponse('Ok')        
 
 #======================================================================
 # Backup
