@@ -55,28 +55,28 @@ function record(id_test) {
 
     console.debug("Grabando"); 
 
-    checkSaturation = function() {
-      if (Wami !== undefined) {
-        var level = Wami.getRecordingLevel() * multipLevel;
-        console.debug("El volumen es: "+ level);
-        $(view.meters).width(level);
-        volumen = volumen.concat([level]);
-
-        if (level > maxLevel) {
-          maxLevel = level;
-        }
-
-        setTimeout(checkSaturation, 50);
-      }
-    };
-    
-    checkSaturation();
-
     sleep1000Rec = function( part, id_test ) {
       if (part == 0) {
           setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
       } else if( part == 1 ) {
         $(view.status).html('Estado: Grabando');
+
+        checkSaturation = function() {
+          if (Wami !== undefined) {
+            var level = Wami.getRecordingLevel();
+            console.debug("El volumen es: "+ level);
+            $(view.meters).width(level);
+            volumen = volumen.concat([level]);
+
+            if (level > maxLevel) {
+              maxLevel = level;
+            }
+
+            setTimeout(checkSaturation, 50);
+          }
+        };
+        
+        checkSaturation();
 
         $(view.record).each( function() { $(this).hide() });
         $(view.stop).each( function() { $(this).show() });
@@ -138,17 +138,6 @@ function play(id_test) {
     $(view.spinners).hide();
 
     console.debug("Reproduciendo"); 
-
-    /*checkSaturation = function() {
-      if (Wami !== undefined) {
-        var level = Wami.getPlayingLevel() * multipLevel;
-        $(view.saturation).html("Nivel de grabación: "+level);
-        $(view.meters).width(level);
-        
-        setTimeout(checkSaturation, 50);
-      }
-    };
-    checkSaturation();*/
 
     $(view.status).html('Estado: Reproduciendo');
 

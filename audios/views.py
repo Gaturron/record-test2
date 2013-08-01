@@ -164,7 +164,7 @@ def writeLogVolume(request):
         speakerId = int(request.POST['speakerId'])
         action = request.POST['action']
         ItemId = int(request.POST['ItemId'])
-        volumen = str(request.POST['volumen'])
+        volumen = (str(request.POST['volumen']))[:800]
 
         log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
         log.save()
@@ -173,6 +173,34 @@ def writeLogVolume(request):
         logVolume.save()
 
         return HttpResponse('Ok')        
+
+def logSpeakerList(request):
+    if request.method == 'GET':
+        logSpeakerList = LogSpeaker.objects.all()[:]
+        t = loader.get_template('logSpeakerList.html')
+        c = Context({
+            'logSpeakerList': logSpeakerList
+        })
+        return HttpResponse(t.render(c))
+
+def logVolumeList(request):
+    if request.method == 'GET':
+        logVolumeList = LogVolume.objects.all()[:]
+        t = loader.get_template('logVolumeList.html')
+        c = Context({
+            'logVolumeList': logVolumeList
+        })
+        return HttpResponse(t.render(c))
+
+def speakerList(request):
+    if request.method == 'GET':
+        speakerList = Speaker.objects.all()[:]
+        t = loader.get_template('speakerList.html')
+        c = Context({
+            'speakerList': speakerList
+        })
+        return HttpResponse(t.render(c))
+
 
 #======================================================================
 # Backup
