@@ -1,0 +1,18 @@
+{% load url from future %}
+
+{% if logVolumeList %}
+    <table border="1">
+        <tr>
+            <td>Log Speaker</td>
+            <td>Volumen List</td>
+        </tr>
+    {% for logVolume in logVolumeList %}
+        <tr>
+            <td>{{ logVolume.LogSpeaker.speakerId }}</td>
+            <td>{{ logVolume.volume }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No logVolumes are available in experiments</p>
+{% endif %}

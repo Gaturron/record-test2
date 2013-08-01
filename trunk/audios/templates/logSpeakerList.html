@@ -1,0 +1,22 @@
+{% load url from future %}
+
+{% if logSpeakerList %}
+    <table border="1">
+        <tr>
+            <td>Speakers Id</td>
+            <td>Action</td>
+            <td>Item Id</td>
+            <td>Date</td>
+        </tr>
+    {% for logSpeaker in logSpeakerList %}
+        <tr>
+            <td>{{ logSpeaker.speakerId }}</td>
+            <td>{{ logSpeaker.action }}</td>
+            <td>{{ logSpeaker.ItemId }}</td>
+            <td>{{ logSpeaker.date }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No logSpeakers are available in experiments</p>
+{% endif %}

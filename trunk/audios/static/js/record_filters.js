@@ -43,7 +43,6 @@ var firstLastFilter = function(volumen) {
     //cantidad de elementos que debe haber de silencio al principio y al final
     var longit = 5;
 
-    var meseta = true;
     var cant = 0;
 
     for (var i = 0; i < (volumen.length / 2); i++) {
@@ -54,12 +53,10 @@ var firstLastFilter = function(volumen) {
         console.debug('fstElem: vol['+i+']: '+volumen[i]+' res= '+fstElem+',,,, vol['+(volumen.length - i - 1)+']: '+(volumen[volumen.length - i - 1])+' res= '+LstElem);
 
         if (fstElem && LstElem) {
-            if (meseta) {
-                //console.debug('Entramos');
-                cant = cant + 1;
-            }
+            //console.debug('Entramos');
+            cant = cant + 1;
         } else {
-            meseta = false;
+            break;
         }
     };
 
