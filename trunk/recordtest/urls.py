@@ -1,4 +1,8 @@
 from django.conf.urls import patterns, include, url
+from django.views.static import * 
+from django.conf import settings
+from django.conf.urls import handler404, handler500
+from recordtest import views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -63,3 +67,6 @@ urlpatterns = patterns('',
     url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
     url(r'^experiments/arrayIdPics/$',                 'experiments.views.arrayIdPics')
 )
+
+handler404 = views.error404
+handler500 = views.error404
