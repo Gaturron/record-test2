@@ -16,7 +16,7 @@
 
 <body onload="setup()">
   <div class="container">
-    <h2>¡Bienvenido/a!</h2>
+    <h2 class="text-center">¡Bienvenido/a!</h2>
 
     <div>
     Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
@@ -30,8 +30,12 @@
     Requisitos para poder participar:
 
     <ol>
-    <li>Usar el navegador Chrome (versión XXX o superior) o Firefox (versión XXX o superior). (Cambiar esto por lo que corresponda.)</li>
-    <li>Tener instalado Flash (versión 11.5 o superior).</li>
+    <li>Usar el navegador Chrome (versión XXX o superior) o Firefox (versión XXX o superior).</li>
+    <li>Tener instalado Flash (versión 11.5 o superior).
+      <div id="flash-detect">
+        Detectando Flash ...
+      </div>
+    </li>
     <li>Tener una buena conexión a Internet; preferentemente, no wireless.</li>
     <li>Tener un buen micrófono; preferentemente, no usar el micrófono incluido en una laptop.</li>
     <li>Estar en un ambiente silencioso.</li>
@@ -44,47 +48,37 @@
     <form id="speaker-form" action="/audios/add_speaker/" method="post"  novalidate="novalidate">
       
       <div class="text-center">
-        <div class="input">
-          Sexo:
+        <fieldset>
+          <label>Sexo:</label>
           <select name="genre">
             <option value="woman">Femenino</option>
             <option value="man">Masculino</option>
           </select>
-        </div>
 
-        <div class="input">
-          Lugar donde te criaste:
+          <label>Lugar donde te criaste:</label>
           <select name="born">
             <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
             <option value="cba">Ciudad de Córdoba y alrededores</option>
             <option value="otro">Otro</option>
           </select>
-        </div>
 
-        <div class="input">
-          Lugar donde vivís actualmente:
+          <label>Lugar donde vivís actualmente:</label>
           <select name="accent">
             <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
             <option value="cba">Ciudad de Córdoba y alrededores</option>
             <option value="otro">Otro</option>
           </select>
-        </div>
-
 
         <input hidden id="location" name="location">
 
-        <div class="input">
-          Mes de nacimiento:
+          <label>Mes de nacimiento:</label>
           <div class="input-append date" id="datepicker" data-date="01-1990" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
               <input id="date" name="birthDate" class="span2" size="16" type="text" value="01-1990">
               <span class="add-on"><i class="icon-calendar"></i></span>
-          </div>
-          <div id="errorContainer"></div> 
-        </div>
-      </div>
 
-      <div id="flash-detect">
-        Detectando Flash ...
+            <div id="errorContainer"></div> 
+          </div>
+        </fieldset>
       </div>
 
       <div>
@@ -92,7 +86,7 @@
         ¡Gracias!
       </div>
 
-      <div class="input">
+      <div class="input text-center">
         <input id="start" class="btn btn-primary" type="submit" value="¡Empezar!" disabled>
       </div>
      
