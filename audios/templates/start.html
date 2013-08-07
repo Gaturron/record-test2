@@ -16,41 +16,80 @@
 
 <body onload="setup()">
   <div class="container">
-    <h2>¡Bienvenido a test de grabación!</h2>
+    <h2>¡Bienvenido/a!</h2>
 
     <div>
     Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
     </div>
 
+    <div>
+    Este proyecto consiste en grabar una serie de frases a través de tu computadora, para luego poder estudiar las características del habla de cada región (por ejemplo, la tonada o los sonidos empleados).
+    </div>
+
+    <div>
+    Requisitos para poder participar:
+
+    <ol>
+    <li>Usar el navegador Chrome (versión XXX o superior) o Firefox (versión XXX o superior). (Cambiar esto por lo que corresponda.)</li>
+    <li>Tener instalado Flash (versión 11.5 o superior).</li>
+    <li>Tener una buena conexión a Internet; preferentemente, no wireless.</li>
+    <li>Tener un buen micrófono; preferentemente, no usar el micrófono incluido en una laptop.</li>
+    <li>Estar en un ambiente silencioso.</li>
+    </ol>
+
+    Si cumplís estos requisitos, por favor completá los siguientes datos para comenzar:
+
+    </div>
+
     <form id="speaker-form" action="/audios/add_speaker/" method="post"  novalidate="novalidate">
       
-      <div class="input">
-        <select name="genre">
-          <option value="man">Masculino</option>
-          <option value="woman">Femenico</option>
-        </select>
-      </div>
-
-      <div class="input">
-        <select name="accent">
-          <option value="bsas">Buenos Aires</option>
-          <option value="cba">Córdoba</option>
-        </select>
-      </div>
-
-      <input hidden id="location" name="location">
-
-      <div class="input">
-        Mes de nacimiento:
-        <div class="input-append date" id="datepicker" data-date="02-2012" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
-            <input id="date" name="birthDate" class="span2" size="16" type="text" value="02-2012">
-            <span class="add-on"><i class="icon-calendar"></i></span>
+      <div class="text-center">
+        <div class="input">
+          Sexo:
+          <select name="genre">
+            <option value="woman">Femenino</option>
+            <option value="man">Masculino</option>
+          </select>
         </div>
-        <div id="errorContainer"></div> 
+
+        <div class="input">
+          Lugar donde te criaste:
+          <select name="born">
+            <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
+            <option value="cba">Ciudad de Córdoba y alrededores</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="input">
+          Lugar donde vivís actualmente:
+          <select name="accent">
+            <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
+            <option value="cba">Ciudad de Córdoba y alrededores</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+
+        <input hidden id="location" name="location">
+
+        <div class="input">
+          Mes de nacimiento:
+          <div class="input-append date" id="datepicker" data-date="01-1990" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
+              <input id="date" name="birthDate" class="span2" size="16" type="text" value="01-1990">
+              <span class="add-on"><i class="icon-calendar"></i></span>
+          </div>
+          <div id="errorContainer"></div> 
+        </div>
       </div>
 
       <div id="flash-detect">
         Detectando Flash ...
+      </div>
+
+      <div>
+        En la próxima pantalla, te aparecerá un cartel de Flash pidiendo autorización para acceder a tu cámara y micrófono. Por favor, seleccioná "Permitir / Allow".
+        ¡Gracias!
       </div>
 
       <div class="input">
