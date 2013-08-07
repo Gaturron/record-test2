@@ -14,16 +14,6 @@ body{
     border-radius: 3px;
     moz-border-radius: 4px;
     border-radius: 10px;
-    text-align: left;
-    margin: 2% 20% 2% 20%;
-    padding: 2% 5% 2% 5%;
-}
-
-div {
-    margin: 4px 4px 4px 4px;
-}
-
-.text-center {
     text-align: center;
 }
 
