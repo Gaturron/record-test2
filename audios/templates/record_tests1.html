@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <title>Test de grabacion - comienzo</title>
-
   <link type="text/css" 
-        href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
+        href="/static/css/style.css?v=1" rel="stylesheet"/>
   <link type="text/css" 
         href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
   <link type="text/css" 
-        href="/static/css/style.css?v=1" rel="stylesheet"/>
+        href="/static/css/ui-lightness/jquery-ui-1.9.1.custom.css" rel="stylesheet"/>
 
   <script type="text/javascript" 
         src="/static/js/jquery-1.8.2.js"></script>
@@ -38,14 +37,32 @@
 
   <div class="container">
 
-    <h2 class="input">Grabando</h2>
+    <h2 class="input text-center">Presioná GRABAR y decí en forma natural la frase de abajo
+    </h2>
     
     <div id="dialog-modal" style="display: none"></div>  
     <div id="wami"></div> 
     
-    <div class="input">
-      Hay que realizar distintas grabaciones. Se puede realizar varias veces hasta dejar la mejor.
-    </div>
+    <p>
+      <ul>
+      <li>Cuando termines de hablar, presioná 
+        <button class="btn btn-mini btn-inverse stop" type="button" disabled="disabled">
+          DETENER
+        </button>
+      </li>
+      <li>Podés escuchar lo que grabaste presionando 
+        <button class="btn btn-mini btn-success play" type="button" disabled="disabled">
+          ESCUCHAR
+        </button>
+      </li>
+      <li>Si estás conforme con la grabación, presioná 
+        <button class="btn btn-mini btn-primary" type="button" disabled="disabled">
+          CONTINUAR.
+        </button>
+      </li>
+      <li>Si no estás conforme, podés grabarlo nuevamente.</li>
+      </ul>
+    </p>
 
     <div id="tabs">
 
@@ -56,21 +73,21 @@
       </ul>
 
       {% for word in word_list %}
-        <div class="wordexp" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">Diga la siguiente frase:
+        <div  style="display: none;" class="wordexp text-center" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">Diga la siguiente frase:
 
-          <div id="word.presentation">
+          <div id="word.presentation" class="text-center">
             <h3>{{ word.text }}</h3>  
           </div>
 
           <div class="wrapper">
 
             <div class="volume">
-              <div class="saturation">Nivel de grabación: ---</div>
+              <div class="saturation">Nivel del micrófono: </div>
               <div class="meter"></div>
             </div>
 
             <h4>
-              <div class="status">Estado: --- 
+              <div class="status">Estado:  
               </div>
               <div class="spinner">
               </div>    
@@ -82,7 +99,7 @@
             
             <div style="text-align: center;">
               <input  class="btn btn-danger record" 
-                      type="button" value="Record" 
+                      type="button" value="Grabar" 
                       onclick="record({{ word.id }})">
               </input>
               <input  style="display: none;" class="btn btn-inverse stop" 
@@ -103,17 +120,17 @@
 
     <button style="display: none;" class="input" id="previous-product"><</button>
     <button disabled class="btn btn-primary .btn-large input" id="next-product" 
-            onclick="next_product()">Proxima grabación</button>​
+            onclick="next_product()">Continuar</button>​
 
-    <div id="test-contador" class="input">
+    <div id="test-contador" class="input text-center">
     </div>
 
     <form action="/audios/end/" method="get">
-      <button style="display: none;" class="btn btn-primary .btn-large input" id="exit">Salir</button>​
+      <button style="display: none;" class="btn btn-primary .btn-large input text-center" id="exit">Salir</button>​
     </form>
 
-    <div style="display: none;" id="dialog-confirm" title="Grabaciones">
-      <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Llegó a realizar cinco grabaciones. ¿Quiere realizar otras cinco más?</p>
+    <div style="display: none;" id="dialog-confirm" title="¿Querés seguir?">
+      <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Ya completaste 5 grabaciones. ¿Querés hacer otras 5 más? ¡Todas las que puedas hacer nos sirven!</p>
     </div>
 
   </div>
