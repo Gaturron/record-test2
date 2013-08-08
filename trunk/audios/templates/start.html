@@ -18,15 +18,15 @@
   <div class="container">
     <h2 class="text-center">¡Bienvenido/a!</h2>
 
-    <div>
+    <p>
     Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
-    </div>
+    </p>
 
-    <div>
+    <p>
     Este proyecto consiste en grabar una serie de frases a través de tu computadora, para luego poder estudiar las características del habla de cada región (por ejemplo, la tonada o los sonidos empleados).
-    </div>
+    </p>
 
-    <div>
+    <p>
     Requisitos para poder participar:
 
     <ol>
@@ -43,51 +43,59 @@
 
     Si cumplís estos requisitos, por favor completá los siguientes datos para comenzar:
 
-    </div>
+    </p>
 
-    <form id="speaker-form" action="/audios/add_speaker/" method="post"  novalidate="novalidate">
+    <form id="speaker-form" class="form-horizontal" action="/audios/add_speaker/" method="post"  novalidate="novalidate">
       
-      <div class="text-center">
-        <fieldset>
-          <label>Sexo:</label>
-          <select name="genre">
-            <option value="woman">Femenino</option>
-            <option value="man">Masculino</option>
-          </select>
+        <div id="speaker-controls"> 
 
-          <label>Lugar donde te criaste:</label>
-          <select name="born">
-            <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
-            <option value="cba">Ciudad de Córdoba y alrededores</option>
-            <option value="otro">Otro</option>
-          </select>
-
-          <label>Lugar donde vivís actualmente:</label>
-          <select name="accent">
-            <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
-            <option value="cba">Ciudad de Córdoba y alrededores</option>
-            <option value="otro">Otro</option>
-          </select>
-
-        <input hidden id="location" name="location">
-
-          <label>Mes de nacimiento:</label>
-          <div class="input-append date" id="datepicker" data-date="01-1990" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
-              <input id="date" name="birthDate" class="span2" size="16" type="text" value="01-1990">
-              <span class="add-on"><i class="icon-calendar"></i></span>
-
-            <div id="errorContainer"></div> 
+          <div class="control-group">
+              <label class="control-label">Sexo:</label>
+              <select name="genre">
+                <option value="woman">Femenino</option>
+                <option value="man">Masculino</option>
+              </select>
           </div>
-        </fieldset>
-      </div>
 
-      <div>
+          <div class="control-group">
+            <label class="control-label">Lugar donde te criaste:</label>
+            <select name="born">
+              <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
+              <option value="cba">Ciudad de Córdoba y alrededores</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Lugar donde vivís actualmente:</label>
+            <select name="accent">
+              <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
+              <option value="cba">Ciudad de Córdoba y alrededores</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <input type="hidden" id="location" name="location">
+
+          <div class="control-group">
+            <label class="control-label">Mes de nacimiento:</label>
+            <div class="input-append date" id="datepicker" data-date="01-1990" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
+                <input id="date" name="birthDate" class="span2" size="16" type="text" value="01-1990">
+                <span class="add-on"><i class="icon-calendar"></i></span>
+
+              <div id="errorContainer"></div> 
+            </div>
+          </div>
+
+        </div>
+        
+      <p id="announcement">
         En la próxima pantalla, te aparecerá un cartel de Flash pidiendo autorización para acceder a tu cámara y micrófono. Por favor, seleccioná "Permitir / Allow".
         ¡Gracias!
-      </div>
+      </p>
 
       <div class="input text-center">
-        <input id="start" class="btn btn-primary" type="submit" value="¡Empezar!" disabled>
+        <input id="start" class="btn btn-large btn-primary" type="submit" value="¡Empezar!" disabled>
       </div>
      
     </form>

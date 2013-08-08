@@ -2,15 +2,17 @@ var checkFilters = function(volumen) {
 
     var res = umbralFilter(volumen);
     if (res !== 'OK') {
-        return res;
+        //return res;
+        return 'La calidad del audio no es buena. Por favor grabar nuevamente.'
     }
 
     res = firstLastFilter(volumen);
     if (res !== 'OK') {
-        return res;
+        //return res;
+        return 'La calidad del audio no es buena. Por favor grabar nuevamente.'
     }
     
-    return 'OK'
+    return 'Grabación exitosa'
 };
 
 /////////////////////////////////////////////////////////////////////////////

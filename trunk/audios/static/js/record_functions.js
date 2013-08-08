@@ -16,7 +16,7 @@ function setup() {
   Wami.setup("wami");
 
   $(view.runners).runner({
-    milliseconds: false
+    milliseconds: true
   });
 
   $(view.nextProduct).click(function(){ 
@@ -31,7 +31,7 @@ function setup() {
     tabs.tabs('select', selected-1);
   });
 
-  $(view.testContador).html("Tests: 0 de "+(minNumberExperiments));
+  $(view.testContador).html("Grabación: 0 de "+(minNumberExperiments));
 
   //log
   _writeLog("Start");
@@ -85,7 +85,7 @@ function record(id_test) {
         $(view.play).each( function() { $(this).prop("disabled", true) });
 
         $('.runner[word-id="'+id_test+'"]').runner({
-          milliseconds: false
+          milliseconds: true
         });    
         $('.runner[word-id="'+id_test+'"]').runner("start");
       }
@@ -150,7 +150,7 @@ function play(id_test) {
     var runner = '.runner[word-id="'+id_test+'"]';
     $(runner).runner("reset");
     $(runner).runner({
-      milliseconds: false
+      milliseconds: true
     });
     $(runner).runner("start");
 
@@ -185,7 +185,7 @@ function stop(id_test) {
       Wami.stopPlaying();
       
       checkSaturation = null;
-      $(view.saturation).html("Nivel de grabación: ---");
+      $(view.saturation).html("Nivel del micrófono:");
       $(view.status).html('Estado: Parado');
 
       $(view.stop).each( function() { $(this).hide() });
@@ -201,12 +201,6 @@ function stop(id_test) {
       $(runner).runner('reset');
       
       $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
-
-      //chequeo el ruido ambiente
-      if (minVolumenLevel > 20) {
-        $(view.status).html('Estado: Graba devuelta: mucho ruido ambiente');
-        $(view.nextProduct).each( function() { $(this).prop("disabled", true) });         
-      }
     }
   }
   
@@ -232,7 +226,7 @@ function next_product() {
     cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
   });
 
-  $(view.testContador).html("Tests: "+(cant_test_ok % (minNumberExperiments + 1))+" de "+(minNumberExperiments));
+  $(view.testContador).html("Grabación: "+(cant_test_ok % (minNumberExperiments + 1))+" de "+(minNumberExperiments));
 
   if (total_test == 1) {
     $(view.confirm).prop('disabled', false);
@@ -249,10 +243,10 @@ function next_product() {
         weight:100,
         modal: true,
         buttons: {
-          "Realizar cinco más": function() {
+          "Sí, quiero hacer 5 más": function() {
             $(this).dialog("close");
           },
-          "Salir": function() {
+          "No, terminar": function() {
             document.location.href = '/audios/end/';
             $(this).dialog("close");
           }
