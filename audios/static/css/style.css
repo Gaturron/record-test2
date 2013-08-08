@@ -69,6 +69,14 @@ body{
     background-color: #FF0000;
 }
 
+#instruction-rec {
+    text-align: center;
+}
+
+#instruction-btn {
+    margin: 2% 30% 2% 30%;
+}
+
 .saturation {
     font: 120% "Trebuchet MS", sans-serif;
     font-weight:bold;
@@ -80,6 +88,14 @@ body{
     border:2px solid;
     border-radius:25px;
     margin: 15px;
+}
+
+.record .play .stop {
+    margin: 2px 2px 2px 2px;
+}
+
+#next-product {
+    margin: 2% 44% 2% 44%;
 }
 
 #thank_you_img {
@@ -108,7 +124,13 @@ body{
 
 #word.presentation {
     text-align: center;
-    margin: 20px;    
+    margin: 20px;
+    color: #0000CC;    
+}
+
+.wordexp {
+    margin: 1% 1% 1% 1%;
+    padding: 1% 1% 1% 1%;
 }
 
 .wrapper {

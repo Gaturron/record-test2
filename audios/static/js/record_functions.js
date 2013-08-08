@@ -31,7 +31,7 @@ function setup() {
     tabs.tabs('select', selected-1);
   });
 
-  $(view.testContador).html("Grabación: 0 de "+(minNumberExperiments));
+  $(view.testContador).html("Grabación: 1 de "+(minNumberExperiments));
 
   //log
   _writeLog("Start");
@@ -220,7 +220,7 @@ function next_product() {
   var name_test = "test-w"+word_id;
   check_test[name_test] = 1;
   var total_test = 1;
-  var cant_test_ok = 0;
+  var cant_test_ok = 1;
   $.each(check_test, function(index, value) { 
     total_test = total_test & value; 
     cant_test_ok = (value == 1) ? cant_test_ok + 1 : cant_test_ok;
