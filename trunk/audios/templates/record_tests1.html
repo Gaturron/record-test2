@@ -37,33 +37,36 @@
 
   <div class="container">
 
-    <h2 class="input text-center">Presioná GRABAR y decí en forma natural la frase de abajo
+    <h2 class="input" id="instruction-rec">Presioná GRABAR y decí en forma natural la frase de abajo
     </h2>
     
     <div id="dialog-modal" style="display: none"></div>  
     <div id="wami"></div> 
     
-    <p>
-      <ul>
-      <li>Cuando termines de hablar, presioná 
-        <button class="btn btn-mini btn-inverse stop" type="button" disabled="disabled">
-          DETENER
-        </button>
-      </li>
-      <li>Podés escuchar lo que grabaste presionando 
-        <button class="btn btn-mini btn-success play" type="button" disabled="disabled">
-          ESCUCHAR
-        </button>
-      </li>
-      <li>Si estás conforme con la grabación, presioná 
-        <button class="btn btn-mini btn-primary" type="button" disabled="disabled">
-          CONTINUAR.
-        </button>
-      </li>
-      <li>Si no estás conforme, podés grabarlo nuevamente.</li>
-      </ul>
-    </p>
-
+    <ul id="instruction-btn">
+    <li>Para empezar a grabar presioná 
+      <button class="btn btn-mini btn-danger" type="button" disabled="disabled">
+        GRABAR
+      </button>
+    </li>
+    <li>Cuando termines de hablar, presioná 
+      <button class="btn btn-mini btn-inverse" type="button" disabled="disabled">
+        DETENER
+      </button>
+    </li>
+    <li>Podés escuchar lo que grabaste presionando 
+      <button class="btn btn-mini btn-success" type="button" disabled="disabled">
+        ESCUCHAR
+      </button>
+    </li>
+    <li>Si estás conforme con la grabación, presioná 
+      <button class="btn btn-mini btn-primary" type="button" disabled="disabled">
+        CONTINUAR
+      </button>
+    </li>
+    <li>Si no estás conforme, podés grabarlo nuevamente.</li>
+    </ul>
+  
     <div id="tabs">
 
       <ul style="display: none;">
@@ -73,10 +76,10 @@
       </ul>
 
       {% for word in word_list %}
-        <div  style="display: none;" class="wordexp text-center" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">Diga la siguiente frase:
+        <div class="wordexp text-center" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">
 
           <div id="word.presentation" class="text-center">
-            <h3>{{ word.text }}</h3>  
+            <h3>"{{ word.text }}".</h3>  
           </div>
 
           <div class="wrapper">
@@ -98,16 +101,18 @@
             </h4>
             
             <div style="text-align: center;">
-              <input  class="btn btn-danger record" 
-                      type="button" value="Grabar" 
+              <input  class="btn btn-large btn-danger record" 
+                      type="button" value="GRABAR" 
                       onclick="record({{ word.id }})">
               </input>
-              <input  style="display: none;" class="btn btn-inverse stop" 
-                      type="button" value="Stop" 
+              <input  style="display: none;" 
+                      class="btn btn-large btn-inverse stop" 
+                      type="button" value="DETENER" 
                       onclick="stop({{ word.id }})">
               </input>
-              <input  disabled class="btn btn-success play" 
-                      type="button" value="Play" 
+              <input  disabled 
+                      class="btn btn-large btn-success play" 
+                      type="button" value="ESCUCHAR" 
                       onclick="play({{ word.id }})">
               </input>
             </div>
@@ -119,7 +124,7 @@
     </div>
 
     <button style="display: none;" class="input" id="previous-product"><</button>
-    <button disabled class="btn btn-primary .btn-large input" id="next-product" 
+    <button disabled class="btn btn-primary btn-large input" id="next-product" 
             onclick="next_product()">Continuar</button>​
 
     <div id="test-contador" class="input text-center">
