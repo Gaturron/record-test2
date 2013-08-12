@@ -27,7 +27,7 @@
         src="/static/js/record_filters.js?v=1">
   </script>
   <script type="text/javascript" 
-        src="/static/js/record_functions.js?v=7">
+        src="/static/js/record_functions.js?v=8">
   </script>
 </head>
 
@@ -46,17 +46,17 @@
     <ul id="instruction-btn">
     <li>Para empezar a grabar presioná 
       <button class="btn btn-mini btn-danger" type="button" disabled="disabled">
-        GRABAR
+        ● GRABAR
       </button>
     </li>
     <li>Cuando termines de hablar, presioná 
       <button class="btn btn-mini btn-inverse" type="button" disabled="disabled">
-        DETENER
+        ■ DETENER
       </button>
     </li>
     <li>Podés escuchar lo que grabaste presionando 
       <button class="btn btn-mini btn-success" type="button" disabled="disabled">
-        ESCUCHAR
+        ► ESCUCHAR
       </button>
     </li>
     <li>Si estás conforme con la grabación, presioná 
@@ -76,10 +76,10 @@
       </ul>
 
       {% for word in word_list %}
-        <div class="wordexp text-center" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">
+        <div class="wordexp" word-id="{{ word.id }}" id="tabs-word-{{ word.id }}">
 
-          <div id="word.presentation" class="text-center">
-            <h3>"{{ word.text }}".</h3>  
+          <div id="word.presentation" class="word.presentation text-center">
+            <h3 id="word-phrase">"{{ word.text }}".</h3>  
           </div>
 
           <div class="wrapper">
@@ -102,17 +102,17 @@
             
             <div style="text-align: center;">
               <input  class="btn btn-large btn-danger record" 
-                      type="button" value="GRABAR" 
+                      type="button" value="● GRABAR" 
                       onclick="record({{ word.id }})">
               </input>
               <input  style="display: none;" 
                       class="btn btn-large btn-inverse stop" 
-                      type="button" value="DETENER" 
+                      type="button" value="■ DETENER" 
                       onclick="stop({{ word.id }})">
               </input>
               <input  disabled 
                       class="btn btn-large btn-success play" 
-                      type="button" value="ESCUCHAR" 
+                      type="button" value="► ESCUCHAR" 
                       onclick="play({{ word.id }})">
               </input>
             </div>
@@ -127,7 +127,7 @@
     <button disabled class="btn btn-primary btn-large input" id="next-product" 
             onclick="next_product()">Continuar</button>​
 
-    <div id="test-contador" class="input text-center">
+    <div id="test-contador" class="input">
     </div>
 
     <form action="/audios/end/" method="get">
@@ -139,6 +139,11 @@
     </div>
 
   </div>
+
+  <div id="version">
+    Versión 1.0 Beta
+  </div>
+
 </body>
 
 <script type="text/javascript">
