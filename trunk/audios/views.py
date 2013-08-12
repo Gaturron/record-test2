@@ -40,13 +40,15 @@ def add_speaker(request):
 
         # save the speaker
         now = timezone.now()
-        birthDate = datetime.strptime(str(request.POST['birthDate']), "%m-%Y")
         location = request.POST['location']
-        accent = request.POST['accent']
         session = request.session['session-rmz']
- 
-        #TODO: Arreglar birthdate y demas datos erroneos
-        speaker = Speaker(birthDate=birthDate, date= now, location= location, accent= accent, session= session)
+
+        sex = request.POST['sex']
+        birthPlace = request.POST['birthPlace']
+        livePlace = request.POST['livePlace']
+        birthDate = datetime.strptime(str(request.POST['birthDate']), "%m-%Y")
+        
+        speaker = Speaker(date= now, location= location, session= session, sex= sex, birthPlace= birthPlace, livePlace= livePlace, birthDate=birthDate)
         speaker.save()
 
         return HttpResponseRedirect("/audios/record_tests1/")
@@ -58,7 +60,7 @@ def record_tests1(request):
             #Chequear que es un usuario que recien lleno los datos
             if 'session-rmz' in request.session:
                 session = request.session['session-rmz']
-                speaker = Speaker.objects.get(session=session, finish=False)
+                speaker = Speaker.objects.get(session=session)
 
                 #Agarro los experimentos que se guardaron
                 path = trace.objects.filter(used= False)[0]
@@ -79,7 +81,8 @@ def record_tests1(request):
 
                 del request.session['session-rmz']
                 request.session['speaker-id'] = speaker.id 
-                request.session['speaker-accent'] = speaker.accent
+                request.session['speaker-accent'] = speaker.livePlace
+                #speaker.livePlace == speaker-accent
 
                 return HttpResponse(t.render(c))
 
@@ -107,8 +110,20 @@ def wami_handler2(request):
         return response
     
     if request.method == 'POST':
+        
+        speakerId = str(request.session['speaker-id'])
+        speaker = Speaker.objects.get(id= speakerId)
 
-        filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_t"+request.GET['name_test']+"_a"+request.GET['attempts']
+        wordId = request.GET['name_test']
+        word = Word.objects.get(id= wordId)
+
+        attempt = str(request.GET['attempts'])
+
+        filename = str(request.session['speaker-accent'])+"_u"+speakerId+"_t"+wordId+"_a"+attempt
+
+        audio = Audio(speaker= speaker, word= word, attempt=attempt, filename= filename)
+        audio.save()
+
         f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'wb')
         myfile = File(f) 
         myfile.write(request.body)

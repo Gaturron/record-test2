@@ -1,7 +1,7 @@
 import os
 # Django settings for recordtest project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

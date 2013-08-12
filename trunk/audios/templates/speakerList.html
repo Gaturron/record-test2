@@ -5,18 +5,26 @@
         <tr>
             <td>Fecha</td>
             <td>Lugar</td>
-            <td>Acento</td>
             <td>session</td>
+
+            <td>Sexo</td>
+            <td>Lugar de nacimiento</td>
+            <td>Lugar donde vive</td>
             <td>Fecha de nacimiento</td>
+            
             <td>Años</td>
         </tr>
     {% for speaker in speakerList %}
         <tr>
             <td>{{ speaker.date }}</td>
             <td>{{ speaker.location }}</td>
-            <td>{{ speaker.accent }}</td>
             <td>{{ speaker.session }}</td>
+
+            <td>{{ speaker.sex }}</td>
+            <td>{{ speaker.birthPlace }}</td>
+            <td>{{ speaker.livePlace }}</td> 
             <td>{{ speaker.birthDate }}</td>
+
             <td>{{ speaker.age }}</td>
         </tr>
     {% endfor %}

@@ -1,20 +1,29 @@
 from django.db import models
+from experiments.models import Word
 
 # Create your models here.
 class Speaker(models.Model):
+    #calculados
     date = models.DateTimeField(auto_now=True)
     location = models.TextField()
-    accent = models.TextField()
     session = models.TextField()
-    birthDate = models.DateTimeField()
-    age = models.IntegerField(default=0)
-    finish = models.BooleanField(default=False)
-    #no olvidarse genero
 
+    #preguntados del form
+    sex = models.TextField()
+    birthPlace = models.TextField()
+    livePlace = models.TextField()
+    birthDate = models.DateTimeField()
+
+    #que se pueden calcular
+    age = models.IntegerField(default=0)
+    
 class Audio(models.Model):
-    text = models.TextField()
-    audio = models.FileField(upload_to='audios')
     speaker = models.ForeignKey(Speaker)
+    word = models.ForeignKey(Word)
+    #opcion B
+    #ItemId = models.IntegerField(default=0)
+    attempt = models.IntegerField(default=0)
+    filename = models.TextField()
 
 class LogSpeaker(models.Model):
     speakerId = models.IntegerField()
