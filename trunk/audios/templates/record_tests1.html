@@ -45,24 +45,16 @@
     
     <ul id="instruction-btn">
     <li>Para empezar a grabar presioná 
-      <button class="btn btn-mini btn-danger" type="button" disabled="disabled">
-        ● GRABAR
-      </button>
+      <button class="record-skin-dummy record mini-button" type="button" disabled="disabled"></button>
     </li>
     <li>Cuando termines de hablar, presioná 
-      <button class="btn btn-mini btn-inverse" type="button" disabled="disabled">
-        ■ DETENER
-      </button>
+      <button class="stop-skin-dummy stop mini-button" type="button" disabled="disabled"></button>
     </li>
     <li>Podés escuchar lo que grabaste presionando 
-      <button class="btn btn-mini btn-success" type="button" disabled="disabled">
-        ► ESCUCHAR
-      </button>
+      <button class="play-skin-dummy play mini-button" type="button" disabled="disabled"></button>
     </li>
     <li>Si estás conforme con la grabación, presioná 
-      <button class="btn btn-mini btn-primary" type="button" disabled="disabled">
-        CONTINUAR
-      </button>
+      <button class="next-skin-dummy next mini-button" type="button" disabled="disabled"></button>
     </li>
     <li>Si no estás conforme, podés grabarlo nuevamente.</li>
     </ul>
@@ -101,18 +93,18 @@
             </h4>
             
             <div style="text-align: center;">
-              <input  class="btn btn-large btn-danger record" 
-                      type="button" value="● GRABAR" 
+              <input  class="record-skin record button" 
+                      type="button" value="" 
                       onclick="record({{ word.id }})">
               </input>
               <input  style="display: none;" 
-                      class="btn btn-large btn-inverse stop" 
-                      type="button" value="■ DETENER" 
+                      class="stop-skin stop button" 
+                      type="button" value="" 
                       onclick="stop({{ word.id }})">
               </input>
               <input  disabled 
-                      class="btn btn-large btn-success play" 
-                      type="button" value="► ESCUCHAR" 
+                      class="play-skin play button" 
+                      type="button" value="" 
                       onclick="play({{ word.id }})">
               </input>
             </div>
@@ -124,8 +116,8 @@
     </div>
 
     <button style="display: none;" class="input" id="previous-product"><</button>
-    <button disabled class="btn btn-primary btn-large input" id="next-product" 
-            onclick="next_product()">Continuar</button>​
+    <button disabled class="next-skin button" id="next-product" 
+            onclick="next_product()"></button>​
 
     <div id="test-contador" class="input">
     </div>
