@@ -98,6 +98,13 @@ li {
     margin: 2px 2px 2px 2px;
 }
 
+.play-skin {
+    background-image: url(...);
+    background-repeat: no-repeat;
+    background-position: <left|right>;
+    padding-<left|right>: <width of image>px;
+}
+
 #test-contador {
     text-align: center;
     margin: auto;
