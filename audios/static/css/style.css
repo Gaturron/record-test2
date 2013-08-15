@@ -97,14 +97,54 @@ li {
 .record .play .stop {
     margin: 2px 2px 2px 2px;
 }
-
-.play-skin {
-    background-image: url(...);
+/****************************************************************/
+.button {
+    width: 195px !important;
+    height: 45px;
     background-repeat: no-repeat;
-    background-position: <left|right>;
-    padding-<left|right>: <width of image>px;
+    background-size: 190px, auto;
 }
 
+.mini-button {
+    width: 100px !important;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: 95px, auto;
+}
+
+.play-skin, .play-skin-dummy{
+    background-image: url('img/buttons/play.jpg');
+}
+
+.play-skin[disabled] {
+    background-image: url('img/buttons/play-disabled.jpg');
+}
+
+.stop-skin, .stop-skin-dummy{
+    background-image: url('img/buttons/stop.jpg');
+}
+
+.stop-skin[disabled] {
+    background-image: url('img/buttons/stop-disabled.jpg');
+}
+
+.record-skin, .record-skin-dummy{
+    background-image: url('img/buttons/record.jpg');
+}
+
+.record-skin[disabled] {
+    background-image: url('img/buttons/record-disabled.jpg');
+}
+
+.next-skin, .next-skin-dummy{
+    background-image: url('img/buttons/next.jpg');
+}
+
+.next-skin[disabled] {
+    background-image: url('img/buttons/next-disabled.jpg');
+}
+
+/****************************************************************/
 #test-contador {
     text-align: center;
     margin: auto;
@@ -112,7 +152,7 @@ li {
 }
 
 #next-product {
-    margin: 2% 44% 2% 44%;
+    margin: 4% 40% 4% 40%;
 }
 
 #thank_you_img {
@@ -152,7 +192,7 @@ li {
 }
 
 .wrapper {
-    width: 40%;
+    width: 50%;
     text-align: center;
     border-color: black;
     border-style: ridge;
