@@ -48,6 +48,11 @@ li {
     padding-left: 15%;
 }
 
+label.error {
+    color: red;
+    margin-left: 25%;
+}
+
 #wami_container {
     position: fixed;
     /*top: 55%; 
@@ -94,15 +99,16 @@ li {
     padding: 6px;
 }
 
-.record .play .stop {
+/*.record .play .stop {
     margin: 2px 2px 2px 2px;
-}
+}*/
 /****************************************************************/
 .button {
     width: 195px !important;
     height: 45px;
     background-repeat: no-repeat;
     background-size: 190px, auto;
+    margin: 2px 2px 2px 2px;
 }
 
 .mini-button {
@@ -110,6 +116,7 @@ li {
     height: 25px;
     background-repeat: no-repeat;
     background-size: 95px, auto;
+    cursor:default;
 }
 
 .play-skin, .play-skin-dummy{
