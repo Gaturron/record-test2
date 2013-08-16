@@ -51,7 +51,7 @@
 
           <div class="control-group">
               <label class="control-label">Sexo:</label>
-              <select name="sex">
+              <select id="sex" name="sex">
                 <option value="woman">Femenino</option>
                 <option value="man">Masculino</option>
               </select>
@@ -59,7 +59,7 @@
 
           <div class="control-group">
             <label class="control-label">Lugar donde te criaste:</label>
-            <select name="birthPlace">
+            <select id="birthPlace" name="birthPlace">
               <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
               <option value="cba">Ciudad de Córdoba y alrededores</option>
               <option value="otro">Otro</option>
@@ -68,7 +68,7 @@
 
           <div class="control-group">
             <label class="control-label">Lugar donde vivís actualmente:</label>
-            <select name="livePlace">
+            <select id="livePlace" name="livePlace">
               <option value="bsas">Ciudad de Buenos Aires y alrededores</option>
               <option value="cba">Ciudad de Córdoba y alrededores</option>
               <option value="otro">Otro</option>
@@ -80,10 +80,11 @@
           <div class="control-group">
             <label class="control-label">Mes de nacimiento:</label>
             <div class="input-append date" id="datepicker" data-date="01-1990" data-date-format="mm-yyyy" name="birthDateDiv" data-date-minViewMode="1" data-date-viewMode="1">
-                <input id="date" name="birthDate" class="span2" size="16" type="text" value="01-1990">
+                
+                <input id="birthDate" name="birthDate" class="span2" size="16" type="text" value="01-1990">
+
                 <span class="add-on"><i class="icon-calendar"></i></span>
 
-              <div id="errorContainer"></div> 
             </div>
           </div>
 
@@ -118,17 +119,36 @@
     } else {
       $("input#location").val("BS AS HARDCODEADO");
     }
-      
+    
+    $("#sex").prop("selectedIndex", -1);
+    $("#birthPlace").prop("selectedIndex", -1);
+    $("#livePlace").prop("selectedIndex", -1);
+
     $('#datepicker').datepicker();
 
     //validate speaker-form
     $("#speaker-form").validate( {
-      errorContainer: '#errorContainer', 
-      errorLabelContainer: '#errorContainer',
-      
+
+      errorPlacement: function(error, element) {
+          if ($(element).attr("name") == "birthDate") {
+            error.insertAfter($(element).parent());
+          } else {
+            error.insertAfter(element);
+          }
+      },    
       rules: {
-        birthDate: {
+        sex: {
             required: true
+        },
+        birthPlace: {
+            required: true
+        },
+        livePlace:{
+            required: true
+        },
+        birthDate:{
+            required: true
+        }
 /*          required: function(element) {
             console.log(element.val);
             var birthDate = $("input#birthDate");
@@ -137,10 +157,12 @@
               $(element).html("Por favor poné una fecha válida");
             }
           }*/
-        }
       },
       messages: {
-        birthDate: "Por favor poné una fecha válida"
+        sex: "Por favor completa el sexo",
+        birthPlace: "Por favor completá el lugar de nacimento",
+        livePlace: "Por favor completá el lugar donde vives",
+        birthDate: "Por favor completá con una fecha válida"
       },
       submitHandler: function(form) {
         form.submit();
