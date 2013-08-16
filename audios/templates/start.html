@@ -19,10 +19,6 @@
     <h2 class="text-center">¡Bienvenido/a!</h2>
 
     <p>
-    Vamos a realizar algunas grabaciones. Por favor, completa los siguientes datos.
-    </p>
-
-    <p>
     Este proyecto consiste en <b>grabar una serie de frases a través de tu computadora</b>, para luego poder estudiar las características del habla de cada región (por ejemplo, la tonada o los sonidos empleados).
     </p>
 
@@ -30,7 +26,11 @@
     Requisitos para poder participar:
 
     <ol>
-    <li>Usar el navegador <b>Chrome</b> (versión XXX o superior) o <b>Firefox</b> (versión XXX o superior).</li>
+    <li>Usar el navegador <b>Chrome</b> (cualquiera de sus versiones) o <b>Firefox</b> (versión 2 o superior).
+      <div id="browser-detect">
+        Detectando navegador ...
+      </div>
+    </li>
     <li>Tener instalado <b>Flash (versión 11.5 o superior)</b>.
       <div id="flash-detect">
         Detectando Flash ...
@@ -92,8 +92,6 @@
         
       <p id="announcement">
         En la próxima pantalla, te aparecerá un cartel de Flash pidiendo autorización para acceder a tu cámara y micrófono. 
-      </p>
-      <p id="announcement">
         Por favor, seleccioná "Permitir / Allow".
         ¡Gracias!
       </p>
@@ -169,7 +167,7 @@
       }
     });
 
-    $("div#flash-detect").html(""); 
+    $("div#flash-detect").html("");     
     if(FlashDetect.versionAtLeast(11, 5)){
 
         var img = $('<img id="dynamic">'); 
@@ -187,6 +185,24 @@
 
         $("div#flash-detect").html( $("div#flash-detect").html() + "No puede continuar. Debe tener Flash 11.5 o superior");
     } 
+
+    $("div#browser-detect").html(""); 
+    if($.browser.chrome || ($.browser.mozilla && $.browser.version > 2)){
+
+        var img = $('<img id="dynamic">'); 
+        img.attr('src', "/static/css/img/ok.png");
+        img.appendTo('div#browser-detect');
+
+        $("div#browser-detect").html( $("div#browser-detect").html() + "Posee un navegador soportado");
+
+        $("#start").prop("disabled", false);
+    }else{
+        var img = $('<img id="dynamic">'); 
+        img.attr('src', "/static/css/img/cancel.png");
+        img.appendTo('div#browser-detect');
+
+        $("div#browser-detect").html( $("div#browser-detect").html() + "No puede continuar. Navegador no compatible");  
+    }
   }
 
 </script>
