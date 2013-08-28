@@ -26,16 +26,6 @@
     Requisitos para poder participar:
 
     <ol>
-    <li>Usar el navegador <b>Chrome</b> (cualquiera de sus versiones) o <b>Firefox</b> (versión 2 o superior).
-      <div id="browser-detect">
-        Detectando navegador ...
-      </div>
-    </li>
-    <li>Tener instalado <b>Flash (versión 11.5 o superior)</b>.
-      <div id="flash-detect">
-        Detectando Flash ...
-      </div>
-    </li>
     <li>Tener una <b>buena conexión a Internet</b>; preferentemente, no wireless.</li>
     <li>Tener un <b>buen micrófono</b>; preferentemente, no usar el micrófono incluido en una laptop.</li>
     <li>Estar en un <b>ambiente silencioso.</b></li>
@@ -90,10 +80,19 @@
 
         </div>
         
-      <p id="announcement">
+      <!--<p id="announcement">
         En la próxima pantalla, te aparecerá un cartel de Flash pidiendo autorización para acceder a tu cámara y micrófono. 
         Por favor, seleccioná "Permitir / Allow".
         ¡Gracias!
+      </p>-->
+
+      <p id="announcement">
+        <div id="browser-detect">
+          Detectando navegador ...
+        </div>
+        <div id="flash-detect">
+          Detectando Flash ...
+        </div>
       </p>
 
       <div class="input text-center">
@@ -167,7 +166,9 @@
       }
     });
 
-    $("div#flash-detect").html("");     
+    $("div#flash-detect").html(""); 
+
+    var proceed = true;    
     if(FlashDetect.versionAtLeast(11, 5)){
 
         var img = $('<img id="dynamic">'); 
@@ -176,7 +177,7 @@
 
         $("div#flash-detect").html( $("div#flash-detect").html() + "Tiene la version Flash > 11.5");
 
-        $("#start").prop("disabled", false);
+        $("div#flash-detect").hide();
     }else{
 
         var img = $('<img id="dynamic">'); 
@@ -184,6 +185,8 @@
         img.appendTo('div#flash-detect');
 
         $("div#flash-detect").html( $("div#flash-detect").html() + "No puede continuar. Debe tener Flash 11.5 o superior");
+    
+        proceed = false;
     } 
 
     $("div#browser-detect").html(""); 
@@ -195,13 +198,19 @@
 
         $("div#browser-detect").html( $("div#browser-detect").html() + "Posee un navegador soportado");
 
-        $("#start").prop("disabled", false);
+        $("div#browser-detect").hide();
     }else{
         var img = $('<img id="dynamic">'); 
         img.attr('src', "/static/css/img/cancel.png");
         img.appendTo('div#browser-detect');
 
         $("div#browser-detect").html( $("div#browser-detect").html() + "No puede continuar. Navegador no compatible");  
+
+        proceed = false;
+    }
+
+    if (proceed) {
+      $("#start").prop("disabled", false);
     }
   }
 
