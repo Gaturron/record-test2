@@ -120,6 +120,7 @@ def wami_handler2(request):
         attempt = str(request.GET['attempts'])
 
         filename = str(request.session['speaker-accent'])+"_u"+speakerId+"_t"+wordId+"_a"+attempt
+        print "Archivo de audio a grabar: "+filename
 
         audio = Audio(speaker= speaker, word= word, attempt=attempt, filename= filename)
         audio.save()
