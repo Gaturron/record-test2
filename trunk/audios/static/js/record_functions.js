@@ -146,6 +146,7 @@ function play(id_test) {
     $(view.stop).each( function() { $(this).prop("disabled", false) });
     $(view.record).each( function() { $(this).show()});
     $(view.record).each( function() { $(this).prop("disabled", true) });
+    $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
 
     var runner = '.runner[word-id="'+id_test+'"]';
     $(runner).runner("reset");
@@ -159,6 +160,8 @@ function play(id_test) {
   var me = this;
 
   var finishedfn = function() { 
+    $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
+
     console.debug("Fin Reproduccion"); 
     me.stop(id_test);
   };
