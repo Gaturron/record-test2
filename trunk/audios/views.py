@@ -96,6 +96,7 @@ def record_tests1(request):
 def wami_handler2(request):
 
     if request.method == 'GET':
+        #play
 
         filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_t"+request.GET['name_test']+"_a"+request.GET['attempts']
         f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'r')
@@ -110,6 +111,7 @@ def wami_handler2(request):
         return response
     
     if request.method == 'POST':
+        #record
         
         speakerId = str(request.session['speaker-id'])
         speaker = Speaker.objects.get(id= speakerId)
@@ -132,6 +134,28 @@ def wami_handler2(request):
         f.close()
 
         return HttpResponse('Ok')
+
+@csrf_exempt
+def checkRecord(request):
+
+    if request.method == 'GET':
+        #check if the record finished correctly
+
+        try:
+            filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_t"+request.GET['name_test']+"_a"+request.GET['attempts']
+            f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'r')
+            myfile = File(f)
+            data = myfile.read()
+            myfile.close()
+            f.close()
+        except IOError as e:
+            print "I/O Error({0}): {1}".format(e.errno, e.strerror)
+            return HttpResponse("I/O Error: Try again")
+        except:
+            print "Unexpected error:", sys.exc_info()[0]
+            return HttpResponse("Unexpected Error: Try again")
+
+        return HttpResponse("OK")
 
 def audio_url(request, id):
     if request.method == 'GET':
