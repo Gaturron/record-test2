@@ -98,27 +98,25 @@ function record(id_test) {
     console.debug("Fin grabacion"); 
     console.debug("El volumen fue: "+volumen);
 
-/*    if (maxLevel > maxVolumenLevel) {
-      $(view.status).html('Estado: Graba devuelta, mucha saturación');
-      $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
-      maxLevel = 0;
-    }
-
-    if (maxLevel < minVolumenLevel) {
-      $(view.status).html('Estado: Graba devuelta, volumen muy bajo');
-      $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
-      maxLevel = 0;
-    }*/
-
     var res = checkFilters(volumen);
     console.debug('checkFilters: '+res);
     $(view.status).html('Estado: '+res);
 
     _writeLog("Record volume saved", volumen);
     _writeLog("Record status: "+res);
+
+    //check if the wav is properly saved
+    checkRecord = function() {
+      $.get('/audios/checkRecord/', {name_test: id_test, attempts: attempts}, function(data) {
+        console.debug("checkRecord: " + data);
+        setTimeout(checkRecord, 100);   
+      });
+    };
+
+    checkRecord();
   };
 
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -166,7 +164,7 @@ function play(id_test) {
     me.stop(id_test);
   };
 
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
