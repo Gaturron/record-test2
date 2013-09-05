@@ -1,6 +1,7 @@
 var maxLevel = 0;
 var attempts = 0;
 var volumen = new Array();
+var status = "Setup";
 
 function setup() {
   $(view.tabs).tabs({ 
@@ -105,18 +106,27 @@ function record(id_test) {
     _writeLog("Record volume saved", volumen);
     _writeLog("Record status: "+res);
 
-    //check if the wav is properly saved
-    checkRecord = function() {
-      $.get('/audios/checkRecord/', {name_test: id_test, attempts: attempts}, function(data) {
-        console.debug("checkRecord: " + data);
-        setTimeout(checkRecord, 100);   
-      });
-    };
+    checkSaturation = null;
+    $(view.saturation).html("Nivel del micrófono:");
 
-    checkRecord();
+    $(view.stop).each( function() { $(this).hide() });
+    $(view.record).each( function() { $(this).show() });
+    $(view.record).each( function() { $(this).prop("disabled", false) });
+    $(view.play).each( function() { $(this).show() });
+    $(view.play).each( function() { $(this).prop("disabled", false) });
+
+    $(view.record).show();
+
+    var runner = '.runner[word-id="'+id_test+'"]';
+    $(runner).runner('stop');
+    $(runner).runner('reset');
+    
+    $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+
+    $(view.spinners).hide();
   };
 
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -158,13 +168,30 @@ function play(id_test) {
   var me = this;
 
   var finishedfn = function() { 
-    $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
 
     console.debug("Fin Reproduccion"); 
     me.stop(id_test);
+
+    checkSaturation = null;
+    $(view.saturation).html("Nivel del micrófono:");
+    $(view.status).html('Estado: Parado');
+
+    $(view.stop).each( function() { $(this).hide() });
+    $(view.record).each( function() { $(this).show() });
+    $(view.record).each( function() { $(this).prop("disabled", false) });
+    $(view.play).each( function() { $(this).show() });
+    $(view.play).each( function() { $(this).prop("disabled", false) });
+
+    $(view.record).show();
+
+    var runner = '.runner[word-id="'+id_test+'"]';
+    $(runner).runner('stop');
+    $(runner).runner('reset');
+    
+    $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
   };
 
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
@@ -172,36 +199,29 @@ function play(id_test) {
 
 function stop(id_test) {
 
+  console.debug("Apretamos stop");
+
+  var prevStatus = status;
+
   //log
   _writeLog("Stop");
 
-  var me = this;
   sleep1000Stop = function( part, id_test ) {
     if( part == 0 ) {
       setTimeout( function() { sleep1000Stop( 1, id_test ); }, 1000 );
 
     } else if( part == 1 ) {
 
-      Wami.stopRecording();
-      Wami.stopPlaying();
+      if( prevStatus === "Record"){
+
+        $(view.spinners).show();
+        Wami.stopRecording();
+
+      } else if (prevStatus === "Play" ) {
+        
+        Wami.stopPlaying();
       
-      checkSaturation = null;
-      $(view.saturation).html("Nivel del micrófono:");
-      $(view.status).html('Estado: Parado');
-
-      $(view.stop).each( function() { $(this).hide() });
-      $(view.record).each( function() { $(this).show() });
-      $(view.record).each( function() { $(this).prop("disabled", false) });
-      $(view.play).each( function() { $(this).show() });
-      $(view.play).each( function() { $(this).prop("disabled", false) });
-
-      $(view.record).show();
-
-      var runner = '.runner[word-id="'+id_test+'"]';
-      $(runner).runner('stop');
-      $(runner).runner('reset');
-      
-      $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+      }
     }
   }
   
@@ -266,6 +286,8 @@ function previous_product() {
 //Logging
 
 function _writeLog(action, volumen) {
+
+  status = action;
 
   var speakerId = $(view.speakerId).attr("speakerId");
   var word_id = $(".wordexp:visible").attr("word-id");
