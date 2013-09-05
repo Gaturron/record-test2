@@ -116,7 +116,7 @@ function record(id_test) {
     checkRecord();
   };
 
-  Wami.startRecording("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -164,7 +164,7 @@ function play(id_test) {
     me.stop(id_test);
   };
 
-  Wami.startPlaying("http://localhost:8000/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
