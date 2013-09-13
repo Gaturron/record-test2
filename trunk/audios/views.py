@@ -204,13 +204,21 @@ def writeLogVolume(request):
         speakerId = int(request.POST['speakerId'])
         action = request.POST['action']
         ItemId = int(request.POST['ItemId'])
-        volumen = (str(request.POST['volumen']))[:800]
+        volumen = (str(request.POST['volumen'])).split(",")
+
+        volumen_parts = []
+        while volumen:
+            volumen_parts.append(volumen[:800])
+            volumen = volumen[800:]
 
         log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
         log.save()
 
-        logVolume = LogVolume(volume= volumen, LogSpeaker= log)
-        logVolume.save()
+        part = 1
+        for i in volumen_parts:
+            logVolume = LogVolume(LogSpeaker= log, part= part, volume= i)
+            logVolume.save()
+            part = part + 1
 
         return HttpResponse('Ok')        
 
