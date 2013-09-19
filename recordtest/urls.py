@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.static import * 
+from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls import handler404, handler500
 from recordtest import views
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     #prueba
     #url(r'^audios/record/$',         'audios.views.record'),
     #url(r'^audios/wamihandler/$',    'audios.views.wami_handler'),
+    url(r'^$', RedirectView.as_view(url='http://habla.dc.uba.ar')),
 
     url(r'^audios/start/$',          'audios.views.start', name="home"),
     url(r'^audios/add_speaker/$',    'audios.views.add_speaker'), 
