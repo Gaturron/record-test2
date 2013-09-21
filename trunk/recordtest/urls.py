@@ -56,8 +56,8 @@ urlpatterns = patterns('',
     #================================================================
     #Admin
     # solo usado para setear al principio los experimentos
-    #url(r'^experiments/admin/$',                   'experiments.views.admin'),
-    #url(r'^experiments/populate/$',                'experiments.views.populateDB'),
+    url(r'^experiments/admin/$',                   'experiments.views.admin'),
+    url(r'^experiments/populate/$',                'experiments.views.populateDB'),
 
     # Words
     #url(r'^experiments/words/list/$',               'experiments.views.wordsList'),
