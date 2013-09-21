@@ -1,4 +1,3 @@
-var maxLevel = 0;
 var attempts = 0;
 var volumen = new Array();
 var status = "Setup";
@@ -45,10 +44,11 @@ function record(id_test) {
   $(view.spinners).hide();
 
   //log
+  attempts = attempts + 1;
+  volumen = new Array();
   _writeLog("Record");
 
   var me = this;
-  attempts = attempts + 1;
 
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+id_test);
   var startfn = function() { 
@@ -68,10 +68,6 @@ function record(id_test) {
             console.debug("El volumen es: "+ level);
             $(view.meters).width(level);
             volumen = volumen.concat([level]);
-
-            if (level > maxLevel) {
-              maxLevel = level;
-            }
 
             setTimeout(checkSaturation, 50);
           }
@@ -189,6 +185,8 @@ function play(id_test) {
     $(runner).runner('reset');
     
     $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+
+    $(view.spinners).hide();
   };
 
   Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
@@ -206,6 +204,8 @@ function stop(id_test) {
   //log
   _writeLog("Stop");
 
+  $(view.spinners).show();
+
   sleep1000Stop = function( part, id_test ) {
     if( part == 0 ) {
       setTimeout( function() { sleep1000Stop( 1, id_test ); }, 1000 );
@@ -214,7 +214,6 @@ function stop(id_test) {
 
       if( prevStatus === "Record"){
 
-        $(view.spinners).show();
         Wami.stopRecording();
 
       } else if (prevStatus === "Play" ) {
