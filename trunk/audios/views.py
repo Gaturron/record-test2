@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # Create your views here.
@@ -263,8 +264,39 @@ def speakersToCSV(request):
 
         writer = csv.writer(response)
 
+        writer.writerow(["id", "date", "location", "session", "sex", "birthPlace", "livePlace", "birthDate", "age"])
         for speaker in speakers:
-            writer.writerow([str(speaker.id), str(speaker.date), str(speaker.location), str(speaker.accent), str(speaker.birthDate), str(speaker.age), str(speaker.finish), str(speaker.session)])
+            writer.writerow([str(speaker.id), str(speaker.date), str(speaker.location), str(speaker.session), str(speaker.sex), str(speaker.birthPlace), str(speaker.livePlace), str(speaker.birthDate), str(speaker.age)])
+
+        return response
+
+def logSpeakerToCSV(request):
+    if request.method == 'GET':
+        logSpeakers = LogSpeaker.objects.all()
+
+        response = HttpResponse(mimetype='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="backup-logSpeakers'+str(timezone.now())+'.csv"'
+
+        writer = csv.writer(response)
+
+        writer.writerow(["id", "speakerId", "action", "wordId", "attempt", "date"])
+        for logSpeaker in logSpeakers:
+            writer.writerow([str(logSpeaker.id), str(logSpeaker.speakerId), str((logSpeaker.action).encode('ascii', 'ignore')), str(logSpeaker.wordId), str(logSpeaker.attempt), str(logSpeaker.date)])
+
+        return response
+
+def logVolumeToCSV(request):
+    if request.method == 'GET':
+        logVolumes = LogVolume.objects.all()
+
+        response = HttpResponse(mimetype='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="backup-logVolumes'+str(timezone.now())+'.csv"'
+
+        writer = csv.writer(response)
+
+        writer.writerow(["id", "audioId", "volume", "part"])
+        for logVolume in logVolumes:
+            writer.writerow([str(logVolume.id), str(logVolume.audioId), str(logVolume.volume), str(logVolume.part)])
 
         return response
 
