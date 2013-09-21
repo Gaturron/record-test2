@@ -1,8 +1,8 @@
 import subprocess
 
-s1 = "localhost:8000"
+s1 = "fabula2.exp.dc.uba.ar"
 s2 = "elgatoloco.no-ip.org"
-dir = "~/recordtest/audios/static/js/record_functions.js"
+dir = "~/record-page/audios/static/js/record_functions.js"
 
 proc1 = subprocess.Popen("grep -o "+str(s1)+" "+str(dir)+" -r  | wc -l", stdout=subprocess.PIPE, shell=True)
 (out1, err1) = proc1.communicate()

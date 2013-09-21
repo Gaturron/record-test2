@@ -48,10 +48,12 @@ USE_TZ = False
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 # Server
-MEDIA_ROOT = '/home/fer/recordtest/media/'
+# MEDIA_ROOT = '/home/fer/recordtest/media/'
 # MEDIA_ROOT = '/home/fer/Tesis/record-test2/media/'
 # Trabajo:
 # MEDIA_ROOT = '/home/fernando/Tesis/record-test2/media/'
+# Server fabula2
+MEDIA_ROOT = '/home/fbugni/record-page/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -63,10 +65,11 @@ MEDIA_URL = '/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 # Server
-STATIC_ROOT = '/home/fer/recordtest/static/'
+# STATIC_ROOT = '/home/fer/recordtest/static/'
 # STATIC_ROOT = '/home/fer/Tesis/record-test2/static/'
 # Trabajo:
 # STATIC_ROOT = '/home/fernando/Tesis/record-test2/static/'
+STATIC_ROOT = '/home/fbugni/record-page/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -80,7 +83,8 @@ STATICFILES_DIRS = (
     # '/home/fer/recordtest/audios/static/',
     # '/home/fer/Tesis/record-test2/audios/static/',
     # Trabajo:
-    '/home/fernando/Tesis/record-test2/audios/static/',
+    # '/home/fernando/Tesis/record-test2/audios/static/',
+    '/home/fbugni/record-page/audios/static/',
 )
 
 # List of finder classes that know how to find static files in
