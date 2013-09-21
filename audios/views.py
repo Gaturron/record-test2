@@ -139,41 +139,30 @@ def wami_handler2(request):
 
         return HttpResponse('Ok')
 
-@csrf_exempt
-def checkRecord(request):
 
+def end(request):
     if request.method == 'GET':
-        #check if the record finished correctly
+        t = loader.get_template('end.html')
+        return HttpResponse(t.render(Context({ })))
 
-        try:
-            filename = str(request.session['speaker-accent'])+"_u"+str(request.session['speaker-id'])+"_t"+request.GET['name_test']+"_a"+request.GET['attempts']
-            f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'r')
-            myfile = File(f)
-            data = myfile.read()
-            myfile.close()
-            f.close()
-        except IOError as e:
-            print "I/O Error({0}): {1}".format(e.errno, e.strerror)
-            return HttpResponse("I/O Error: Try again")
-        except:
-            print "Unexpected error:", sys.exc_info()[0]
-            return HttpResponse("Unexpected Error: Try again")
-
-        return HttpResponse("OK")
+#======================================================================
+# Get info
 
 def audio_url(request, id):
     if request.method == 'GET':
-        #audio = Audio.objects.get(id= request.GET['id'])
         audio = Audio.objects.get(id= id)
-        audioFile = audio.audio
-
-        filename = audioFile.name.split('/')[-1]
-        response = HttpResponse(audioFile, content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename=%s' % filename
+        filename = audio.filename
+        
+        f = open(os.path.join(settings.MEDIA_ROOT, "audios/"+filename+'.wav'), 'r')
+        myfile = File(f)
+        data = myfile.read()
+        
+        response = HttpResponse(data, content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename=%s.wav' % filename
 
         return response
 
-def list(request):
+def audioList(request):
     if request.method == 'GET':
         speakers_list = Speaker.objects.all()[:5]
         audios_list = Audio.objects.all()
@@ -184,10 +173,15 @@ def list(request):
         })
         return HttpResponse(t.render(c))
 
-def end(request):
+
+def speakerList(request):
     if request.method == 'GET':
-        t = loader.get_template('end.html')
-        return HttpResponse(t.render(Context({ })))
+        speakerList = Speaker.objects.all()[:]
+        t = loader.get_template('speakerList.html')
+        c = Context({
+            'speakerList': speakerList
+        })
+        return HttpResponse(t.render(c))
 
 #======================================================================
 # Logging
@@ -239,6 +233,7 @@ def writeLogVolume(request):
 
         return HttpResponse('Ok')        
 
+# No usado por ahora
 def logSpeakerList(request):
     if request.method == 'GET':
         logSpeakerList = LogSpeaker.objects.all()[:]
@@ -256,16 +251,6 @@ def logVolumeList(request):
             'logVolumeList': logVolumeList
         })
         return HttpResponse(t.render(c))
-
-def speakerList(request):
-    if request.method == 'GET':
-        speakerList = Speaker.objects.all()[:]
-        t = loader.get_template('speakerList.html')
-        c = Context({
-            'speakerList': speakerList
-        })
-        return HttpResponse(t.render(c))
-
 
 #======================================================================
 # Backup

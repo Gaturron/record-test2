@@ -7,21 +7,19 @@
         <tr>
             <td>Fecha</td>
             <td>Lugar</td>
-            <td>Acento</td>
-            <td>session</td>
+            <td>Lugar de nacimiento</td>
             <td>audios</td>
         </tr>
     {% for speaker in speakers_list %}
         <tr>
             <td>{{ speaker.date }}</td>
             <td>{{ speaker.location }}</td>
-            <td>{{ speaker.accent }}</td>
-            <td>{{ speaker.session }}</td>
+            <td>{{ speaker.birthPlace }}</td>
             <td>
             {% for audio in audios_list %}
                 {% if audio.speaker == speaker %}
                     <ul>
-                        <a href="{% url 'audio_url' audio.id %}">{{ audio.text }}</a>
+                        <a href="{% url 'audio_url' audio.id %}">{{ audio.filename }}</a>
                     </ul>
                 {% endif %}
             {% endfor %}
