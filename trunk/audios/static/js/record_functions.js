@@ -295,11 +295,11 @@ function _writeLog(action, volumen) {
   if (volumen === undefined) {
 
     //log común
-    $.post("/audios/writeLog/", {speakerId: speakerId, action: action, ItemId: word_id});
+    $.post("/audios/writeLog/", {speakerId: speakerId, action: action, wordId: word_id, attempt: attempts});
 
   } else {
     
     //log guardando el sensado del volumen
-    $.post("/audios/writeLogVolume/", {speakerId: speakerId, action: action, ItemId: word_id, volumen: volumen.toString()});
+    $.post("/audios/writeLogVolume/", {speakerId: speakerId, action: action, wordId: word_id, volumen: volumen.toString(), attempt: attempts});
   }
 }
