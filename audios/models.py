@@ -20,18 +20,17 @@ class Speaker(models.Model):
 class Audio(models.Model):
     speaker = models.ForeignKey(Speaker)
     word = models.ForeignKey(Word)
-    #opcion B
-    #ItemId = models.IntegerField(default=0)
     attempt = models.IntegerField(default=0)
     filename = models.TextField()
 
 class LogSpeaker(models.Model):
     speakerId = models.IntegerField()
     action = models.TextField()
-    ItemId = models.IntegerField(default=0)
+    wordId = models.IntegerField(default=0)
+    attempt = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now=True)
 
 class LogVolume(models.Model):
-    LogSpeaker = models.ForeignKey(LogSpeaker)
-    volume = models.CommaSeparatedIntegerField(max_length=800)
+    audioId = models.IntegerField(default=0)
+    volume = models.CommaSeparatedIntegerField(max_length=6500)
     part = models.IntegerField()

@@ -47,8 +47,12 @@ def add_speaker(request):
         birthPlace = request.POST['birthPlace']
         livePlace = request.POST['livePlace']
         birthDate = datetime.strptime(str(request.POST['birthDate']), "%m-%Y")
+
+        # age calculator
+        dt = now - birthDate
+        age = dt.days / 365
         
-        speaker = Speaker(date= now, location= location, session= session, sex= sex, birthPlace= birthPlace, livePlace= livePlace, birthDate=birthDate)
+        speaker = Speaker(date= now, location= location, session= session, sex= sex, birthPlace= birthPlace, livePlace= livePlace, birthDate=birthDate, age= age)
         speaker.save()
 
         return HttpResponseRedirect("/audios/record_tests1/")
@@ -189,21 +193,26 @@ def end(request):
 # Logging
 
 @csrf_exempt
-def writeLog(request):
+def writeLog(request):        
     if request.method == 'POST':
+
         speakerId = int(request.POST['speakerId'])
         action = request.POST['action']
-        ItemId = int(request.POST['ItemId'])
-        log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
+        wordId = int(request.POST['wordId'])
+        attempt = int(request.POST['attempt'])
+        log = LogSpeaker(speakerId= speakerId, action= action, wordId= wordId, attempt= attempt)
         log.save()
+
         return HttpResponse('Ok')
 
 @csrf_exempt
 def writeLogVolume(request):
     if request.method == 'POST':
+
         speakerId = int(request.POST['speakerId'])
         action = request.POST['action']
-        ItemId = int(request.POST['ItemId'])
+        wordId = int(request.POST['wordId'])
+        attempt = int(request.POST['attempt'])
         volumen = (str(request.POST['volumen'])).split(",")
 
         volumen_parts = []
@@ -211,14 +220,22 @@ def writeLogVolume(request):
             volumen_parts.append(volumen[:800])
             volumen = volumen[800:]
 
-        log = LogSpeaker(speakerId= speakerId, action= action, ItemId= ItemId)
-        log.save()
+        speaker = Speaker.objects.get(id= speakerId)
+        word = Word.objects.get(id= wordId)
+        audio = Audio.objects.get(speaker= speaker, word= word, attempt= attempt)
+        if audio:
+            audioId = audio.id
+        else:
+            audioId = 0
 
         part = 1
         for i in volumen_parts:
-            logVolume = LogVolume(LogSpeaker= log, part= part, volume= i)
+            logVolume = LogVolume(audioId= audioId, part= part, volume= i)
             logVolume.save()
             part = part + 1
+
+        log = LogSpeaker(speakerId= speakerId, action= action, wordId= wordId, attempt= attempt)
+        log.save()
 
         return HttpResponse('Ok')        
 
