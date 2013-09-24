@@ -308,8 +308,7 @@ def zipAudios(request):
         zf = zipfile.ZipFile(o, mode='w')
         
         for audio in glob.glob(settings.MEDIA_ROOT+'/audios/*.wav'):
-            i = open(str(audio), 'rb').read()
-            zf.writestr(os.path.basename(str(audio)), i)
+            zf.write(str(audio), os.path.basename(str(audio)))
         
         zf.close()
         o.seek(0)
