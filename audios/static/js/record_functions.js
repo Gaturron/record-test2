@@ -1,3 +1,7 @@
+var = "fabula2.exp.dc.uba.ar"
+//var url = "elgatoloco.no-ip.org";
+//var url = "localhost:8000"
+
 var attempts = 0;
 var volumen = new Array();
 var status = "Setup";
@@ -9,15 +13,13 @@ function setup() {
 
   $(view.dialogModal).dialog({
     modal: true,
-    height:240,
+    height:740,
     weight:100,
   });
 
   Wami.setup("wami");
 
-  $(view.runners).runner({
-    milliseconds: true
-  });
+  runner.setupAll();
 
   $(view.nextProduct).click(function(){ 
     var tabs = $(view.tabs).tabs();
@@ -41,7 +43,7 @@ function setup() {
 
 function record(id_test) {
 
-  $(view.spinners).hide();
+  spinners.hide();
 
   //log
   attempts = attempts + 1;
@@ -52,15 +54,13 @@ function record(id_test) {
 
   //Wami.startRecording("http://localh0st:8000/audios/wamihandler2/?name_test="+id_test);
   var startfn = function() { 
-    $(view.spinners).hide();
+    spinners.hide();
 
     console.debug("Grabando"); 
 
-    sleep1000Rec = function( part, id_test ) {
-      if (part == 0) {
-          setTimeout( function() { sleep1000Rec( 1, id_test ); }, 1000 );
-      } else if( part == 1 ) {
-        $(view.status).html('Estado: Grabando');
+    sleepAndExecute(0, function() {
+
+      $(view.status).html('Estado: Grabando');
 
         checkSaturation = function() {
           if (Wami !== undefined) {
@@ -75,25 +75,13 @@ function record(id_test) {
         
         checkSaturation();
 
-        $(view.record).each( function() { $(this).hide() });
-        $(view.stop).each( function() { $(this).show() });
-        $(view.stop).each( function() { $(this).prop("disabled", false) });
-        $(view.play).each( function() { $(this).show() });
-        $(view.play).each( function() { $(this).prop("disabled", true) });
-
-        $('.runner[word-id="'+id_test+'"]').runner({
-          milliseconds: true
-        });    
-        $('.runner[word-id="'+id_test+'"]').runner("start");
-      }
-    }
-    
-    sleep1000Rec(0, id_test);
+        buttons.showStopDisablePlay();
+        runner.start(id_test);
+    })
   };
   
   var finishedfn = function() { 
-    console.debug("Fin grabacion"); 
-    console.debug("El volumen fue: "+volumen);
+    console.debug("Fin grabacion: el volumen fue: "+volumen);
 
     var res = checkFilters(volumen);
     console.debug('checkFilters: '+res);
@@ -105,24 +93,16 @@ function record(id_test) {
     checkSaturation = null;
     $(view.saturation).html("Nivel del micrófono:");
 
-    $(view.stop).each( function() { $(this).hide() });
-    $(view.record).each( function() { $(this).show() });
-    $(view.record).each( function() { $(this).prop("disabled", false) });
-    $(view.play).each( function() { $(this).show() });
-    $(view.play).each( function() { $(this).prop("disabled", false) });
+    buttons.showRecordShowPlay();
 
-    $(view.record).show();
+    runner.stop(id_test);
 
-    var runner = '.runner[word-id="'+id_test+'"]';
-    $(runner).runner('stop');
-    $(runner).runner('reset');
-    
     $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
-    $(view.spinners).hide();
+    spinners.hide();
   };
 
-  Wami.startRecording("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startRecording("http://"+url+"/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn),
     Wami.nameCallback(finishedfn)
   );
@@ -130,7 +110,7 @@ function record(id_test) {
 
 function play(id_test) {
 
-  $(view.spinners).show();
+  spinners.show();
 
   //log
   _writeLog("Play");
@@ -139,26 +119,17 @@ function play(id_test) {
 
   var startfn = function() { 
 
-    $(view.spinners).hide();
+    spinners.hide();
 
     console.debug("Reproduciendo"); 
 
     $(view.status).html('Estado: Reproduciendo');
 
-    $(view.play).each( function() { $(this).hide() });
-    $(view.stop).each( function() { $(this).show() });
-    $(view.stop).each( function() { $(this).prop("disabled", false) });
-    $(view.record).each( function() { $(this).show()});
-    $(view.record).each( function() { $(this).prop("disabled", true) });
+    buttons.showStopDisableRecord();
+    
     $(view.nextProduct).each( function() { $(this).prop("disabled", true) });
 
-    var runner = '.runner[word-id="'+id_test+'"]';
-    $(runner).runner("reset");
-    $(runner).runner({
-      milliseconds: true
-    });
-    $(runner).runner("start");
-
+    runner.start(id_test);
   };
 
   var me = this;
@@ -172,24 +143,14 @@ function play(id_test) {
     $(view.saturation).html("Nivel del micrófono:");
     $(view.status).html('Estado: Parado');
 
-    $(view.stop).each( function() { $(this).hide() });
-    $(view.record).each( function() { $(this).show() });
-    $(view.record).each( function() { $(this).prop("disabled", false) });
-    $(view.play).each( function() { $(this).show() });
-    $(view.play).each( function() { $(this).prop("disabled", false) });
-
-    $(view.record).show();
-
-    var runner = '.runner[word-id="'+id_test+'"]';
-    $(runner).runner('stop');
-    $(runner).runner('reset');
+    buttons.showRecordShowPlay();
     
     $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
-    $(view.spinners).hide();
+    spinners.hide();
   };
 
-  Wami.startPlaying("http://elgatoloco.no-ip.org/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
+  Wami.startPlaying("http://"+url+"/audios/wamihandler2/?name_test="+id_test+"&attempts="+attempts,
     Wami.nameCallback(startfn), 
     Wami.nameCallback(finishedfn)
   );
@@ -198,33 +159,25 @@ function play(id_test) {
 function stop(id_test) {
 
   console.debug("Apretamos stop");
+  
+  buttons.disableAll();
+  runner.stop(id_test);
+  spinners.show();
 
   var prevStatus = status;
 
   //log
   _writeLog("Stop");
 
-  $(view.spinners).show();
+  if( prevStatus === "Record"){
 
-  sleep1000Stop = function( part, id_test ) {
-    if( part == 0 ) {
-      setTimeout( function() { sleep1000Stop( 1, id_test ); }, 1000 );
+    Wami.stopRecording();
+    $(view.status).html("Estado: Enviando grabación al servidor");
 
-    } else if( part == 1 ) {
-
-      if( prevStatus === "Record"){
-
-        Wami.stopRecording();
-
-      } else if (prevStatus === "Play" ) {
-        
-        Wami.stopPlaying();
-      
-      }
-    }
+  } else if (prevStatus === "Play" ) {
+    
+    Wami.stopPlaying();  
   }
-  
-  sleep1000Stop(0, id_test);
 }
 
 function next_product() {
@@ -302,3 +255,79 @@ function _writeLog(action, volumen) {
     $.post("/audios/writeLogVolume/", {speakerId: speakerId, action: action, wordId: word_id, volumen: volumen.toString(), attempt: attempts});
   }
 }
+
+//Buttons
+var buttons = {
+
+  showStopDisablePlay: function() {
+    $(view.record).each( function() { $(this).hide() });
+    $(view.record).each( function() { $(this).prop("disabled", false) });
+    $(view.stop).each( function() { $(this).show() });
+    $(view.stop).each( function() { $(this).prop("disabled", false) });
+    $(view.play).each( function() { $(this).show() });
+    $(view.play).each( function() { $(this).prop("disabled", true) });
+  },
+  showRecordShowPlay: function() {
+    $(view.record).each( function() { $(this).show() });
+    $(view.record).each( function() { $(this).prop("disabled", false) });
+    $(view.stop).each( function() { $(this).hide() });
+    $(view.stop).each( function() { $(this).prop("disabled", false) });
+    $(view.play).each( function() { $(this).show() });
+    $(view.play).each( function() { $(this).prop("disabled", false) });  
+  },
+  showStopDisableRecord: function() {
+    $(view.record).each( function() { $(this).show()});
+    $(view.record).each( function() { $(this).prop("disabled", true) });
+    $(view.stop).each( function() { $(this).show() });
+    $(view.stop).each( function() { $(this).prop("disabled", false) });
+    $(view.play).each( function() { $(this).hide() });
+    $(view.play).each( function() { $(this).prop("disabled", false) });      
+  },
+  disableAll: function() {
+    $(view.record).each( function() { $(this).prop("disabled", true) });
+    $(view.stop).each( function() { $(this).prop("disabled", true) });
+    $(view.play).each( function() { $(this).prop("disabled", true) });
+  }
+}
+
+//Runners
+var runner = {
+  setupAll: function() {
+      $(view.runners).runner({
+        milliseconds: true
+      });    
+  },
+  start: function(id_test) {
+    var runner = '.runner[word-id="'+id_test+'"]';
+    $(runner).runner('reset');
+    $(runner).runner({
+      milliseconds: true
+    });    
+    $(runner).runner("start");
+  },
+  stop: function(id_test) {
+    var runner = '.runner[word-id="'+id_test+'"]';
+    $(runner).runner('stop');
+    $(runner).runner('reset');
+  }
+}
+
+//Sleep 1000 ms (1 second) and execute
+var sleepAndExecute = function(part, funct) {
+  if (part == 0) {
+    setTimeout( function() { sleepAndExecute(1, funct); }, 1000 );
+  } else if( part == 1 ) {
+    funct();
+  }
+}
+
+//Spinners
+var spinners = {
+  hide: function() {
+    $(".spinner").css('visibility', 'hidden');
+  },
+  show: function() {
+    $(".spinner").css('visibility', 'visible');
+  }
+}
+
