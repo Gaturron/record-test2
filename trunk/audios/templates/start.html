@@ -110,10 +110,10 @@
 <script type="text/javascript">
   
   function setup() {
-    var loc = geo.getLocation();
-    if (loc !== undefined) {
-      $("input#location").val(loc.city+" ("+loc.country+")");
-    } else {
+    try {
+      var loc = geo.getLocation();
+      $("input#location").val(loc.city+" ("+loc.country+")");  
+    } catch(err){
       $("input#location").val("BS AS HARDCODEADO");
     }
     
