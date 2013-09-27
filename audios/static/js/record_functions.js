@@ -77,7 +77,7 @@ function record(id_test) {
 
         buttons.showStopDisablePlay();
         runner.start(id_test);
-    })
+    });
   };
   
   var finishedfn = function() { 
@@ -158,26 +158,29 @@ function play(id_test) {
 
 function stop(id_test) {
 
-  console.debug("Apretamos stop");
-  
-  buttons.disableAll();
-  runner.stop(id_test);
-  spinners.show();
+  sleepAndExecute(0, function() {
 
-  var prevStatus = status;
-
-  //log
-  _writeLog("Stop");
-
-  if( prevStatus === "Record"){
-
-    Wami.stopRecording();
-    $(view.status).html("Estado: Enviando grabación al servidor");
-
-  } else if (prevStatus === "Play" ) {
+    console.debug("Apretamos stop");
     
-    Wami.stopPlaying();  
-  }
+    buttons.disableAll();
+    runner.stop(id_test);
+    spinners.show();
+
+    var prevStatus = status;
+
+    //log
+    _writeLog("Stop");
+
+    if( prevStatus === "Record"){
+
+      Wami.stopRecording();
+      $(view.status).html("Estado: Enviando grabación al servidor");
+
+    } else if (prevStatus === "Play" ) {
+      
+      Wami.stopPlaying();  
+    }
+  });
 }
 
 function next_product() {

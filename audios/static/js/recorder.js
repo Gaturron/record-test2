@@ -86,8 +86,9 @@ Wami.setup = function(options) {
 				console.debug("Se cierra el permiso al microfono");
 				$('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable').css('visibility', '');
 				Wami.hide();
+				$('#wami').css('margin', '0');
 				$('#mic-warning').hide();
-				$( "#dialog-modal" ).dialog("close");
+				$('#dialog-modal').dialog("close");
 			},
 			onSecurity : checkSecurity,
 			onError : function(error) {
