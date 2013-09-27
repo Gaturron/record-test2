@@ -33,24 +33,36 @@ body{
     background-image: linear-gradient(135deg, rgba(0, 0, 0, .04) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .04) 50%, rgba(0, 0, 0, .04) 75%, transparent 75%, transparent);
 }
 
-#flash-permission {
-    display: inline-block;
+#wrap {
     margin: 0 auto;
-    width: 50%;
-    height: 100px;
-    background-image: url('/static/css/img/flash-permission.jpg');
+    display: table;
+    overflow: hidden;
+}
+
+#flash-permission {
+    padding: 10px;
+    margin: 12px;
+    float: left;
+    background-image: url('/static/css/img/flash-permission1.png');
     background-size: cover;
     background-repeat: no-repeat;
+    height: 58px;
+    width: 100px;
+    border-style: solid;
+    border-color: #AE9E81;
 }
 
 #chrome-permission {
-    display: inline-block;
-    margin: 0 auto;
-    width: 50%;
-    height: 100px;
+    padding: 10px;
+    margin: 12px;
+    float: left;
     background-image: url('/static/css/img/chrome-permission.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    height: 50px;
+    width: 335px;
+    border-style: solid;
+    border-color: #AE9E81;
 }
 
 li {
@@ -105,9 +117,9 @@ label.error {
 }
 
 #wami {
-    width: 20%;
-    /*margin: 20px 30px auto;*/
-    margin: auto;
+    width: 5%;
+    margin: 10% 40% auto;
+    /*margin: auto;*/
     background-color: #FF0000;
 }
 
