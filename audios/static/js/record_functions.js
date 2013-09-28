@@ -143,6 +143,8 @@ function play(id_test) {
     $(view.status).html('Estado: Parado');
 
     buttons.showRecordShowPlay();
+
+    runner.stop(id_test);
     
     $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
