@@ -179,7 +179,21 @@ function stop(id_test) {
 
     } else if (prevStatus === "Play" ) {
       
-      Wami.stopPlaying();  
+      Wami.stopPlaying();
+
+      console.debug("Fin Reproduccion"); 
+
+      checkSaturation = null;
+      $(view.saturation).html("Nivel del micrófono:");
+      $(view.status).html('Estado: Parado');
+
+      buttons.showRecordShowPlay();
+
+      runner.stop(id_test);
+      
+      $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+
+      spinners.hide();
     }
   });
 }
