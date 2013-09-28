@@ -1,4 +1,4 @@
-var = "fabula2.exp.dc.uba.ar"
+var url = "fabula2.exp.dc.uba.ar"
 //var url = "elgatoloco.no-ip.org";
 //var url = "localhost:8000"
 
