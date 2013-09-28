@@ -137,7 +137,6 @@ function play(id_test) {
   var finishedfn = function() { 
 
     console.debug("Fin Reproduccion"); 
-    me.stop(id_test);
 
     checkSaturation = null;
     $(view.saturation).html("Nivel del micrófono:");
