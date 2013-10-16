@@ -149,6 +149,16 @@ def end(request):
 #======================================================================
 # Get info
 
+def audio_editor(request, id):
+    if request.method == 'GET':
+        audio = Audio.objects.get(id= id)
+        t = loader.get_template('audio_editor.html')
+        c = Context({
+            'audio': audio,
+            'labels': audio.labels.all()
+        })
+        return HttpResponse(t.render(c))
+
 def audio_url(request, id):
     if request.method == 'GET':
         audio = Audio.objects.get(id= id)
