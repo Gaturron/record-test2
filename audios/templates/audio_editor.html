@@ -1,0 +1,11 @@
+<a href="{% url 'home' %}">Home</a>
+
+<h2>Audio {{ audio.id }}</h2>
+
+<p><b>Id: </b>		{{ audio.id }}</p>
+<p><b>Speaker: </b> {{ audio.speaker.id }}</p>
+<p><b>Word: </b>	{{ audio.word.text }}</p>
+<p><b>Attempt: </b> {{ audio.attempt }}</p>
+<p><b>Filename:</b> {{ audio.filename }}</p>
+<p><b>Date:</b>		{{ audio.date }}</p>
+<p><b>Labels:</b>	{{ labels }}</p>

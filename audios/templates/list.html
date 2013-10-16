@@ -5,6 +5,7 @@
 {% if speakers_list %}
     <table border="1">
         <tr>
+            <td>Id</td>
             <td>Fecha</td>
             <td>Lugar</td>
             <td>Lugar de nacimiento</td>
@@ -12,6 +13,7 @@
         </tr>
     {% for speaker in speakers_list %}
         <tr>
+            <td>{{ speaker.id }}</td>
             <td>{{ speaker.date }}</td>
             <td>{{ speaker.location }}</td>
             <td>{{ speaker.birthPlace }}</td>
