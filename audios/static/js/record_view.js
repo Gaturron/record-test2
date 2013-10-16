@@ -1,6 +1,7 @@
 var view = {
     'tabs': '#tabs',
     'dialogModal': '#dialog-modal',
+    'dialogInstructions': '#dialog-instructions',
     'runners': '.runner',
     'nextProduct': '#next-product',
     'prevProduct': '#previous-product',

@@ -16,12 +16,17 @@ class Speaker(models.Model):
 
     #que se pueden calcular
     age = models.IntegerField(default=0)
+
+class audioLabel(models.Model):
+    name = models.TextField()
+    description = models.TextField(default="")
     
 class Audio(models.Model):
     speaker = models.ForeignKey(Speaker)
     word = models.ForeignKey(Word)
     attempt = models.IntegerField(default=0)
     filename = models.TextField()
+    labels = models.ManyToManyField(audioLabel)
 
 class LogSpeaker(models.Model):
     speakerId = models.IntegerField()

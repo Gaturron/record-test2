@@ -89,6 +89,18 @@ Wami.setup = function(options) {
 				$('#wami').css('margin', '0');
 				$('#mic-warning').hide();
 				$('#dialog-modal').dialog("close");
+				$('#dialog-instructions').dialog({
+				    modal: true,
+				    height:460,
+				    weight:500,
+				    resizable: false,
+				    draggable: false,
+				    dialogClass: 'noTitleStuff',
+			  	});
+			  	$(".ui-dialog-titlebar").hide();
+			  	$('#dialog-instructions-button').click(function() {
+			  		$('#dialog-instructions').dialog("close");;
+			  	});
 			},
 			onSecurity : checkSecurity,
 			onError : function(error) {

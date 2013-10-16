@@ -243,6 +243,7 @@ function next_product() {
           }
         }
       });
+      $(".ui-dialog-titlebar").hide();
       $(view.dialogConfirm).show();
     }
   }

@@ -1,0 +1,34 @@
+[
+    {
+        "model": "audios.audioLabel",
+        "pk": 1, 
+        "fields": {
+            "name": "Conservar"
+        }
+    },
+
+    {
+        "model": "audios.audioLabel",
+        "pk": 2,
+        "fields": {
+            "name": "Sonido saturado"
+        }
+    },
+
+    {
+        "model": "audios.audioLabel",
+        "pk": 3,
+        "fields": {
+            "name": "Mucho ruido de fondo"
+        }
+    },
+
+    {
+        "model": "audios.audioLabel",
+        "pk": 4,
+        "fields": {
+            "name": "Problema en el habla", 
+            "description": "(leída, mal dicha, etc.)"
+        }
+    }
+]
