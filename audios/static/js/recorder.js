@@ -92,7 +92,8 @@ Wami.setup = function(options) {
 				$('#dialog-instructions').dialog({
 				    modal: true,
 				    height:460,
-				    weight:500,
+				    weight: 400,
+				    width: 800,
 				    resizable: false,
 				    draggable: false,
 				    dialogClass: 'noTitleStuff',

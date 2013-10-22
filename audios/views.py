@@ -17,7 +17,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
-from audios.models import Speaker, Audio, LogSpeaker, LogVolume
+from audios.models import Speaker, Audio, LogSpeaker, LogVolume, audioLabel
 from experiments.models import Word, Phrase, Picture, trace
 
 def _generate_random_string(length, stringset=string.ascii_letters):
@@ -149,15 +149,29 @@ def end(request):
 #======================================================================
 # Get info
 
+@csrf_exempt
 def audio_editor(request, id):
     if request.method == 'GET':
         audio = Audio.objects.get(id= id)
         t = loader.get_template('audio_editor.html')
         c = Context({
             'audio': audio,
-            'labels': audio.labels.all()
+            'audio_labels': audio.labels.all(),
+            'labels': audioLabel.objects.all()
         })
         return HttpResponse(t.render(c))
+
+    if request.method == 'POST':
+        audio = Audio.objects.get(id= id)
+        id_labels = request.POST.getlist('label')
+        audio.labels.clear()
+
+        for id_label in id_labels:
+            label = audioLabel.objects.get(id= id_label)
+            audio.labels.add(label)
+        audio.save()
+
+        return HttpResponseRedirect("/admin/audioList/")
 
 def audio_url(request, id):
     if request.method == 'GET':
@@ -175,8 +189,8 @@ def audio_url(request, id):
 
 def audioList(request):
     if request.method == 'GET':
-        speakers_list = Speaker.objects.all()[:5]
-        audios_list = Audio.objects.all()
+        speakers_list = Speaker.objects.all()
+        audios_list = Audio.objects.order_by('filename')
         t = loader.get_template('list.html')
         c = Context({
             'speakers_list': speakers_list,

@@ -1,11 +1,41 @@
-<a href="{% url 'home' %}">Home</a>
+{% load url from future %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<body>
 
 <h2>Audio {{ audio.id }}</h2>
 
-<p><b>Id: </b>		{{ audio.id }}</p>
+<p><b>Id: </b>      {{ audio.id }}</p>
 <p><b>Speaker: </b> {{ audio.speaker.id }}</p>
-<p><b>Word: </b>	{{ audio.word.text }}</p>
+<p><b>Word: </b>    {{ audio.word.text }}</p>
 <p><b>Attempt: </b> {{ audio.attempt }}</p>
-<p><b>Filename:</b> {{ audio.filename }}</p>
-<p><b>Date:</b>		{{ audio.date }}</p>
-<p><b>Labels:</b>	{{ labels }}</p>
+<p><b>Filename:</b>                         
+    <a href="{% url 'audio_url' audio.id %}">{{ audio.filename }}</a>
+</p>
+<p><b>Labels:</b>  
+
+    <form action="/admin/audio_editor/{{ audio.id }}/" method="post">
+        <input type="hidden" name="id" value="{{ audio.id }}">
+
+        {% for label in labels %}
+        
+            {% if label in audio_labels %}
+                <input type="checkbox" name="label" value="{{ label.id }}" checked> 
+                    {{ label.name }}
+                <br>
+            {% elif not label in audio_labels %}
+                <input type="checkbox" name="label" value="{{ label.id }}"> 
+                    {{ label.name }}
+                <br>                
+            {% endif %}
+        {% endfor %}
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+</p>
+
+</body>
+</html>
