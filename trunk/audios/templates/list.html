@@ -15,13 +15,19 @@
         <tr>
             <td>{{ speaker.id }}</td>
             <td>{{ speaker.date }}</td>
-            <td>{{ speaker.location }}</td>
+            <td>{{ speaker.livePlace }}</td>
             <td>{{ speaker.birthPlace }}</td>
             <td>
             {% for audio in audios_list %}
                 {% if audio.speaker == speaker %}
                     <ul>
-                        <a href="{% url 'audio_url' audio.id %}">{{ audio.filename }}</a>
+                        <a href="{% url 'audio_editor' audio.id %}">{{ audio.filename }}</a>
+
+                        <b><i> < lbl: 
+                        {% for label in audio.labels.all  %}
+                            {{ label.name }}, 
+                        {% endfor %} >
+                        </i></b>
                     </ul>
                 {% endif %}
             {% endfor %}

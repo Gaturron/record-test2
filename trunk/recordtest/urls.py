@@ -41,10 +41,10 @@ urlpatterns = patterns('',
     #================================================================
     # Get info
 
-    url(r'^audios/speakerList/$',            'audios.views.speakerList'),
-    url(r'^audios/audioList/$',              'audios.views.audioList'),
-    url(r'^audios/audio_url/(?P<id>\d+)/$',  'audios.views.audio_url', name="audio_url"), 
-    url(r'^audios/audio_editor/(?P<id>\d+)/$',  'audios.views.audio_editor', name="audio_editor"), 
+    url(r'^admin/speakerList/$',            'audios.views.speakerList'),
+    url(r'^admin/audioList/$',              'audios.views.audioList'),
+    url(r'^admin/audio_url/(?P<id>\d+)/$',  'audios.views.audio_url', name="audio_url"), 
+    url(r'^admin/audio_editor/(?P<id>\d+)/$',  'audios.views.audio_editor', name="audio_editor"), 
 
     #================================================================
     # Backup
