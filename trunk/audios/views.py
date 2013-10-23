@@ -294,6 +294,21 @@ def speakersToCSV(request):
 
         return response
 
+def audiosToCSV(request):
+    if request.method == 'GET':
+        audios = Audio.objects.all()
+
+        response = HttpResponse(mimetype='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="backup-audios'+str(timezone.now())+'.csv"'
+
+        writer = csv.writer(response)
+
+        writer.writerow(["id", "speaker", "word", "attempt", "filename", "labels"])
+        for audio in audios:
+            writer.writerow([str(audio.id), str(audio.speaker.id), str(audio.word.id), str(audio.attempt), str(audio.filename), str(map(lambda l: l.name, audio.labels.all()))])
+
+        return response
+
 def logSpeakerToCSV(request):
     if request.method == 'GET':
         logSpeakers = LogSpeaker.objects.all()

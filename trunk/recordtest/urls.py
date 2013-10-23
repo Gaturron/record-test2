@@ -50,6 +50,7 @@ urlpatterns = patterns('',
     # Backup
     
     url(r'^backup/speakers/$',      'audios.views.speakersToCSV'),
+    url(r'^backup/audios/$',        'audios.views.audiosToCSV'),
     url(r'^backup/logSpeakers/$',   'audios.views.logSpeakerToCSV'),
     url(r'^backup/logVolume/$',     'audios.views.logVolumeToCSV'),
     url(r'^backup/zip_audios/$',           'audios.views.zipAudios'),    
