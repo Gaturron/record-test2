@@ -79,6 +79,10 @@ urlpatterns = patterns('',
     #url(r'^experiments/pictures/delete/(?P<id>\d+)/$', 'experiments.views.deletePicture', name="deletePicture"), 
     #url(r'^experiments/pictures/enable/(?P<id>\d+)/$', 'experiments.views.enablePicture', name="enablePicture"), 
     #url(r'^experiments/arrayIdPics/$',                 'experiments.views.arrayIdPics')
+
+    #================================================================
+    url(r'^backup/auto/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': '/home/fer/recordtest-backup', 'show_indexes': True}),
 )
 
 handler404 = views.error404
