@@ -48,7 +48,7 @@ USE_TZ = False
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 # Server casa
-MEDIA_ROOT = '/home/fer/recordtest/media/'
+# MEDIA_ROOT = '/home/fer/recordtest/media/'
 # MEDIA_ROOT = '/home/fer/Tesis/record-test2/media/'
 # Trabajo:
 # MEDIA_ROOT = '/home/fernando/Tesis/record-test2/media/'
