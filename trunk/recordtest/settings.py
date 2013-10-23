@@ -47,8 +47,8 @@ USE_TZ = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-# Server
-# MEDIA_ROOT = '/home/fer/recordtest/media/'
+# Server casa
+MEDIA_ROOT = '/home/fer/recordtest/media/'
 # MEDIA_ROOT = '/home/fer/Tesis/record-test2/media/'
 # Trabajo:
 # MEDIA_ROOT = '/home/fernando/Tesis/record-test2/media/'
@@ -64,11 +64,12 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-# Server
+# Server casa
 # STATIC_ROOT = '/home/fer/recordtest/static/'
 # STATIC_ROOT = '/home/fer/Tesis/record-test2/static/'
 # Trabajo:
 # STATIC_ROOT = '/home/fernando/Tesis/record-test2/static/'
+# Server fabula2
 STATIC_ROOT = '/home/fbugni/record-page/static/'
 
 # URL prefix for static files.
@@ -84,6 +85,7 @@ STATICFILES_DIRS = (
     # '/home/fer/Tesis/record-test2/audios/static/',
     # Trabajo:
     # '/home/fernando/Tesis/record-test2/audios/static/',
+    # Server fabula2
     '/home/fbugni/record-page/audios/static/',
 )
 
@@ -140,7 +142,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'audios',
-    'experiments'
+    'experiments',
+    'south'
 )
 
 # A sample logging configuration. The only tangible logging
