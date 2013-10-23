@@ -10,8 +10,16 @@
 <p><b>Speaker: </b> {{ audio.speaker.id }}</p>
 <p><b>Word: </b>    {{ audio.word.text }}</p>
 <p><b>Attempt: </b> {{ audio.attempt }}</p>
-<p><b>Filename:</b>                         
-    <a href="{% url 'audio_url' audio.id %}">{{ audio.filename }}</a>
+<p><b>Filename:</b> 
+
+    <br>
+    <audio controls autoplay>
+        <source src="{% url 'audio_url' audio.id %}" type="audio/wav">
+        Tu navegador no soporta elementos de audio.
+    </audio>
+
+    <br>
+    download: <a href="{% url 'audio_url' audio.id %}">{{ audio.filename }}</a>
 </p>
 <p><b>Labels:</b>  
 
