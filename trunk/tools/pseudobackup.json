@@ -1,0 +1,420 @@
+[
+ {
+    "pk":1,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-03 02:18:20.402701",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-03 02:18:20.402816",
+        "sex":"man",
+        "age":"0",
+        "session":"KGCOkmzUqcncPFULSkPz"
+    }
+  },
+  {
+    "pk":2,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-03 02:30:26.676392",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-03 02:30:26.676508",
+        "sex":"man",
+        "age":"0",
+        "session":"iubVwzKxRBXiHhJxxtQL"
+    }
+  },
+  {
+    "pk":3,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-03 23:50:29.479451",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-03 23:50:29.479492",
+        "sex":"man",
+        "age":"0",
+        "session":"KGCOkmzUqcncPFULSkPz"
+    }
+  },
+  {
+    "pk":4,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-04 00:16:19.324905",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-04 00:16:19.324953",
+        "sex":"man",
+        "age":"0",
+        "session":"xulExdmwSKPObWKGduRk"
+    }
+  },
+  {
+    "pk":5,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-04 00:18:28.403242",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-04 00:18:28.403359",
+        "sex":"man",
+        "age":"0",
+        "session":"GbGuKzhyGURpquhNyxUf"
+    }
+  },
+  {
+    "pk":6,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-04 00:39:36.848563",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-04 00:39:36.848605",
+        "sex":"man",
+        "age":"0",
+        "session":"TEOLsBHMqLZCEvEtvcWI"
+    }
+  },
+  {
+    "pk":7,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-04 01:37:50.077826",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-04 01:37:50.077939",
+        "sex":"man",
+        "age":"0",
+        "session":"YLrtahWpSzaiuqtSnxAp"
+    }
+  },
+  {
+    "pk":8,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-04 15:42:56.730106",
+        "location":"Grand Bourg (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-04 15:42:56.730158",
+        "sex":"man",
+        "age":"0",
+        "session":"jsihBwdKHGhMfKVzKeMU"
+    }
+  },
+  {
+    "pk":9,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:05:56.562332",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:05:56.562446",
+        "sex":"man",
+        "age":"0",
+        "session":"KbcixfvGVEREFMXLXCqo"
+    }
+  },
+  {
+    "pk":10,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:09:56.377267",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"cba",
+        "livePlace":"cba",
+        "birthDate":"2013-01-06 00:09:56.377384",
+        "sex":"man",
+        "age":"0",
+        "session":"mxsImXcsnzeifhUkahEt"
+    }
+  },
+  {
+    "pk":11,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:12:54.674383",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:12:54.674498",
+        "sex":"man",
+        "age":"0",
+        "session":"SbPkdPgtRIOLcJKneUSm"
+    }
+  },
+  {
+    "pk":12,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:19:06.050960",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:19:06.051073",
+        "sex":"man",
+        "age":"0",
+        "session":"EfyHUUfnIPMjqxHiTEhY"
+    }
+  },
+  {
+    "pk":13,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:23:12.061557",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:23:12.061670",
+        "sex":"man",
+        "age":"0",
+        "session":"IwNmKPrxgADbRVbJaNuV"
+    }
+  },
+  {
+    "pk":14,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:23:38.212125",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:23:38.212240",
+        "sex":"man",
+        "age":"0",
+        "session":"UlHQGuhtKJfUouryLwDI"
+    }
+  },
+  {
+    "pk":15,
+    "model":"audios.speaker",
+    "field": {
+        "date":"2013-01-06 00:32:03.779895",
+        "location":"Buenos Aires (Argentina)",
+        "birthPlace":"bsas",
+        "livePlace":"bsas",
+        "birthDate":"2013-01-06 00:32:03.780030",
+        "sex":"man",
+        "age":"0",
+        "session":"ZFRDNWJICPSaFpMODozB"
+    }
+  },
+
+
+    {
+        "pk":1,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":1,
+            "action":"Start",
+            "wordId":23,
+            "attempt":0,
+            "date":"2013-09-21 18:56:01.130051"
+        }
+    },
+    {
+        "pk":2,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":1,
+            "action":"Record",
+            "wordId":23,
+            "attempt":1,
+            "date":"2013-09-21 18:56:14.764791"
+        }
+    },
+    {
+        "pk":3,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":1,
+            "action":"Stop",
+            "wordId":23,
+            "attempt":1,
+            "date":"2013-09-21 18:56:19.633398"
+        }
+    },
+    {
+        "pk":4,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":1,
+            "action":"Record status: Grabacin exitosa",
+            "wordId":23,
+            "attempt":1,
+            "date":"2013-09-21 18:56:21.156833"
+        }
+    },
+    {
+        "pk":5,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":2,
+            "action":"Start",
+            "wordId":32,
+            "attempt":0,
+            "date":"2013-09-21 18:59:54.887121"
+        }
+    },
+    {
+        "pk":6,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":2,
+            "action":"Record",
+            "wordId":32,
+            "attempt":1,
+            "date":"2013-09-21 19:00:03.226550"
+        }
+    },
+    {
+        "pk":7,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":2,
+            "action":"Stop",
+            "wordId":32,
+            "attempt":1,
+            "date":"2013-09-21 19:00:07.978251"
+        }
+    },
+    {
+        "pk":8,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":2,
+            "action":"Record status: Grabacin exitosa",
+            "wordId":32,
+            "attempt":1,
+            "date":"2013-09-21 19:00:09.428538"
+        }
+    },
+    {
+        "pk":9,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Start",
+            "wordId":33,
+            "attempt":0,
+            "date":"2013-09-21 19:02:37.653269"
+        }
+    },
+    {
+        "pk":10,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Record",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:02:50.261996"
+        }
+    },
+    {
+        "pk":11,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Stop",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:02:51.876846"
+        }
+    },
+    {
+        "pk":12,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Record volume saved",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:03:05.114902"
+        }
+    },
+    {
+        "pk":13,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Record status: Grabacin exitosa",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:03:05.176852"
+        }
+    },
+    {
+        "pk":14,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Play",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:03:08.383912"
+        }
+    },
+    {
+        "pk":15,
+        "model":"audios.logspeaker",
+        "fields": {
+            "speakerId":3,
+            "action":"Stop",
+            "wordId":33,
+            "attempt":1,
+            "date":"2013-09-21 19:03:22.829993"
+        }
+    }, 
+
+    {
+        "pk":1,
+        "model":"audios.logvolume",
+        "fields": {
+            "audioId":1,
+            "volume":"['1', '1', '0', '1', '1', '0', '1', '1', '0', '0', '1', '2', '1', '0', '0', '0', '1', '1', '0', '1', '1', '0', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', '3', '1', '1', '2', '1', '1', '2', '1', '1', '3', '1', '1', '1', '1', '1', '5', '4', '1', '2', '2', '2', '1', '2', '1', '7', '4', '2', '5', '4', '3', '3', '2', '2', '5', '2', '4', '1', '3', '3', '1', '3', '3', '3', '2', '3', '3', '2', '2', '2', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2', '1', '3', '2', '2', '3', '2', '3', '3', '2', '2', '2', '1', '1', '1', '1', '1', '2', '1', '1', '2', '2', '2', '3', '3', '2', '1', '2', '3', '3', '3', '2', '1', '6', '6', '6', '5', '4', '5', '4', '4', '2', '2', '1', '2', '4', '3', '1', '3', '3', '6', '3', '2', '5', '5', '4', '4', '4', '3', '2', '2', '2', '2', '1', '2', '2', '3', '2', '2', '3', '3', '2', '2', '1', '3', '4', '3', '2', '3', '4', '3', '5', '5', '5', '5', '5', '1', '3', '5', '4', '4', '4', '2', '4', '3', '4', '1', '1', '5', '6', '4', '1', '1', '2', '2', '3', '3', '4', '3', '4', '3', '5', '4', '4', '1', '1', '3', '3', '4', '3', '3', '2', '1', '3', '2', '3', '2', '2', '2', '2', '2', '4', '2', '2', '2', '2', '4', '5', '5', '3', '3', '3', '1', '2', '4', '3', '3', '3', '3', '3', '3', '3', '2', '2', '1', '1', '2', '2', '2', '1', '1', '2', '1', '1', '2', '3', '3', '3', '3', '3', '3', '3', '4', '3', '4', '3', '6', '10', '7', '4', '3', '1', '15', '10', '3', '3', '2', '20', '15', '15', '11', '10', '11', '16', '12', '11', '11', '15', '17', '7', '2', '2', '4', '7', '10', '4', '2', '4', '7', '21', '23', '34', '24', '21', '15', '2', '2', '2', '5', '12', '24', '28', '16', '15', '15', '13', '9', '7', '7', '3', '1', '2', '2', '3', '4', '8', '8', '10', '10', '9', '10', '12', '11', '13', '11', '15', '14', '13', '15', '11', '7', '5', '2', '2', '5', '11', '12', '9', '9', '6', '7', '9', '7', '7', '8', '6', '8', '6', '4', '5', '4', '4', '5', '3', '5', '3', '3', '3', '2', '3', '4', '4', '3', '4', '4', '3', '2', '3', '3', '2', '5', '4', '3', '2', '1', '4', '2', '2', '2', '1', '1', '2', '2', '3', '1', '3', '3', '2', '3', '1', '2', '2', '1', '1', '2', '6', '4', '3', '2', '1', '1', '3', '2', '2', '2', '3', '2', '2', '3', '3', '3', '4', '4', '2', '1', '1', '2', '3', '4', '4', '3', '6', '6', '7', '3', '2', '3', '8', '9', '6', '5', '6', '8', '7', '3', '2', '6', '15', '12', '8', '8', '7', '11', '9', '4', '6', '5', '6', '7', '3', '3', '3', '9', '7', '7', '8', '10', '12', '13', '8', '7', '3', '3', '9', '11', '10', '5', '7', '3', '2', '3', '2', '1', '2', '4', '3', '3', '3', '5', '4', '10', '8', '9', '10', '12', '11', '7', '7', '11', '10', '14', '10', '11', '9', '4', '3', '2', '10', '8', '10', '9', '8', '9', '11', '14', '10', '10', '10', '8', '14', '15', '12', '11', '9', '12', '9', '10', '9', '10', '10', '10', '7', '4', '4', '7', '2', '2', '2', '2', '3', '2', '5', '4', '2', '2', '2', '1', '1', '1', '3', '4', '2', '4', '4', '5', '5', '5', '7', '6', '6', '6', '6', '5', '5', '6', '4', '3', '2', '2', '3', '2', '3', '1', '2', '1', '3', '2', '1', '1', '1', '1', '1', '1', '1', '2', '1', '1', '2', '1', '2', '2', '1', '1', '1', '1', '3', '4', '4', '4', '4', '4', '4', '3', '5', '3', '4', '3', '2', '3', '3', '4', '4', '3', '6', '4', '4', '3', '4', '4', '5', '4', '4', '3', '4', '3', '3', '4', '3', '1', '2', '2', '4', '3', '2', '2', '2', '2', '2', '2', '3', '2', '3', '3', '2', '3', '3', '4', '4', '2', '2', '2', '7', '6', '7', '9', '17', '16', '13', '14', '9', '12', '15', '14', '13', '18', '13', '12', '13', '21', '24', '21', '11', '10', '10', '4', '2', '2', '3', '10', '12', '13', '16', '17', '13', '13', '13', '15', '14', '11', '7', '5', '3', '7', '24', '23', '17', '15', '15', '13', '11', '11', '10', '9', '7', '2', '2', '3', '3', '4', '3', '1', '2', '1', '3', '3', '2', '2', '2', '2', '2', '1', '1', '1', '2', '2', '3', '3', '3', '4', '4', '2', '2', '3', '2', '3', '2', '2', '1', '4', '4', '5', '3', '3', '3', '2', '2', '2', '3', '4', '5', '2', '2', '3', '3', '4', '3', '2', '3', '2', '2', '3', '3', '3', '3', '3', '2', '2', '3', '3', '5', '3', '3', '2', '3', '2', '3', '3', '2', '2', '2']",
+            "part":1
+        }
+    },
+    {
+        "pk":2,
+        "model":"audios.logvolume",
+        "fields": {
+            "audioId":1,
+            "volume":"['3', '2', '1', '2', '2', '3', '1', '3', '3', '3', '6', '3', '2', '1', '1', '3', '3', '3', '2', '2', '3', '4', '5', '4', '2', '3', '3', '2', '2', '3', '5', '3', '2', '2', '2', '3', '3', '3', '2', '2', '2', '4', '4', '4', '6', '6', '5', '4', '5', '5', '2', '4', '3', '2', '2', '1', '3', '3', '3', '2', '2', '2', '3', '2', '2', '2', '3', '3', '3', '3', '3', '4', '3', '2', '2', '2', '3', '4', '3', '3', '2', '2', '2', '2', '2', '2', '2', '3', '2', '2', '4', '3', '3', '2', '2', '2', '2', '4', '2', '3', '3', '2', '1', '0', '0']",
+            "part":2
+        }
+    },
+    {
+        "pk": 1, 
+        "model": "audios.audio", 
+        "fields": {
+            "word": 33, 
+            "labels": [], 
+            "speaker": 3, 
+            "attempt": 1, 
+            "filename": "bsas_u3_t33_a1.wav"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "audios.audio", 
+        "fields": {
+            "word": 34, 
+            "labels": [], 
+            "speaker": 4, 
+            "attempt": 1, 
+            "filename": "cba_u4_t34_a1.wav"
+        }
+    }
+]
