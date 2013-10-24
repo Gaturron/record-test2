@@ -2,7 +2,7 @@
  {
     "pk":1,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-03 02:18:20.402701",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -16,7 +16,7 @@
   {
     "pk":2,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-03 02:30:26.676392",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -30,7 +30,7 @@
   {
     "pk":3,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-03 23:50:29.479451",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"cba",
@@ -44,7 +44,7 @@
   {
     "pk":4,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-04 00:16:19.324905",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"cba",
@@ -58,7 +58,7 @@
   {
     "pk":5,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-04 00:18:28.403242",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"cba",
@@ -72,7 +72,7 @@
   {
     "pk":6,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-04 00:39:36.848563",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -86,7 +86,7 @@
   {
     "pk":7,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-04 01:37:50.077826",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"cba",
@@ -100,7 +100,7 @@
   {
     "pk":8,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-04 15:42:56.730106",
         "location":"Grand Bourg (Argentina)",
         "birthPlace":"cba",
@@ -114,7 +114,7 @@
   {
     "pk":9,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:05:56.562332",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -128,7 +128,7 @@
   {
     "pk":10,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:09:56.377267",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"cba",
@@ -142,7 +142,7 @@
   {
     "pk":11,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:12:54.674383",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -156,7 +156,7 @@
   {
     "pk":12,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:19:06.050960",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -170,7 +170,7 @@
   {
     "pk":13,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:23:12.061557",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -184,7 +184,7 @@
   {
     "pk":14,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:23:38.212125",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
@@ -198,7 +198,7 @@
   {
     "pk":15,
     "model":"audios.speaker",
-    "field": {
+    "fields": {
         "date":"2013-01-06 00:32:03.779895",
         "location":"Buenos Aires (Argentina)",
         "birthPlace":"bsas",
