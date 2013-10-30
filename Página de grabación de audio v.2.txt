@@ -1,0 +1,223 @@
+                        Página de grabación de audios 
+                        =============================
+
+Detalles generales del sistema:
+------------------------------
+El sistema se encuentra instalado en fabula2.exp.dc.uba.ar
+
+La arquitectura consiste en estos componentes:
+- Apache
+- Django 1.4.2
+- Postgress 9.1
+
+Apache y Postgress se instalan globalmente en el sistema mientras que Django se instaló desde un directorio local. 
+
+El sistema esta en el directorio /home/fbugni . Las carpetas que estan ahí son:
+* Django-1.4.2
+    Django-1.4.2 es la carpeta donde esta el instalador de Django. 
+* record-page
+    Record-page es donde esta montado el sistema.
+* record-page-backup
+    Record-page-backup es donde se encuentran los backups.
+* south
+    South es un plugin que se utiliza migraciones en Django.
+
+Record-page-backup se compone por: database, audios y backup_generator.py. El archivo backup_generator.py genera backups automáticos que van guardando en cada una de las dos carpetas mencionadas. Estos backups se van corriendo periódicamente con el comando Cron. En la carpeta database se encuentran los backups de la base de datos que se van zipeando. Cada zip contiene un dump de la base de datos en sql y un export de los objetos que se encuentran a nivel Django. En la carpeta audios se genera un espejo de los audios que graba la página. Para ello se utiliza el comando 'rsync' que se puede ver en el script de generación. 
+
+Se instaló un plugin llamado South de Python para actualizar si hay algún cambio en los modelos de Django. Estos modelos se encuentran en /audios/models.py y en /experiments/models.py. Los pasos de instalación se pueden seguír en http://south.aeracode.org/. La instalación actual se realizó bajando el paquete a mano, y esta en: ~/south/
+
+Instalación:
+-----------
+
+Entorno utilizado: Ubuntu Server 12.04
+No se probó en otro entorno pero no debería haber problemas para que funcione 
+de igual forma.
+
+Pasos:
+-----
+
+   o  Instalar los siguientes paquetes necesarios: 
+      Puede suceder que cambien los nombres de los paquetes según 
+      la distrubución utilizada.
+
+      sudo apt-get install software-proprieties-common 
+        python-software-properties
+      sudo add-apt-repository ppa:fkrull/deadsnakes
+      sudo apt-get update
+      sudo apt-get install python2.7 python2.7-dev postgresql 
+        postgresql-server-dev-9.1 python-setuptools 
+        subversion apache2 libapache2-mod-python libapache2-mod-wsgi
+      sudo easy_install python-psycopg2
+      wget https://www.djangoproject.com/m/releases/1.4/Django-1.4.2.tar.gz
+      tar xzvf Django-1.4.2.tar.gz 
+      cd Django-1.4.2/
+      sudo python setup.py install
+
+      El repositorio agregado se utiliza para obtener las versiones de
+      Python necesarias. 
+      Se utiliza Python 2.7 así como también Django 1.4.2. 
+      Si se quisiera cambiar por una versión mas reciente habría que hacer 
+      los cambios pertinentes.
+
+   o  Realizar el checkout de la página:
+      Se puede realizar el checkout en cualquier directorio. Lo mejor hacerlo
+      en el home del usuario. Sino otra opción sería hacerlo en /var/www
+      
+      svn checkout http://record-test2.googlecode.com/svn/trunk/ 
+        record-test2-read-only  
+
+   o  Crear usuario y base de datos en Postgres:
+
+      sudo -u postgres psql
+
+      # CREATE USER django_login WITH PASSWORD '1234';
+      # CREATE DATABASE django_db;
+
+      Estos datos deben coincidir con datos que se encuentran en 
+      /recordtest/settings.py. hay esta toda la configuración de 
+      la página.
+
+   o  Configurar settings.py:
+      Debemos editar el archivo /recordtest/settings.py con los paths absolutos
+      de donde se realizó el checkout.
+
+      Se debe editar las variables MEDIA_ROOT, STATIC_ROOT y STATICFILES_DIRS
+      como indican los ejemplos comentados.
+
+      Notar que los datos del usuario de la base de datos también estan acá 
+      (en la variable DATABASES) y se pueden editar.
+
+   o  Creamos la base:
+      python manage.py syncdb
+
+      Entrar a la base para chequear que se creo. Esto lo hacemos escribiendo:
+
+      sudo -u postgres psql
+      # \c django_db
+
+      You are now connected to database "django_db" as user "postgres".
+      django_db=# \dt
+                           List of relations
+       Schema |            Name            | Type  |    Owner
+      --------+----------------------------+-------+--------------
+       public | audios_audio               | table | django_login
+       public | audios_logspeaker          | table | django_login
+       public | audios_logvolume           | table | django_login
+       public | audios_speaker             | table | django_login
+       public | auth_group                 | table | django_login
+       public | auth_group_permissions     | table | django_login
+       public | auth_permission            | table | django_login
+       public | auth_user                  | table | django_login
+       public | auth_user_groups           | table | django_login
+       public | auth_user_user_permissions | table | django_login
+       public | django_content_type        | table | django_login
+       public | django_session             | table | django_login
+       public | django_site                | table | django_login
+       public | experiments_phrase         | table | django_login
+       public | experiments_picture        | table | django_login
+       public | experiments_trace          | table | django_login
+       public | experiments_word           | table | django_login
+      (17 rows)
+
+      django_db=# \q
+
+   o  Creamos el archivo 'audio' en /etc/apache2/sites-available y 
+      creamos un link simbólico en /etc/apache2/sites-enabled:
+
+      El archivo en cuestión debe tener este contenido 
+      (cambiando los paths debidamente):
+
+        <Virtualhost *:80>
+
+        ServerName fabula2.exp.dc.ar/audios
+        DocumentRoot /home/fbugni/record-page/recordtest
+
+        <Directory />
+        Order deny,allow
+        Deny from all
+        Options None
+        AllowOverride None
+        </Directory>
+
+        <Directory /home/fbugni/record-page/recordtest>
+        Order allow,deny
+        Allow from all
+        AllowOverride None
+        </Directory>
+
+        WSGIDaemonProcess recordtest.djangoserver processes=2 threads=15 display-name=%{GROUP}
+        WSGIProcessGroup recordtest.djangoserver
+        WSGIScriptAlias / /home/fbugni/record-page/recordtest/wsgi.py
+
+        Alias /media /home/fbugni/record-page/media
+        Alias /static /home/fbugni/record-page/audios/static
+        Alias /crossdomain.xml /home/fbugni/record-page/audios/static/crossdomain.xml
+
+        <Directory /home/fbugni/record-page/media>
+        Order allow,deny
+        Allow from all
+        AllowOverride None
+        </Directory>
+
+        <Directory /home/fbugni/record-page/audios/static>
+        Order allow,deny
+        Allow from all
+        AllowOverride None
+        </Directory>
+
+        #Alias /static/admin /usr/lib/pymodules/python2.7/django/contrib/admin/media/
+
+        <Directory /usr/lib/pymodules/python2.7/django/contrib/admin/media>
+        Order deny,allow
+        Allow from all
+        AllowOverride None
+        </Directory>
+
+        </Virtualhost>
+
+      Luego creamos el link simbólico. Lo hacemos así:
+
+      cd sites-enabled/
+      sudo ln -s ../sites-available/audios .
+
+      Ahora falta hacer que el contenido de la página este en /var/www/.
+      Eso se logra haciendo otro link simbólico hacia donde hicimos el checkout
+      
+      sudo ln -s /home/fbugni/record-page/ /var/www
+      
+      Disclaimer: Puede ser que lo mejor hacer el checkout en /var/www 
+      ya que es el lugar que utiliza Apache para guardar sus páginas.
+      Lo importante es que apunte bien en el archivo 
+      (/etc/apache2/sites-available/audio) anteriormente editado. 
+
+   o  Damos permisos para que el usuario pueda acceder:
+      Esto es importante porque debe crear los audios cuando nos conectemos
+      en la página.
+
+      sudo chown -R fbugni:www-data record-page 
+      sudo chmod -R 775 record-page
+
+   o  Creamos las trazas para el experimento:
+      Hay 10000 trazas generadas en data10000.csv. Copiamos ese archivo para
+      que después sean guardados en la base
+
+      cd /recordtest/media/settings
+      cp data10000.csv data.csv
+
+   o  Hablilitar Apache:
+   
+      sudo /etc/init.d/apache2 start
+
+   o  Abrir con el browser 
+      Entramos a fabula2.exp.dc.uba.ar/experiments/admin y apretamos en el 
+      botón para popular la base de datos con las trazas generadas en data.csv
+
+   o  Listo! Entramos a fabula2.exp.dc.uba.ar/audios/start y vemos la pantalla
+      para hacer el experimento. 
+
+    Nota: Wami (el programa en flash que permite grabar el audio) necesita 
+    tener como parámetro la url absoluta a donde guardar el audio generado.
+    Si se cambia la url donde va a estar la página, también hay que cambiarla.
+    Esta dirección se debe cambiar en el archivo
+    audios/static/js/record_functions.js. Hay un script en Python que 
+    realiza este cambio entre dos urls posibles. Se encuentra en /tools/switch.py.
