@@ -5,19 +5,18 @@ class Word(models.Model):
     enabled = models.BooleanField(default=True)
     text = models.TextField()
     description = models.TextField(blank=True, null=True)
-    amount = models.IntegerField(default=0)
 
+# not used
 class Phrase(models.Model):
     enabled = models.BooleanField(default=True)
     text = models.TextField()
     description = models.TextField(blank=True, null=True)
-    amount = models.IntegerField(default=0)
 
+# not used
 class Picture(models.Model):
     enabled = models.BooleanField(default=True)
     image = models.FileField(upload_to='imagenesExperimentos')
     description = models.TextField(blank=True, null=True)
-    amount = models.IntegerField(default=0)
 
 class trace(models.Model):
     phrases = models.CommaSeparatedIntegerField(max_length=200)
