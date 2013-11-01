@@ -1,6 +1,6 @@
 #backup generator
 import os, subprocess, zipfile
-from time import gmtime, strftime
+from time import localtime, strftime
 
 # variables
 #page_dir = '/home/fer/recordtest'
@@ -8,7 +8,7 @@ page_dir = '/home/fbugni/record-page'
 #backup_dir = '/home/fer/recordtest-backup'
 backup_dir = '/home/fbugni/record-page-backup'
 
-time = strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+time = strftime("%Y-%m-%d_%H:%M:%S", localtime())
 
 #create a tmp directory
 tmp_dir = r'tmp_dir-'+time
