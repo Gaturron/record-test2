@@ -82,7 +82,7 @@ urlpatterns = patterns('',
 
     #================================================================
     url(r'^backup/auto/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': '/home/fer/recordtest-backup', 'show_indexes': True}),
+        {'document_root': '/home/fbugni/record-page-backup', 'show_indexes': True}),
 )
 
 handler404 = views.error404
