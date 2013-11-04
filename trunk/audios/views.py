@@ -356,6 +356,8 @@ def zipAudios(request, filter):
             audios = Audio.objects.filter(labels__name='Problema en el habla')
         elif(filter == 'total'):
             audios = Audio.objects.all()
+        else: 
+            audios = Audio.objects.all()
 
         for audio in audios:
             name = settings.MEDIA_ROOT+'/audios/'+audio.filename+'.wav'
