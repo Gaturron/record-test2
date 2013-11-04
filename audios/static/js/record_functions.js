@@ -1,10 +1,11 @@
-var url = "fabula2.exp.dc.uba.ar";
-//var url = "elgatoloco.no-ip.org";
+//var url = "fabula2.exp.dc.uba.ar";
+var url = "elgatoloco.no-ip.org";
 //var url = "localhost:8000"
 
 var attempts = 0;
 var volumen = new Array();
 var status = "Setup";
+var successful_audio = false;
 
 function setup() {
   $(view.tabs).tabs({ 
@@ -83,21 +84,25 @@ function record(id_test) {
   var finishedfn = function() { 
     console.debug("Fin grabacion: el volumen fue: "+volumen);
 
-    var res = checkFilters(volumen);
-    console.debug('checkFilters: '+res);
-    $(view.status).html('Estado: '+res);
+    $.when(checkFilters(volumen)).done(function(res){
+      console.debug('checkFilters: '+res);
+      $(view.status).html('Estado: '+res);
 
-    _writeLog("Record volume saved", volumen);
-    _writeLog("Record status: "+res);
+      _writeLog("Record volume saved", volumen);
+      _writeLog("Record status: "+res);
 
+      if(res === 'Grabación exitosa'){
+        successful_audio = true;
+        $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+      }
+    });  
+    
     checkSaturation = null;
     $(view.saturation).html("Nivel del micrófono:");
 
     buttons.showRecordShowPlay();
 
     runner.stop(id_test);
-
-    $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
 
     spinners.hide();
   };
@@ -146,7 +151,9 @@ function play(id_test) {
 
     runner.stop(id_test);
     
-    $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+    if(successful_audio){
+      $(view.nextProduct).each( function() { $(this).prop("disabled", false) }); 
+    }
 
     spinners.hide();
   };
@@ -191,7 +198,9 @@ function stop(id_test) {
 
       runner.stop(id_test);
       
-      $(view.nextProduct).each( function() { $(this).prop("disabled", false) });
+      if(successful_audio){
+        $(view.nextProduct).each( function() { $(this).prop("disabled", false) }); 
+      }
 
       spinners.hide();
     }
@@ -206,6 +215,7 @@ function next_product() {
   _writeLog("Next");
 
   $(view.nextProduct).each( function() { $(this).prop('disabled', true) });
+  successful_audio = false;
 
   var word_id = $(".wordexp:visible").attr("word-id");
   var name_test = "test-w"+word_id;
@@ -230,8 +240,8 @@ function next_product() {
       //pregunto por si quiere realizar mas grabaciones
       $(view.dialogConfirm).dialog({
         resizable: false,
-        height:240,
-        weight:100,
+        height:340,
+        weight:200,
         modal: true,
         buttons: {
           "Sí, quiero hacer 5 más": function() {

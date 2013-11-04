@@ -1,18 +1,19 @@
 var checkFilters = function(volumen) {
 
-    var res = umbralFilter(volumen);
-    if (res !== 'OK') {
-        //return res;
-        return 'La calidad del audio no es buena. Por favor grabar nuevamente.'
-    }
+    resFail = 'La calidad del audio no es buena. Por favor grabar nuevamente.';
+    resOK = 'Grabación exitosa';
 
-    res = firstLastFilter(volumen);
-    if (res !== 'OK') {
-        //return res;
-        return 'La calidad del audio no es buena. Por favor grabar nuevamente.'
-    }
-    
-    return 'Grabación exitosa'
+    var res;
+    $.when(firstLastFilter(volumen), umbralFilter(volumen)).done(function(r1, r2){
+        console.debug('firstLastFilter: ' + r1);
+        console.debug('umbralFilter: ' + r2);
+        if (r1 == r2){
+            res = resOK;
+        }else{
+            res = resFail;
+        }
+    });
+    return res;
 };
 
 /////////////////////////////////////////////////////////////////////////////

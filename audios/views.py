@@ -3,7 +3,7 @@
 
 # Create your views here.
 
-import csv, os, zipfile, StringIO, glob, string, ast
+import csv, os, zipfile, tarfile, StringIO, glob, string, ast
 from datetime import datetime
 from django.utils import timezone 
 
@@ -339,20 +339,33 @@ def logVolumeToCSV(request):
 
         return response
 
-def zipAudios(request):
+def zipAudios(request, filter):
 
     if request.method == 'GET':
 
         o = StringIO.StringIO()
-        zf = zipfile.ZipFile(o, mode='w')
+        tar = tarfile.open(None, mode='w', fileobj=o)
+
+        if(filter == 'conservado'):
+            audios = Audio.objects.filter(labels__name='Conservar')
+        elif(filter == 'saturado'):
+            audios = Audio.objects.filter(labels__name='Sonido saturado')
+        elif(filter == 'ruido'):
+            audios = Audio.objects.filter(labels__name='Mucho ruido de fondo')
+        elif(filter == 'problema'):
+            audios = Audio.objects.filter(labels__name='Problema en el habla')
+        elif(filter == 'total'):
+            audios = Audio.objects.all()
+
+        for audio in audios:
+            name = settings.MEDIA_ROOT+'/audios/'+audio.filename+'.wav'
+            tar.add(str(name), os.path.basename(str(name)))
         
-        for audio in glob.glob(settings.MEDIA_ROOT+'/audios/*.wav'):
-            zf.write(str(audio), os.path.basename(str(audio)))
-        
-        zf.close()
+        tar.close()
+
         o.seek(0)
         response = HttpResponse(o.read())
         o.close()
         response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment; filename="backup-audios'+str(timezone.now())+'.zip"'
+        response['Content-Disposition'] = 'attachment; filename="backup-audios-'+filter+'-'+str(timezone.now())+'.tar"'
         return response
