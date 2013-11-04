@@ -216,6 +216,7 @@ function next_product() {
 
   $(view.nextProduct).each( function() { $(this).prop('disabled', true) });
   successful_audio = false;
+  buttons.showRecordDisablePlay();
 
   var word_id = $(".wordexp:visible").attr("word-id");
   var name_test = "test-w"+word_id;
@@ -288,6 +289,14 @@ function _writeLog(action, volumen) {
 //Buttons
 var buttons = {
 
+  showRecordDisablePlay: function() {
+    $(view.record).each( function() { $(this).show() });
+    $(view.record).each( function() { $(this).prop("disabled", false) });
+    $(view.stop).each( function() { $(this).hide() });
+    $(view.stop).each( function() { $(this).prop("disabled", false) });    
+    $(view.play).each( function() { $(this).show() });
+    $(view.play).each( function() { $(this).prop("disabled", true) });
+  },
   showStopDisablePlay: function() {
     $(view.record).each( function() { $(this).hide() });
     $(view.record).each( function() { $(this).prop("disabled", false) });
