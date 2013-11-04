@@ -1,5 +1,5 @@
-//var url = "fabula2.exp.dc.uba.ar";
-var url = "elgatoloco.no-ip.org";
+var url = "fabula2.exp.dc.uba.ar";
+//var url = "elgatoloco.no-ip.org";
 //var url = "localhost:8000"
 
 var attempts = 0;
