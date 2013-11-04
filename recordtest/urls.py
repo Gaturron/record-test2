@@ -49,11 +49,11 @@ urlpatterns = patterns('',
     #================================================================
     # Backup
     
-    url(r'^backup/speakers/$',      'audios.views.speakersToCSV'),
-    url(r'^backup/audios/$',        'audios.views.audiosToCSV'),
-    url(r'^backup/logSpeakers/$',   'audios.views.logSpeakerToCSV'),
-    url(r'^backup/logVolume/$',     'audios.views.logVolumeToCSV'),
-    url(r'^backup/zip_audios/(?P<filter>\w+)/$',           'audios.views.zipAudios'),    
+    url(r'^export/speakers/$',      'audios.views.speakersToCSV'),
+    url(r'^export/audios/$',        'audios.views.audiosToCSV'),
+    url(r'^export/logSpeakers/$',   'audios.views.logSpeakerToCSV'),
+    url(r'^export/logVolume/$',     'audios.views.logVolumeToCSV'),
+    url(r'^export/zip_audios/(?P<filter>\w+)/$',           'audios.views.zipAudios'),    
 
     #================================================================
     #Admin
