@@ -371,3 +371,29 @@ def zipAudios(request, filter):
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment; filename="backup-audios-'+filter+'-'+str(timezone.now())+'.tar"'
         return response
+
+#======================================================================
+#Estadisticas
+def statistics(request):
+
+    if request.method == 'GET':
+
+        spBsas = Speaker.objects.filter(birthPlace='bsas').count()
+        spCba = Speaker.objects.filter(birthPlace='cba').count()
+
+        wordsCount = []
+
+        for word in Word.objects.all():
+            count = Audio.objects.filter(word= word).count()
+            wordsCount.append({ 'id': word.id, 'text': word.text, 'count': count})
+
+        traces = trace.objects.filter(used= False).count()
+
+        t = loader.get_template('statistics.html')
+        c = Context({
+            'spBsas': spBsas,
+            'spCba': spCba,
+            'wordsCount': wordsCount,
+            'trace': traces
+        })
+        return HttpResponse(t.render(c))
