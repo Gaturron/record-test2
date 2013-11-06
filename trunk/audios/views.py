@@ -378,8 +378,8 @@ def statistics(request):
 
     if request.method == 'GET':
 
-        spBsas = Speaker.objects.filter(birthPlace='bsas').count()
-        spCba = Speaker.objects.filter(birthPlace='cba').count()
+        spBsas = Speaker.objects.filter(livePlace='bsas').count()
+        spCba = Speaker.objects.filter(livePlace='cba').count()
 
         wordsCount = []
 
