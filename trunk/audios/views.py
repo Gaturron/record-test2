@@ -383,9 +383,73 @@ def statistics(request):
 
         wordsCount = []
 
+        phrasesXrules = { 
+            1: [2],
+            2: [2],
+            3: [6],
+            4: [2],
+            5: [2,3],
+            6: [2],
+            7: [6],
+            8: [2,3],
+            9: [2],
+            10 : [2],
+            11 : [2],
+            12 : [2],
+            13 : [],
+            14 : [],
+            15 : [3],
+            16 : [2, 6],
+            17 : [],
+            18 : [5],
+            19 : [2],
+            20 : [5],
+            21 : [6],
+            22 : [2,4],
+            23 : [3],
+            24 : [2,6],
+            25 : [],
+            26 : [2,4],
+            27 : [4],
+            28 : [2,4],
+            29 : [],
+            30 : [2],
+            31 : [5],
+            32 : [5],
+            33 : [2,5],
+            34 : [5],
+            35 : [4,5],
+            36 : [2,4],
+            40 : [1],
+            41 : [1],
+            42 : [1],
+            43 : [1, 5, 6],
+            44 : [1, 5, 6],
+            45 : [1, 5, 6],
+            46 : [1, 6],
+            47 : [1, 6],
+            48 : [1, 6]
+        }
+
+        #recorremos las frases y vemos como fueron completadas
         for word in Word.objects.all():
             count = Audio.objects.filter(word= word).count()
-            wordsCount.append({ 'id': word.id, 'text': word.text, 'count': count})
+            wordsCount.append({ 'id': word.id, 'text': word.text, 'count': count, 'rules': phrasesXrules[word.id]})
+
+        #contamos cuantas se completaron por cada regla
+        rules = {}
+        rules[1] = {'text': 'Localice la sílaba acentuada en la palabra y estirar la silaba anterior', 'count': 0}
+        rules[2] = {'text': 'Aspiración y elisión de /s/', 'count': 0}
+        rules[3] = {'text': 'La ‘s’ antes de la `c` o `t` suenan suaves', 'count': 0}
+        rules[4] = {'text': 'La `c` antes de la `t` no se pronuncia', 'count': 0}
+        rules[5] = {'text': 'La ‘y’ y ‘ll’ se pasa a ‘i’', 'count': 0}
+        rules[6] = {'text': 'La ‘r’ no debe sonar. No debe vibrar', 'count': 0}
+
+        for wordc in wordsCount:
+            if wordc['count'] != 0:
+                wordc_rules = wordc['rules']
+                for r in wordc_rules:
+                    rules[r]['count'] += wordc['count']
 
         traces = trace.objects.filter(used= False).count()
 
@@ -394,6 +458,7 @@ def statistics(request):
             'spBsas': spBsas,
             'spCba': spCba,
             'wordsCount': wordsCount,
+            'rules': rules,
             'trace': traces
         })
         return HttpResponse(t.render(c))

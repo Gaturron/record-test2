@@ -1,5 +1,7 @@
 {% load url from future %}
 
+<h2>Estadísticas</h2>
+
 <h3>Hablantes:</h3>
 <table border="0">
     <tr>
@@ -14,20 +16,38 @@
 {% if wordsCount %}
     <table border="1">
         <tr>
+            <td>Phrases</td>
             <td>Reglas</td>
-            <td>Words</td>
-            <td>Total</td>
+            <td>Cantidad</td>
         </tr>
     {% for word in wordsCount %}
         <tr>
-            <td></td>
             <td>{{ word.id }} {{ word.text }}</td>
+            <td>{{ word.rules }}</td>
             <td>{{ word.count }}</td>
         </tr>
     {% endfor %}
     </table>
 {% else %}
     <p>No words are available in experiments</p>
+{% endif %}
+
+<h3>Reglas</h3>
+{% if rules %}
+    <table border="1">
+        <tr>
+            <td>Tipo de regla</td>
+            <td>Cantidad</td>
+        </tr>
+    {% for k, v in rules.items %}
+        <tr>
+            <td>{{ k }} {{ v.text }}</td>
+            <td>{{ v.count }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No rules are available in experiments</p>
 {% endif %}
 
 <h3>Trazas</h3>
