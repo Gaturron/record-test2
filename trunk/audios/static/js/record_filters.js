@@ -13,7 +13,8 @@ var checkFilters = function(volumen) {
             res = resFail;
         }
     });
-    return res;
+    //return res;
+    return resOK;
 };
 
 /////////////////////////////////////////////////////////////////////////////
