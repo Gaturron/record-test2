@@ -13,15 +13,21 @@ attributesFiles = {}
 for filename in filenames:
     if (filename.endswith('.TextGrid')):
         file = open(path+'/'+filename, 'r')
+
+        def replace_tab(s, tabstop = 4):
+            result = str()
+            for c in s:
+                if c == '\t':
+                    result += ' '*tabstop
+                else:
+                    result += c    
+            return result
+
         data = replace_tab(file.read())
         tg = TextGrid(data)
 
-        for i, tier in enumerate(tg):
-            print "\n***"
-            print "Tier:", i + 1
-            print tier
-
         attributesTg = {}
+        print 'name: '+ filename
         attributesTg['duration'] = att.duration(tg)
         attributesTg['dummy'] = att.dummy(tg)
 
