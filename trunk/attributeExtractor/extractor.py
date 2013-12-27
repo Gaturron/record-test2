@@ -27,8 +27,8 @@ for filename in filenames:
         tg = TextGrid(data)
 
         attributesTg = {}
-        print 'name: '+ filename
         attributesTg['duration'] = att.duration(tg)
+        attributesTg['durationOfEachPhoneme'] = att.durationOfEachPhoneme(tg)
         attributesTg['dummy'] = att.dummy(tg)
 
         attributesFiles[filename] = attributesTg
