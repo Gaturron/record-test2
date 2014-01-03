@@ -27,10 +27,15 @@ for filename in filenames:
         tg = TextGrid(data)
 
         attributesTg = {}
+        attributesTg['phrase'] = att.getPhrase(tg)
+        attributesTg['accents'] = att.getAccents(tg)
         attributesTg['duration'] = att.duration(tg)
         attributesTg['durationOfEachPhoneme'] = att.durationOfEachPhoneme(tg)
-        attributesTg['dummy'] = att.dummy(tg)
+        attributesTg['durationOfEachVowel'] = att.durationOfEachVowel(tg)
+        attributesTg['durationOfEachConsonant'] = att.durationOfEachConsonant(tg)
+        attributesTg['durationOfEachSyllable'] = att.durationOfEachSyllable(tg)
+        attributesTg['durationAvgOfPhonemeSFinal'] = att.durationAvgOfPhonemeSFinal(tg)
 
         attributesFiles[filename] = attributesTg
 
-print attributesFiles        
+print attributesFiles
