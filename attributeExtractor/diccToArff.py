@@ -10,40 +10,40 @@ def diccToArff(dicc, filename):
 
     #Header:
     #================================================
-    file.writeln('% 1. Title: '+title)
-    file.writeln('%')
-    file.writeln('% 2. Sources: '+sources)
-    file.writeln('%')
-    file.writeln('% 3. Author: '+author)
-    file.writeln('%')
-    #file.writeln('% 4. Date: '+date)
-    file.writeln('%')
+    file.write('% 1. Title: '+title+'\n')
+    file.write('%'+'\n')
+    file.write('% 2. Sources: '+sources+'\n')
+    file.write('%'+'\n')
+    file.write('% 3. Author: '+author+'\n')
+    file.write('%'+'\n')
+    #file.write('% 4. Date: '+date+'\n')
+    file.write('%'+'\n\n')
 
-    file.writeln('@RELATION '+databaseName)
+    file.write('@RELATION '+databaseName+'\n')
 
     keys = dicc.keys()
-    print keys
     
     if (len(keys) == 0):
         error = 'NO DATA IN DICC'
-        file.writeln(error)
+        file.write(error+'\n')
         print error
     else:
         firstKey = keys[0]
         attributes = dicc[firstKey].keys()
         for att in attributes:
-            file.writeln('@ATTRIBUTE '+att+' NUMERIC')
+            file.write('@ATTRIBUTE '+att+' NUMERIC'+'\n')
         
-        file.writeln('@ATTRIBUTE place {buenos-aires, cordoba}')
+        #file.write('@ATTRIBUTE place {buenos-aires, cordoba}'+'\n')
+        file.write('\n')
 
     #Data:
     #================================================
-        file.writeln('@DATA')
+        file.write('@DATA'+'\n')
             
-    #    for k in keys:
-    #        for att in k.keys():
-    #            file.writeln(k[att])
-    #            file.writeln(',')
-    #        file.writeln('\n')
+        for k in keys:
+            for att in dicc[k].keys():
+                file.write(str(dicc[k][att]))
+                file.write(',')
+            file.write('\n')
 
     file.close()
