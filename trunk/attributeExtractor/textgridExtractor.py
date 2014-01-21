@@ -1,41 +1,51 @@
 from textgrid import TextGrid, Tier
 import attributes as att
 import os
+import inspect
 
-path = '/home/fernando/Tesis/Prosodylab-Aligner-master/data'
+def textgridsToAtt(pathFolder):
+    print 'Extractor de Textgrid - Directorio a analizar: '+str(pathFolder)
 
-print 'Extractor: '
+    filenames = os.listdir(pathFolder)
+    attributesFiles = {}
 
-filenames = os.listdir(path)
+    for filename in filenames:
+        if (filename.endswith('.TextGrid')):
+            attributesFiles[filename] = textgridToAtt(pathFolder+'/'+filename)
 
-attributesFiles = {}
+    return attributesFiles
 
-for filename in filenames:
-    if (filename.endswith('.TextGrid')):
-        file = open(path+'/'+filename, 'r')
+def textgridToAtt(pathFile):
+    print 'Textgrid a analizar: '+str(pathFile)
 
-        def replace_tab(s, tabstop = 4):
-            result = str()
-            for c in s:
-                if c == '\t':
-                    result += ' '*tabstop
-                else:
-                    result += c    
-            return result
+    file = open(pathFile, 'r')
 
-        data = replace_tab(file.read())
-        tg = TextGrid(data)
+    def replace_tab(s, tabstop = 4):
+        result = str()
+        for c in s:
+            if c == '\t':
+                result += ' '*tabstop
+            else:
+                result += c    
+        return result
 
-        attributesTg = {}
-        attributesTg['phrase'] = att.getPhrase(tg)
-        attributesTg['accents'] = att.getAccents(tg)
-        attributesTg['duration'] = att.duration(tg)
-        attributesTg['durationOfEachPhoneme'] = att.durationOfEachPhoneme(tg)
-        attributesTg['durationOfEachVowel'] = att.durationOfEachVowel(tg)
-        attributesTg['durationOfEachConsonant'] = att.durationOfEachConsonant(tg)
-        attributesTg['durationOfEachSyllable'] = att.durationOfEachSyllable(tg)
-        attributesTg['durationAvgOfPhonemeSFinal'] = att.durationAvgOfPhonemeSFinal(tg)
+    data = replace_tab(file.read())
+    tg = TextGrid(data)
 
-        attributesFiles[filename] = attributesTg
+    attributesTg = {}
 
-print attributesFiles
+    # vamos a agarrar todas las funciones de attributes
+    # y ejecutarlas con el argumento tg 
+    list_functions = inspect.getmembers(att, predicate=inspect.isfunction)
+    for function in list_functions:
+        function_name = function[0]
+        # filtrar por si es function privada
+        if function_name[0] != '_':
+            res = getattr(att, function_name)(tg)
+            attributesTg[function_name] = res
+
+    return attributesTg
+
+if __name__ == '__main__':
+    print 'Prueba TextGrid: '
+    print textgridsToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data')

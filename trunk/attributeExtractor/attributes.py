@@ -2,6 +2,11 @@ from textgrid import TextGrid, Tier
 import phraseToAccents as phToAcc
 import string
 
+̈́"""
+Las funciones declaradas acá deben tener como parametro TextGrid
+si se agrega al principio _ no se ejecuta para extractor
+"""
+
 vowels = ['a', 'e', 'i', 'o', 'u']
 
 # calculate the consonants
@@ -9,6 +14,9 @@ consonants = []
 for l in string.lowercase:
     if not l in vowels: 
         consonants += [l]
+
+#digits to round
+digits = 3
 
 def duration(textgrid):
     print 'duration: '
@@ -19,6 +27,7 @@ def duration(textgrid):
                 if row[2] != 'sil' and row[2] != 'sp':
                     res += float(row[1]) - float(row[0])
                 print row
+    res = round(res, digits)
     print 'res: '+str(res)
     return res
 
@@ -33,8 +42,10 @@ def durationOfEachPhoneme(textgrid):
                     zum += float(row[1]) - float(row[0])
                     amount += 1
                 print row
-    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(zum / amount)
-    return zum / amount
+    zum = round(zum, digits)
+    amount = round(amount, digits)
+    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
+    return round(zum / amount, digits)
 
 def durationOfEachVowel(textgrid):
     print 'durationOfEachVowel: '
@@ -47,8 +58,10 @@ def durationOfEachVowel(textgrid):
                     zum += float(row[1]) - float(row[0])
                     amount += 1
                 print row
-    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(zum / amount)
-    return zum / amount
+    zum = round(zum, digits)
+    amount = round(amount, digits)
+    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
+    return round(zum / amount, digits)
 
 def durationOfEachConsonant(textgrid):
     print 'durationOfEachConsonant: '
@@ -61,10 +74,12 @@ def durationOfEachConsonant(textgrid):
                     zum += float(row[1]) - float(row[0])
                     amount += 1
                 print row
-    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(zum / amount)
-    return zum / amount
+    zum = round(zum, digits)
+    amount = round(amount, digits)
+    print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
+    return round(zum / amount, digits)
 
-def getPhrase(textgrid):
+def phrases(textgrid):
     phrase = ''
     for i, tier in enumerate(textgrid):
         if tier.nameid == 'words':
@@ -73,8 +88,8 @@ def getPhrase(textgrid):
                     phrase += row[2] + ' '
     return phrase.lower().strip()
 
-def getAccents(textgrid):
-    return phToAcc.getAccents(getPhrase(textgrid))
+def _accents(textgrid):
+    return phToAcc.getAccents(phrases(textgrid))
 
 def durationOfEachSyllable(textgrid):
     print 'durationOfEachSilabe: '
@@ -89,7 +104,7 @@ def durationOfEachSyllable(textgrid):
     #print 'phones: '+str(phones)
     
     silabes = []
-    for w in getAccents(textgrid):
+    for w in _accents(textgrid):
         silabes += w
     
     #print 'silabes: '+str(silabes)
@@ -102,13 +117,13 @@ def durationOfEachSyllable(textgrid):
             if char != '*':
                 silabe_time += phones[index]['time']
                 index += 1
-        silabes2 += [ {'text': silabe, 'time': silabe_time} ]
+        silabes2 += [ {'text': silabe, 'time': round(silabe_time, digits)} ]
 
     #print 'silabes2: '+str(silabes2)
 
     silabes3 = []
     index = 0
-    for word in getAccents(textgrid):
+    for word in _accents(textgrid):
         w = []
         for silabe in word:
             w += [ silabes2[index] ]
@@ -144,8 +159,10 @@ def durationAvgOfPhonemeSFinal(textgrid):
     if amount == 0:
         return False
     else:
-        print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(zum / amount)
-        return zum / amount
+        zum = round(zum, digits)
+        amount = round(amount, digits)
+        print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
+        return round(zum / amount, digits)
 
-def dummy(textgrid):
+def _dummy(textgrid):
     return '8'
