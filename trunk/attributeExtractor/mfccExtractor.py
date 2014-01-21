@@ -29,7 +29,7 @@ def wavsToMfcc(pathFolder):
 def wavToMfcc(pathFile):
 
     print 'Wav a analizar: '+str(pathFile)
-    (rate,sig) = wav.read(pathFile)
+    (rate, sig) = wav.read(pathFile)
     print ' samplerate: '+str(rate)
 
     #=====================================================================
