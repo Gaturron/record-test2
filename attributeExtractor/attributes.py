@@ -2,10 +2,8 @@ from textgrid import TextGrid, Tier
 import phraseToAccents as phToAcc
 import string
 
-̈́"""
-Las funciones declaradas acá deben tener como parametro TextGrid
-si se agrega al principio _ no se ejecuta para extractor
-"""
+# Las funciones declaradas aca deben tener como parametro TextGrid
+# si se agrega al principio _ no se ejecuta para extractor
 
 vowels = ['a', 'e', 'i', 'o', 'u']
 

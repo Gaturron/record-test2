@@ -32,6 +32,10 @@ def textgridToAtt(pathFile):
     data = replace_tab(file.read())
     tg = TextGrid(data)
 
+    # Lista de nombre de las funciones de atributos 
+    # que se van a calcular
+    attributesList = ['durationAvgOfPhonemeSFinal']
+
     attributesTg = {}
 
     # vamos a agarrar todas las funciones de attributes
@@ -40,7 +44,7 @@ def textgridToAtt(pathFile):
     for function in list_functions:
         function_name = function[0]
         # filtrar por si es function privada
-        if function_name[0] != '_':
+        if function_name[0] != '_' and function_name in attributesList:
             res = getattr(att, function_name)(tg)
             attributesTg[function_name] = res
 
