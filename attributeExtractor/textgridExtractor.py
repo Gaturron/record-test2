@@ -6,7 +6,25 @@ import inspect
 # TODO: agregar un extractor pero pasando como parametro
 # lista de pathFiles
 
-def textgridsToAtt(pathFolder):
+def textgridsToAtt(param):
+    if isinstance(param, str):
+        return _textgridsToAttFromPathFolder(param)
+    elif isinstance(param, list):
+        return _textgridsToAttFromPathFileList(param)
+
+def _textgridsToAttFromPathFileList(pathFileList):
+    print 'Extractor de Textgrid - Lista de pathFiles'
+
+    attributesFiles = {}
+
+    for pathFile in pathFileList:
+        filename = pathFile+'.TextGrid'
+        if os.path.isfile(filename):
+            attributesFiles[pathFile] = textgridToAtt(filename)
+
+    return attributesFiles
+
+def _textgridsToAttFromPathFolder(pathFolder):
     print 'Extractor de Textgrid - Directorio a analizar: '+str(pathFolder)
 
     filenames = os.listdir(pathFolder)
@@ -37,7 +55,7 @@ def textgridToAtt(pathFile):
 
     # Lista de nombre de las funciones de atributos 
     # que se van a calcular
-    attributesList = ['durationAvgOfPhonemeSFinal']
+    attributesFilter = ['durationAvgOfPhonemeSFinal']
 
     attributesTg = {}
 
@@ -47,7 +65,7 @@ def textgridToAtt(pathFile):
     for function in list_functions:
         function_name = function[0]
         # filtrar por si es function privada
-        if function_name[0] != '_' and function_name in attributesList:
+        if function_name[0] != '_' and function_name in attributesFilter:
             res = getattr(att, function_name)(tg)
             attributesTg[function_name] = res
 
@@ -55,4 +73,4 @@ def textgridToAtt(pathFile):
 
 if __name__ == '__main__':
     print 'Prueba TextGrid: '
-    print textgridsToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
+    print textgridsToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data1')
