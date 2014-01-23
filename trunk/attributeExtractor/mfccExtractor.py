@@ -12,6 +12,9 @@ nceps=33#13
 
 winstep = 0.01
 
+# TODO: agregar un extractor pero pasando como parametro
+# lista de pathFiles
+
 def wavsToMfcc(pathFolder):
 
     print 'Directorio a analizar: '+str(pathFolder)

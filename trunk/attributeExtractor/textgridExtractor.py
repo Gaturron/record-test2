@@ -3,6 +3,9 @@ import attributes as att
 import os
 import inspect
 
+# TODO: agregar un extractor pero pasando como parametro
+# lista de pathFiles
+
 def textgridsToAtt(pathFolder):
     print 'Extractor de Textgrid - Directorio a analizar: '+str(pathFolder)
 
