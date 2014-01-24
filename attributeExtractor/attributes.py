@@ -162,5 +162,30 @@ def durationAvgOfPhonemeSFinal(textgrid):
         print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
         return round(zum / amount, digits)
 
+def durationAvgOfPrevSyllable(textgrid):
+    syllables = durationOfEachSyllable(textgrid)
+
+    zum = float(0)
+    amount = 0
+
+    prevSyllable = ''
+    for word in syllables:
+        for syllable in word:
+
+            if syllable['text'][-1] == '*' and prevSyllable != '':
+                zum += prevSyllable['time']
+                amount += 1
+
+            print 'prevSyllable: '+str(prevSyllable)+' syllable: '+str(syllable)
+            prevSyllable = syllable
+
+    if amount == 0:
+        return False
+    else:
+        zum = round(zum, digits)
+        amount = round(amount, digits)
+        print 'sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits))
+        return round(zum / amount, digits)
+
 def _dummy(textgrid):
     return '8'

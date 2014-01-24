@@ -65,23 +65,23 @@ phraseToAccents['la lectura es a la mente lo que el ejercicio al cuerpo'] = \
 phraseToAccents['el pez por la boca muere'] = \
                [['el'], ['pes'], ['por'], ['la'], ['bo*', 'ka'], ['mw', 'e*', 're']]
 phraseToAccents['el canape salio espectacular'] = \
-               [['el'], ['ka', 'na', 'pe*'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku*', 'lar']]
+               [['el'], ['ka', 'na', 'pe*'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku', 'lar*']]
 phraseToAccents['el canape salio delicioso'] = \
                [['el'], ['ka', 'na', 'pe*'], ['sa', 'ljo*'], ['de', 'li', 'sjo*', 'so']]
 phraseToAccents['el canape salio riquisimo'] = \
-               [['el'], ['ka', 'na', 'pe*'], ['sa', 'ljo*'], ['Ri', 'ki', 'si*', 'mo']]
+               [['el'], ['ka', 'na', 'pe*'], ['sa', 'ljo*'], ['Ri', 'ki*', 'si', 'mo']]
 phraseToAccents['el repollo salio espectacular'] = \
-               [['el'], ['Re', 'po*', 'Zo'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku*', 'lar']]
+               [['el'], ['Re', 'po*', 'Zo'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku', 'lar*']]
 phraseToAccents['el repollo salio delicioso'] = \
                [['el'], ['Re', 'po*', 'Zo'], ['sa', 'ljo*'], ['de', 'li', 'sjo*', 'so']]
 phraseToAccents['el repollo salio riquisimo'] = \
-               [['el'], ['Re', 'po*', 'Zo'], ['sa', 'ljo*'], ['Ri', 'ki', 'si*', 'mo']]
+               [['el'], ['Re', 'po*', 'Zo'], ['sa', 'ljo*'], ['Ri', 'ki*', 'si', 'mo']]
 phraseToAccents['el esparrago salio espectacular'] = \
-               [['el'], ['eh', 'pa*', 'Ra', 'Go'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku*', 'lar']]
+               [['el'], ['eh', 'pa*', 'Ra', 'Go'], ['sa', 'ljo*'], ['eh', 'pek', 'ta', 'ku', 'lar*']]
 phraseToAccents['el esparrago salio delicioso'] = \
                [['el'], ['eh', 'pa*', 'Ra', 'Go'], ['sa', 'ljo*'], ['de', 'li', 'sjo*', 'so']]
 phraseToAccents['el esparrago salio riquisimo'] = \
-               [['el'], ['eh', 'pa*', 'Ra', 'Go'], ['sa', 'ljo*'], ['Ri', 'ki', 'si*', 'mo']]
+               [['el'], ['eh', 'pa*', 'Ra', 'Go'], ['sa', 'ljo*'], ['Ri', 'ki*', 'si', 'mo']]
 phraseToAccents['en boca cerrada no entran moscas'] = \
                [['en'], ['bo*', 'ka'], ['se', 'Ra*', 'Da'], ['no'], ['en', 'tran'], ['moh*', 'kas']]
 phraseToAccents['mas vale pajaro en mano que cien volando'] = \
