@@ -55,7 +55,7 @@ def textgridToAtt(pathFile):
 
     # Lista de nombre de las funciones de atributos 
     # que se van a calcular
-    attributesFilter = ['durationAvgOfPhonemeSFinal']
+    attributesFilter = ['durationAvgOfPrevSyllable']
 
     attributesTg = {}
 
