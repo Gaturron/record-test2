@@ -72,14 +72,20 @@ def wavToMfcc(pathFile):
     return dicFeatures
 
 if __name__ == '__main__':
-    print 'Prueba MFCC: prueba wav'
-    wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data/bsas_u2_t44_a1.wav')
+    #print 'Prueba MFCC: prueba wav'
+    #wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data/bsas_u2_t44_a1.wav')
     # 490 cantidad de features * 0.01 seg = 4.90 segundos de duracion
     
-    wavToMfcc('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
+    #wavToMfcc('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
     # 266 cantidad de features * 0.01 seg = 2.66 segundos de duracion
 
     #print 'Prueba MFCC: prueba de directorio'
-    wavsToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
+    #wavsToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
+
+    print 'Prueba 2 MFCC: prueba regla 4'
+    dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/bsas_u11_t26_a2.wav')
+    print 'BsAS: '+str(dicBSAS[2.21:2.24])
+    dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/cba_u38_t26_a2.wav')
+    print 'Cba: '+str(dicCBA[2.56:2.63])
 
     print 'Fin de prueba'

@@ -3,8 +3,7 @@ import attributes as att
 import os
 import inspect
 
-# TODO: agregar un extractor pero pasando como parametro
-# lista de pathFiles
+#TODO: cambiar de nombres a las funciones
 
 def textgridsToAtt(param):
     if isinstance(param, str):
