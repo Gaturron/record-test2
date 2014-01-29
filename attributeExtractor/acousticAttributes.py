@@ -5,42 +5,56 @@ import attributes as att
 import numpy as np
 import re
 
+def phrases(textgrid, mfcc):
+    return att.phrases(textgrid)
+
+#=======================================================================
 # La 'c' antes de la 't' no suena
 def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
-    accents = att._accents(textgrid)
 
     # buquemos si esta es la frase con 'CT'
-    interval = {}
+    wordInterval = []
 
     for i, tier in enumerate(textgrid):
         if tier.nameid == 'words':
             for row in tier.simple_transcript:
                 if re.search(wordPattern, str(row[2])):
+                    interval = {}
                     interval['xmin'] = row[0]
                     interval['xmax'] = row[1]
+                    wordInterval += [interval]
 
     # busquemos en ese intervalo la 'k'
-    interval1 = {}
+    syllableIntervals = []
     for i, tier in enumerate(textgrid):
         if tier.nameid == 'phones':
 
-            prevChar = ''
+            prevRow = (0,0,'')
             for row in tier.simple_transcript:
 
                 # guardo la letra previa sino es
-                # if str(prevChar)+str(row[2]) == 'kt':
-                if re.search(syllablePattern, str(prevChar)+str(row[2])):
+                if re.search(syllablePattern, str(prevRow[2])+str(row[2])):
 
-                    if interval['xmin'] < row[0] and row[1] < interval['xmax']:
-                        interval1['xmin'] = row[0]
-                        interval1['xmax'] = row[1]
+                    for interval in wordInterval:
+                        if interval['xmin'] < prevRow[0] and prevRow[1] < interval['xmax']:
+                            interval1 = {}
+                            interval1['xmin'] = prevRow[0]
+                            interval1['xmax'] = prevRow[1]
+                            syllableIntervals += [interval1]
                 else:
-                    prevChar = row[2]
+                    prevRow = row
 
-    if interval1:
-        return mfcc[float(interval1['xmin']):float(interval1['xmax'])]
+    if syllableIntervals:
+        mfccs = ()
+        for interval in syllableIntervals:
+
+            tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
+            mfccs = mfccs + tuplee
+        return mfccs
     else:
         return False
+
+#=======================================================================
 
 def mfccAverageKT(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.CT.', r'kt', textgrid, mfcc)
@@ -54,19 +68,44 @@ def mfccMinKT(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.CT.', r'kt', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 #=======================================================================
+
 def mfccAverageLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'.Z', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'.Z', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'.Z', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
+    return np.amin(mfccTemp, axis=0)
+#=======================================================================
+
+def mfccAverageR(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
+    return np.average(mfccTemp, axis=0)
+
+def mfccMaxR(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
+    return np.amax(mfccTemp, axis=0)
+
+def mfccMinR(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
+#=======================================================================
+def mfccAverageSC(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
+    return np.average(mfccTemp, axis=0)
 
+def mfccMaxSC(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
+    return np.amax(mfccTemp, axis=0)
 
-def dummy(textgrid, mfcc):
+def mfccMinSC(textgrid, mfcc):
+    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
+    return np.amin(mfccTemp, axis=0)
+
+def _dummy(textgrid, mfcc):
     return '8'
