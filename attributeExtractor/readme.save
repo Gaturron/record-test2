@@ -1,0 +1,3 @@
+sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy pythonsudo pip install banyan
+ 1995  sudo easy_install scikits.talkbox
+

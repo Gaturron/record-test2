@@ -21,11 +21,12 @@ def extract(pathFile):
     tg = _extractTextgrid(pathFile+'.TextGrid')
 
     # Analizo mfcc
-    mfcc = _extractMfcc(pathFile+'.wav')
+    #mfcc = _extractMfcc(pathFile+'.wav')
+    mfcc = None
 
     # Lista de nombre de las funciones de atributos 
     # que se van a calcular
-    attributesFilter = ['phrases', 'mfccAverageKT', 'mfccMaxKT', 'mfccMinKT', 'mfccAverageLL', 'mfccMaxLL', 'mfccMinLL', 'mfccAverageSC', 'mfccMaxSC', 'mfccMinSC']
+    attributesFilter = ['phrases', 'mfccAverageSC']
 
     attributesAc = {}
 

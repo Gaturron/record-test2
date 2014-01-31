@@ -24,6 +24,8 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
                     interval['xmax'] = row[1]
                     wordInterval += [interval]
 
+    print 'wordInterval: '+str(wordInterval)+' phrases: '+str(phrases(textgrid, mfcc))
+
     # busquemos en ese intervalo la 'k'
     syllableIntervals = []
     for i, tier in enumerate(textgrid):
@@ -41,16 +43,20 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
                             interval1['xmin'] = prevRow[0]
                             interval1['xmax'] = prevRow[1]
                             syllableIntervals += [interval1]
-                else:
-                    prevRow = row
+                
+                prevRow = row
 
     if syllableIntervals:
-        mfccs = ()
+        #mfccs = ()
+        l = []
         for interval in syllableIntervals:
 
-            tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
-            mfccs = mfccs + tuplee
-        return mfccs
+            #tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
+            #mfccs = mfccs + tuplee
+            l.append((float(interval['xmin']), float(interval['xmax'])))
+        #return mfccs
+        print 'syllableIntervals: '+str(syllableIntervals)
+        return l
     else:
         return False
 
@@ -70,41 +76,43 @@ def mfccMinKT(textgrid, mfcc):
 #=======================================================================
 
 def mfccAverageLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)LL.', r'Z.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 #=======================================================================
 
+# TODO: Para la RR hacer el extractor de atributos para la longitud
 def mfccAverageR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)RR.', r'R.', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
 #=======================================================================
 def mfccAverageSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
-    return np.average(mfccTemp, axis=0)
+    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
+    return mfccTemp
+    #return np.average(mfccTemp, axis=0)
 
 def mfccMaxSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'(.*)SC.', r'hk', textgrid, mfcc)
+    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
 def _dummy(textgrid, mfcc):
