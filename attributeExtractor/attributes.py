@@ -1,6 +1,7 @@
 from textgrid import TextGrid, Tier
 import phraseToAccents as phToAcc
 import string
+import re
 
 # Las funciones declaradas aca deben tener como parametro TextGrid
 # si se agrega al principio _ no se ejecuta para extractor
@@ -189,3 +190,85 @@ def durationAvgOfPrevSyllable(textgrid):
 
 def _dummy(textgrid):
     return '8'
+
+#==========================================================================
+
+def _foundPattern(wordPattern, syllablePattern, textgrid):
+
+    # buquemos si esta es la frase con 'CT'
+    wordInterval = []
+
+    for i, tier in enumerate(textgrid):
+        if tier.nameid == 'words':
+            for row in tier.simple_transcript:
+                if re.search(wordPattern, str(row[2])):
+                    interval = {}
+                    interval['xmin'] = row[0]
+                    interval['xmax'] = row[1]
+                    wordInterval += [interval]
+
+    print 'wordInterval: '+str(wordInterval)+' phrases: '+str(phrases(textgrid))
+
+    # busquemos en ese intervalo la 'k'
+    syllableIntervals = []
+    for i, tier in enumerate(textgrid):
+        if tier.nameid == 'phones':
+
+            prevRow = (0,0,'')
+            for row in tier.simple_transcript:
+
+                # guardo la letra previa sino es
+                if re.search(syllablePattern, str(prevRow[2])+str(row[2])):
+
+                    for interval in wordInterval:
+                        if interval['xmin'] < prevRow[0] and prevRow[1] < interval['xmax']:
+                            interval1 = {}
+                            interval1['wordMin'] = float(interval['xmin'])
+                            interval1['syllableMin'] = float(prevRow[0])
+                            interval1['syllableMax'] = float(prevRow[1])
+                            interval1['wordMax'] = float(interval['xmax'])
+                            syllableIntervals += [interval1]
+                
+                prevRow = row
+
+    if syllableIntervals:
+        return syllableIntervals
+    else:
+        return '?'
+
+def _durationAvg(syllableIntervals):
+    
+    if isinstance(syllableIntervals, list): 
+        duration, total = 0, 0
+        for interval in syllableIntervals:
+            duration += interval['syllableMax'] - interval['syllableMin']
+            total += interval['wordMax'] - interval['wordMin'] 
+        res = round(duration / total, digits) 
+        print 'duration: '+str(duration)+' total: '+str(total)+' res: '+str(res)
+        return res
+    else:
+        return '?'    
+
+KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' } 
+
+def durationAvgKT(textgrid):
+    syllableIntervals = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid)
+    return _durationAvg(syllableIntervals)
+
+LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
+
+def durationAvgLL(textgrid):
+    syllableIntervals = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid)
+    return _durationAvg(syllableIntervals)
+    
+RR = {'wordPattern': r'.RR.', 'syllablePattern': r'R.'}
+
+def durationAvgRR(textgrid):
+    syllableIntervals = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid)
+    return _durationAvg(syllableIntervals)
+
+SC = {'wordPattern': r'.SC.', 'syllablePattern': r'hk'}
+
+def durationAvgSC(textgrid):
+    syllableIntervals = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid)
+    return _durationAvg(syllableIntervals)

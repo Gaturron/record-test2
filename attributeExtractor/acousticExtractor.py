@@ -26,7 +26,7 @@ def extract(pathFile):
 
     # Lista de nombre de las funciones de atributos 
     # que se van a calcular
-    attributesFilter = ['phrases', 'mfccAverageSC']
+    attributesFilter = ['phrases']
 
     attributesAc = {}
 
