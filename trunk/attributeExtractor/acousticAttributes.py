@@ -47,18 +47,15 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
                 prevRow = row
 
     if syllableIntervals:
-        #mfccs = ()
-        l = []
+        mfccs = ()
         for interval in syllableIntervals:
 
-            #tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
-            #mfccs = mfccs + tuplee
-            l.append((float(interval['xmin']), float(interval['xmax'])))
-        #return mfccs
+            tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
+            mfccs = mfccs + tuplee
         print 'syllableIntervals: '+str(syllableIntervals)
-        return l
+        return mfccs
     else:
-        return False
+        return '?'
 
 #=======================================================================
 
@@ -89,23 +86,22 @@ def mfccMinLL(textgrid, mfcc):
 #=======================================================================
 
 # TODO: Para la RR hacer el extractor de atributos para la longitud
-def mfccAverageR(textgrid, mfcc):
+def mfccAverageRR(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
-def mfccMaxR(textgrid, mfcc):
+def mfccMaxRR(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
-def mfccMinR(textgrid, mfcc):
+def mfccMinRR(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
 #=======================================================================
 def mfccAverageSC(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
-    return mfccTemp
-    #return np.average(mfccTemp, axis=0)
+    return np.average(mfccTemp, axis=0)
 
 def mfccMaxSC(textgrid, mfcc):
     mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
