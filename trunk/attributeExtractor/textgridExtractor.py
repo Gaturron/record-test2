@@ -2,6 +2,9 @@ from textgrid import TextGrid, Tier
 import attributes as att
 import os
 import inspect
+import logging
+
+logger = logging.getLogger('textgridExtractor')
 
 #TODO: cambiar de nombres a las funciones
 
@@ -12,7 +15,7 @@ def textgridsToAtt(param):
         return _textgridsToAttFromPathFileList(param)
 
 def _textgridsToAttFromPathFileList(pathFileList):
-    print 'Extractor de Textgrid - Lista de pathFiles'
+    logger.info('Extractor de Textgrid - Lista de pathFiles')
 
     attributesFiles = {}
 
@@ -24,7 +27,7 @@ def _textgridsToAttFromPathFileList(pathFileList):
     return attributesFiles
 
 def _textgridsToAttFromPathFolder(pathFolder):
-    print 'Extractor de Textgrid - Directorio a analizar: '+str(pathFolder)
+    logger.info('Extractor de Textgrid - Directorio a analizar: '+str(pathFolder))
 
     filenames = os.listdir(pathFolder)
     attributesFiles = {}
@@ -36,7 +39,7 @@ def _textgridsToAttFromPathFolder(pathFolder):
     return attributesFiles
 
 def textgridToAtt(pathFile):
-    print 'Textgrid a analizar: '+str(pathFile)
+    logger.info('Textgrid a analizar: '+str(pathFile))
 
     file = open(pathFile, 'r')
 
@@ -54,7 +57,7 @@ def textgridToAtt(pathFile):
 
     # Lista de nombre de las funciones de atributos 
     # que se van a calcular
-    attributesFilter = ['durationAvgKT', 'durationAvgRR']
+    attributesFilter = ['phrases', 'durationAvgKT', 'durationAvgRR']
 
     attributesTg = {}
 
@@ -71,5 +74,5 @@ def textgridToAtt(pathFile):
     return attributesTg
 
 if __name__ == '__main__':
-    print 'Prueba TextGrid: '
-    print textgridsToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data1')
+    logger.info('Prueba TextGrid: ')
+    logger.info(textgridsToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data1'))

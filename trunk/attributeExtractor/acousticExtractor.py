@@ -3,9 +3,12 @@ import mfccExtractor as mfccExt
 import acousticAttributes as acAtt
 import os
 import inspect
+import logging
+
+logger = logging.getLogger('acousticExtractor')
 
 def extracts(pathFileList):
-    print 'Extractor de atributos acusticos - Lista de pathFiles'
+    logger.info('Extractor de atributos acusticos - Lista de pathFiles')
 
     attributesFiles = {}
 
@@ -15,7 +18,7 @@ def extracts(pathFileList):
     return attributesFiles    
 
 def extract(pathFile):
-    print 'Archivo a analizar: '+str(pathFile)
+    logger.info('Archivo a analizar: '+str(pathFile))
 
     # Analizo textgrid
     tg = _extractTextgrid(pathFile+'.TextGrid')
@@ -43,7 +46,7 @@ def extract(pathFile):
     return attributesAc
 
 def _extractTextgrid(pathFile):
-    print 'Textgrid a analizar: '+str(pathFile)
+    logger.info('Textgrid a analizar: '+str(pathFile))
 
     file = open(pathFile, 'r')
 
@@ -60,6 +63,6 @@ def _extractTextgrid(pathFile):
     return TextGrid(data)
 
 def _extractMfcc(pathFile):
-    print 'Wav a analizar: '+str(pathFile)
+    logger.info('Wav a analizar: '+str(pathFile))
 
     return mfccExt.wavToMfcc(pathFile)
