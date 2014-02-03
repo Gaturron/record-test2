@@ -7,62 +7,63 @@ import logging
 
 logger = logging.getLogger('acousticExtractor')
 
-def extracts(pathFileList):
-    logger.info('Extractor de atributos acusticos - Lista de pathFiles')
+class acousticExtractor(object):
 
-    attributesFiles = {}
+    def __init__(self, attributesFilter):
+        self.attributesFilter = attributesFilter
 
-    for pathFile in pathFileList:
-        attributesFiles[pathFile] = extract(pathFile)
+    def extracts(self, pathFileList):
+        logger.info('Extractor de atributos acusticos - Lista de pathFiles')
 
-    return attributesFiles    
+        attributesFiles = {}
 
-def extract(pathFile):
-    logger.info('Archivo a analizar: '+str(pathFile))
+        for pathFile in pathFileList:
+            attributesFiles[pathFile] = self.extract(pathFile)
 
-    # Analizo textgrid
-    tg = _extractTextgrid(pathFile+'.TextGrid')
+        return attributesFiles    
 
-    # Analizo mfcc
-    #mfcc = _extractMfcc(pathFile+'.wav')
-    mfcc = None
+    def extract(self, pathFile):
+        logger.info('Archivo a analizar: '+str(pathFile))
 
-    # Lista de nombre de las funciones de atributos 
-    # que se van a calcular
-    attributesFilter = ['phrases']
+        # Analizo textgrid
+        tg = self._extractTextgrid(pathFile+'.TextGrid')
 
-    attributesAc = {}
+        # Analizo mfcc
+        #mfcc = self._extractMfcc(pathFile+'.wav')
+        mfcc = None
 
-    # vamos a agarrar todas las funciones de acousticAttributes
-    # y ejecutarlas con el argumento 
-    list_functions = inspect.getmembers(acAtt, predicate=inspect.isfunction)
-    for function in list_functions:
-        function_name = function[0]
-        # filtrar por si es function privada
-        if function_name[0] != '_' and function_name in attributesFilter:
-            res = getattr(acAtt, function_name)(tg, mfcc)
-            attributesAc[function_name] = res
+        attributesAc = {}
 
-    return attributesAc
+        # vamos a agarrar todas las funciones de acousticAttributes
+        # y ejecutarlas con el argumento 
+        list_functions = inspect.getmembers(acAtt, predicate=inspect.isfunction)
+        for function in list_functions:
+            function_name = function[0]
+            # filtrar por si es function privada
+            if function_name[0] != '_' and function_name in self.attributesFilter:
+                res = getattr(acAtt, function_name)(tg, mfcc)
+                attributesAc[function_name] = res
 
-def _extractTextgrid(pathFile):
-    logger.info('Textgrid a analizar: '+str(pathFile))
+        return attributesAc
 
-    file = open(pathFile, 'r')
+    def _extractTextgrid(self, pathFile):
+        logger.info('Textgrid a analizar: '+str(pathFile))
 
-    def replace_tab(s, tabstop = 4):
-        result = str()
-        for c in s:
-            if c == '\t':
-                result += ' '*tabstop
-            else:
-                result += c    
-        return result
+        file = open(pathFile, 'r')
 
-    data = replace_tab(file.read())
-    return TextGrid(data)
+        def replace_tab(s, tabstop = 4):
+            result = str()
+            for c in s:
+                if c == '\t':
+                    result += ' '*tabstop
+                else:
+                    result += c    
+            return result
 
-def _extractMfcc(pathFile):
-    logger.info('Wav a analizar: '+str(pathFile))
+        data = replace_tab(file.read())
+        return TextGrid(data)
 
-    return mfccExt.wavToMfcc(pathFile)
+    def _extractMfcc(self, pathFile):
+        logger.info('Wav a analizar: '+str(pathFile))
+
+        return mfccExt.wavToMfcc(pathFile)

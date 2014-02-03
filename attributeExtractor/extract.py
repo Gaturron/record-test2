@@ -1,6 +1,6 @@
 import alignmentFilter as agmntFilter
-import textgridExtractor as tgExtractor
-import acousticExtractor as acExtractor
+from textgridExtractor import textgridExtractor
+from acousticExtractor import acousticExtractor
 import diccToArff as dTA
 import logging
 
@@ -9,14 +9,19 @@ logging.basicConfig(level=logging.DEBUG)
 
 def extract():
 
+    attributesFilter = {'place': 'STRING', 'phrases': 'STRING', 'durationAvgKT': 'NUMERIC', 'durationAvgRR': 'NUMERIC'}
+
     logger = logging.getLogger('Extract')
     logger.info('starting')
 
     pathList = agmntFilter.filter(Path)
     logger.debug('pathList: '+ str(pathList))
 
+    tgExtractor = textgridExtractor(attributesFilter.keys())
     tgRes = tgExtractor.textgridsToAtt(pathList)
     logger.debug('tgRes: '+ str(tgRes))
+
+    acExtractor = acousticExtractor(attributesFilter.keys())
     acRes = acExtractor.extracts(pathList)
     logger.debug('acRes: '+ str(acRes))
 
@@ -32,8 +37,7 @@ def extract():
 
     logger.debug('Res: '+ str(res1))
 
-    dTA.diccToArff(res1, 'test.arff')
-
+    dTA.diccToArff(res1, 'test.arff', attributesFilter)
 
 if __name__ == '__main__':
     extract()
