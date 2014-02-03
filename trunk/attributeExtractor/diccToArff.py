@@ -5,7 +5,7 @@ sources = 'http://fabula2.exp.dc.uba.ar/'
 author = 'Fernando Bugni'
 databaseName = 'bsas-cba_DB'
 
-def diccToArff(dicc, filename):
+def diccToArff(dicc, filename, attributesFilter):
 
     file = open(filename, 'w')
 
@@ -30,30 +30,39 @@ def diccToArff(dicc, filename):
         file.write(error+'\n')
         print error
     else:
-        firstKey = keys[0]
-        attributes = dicc[firstKey].keys()
-        attributes.remove('place')
-        for att in attributes:
-            print type(dicc[firstKey][att])
-            if isinstance(dicc[firstKey][att], float):
-                file.write('@ATTRIBUTE '+att+' NUMERIC'+'\n')
-            else:
-                file.write('@ATTRIBUTE '+att+' STRING'+'\n')
-                
+        diccAttFilter = collections.OrderedDict(sorted(attributesFilter.items()))
+        attFilterKeys = diccAttFilter.keys()
+        attFilterKeys.remove('place')
+        for att in attFilterKeys:
+            file.write('@ATTRIBUTE '+att+' '+diccAttFilter[att]+'\n')
         file.write('@ATTRIBUTE place {bsas, cba}'+'\n')
         file.write('\n')
+        
+        # firstKey = keys[0]
+        # attributes = dicc[firstKey].keys()
+        # attributes.remove('place')
+        # for att in attributes:
+        #     print type(dicc[firstKey][att])
+        #     if isinstance(dicc[firstKey][att], float):
+        #         file.write('@ATTRIBUTE '+att+' NUMERIC'+'\n')
+        #     else:
+        #         file.write('@ATTRIBUTE '+att+' STRING'+'\n')
+                
+        # file.write('@ATTRIBUTE place {bsas, cba}'+'\n')
+        # file.write('\n')
 
     #Data:
     #================================================
         file.write('@DATA'+'\n')
             
         for k in keys:
-            attributes = dicc[k].keys()
+            sampleDicc = collections.OrderedDict(sorted(dicc[k].items()))
+            attributes = sampleDicc.keys()
             attributes.remove('place')
             for att in attributes:
-                file.write(str(dicc[k][att]))
+                file.write(str(sampleDicc[att]))
                 file.write(',')
-            file.write(str(dicc[k]['place']))
+            file.write(str(sampleDicc['place']))
             file.write('\n')
 
     file.close()
