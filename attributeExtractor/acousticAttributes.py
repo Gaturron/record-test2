@@ -4,9 +4,9 @@ import phraseToAccents as phToAcc
 import attributes as att
 import numpy as np
 import re
+import logging
 
-def phrases(textgrid, mfcc):
-    return att.phrases(textgrid)
+logger = logging.getLogger('acousticAttributes: ')
 
 #=======================================================================
 # La 'c' antes de la 't' no suena
@@ -24,7 +24,7 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
                     interval['xmax'] = row[1]
                     wordInterval += [interval]
 
-    print 'wordInterval: '+str(wordInterval)+' phrases: '+str(phrases(textgrid, mfcc))
+    logger.debug('wordInterval: '+str(wordInterval))
 
     # busquemos en ese intervalo la 'k'
     syllableIntervals = []
@@ -52,63 +52,85 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
 
             tuplee = mfcc[float(interval['xmin']):float(interval['xmax'])]
             mfccs = mfccs + tuplee
-        print 'syllableIntervals: '+str(syllableIntervals)
+        logger.debug('syllableIntervals: '+str(syllableIntervals))
         return mfccs
     else:
         return '?'
 
 #=======================================================================
 
+KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' } 
+
 def mfccAverageKT(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.CT.', r'kt', textgrid, mfcc)
+    logger.debug('mfccAverageKT: ')
+    mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxKT(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.CT.', r'kt', textgrid, mfcc)
+    logger.debug('mfccMaxKT: ')
+    mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinKT(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.CT.', r'kt', textgrid, mfcc)
+    logger.debug('mfccMinKT: ')
+    mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 #=======================================================================
 
+LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
+
 def mfccAverageLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
+    logger.debug('mfccAverageLL: ')
+    mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
+    logger.debug('mfccMaxLL: ')
+    mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinLL(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'LL.', r'Z.', textgrid, mfcc)
+    logger.debug('mfccMinLL: ')
+    mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 #=======================================================================
 
 # TODO: Para la RR hacer el extractor de atributos para la longitud
+    
+RR = {'wordPattern': r'.RR.', 'syllablePattern': r'R.'}
+
 def mfccAverageRR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
+    logger.debug('mfccAverageRR: ')
+    mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxRR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
+    logger.debug('mfccMaxRR: ')
+    mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinRR(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.RR.', r'R.', textgrid, mfcc)
+    logger.debug('mfccMinRR: ')
+    mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
 #=======================================================================
+
+SC = {'wordPattern': r'.SC.', 'syllablePattern': r'hk'}
+
 def mfccAverageSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
+    logger.debug('mfccAverageSC: ')
+    mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     return np.average(mfccTemp, axis=0)
 
 def mfccMaxSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
+    logger.debug('mfccMaxSC: ')
+    mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     return np.amax(mfccTemp, axis=0)
 
 def mfccMinSC(textgrid, mfcc):
-    mfccTemp = _foundPattern(r'.SC.', r'hk', textgrid, mfcc)
+    logger.debug('mfccMinSC: ')
+    mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     return np.amin(mfccTemp, axis=0)
 
 def _dummy(textgrid, mfcc):
