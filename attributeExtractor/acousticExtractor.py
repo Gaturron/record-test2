@@ -29,8 +29,8 @@ class acousticExtractor(object):
         tg = self._extractTextgrid(pathFile+'.TextGrid')
 
         # Analizo mfcc
-        #mfcc = self._extractMfcc(pathFile+'.wav')
-        mfcc = None
+        mfcc = self._extractMfcc(pathFile+'.wav')
+        #mfcc = None
 
         attributesAc = {}
 
