@@ -9,7 +9,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 def extract():
 
-    attributesFilter = {'place': 'STRING', 'phrases': 'STRING', 'durationAvgKT': 'NUMERIC', 'durationAvgRR': 'NUMERIC'}
+    attributesFilter = {
+        'place': 'STRING', 'phrases': 'STRING', 
+        'durationAvgKT': 'NUMERIC', 'durationAvgRR': 'NUMERIC',
+        'mfccAverageKT': ['NUMERIC' for i in range(26)]
+    }
 
     logger = logging.getLogger('Extract')
     logger.info('starting')

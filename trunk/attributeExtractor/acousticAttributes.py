@@ -64,7 +64,11 @@ KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' }
 def mfccAverageKT(textgrid, mfcc):
     logger.debug('mfccAverageKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
-    return np.average(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.average(mfccTemp, axis=0)
+    else:
+        return '?'
 
 def mfccMaxKT(textgrid, mfcc):
     logger.debug('mfccMaxKT: ')
