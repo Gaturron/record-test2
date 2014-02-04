@@ -1,4 +1,5 @@
 import collections
+import time
 
 title = 'Buenos Aires - Cordoba Extraction Database'
 sources = 'http://fabula2.exp.dc.uba.ar/'
@@ -17,7 +18,7 @@ def diccToArff(dicc, filename, attributesFilter):
     file.write('%'+'\n')
     file.write('% 3. Author: '+author+'\n')
     file.write('%'+'\n')
-    #file.write('% 4. Date: '+date+'\n')
+    file.write('% 4. Date: '+time.strftime("%c")+'\n')
     file.write('%'+'\n\n')
 
     file.write('@RELATION '+databaseName+'\n')
@@ -37,19 +38,6 @@ def diccToArff(dicc, filename, attributesFilter):
             file.write('@ATTRIBUTE '+att+' '+diccAttFilter[att]+'\n')
         file.write('@ATTRIBUTE place {bsas, cba}'+'\n')
         file.write('\n')
-        
-        # firstKey = keys[0]
-        # attributes = dicc[firstKey].keys()
-        # attributes.remove('place')
-        # for att in attributes:
-        #     print type(dicc[firstKey][att])
-        #     if isinstance(dicc[firstKey][att], float):
-        #         file.write('@ATTRIBUTE '+att+' NUMERIC'+'\n')
-        #     else:
-        #         file.write('@ATTRIBUTE '+att+' STRING'+'\n')
-                
-        # file.write('@ATTRIBUTE place {bsas, cba}'+'\n')
-        # file.write('\n')
 
     #Data:
     #================================================
@@ -60,7 +48,12 @@ def diccToArff(dicc, filename, attributesFilter):
             attributes = sampleDicc.keys()
             attributes.remove('place')
             for att in attributes:
-                file.write(str(sampleDicc[att]))
+                if ' ' in str(sampleDicc[att]):
+                    file.write('\'')                    
+                    file.write(str(sampleDicc[att]))
+                    file.write('\'')
+                else:
+                    file.write(str(sampleDicc[att]))
                 file.write(',')
             file.write(str(sampleDicc['place']))
             file.write('\n')
