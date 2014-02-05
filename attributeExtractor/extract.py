@@ -1,7 +1,7 @@
 import alignmentFilter as agmntFilter
 from textgridExtractor import textgridExtractor
 from acousticExtractor import acousticExtractor
-import diccToArff as dTA
+import diccToArff1 as dTA
 import logging
 
 Path = '/home/fernando/Tesis/Prosodylab-Aligner-master/data1/'
@@ -11,8 +11,8 @@ def extract():
 
     attributesFilter = {
         'place': 'STRING', 'phrases': 'STRING', 
-        'durationAvgKT': 'NUMERIC', 'durationAvgRR': 'NUMERIC',
-        'mfccAverageKT': ['NUMERIC' for i in range(26)]
+        'durationAvgKT': 'REAL', 'durationAvgRR': 'REAL',
+        'mfccAverageKT': ['REAL' for i in range(26)]
     }
 
     logger = logging.getLogger('Extract')

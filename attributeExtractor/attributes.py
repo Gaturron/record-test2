@@ -245,7 +245,7 @@ def _foundPattern(wordPattern, syllablePattern, textgrid):
     if syllableIntervals:
         return syllableIntervals
     else:
-        return '?'
+        return None
 
 def _durationAvg(syllableIntervals):
     
@@ -258,7 +258,7 @@ def _durationAvg(syllableIntervals):
         logger.debug('Resultado: duration: '+str(duration)+' total: '+str(total)+' res: '+str(res))
         return res
     else:
-        return '?'    
+        return None    
 
 KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' } 
 

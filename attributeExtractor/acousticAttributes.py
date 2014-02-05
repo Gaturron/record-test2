@@ -68,7 +68,7 @@ def mfccAverageKT(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.average(mfccTemp, axis=0)
     else:
-        return '?'
+        return np.array([None for i in range(26)])
 
 def mfccMaxKT(textgrid, mfcc):
     logger.debug('mfccMaxKT: ')
