@@ -25,6 +25,8 @@ def diccToArff(dicc, filename, attributesFilter):
         for key in orderedKeys:
             if  isinstance(attributesFilter[key], list):
                 attributes += [ (key+'_'+str(i), attributesFilter[key][0])for i in range(len(attributesFilter[key]))]
+            elif isinstance(attributesFilter[key], tuple):
+                attributes.append((key, list( attributesFilter[key])))
             else:
                 attributes.append((key, attributesFilter[key]))
 

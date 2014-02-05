@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 def extract():
 
     attributesFilter = {
-        'place': 'STRING', 'phrases': 'STRING', 
+        'place': ('bsas', 'cba'), 'phrases': 'STRING', 
         'durationAvgKT': 'REAL', 'durationAvgRR': 'REAL',
         'mfccAverageKT': ['REAL' for i in range(26)]
     }
