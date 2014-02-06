@@ -165,7 +165,7 @@ def durationAvgOfPhonemeSFinal(textgrid):
                         zum += float(row[1]) - float(row[0])
                         amount += 1
     if amount == 0:
-        return False
+        return None
     else:
         zum = round(zum, digits)
         amount = round(amount, digits)
@@ -192,7 +192,7 @@ def durationAvgOfPrevSyllable(textgrid):
             prevSyllable = syllable
 
     if amount == 0:
-        return False
+        return None
     else:
         zum = round(zum, digits)
         amount = round(amount, digits)

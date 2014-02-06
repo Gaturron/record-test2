@@ -1,7 +1,7 @@
 import re
 import logging
 
-umbral = -60
+umbral = -65
 # umbral debe ser negativo
 # mas cercano a 0 significa mejor alineado
 

@@ -73,12 +73,20 @@ def mfccAverageKT(textgrid, mfcc):
 def mfccMaxKT(textgrid, mfcc):
     logger.debug('mfccMaxKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
-    return np.amax(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amax(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])
 
 def mfccMinKT(textgrid, mfcc):
     logger.debug('mfccMinKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
-    return np.amin(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amin(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])
 #=======================================================================
 
 LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
@@ -86,17 +94,29 @@ LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
 def mfccAverageLL(textgrid, mfcc):
     logger.debug('mfccAverageLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
-    return np.average(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.average(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])        
 
 def mfccMaxLL(textgrid, mfcc):
     logger.debug('mfccMaxLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
-    return np.amax(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amax(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])        
 
 def mfccMinLL(textgrid, mfcc):
     logger.debug('mfccMinLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
-    return np.amin(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amin(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)]) 
 #=======================================================================
 
 # TODO: Para la RR hacer el extractor de atributos para la longitud
@@ -106,17 +126,29 @@ RR = {'wordPattern': r'.RR.', 'syllablePattern': r'R.'}
 def mfccAverageRR(textgrid, mfcc):
     logger.debug('mfccAverageRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
-    return np.average(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.average(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)]) 
 
 def mfccMaxRR(textgrid, mfcc):
     logger.debug('mfccMaxRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
-    return np.amax(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amax(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)]) 
 
 def mfccMinRR(textgrid, mfcc):
     logger.debug('mfccMinRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
-    return np.amin(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amin(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)]) 
 
 #=======================================================================
 
@@ -125,17 +157,29 @@ SC = {'wordPattern': r'.SC.', 'syllablePattern': r'hk'}
 def mfccAverageSC(textgrid, mfcc):
     logger.debug('mfccAverageSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
-    return np.average(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.average(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])         
 
 def mfccMaxSC(textgrid, mfcc):
     logger.debug('mfccMaxSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
-    return np.amax(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amax(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])         
 
 def mfccMinSC(textgrid, mfcc):
     logger.debug('mfccMinSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
-    return np.amin(mfccTemp, axis=0)
+    if isinstance(mfccTemp, tuple):
+        mfccTemp = np.around(mfccTemp, decimals=2)
+        return np.amin(mfccTemp, axis=0)
+    else:
+        return np.array([None for i in range(26)])         
 
 def _dummy(textgrid, mfcc):
     return '8'
