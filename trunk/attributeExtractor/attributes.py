@@ -172,6 +172,7 @@ def durationAvgOfPhonemeSFinal(textgrid):
         logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
         return round(zum / amount, digits)
 
+# Regla 1: Localice la silaba acentuada y estirar la silaba anterior
 def durationAvgOfPrevSyllable(textgrid):
 
     logger.debug('durationAvgOfPrevSyllable:')
