@@ -1,3 +1,6 @@
+webpage:
+http://weka.wikispaces.com/Use+Weka+in+your+Java+code
+
 Acordarse de ejecutar
 
 export CLASSPATH=$CLASSPATH:/home/fernando/Tesis/weka-3-6-10/weka.jar
