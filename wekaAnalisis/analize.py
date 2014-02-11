@@ -13,9 +13,14 @@ import weka.classifiers.trees.J48 as J48
 import weka.classifiers.rules.JRip as JRip
 import weka.filters.unsupervised.attribute.Remove as Remove
 import weka.classifiers.Evaluation as Evaluation
+
 import weka.classifiers.meta.AttributeSelectedClassifier as AttributeSelectedClassifier
+
 import weka.attributeSelection.CfsSubsetEval as CfsSubsetEval
+import weka.attributeSelection.InfoGainAttributeEval as InfoGainAttributeEval
+
 import weka.attributeSelection.GreedyStepwise as GreedyStepwise
+import weka.attributeSelection.Ranker as Ranker
 
 # load data file
 file = FileReader("/home/fernando/Tesis/record-test2/attributeExtractor/test1.numeric.arff")
@@ -48,7 +53,7 @@ folds = 10
 jrip.buildClassifier(data1)
 
 rand = Random(1); 
-evaluation.crossValidateModel(jrip, data1, folds, rand );
+evaluation.crossValidateModel(jrip, data1, folds, rand);
 
 print "Baseline:\n==========\n"
 print jrip
@@ -85,7 +90,67 @@ classifier.setSearch(search)
 evaluation = Evaluation(data2)
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, data2, 10, Random(1))
-print "GreedyStepwise(CfsSubsetEval):\n===============================\n"
+print "GreedyStepwise(CfsSubsetEval) con J48:\n===============================\n"
 print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+# --------------------------------------------
+data2 = Filter.useFilter(data, remove)
+data2.setClassIndex(data2.attribute('place').index())
+
+evalu = CfsSubsetEval()
+search = GreedyStepwise()
+search.setSearchBackwards(True)
+jrip = JRip()
+
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(jrip)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(data2)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+print "GreedyStepwise(CfsSubsetEval) con JRip:\n===============================\n"
+print jrip
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "======================================================================"
+print "Ranker 10 attributes"
+# ============================================================================
+data2 = Filter.useFilter(data, remove)
+data2.setClassIndex(data2.attribute('place').index())
+
+evalu = InfoGainAttributeEval()
+search = Ranker()
+search.setNumToSelect(10) 
+
+j48 = J48()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(j48)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(data2)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+print "Ranker(InfoGain) con J48:\n===============================\n"
+print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+jrip = JRip()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(jrip)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(data2)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+print "Ranker(InfoGain) con JRip:\n===============================\n"
+print jrip
 print evaluation.toSummaryString()
 print evaluation.toMatrixString()
