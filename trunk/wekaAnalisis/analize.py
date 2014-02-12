@@ -9,9 +9,15 @@ import java.util.Random as Random
 import weka.core.Instances as Instances
 import weka.filters.Filter as Filter
 import weka.core.Range as Range
+
 import weka.classifiers.trees.J48 as J48
 import weka.classifiers.rules.JRip as JRip
+import weka.classifiers.bayes.NaiveBayes as NaiveBayes
+import weka.classifiers.functions.SMO as functionsSMO
+
 import weka.filters.unsupervised.attribute.Remove as Remove
+import weka.filters.supervised.attribute.AttributeSelection as AttributeSelection
+
 import weka.classifiers.Evaluation as Evaluation
 
 import weka.classifiers.meta.AttributeSelectedClassifier as AttributeSelectedClassifier
@@ -48,12 +54,10 @@ jrip.setDebug(True)
 jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
 
 evaluation = Evaluation(data1)
-folds = 10
 
 jrip.buildClassifier(data1)
 
-rand = Random(1); 
-evaluation.crossValidateModel(jrip, data1, folds, rand);
+evaluation.crossValidateModel(jrip, data1, 10, Random(1));
 
 print "Baseline:\n==========\n"
 print jrip
@@ -62,9 +66,10 @@ print evaluation.toMatrixString()
 
 print "======================================================================"
 # ============================================================================
-# Calculando las alternativas
-# ===========================
-# Seleccionando atributos con Greedy Stepwise
+print "Calculando las alternativas"
+print "==========================="
+print "Seleccionando atributos con Greedy Stepwise"
+print "==========================================="
 
 listAttribute = []
 listAttribute.append(data.attribute('phrases').index())
@@ -74,83 +79,507 @@ remove.setAttributeIndicesArray(listAttribute)
 remove.setInvertSelection(False) 
 #False: para que borre los atributos definidos
 remove.setInputFormat(data)
-data2 = Filter.useFilter(data, remove)
-data2.setClassIndex(data2.attribute('place').index())
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
 
+filter = AttributeSelection()
 evalu = CfsSubsetEval()
 search = GreedyStepwise()
 search.setSearchBackwards(True)
-j48 = J48()
+filter.setEvaluator(evalu)
+filter.setSearch(search)
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
 
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
+j48 = J48()
 classifier = AttributeSelectedClassifier()
 classifier.setClassifier(j48)
 classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
-evaluation = Evaluation(data2)
+evaluation = Evaluation(filteredData)
 # 10-fold cross-validation
-evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
 print "GreedyStepwise(CfsSubsetEval) con J48:\n===============================\n"
 print j48
 print evaluation.toSummaryString()
 print evaluation.toMatrixString()
 
 # --------------------------------------------
-data2 = Filter.useFilter(data, remove)
-data2.setClassIndex(data2.attribute('place').index())
-
-evalu = CfsSubsetEval()
-search = GreedyStepwise()
-search.setSearchBackwards(True)
 jrip = JRip()
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
 
-classifier = AttributeSelectedClassifier()
-classifier.setClassifier(jrip)
-classifier.setEvaluator(evalu)
-classifier.setSearch(search)
+evaluation = Evaluation(filteredData)
 
-evaluation = Evaluation(data2)
-# 10-fold cross-validation
-evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
 print "GreedyStepwise(CfsSubsetEval) con JRip:\n===============================\n"
 print jrip
 print evaluation.toSummaryString()
 print evaluation.toMatrixString()
 
-print "======================================================================"
-print "Ranker 10 attributes"
-# ============================================================================
-data2 = Filter.useFilter(data, remove)
-data2.setClassIndex(data2.attribute('place').index())
+print "--------------------------------------------"
+print "Seleccionando atributos con Ranker"
+print "==========================================="
+numAtt = 10
+print "Cant. de attributos: "+str(numAtt)
 
+listAttribute = []
+listAttribute.append(data.attribute('phrases').index())
+
+remove = Remove()
+remove.setAttributeIndicesArray(listAttribute)
+remove.setInvertSelection(False) 
+#False: para que borre los atributos definidos
+remove.setInputFormat(data)
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
+
+filter = AttributeSelection()
 evalu = InfoGainAttributeEval()
 search = Ranker()
-search.setNumToSelect(10) 
+search.setNumToSelect(numAtt) 
+filter.setEvaluator(evalu)
+filter.setSearch(search)
 
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
+
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
 j48 = J48()
 classifier = AttributeSelectedClassifier()
 classifier.setClassifier(j48)
 classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
-evaluation = Evaluation(data2)
+evaluation = Evaluation(filteredData)
 # 10-fold cross-validation
-evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
 print "Ranker(InfoGain) con J48:\n===============================\n"
 print j48
 print evaluation.toSummaryString()
 print evaluation.toMatrixString()
 
+print "--------------------------------------------"
 jrip = JRip()
-classifier = AttributeSelectedClassifier()
-classifier.setClassifier(jrip)
-classifier.setEvaluator(evalu)
-classifier.setSearch(search)
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
 
-evaluation = Evaluation(data2)
-# 10-fold cross-validation
-evaluation.crossValidateModel(classifier, data2, 10, Random(1))
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
+
 print "Ranker(InfoGain) con JRip:\n===============================\n"
 print jrip
 print evaluation.toSummaryString()
 print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+naiveBayes = NaiveBayes()
+naiveBayes.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con NaiveBayes:\n===============================\n"
+print naiveBayes
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+functSMO = functionsSMO()
+functSMO.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con functionsSMO:\n===============================\n"
+print functSMO
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "==========================================="
+numAtt = 20
+print "Cant. de attributos: "+str(numAtt)
+
+listAttribute = []
+listAttribute.append(data.attribute('phrases').index())
+
+remove = Remove()
+remove.setAttributeIndicesArray(listAttribute)
+remove.setInvertSelection(False) 
+#False: para que borre los atributos definidos
+remove.setInputFormat(data)
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
+
+filter = AttributeSelection()
+evalu = InfoGainAttributeEval()
+search = Ranker()
+search.setNumToSelect(numAtt) 
+filter.setEvaluator(evalu)
+filter.setSearch(search)
+
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
+
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
+j48 = J48()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(j48)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(filteredData)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con J48:\n===============================\n"
+print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+jrip = JRip()
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con JRip:\n===============================\n"
+print jrip
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+naiveBayes = NaiveBayes()
+naiveBayes.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con NaiveBayes:\n===============================\n"
+print naiveBayes
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+functSMO = functionsSMO()
+functSMO.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con functionsSMO:\n===============================\n"
+print functSMO
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "==========================================="
+numAtt = 30
+print "Cant. de attributos: "+str(numAtt)
+
+listAttribute = []
+listAttribute.append(data.attribute('phrases').index())
+
+remove = Remove()
+remove.setAttributeIndicesArray(listAttribute)
+remove.setInvertSelection(False) 
+#False: para que borre los atributos definidos
+remove.setInputFormat(data)
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
+
+filter = AttributeSelection()
+evalu = InfoGainAttributeEval()
+search = Ranker()
+search.setNumToSelect(numAtt) 
+filter.setEvaluator(evalu)
+filter.setSearch(search)
+
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
+
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
+j48 = J48()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(j48)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(filteredData)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con J48:\n===============================\n"
+print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+jrip = JRip()
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con JRip:\n===============================\n"
+print jrip
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+naiveBayes = NaiveBayes()
+naiveBayes.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con NaiveBayes:\n===============================\n"
+print naiveBayes
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+functSMO = functionsSMO()
+functSMO.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con functionsSMO:\n===============================\n"
+print functSMO
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "==========================================="
+numAtt = 40
+print "Cant. de attributos: "+str(numAtt)
+
+listAttribute = []
+listAttribute.append(data.attribute('phrases').index())
+
+remove = Remove()
+remove.setAttributeIndicesArray(listAttribute)
+remove.setInvertSelection(False) 
+#False: para que borre los atributos definidos
+remove.setInputFormat(data)
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
+
+filter = AttributeSelection()
+evalu = InfoGainAttributeEval()
+search = Ranker()
+search.setNumToSelect(numAtt) 
+filter.setEvaluator(evalu)
+filter.setSearch(search)
+
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
+
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
+j48 = J48()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(j48)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(filteredData)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con J48:\n===============================\n"
+print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+jrip = JRip()
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con JRip:\n===============================\n"
+print jrip
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+naiveBayes = NaiveBayes()
+naiveBayes.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con NaiveBayes:\n===============================\n"
+print naiveBayes
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+functSMO = functionsSMO()
+functSMO.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con functionsSMO:\n===============================\n"
+print functSMO
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "==========================================="
+numAtt = 80
+print "Cant. de attributos: "+str(numAtt)
+
+listAttribute = []
+listAttribute.append(data.attribute('phrases').index())
+
+remove = Remove()
+remove.setAttributeIndicesArray(listAttribute)
+remove.setInvertSelection(False) 
+#False: para que borre los atributos definidos
+remove.setInputFormat(data)
+dataTmp = Filter.useFilter(data, remove)
+dataTmp.setClassIndex(dataTmp.attribute('place').index())
+
+filter = AttributeSelection()
+evalu = InfoGainAttributeEval()
+search = Ranker()
+search.setNumToSelect(numAtt) 
+filter.setEvaluator(evalu)
+filter.setSearch(search)
+
+filter.setInputFormat(dataTmp)
+filteredData = Filter.useFilter(dataTmp, filter)
+
+print "Atributos seleccionados:"
+for i, att in enumerate(filteredData.enumerateAttributes()):
+    print str(i) +") "+ str(att)
+
+print "--------------------------------------------"
+j48 = J48()
+classifier = AttributeSelectedClassifier()
+classifier.setClassifier(j48)
+classifier.setEvaluator(evalu)
+classifier.setSearch(search)
+
+evaluation = Evaluation(filteredData)
+# 10-fold cross-validation
+evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con J48:\n===============================\n"
+print j48
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+jrip = JRip()
+jrip.setDebug(True)
+jrip.setOptions(['-F 3', '-N 2.0', '-O 2', '-S 1'])
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(jrip, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con JRip:\n===============================\n"
+print jrip
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+naiveBayes = NaiveBayes()
+naiveBayes.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con NaiveBayes:\n===============================\n"
+print naiveBayes
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
+print "--------------------------------------------"
+functSMO = functionsSMO()
+functSMO.setDebug(True)
+
+evaluation = Evaluation(filteredData)
+
+jrip.buildClassifier(filteredData)
+
+evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
+
+print "Ranker(InfoGain) con functionsSMO:\n===============================\n"
+print functSMO
+print evaluation.toSummaryString()
+print evaluation.toMatrixString()
+
