@@ -1,5 +1,6 @@
 from textgrid import TextGrid, Tier
 import phraseToAccents as phToAcc
+import scipy as np
 import string
 import re
 import logging
@@ -36,70 +37,21 @@ def phrases(textgrid):
 def _accents(textgrid):
     return phToAcc.getAccents(phrases(textgrid))
 
-#============================================================================
+def _goThroughWithCondition(textgrid, nameTier, condition):
+    # recorre el tier con nameTier y devuelve el array que cumple con los 
+    # elementos de la condicion
 
-def duration(textgrid):
-    logger.debug('duration: ')
-    res = float(0)
+    logger.debug("_goThroughWithCondition: ")
+    result = []
     for i, tier in enumerate(textgrid):
-        if tier.nameid == 'words':
+        if tier.nameid == nameTier:
             for row in tier.simple_transcript:
-                if row[2] != 'sil' and row[2] != 'sp':
-                    res += float(row[1]) - float(row[0])
+                if condition(row):
+                    result += [ float(row[1]) - float(row[0]) ]
                 logger.debug(row)
-    res = round(res, digits)
-    logger.debug('res: '+str(res))
-    return res
+    return result
 
-def durationOfEachPhoneme(textgrid):
-    logger.debug('durationOfEachPhoneme: ')
-    zum = float(0)
-    amount = 0
-    for i, tier in enumerate(textgrid):
-        if tier.nameid == 'phones':
-            for row in tier.simple_transcript:
-                if row[2] != 'sil' and row[2] != 'sp' and row[2] != '':
-                    zum += float(row[1]) - float(row[0])
-                    amount += 1
-                logger.debug(row)
-    zum = round(zum, digits)
-    amount = round(amount, digits)
-    logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
-    return round(zum / amount, digits)
-
-def durationOfEachVowel(textgrid):
-    logger.debug('durationOfEachVowel: ')
-    zum = float(0)
-    amount = 0
-    for i, tier in enumerate(textgrid):
-        if tier.nameid == 'phones':
-            for row in tier.simple_transcript:
-                if row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in vowels:
-                    zum += float(row[1]) - float(row[0])
-                    amount += 1
-                logger.debug(row)
-    zum = round(zum, digits)
-    amount = round(amount, digits)
-    logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
-    return round(zum / amount, digits)
-
-def durationOfEachConsonant(textgrid):
-    logger.debug('durationOfEachConsonant: ')
-    zum = float(0)
-    amount = 0
-    for i, tier in enumerate(textgrid):
-        if tier.nameid == 'phones':
-            for row in tier.simple_transcript:
-                if row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in consonants:
-                    zum += float(row[1]) - float(row[0])
-                    amount += 1
-                logger.debug(row)
-    zum = round(zum, digits)
-    amount = round(amount, digits)
-    logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
-    return round(zum / amount, digits)
-
-def durationOfEachSyllable(textgrid):
+def _durationOfEachSyllable(textgrid):
     logger.debug('durationOfEachSilabe: ')
     
     phones = []
@@ -142,8 +94,52 @@ def durationOfEachSyllable(textgrid):
 
     return silabes3
 
+def _normalizar(arraySample, arrayTotal):
+    print "arraySample: "+str(arraySample)+" arrayTotal:"+str(arrayTotal)
+    res = (np.average(arraySample) - np.average(arrayTotal)) / np.var(arrayTotal)
+    print str(np.average(arraySample))+" - "+str(np.average(arrayTotal))+" / "+str(np.var(arrayTotal))
+    return round(res, digits)
+
+def _durationOfEachPhoneme(textgrid):
+    f = lambda row: row[2] != 'sil' and row[2] != 'sp' and row[2] !=""
+    res = _goThroughWithCondition(textgrid, "phones", f)
+    return res
+
+#============================================================================
+
+def duration(textgrid):
+    logger.debug("duration: ")
+    f = lambda row: row[2] != 'sil' and row[2] != 'sp'
+    res = _goThroughWithCondition(textgrid, "words", f)
+    res = round(np.sum(res), digits)
+    logger.debug('res: '+str(res))
+    return res
+
+def durationAvgOfEachPhoneme(textgrid):
+    logger.debug("durationAvgOfEachPhoneme: ")
+    f = lambda row: row[2] != 'sil' and row[2] != 'sp' and row[2] !=""
+    res = _goThroughWithCondition(textgrid, "phones", f)
+    res = round(np.average(res), digits)
+    logger.debug('res: '+str(res))
+    return res
+
+def durationAvgOfEachVowel(textgrid):
+    logger.debug('durationOfEachVowel: ')
+    f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in vowels 
+    res = _goThroughWithCondition(textgrid, "phones", f)
+    res = _normalizar(res, _durationOfEachPhoneme(textgrid))
+    logger.debug('res: '+str(res))
+    return res
+
+def durationAvgOfEachConsonant(textgrid):
+    logger.debug('durationOfEachConsonant: ')
+    f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in consonants 
+    res = _goThroughWithCondition(textgrid, "phones", f)
+    res = _normalizar(res, _durationOfEachPhoneme(textgrid))
+    logger.debug('res: '+str(res))
+    return res
+
 def durationAvgOfPhonemeSFinal(textgrid):
-    logger.debug('durationAvgOfPhonemeSFinal: ')
 
     wordsWithPhonemeS = []
     for i, tier in enumerate(textgrid):
@@ -155,50 +151,47 @@ def durationAvgOfPhonemeSFinal(textgrid):
     #logger.debug('wordsWithPhonemeS: '+str(wordsWithPhonemeS))
 
     #busco en esos intervalos que va a haber una /s/ final
-    zum = float(0)
-    amount = 0
+    result = []
     for word in wordsWithPhonemeS:
         for i, tier in enumerate(textgrid):
             if tier.nameid == 'phones':
                 for row in tier.simple_transcript:
                     if str(row[2]) == 's' and word['xmin'] <= row[0] and row[1] <= word['xmax']:
-                        zum += float(row[1]) - float(row[0])
-                        amount += 1
-    if amount == 0:
+                        result += [ float(row[1]) - float(row[0]) ]
+
+    if len(result) == 0:
+        logger.debug("durationAvgOfPhonemeSFinal: None")
         return None
     else:
-        zum = round(zum, digits)
-        amount = round(amount, digits)
-        logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
-        return round(zum / amount, digits)
+        res = _normalizar(result, _durationOfEachPhoneme(textgrid))
+        logger.debug("durationAvgOfPhonemeSFinal: "+ str(result)+" "+str(len(result))+" = "+str(res))
+        return res
 
 # Regla 1: Localice la silaba acentuada y estirar la silaba anterior
 def durationAvgOfPrevSyllable(textgrid):
 
     logger.debug('durationAvgOfPrevSyllable:')
-    syllables = durationOfEachSyllable(textgrid)
+    syllables = _durationOfEachSyllable(textgrid)
 
-    zum = float(0)
-    amount = 0
+    result = []
 
     prevSyllable = ''
     for word in syllables:
         for syllable in word:
 
             if syllable['text'][-1] == '*' and prevSyllable != '':
-                zum += prevSyllable['time']
-                amount += 1
+                result += [ prevSyllable['time'] ]
 
             logger.debug('prevSyllable: '+str(prevSyllable)+' syllable: '+str(syllable))
             prevSyllable = syllable
 
-    if amount == 0:
+    if len(result) == 0:
         return None
     else:
-        zum = round(zum, digits)
-        amount = round(amount, digits)
-        logger.debug('sum: '+str(zum)+' amount: '+str(amount)+' res: '+str(round(zum / amount, digits)))
-        return round(zum / amount, digits)
+        logger.debug("result: "+ str(result)+" "+str(len(result)))
+        res = round(np.average(result), digits)
+        logger.debug('res: '+str(res))
+        return res
 
 def _dummy(textgrid):
     return '8'
@@ -251,12 +244,11 @@ def _foundPattern(wordPattern, syllablePattern, textgrid):
 def _durationAvg(syllableIntervals):
     
     if isinstance(syllableIntervals, list): 
-        duration, total = 0, 0
+        result = []
         for interval in syllableIntervals:
-            duration += interval['syllableMax'] - interval['syllableMin']
-            total += interval['wordMax'] - interval['wordMin'] 
-        res = round(duration / total, digits) 
-        logger.debug('Resultado: duration: '+str(duration)+' total: '+str(total)+' res: '+str(res))
+            result += [ interval['syllableMax'] - interval['syllableMin'] ]
+        res = round(np.average(result), digits)
+        logger.debug('res: '+str(res))
         return res
     else:
         return None    
