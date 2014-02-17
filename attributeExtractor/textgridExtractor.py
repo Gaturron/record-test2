@@ -60,6 +60,17 @@ class textgridExtractor(object):
         data = replace_tab(file.read())
         tg = TextGrid(data)
 
+        def info(textgrid):
+            phones = []
+            for i, tier in enumerate(textgrid):
+                if tier.nameid == 'words':
+                    for row in tier.simple_transcript:
+                        if row[2] != 'sil' and row[2] != 'sp' and row[2] != '':
+                            phones += [ row ]
+            return phones
+
+        logger.info(str(info(tg)))
+
         attributesTg = {}
 
         # vamos a agarrar todas las funciones de attributes
@@ -72,6 +83,7 @@ class textgridExtractor(object):
                 res = getattr(att, function_name)(tg)
                 attributesTg[function_name] = res
 
+        logger.info('=========================================================================')
         return attributesTg
 
 if __name__ == '__main__':
