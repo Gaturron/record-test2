@@ -36,7 +36,7 @@ def extract():
     logger.info('starting')
 
     pathList = agmntFilter.filter(Path)
-    logger.debug('pathList: '+ str(pathList))
+    #logger.debug('pathList: '+ str(pathList))
 
     tgExtractor = textgridExtractor(attributesFilter.keys())
     tgRes = tgExtractor.textgridsToAtt(pathList)
