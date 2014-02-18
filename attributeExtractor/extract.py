@@ -10,13 +10,26 @@ logging.basicConfig(level=logging.DEBUG)
 def extract():
 
     attributesFilter = {
-        'place': ('bsas', 'cba'), 'phrases': 'STRING', 
-        'durationAvgKT': 'NUMERIC', #'durationAvgLL': 'NUMERIC', 
-        #'durationAvgRR': 'NUMERIC', 'durationAvgSC': 'NUMERIC',
-        'duration': 'NUMERIC', 'durationAvgOfEachPhoneme': 'NUMERIC',
-        #'durationAvgOfEachVowel': 'NUMERIC', 'durationAvgOfEachConsonant': 'NUMERIC',
-        'durationAvgOfPhonemeSFinal': 'NUMERIC'
-        #'durationAvgOfPrevSyllable': 'NUMERIC'
+        'place': ('bsas', 'cba'), 
+        'phrases': 'STRING', 
+        'duration': 'NUMERIC', 
+        'user': 'NUMERIC',
+        'phraseId': 'NUMERIC',
+        'attempt': 'NUMERIC',
+
+        'durationAvgKT': 'NUMERIC', 
+        'durationAvgLL': 'NUMERIC', 
+        'durationAvgRR': 'NUMERIC', 
+        'durationAvgSC': 'NUMERIC',
+        'durationAvgOfPhonemeSFinal': 'NUMERIC',
+        
+        'durationAvgOfEachPhoneme': 'NUMERIC',
+        'durationAvgOfEachVowel': 'NUMERIC', 
+        'durationAvgOfEachConsonant': 'NUMERIC',
+        
+        'durationAvgOfSyllableAccent': 'NUMERIC',
+        'durationAvgOfPrevSyllableAccent': 'NUMERIC'
+        
         #, 
         # 'mfccAverageKT': ['NUMERIC' for i in range(26)],
         # 'mfccMaxKT': ['NUMERIC' for i in range(26)],
@@ -40,7 +53,7 @@ def extract():
 
     tgExtractor = textgridExtractor(attributesFilter.keys())
     tgRes = tgExtractor.textgridsToAtt(pathList)
-    logger.debug('tgRes: '+ str(tgRes))
+    #logger.debug('tgRes: '+ str(tgRes))
 
     #acExtractor = acousticExtractor(attributesFilter.keys())
     #acRes = acExtractor.extracts(pathList)
@@ -55,6 +68,9 @@ def extract():
     for key in res.keys():
     	filename = key.split('/')[-1]
     	res[key]['place'] = filename.split('_')[0]
+        res[key]['user'] = filename.split('_')[1][1:]
+        res[key]['phraseId'] = filename.split('_')[2][1:]
+        res[key]['attempt'] = filename.split('_')[3][1:]
     	res1[filename] = res[key]
 
     logger.debug('Res: '+ str(res1))

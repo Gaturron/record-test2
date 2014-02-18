@@ -29,7 +29,7 @@ import weka.attributeSelection.GreedyStepwise as GreedyStepwise
 import weka.attributeSelection.Ranker as Ranker
 
 # load data file
-file = FileReader("/home/fernando/Tesis/record-test2/attributeExtractor/test1.numeric.arff")
+file = FileReader("/home/fernando/Tesis/record-test2/attributeExtractor/testNew.arff")
 data = Instances(file)
 #data.setClassIndex(data.numAttributes() - 1)
 
@@ -37,7 +37,6 @@ data = Instances(file)
 # ======================
 
 listAttribute = []
-listAttribute.append(data.attribute('durationAvgOfPrevSyllable').index())
 listAttribute.append(data.attribute('duration').index())
 listAttribute.append(data.attribute('place').index())
 
@@ -103,6 +102,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -165,6 +167,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -256,6 +261,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -286,7 +294,7 @@ naiveBayes.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+naiveBayes.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
 
@@ -301,7 +309,7 @@ functSMO.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+functSMO.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
 
@@ -347,6 +355,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -377,7 +388,7 @@ naiveBayes.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+naiveBayes.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
 
@@ -392,7 +403,7 @@ functSMO.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+functSMO.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
 
@@ -438,6 +449,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -468,7 +482,7 @@ naiveBayes.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+naiveBayes.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
 
@@ -483,7 +497,7 @@ functSMO.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+functSMO.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
 
@@ -529,6 +543,9 @@ classifier.setEvaluator(evalu)
 classifier.setSearch(search)
 
 evaluation = Evaluation(filteredData)
+
+j48.buildClassifier(filteredData)
+
 # 10-fold cross-validation
 evaluation.crossValidateModel(classifier, filteredData, 10, Random(1))
 
@@ -559,7 +576,7 @@ naiveBayes.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+naiveBayes.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
 
@@ -574,7 +591,7 @@ functSMO.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+functSMO.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
 

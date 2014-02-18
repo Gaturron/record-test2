@@ -31,7 +31,6 @@ def phrases(textgrid):
             for row in tier.simple_transcript:
                 if row[2] != 'sil' and row[2] != 'sp':
                     phrase += row[2] + ' '
-    logger.debug('phrase: '+phrase.lower().strip())
     return phrase.lower().strip()
 
 def _accents(textgrid):
@@ -50,7 +49,6 @@ def _goThroughWithCondition(textgrid, nameTier, condition):
     return result
 
 def _durationOfEachSyllable(textgrid):
-    logger.debug('durationOfEachSilabe: ')
     
     phones = []
     for i, tier in enumerate(textgrid):
@@ -94,7 +92,7 @@ def _durationOfEachSyllable(textgrid):
 
 def _normalizar(arraySample, arrayTotal):
     res = (np.average(arraySample) - np.average(arrayTotal)) / np.var(arrayTotal)
-    logger.debug("arraySample: "+str(np.round(arraySample, 2))+" arrayTotal:"+str(np.round(arrayTotal, 2)))
+    logger.debug("sample: "+str(np.round_(arraySample, 2))+" total: "+str(np.round_(arrayTotal, 2)))
     logger.debug(str(np.average(arraySample))+" - "+str(np.average(arrayTotal))+" / "+str(np.var(arrayTotal)))
     return round(res, digits)
 
@@ -110,7 +108,7 @@ def duration(textgrid):
     res = _goThroughWithCondition(textgrid, "words", f)
     res = round(np.sum(res), digits)
     
-    logger.debug('duration: '+str(res))
+    logger.info('duration: '+str(res))
     
     return res
 
@@ -119,7 +117,7 @@ def durationAvgOfEachPhoneme(textgrid):
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = round(np.average(res), digits)
     
-    logger.debug('durationAvgOfEachPhoneme: '+str(res))
+    logger.info('durationAvgOfEachPhoneme: '+str(res))
     
     return res
 
@@ -128,7 +126,7 @@ def durationAvgOfEachVowel(textgrid):
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar(res, _durationOfEachPhoneme(textgrid))
     
-    logger.debug('durationOfEachVowel: '+str(res))
+    logger.info('durationOfEachVowel: '+str(res))
     
     return res
 
@@ -137,7 +135,7 @@ def durationAvgOfEachConsonant(textgrid):
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar(res, _durationOfEachPhoneme(textgrid))
     
-    logger.debug('durationOfEachConsonant: '+str(res))
+    logger.info('durationOfEachConsonant: '+str(res))
     
     return res
 
@@ -162,15 +160,15 @@ def durationAvgOfPhonemeSFinal(textgrid):
                         result += [ float(row[1]) - float(row[0]) ]
 
     if len(result) == 0:
-        logger.debug("durationAvgOfPhonemeSFinal: None")
+        logger.info("durationAvgOfPhonemeSFinal: None")
         return None
     else:
         res = _normalizar(result, _durationOfEachPhoneme(textgrid))
-        logger.debug("durationAvgOfPhonemeSFinal: "+str(res))
+        logger.info("durationAvgOfPhonemeSFinal: "+str(res))
         return res
 
 # Regla 1: Localice la silaba acentuada y estirar la silaba anterior
-def durationAvgOfPrevSyllable(textgrid):
+def durationAvgOfPrevSyllableAccent(textgrid):
 
     syllables = _durationOfEachSyllable(textgrid)
 
@@ -187,12 +185,47 @@ def durationAvgOfPrevSyllable(textgrid):
             prevSyllable = syllable
 
     if len(result) == 0:
-        logger.debug('durationAvgOfPrevSyllable: None')
+        logger.info('durationAvgOfPrevSyllableAccent: None')
         return None
     else:
-        res = round(np.average(result), digits)
-        logger.debug('durationAvgOfPrevSyllable: '+str(res))
+
+        # obtener solo el tiempo de cada silaba
+        syllablesTime = []
+        for word in syllables:
+            for syllable in word:
+                syllablesTime += [ syllable["time"] ]
+        
+        res = _normalizar(result, syllablesTime)
+        logger.info('durationAvgOfPrevSyllableAccent: '+str(res))
         return res
+
+# Promedio de la silaba acentuada
+def durationAvgOfSyllableAccent(textgrid):
+
+    syllables = _durationOfEachSyllable(textgrid)
+
+    result = []
+
+    for word in syllables:
+        for syllable in word:
+
+            if syllable['text'][-1] == '*':
+                result += [ syllable['time'] ]
+
+    if len(result) == 0:
+        logger.info('durationAvgOfSyllableAccent: None')
+        return None
+    else:
+
+        # obtener solo el tiempo de cada silaba
+        syllablesTime = []
+        for word in syllables:
+            for syllable in word:
+                syllablesTime += [ syllable["time"] ]
+        
+        res = _normalizar(result, syllablesTime)
+        logger.info('durationAvgOfSyllableAccent: '+str(res))
+        return res        
 
 def _dummy(textgrid):
     return '8'
@@ -237,52 +270,67 @@ def _foundPattern(wordPattern, syllablePattern, textgrid):
                 
                 prevRow = row
 
-    if syllableIntervals:
-        return syllableIntervals
-    else:
-        return None
+    return syllableIntervals
 
-def _durationAvg(syllableIntervals):
-    
-    if isinstance(syllableIntervals, list): 
-        result = []
-        for interval in syllableIntervals:
-            result += [ interval['syllableMax'] - interval['syllableMin'] ]
-        res = round(np.average(result), digits)
-        #logger.debug('res: '+str(res))
-        return res
-    else:
-        return None    
+def timeSyllableIntervals(syllableIntervals):
+    result = []
+    for interval in syllableIntervals:
+        result += [ interval['syllableMax'] - interval['syllableMin'] ]
+    return result
 
 KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' } 
 
 def durationAvgKT(textgrid):
     
     syllableIntervals = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid)
-    res = _durationAvg(syllableIntervals)
-    logger.debug('durationAvgKT: '+str(res))
-    return res
+    result = timeSyllableIntervals(syllableIntervals)
+    
+    if len(result) == 0:
+        logger.info('durationAvgKT: None')
+        return None
+    else:
+        res = _normalizar(result, _durationOfEachPhoneme(textgrid))
+        logger.info('durationAvgKT: '+str(res))
+        return res
 
 LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
 
 def durationAvgLL(textgrid):
     syllableIntervals = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid)
-    res = _durationAvg(syllableIntervals)
-    logger.debug('durationAvgLL: '+str(res))
-    return res
+    result = timeSyllableIntervals(syllableIntervals)
+    
+    if len(result) == 0:
+        logger.info('durationAvgLL: None')
+        return None
+    else:
+        res = _normalizar(result, _durationOfEachPhoneme(textgrid))    
+        logger.info('durationAvgLL: '+str(res))
+        return res
     
 RR = {'wordPattern': r'.RR.', 'syllablePattern': r'R.'}
 
 def durationAvgRR(textgrid):
     syllableIntervals = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid)
-    res = _durationAvg(syllableIntervals)
-    logger.debug('durationAvgRR: '+str(res))
-    return res
+    result = timeSyllableIntervals(syllableIntervals)
+    
+    if len(result) == 0:
+        logger.info('durationAvgRR: None')
+        return None
+    else:
+        res = _normalizar(result, _durationOfEachPhoneme(textgrid))    
+        logger.info('durationAvgRR: '+str(res))
+        return res
 
 SC = {'wordPattern': r'.SC.', 'syllablePattern': r'hk'}
 
 def durationAvgSC(textgrid):
     syllableIntervals = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid)
-    res = _durationAvg(syllableIntervals)
-    logger.debug('durationAvgSC: '+str(res))
-    return res
+    result = timeSyllableIntervals(syllableIntervals)
+    
+    if len(result) == 0:
+        logger.info('durationAvgSC: None')
+        return None
+    else:
+        res = _normalizar(result, _durationOfEachPhoneme(textgrid))    
+        logger.info('durationAvgSC: '+str(res))
+        return res
