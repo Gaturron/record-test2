@@ -67,9 +67,17 @@ class textgridExtractor(object):
                     for row in tier.simple_transcript:
                         if row[2] != 'sil' and row[2] != 'sp' and row[2] != '':
                             phones += [ row ]
-            return phones
+            logger.info(str(phones))
 
-        logger.info(str(info(tg)))
+            phrase = ''
+            for i, tier in enumerate(textgrid):
+                if tier.nameid == 'words':
+                    for row in tier.simple_transcript:
+                        if row[2] != 'sil' and row[2] != 'sp':
+                            phrase += row[2] + ' '
+            logger.info(str(phrase.lower().strip()))
+
+        info(tg)
 
         attributesTg = {}
 
