@@ -13,7 +13,7 @@ def extract():
         'place': ('bsas', 'cba'), 
         'phrases': 'STRING', 
         'duration': 'NUMERIC', 
-        'user': 'NUMERIC',
+        'userId': 'NUMERIC',
         'phraseId': 'NUMERIC',
         'attempt': 'NUMERIC',
 
@@ -68,7 +68,7 @@ def extract():
     for key in res.keys():
     	filename = key.split('/')[-1]
     	res[key]['place'] = filename.split('_')[0]
-        res[key]['user'] = filename.split('_')[1][1:]
+        res[key]['userId'] = filename.split('_')[1][1:]
         res[key]['phraseId'] = filename.split('_')[2][1:]
         res[key]['attempt'] = filename.split('_')[3][1:]
     	res1[filename] = res[key]
