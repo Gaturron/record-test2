@@ -37,7 +37,6 @@ data = Instances(file)
 # ======================
 
 listAttribute = []
-listAttribute.append(data.attribute('duration').index())
 listAttribute.append(data.attribute('place').index())
 
 remove = Remove()
@@ -71,7 +70,11 @@ print "Seleccionando atributos con Greedy Stepwise"
 print "==========================================="
 
 listAttribute = []
+listAttribute.append(data.attribute('duration').index())
 listAttribute.append(data.attribute('phrases').index())
+listAttribute.append(data.attribute('attempt').index())
+listAttribute.append(data.attribute('phraseId').index())
+listAttribute.append(data.attribute('userId').index())
 
 remove = Remove()
 remove.setAttributeIndicesArray(listAttribute)
@@ -135,7 +138,11 @@ numAtt = 10
 print "Cant. de attributos: "+str(numAtt)
 
 listAttribute = []
+listAttribute.append(data.attribute('duration').index())
 listAttribute.append(data.attribute('phrases').index())
+listAttribute.append(data.attribute('attempt').index())
+listAttribute.append(data.attribute('phraseId').index())
+listAttribute.append(data.attribute('userId').index())
 
 remove = Remove()
 remove.setAttributeIndicesArray(listAttribute)
@@ -200,7 +207,7 @@ naiveBayes.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+naiveBayes.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(naiveBayes, filteredData, 10, Random(1))
 
@@ -215,7 +222,7 @@ functSMO.setDebug(True)
 
 evaluation = Evaluation(filteredData)
 
-jrip.buildClassifier(filteredData)
+functSMO.buildClassifier(filteredData)
 
 evaluation.crossValidateModel(functSMO, filteredData, 10, Random(1))
 
