@@ -99,11 +99,14 @@ def runNaiveBayes(train, test):
 
 for i in range(10):
 
-    file = FileReader("/home/fernando/Tesis/record-test2/attributeExtractor/tests/train"+str(i)+".arff")
+    #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
+    path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests2/"
+
+    file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)
     train.setClassIndex(train.attribute('place').index())
 
-    file = FileReader("/home/fernando/Tesis/record-test2/attributeExtractor/tests/test"+str(i)+".arff")
+    file = FileReader(path+"test"+str(i)+".arff")
     test = Instances(file)
     test.setClassIndex(test.attribute('place').index())
 
