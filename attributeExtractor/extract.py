@@ -27,18 +27,27 @@ def extract():
         'phraseId': 'NUMERIC',
         'attempt': 'NUMERIC',
 
-        'durationAvgKT': 'NUMERIC', 
-        'durationAvgLL': 'NUMERIC', 
-        'durationAvgRR': 'NUMERIC', 
-        'durationAvgSC': 'NUMERIC',
-        'durationAvgOfPhonemeSFinal': 'NUMERIC',
+        'PHO_kt_norm': 'NUMERIC', 
+        'PHO_kt_normhd': 'NUMERIC',
+        'PHO_ll_norm': 'NUMERIC', 
+        'PHO_ll_normhd': 'NUMERIC', 
+        'PHO_rr_norm': 'NUMERIC', 
+        'PHO_rr_normhd': 'NUMERIC', 
+        'PHO_sc_norm': 'NUMERIC',
+        'PHO_sc_normhd': 'NUMERIC',
+        'PHO_Sfinal_norm': 'NUMERIC',
+        'PHO_Sfinal_normhd': 'NUMERIC',
         
-        'durationAvgOfEachPhoneme': 'NUMERIC',
-        'durationAvgOfEachVowel': 'NUMERIC', 
-        'durationAvgOfEachConsonant': 'NUMERIC',
+        'PHO_phoneme': 'NUMERIC',
+        'PHO_vowel_norm': 'NUMERIC', 
+        'PHO_vowel_normhd': 'NUMERIC', 
+        'PHO_consonant_norm': 'NUMERIC',
+        'PHO_consonant_normhd': 'NUMERIC',
         
-        'durationAvgOfSyllableAccent': 'NUMERIC',
-        'durationAvgOfPrevSyllableAccent': 'NUMERIC'
+        'SIL_syllableAccent_norm': 'NUMERIC',
+        'SIL_syllableAccent_normhd': 'NUMERIC',
+        'SIL_prevSyllableAccent_norm': 'NUMERIC',
+        'SIL_prevSyllableAccent_normhd': 'NUMERIC'
         
         #, 
         # 'mfccAverageKT': ['NUMERIC' for i in range(26)],
