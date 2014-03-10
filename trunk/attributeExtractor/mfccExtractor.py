@@ -6,9 +6,9 @@ import scikits.talkbox.features as features
 import os
 
 #parametros MFCC
-nwin=256 
+nwin=25
 nfft=512
-nceps=33#13
+nceps=13#33
 
 winstep = 0.01
 
@@ -44,6 +44,8 @@ def wavToMfcc(pathFile):
     #mfcc_feat = mfcc_feat[0]
 
     #=====================================================================
+
+    print ' mfcc_feat: '+str(mfcc_feat)
 
     print ' cantidad de features: '+str(len(mfcc_feat))
     print ' debe cumplirse: cantidad de features * winstep (en seg) = duracion del audio (en seg)'
@@ -82,10 +84,16 @@ if __name__ == '__main__':
     #print 'Prueba MFCC: prueba de directorio'
     #wavsToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
 
-    print 'Prueba 2 MFCC: prueba regla 4'
-    dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/bsas_u11_t26_a2.wav')
-    print 'BsAS: '+str(dicBSAS[2.21:2.24])
-    dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/cba_u38_t26_a2.wav')
-    print 'Cba: '+str(dicCBA[2.56:2.63])
+    #print 'Prueba 2 MFCC: prueba regla 4'
+    #dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/bsas_u11_t26_a2.wav')
+    #print 'BsAS: '+str(dicBSAS[2.21:2.24])
+    #dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/cba_u38_t26_a2.wav')
+    #print 'Cba: '+str(dicCBA[2.56:2.63])
+
+    print 'Prueba 3 MFCC: buen calculo'
+
+    (rate, sig) = wav.read('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
+    mfcc_feat = mfcc(sig, samplerate= rate, lowfreq= 50, highfreq= 3800, nfilt= 25)
+    print str(mfcc_feat)
 
     print 'Fin de prueba'
