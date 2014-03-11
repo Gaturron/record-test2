@@ -1,5 +1,3 @@
-from __future__ import division
-
 import alignmentFilter as agmntFilter
 import diccToArff1 as dTA
 from textgridExtractor import textgridExtractor
@@ -7,12 +5,13 @@ from acousticExtractor import acousticExtractor
 import logging
 import os
 
+import testGenerator as testGenerator
+
 from sets import Set
 from random import randint
 
 Path = os.path.abspath(os.path.join(os.getcwd(), '..', '..'))+'/Prosodylab-Aligner-master/data1.complete/'
 PathTests = os.path.abspath(os.getcwd())+'/tests/'
-PathTests2 = os.path.abspath(os.getcwd())+'/tests2/'
 
 #logging.basicConfig(level=logging.DEBUG)
 logging.basicConfig(level=None)
@@ -96,125 +95,15 @@ def extract():
 
     dTA.diccToArff(res1, PathTests+'testNew.arff', attributesFilter)
 
-    # Vamos a armar los casos de tests
-    print "Casos de tests:"
-    print "==============="
+    # Generate tests
+    attributesFilter1 = dict(attributesFilter)
+    attributesFilter1.pop("userId", None)
+    attributesFilter1.pop("phraseId", None)
+    attributesFilter1.pop("attempt", None)
+    attributesFilter1.pop("phrases", None)
+    attributesFilter1.pop("duration", None)
 
-    for j in range(10):
-        train = dict(res1)
-        test = {}
-        
-        usersBsas = list(Set([ v["userId"] for k, v in train.items() if v["place"] == "bsas" ]))
-        usersCba = list(Set([ v["userId"] for k, v in train.items() if v["place"] == "cba" ]))
-        print str(j)+") usersBsas: "+str(len(usersBsas))+" usersCba:"+str(len(usersCba))
-
-        while (len(test) / len(res1)) < 0.10:
-
-            if len(usersBsas) != 0:
-                inxBsas = randint(0, len(usersBsas) - 1)
-                userBsas = usersBsas.pop(inxBsas)
-
-                for k, v in train.items():
-                    if v["userId"] == userBsas:
-                        v1 = dict(v)
-
-                        v1.pop("userId", None)
-                        v1.pop("phraseId", None)
-                        v1.pop("attempt", None)
-                        v1.pop("phrases", None)
-                        
-                        test[k] = v1
-                        train.pop(k, None)
-
-            if len(usersCba) != 0:
-                inxCba = randint(0, len(usersCba) - 1)
-                userCba = usersCba.pop(inxCba)
-                
-                for k, v in train.items():
-                    if v["userId"] == userCba:
-                        v1 = dict(v)    
-
-                        v1.pop("userId", None)
-                        v1.pop("phraseId", None)
-                        v1.pop("attempt", None)
-                        v1.pop("phrases", None)
-
-                        test[k] = v1
-                        train.pop(k, None)
-
-            print " - "+str(len(train))+" "+str(len(test))+" - "+str(len(test) / len(res1))
-
-        print len(train)
-        print len(test)
-
-        attributesFilter1 = dict(attributesFilter)
-        attributesFilter1.pop("userId", None)
-        attributesFilter1.pop("phraseId", None)
-        attributesFilter1.pop("attempt", None)
-        attributesFilter1.pop("phrases", None)
-        attributesFilter1.pop("duration", None)
-        #dTA.diccToArff(train, PathTests+'train'+str(j)+'.arff', attributesFilter1)
-        #dTA.diccToArff(test, PathTests+'test'+str(j)+'.arff', attributesFilter1)
-
-    print "Casos de tests 2:"
-    print "================="
-
-    for j in range(10):
-        train = dict(res1)
-        test = {}
-
-        while (len(test) / len(res1)) < 0.30:
-
-            audioBsas = [ v for k, v in train.items() if v["place"] == "bsas"]
-            audioCba = [ v for k, v in train.items() if v["place"] == "cba"]
-
-            if len(audioBsas) < len(audioCba):
-                # mayoria cba    
-
-                usersCba = list(Set([ v["userId"] for k, v in train.items() if v["place"] == "cba" ]))
-                inxCba = randint(0, len(usersCba) - 1)
-                userCba = usersCba.pop(inxCba)
-                
-                for k, v in train.items():
-                    if v["userId"] == userCba:
-                        v1 = dict(v)    
-
-                        v1.pop("userId", None)
-                        v1.pop("phraseId", None)
-                        v1.pop("attempt", None)
-                        v1.pop("phrases", None)
-
-                        test[k] = v1
-                        train.pop(k, None)
-
-            else:
-                # mayoria bsas
-
-                usersBsas = list(Set([ v["userId"] for k, v in train.items() if v["place"] == "bsas" ]))
-                inxBsas = randint(0, len(usersBsas) - 1)
-                userBsas = usersBsas.pop(inxBsas)
-
-                for k, v in train.items():
-                    if v["userId"] == userBsas:
-                        v1 = dict(v)
-
-                        v1.pop("userId", None)
-                        v1.pop("phraseId", None)
-                        v1.pop("attempt", None)
-                        v1.pop("phrases", None)
-                        
-                        test[k] = v1
-                        train.pop(k, None)
-
-        attributesFilter1 = dict(attributesFilter)
-        attributesFilter1.pop("userId", None)
-        attributesFilter1.pop("phraseId", None)
-        attributesFilter1.pop("attempt", None)
-        attributesFilter1.pop("phrases", None)
-        attributesFilter1.pop("duration", None)
-        
-        dTA.diccToArff(train, PathTests2+'train'+str(j)+'.arff', attributesFilter1)
-        dTA.diccToArff(test, PathTests2+'test'+str(j)+'.arff', attributesFilter1)
+    testGenerator.generate(res1, attributesFilter1, PathTests)
 
 if __name__ == '__main__':
     extract()
