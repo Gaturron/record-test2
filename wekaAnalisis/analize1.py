@@ -99,8 +99,7 @@ def runNaiveBayes(train, test):
 
 for i in range(10):
 
-    #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
-    path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests2/"
+    path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 
     file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)
