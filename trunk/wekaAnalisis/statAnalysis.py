@@ -16,12 +16,17 @@ if p_status != 0:
 	print 'ERROR: '+str(err)
 
 print output
-
+file = open('output.txt', 'r')
+output = file.read()
 # Parse output
 
 lines = output.split('\n')
 for l in lines:
-	if re.search(r'Correctly Classified Instances|(Scheme: *)|(Corriendo *)', l):
+	if re.search(r'Correctly Classified Instances', l):
+		print l.split(' ')[-2]
+	if re.search(r'Scheme: *', l):
+		print re.findall(r'[\w] ', l)
+	if re.search(r'Corriendo *', l):
 		print l
 
 # Run RPy2 
