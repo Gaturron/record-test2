@@ -4,6 +4,7 @@ from banyan import *
 import scipy.io.wavfile as wav
 import scikits.talkbox.features as features
 import os
+import sys
 
 #parametros MFCC
 nwin=25
@@ -93,7 +94,13 @@ if __name__ == '__main__':
     print 'Prueba 3 MFCC: buen calculo'
 
     (rate, sig) = wav.read('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
-    mfcc_feat = mfcc(sig, samplerate= rate, lowfreq= 50, highfreq= 3800, nfilt= 25)
-    print str(mfcc_feat)
+    #mfcc_feat = features.mfcc(sig, fs= rate, nceps= 13)
+    #mfcc_feat = mfcc_feat[0]
+    mfcc_feat = mfcc(sig, samplerate= rate, winlen= 0.025, winstep=0.01, preemph=0.97, lowfreq= 50, highfreq= 3800, nfilt= 25, ceplifter=22, numcep= 13)
+    
+    for i in mfcc_feat:
+        sys.stdout.write("\n")
+        for j in i:
+            sys.stdout.write(" "+str(round(j, 3)))
 
-    print 'Fin de prueba'
+    print '\nFin de prueba'
