@@ -29,8 +29,8 @@ def phrases(textgrid):
     for i, tier in enumerate(textgrid):
         if tier.nameid == 'words':
             for row in tier.simple_transcript:
-                if row[2] != 'sil' and row[2] != 'sp':
-                    phrase += row[2] + ' '
+                if row[2] != 'sil' and row[2] != 'sp' and row[2] != '':
+                    phrase += row[2].strip() + ' '
     return phrase.lower().strip()
 
 def _accents(textgrid):
@@ -188,7 +188,8 @@ def _durationAvgOfPhonemeSFinal(textgrid):
     for i, tier in enumerate(textgrid):
         if tier.nameid == 'words':
             for row in tier.simple_transcript:
-                if str(row[2][-1]) == 'S':
+                logger.debug('analising row: '+str(row))
+                if len(row[2]) > 1 and str(row[2][-1]) == 'S':
                     # buscar entre esos valores de tiempo que es una /s/ final
                     wordsWithPhonemeS += [ {'xmin': row[0], 'xmax': row[1]} ]
     #logger.debug('wordsWithPhonemeS: '+str(wordsWithPhonemeS))
