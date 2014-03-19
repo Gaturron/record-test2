@@ -4,10 +4,16 @@ from decimal import Decimal
 
 import subprocess
 import re
+import sys
 import rpy2.robjects as robjects
 import rpy2.robjects.numpy2ri
 
 from rpy2.robjects.packages import importr
+
+if len(sys.argv) != 2:
+    print "Pasar como parametro el path de los tests"
+    print "Por ejemplo: /home/fernando/Tesis/record-test2/attributeExtractor/tests/"
+    sys.exit(0)
 
 rpy2.robjects.numpy2ri.activate()
 
@@ -15,7 +21,7 @@ rpy2.robjects.numpy2ri.activate()
 p = subprocess.Popen(
     """
     export CLASSPATH=$CLASSPATH:/home/fernando/Tesis/weka-3-6-10/weka.jar; 
-    jython analize1.py
+    jython analize1.py """+ sys.argv[1] +"""
     """, stdout=subprocess.PIPE, shell=True)
 
 (output, err) = p.communicate()

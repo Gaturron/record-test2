@@ -3,6 +3,7 @@ import diccToArff1 as dTA
 from textgridExtractor import textgridExtractor
 from acousticExtractor import acousticExtractor
 import logging
+import time
 import os
 
 import testGenerator as testGenerator
@@ -11,7 +12,7 @@ from sets import Set
 from random import randint
 
 Path = os.path.abspath(os.path.join(os.getcwd(), '..', '..'))+'/Prosodylab-Aligner-master/data1.complete/'
-PathTests = os.path.abspath(os.getcwd())+'/tests/'
+PathTests = os.path.abspath(os.getcwd())+'/tests'
 
 #logging.basicConfig(level=logging.DEBUG)
 logging.basicConfig(level=None)
@@ -48,10 +49,10 @@ def extract():
         'SIL_prevSyllableAccent_norm': 'NUMERIC',
         'SIL_prevSyllableAccent_normhd': 'NUMERIC'
         
-        #, 
-        # 'mfccAverageKT': ['NUMERIC' for i in range(26)],
-        # 'mfccMaxKT': ['NUMERIC' for i in range(26)],
-        # 'mfccMinKT': ['NUMERIC' for i in range(26)],
+        , 
+        'MFCC_AverageKT': ['NUMERIC' for i in range(26)],
+        'MFCC_MaxKT': ['NUMERIC' for i in range(26)],
+        'MFCC_MinKT': ['NUMERIC' for i in range(26)],
         # 'mfccAverageLL': ['NUMERIC' for i in range(26)],
         # 'mfccMaxLL': ['NUMERIC' for i in range(26)],
         # 'mfccMinLL': ['NUMERIC' for i in range(26)],
@@ -73,14 +74,14 @@ def extract():
     tgRes = tgExtractor.textgridsToAtt(pathList)
     #logger.debug('tgRes: '+ str(tgRes))
 
-    #acExtractor = acousticExtractor(attributesFilter.keys())
-    #acRes = acExtractor.extracts(pathList)
+    acExtractor = acousticExtractor(attributesFilter.keys())
+    acRes = acExtractor.extracts(pathList)
     #logger.debug('acRes: '+ str(acRes))
 
     res = {}
     for sample in tgRes.keys():
-    	#res[sample] = dict(tgRes[sample].items() + acRes[sample].items())
-        res[sample] = dict(tgRes[sample].items())
+    	res[sample] = dict(tgRes[sample].items() + acRes[sample].items())
+        #res[sample] = dict(tgRes[sample].items())
 
     res1 = {}
     for key in res.keys():
@@ -93,7 +94,13 @@ def extract():
 
     logger.debug('Res: '+ str(res1))
 
-    dTA.diccToArff(res1, PathTests+'testNew.arff', attributesFilter)
+    # Creamos los archivos de test
+
+    path = PathTests+'/test'+time.strftime("%Y-%m-%e %H:%M:%S")
+
+    os.makedirs(path)
+
+    dTA.diccToArff(res1, path+'/extractionTotal.arff', attributesFilter)
 
     # Generate tests
     attributesFilter1 = dict(attributesFilter)
@@ -103,7 +110,7 @@ def extract():
     attributesFilter1.pop("phrases", None)
     attributesFilter1.pop("duration", None)
 
-    testGenerator.generate(res1, attributesFilter1, PathTests)
+    testGenerator.generate(res1, path, attributesFilter1)
 
 if __name__ == '__main__':
     extract()

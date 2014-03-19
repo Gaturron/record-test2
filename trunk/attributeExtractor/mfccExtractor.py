@@ -85,22 +85,22 @@ if __name__ == '__main__':
     #print 'Prueba MFCC: prueba de directorio'
     #wavsToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
 
-    #print 'Prueba 2 MFCC: prueba regla 4'
-    #dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/bsas_u11_t26_a2.wav')
-    #print 'BsAS: '+str(dicBSAS[2.21:2.24])
-    #dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1/cba_u38_t26_a2.wav')
-    #print 'Cba: '+str(dicCBA[2.56:2.63])
+    print 'Prueba 2 MFCC: prueba regla 4'
+    dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/bsas_u11_t26_a2.wav')
+    print 'BsAS: '+str(dicBSAS[2.21:2.24])
+    dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/cba_u38_t26_a2.wav')
+    print 'Cba: '+str(dicCBA[2.56:2.63])
 
-    print 'Prueba 3 MFCC: buen calculo'
+    #print 'Prueba 3 MFCC: buen calculo'
 
-    (rate, sig) = wav.read('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
-    #mfcc_feat = features.mfcc(sig, fs= rate, nceps= 13)
-    #mfcc_feat = mfcc_feat[0]
-    mfcc_feat = mfcc(sig, samplerate= rate, winlen= 0.025, winstep=0.01, preemph=0.97, lowfreq= 50, highfreq= 3800, nfilt= 25, ceplifter=22, numcep= 13)
+    #(rate, sig) = wav.read('/home/fernando/Descargas/FeatureExtraction/sp10.wav')
+    ##mfcc_feat = features.mfcc(sig, fs= rate, nceps= 13)
+    ##mfcc_feat = mfcc_feat[0]
+    #mfcc_feat = mfcc(sig, samplerate= rate, winlen= 0.025, winstep=0.01, preemph=0.97, lowfreq= 50, highfreq= 3800, nfilt= 25, ceplifter=22, numcep= 13)
     
-    for i in mfcc_feat:
-        sys.stdout.write("\n")
-        for j in i:
-            sys.stdout.write(" "+str(round(j, 3)))
+    #for i in mfcc_feat:
+    #    sys.stdout.write("\n")
+    #    for j in i:
+    #        sys.stdout.write(" "+str(round(j, 3)))
 
-    print '\nFin de prueba'
+    #print '\nFin de prueba'
