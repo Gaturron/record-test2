@@ -48,6 +48,7 @@ def diccToArff(dicc, filename, attributesFilter):
             data += [ samplelist ]
 
         datalist['data'] = data
+        logger.debug(data)
 
         #fabrico el arff y escribo
         string = arff.dumps(datalist)

@@ -14,8 +14,8 @@ from random import randint
 Path = os.path.abspath(os.path.join(os.getcwd(), '..', '..'))+'/Prosodylab-Aligner-master/data1.complete/'
 PathTests = os.path.abspath(os.getcwd())+'/tests'
 
-#logging.basicConfig(level=logging.DEBUG)
-logging.basicConfig(level=None)
+logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=None)
 
 def extract():
 
