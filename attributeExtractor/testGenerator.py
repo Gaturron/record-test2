@@ -5,7 +5,7 @@ from random import randint
 
 import diccToArff1 as dTA
 
-def generate(res1, attributesFilter, PathTests):
+def generate(res1, PathTests, attributesFilter):
 
     # Vamos a armar los casos de tests
     print "Casos de tests:"
@@ -58,5 +58,5 @@ def generate(res1, attributesFilter, PathTests):
         print len(train)
         print len(test)
 
-        dTA.diccToArff(train, PathTests+'train'+str(j)+'.arff', attributesFilter)
-        dTA.diccToArff(test, PathTests+'test'+str(j)+'.arff', attributesFilter)
+        dTA.diccToArff(train, PathTests+'/train'+str(j)+'.arff', attributesFilter)
+        dTA.diccToArff(test, PathTests+'/test'+str(j)+'.arff', attributesFilter)

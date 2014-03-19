@@ -97,9 +97,16 @@ def runNaiveBayes(train, test):
     printSummary(naiveBayes, train, evaluation)
 
 
+if len(sys.argv) != 2:
+    print "Pasar como parametro el path de los tests"
+    print "Por ejemplo: /home/fernando/Tesis/record-test2/attributeExtractor/tests/"
+    sys.exit(0)
+    
+#path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
+path = sys.argv[1]
+
 for i in range(10):
 
-    path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 
     file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)
