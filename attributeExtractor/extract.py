@@ -19,6 +19,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 def extract():
 
+    mfcc_len = 13
+
     attributesFilter = {
         'place': ('bsas', 'cba'), 
         'phrases': 'STRING', 
@@ -31,7 +33,7 @@ def extract():
         'PHO_kt_normhd': 'NUMERIC',
         'PHO_ll_norm': 'NUMERIC', 
         'PHO_ll_normhd': 'NUMERIC', 
-        'PHO_rr_norm': 'NUMERIC', 
+        'PHO_rr_norm': 'NUMERIC',  
         'PHO_rr_normhd': 'NUMERIC', 
         'PHO_sc_norm': 'NUMERIC',
         'PHO_sc_normhd': 'NUMERIC',
@@ -47,21 +49,20 @@ def extract():
         'SIL_syllableAccent_norm': 'NUMERIC',
         'SIL_syllableAccent_normhd': 'NUMERIC',
         'SIL_prevSyllableAccent_norm': 'NUMERIC',
-        'SIL_prevSyllableAccent_normhd': 'NUMERIC'
-        
-        , 
-        'MFCC_AverageKT': ['NUMERIC' for i in range(26)],
-        'MFCC_MaxKT': ['NUMERIC' for i in range(26)],
-        'MFCC_MinKT': ['NUMERIC' for i in range(26)],
-        # 'mfccAverageLL': ['NUMERIC' for i in range(26)],
-        # 'mfccMaxLL': ['NUMERIC' for i in range(26)],
-        # 'mfccMinLL': ['NUMERIC' for i in range(26)],
-        # 'mfccAverageRR': ['NUMERIC' for i in range(26)],
-        # 'mfccMaxRR': ['NUMERIC' for i in range(26)],
-        # 'mfccMinRR': ['NUMERIC' for i in range(26)],
-        # 'mfccAverageSC': ['NUMERIC' for i in range(26)],
-        # 'mfccMaxSC': ['NUMERIC' for i in range(26)],
-        # 'mfccMinSC': ['NUMERIC' for i in range(26)],
+        'SIL_prevSyllableAccent_normhd': 'NUMERIC',
+         
+        'MFCC_AverageKT': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MaxKT': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MinKT': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_AverageLL': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MaxLL': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MinLL': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_AverageRR': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MaxRR': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MinRR': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_AverageSC': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MaxSC': ['NUMERIC' for i in range(mfcc_len)],
+        'MFCC_MinSC': ['NUMERIC' for i in range(mfcc_len)]
     }
 
     logger = logging.getLogger('Extract')
