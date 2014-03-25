@@ -2,13 +2,16 @@ import collections
 import time
 import numpy as np
 import arff
+import logging
 
 title = 'Buenos Aires - Cordoba Extraction Database'
-sources = 'http://fabula2.exp.dc.uba.ar/'
+source = 'http://fabula2.exp.dc.uba.ar/'
 author = 'Fernando Bugni'
 databaseName = 'bsas-cba_DB'
 
 def diccToArff(dicc, filename, attributesFilter):
+
+    logger = logging.getLogger('Extract')
 
     orderedKeys = sorted(attributesFilter.keys())
     
@@ -48,7 +51,7 @@ def diccToArff(dicc, filename, attributesFilter):
             data += [ samplelist ]
 
         datalist['data'] = data
-        logger.debug(data)
+        logger.debug('\n\n\n\n\n data: '+str(datalist))
 
         #fabrico el arff y escribo
         string = arff.dumps(datalist)
@@ -56,7 +59,7 @@ def diccToArff(dicc, filename, attributesFilter):
         file = open(filename, 'w')
         file.write('% 1. Title: '+title+'\n')
         file.write('%'+'\n')
-        file.write('% 2. Sources: '+sources+'\n')
+        file.write('% 2. Source: '+source+'\n')
         file.write('%'+'\n')
         file.write('% 3. Author: '+author+'\n')
         file.write('%'+'\n')

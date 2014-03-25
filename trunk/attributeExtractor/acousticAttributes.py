@@ -8,6 +8,8 @@ import logging
 
 logger = logging.getLogger('acousticAttributes: ')
 
+mfcc_len = 13
+
 #=======================================================================
 # La 'c' antes de la 't' no suena
 def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
@@ -68,7 +70,7 @@ def MFCC_AverageKT(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.average(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])
+        return np.array([None for i in range(mfcc_len)])
 
 def MFCC_MaxKT(textgrid, mfcc):
     logger.debug('mfccMaxKT: ')
@@ -77,7 +79,7 @@ def MFCC_MaxKT(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amax(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])
+        return np.array([None for i in range(mfcc_len)])
 
 def MFCC_MinKT(textgrid, mfcc):
     logger.debug('mfccMinKT: ')
@@ -86,7 +88,7 @@ def MFCC_MinKT(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amin(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])
+        return np.array([None for i in range(mfcc_len)])
 #=======================================================================
 
 LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
@@ -98,7 +100,7 @@ def MFCC_AverageLL(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.average(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])        
+        return np.array([None for i in range(mfcc_len)])        
 
 def MFCC_MaxLL(textgrid, mfcc):
     logger.debug('mfccMaxLL: ')
@@ -107,7 +109,7 @@ def MFCC_MaxLL(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amax(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])        
+        return np.array([None for i in range(mfcc_len)])        
 
 def MFCC_MinLL(textgrid, mfcc):
     logger.debug('mfccMinLL: ')
@@ -116,7 +118,7 @@ def MFCC_MinLL(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amin(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)]) 
+        return np.array([None for i in range(mfcc_len)]) 
 #=======================================================================
 
 # TODO: Para la RR hacer el extractor de atributos para la longitud
@@ -130,7 +132,7 @@ def MFCC_AverageRR(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.average(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)]) 
+        return np.array([None for i in range(mfcc_len)]) 
 
 def MFCC_MaxRR(textgrid, mfcc):
     logger.debug('mfccMaxRR: ')
@@ -139,7 +141,7 @@ def MFCC_MaxRR(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amax(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)]) 
+        return np.array([None for i in range(mfcc_len)]) 
 
 def MFCC_MinRR(textgrid, mfcc):
     logger.debug('mfccMinRR: ')
@@ -148,7 +150,7 @@ def MFCC_MinRR(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amin(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)]) 
+        return np.array([None for i in range(mfcc_len)]) 
 
 #=======================================================================
 
@@ -161,7 +163,7 @@ def MFCC_AverageSC(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.average(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])         
+        return np.array([None for i in range(mfcc_len)])         
 
 def MFCC_MaxSC(textgrid, mfcc):
     logger.debug('mfccMaxSC: ')
@@ -170,7 +172,7 @@ def MFCC_MaxSC(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amax(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])         
+        return np.array([None for i in range(mfcc_len)])         
 
 def MFCC_MinSC(textgrid, mfcc):
     logger.debug('mfccMinSC: ')
@@ -179,7 +181,7 @@ def MFCC_MinSC(textgrid, mfcc):
         mfccTemp = np.around(mfccTemp, decimals=2)
         return np.amin(mfccTemp, axis=0)
     else:
-        return np.array([None for i in range(26)])         
+        return np.array([None for i in range(mfcc_len)])         
 
 def _dummy(textgrid, mfcc):
     return '8'
