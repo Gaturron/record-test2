@@ -6,6 +6,8 @@ import scikits.talkbox.features as features
 import os
 import sys
 
+import pymatlab
+
 #parametros MFCC
 nwin=25
 nfft=512
@@ -38,11 +40,18 @@ def wavToMfcc(pathFile):
 
     #=====================================================================
     #implementacion 1:
-    mfcc_feat = mfcc(sig, samplerate= rate, winstep= winstep, numcep= nceps)
+    #mfcc_feat = mfcc(sig, samplerate= rate, winstep= winstep, numcep= nceps)
 
     #implementacion 2: 
     #mfcc_feat = features.mfcc(sig, fs= rate, nwin= nwin, nfft= nfft, nceps= nceps)
     #mfcc_feat = mfcc_feat[0]
+
+    #implementacion 3:
+    session = pymatlab.session_factory()
+    session.putvalue('path',pathFile)
+    session.run('cd /home/fernando/Tesis/record-test2/attributeExtractor/matlab_extractor/')
+    session.run('R = fileFeatureExtraction(path);')
+    mfcc_feat = session.getvalue('R')
 
     #=====================================================================
 
