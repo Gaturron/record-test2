@@ -9,6 +9,8 @@ source = 'http://fabula2.exp.dc.uba.ar/'
 author = 'Fernando Bugni'
 databaseName = 'bsas-cba_DB'
 
+np.set_printoptions(precision=8)
+
 def diccToArff(dicc, filename, attributesFilter):
 
     logger = logging.getLogger('Extract')
@@ -27,7 +29,12 @@ def diccToArff(dicc, filename, attributesFilter):
         attributes = []
         for key in orderedKeys:
             if  isinstance(attributesFilter[key], list):
-                attributes += [ (key+'_'+str(i), nan_to_num(attributesFilter[key][0]))for i in range(len(attributesFilter[key]))]
+            
+                if isinstance(attributesFilter[key][0], basestring):
+                    attributes += [ (key+'_'+str(i), attributesFilter[key][0])for i in range(len(attributesFilter[key]))]
+                else:
+                    attributes += [ (key+'_'+str(i), np.nan_to_num(attributesFilter[key][0]))for i in range(len(attributesFilter[key]))]
+                
             elif isinstance(attributesFilter[key], tuple):
                 attributes.append((key, list( attributesFilter[key])))
             else:
