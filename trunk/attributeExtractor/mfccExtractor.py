@@ -18,6 +18,17 @@ winstep = 0.01
 # TODO: agregar un extractor pero pasando como parametro
 # lista de pathFiles
 
+#implementacion matlab
+session = None
+
+def initSessionMatlab():
+    global session
+    session = pymatlab.session_factory()  
+
+def delSessionMatlab():
+    global session  
+    del session
+
 def wavsToMfcc(pathFolder):
 
     print 'Directorio a analizar: '+str(pathFolder)
@@ -27,8 +38,10 @@ def wavsToMfcc(pathFolder):
     for filename in filenames:
         if (filename.endswith('.wav')):
             pathFile = pathFolder+'/'+filename
-            dicFeatures = wavToMfcc(pathFile)
+            dicFeatures = wavToMfcc(pathFile, session)
             dicMfcc[str(filename)] = dicFeatures
+
+    del session
 
     return dicMfcc
 
@@ -47,7 +60,12 @@ def wavToMfcc(pathFile):
     #mfcc_feat = mfcc_feat[0]
 
     #implementacion 3:
-    session = pymatlab.session_factory()
+
+    global session
+    if session == None: 
+        print "No esta init session"
+        initSessionMatlab()
+
     session.putvalue('path',pathFile)
     session.run('cd /home/fernando/Tesis/record-test2/attributeExtractor/matlab_extractor/')
     session.run('R = fileFeatureExtraction(path);')
@@ -94,11 +112,14 @@ if __name__ == '__main__':
     #print 'Prueba MFCC: prueba de directorio'
     #wavsToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data')
 
+
+    initSessionMatlab()
     print 'Prueba 2 MFCC: prueba regla 4'
     dicBSAS = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/bsas_u11_t26_a2.wav')
     print 'BsAS: '+str(dicBSAS[2.21:2.24])
     dicCBA = wavToMfcc('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/cba_u38_t26_a2.wav')
     print 'Cba: '+str(dicCBA[2.56:2.63])
+    delSessionMatlab()
 
     #print 'Prueba 3 MFCC: buen calculo'
 

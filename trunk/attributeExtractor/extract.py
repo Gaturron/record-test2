@@ -101,8 +101,6 @@ def extract():
 
     os.makedirs(path)
 
-    dTA.diccToArff(res1, path+'/extractionTotal.arff', attributesFilter)
-
     # Generate tests
     attributesFilter1 = dict(attributesFilter)
     attributesFilter1.pop("userId", None)
@@ -110,6 +108,8 @@ def extract():
     attributesFilter1.pop("attempt", None)
     attributesFilter1.pop("phrases", None)
     attributesFilter1.pop("duration", None)
+
+    dTA.diccToArff(res1, path+'/extractionTotal.arff', attributesFilter1)
 
     testGenerator.generate(res1, path, attributesFilter1)
 

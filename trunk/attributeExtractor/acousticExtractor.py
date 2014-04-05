@@ -5,6 +5,8 @@ import os
 import inspect
 import logging
 
+import pymatlab
+
 logger = logging.getLogger('acousticExtractor')
 
 class acousticExtractor(object):
@@ -17,8 +19,14 @@ class acousticExtractor(object):
 
         attributesFiles = {}
 
+        #inicializamos matlab wrapper
+        mfccExt.initSessionMatlab()
+
         for pathFile in pathFileList:
             attributesFiles[pathFile] = self.extract(pathFile)
+
+        #cerramos matlab wrapper
+        mfccExt.delSessionMatlab()
 
         return attributesFiles    
 
@@ -66,4 +74,7 @@ class acousticExtractor(object):
     def _extractMfcc(self, pathFile):
         logger.info('Wav a analizar: '+str(pathFile))
 
-        return mfccExt.wavToMfcc(pathFile)
+        #implementacion matlab
+        res = mfccExt.wavToMfcc(pathFile)
+        
+        return res

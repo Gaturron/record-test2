@@ -107,7 +107,6 @@ path = sys.argv[1]
 
 for i in range(10):
 
-
     file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)
     train.setClassIndex(train.attribute('place').index())
