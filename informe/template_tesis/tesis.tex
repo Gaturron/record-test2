@@ -600,7 +600,37 @@ Este proceso lo debemos realizar 10 veces para poder evitar que hayamos tenido s
 
 Vamos a entrenar varios clasificadores para poder determinar si el análisis de atributos que realizamos aporta mayor información a la hora de detectar un hablante. Los clasificadores propuestos son: 
 
-JRip, J48, Function SMO, Naive Bayes. 
+\paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) - Implementación JRip:}
+
+%http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/JRip.html
+%http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
+%https://indico.cern.ch/event/34666/session/13/material/slides/0?contribId=16 pag 21
+
+Este algoritmo divide el conjunto de entrada en pequeños grupos. Para cada uno va generando reglas que lo describan de forma golosa incremental. Luego cuando no puede describir más a ese grupo lo extrae y sigue con otro. Cuando estos conjuntos superan una cierta dimensión el algoritmo para. Este algoritmo sirve mucho para datos no balanceados.
+
+\paragraph{C45 - Implementación J48:}
+
+%http://en.wikipedia.org/wiki/C4.5_algorithm
+%http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
+
+Este algoritmo genera un árbol de decisión y es muy usado para clasificación. Dada una serie de muestras con varios atributos cada una se realiza: Para cada atributo calcula la ganancia de información si se divide las muestras en a. Elige el que tenga mejor ganancia entre todos los atributos y con el crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja, este es el caso base.
+
+\paragraph{Sequential minimal optimization - Implementación Function SMO:}
+
+%http://en.wikipedia.org/wiki/Support_vector_machine
+%http://machinelearning.wustl.edu/mlpapers/paper_files/BordesEWB05.pdf
+%http://en.wikipedia.org/wiki/Sequential_minimal_optimization
+%http://research.microsoft.com/pubs/69644/tr-98-14.pdf
+
+Este algoritmo intenta resolver un problema de optimización para los problemas tipo Support vector machines. Support vector machines es un problema por el cual se intenta separar muestras en dos clasificaciones distintas a traves de un hiperplano. Este hiperplano posee la máxima distancia a los datos de entrenamiento mas cercanos para cada clase. Sequencial minimal optimization es una implementación que intenta resolver este problema. Lo que hace es: divide el problema en una serie de pequieños problemas que pueden ser resueltos facilmente. Cada pequeño problema es encontrar multiplicadores en una ecuación de 2 variables. 
+
+\paragraph{Naive Bayes - Implementación ídem:}
+
+%http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
+%http://en.wikipedia.org/wiki/Naive_Bayes_classifier
+
+Un clasificador de este tipo asume que cada atributo de cada clase muestra una característica en particular de su clase pero no esta relacionado con otro atributo. Cada una de estos atributos contribuye de manera independiente a la clasificación de su clase. 
+
 
 Más adelante decribiremos los parametros utilizados para cada uno.
 
@@ -750,6 +780,23 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 
 %%%% BIBLIOGRAFIA
 \backmatter
-%\bibliography{tesis}
-
+\bibliography{tesis}
+ 
+ @inproceedings{Cohen1995,
+    author = {William W. Cohen},
+    booktitle = {Twelfth International Conference on Machine Learning},
+    pages = {115-123},
+    publisher = {Morgan Kaufmann},
+    title = {Fast Effective Rule Induction},
+    year = {1995}
+ } 
+ 
+ @book{Quinlan1993,
+    address = {San Mateo, CA},
+    author = {Ross Quinlan},
+    publisher = {Morgan Kaufmann Publishers},
+    title = {C4.5: Programs for Machine Learning},
+    year = {1993}
+ }
+ 
 \end{document}
