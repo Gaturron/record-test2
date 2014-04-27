@@ -43,15 +43,19 @@
 \contentsline {section}{\numberline {6.1}Baseline}{21}
 \contentsline {section}{\numberline {6.2}Modelo de testing}{21}
 \contentsline {section}{\numberline {6.3}Clasificadores}{22}
-\contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{22}
-\contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{22}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) - Implementaci\IeC {\'o}n JRip:}{22}
+\contentsline {paragraph}{C45 - Implementaci\IeC {\'o}n J48:}{22}
+\contentsline {paragraph}{Sequential minimal optimization - Implementaci\IeC {\'o}n Function SMO:}{22}
+\contentsline {paragraph}{Naive Bayes - Implementaci\IeC {\'o}n \IeC {\'\i }dem:}{22}
+\contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{23}
+\contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{23}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{23}
-\contentsline {subsection}{\numberline {6.4.3}Student Test}{23}
+\contentsline {subsection}{\numberline {6.4.3}Student Test}{24}
 \contentsline {section}{\numberline {6.5}Resultados}{24}
 \contentsline {subsection}{\numberline {6.5.1}Clasificadores}{24}
-\contentsline {subsection}{\numberline {6.5.2}Wilcox y Student Test}{24}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{24}
-\contentsline {subsubsection}{Utilizando todos los atributos}{24}
+\contentsline {subsection}{\numberline {6.5.2}Wilcox y Student Test}{25}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{25}
+\contentsline {subsubsection}{Utilizando todos los atributos}{25}
 \contentsline {subsubsection}{Utilizando solo los atributos PHO}{25}
 \contentsline {subsubsection}{Utilizando solo los atributos SIL}{25}
 \contentsline {subsubsection}{Utilizando solo los atributos ACO}{25}

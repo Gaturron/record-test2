@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  27 APR 2014 13:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  27 APR 2014 18:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -369,8 +369,10 @@ File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 File: listings.cfg 2013/06/27 1.5pre1 listings configuration
 ))
 Package: listings 2013/07/10 1.5 (Carsten Heinz)
-
-No file tesis.aux.
+ (./tesis.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+)
 \openout1 = `tesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -385,6 +387,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count106
@@ -533,18 +536,19 @@ Package pdftex.def Info: logofcen.pdf used on input line 10.
 ] (./dedicatoria.tex) [5] [6
 
 ]
-No file tesis.toc.
+(./tesis.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [7
+
+])
 \tf@toc=\write3
 \openout3 = `tesis.toc'.
 
-[7
-
-] [8
-
-]
+ [8]
 Cap\'{\i }tulo 1.
 
-<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=44, 411.136pt x 715.4
+<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=45, 411.136pt x 715.4
 73pt>
 File: Images/Dialectos_del_idioma_espanol_en_Argentina.png Graphic file (type p
 ng)
@@ -554,12 +558,13 @@ sed on input line 64.
 (pdftex.def)             Requested size: 213.39568pt x 371.36032pt.
  [1
 
+
  <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>]
 LaTeX Info: Redefining \. on input line 116.
 LaTeX Info: Redefining \% on input line 116.
  [2]
 Cap\'{\i }tulo 2.
-<Images/frases_inf.png, id=54, 854.19125pt x 679.53876pt>
+<Images/frases_inf.png, id=55, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
@@ -569,7 +574,7 @@ Package pdftex.def Info: Images/frases_inf.png used on input line 152.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/reglas_AMPER.png, id=55, 639.38875pt x 221.82875pt>
+<Images/reglas_AMPER.png, id=56, 639.38875pt x 221.82875pt>
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
@@ -615,7 +620,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 214.
 
-<Images/cant_frases_traza_inf.png, id=64, 602.25pt x 372.39125pt>
+<Images/cant_frases_traza_inf.png, id=65, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
 <use Images/cant_frases_traza_inf.png>
@@ -631,7 +636,7 @@ LaTeX Info: Redefining \% on input line 236.
 Cap\'{\i }tulo 3.
 [7
 
-] <Images/categorizando_audios.png, id=78, 347.2975pt x 346.29375pt>
+] <Images/categorizando_audios.png, id=79, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
@@ -658,7 +663,7 @@ LaTeX Info: Redefining \% on input line 300.
 Cap\'{\i }tulo 4.
 [11
 
-] <Images/diagrama_workflow.jpg, id=92, 300.12125pt x 316.18124pt>
+] <Images/diagrama_workflow.jpg, id=93, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
@@ -715,55 +720,54 @@ LaTeX Info: Redefining \% on input line 534.
 ]
 Cap\'{\i }tulo 6.
 [21]
-LaTeX Info: Redefining \. on input line 630.
-LaTeX Info: Redefining \% on input line 630.
+LaTeX Info: Redefining \. on input line 637.
+LaTeX Info: Redefining \% on input line 637.
  [22]
-Underfull \vbox (badness 6094) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 677.
-LaTeX Info: Redefining \% on input line 677.
+LaTeX Info: Redefining \. on input line 684.
+LaTeX Info: Redefining \% on input line 684.
  [23]
-LaTeX Info: Redefining \. on input line 747.
-LaTeX Info: Redefining \% on input line 747.
-
-[24]
-LaTeX Info: Redefining \. on input line 747.
-LaTeX Info: Redefining \% on input line 747.
+LaTeX Info: Redefining \. on input line 745.
+LaTeX Info: Redefining \% on input line 745.
+ [24]
+LaTeX Info: Redefining \. on input line 777.
+LaTeX Info: Redefining \% on input line 777.
  [25]
-LaTeX Info: Redefining \. on input line 747.
-LaTeX Info: Redefining \% on input line 747.
+LaTeX Info: Redefining \. on input line 777.
+LaTeX Info: Redefining \% on input line 777.
  [26
 
 ]
 Cap\'{\i }tulo 7.
 [27]
-LaTeX Info: Redefining \. on input line 748.
-LaTeX Info: Redefining \% on input line 748.
+LaTeX Info: Redefining \. on input line 778.
+LaTeX Info: Redefining \% on input line 778.
  [28
 
 ]
 Cap\'{\i }tulo 8.
 [29]
-LaTeX Info: Redefining \. on input line 749.
-LaTeX Info: Redefining \% on input line 749.
+LaTeX Info: Redefining \. on input line 779.
+LaTeX Info: Redefining \% on input line 779.
  [30
 
 ]
 Cap\'{\i }tulo 9.
 [31]
-LaTeX Info: Redefining \. on input line 752.
-LaTeX Info: Redefining \% on input line 752.
+LaTeX Info: Redefining \. on input line 782.
+LaTeX Info: Redefining \% on input line 782.
  [32
 
-] (./tesis.aux
+]
+No file tesis.bbl.
+[33] (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5359 strings out of 493307
- 72235 string characters out of 6139905
+ 5368 strings out of 493307
+ 72335 string characters out of 6139905
  196566 words of memory out of 5000000
- 8715 multiletter control sequences out of 15000+600000
+ 8719 multiletter control sequences out of 15000+600000
  10762 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,10n,58p,1404b,1641s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -779,10 +783,10 @@ ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 s/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on tesis.pdf (42 pages, 1070546 bytes).
+Output written on tesis.pdf (43 pages, 1077319 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 212 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
