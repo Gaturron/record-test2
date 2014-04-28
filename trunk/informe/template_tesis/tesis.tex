@@ -58,16 +58,18 @@
 % todo: AGREGAR FONTANELLA Y VIDAL DE BATTINI
 % RESCRIBIR
 
-El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. Estas características pueden describir al hablante de distintas formas. Algunas de ellas pueden ser: su cultura, su economía, su región entre otras. 
+El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. El estudio de estas características es muy difícil de realizar. No solo se debe obtener muestras muy variadas de muchos hablantes en distintas regiones, sino que también hay que prestarle importante atención a su edad, su sexo, su situación económica etc. Realizar un estudio de estas caracteristicas es muy complejo y costoso. Además de estudiar cada grupo se debe utilizar muchos recursos para grabar en buena calidad las muestras. Viajes para buscar los diferentes hablantes, entre otras cosas. 
 
 \begin{figure}[h!]
     \includegraphics[width=0.5\textwidth]{Dialectos_del_idioma_espanol_en_Argentina} 
     \caption{Dialectos del idioma español en Argentina}
 \end{figure}
 
-Particularmente en Argentina no es la excepción. Nuestro país posee una fuerte componente dialéctica en su habla. Esto quiere decir que podemos saber de que lugar proviene el hablante analizando su tonada. Hay varias regiones definidas a través del país. En este trabajo nos enfocaremos en distinguir diferencias entre la región de Córdoba y Buenos Aires. Realizaremos un experimento donde compararemos el habla de cada grupo. Utilizando estos datos analizaremos efectivamente cuales son las características mas predominantes y como repercute esas diferencias en el habla. Por último, mostraremos distintos clasificadores para determinar de que grupo proviene una grabación, analizaremos las atributos mas importantes y testearemos la solución propuesta. 
+La motivación de esta tesis es realizar un sistema que pueda facilitar esta recolección de datos. El problema principal radica en obtener cada grabación. Si los grupos se encuentran muy alejados esto puede ser muy caro. También estas grabaciones deben ser de calidad. Se podría utilizar el teléfono pero posee muy baja calidad. De hecho, se utiliza en algunos experimentos donde esta caracteristica no afecta. El sistema desarrollado utiliza Internet como herramienta para obtener muestras. Se puede realizar varias grabaciones sin necesidad de viajar a cada lugar. Otra ventaja radica en que se puede manejar la calidad de la grabación. Vamos a realizar un sistema para mejorar este proceso y diseñaremos un experimento para corroborar las ventajas y desventajas de utilizarlo. 
 
-Vamos a describir las diferencias dialécticas que existen. Las reglas propuestas van a describir como habla la dialéctica de Córdoba. Las reglas son: 
+Para diseñar el experimento tomamos como caso particular la diferencias en el habla entre Córdoba y Buenos Aires. Ya se encuentran estudios que explican estas diferencias. Algunos de ellos son: Fontanella y Vidal (contar que dicen.)
+
+Extrayendo el análisis de estos libros pude definir las reglas que describen a cada grupo. Estas son: 
 
 %%\section*{Diferencias entre hablantes}
 \subsection*{Regla 1: Localice la sílaba acentuada en la palabra y estirar la silaba anterior}
@@ -115,17 +117,14 @@ Vamos a tomar distintas frases donde aparecen estas reglas y compararlas con la 
 
 \chapter{Diseño del experimento}
 
-Utilizando estudios previos de ambos dialectos, pudimos extraer dichas reglas que describen la diferencia entre cada uno de los dos grupos. Vamos a proponer realizar un experimento para poder extraer la información fonética de estos grupos. El experimento va a poner foco primordialmente en las diferencias antes dichas. La idea sera realizar una serie de actividades donde el hablante sea grabado y esas actividades hagan incapié en las diferencias. Como el acento se potencia cuando se realiza habla espontánea, vamos a querer que el hablante lo diga de forma lo más natural posible. 
+%Utilizando estas reglas voy a definir varias actividades donde se tratará de extraer estas diferencias de la mejor forma posible. También hablaremos de las dificultades encontradas y como mejorarlo mediante trabajos futuros. Por último, mostraré si las diferencias pueden ser apreciables con el conjunto de datos extraído.
 
-Las actividades pensadas a realizar fueron: leer una palabra, leer una frase o describir una image. Dado la dificultad de conseguir hablantes y convocarlos en un mismo lugar físico, vamos a desarrollar una aplicación web capaz de realizar el experimento de forma remota. 
+Utilizando estudios previos de ambos dialectos, pudimos extraer dichas reglas que describen la diferencia entre cada uno de los dos grupos. Vamos a proponer realizar un experimento para poder extraer la información fonética de estos grupos. El experimento va a poner foco primordialmente en las diferencias antes dichas. La idea sera realizar una serie de actividades donde el hablante sea grabado y esas actividades hagan incapié en las diferencias. Como el acento se potencia cuando se realiza habla espontánea, vamos a querer que el hablante lo diga de forma lo más natural posible. 
 
 A continuación vamos a describir el experimento en más detalle.
 
 %\section{Motivación}
-\paragraph{Actividades}
-% todo: explicar mejor la actividad
-
-Nuestro objetivo es extraer la diferencia entre el acento de Córdoba y Buenos Aires. 
+%\paragraph{Actividades}
 
 %Pensándolo más en detalle, nos quedamos con leer una frase. Descartamos leer una palabra porque no lograba darle una entonación interesante. Descartamos describir una imagen ya que las descripciones añaden cierta ambigüedad que hace que las palabras usadas no sean las apropiadas para identificar las diferencias de cada acento.
 
@@ -135,7 +134,7 @@ Nuestro objetivo es extraer la diferencia entre el acento de Córdoba y Buenos A
 
 Debemos obtener habla espontánea de los hablantes. Es por ello que se nos ocurrió como actividad pronunciar frases popularmente conocidas. Pensamos que al ser muy conocidas el hablante, al haberla pronunciado tanto, vamos a obtener habla expontanea.
 
-%Vamos a querer utilizar frases lo mas conocidas posibles, para que el hablante ya tenga registrada como decirla sin poderle eliminar el acento. De esta forma se quiere obtener habla espontánea.
+Vamos a querer utilizar frases lo mas conocidas posibles, para que el hablante ya tenga registrada como decirla sin poderle eliminar el acento. De esta forma se quiere obtener habla espontánea.
 
 \section{Diseño teórico}
 
@@ -144,29 +143,45 @@ Para realizar las grabaciones debemos darle a cada hablante una serie de frases 
 \paragraph{Descripción de los 2 grupos}
 %-Descripción de los 2 grupos. Porque cada uno. Espontaneidad vs Regla 1
 
-Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la espontaneidad (cubriendo las reglas 2 al 5) y frases AMPER que tratan de cubrir el acento barriendo por cada tipo de acentuación (regla 1)
+Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la espontaneidad (cubriendo las reglas 2 al 5) y frases AMPER que tratan de cubrir el acento barriendo por cada tipo de acentuación (regla 1). A continuación vemos las reglas en sus dos conjuntos.
 
 \subsection{Frases utilizadas}
-
-\begin{figure}[h!]
-    \centerline{\includegraphics[width=1\textwidth]{frases_inf} }
-    \caption{Frases conocidas}
-\end{figure}
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=1\textwidth]{reglas_AMPER} }
     \caption{Frases AMPER}
 \end{figure}
 
-\subsection{Utilizar AMPER}
-Utilizamos este esquema para analizar todas las variantes posibles de la Regla 1. Esta regla es la más conocida y puede aparecer de varias formas. Es por eso que este esquema nos va a resultar muy útil. 
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=1\textwidth]{frases_inf} }
+    \caption{Frases conocidas}
+\end{figure}
 
-Para el esquema AMPER fijamos un patrón y fuimos cambiando las palabras que utiliza. El esquema AMPER utilizado es: Objeto+” salió “+Adjetivo … donde Objeto puede ser [Canapé. Repollo, Espárrago]. Adjetivo puede ser [espectacular, delicioso, riquisimo]. Utilizamos estas palabras ya que hacen un cubrimiento por la acentuación de cada palabra, o sea pasa por agudas grave y esdrújula. 
+\subsection{Utilizar AMPER}
+
+%AMPER-ARGENTINA: VARIABILIDAD RÍTMICA EN DOS CORPUS 
+%Jorge A. Gurlekian LIS - Conicet y UBA jag@fmed.uba.ar 
+%Reina Yanagida LIS y Universidad Municipal de Estudios Extranjeros de Kobe, Japón reinay@hotmail.co.jp 
+%Mónica Noemí Trípodi LIS – UBA monica906@hotmail.com 
+%Guillermo Toledo Conicet y Universidad Laval, Canadá guillermo.toledo@sympatico.ca 
+
+Utilizamos este esquema para analizar todas las variantes posibles de la Regla 1. Recordemos que la regla 1 nos dice que hay que estirar la sílaba anterior a la acentuada. Esta regla es la más conocida y puede aparecer de varias formas. Es por eso que este esquema nos va a resultar muy útil. 
+
+Para el esquema AMPER fijamos un patrón y fuimos cambiando las palabras que utiliza. 
+El esquema AMPER utilizado es: 
+\begin{center}
+\textit{Objeto+” salió “+Adjetivo} 
+\end{center}
+donde Objeto puede ser \textit{Canapé. Repollo, Espárrago}. Adjetivo puede ser \textit{espectacular, delicioso, riquisimo}. Utilizamos estas palabras ya que hacen un cubrimiento por la acentuación de cada palabra, o sea pasa por agudas grave y esdrújula. 
 
 %todo: explicar mejor 
-Por ejemplo: "El canape salio delicioso". Canape tiene acento en la última sílaba. Es una palabra aguda. Mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Es importante armar la mayoría de las combinaciones para obtener muchas variantes de donde se encuentra el acento. De esta forma poder obtener muchísimas variantes con respecto a la Regla 1, que nos decía estirar la sílaba anterior a la acentuada.   
+Por ejemplo: \textit{"El canape salio delicioso"}. Canape tiene acento en la última sílaba. Es una palabra aguda. Mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Es importante armar la mayoría de las combinaciones para obtener muchas variantes de donde se encuentra el acento. De esta forma poder obtener muchísimas variantes con respecto a la Regla 1, que nos decía estirar la sílaba anterior a la acentuada.   
 
 %También se agregó “El rábano salió horrible” que posee un acento en la primer sílaba.
+
+\subsection{Utilizar frases conocidas}
+
+Como afirmamos antes, utilizo frases comunes para poder obtener los acentos de cada grupo de forma natural. Pensé que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle el su acento. Una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{"En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero"} extrae atributos para las reglas 4 y 5. La palabra \textit{"victoria"} posee atributo para la regla 4 que nos propone medir la duración de la \textit{"c"} antes de la \textit{"t"}. Sucede igual con la palabra \textit{"caballero"} para la regla 5. Esta nos dice medir la duración de la \textit{"ll"}. De esta forma cada frase extrae los atributos lo mas posible.
 
 \paragraph{Intercalando los dos tipos}
 
@@ -630,7 +645,6 @@ Este algoritmo intenta resolver un problema de optimización para los problemas 
 %http://en.wikipedia.org/wiki/Naive_Bayes_classifier
 
 Un clasificador de este tipo asume que cada atributo de cada clase muestra una característica en particular de su clase pero no esta relacionado con otro atributo. Cada una de estos atributos contribuye de manera independiente a la clasificación de su clase. 
-
 
 Más adelante decribiremos los parametros utilizados para cada uno.
 
