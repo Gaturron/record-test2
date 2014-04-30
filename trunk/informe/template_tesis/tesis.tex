@@ -58,27 +58,26 @@
 % todo: AGREGAR FONTANELLA Y VIDAL DE BATTINI
 % RESCRIBIR
 
-El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. Estudiar estas caracteristicas del habla nos permite conocer mejor la cultura de las personas. Nos permite identificar a los hablantes para saber al lugar donde pertenecen y conocer mejor su cultura.
+El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. Estudiar estas características del habla nos permite conocer mejor la cultura de las personas. Nos permite identificar a los hablantes para saber al lugar donde pertenecen y conocer mejor su cultura.
 
 Identificar y extraer características del habla es una tarea muy difícil de realizar. No solo se debe obtener muestras muy variadas de muchos hablantes en distintas regiones, sino que también hay que prestarle importante atención a su edad, su sexo, su situación económica etc. Realizar un estudio de estas características es muy complejo y, por sobre todo, costoso. Además de estudiar cada grupo se debe utilizar muchos recursos: por ejemplo se deben utilizar soporte para grabar en buena calidad las muestras. Se debe realizar varios viajes para buscar los diferentes hablantes. Se debe analizar cada uno de los audios de manera individual. entre otras cosas. 
 
 \begin{figure}[h!]
     \includegraphics[width=0.5\textwidth]{Dialectos_del_idioma_espanol_en_Argentina} 
     \caption{Dialectos del idioma español en Argentina}
+    \label{fig11}
 \end{figure}
 
 La motivación de esta tesis es realizar un sistema que pueda facilitar estos problemas. Vamos a enfrentar cada uno de ellos y intentar resolverlos de forma computacional. De los problemas descriptos el problema principal radica en obtener cada grabación. Si los grupos se encuentran muy alejados esto puede ser muy costoso por los viajes. También estas grabaciones deben ser de calidad aceptable como para realizar el estudio en cuestión. Se podría utilizar el teléfono para algunos experimentos pero hay que tener en cuenta que posee muy baja calidad. De hecho, se utiliza en algunos experimentos donde esta característica no afecta. 
 
-El sistema desarrollado utiliza Internet como herramienta para obtener muestras. De esta forma, se puede realizar varias grabaciones sin necesidad de viajar a cada lugar. Es cierto que no todos los lugares poseen acceso a Internet y para lugares alejados puede ser muy contraproducente. De cualquier forma, pensamos su utilización soluciona muchos inconvenentes. Otra ventaja radica en que se puede manejar la calidad de la grabación. Utilizando distintas tecnologías a través de esta red se puede configurar la calidad para que sea lo más precisa posible para el experimento. Vamos a realizar un sistema para mejorar este proceso y diseñaremos un experimento para corroborar las ventajas y desventajas de utilizarlo. 
+El sistema desarrollado utiliza Internet como herramienta para obtener muestras. De esta forma, se puede realizar varias grabaciones sin necesidad de viajar a cada lugar. Es cierto que no todos los lugares poseen acceso a Internet y para lugares alejados puede ser muy contraproducente. De cualquier forma, pensamos su utilización soluciona muchos inconvenientes. Otra ventaja radica en que se puede manejar la calidad de la grabación. Utilizando distintas tecnologías a través de esta red se puede configurar la calidad para que sea lo más precisa posible para el experimento. Vamos a realizar un sistema para mejorar este proceso y diseñaremos un experimento para corroborar las ventajas y desventajas de utilizarlo. 
 
-El experimento que tomamos como caso particular es las diferencias en el habla entre Córdoba y Buenos Aires. Ya se encuentran estudios que explican estas diferencias. Algunos de ellos son: Fontanella y Vidal (contar que dicen.)
+El experimento que tomamos como caso particular es las diferencias en el habla entre Córdoba y Buenos Aires. Estos dos grupos se encuentran uno en la zona central de nuestro país y el otro cerca del Río de la Plata, como se puede observar en la Figura \ref{fig11}. Ya se encuentran estudios que explican estas diferencias. Algunos de ellos son: \textit{El español en la Argentina} de Beatríz Fontanella de Weinberg  y \textit{Español en la Argentina} de Elena Vidal  
 
-En el libro \textit{"El español en la Argentina"}, Beatríz Fontanella de Weinberg recompila varios trabajos de colegas donde analizan el español de cada región de Argentina. Cada región tiene un capítulo y entre ellas se encuentra una para Buenos Aires y otra para Córdoba. En la descripción de estos capítulos hace hincapié en los sonidos más suaves y cortos de la /r/ y /y/ y en la aspiración de la /s/. También afirma el estiramiento de la sílaba anterior a la acentuada en cada palabra como distintivo del acento.
+En el libro \textit{El español en la Argentina}, Beatríz Fontanella de Weinberg recompila varios trabajos de colegas donde analizan el español de cada región de Argentina. Cada región tiene un capítulo y entre ellas se encuentra una para Buenos Aires y otra para Córdoba. En la descripción de estos capítulos hace hincapié en los sonidos más suaves y cortos de la /r/ y /y/ y en la aspiración de la /s/. También afirma el estiramiento de la sílaba anterior a la acentuada en cada palabra como distintivo del acento. En el libro \textit{Español en la Argentina}, Elena Vidal analiza región por región el uso de los fonemas importantes. Destaca la diferencia entre las dos regiones de la /r/, /s/ y de la /ll/. También referencia a la pronunciación de la /s/.
 %pagina 85 Fontanella 
 
-En el libro \textit{"Español en la Argentina"}, Elena Vidal analiza región por región el uso de los fonemas importantes. Destaca la diferencia entre las dos regiones de la /r/, /s/ y de la /ll/. También referencia a la pronunciación de la /s/.
-
-Extrayendo el análisis de estos libros pude definir las reglas que describen a cada grupo. Estas son: 
+Extrayendo el análisis de estos libros pude definir las reglas que describen a cada grupo. Voy a plantear reglas de como debería hablar un cordobés. La ausencia de estas reglas marca que corresponde al grupo de Buenos Aires. Las reglas son: 
 
 %%\section*{Diferencias entre hablantes}
 \subsection*{Regla 1: Localice la sílaba acentuada en la palabra y estirar la silaba anterior}
@@ -120,17 +119,15 @@ Palabras con el fonema /r/ deben ser suaves y no vibrar.
 
 Ejemplo: 'Espárrago' debe ser suave en comparación de Buenos Aires. 
 
-Cabe destacar que estas reglas se producen en habla espontánea. No surgen de habla leída. 
+Cabe destacar que estas reglas se producen en habla espontánea. No surgen de habla leída. Algunas pueden agudizarse si se encuentran en lugares económicamente más vulnerables. Pero en cualquier ambiente se cumple.
 
-Vamos a tomar distintas frases donde aparecen estas reglas y compararlas con la dialéctica de Buenos Aires. 
+Vamos a diseñar el experimento para obtener muestras en este caso.
 
 \chapter{Diseño del experimento}
 
 %Utilizando estas reglas voy a definir varias actividades donde se tratará de extraer estas diferencias de la mejor forma posible. También hablaremos de las dificultades encontradas y como mejorarlo mediante trabajos futuros. Por último, mostraré si las diferencias pueden ser apreciables con el conjunto de datos extraído.
 
-Utilizando estudios previos de ambos dialectos, pudimos extraer dichas reglas que describen la diferencia entre cada uno de los dos grupos. Vamos a proponer realizar un experimento para poder extraer la información fonética de estos grupos. El experimento va a poner foco primordialmente en las diferencias antes dichas. La idea sera realizar una serie de actividades donde el hablante sea grabado y esas actividades hagan incapié en las diferencias. Como el acento se potencia cuando se realiza habla espontánea, vamos a querer que el hablante lo diga de forma lo más natural posible. 
-
-A continuación vamos a describir el experimento en más detalle.
+Utilizando estudios previos de ambos dialectos, pude extraer dichas reglas que describen la diferencia entre cada uno de los dos grupos. Vamos a proponer realizar un experimento para poder extraer la información fonética de los mismos. El experimento va a poner foco primordialmente en las diferencias antes descriptas. La idea sera realizar una serie de actividades donde el hablante sea grabado y esas actividades hagan hincapié en las diferencias. A continuación vamos a describir el experimento en más detalle.
 
 %\section{Motivación}
 %\paragraph{Actividades}
@@ -141,15 +138,15 @@ A continuación vamos a describir el experimento en más detalle.
 
 \subsection{Frases conocidas}
 
-Debemos obtener habla espontánea de los hablantes. Es por ello que se nos ocurrió como actividad pronunciar frases popularmente conocidas. Pensamos que al ser muy conocidas el hablante, al haberla pronunciado tanto, vamos a obtener habla expontanea.
+Como el acento se potencia cuando se realiza habla espontánea, vamos a querer que el hablante lo diga de forma lo más natural posible. Es por ello que se nos ocurrió como actividad pronunciar frases popularmente conocidas. Pensé que si el hablante conoce la frase y es frecuente de pronunciarla, es más fácil obtener habla espontánea.
 
-Vamos a querer utilizar frases lo mas conocidas posibles, para que el hablante ya tenga registrada como decirla sin poderle eliminar el acento. De esta forma se quiere obtener habla espontánea.
+Vamos a querer utilizar frases lo mas conocidas posibles, para que el hablante ya tenga registrada como decirla sin poderle eliminar el acento.
 
 \section{Diseño teórico}
 
 Para realizar las grabaciones debemos darle a cada hablante una serie de frases a grabar. A esa serie de frases las llamaremos trazas.
 
-\paragraph{Descripción de los 2 grupos}
+\paragraph{Descripción de los 2 tipos de frases}
 %-Descripción de los 2 grupos. Porque cada uno. Espontaneidad vs Regla 1
 
 Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la espontaneidad (cubriendo las reglas 2 al 5) y frases AMPER que tratan de cubrir el acento barriendo por cada tipo de acentuación (regla 1). A continuación vemos las reglas en sus dos conjuntos.
@@ -159,11 +156,13 @@ Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=1\textwidth]{reglas_AMPER} }
     \caption{Frases AMPER}
+    \label{fig21}
 \end{figure}
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=1\textwidth]{frases_inf} }
     \caption{Frases conocidas}
+    \label{fig22}
 \end{figure}
 
 \subsection{Utilizar AMPER}
@@ -176,28 +175,28 @@ Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la 
 
 Utilizamos este esquema para analizar todas las variantes posibles de la Regla 1. Recordemos que la regla 1 nos dice que hay que estirar la sílaba anterior a la acentuada. Esta regla es la más conocida y puede aparecer de varias formas. Es por eso que este esquema nos va a resultar muy útil. 
 
-Para el esquema AMPER fijamos un patrón y fuimos cambiando las palabras que utiliza. 
+Para el esquema AMPER se fija un patrón de estructura de frases y se va cambiando las palabras que utiliza. 
 El esquema AMPER utilizado es: 
 \begin{center}
 \textit{Objeto+” salió “+Adjetivo} 
 \end{center}
-donde Objeto puede ser \textit{Canapé. Repollo, Espárrago}. Adjetivo puede ser \textit{espectacular, delicioso, riquisimo}. Utilizamos estas palabras ya que hacen un cubrimiento por la acentuación de cada palabra, o sea pasa por agudas grave y esdrújula. 
+donde Objeto puede ser \textit{Canapé. Repollo, Espárrago}. Adjetivo puede ser \textit{espectacular, delicioso, riquísimo}. Utilizamos estas palabras ya que cubren por la acentuación de cada tipo de palabra, o sea pasa por agudas grave y esdrújula. 
 
 %todo: explicar mejor 
-Por ejemplo: \textit{"El canape salio delicioso"}. Canape tiene acento en la última sílaba. Es una palabra aguda. Mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Es importante armar la mayoría de las combinaciones para obtener muchas variantes de donde se encuentra el acento. De esta forma poder obtener muchísimas variantes con respecto a la Regla 1, que nos decía estirar la sílaba anterior a la acentuada.   
+Por ejemplo: \textit{El canapé salio delicioso}. Canapé tiene acento en la última sílaba. Es una palabra aguda. Mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Es importante armar la mayoría de las combinaciones para obtener muchas variantes de donde se encuentra el acento. De esta forma poder obtener muchísimas variantes con respecto a la Regla 1, que nos decía estirar la sílaba anterior a la acentuada. Todas las combinaciones se pueden ver en la Figura \ref{fig21}.
 
 %También se agregó “El rábano salió horrible” que posee un acento en la primer sílaba.
 
 \subsection{Utilizar frases conocidas}
 
-Como afirmamos antes, utilizo frases comunes para poder obtener los acentos de cada grupo de forma natural. Pensé que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle el su acento. Una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{"En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero"} extrae atributos para las reglas 4 y 5. La palabra \textit{"victoria"} posee atributo para la regla 4 que nos propone medir la duración de la \textit{"c"} antes de la \textit{"t"}. Sucede igual con la palabra \textit{"caballero"} para la regla 5. Esta nos dice medir la duración de la \textit{"ll"}. De esta forma cada frase extrae los atributos lo mas posible.
+Como afirmamos antes, utilizo frases comunes para poder obtener los acentos de cada grupo de forma natural. Pensé que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle el su acento. Algo interesante es que una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero} extrae atributos para las reglas 4 y 5. La palabra \textit{victoria} posee atributo para la regla 4 que nos propone medir la duración de la \textit{c} antes de la \textit{t}. Sucede igual con la palabra \textit{caballero} para la regla 5. Esta nos dice medir la duración de la \textit{ll}. De esta forma cada frase extrae los atributos lo mas posible. Todas las frases conocidas utilizadas se pueden ver en la Figura \ref{fig22}.
 
-\paragraph{Intercalando los dos tipos}
+\paragraph{Intercalando los dos tipos:}
 
-Ahora debemos intercalar las trazas de frases comunes con las de Amper. Vamos a agregar 4-5 frases de la traza de frases comunes, luego agregar 1-2 frases del esquema de amper y asi sucesivamente. La idea es no cansar al hablante con frases repetitivas y evitar que sepa de antemano que frase va a tener que grabar.
+Ahora debemos intercalar las trazas de frases comunes con las frases de AMPER. Vamos a agregar 4 o 5 frases de la traza de frases comunes, luego agregar 1 o 2 frases del esquema de AMPER y así sucesivamente. La idea es no cansar al hablante con frases repetitivas y evitar que sepa de antemano que frase va a tener que grabar.
 
 \paragraph{Siempre cada 5 grabaciones:}
-La minima cantidad de grabaciones que puede realizar un hablante son 5 grabaciones. Luego se le pregunta si quiere seguir grabando, si dice que si se le agregan otras 5 grabaciones asi sucesivamente hasta llegar a las 40 que es el total de grabaciones.
+La mínima cantidad de grabaciones que puede realizar un hablante son 5 grabaciones. Luego se le pregunta si quiere continuar grabando. Si acepta, se le agregan otras 5 grabaciones así sucesivamente hasta llegar a las 40 que es el total de grabaciones.
 
 \section{Generación de trazas}
 
@@ -205,9 +204,9 @@ La minima cantidad de grabaciones que puede realizar un hablante son 5 grabacion
 
 %La idea del algoritmo para generar trazas se va a basar en utilizar la frase que mayor información aporte en cada paso. No es lo mismo grabar una frase que solo aporta información a la regla 2 que una que aporta a la regla 2, 3, 4. Por ello, en cada paso se va agregando una frase que no fue utilizada y además que aporte la mayor cantidad de información. Es importante aplicar esta idea ya que no sabemos cuanto tiempo va a querer/tener un hablante para realizar el experimento. Utilizando nuestro algoritmo, podemos afirmar que ya con 10 frases grabadas se cubre con todas las reglas propuestas anteriormente. En el gráfico podemos ver el desempeño de nuetro algoritmo. 
 
-Debemos definir qué frases y en que órden se debe decir durante el experimento. Una traza es una lista de las frases que va a grabar un hablante. Sucede que el orden que utilicemos va a ser crucial para tener muestras. No es lo mismo empezar por una frase que sólo referencia a una regla que a varias. Si referencia a varias reglas a la vez, en un sólo audio podremos sacarle más información.
+Debemos definir qué frases y en que orden se debe decir durante el experimento. Sucede que el orden que utilicemos va a ser crucial para tener muestras. No es lo mismo empezar por una frase que sólo referencia a una regla que a varias. Si referencia a varias reglas a la vez, en un sólo audio podremos sacarle más información.
 
-Optamos por tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10000 trazas generadas. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden.
+Una traza es una lista de las frases que puede grabar un hablante. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden. Optamos por tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10000 trazas generadas. 
 
 La generación de trazas sigue el siguiente algoritmo:
 
@@ -244,30 +243,61 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
     Devolver listaFrases
 \end{lstlisting}
 
-Vamos a ponderar las frases que referencien a más reglas. Al generar las trazas vamos a utilizar un contador que nos va a decir cuantas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase tomándolo en cuenta. Elegiremos la frase que haga referencia a la regla menos grabada en el contador y además que represente a mas de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones.
+La idea del algoritmo es la siguiente. Vamos a ponderar las frases que referencien a más reglas. Al generar las trazas vamos a utilizar un contador que nos va a decir cuantas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Elegiremos la frase que haga referencia a la regla menos grabada en el contador y además que represente a mas de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones.
 
-Lo bueno de esto es que para un hablante grabando 10 frases tenemos muestras de todas las reglas. Este es un dato importante ya que maximizamos la cantidad de información de cada frase y le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el siguiente gráfico.
+Lo bueno de esto es que para un hablante grabando 10 frases tenemos muestras de todas las reglas. Este es un dato importante ya que maximizamos la cantidad de información de cada frase y le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza}.
 
 %todo: grafico de cantidad de frases
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
     \caption{Cantidad de frases por traza}
+    \label{figFracesTraza}
 \end{figure}
 
-En conclusión, se grabarán de a 5 frases. Teniendo en cuenta que las últimas 2 corresponderán a el esquema AMPER. 
+En conclusión, se grabarán de a 5 frases. Teniendo en cuenta que las primeras serán frases conocídas y las últimas 2 corresponderán al esquema AMPER. 
 
 \chapter{Arquitectura del sistema}
 
-Para poder obtener audios de distintas personas se desarrolló una página web. Esto nos da muchas ventajas ya que nos permite grabar fácilmente desde cualquier lugar.  
+Para poder obtener audios de distintas personas se desarrolló una página web. Esto nos da muchas ventajas ya que nos permite grabar fácilmente desde cualquier lugar. En esta sección explicaremos la arquitectura del sistema y sus detalles técnicos.
 
-La página web esta desarrollada en Django que es un framework para la creación de paginas web. Esta misma necesita una base de datos para guardar cada clase de dominio. En esta base vamos a guardar los datos de cada hablante, las frases a grabar y las trazas principalmente.
+La página web esta desarrollada en Django versión 1.4.2 que es un framework para la creación de paginas web. Se eligió este framework por su facilidad a la hora de salvar objetos a la base de datos y también por la cantidad importante de librerías que posee Python. La versión utilizada de Python es 2.7.3. Esta misma necesita una base de datos para guardar cada clase de dominio. En esta base vamos a guardar los datos de cada hablante, las frases a grabar y las trazas principalmente. La base de datos utilizada fue PostgreSQL versión 9.1 y se eligió esta ya que es de código abierto. Para el servidor HTTP se utilizó Apache versión 2.2.22. El servidor corre en el sistema operativo Ubuntu 12.04.4 LTS.
 
 \section{Recolección de datos}
 
-Cuando un usuario visita nuestra página, primero le hace llenar un formulario. Este le pregunta: género, fecha de nacimiento y de qué lugar es oriundo. al confirmar los datos, estos son grabados en la base de datos de la aplicación en el servidor. Luego se procede a realizar las grabaciones. 
+Cuando un usuario visita nuestra página, primero le hace llenar un formulario. Este le pregunta: género, fecha de nacimiento y de qué lugar es oriundo. Al confirmar los datos, estos son grabados en la base de datos de la aplicación en el servidor. Esto se puede apreciar en la Figura \ref{figEncuesta}. Luego se procede a realizar las grabaciones. 
 
-En la pantalla de grabación el usuario deberá confirmar tener acceso al micrófono que posee en su dispositivo. Una vez hecho esto, puede empezar a grabar. Cada nuevo experimento utiliza una nueva traza. El experimento en total consiste en realizar 40 grabaciones. El hablante va grabando de a 5 frases, cada vez que las termina de grabar ofrece la opción de seguir grabando otras 5 más. De esta forma, aporta el tiempo que puede. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible.
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\textwidth]{pag-inicio2} }
+    \caption{Encuesta}
+    \label{figEncuesta}
+\end{figure}
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\textwidth]{pag-allow1} }
+    \caption{Permitir micrófono}
+    \label{allowmic}
+\end{figure}
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\textwidth]{pag-inicio2} }
+    \caption{Inicio}
+    \label{inicio}
+\end{figure}
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\textwidth]{pag-grabar1} }
+    \caption{Grabando}
+    \label{grabando}
+\end{figure}
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.7\textwidth]{pag-play1} }
+    \caption{Reproduciendo}
+    \label{reproduciendo}
+\end{figure}
+
+En la pantalla de grabación el usuario deberá confirmar tener acceso al micrófono que posee en su dispositivo, como se puede ver en la Figura \ref{allowmic}.  Una vez hecho esto, se le explica las instrucciones (Fig. \ref{inicio}) y puede empezar a grabar. Cada nuevo experimento utiliza una nueva traza. El experimento en total consiste en realizar 40 grabaciones. El hablante va grabando de a 5 frases, cada vez que las termina de grabar ofrece la opción de seguir grabando otras 5 más. De esta forma, aporta el tiempo que puede. La interfaz de como se ve cuando el usuario graba se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}.
 
 Cada vez que se confirma una grabación, esta se graba en un archivo wav en el servidor. 
 
@@ -277,9 +307,11 @@ Cada vez que se confirma una grabación, esta se graba en un archivo wav en el s
 
 Los navegadores actuales no pueden soportar acceder al micrófono directamente. Durante la tesis, se desarrolla HTML5 que podrá soportar acceder al micrófono más fácil. No se eligió basarse en este porque sólo algunos browsers lo soportaban y al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y eso excluiría gente. Es por eso que debimos utilizar alguna tecnología alternativa. Buscando encontré un proyecto llamado WAMI que es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. 
 
-El proyecto WAMI (http://code.google.com/p/wami-recorder/) nos permite acceder al micrófono de la computadora utilizando Flash. Este posee una interfaz que permite utilizar la aplicación Flash desde Javascript. De esta forma, no es necesario meterse en la implementación. Utilizando dicha interfaz uno configura varias urls. Una de ellas es donde envía la información de lo grabado. Cuando termina de grabar, se envía un mensaje POST al servidor. Este obtiene el paquete de información y lo guarda como archivo .wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a través de la interfaz. El servidor lo responde con el audio requerido y se reproduce en el navegador. 
+El proyecto WAMI (http://code.google.com/p/wami-recorder/) nos permite acceder al micrófono de la computadora utilizando Flash. Este posee una interfaz que permite utilizar la aplicación Flash desde Javascript. De esta forma, no es necesario meterse en la implementación. Utilizando dicha interfaz se puede configurar varias urls. Una de ellas es donde envía la información de lo grabado.
 
-Cabe aclarar que para poder acceder al micrófono el usuario debe habilitar permisos para que la aplicación acceda al hardware de su computadora. Esto aparece como una ventana emergente al principio del experimento. También se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. Se guarda un registro de nivel de volumen sobre la interfaz para utilizar esos datos en algún proyecto futuro.
+Cuando termina de grabar, se envía un mensaje POST al servidor. Este obtiene el paquete de información y lo guarda como archivo .wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a través de la interfaz. El servidor lo responde con el audio requerido y se reproduce en el navegador. 
+
+Como se mencionó antes, para poder acceder al micrófono el usuario debe habilitar permisos para que la aplicación acceda al hardware de su computadora. Esto aparece como una ventana emergente al principio del experimento. Esto se puede ver en la Figura \ref{allowmic}. También se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. Se guarda un registro de nivel de volumen sobre la interfaz para utilizar esos datos en algún proyecto futuro.
 
 \section{Requerimientos}
 
@@ -292,11 +324,12 @@ El sistema debe tener datos cargados para estan online recolectando audios. Los 
 
 \subsection{Etiquetando audios}
 
-Cuando varias personas terminan el experimento, los administradores pueden acceder a una url donde se puede escuchar cada audio que se va generando. Y si fue exitoso, o sea no esta saturado y no tiene ruidos, puede etiquetarlo con alguna de las etiquetas definidas. Las etiquetadas utilizadas esta vez son: ‘Conservar’,  ‘Sonido saturado’, ‘Mucho ruido de fondo’, ‘Problemas en el habla’. Más adelante veremos como obtener estos audios.
+Cuando varias personas terminan el experimento, los administradores pueden acceder a una url donde se puede escuchar cada audio que se va generando. Y si fue exitoso, o sea no esta saturado y no tiene ruidos, puede etiquetarlo con alguna de las etiquetas definidas. Las etiquetadas utilizadas esta vez son: ‘Conservar’,  ‘Sonido saturado’, ‘Mucho ruido de fondo’, ‘Problemas en el habla’. Más adelante veremos como obtener estos audios. Esto se puede ver en Figura \ref{cat}.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{categorizando_audios} }
     \caption{Categorizando audios}
+    \label{cat}
 \end{figure}
 
 \paragraph{Backups automáticos}
@@ -325,7 +358,7 @@ A cada hablante le dimos la opción que pueda escuchar y volver a grabar la fras
 
 \section{Alineación forzada}
 
-Gracias a nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿Cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. Y además, un dato muy relevante, es que esta selección idealmente no debe tener que ser realizada con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo.
+Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿Cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. Y además, un dato muy relevante, es que esta selección idealmente no debe tener que ser realizada con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo.
 
 Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esas pequeños pedazos de audios para analizar sus diferencias. 
 
@@ -358,11 +391,12 @@ En esta sección vamos a analizar como extraer cada uno de los atributos que pla
 
 La extracción de datos fue realizado en el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy. Esta es una librería para el calculo preciso en aplicaciones científicas.
 
-El extractor posee como input los archivos .wav y los archivos textgrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El extractor se debe ejecutar después de la alineación. 
+El extractor posee como input los archivos .wav y los archivos textgrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El extractor se debe ejecutar después de la alineación (Ver Fig. \ref{workflow}). 
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{diagrama_workflow} }
     \caption{Diagrama workflow}
+    \label{workflow}
 \end{figure}
 
 
@@ -432,8 +466,14 @@ El Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se i
 
 %http://i.stack.imgur.com/YUH48.gif
 
+\begin{figure}
+    \centerline{\includegraphics[width=0.5\textwidth]{mfcc} }
+    \caption{Filtro MFCC}
+    \label{mfcc}
+\end{figure}
+
 % todo: Aca se introduce los filtros onda serrucho. 
-Mientras mas aumentamos la frecuencia, mas anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. Lo importante es ver cuanta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos el logaritmo. Esto se ajunta mejor a como escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
+Mientras mas aumentamos la frecuencia, mas anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. (Ver Fig. \ref{mfcc}) Lo importante es ver cuanta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos el logaritmo. Esto se ajunta mejor a como escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
 
 El siguiente pseudocódigo explica paso a paso como se calcula los coeficientes:
 \lstset{ %
@@ -524,11 +564,12 @@ Es muy importante descartar los audios mal alineados ya que sino cuando los proc
 \begin{itemize}
     \item \textbf{Ruido de fondo:} los casos donde el alineador se comporta de peor manera son los que se escuchan ruido de fondo. En esos casos las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es muy común. 
 
-    \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación. Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
+    \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación (Ver Fig. \ref{click_final}). Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
     
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{click_al_final_inf} }
     \caption{Click al final}
+    \label{click_final}
 \end{figure}
 
     \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Sucede que muchas veces la grabación fue buena pero al final tuvo una entonación mas mucho mas fuerte que las demás, haciendo que posteriormente la alineación no sea precisa.
@@ -799,6 +840,15 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
+
+\paragraph*{Chequeador cruzado con grabación:} Que no se muestre la frase a decir, sino que se escuche un audio y se tenga repetirlo. Este audio es el de un hablante anterior pero que se le aplicó un filtro para evitar exponer su acento. De esta forma, chequeamos que se diga lo que se quiere decir y nos aseguramos espontaneidad.
+
+\paragraph*{Chequeador cruzado:} Que el hablante diga si una grabación de un hablante anterior dijo lo que tenía que decir, o se equivocó. En este caso, serviría mucho para chequear los datos. 
+
+\paragraph*{Validación de calidad de sonido:} Cuando un hablante graba un audio este debe pasar una validación en el servidor para poder continuar con el siguiente. Sino fue satisfactorio, se pude grabar devuelta. Evitaría el ruido generado por el ambiente. 
+
+\paragraph*{Clasificación en vivo:} Realizar la clasificación al agregar un hablante nuevo. De esta forma, se puede darle una respuesta a que grupo pertenece. Revalidar el modelo al agregarse un nuevo Hablante. 
+
 \chapter{Apéndice: marcas prosódicas}
 
 %%%% BIBLIOGRAFIA
