@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  29 APR 2014 01:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  30 APR 2014 03:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,39 +567,40 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-LaTeX Info: Redefining \. on input line 97.
-LaTeX Info: Redefining \% on input line 97.
+Underfull \vbox (badness 5519) has occurred while \output is active []
 
-[2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>] [3]
-LaTeX Info: Redefining \. on input line 127.
-LaTeX Info: Redefining \% on input line 127.
+LaTeX Info: Redefining \. on input line 95.
+LaTeX Info: Redefining \% on input line 95.
+ [2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>] [3]
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
  [4
 
 ]
 Cap\'{\i }tulo 2.
-<Images/reglas_AMPER.png, id=63, 639.38875pt x 221.82875pt>
+<Images/reglas_AMPER.png, id=62, 639.38875pt x 221.82875pt>
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
-Package pdftex.def Info: Images/reglas_AMPER.png used on input line 160.
+Package pdftex.def Info: Images/reglas_AMPER.png used on input line 157.
 (pdftex.def)             Requested size: 426.79135pt x 148.07274pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/frases_inf.png, id=64, 854.19125pt x 679.53876pt>
+<Images/frases_inf.png, id=63, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
-Package pdftex.def Info: Images/frases_inf.png used on input line 165.
+Package pdftex.def Info: Images/frases_inf.png used on input line 163.
 (pdftex.def)             Requested size: 426.79135pt x 339.5197pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5]
-LaTeX Info: Redefining \. on input line 188.
-LaTeX Info: Redefining \% on input line 188.
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
  [6 <./Images/reglas_AMPER.png> <./Images/frases_inf.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
@@ -610,175 +611,228 @@ File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 237.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 236.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 237.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 238.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 236.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 237.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 238.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 237.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 238.
+(Font)              <9> on input line 237.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 238.
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
+(Font)              <5> on input line 237.
+LaTeX Info: Redefining \. on input line 244.
+LaTeX Info: Redefining \% on input line 244.
  [7]
-<Images/cant_frases_traza_inf.png, id=77, 602.25pt x 372.39125pt>
+<Images/cant_frases_traza_inf.png, id=76, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
 <use Images/cant_frases_traza_inf.png>
 Package pdftex.def Info: Images/cant_frases_traza_inf.png used on input line 25
-4.
+3.
 (pdftex.def)             Requested size: 384.1096pt x 237.51703pt.
 LaTeX Info: Redefining \. on input line 260.
 LaTeX Info: Redefining \% on input line 260.
  [8 <./Images/cant_frases_traza_inf.png>]
 Cap\'{\i }tulo 3.
-[9
+<Images/pag-inicio2.png, id=81, 1071.00125pt x 624.3325pt>
+File: Images/pag-inicio2.png Graphic file (type png)
 
-] <Images/categorizando_audios.png, id=86, 347.2975pt x 346.29375pt>
-File: Images/categorizando_audios.png Graphic file (type png)
+<use Images/pag-inicio2.png>
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 271.
+(pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
 
-<use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 298
-.
-(pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
+<Images/pag-allow1.png, id=82, 1371.1225pt x 770.88pt>
+File: Images/pag-allow1.png Graphic file (type png)
+
+<use Images/pag-allow1.png>
+Package pdftex.def Info: Images/pag-allow1.png used on input line 277.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+File: Images/pag-inicio2.png Graphic file (type png)
+<use Images/pag-inicio2.png>
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 283.
+(pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
 
-Underfull \vbox (badness 1097) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 313.
-LaTeX Info: Redefining \% on input line 313.
- [10]
-LaTeX Info: Redefining \. on input line 321.
-LaTeX Info: Redefining \% on input line 321.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11 <./Images/categorizando_audios.png>]
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
- [12]
+<Images/pag-grabar1.png, id=83, 1371.1225pt x 770.88pt>
+File: Images/pag-grabar1.png Graphic file (type png)
+
+<use Images/pag-grabar1.png>
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 289.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Images/pag-play1.png, id=84, 1371.1225pt x 770.88pt>
+File: Images/pag-play1.png Graphic file (type png)
+
+<use Images/pag-play1.png>
+Package pdftex.def Info: Images/pag-play1.png used on input line 295.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9
+
+ <./Images/pag-inicio2.png>]
+
+LaTeX Warning: Text page 10 contains only floats.
+
+LaTeX Info: Redefining \. on input line 301.
+LaTeX Info: Redefining \% on input line 301.
+[10 <./Images/pag-allow1.png> <./Images/pag-grabar1.png>]
+LaTeX Info: Redefining \. on input line 320.
+LaTeX Info: Redefining \% on input line 320.
+ [11 <./Images/pag-play1.png>] <Images/categorizando_audios.png, id=95, 347.297
+5pt x 346.29375pt>
+File: Images/categorizando_audios.png Graphic file (type png)
+
+<use Images/categorizando_audios.png>
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 330
+.
+(pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
+LaTeX Info: Redefining \. on input line 338.
+LaTeX Info: Redefining \% on input line 338.
+ [12 <./Images/categorizando_audios.png>]
+LaTeX Info: Redefining \. on input line 356.
+LaTeX Info: Redefining \% on input line 356.
+
+[13]
+LaTeX Info: Redefining \. on input line 357.
+LaTeX Info: Redefining \% on input line 357.
+ [14]
 Cap\'{\i }tulo 4.
-[13
+[15
 
-] <Images/diagrama_workflow.jpg, id=99, 300.12125pt x 316.18124pt>
+] <Images/diagrama_workflow.jpg, id=109, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 364.
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 397.
 (pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
-LaTeX Info: Redefining \. on input line 376.
-LaTeX Info: Redefining \% on input line 376.
- [14 <./Images/diagrama_workflow.jpg>]
-LaTeX Info: Redefining \. on input line 416.
-LaTeX Info: Redefining \% on input line 416.
+LaTeX Info: Redefining \. on input line 410.
+LaTeX Info: Redefining \% on input line 410.
+ [16 <./Images/diagrama_workflow.jpg>]
+LaTeX Info: Redefining \. on input line 450.
+LaTeX Info: Redefining \% on input line 450.
 
-[15]
-LaTeX Info: Redefining \. on input line 464.
-LaTeX Info: Redefining \% on input line 464.
- [16]
-LaTeX Info: Redefining \. on input line 474.
-LaTeX Info: Redefining \% on input line 474.
- [17]
-LaTeX Info: Redefining \. on input line 474.
-LaTeX Info: Redefining \% on input line 474.
- [18
+[17] <Images/mfcc.png, id=117, 602.25pt x 451.6875pt>
+File: Images/mfcc.png Graphic file (type png)
+ <use Images/mfcc.png>
+Package pdftex.def Info: Images/mfcc.png used on input line 470.
+(pdftex.def)             Requested size: 213.39568pt x 160.05037pt.
+LaTeX Info: Redefining \. on input line 504.
+LaTeX Info: Redefining \% on input line 504.
+
+[18]
+LaTeX Info: Redefining \. on input line 514.
+LaTeX Info: Redefining \% on input line 514.
+ [19 <./Images/mfcc.png>]
+LaTeX Info: Redefining \. on input line 514.
+LaTeX Info: Redefining \% on input line 514.
+ [20
 
 ]
 Cap\'{\i }tulo 5.
-[19] <Images/alineacion_mala_inf.png, id=120, 1290.8225pt x 664.4825pt>
+[21] <Images/alineacion_mala_inf.png, id=131, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
-Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 514.
+Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 554.
 
 (pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
 
-<Images/click_al_final_inf.png, id=121, 1281.78876pt x 663.47874pt>
+<Images/click_al_final_inf.png, id=132, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
-Package pdftex.def Info: Images/click_al_final_inf.png used on input line 530.
+Package pdftex.def Info: Images/click_al_final_inf.png used on input line 570.
 (pdftex.def)             Requested size: 341.43437pt x 176.73216pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 535.
-LaTeX Info: Redefining \% on input line 535.
-[20 <./Images/alineacion_mala_inf.png>]
-LaTeX Info: Redefining \. on input line 558.
-LaTeX Info: Redefining \% on input line 558.
- [21 <./Images/click_al_final_inf.png>]
-LaTeX Info: Redefining \. on input line 558.
-LaTeX Info: Redefining \% on input line 558.
+LaTeX Info: Redefining \. on input line 576.
+LaTeX Info: Redefining \% on input line 576.
+[22 <./Images/alineacion_mala_inf.png>]
+LaTeX Info: Redefining \. on input line 599.
+LaTeX Info: Redefining \% on input line 599.
+ [23 <./Images/click_al_final_inf.png>]
+LaTeX Info: Redefining \. on input line 599.
+LaTeX Info: Redefining \% on input line 599.
 
-[22
+[24
 
 ]
 Cap\'{\i }tulo 6.
-[23]
-LaTeX Info: Redefining \. on input line 660.
-LaTeX Info: Redefining \% on input line 660.
- [24]
-LaTeX Info: Redefining \. on input line 707.
-LaTeX Info: Redefining \% on input line 707.
- [25]
-LaTeX Info: Redefining \. on input line 768.
-LaTeX Info: Redefining \% on input line 768.
+[25]
+LaTeX Info: Redefining \. on input line 701.
+LaTeX Info: Redefining \% on input line 701.
  [26]
-LaTeX Info: Redefining \. on input line 800.
-LaTeX Info: Redefining \% on input line 800.
+LaTeX Info: Redefining \. on input line 748.
+LaTeX Info: Redefining \% on input line 748.
  [27]
-LaTeX Info: Redefining \. on input line 800.
-LaTeX Info: Redefining \% on input line 800.
- [28
-
-]
-Cap\'{\i }tulo 7.
-[29]
-LaTeX Info: Redefining \. on input line 801.
-LaTeX Info: Redefining \% on input line 801.
+LaTeX Info: Redefining \. on input line 809.
+LaTeX Info: Redefining \% on input line 809.
+ [28]
+LaTeX Info: Redefining \. on input line 841.
+LaTeX Info: Redefining \% on input line 841.
+ [29]
+LaTeX Info: Redefining \. on input line 841.
+LaTeX Info: Redefining \% on input line 841.
  [30
 
 ]
-Cap\'{\i }tulo 8.
+Cap\'{\i }tulo 7.
 [31]
-LaTeX Info: Redefining \. on input line 802.
-LaTeX Info: Redefining \% on input line 802.
+LaTeX Info: Redefining \. on input line 842.
+LaTeX Info: Redefining \% on input line 842.
  [32
 
 ]
-Cap\'{\i }tulo 9.
+Cap\'{\i }tulo 8.
 [33]
-LaTeX Info: Redefining \. on input line 805.
-LaTeX Info: Redefining \% on input line 805.
+LaTeX Info: Redefining \. on input line 852.
+LaTeX Info: Redefining \% on input line 852.
  [34
 
 ]
+Cap\'{\i }tulo 9.
+[35]
+LaTeX Info: Redefining \. on input line 855.
+LaTeX Info: Redefining \% on input line 855.
+ [36
+
+]
 No file tesis.bbl.
-[35] (./tesis.aux
+[37] (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5372 strings out of 493307
- 72392 string characters out of 6139905
- 197261 words of memory out of 5000000
- 8722 multiletter control sequences out of 15000+600000
- 11111 words of font info for 38 fonts, out of 8000000 for 9000
+ 5399 strings out of 493307
+ 72928 string characters out of 6139905
+ 197376 words of memory out of 5000000
+ 8745 multiletter control sequences out of 15000+600000
+ 10762 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,10n,58p,1404b,1641s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
@@ -792,11 +846,11 @@ ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 /amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb>
-Output written on tesis.pdf (45 pages, 1085742 bytes).
+.pfb>
+Output written on tesis.pdf (47 pages, 1673845 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
+ 225 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
