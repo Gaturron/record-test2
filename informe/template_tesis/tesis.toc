@@ -10,7 +10,7 @@
 \contentsline {paragraph}{Intercalando los dos tipos:}{7}
 \contentsline {paragraph}{Siempre cada 5 grabaciones:}{7}
 \contentsline {section}{\numberline {2.2}Generaci\IeC {\'o}n de trazas}{7}
-\contentsline {chapter}{\numberline {3.}Arquitectura del sistema}{9}
+\contentsline {chapter}{\numberline {3.}Sistema de grabaci\IeC {\'o}n online}{9}
 \contentsline {section}{\numberline {3.1}Recolecci\IeC {\'o}n de datos}{9}
 \contentsline {section}{\numberline {3.2}Grabaci\IeC {\'o}n a trav\IeC {\'e}s del browser}{11}
 \contentsline {section}{\numberline {3.3}Requerimientos}{12}
@@ -20,7 +20,7 @@
 \contentsline {paragraph}{Export de wavs y csv}{13}
 \contentsline {section}{\numberline {3.5}Filtrado de audios}{13}
 \contentsline {section}{\numberline {3.6}Varias grabaciones por frase}{13}
-\contentsline {chapter}{\numberline {4.}Extracci\IeC {\'o}n de datos}{15}
+\contentsline {chapter}{\numberline {4.}Extracci\IeC {\'o}n de informaci\IeC {\'o}n}{15}
 \contentsline {section}{\numberline {4.1}Alineaci\IeC {\'o}n forzada}{15}
 \contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{15}
 \contentsline {subsection}{\numberline {4.1.2}Diccionario TranscriptorFonetico2 del LIS}{15}
@@ -38,15 +38,14 @@
 \contentsline {section}{\numberline {5.1}Alineaci\IeC {\'o}n forzada}{22}
 \contentsline {subsection}{\numberline {5.1.1}Errores comunes}{22}
 \contentsline {section}{\numberline {5.2}Correcci\IeC {\'o}n de errores}{23}
-\contentsline {subsection}{\numberline {5.2.1}Disminuci\IeC {\'o}n del ru\IeC {\'\i }do con Sox}{23}
 \contentsline {chapter}{\numberline {6.}An\IeC {\'a}lisis}{25}
 \contentsline {section}{\numberline {6.1}Baseline}{25}
 \contentsline {section}{\numberline {6.2}Modelo de testing}{25}
 \contentsline {section}{\numberline {6.3}Clasificadores}{26}
-\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) - Implementaci\IeC {\'o}n JRip:}{26}
-\contentsline {paragraph}{C45 - Implementaci\IeC {\'o}n J48:}{26}
-\contentsline {paragraph}{Sequential minimal optimization - Implementaci\IeC {\'o}n Function SMO:}{26}
-\contentsline {paragraph}{Naive Bayes - Implementaci\IeC {\'o}n \IeC {\'\i }dem:}{26}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{26}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{26}
+\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{26}
+\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{26}
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{27}
 \contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{27}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{27}
@@ -63,6 +62,7 @@
 \contentsline {subsubsection}{Utilizando solo los atributos PHO}{29}
 \contentsline {subsubsection}{Utilizando solo los atributos SIL}{29}
 \contentsline {subsubsection}{Utilizando solo los atributos ACO}{29}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{29}
 \contentsline {chapter}{\numberline {7.}Conclusiones}{31}
 \contentsline {chapter}{\numberline {8.}Trabajos futuros}{33}
 \contentsline {chapter}{\numberline {9.}Ap\IeC {\'e}ndice: marcas pros\IeC {\'o}dicas}{35}

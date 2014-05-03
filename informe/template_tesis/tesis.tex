@@ -77,10 +77,10 @@ El experimento que tomamos como caso particular es las diferencias en el habla e
 En el libro \textit{El español en la Argentina}, Beatríz Fontanella de Weinberg recompila varios trabajos de colegas donde analizan el español de cada región de Argentina. Cada región tiene un capítulo y entre ellas se encuentra una para Buenos Aires y otra para Córdoba. En la descripción de estos capítulos hace hincapié en los sonidos más suaves y cortos de la /r/ y /y/ y en la aspiración de la /s/. También afirma el estiramiento de la sílaba anterior a la acentuada en cada palabra como distintivo del acento. En el libro \textit{Español en la Argentina}, Elena Vidal analiza región por región el uso de los fonemas importantes. Destaca la diferencia entre las dos regiones de la /r/, /s/ y de la /ll/. También referencia a la pronunciación de la /s/.
 %pagina 85 Fontanella 
 
-Extrayendo el análisis de estos libros pude definir las reglas que describen a cada grupo. Voy a plantear reglas de como debería hablar un cordobés. La ausencia de estas reglas marca que corresponde al grupo de Buenos Aires. Las reglas son: 
+Extrayendo el análisis de estos libros pude definir las reglas que describen a cada grupo. Las reglas son: 
 
 %%\section*{Diferencias entre hablantes}
-\subsection*{Regla 1: Localice la sílaba acentuada en la palabra y estirar la silaba anterior}
+\subsection*{Regla 1: Para hablantes de Córdoba, localice la sílaba acentuada en la palabra y estirar la silaba anterior. En Buenos Aires no realizan esto. }
 
 Cada palabra posee su sílaba acentuada. Para cumplir esta regla se debe estirar la sílaba anterior a esta. Si la sílaba acentuada es la primera de la palabra, entonces no se estira. 
 
@@ -88,32 +88,31 @@ Ejemplo: 'Espectacular' posee su sílaba acentuada en '-lar'. La sílaba anterio
 
 %%De la regla 1: Se estira en la vocal. 
 
-\subsection*{Regla 2: Aspiración y elisión de /s/}
+\subsection*{Regla 2: Para hablantes de Córdoba aspiración y elisión de /s/ al finalizar una palabra. No para Buenos Aires}
 
 Para las palabras terminadas en /s/ se debe acortar su duración para Córdoba. 
 
 Ejemplo: 'Pájaros' posee el fonema /s/ al final. Utilizando la dialéctica de Córdoba, la /s/ final sería mas suave que una de Buenos Aires. 
 
-\subsection*{Regla 3: La ‘s’ antes de la ‘c’ o ‘t’ suenan suaves}
+\subsection*{Regla 3: Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan suaves. Para hablantes de Buenos Aires suenan sin ninguna particularidad}
 
 La sílaba /s/, que precede a /c/ o /t/, debe sonar suave. 
 
 Ejemplo: 'Mosca' en el dialéctico de Córdoba posee una sílaba más suave en el fonema /s/ que en Buenos Aires. 
 
-\subsection*{Regla 4: La 'c' antes de la 't' no se pronuncia}
+\subsection*{Regla 4: La 'c' antes de la 't' no se pronuncia para hablantes de Córdoba. No para Buenos Aires}
 
 La sílaba /c/, que precede a /t/, no se debe pronunciar. 
 
 Ejemplo: 'Doctor' no debe sonar el fonema /c/.
 
-\subsection*{Regla 5: La ‘y’ y ‘ll’ se pasa a ‘i’}
+\subsection*{Regla 5: Para hablantes Cordobeces la ‘y’ y ‘ll’ se pasa a ‘i’. No sucede esto en Buenos Aires}
 
 Palabras con el fonema /y/ o /ll/ se pronuncian /i/. 
 
-
 Ejemplo: 'lluvia' se debe pronunciar utilizando el fonema /i/ 
 
-\subsection*{Regla 6: La ‘r’ no debe sonar. No debe vibrar}
+\subsection*{Regla 6: En hablantes Cordobeces la /r/ no debe sonar. No debe vibrar. Lo contrario para en Buenos Aires}
 
 Palabras con el fonema /r/ deben ser suaves y no vibrar. 
 
@@ -257,7 +256,7 @@ Lo bueno de esto es que para un hablante grabando 10 frases tenemos muestras de 
 
 En conclusión, se grabarán de a 5 frases. Teniendo en cuenta que las primeras serán frases conocídas y las últimas 2 corresponderán al esquema AMPER. 
 
-\chapter{Arquitectura del sistema}
+\chapter{Sistema de grabación online}
 
 Para poder obtener audios de distintas personas se desarrolló una página web. Esto nos da muchas ventajas ya que nos permite grabar fácilmente desde cualquier lugar. En esta sección explicaremos la arquitectura del sistema y sus detalles técnicos.
 
@@ -354,7 +353,7 @@ Siguiendo con la idea de tener la mejor grabación de cada hablante, le dimos la
 
 A cada hablante le dimos la opción que pueda escuchar y volver a grabar la frase cuantas veces quisiera. Esto lo hicimos para poder detectar cual es el disparador que hace que diga mal una frase. Puede resultar interesante analizar los anteriores audios y porque se queda con el último.
 
-\chapter{Extracción de datos}
+\chapter{Extracción de información}
 
 \section{Alineación forzada}
 
@@ -367,12 +366,12 @@ Las partes que debemos extraer de los audios son las partes donde se encuentran 
 %If you use this tool, we would appreciate it if you cite the following paper:
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
-Luego de buscar bastantes, encontramos con una librería llamada ProsodyLab Aligner (http://prosodylab.org/tools/aligner/). Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que tiempos se dijo. El formato utilizado para devolver estas marcas es el TextGrid. 
+Luego de buscar bastantes, encontramos con una librería llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que tiempos se dijo. El formato utilizado para devolver estas marcas es el TextGrid. El problema de la alineación es un sub-problema de la alineación automática.
 
 Algo que destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. 
 
 %implementación
-Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script de Linux. Utiliza fuertemente de HTK (ver. 3.4) y SoX (ver. 14.1.0). Para realizar la alineación utiliza Modelos Ocultos de Markov. Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras.
+Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script de Linux. Utiliza fuertemente de HTK (ver. 3.4) y SoX (ver. 14.1.0). Para realizar la alineación utiliza Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM). Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras.
 
 %Una de las ventajas que posee es que puede utilizarse para cualquier idioma. Sólo se necesita una hora de audio grabado y un diccionario fonético sobre las palabras a reconocer. 
 
@@ -594,8 +593,6 @@ Para corregir los errores descriptos debimos chequear cada uno de los textgrids.
 %todo: leer bien el mail de prosodylab
 Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de forma automática puede ser de la siguiente forma. Cuando se realiza la alineación, se crea un archivo llamado .SCORES. Este archivo posee los valores de verosimilitud de cada alineación. Entonces este archivo podría servir para definir si un audio esta bien alineado. Si la alineación superó un umbral pre-configurado, el audio estará bien alineado y se podrá utilizar para el estudio, sino el audio se descartará. Vale aclarar que esto puede tener falsos positivos. Esta idea podría realizarse en trabajos futuros.
 
-\subsection{Disminución del ruído con Sox}
-
 \chapter{Análisis}
 
 Vamos a mostrar los resultados que obtuvimos luego de realizar la extracción.
@@ -665,7 +662,7 @@ Este proceso lo debemos realizar 10 veces para poder evitar que hayamos tenido s
 
 Vamos a entrenar varios clasificadores para poder determinar si el análisis de atributos que realizamos aporta mayor información a la hora de detectar un hablante. Los clasificadores propuestos son: 
 
-\paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) - Implementación JRip:}
+\paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
 
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/JRip.html
 %http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
@@ -673,30 +670,30 @@ Vamos a entrenar varios clasificadores para poder determinar si el análisis de 
 
 Este algoritmo divide el conjunto de entrada en pequeños grupos. Para cada uno va generando reglas que lo describan de forma golosa incremental. Luego cuando no puede describir más a ese grupo lo extrae y sigue con otro. Cuando estos conjuntos superan una cierta dimensión el algoritmo para. Este algoritmo sirve mucho para datos no balanceados.
 
-\paragraph{C45 - Implementación J48:}
+\paragraph{C4.5 \cite{Quinlan1993} - Implementación J48:}
 
 %http://en.wikipedia.org/wiki/C4.5_algorithm
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
 
 Este algoritmo genera un árbol de decisión y es muy usado para clasificación. Dada una serie de muestras con varios atributos cada una se realiza: Para cada atributo calcula la ganancia de información si se divide las muestras en a. Elige el que tenga mejor ganancia entre todos los atributos y con el crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja, este es el caso base.
 
-\paragraph{Sequential minimal optimization - Implementación Function SMO:}
+\paragraph{Support Vector Machines \cite{Platt98sequentialminimal} - Implementación Function SMO:}
 
 %http://en.wikipedia.org/wiki/Support_vector_machine
 %http://machinelearning.wustl.edu/mlpapers/paper_files/BordesEWB05.pdf
 %http://en.wikipedia.org/wiki/Sequential_minimal_optimization
 %http://research.microsoft.com/pubs/69644/tr-98-14.pdf
 
-Este algoritmo intenta resolver un problema de optimización para los problemas tipo Support vector machines. Support vector machines es un problema por el cual se intenta separar muestras en dos clasificaciones distintas a traves de un hiperplano. Este hiperplano posee la máxima distancia a los datos de entrenamiento mas cercanos para cada clase. Sequencial minimal optimization es una implementación que intenta resolver este problema. Lo que hace es: divide el problema en una serie de pequieños problemas que pueden ser resueltos facilmente. Cada pequeño problema es encontrar multiplicadores en una ecuación de 2 variables. 
+Support vector machines es un problema por el cual se intenta separar muestras en dos clasificaciones distintas a traves de un hiperplano. Este hiperplano se construye utilizando los datos de entrada y sirve para clasificar las muestras en los dos grupos de forma óptima. Entonces utilizando este hiperplano, se puede etiquetar cada dato de entrada con su clasificación observando de que lado del hiperplano se encuentra.
 
-\paragraph{Naive Bayes - Implementación ídem:}
+\paragraph{Naive Bayes \cite{DBLP:conf/flairs/Zhang04} - Implementación homónima:}
 
 %http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
 %http://en.wikipedia.org/wiki/Naive_Bayes_classifier
 
-Un clasificador de este tipo asume que cada atributo de cada clase muestra una característica en particular de su clase pero no esta relacionado con otro atributo. Cada una de estos atributos contribuye de manera independiente a la clasificación de su clase. 
+Un clasificador de este tipo asume que cada atributo muestra una característica en particular de su clase pero no esta relacionado con otro atributo. Cada una de estos atributos contribuye de manera independiente a la clasificación de su clase. Utiliza fuertemente teorema de Bayes y que cada uno de los atributos es independiente. 
 
-Más adelante decribiremos los parametros utilizados para cada uno.
+Más adelante describiremos los parámetros utilizados para cada uno.
 
 \section{Tests estadísticos}
 
@@ -838,6 +835,10 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 \subsubsection{Utilizando solo los atributos SIL}
 \subsubsection{Utilizando solo los atributos ACO}
 
+\section{Combinando clases de atributos}
+
+%poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
+
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
 
@@ -853,23 +854,7 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 
 %%%% BIBLIOGRAFIA
 \backmatter
-\bibliography{tesis}
- 
- @inproceedings{Cohen1995,
-    author = {William W. Cohen},
-    booktitle = {Twelfth International Conference on Machine Learning},
-    pages = {115-123},
-    publisher = {Morgan Kaufmann},
-    title = {Fast Effective Rule Induction},
-    year = {1995}
- } 
- 
- @book{Quinlan1993,
-    address = {San Mateo, CA},
-    author = {Ross Quinlan},
-    publisher = {Morgan Kaufmann Publishers},
-    title = {C4.5: Programs for Machine Learning},
-    year = {1993}
- }
+\bibliography{ref}
+\bibliographystyle{plain}
  
 \end{document}
