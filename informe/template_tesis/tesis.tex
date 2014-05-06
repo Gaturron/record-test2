@@ -409,7 +409,7 @@ Luego de esto, el extractor va a correr un conjunto de funciones que van a extra
 
 Corresponden a los atributos de duración en los fonemas y la sílabas de cada frase. Para calcularlos utilizamos como input el textgrid generado en la alineación. Básicamente estas funciones recorren el textgrid buscando un patrón en particular y lo miden.
 
-Las mediciones son normalizadas de dos formas: primero una normalización normal utilizando:
+Las mediciones son normalizadas de dos formas: primero una normalización utilizando:
 
 \hspace{2cm} \[\frac{X - \mu }{ \sigma }\]
 
@@ -597,13 +597,13 @@ Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de
 
 \chapter{Análisis}
 
-Vamos a mostrar los resultados que obtuvimos luego de realizar la extracción.
+En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el Baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo.
 
 \section{Baseline}
 
 No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que el baseline se va a determinar a través del algoritmo mayority class.
 
-Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejemplo Buenos Aires. Este algoritmo utilizando nuestros datos tendría una performance buena. Al tener más hablantes de Buenos Aires que de Córdoba en nuestro set de datos acertaría más del 50\% de las veces. En promedio va a tender a (Completame XX)\% de efectividad. Este es el porcentaje a superar. 
+Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejemplo Buenos Aires. Este algoritmo utilizando nuestros datos tendría una performance buena. Al tener más hablantes de Buenos Aires que de Córdoba en nuestro set de datos acertaría más del 50\% de las veces. En nuestro caso tendrá (Completame XX)\% de efectividad. Este es el porcentaje a superar. 
 
 %Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
 
@@ -611,7 +611,7 @@ Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejempl
 
 Cabe aclarar que si nuestro set de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Lo ideal sería poder tener muestras balanceadas. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para características de Buenos Aires que de Córdoba. Lamentablemente eso es una problemática de los datos obtenidos.
 
-Utilizamos la herramienta de machine learning Weka para poder hacer el análisis. Esta nos provee un clasificador dummy descripto anteriormente. Este se llama ZeroR que es el algoritmo que siempre elige el mayor grupo.
+Utilizamos la herramienta de Machine Learning Weka para poder hacer el análisis. Esta nos provee un clasificador dummy descripto anteriormente. Este se llama ZeroR que es el algoritmo que siempre elige el mayor grupo.
 
 \section{Modelo de testing}
 
@@ -670,14 +670,14 @@ Vamos a entrenar varios clasificadores para poder determinar si el análisis de 
 %http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
 %https://indico.cern.ch/event/34666/session/13/material/slides/0?contribId=16 pag 21
 
-Este algoritmo divide el conjunto de entrada en pequeños grupos. Para cada uno va generando reglas que lo describan de forma golosa incremental. Luego cuando no puede describir más a ese grupo lo extrae y sigue con otro. Cuando estos conjuntos superan una cierta dimensión el algoritmo para. Este algoritmo sirve mucho para datos no balanceados.
+Este algoritmo divide el conjunto de entrada en pequeños grupos. Para cada uno va generando reglas que lo describan de forma golosa incremental. Luego cuando no puede describir más a ese grupo lo extrae y sigue con otro. Cuando estos conjuntos superan una cierta dimensión el algoritmo se detiene. Este algoritmo sirve mucho para datos no balanceados.
 
 \paragraph{C4.5 \cite{Quinlan1993} - Implementación J48:}
 
 %http://en.wikipedia.org/wiki/C4.5_algorithm
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
 
-Este algoritmo genera un árbol de decisión y es muy usado para clasificación. Dada una serie de muestras con varios atributos cada una se realiza: Para cada atributo calcula la ganancia de información si se divide las muestras en a. Elige el que tenga mejor ganancia entre todos los atributos y con el crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja, este es el caso base.
+Este algoritmo genera un árbol de decisión que es muy usado para clasificación. Dada una serie de muestras con varios atributos: Para cada atributo calcula la ganancia de información. Elige el que tenga mejor ganancia entre todos los atributos y con el crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja, este es el caso base.
 
 \paragraph{Support Vector Machines \cite{Platt98sequentialminimal} - Implementación Function SMO:}
 
@@ -809,9 +809,12 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 
 \section{Selección de atributos de forma automática}
 
-\subsection*{Attribute Evaluator: InfoGain}
+En esta sección se aplicará a los distintos atributos evaluadores para analizar cual posee mayor importancia. Los evaluadores utilizados son InfoGain y ClassifierSubsetEvaluator. 
 
-\subsubsection{Utilizando todos los atributos}
+\subsection*{Attribute Evaluator: InfoGain}
+%http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
+
+\paragraph*{Utilizando todos los atributos}
 
 \begin{table}[h]
 \centering
@@ -826,16 +829,16 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 \end{tabular}
 \end{table}
 
-\subsubsection{Utilizando solo los atributos PHO}
-\subsubsection{Utilizando solo los atributos SIL}
-\subsubsection{Utilizando solo los atributos ACO}
+\paragraph*{Utilizando solo los atributos PHO}
+\paragraph*{Utilizando solo los atributos SIL}
+\paragraph*{Utilizando solo los atributos ACO}
 
 \subsection*{Attribute Evaluator: ClassifierSubsetEvaluator}
 
-\subsubsection{Utilizando todos los atributos}
-\subsubsection{Utilizando solo los atributos PHO}
-\subsubsection{Utilizando solo los atributos SIL}
-\subsubsection{Utilizando solo los atributos ACO}
+\paragraph*{Utilizando todos los atributos}
+\paragraph*{Utilizando solo los atributos PHO}
+\paragraph*{Utilizando solo los atributos SIL}
+\paragraph*{Utilizando solo los atributos ACO}
 
 \section{Combinando clases de atributos}
 
@@ -858,7 +861,7 @@ SIL + FON + ACU & attr5\\ \hline
 \end{tabular}
 \end{table}
 
-Se nota que aumentando los atributos se aumenta el porcentaje de clasificación.
+Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atrbutos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
 
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
