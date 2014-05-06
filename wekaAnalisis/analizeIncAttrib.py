@@ -143,21 +143,21 @@ test1.setClassIndex(test1.attribute('place').index())
 runJRip(train1, test1)
 
 print "JRip con atributos de SIL"
-attributesToDelete = acuAtt ++ fonAtt
+attributesToDelete = acuAtt + fonAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
 runJRip(train1, test1)
 
 print "JRip con atributos de FON"
-attributesToDelete = acuAtt ++ silAtt
+attributesToDelete = acuAtt + silAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
 runJRip(train1, test1)
 
 print "JRip con atributos de ACU"
-attributesToDelete = silAtt ++ fonAtt 
+attributesToDelete = silAtt + fonAtt 
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
