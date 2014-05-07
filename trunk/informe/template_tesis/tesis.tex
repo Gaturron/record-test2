@@ -183,14 +183,15 @@ El esquema AMPER utilizado es:
 \end{center}
 donde Objeto puede ser \textit{Canapé. Repollo, Espárrago}. Adjetivo puede ser \textit{espectacular, delicioso, riquísimo}. Utilizamos estas palabras ya que cubren por la acentuación de cada tipo de palabra, o sea pasa por agudas grave y esdrújula. 
 
-%todo: explicar mejor 
 Por ejemplo: \textit{El canapé salio delicioso}. Canapé tiene acento en la última sílaba. Es una palabra aguda. Mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Es importante armar la mayoría de las combinaciones para obtener muchas variantes de donde se encuentra el acento. De esta forma poder obtener muchísimas variantes con respecto a la Regla 1, que nos decía estirar la sílaba anterior a la acentuada. Todas las combinaciones se pueden ver en la Figura \ref{fig21}.
 
 %También se agregó “El rábano salió horrible” que posee un acento en la primer sílaba.
 
 \subsection{Utilizar frases conocidas}
 
-Como afirmamos antes, utilizo frases comunes para poder obtener los acentos de cada grupo de forma natural. Pensé que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle el su acento. Algo interesante es que una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero} extrae atributos para las reglas 4 y 5. La palabra \textit{victoria} posee atributo para la regla 4 que nos propone medir la duración de la \textit{c} antes de la \textit{t}. Sucede igual con la palabra \textit{caballero} para la regla 5. Esta nos dice medir la duración de la \textit{ll}. De esta forma cada frase extrae los atributos lo mas posible. Todas las frases conocidas utilizadas se pueden ver en la Figura \ref{fig22}.
+Como afirmamos antes, utilizo frases comunes para poder obtener los acentos de cada grupo de forma natural. Se penso que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle el su acento. Todas las frases conocidas utilizadas se pueden ver en la Figura \ref{fig22}.
+
+Algo interesante es que una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero} extrae atributos para las reglas 4 y 5. La palabra \textit{victoria} posee atributo para la regla 4 que nos propone medir la duración de la \textit{c} antes de la \textit{t}. Sucede igual con la palabra \textit{caballero} para la regla 5. Esta nos dice medir la duración de la \textit{ll}. De esta forma cada frase extrae los atributos lo mas posible. En la Figura (todo) podemos ver el desbalance entr la cantidad de frases utilizadas con respecto a sus reglas aplicadas. Más adelante veremos como impacta esto en las frases que vamos a pedir para grabar.
 
 \paragraph{Intercalando los dos tipos:}
 
@@ -207,11 +208,10 @@ La mínima cantidad de grabaciones que puede realizar un hablante son 5 grabacio
 
 Debemos definir qué frases y en que orden se debe decir durante el experimento. Sucede que el orden que utilicemos va a ser crucial para tener muestras. No es lo mismo empezar por una frase que sólo referencia a una regla que a varias. Si referencia a varias reglas a la vez, en un sólo audio podremos sacarle más información.
 
-Una traza es una lista de las frases que puede grabar un hablante. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden. Optamos por tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10000 trazas generadas. 
+Una traza es una lista de las frases que puede grabar un hablante. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden. Optamos por tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10.000 trazas generadas. 
 
 La generación de trazas sigue el siguiente algoritmo:
 
-%todo: Escribir un pseudo codigo de la generación de frases??
 \lstset{ %
 language=C++,                % choose the language of the code
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -244,11 +244,9 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
     Devolver listaFrases
 \end{lstlisting}
 
-La idea del algoritmo es la siguiente. Vamos a ponderar las frases que referencien a más reglas. Al generar las trazas vamos a utilizar un contador que nos va a decir cuantas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Elegiremos la frase que haga referencia a la regla menos grabada en el contador y además que represente a mas de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones.
+La idea del algoritmo es la siguiente: Al generar las trazas vamos a utilizar un contador que nos va a decir cuantas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Elegiremos la frase que haga referencia a la regla menos grabada en el contador y además que represente a mas de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones y ponderamos las frases que referencien a más reglas. 
 
-Lo bueno de esto es que para un hablante grabando 10 frases tenemos muestras de todas las reglas. Este es un dato importante ya que maximizamos la cantidad de información de cada frase y le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza}.
-
-%todo: grafico de cantidad de frases
+Esta idea es importante ya que maximizamos la cantidad de información de cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de todas las reglas. Escluimos del gráfico la regla 1 ya que esta utiliza con las frases AMPER.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
@@ -357,32 +355,31 @@ A cada hablante le dimos la opción que pueda escuchar y volver a grabar la fras
 
 \chapter{Extracción de información}
 
+Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿Cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. 
+
 \section{Alineación forzada}
 
-Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿Cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. Y además, un dato muy relevante, es que esta selección idealmente no debe tener que ser realizada con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo.
-
-Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esas pequeños pedazos de audios para analizar sus diferencias. 
+Un dato muy importante es que esta selección idealmente no debe tener que ser realizada con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esas pequeños pedazos de audios para analizar sus diferencias. 
 
 \subsection{Prosodylab Aligner}
 
 %If you use this tool, we would appreciate it if you cite the following paper:
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
-Luego de buscar bastantes, encontramos con una librería llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que tiempos se dijo. El formato utilizado para devolver estas marcas es el TextGrid. El problema de la alineación es un sub-problema de la alineación automática.
+Luego de buscar bastantes, encontramos con una herramienta llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que momento se dijo. El formato utilizado para devolver estas marcas es el TextGrid. El problema de la alineación es un sub-problema de la alineación automática.
 
 Algo que destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. 
 
 %implementación
-Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script de Linux. Utiliza fuertemente de HTK (ver. 3.4) y SoX (ver. 14.1.0). Para realizar la alineación utiliza Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM). Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras.
+Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script de Linux. Utiliza fuertemente de HTK (ver. 3.4) y SoX (ver. 14.1.0). Para realizar la alineación utiliza Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM). Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante un modelo matemático el programa analiza que en muchas grabaciones de la misma frase se produce un mismo fonema. Ese fonema va a ser marcado de igual forma en el TextGrid de las tres grabaciones.
 
 %Una de las ventajas que posee es que puede utilizarse para cualquier idioma. Sólo se necesita una hora de audio grabado y un diccionario fonético sobre las palabras a reconocer. 
 
-Vamos a analizar si cumplimos con los requerimientos. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a Laboratorio de Investigaciones Sensoriales - INIGEM que nos prestó su diccionario pudimos utilizar esta herramienta. El diccionario fonético nos provee para cada palabra los distintos fonemas que la componen. De esta manera, se puede realizar una alineación acorde al español.
-
+La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a Laboratorio de Investigaciones Sensoriales - INIGEM que nos prestó su diccionario pudimos utilizar esta herramienta. El diccionario fonético nos provee para cada palabra los distintos fonemas que la componen. Esta herramienta se utiliza para generar la lista de fonemas que aparecen en cada grabación. De esta manera, se puede realizar una alineación acorde al español.
 
 \subsection{Diccionario TranscriptorFonetico2 del LIS}
 
-Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra.
+Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra para cada grabación.
 
 \section{Extracción de atributos}
 
@@ -390,9 +387,9 @@ En esta sección vamos a analizar como extraer cada uno de los atributos que pla
 
 \subsection{Implementación}
 
-La extracción de datos fue realizado en el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy. Esta es una librería para el calculo preciso en aplicaciones científicas.
+La extracción de datos fue realizado utilizando el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy versión 1.6.1. Esta es una librería para el calculo preciso en aplicaciones científicas.
 
-El extractor posee como input los archivos .wav y los archivos textgrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El extractor se debe ejecutar después de la alineación (Ver Fig. \ref{workflow}). 
+El extractor posee como input los archivos .wav y los archivos textgrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El extractor se debe ejecutar después de la alineación realizada por Prosodylab Aligner. El workflow del extractor se puede ver en \ref{workflow}). 
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{diagrama_workflow} }
@@ -401,7 +398,7 @@ El extractor posee como input los archivos .wav y los archivos textgrid que corr
 \end{figure}
 
 
-El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama '.SCORES' y en el son lista todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación.
+El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama '.SCORES' y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos.
 
 Luego de esto, el extractor va a correr un conjunto de funciones que van a extraer cada uno de los atributos. Este conjunto de funciones se dividen en dos: las que computan atributos temporales y las que computan atributos acústicos. Veamos cada uno:
 
@@ -413,7 +410,7 @@ Las mediciones son normalizadas de dos formas: primero una normalización utiliz
 
 \hspace{2cm} \[\frac{X - \mu }{ \sigma }\]
 
-y luego otra pensando que $\mu = 0$. 
+y luego otra asumiendo que $\mu = 0$. 
 
 \hspace{2cm} \[\frac{X}{ \sigma }\]
 
@@ -421,14 +418,14 @@ Esta ultima tiene el nombre de half normal distribution.
 
 %todo: agregar imagen explicando normalización
 
-Vamos a dividir el grupo de los atributos temporales en dos grupos: fonéticos y silábicos. Cada grupo calcula igual la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
+los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada grupo calcula igual la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
 
 \subsubsection{Atributos fonéticos}
 
 \begin{itemize}
-    \item \textbf{Duración de la 'kt':} con este atributo vamos a buscar el patrón 'kt' en las frases y luego a medir normalizando de las dos formas el fonema 'k'.  
+    \item \textbf{Duración de la 'kt':} con este atributo vamos a buscar el patrón 'kt' en los TextGrids y luego a medir normalizando de las dos formas el fonema 'k'.  
     \item \textbf{Duración de la 'sc':} ídem con 'sc' y midiendo el fonema 's'.
-    \item \textbf{Duración de la 'll':} buscamos el patrón 'll' y lo medimos normalizandolo.
+    \item \textbf{Duración de la 'll':} buscamos el patrón 'll' y lo medimos normalizandolo de las dos formas.
     \item \textbf{Duración de la 'rr':} ídem para 'rr'.
     \item \textbf{Duración de la 's' final:} Ídem para las 's' de final de palabra.
     
@@ -446,7 +443,7 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. 
+Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el Anexo.
 
 \subsection{Atributos acústicos}
 
