@@ -129,7 +129,7 @@ def duration(textgrid):
     
     return res
 
-def PHO_phoneme(textgrid):
+def FON_phoneme(textgrid):
     """duration average of each phoneme"""
     f = lambda row: row[2] != 'sil' and row[2] != 'sp' and row[2] != ''
     res = _goThroughWithCondition(textgrid, "phones", f)
@@ -138,47 +138,47 @@ def PHO_phoneme(textgrid):
         return None    
     
     res = round(np.average(res), digits)
-    logger.info('PHO_phoneme: '+str(res))
+    logger.info('FON_phoneme: '+str(res))
     
     return res
 
-def PHO_vowel_norm(textgrid):
+def FON_vowel_norm(textgrid):
     """duration average of each vowel normalized"""    
     f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in vowels 
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar(res, _durationOfEachPhoneme(textgrid))
     
-    logger.info('PHO_wowel_norm: '+str(res))
+    logger.info('FON_wowel_norm: '+str(res))
     
     return res
 
-def PHO_vowel_normhd(textgrid):
+def FON_vowel_normhd(textgrid):
     """duration average of each vowel normalized half distribution""" 
     f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in vowels 
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar_halfdist(res, _durationOfEachPhoneme(textgrid))
     
-    logger.info('PHO_vowel_normhd: '+str(res))
+    logger.info('FON_vowel_normhd: '+str(res))
     
     return res
 
-def PHO_consonant_norm(textgrid):
+def FON_consonant_norm(textgrid):
     """duration average of each consonant normalized""" 
     f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in consonants 
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar(res, _durationOfEachPhoneme(textgrid))
     
-    logger.info('PHO_consonant_norm: '+str(res))
+    logger.info('FON_consonant_norm: '+str(res))
     
     return res
 
-def PHO_consonant_normhd(textgrid):
+def FON_consonant_normhd(textgrid):
     """duration average of each consonant normalized half distribution"""
     f = lambda row: row[2] != 'sil' and row[2] != 'sp' and string.lower(row[2]) in consonants 
     res = _goThroughWithCondition(textgrid, "phones", f)
     res = _normalizar_halfdist(res, _durationOfEachPhoneme(textgrid))
     
-    logger.info('PHO_consonant_normhd: '+str(res))
+    logger.info('FON_consonant_normhd: '+str(res))
     
     return res
 
@@ -205,18 +205,18 @@ def _durationAvgOfPhonemeSFinal(textgrid):
 
     return result
 
-def PHO_Sfinal_norm(textgrid):
+def FON_Sfinal_norm(textgrid):
     """duration average of phoneme S Final normalized"""
     res = _durationAvgOfPhonemeSFinal(textgrid)
     res = _normalizar(res, _durationOfEachPhoneme(textgrid))
-    logger.info("PHO_Sfinal_norm: "+str(res))
+    logger.info("FON_Sfinal_norm: "+str(res))
     return res 
 
-def PHO_Sfinal_normhd(textgrid):
+def FON_Sfinal_normhd(textgrid):
     """duration average of phoneme S Final normalized half distribution"""
     res = _durationAvgOfPhonemeSFinal(textgrid)
     res = _normalizar_halfdist(res, _durationOfEachPhoneme(textgrid))
-    logger.info("PHO_Sfinal_normhd: "+str(res))
+    logger.info("FON_Sfinal_normhd: "+str(res))
     return res
 
 # Regla 1: Localice la silaba acentuada y estirar la silaba anterior
@@ -395,18 +395,18 @@ def _durationAvgKT(textgrid):
     result = timeSyllableIntervals(syllableIntervals)
     return result, _durationOfEachPhoneme(textgrid)
 
-def PHO_kt_norm(textgrid):
+def FON_kt_norm(textgrid):
     """duration average of pattern kt normalized"""
     res = _durationAvgKT(textgrid)
     res = _normalizar(res[0], res[1])
-    logger.info('PHO_kt_norm: '+str(res))
+    logger.info('FON_kt_norm: '+str(res))
     return res
 
-def PHO_kt_normhd(textgrid):
+def FON_kt_normhd(textgrid):
     """duration average of pattern kt normalized half distribution"""
     res = _durationAvgKT(textgrid)
     res = _normalizar_halfdist(res[0], res[1])
-    logger.info('PHO_kt_normhd: '+str(res))
+    logger.info('FON_kt_normhd: '+str(res))
     return res
 
 #==========================================================================================
@@ -418,18 +418,18 @@ def _durationAvgLL(textgrid):
     result = timeSyllableIntervals(syllableIntervals)
     return result, _durationOfEachPhoneme(textgrid)
     
-def PHO_ll_norm(textgrid):
+def FON_ll_norm(textgrid):
     """duration average of pattern ll normalized"""
     res = _durationAvgLL(textgrid)
     res = _normalizar(res[0], res[1])    
-    logger.info('PHO_ll_norm: '+str(res))
+    logger.info('FON_ll_norm: '+str(res))
     return res
 
-def PHO_ll_normhd(textgrid):
+def FON_ll_normhd(textgrid):
     """duration average of pattern ll normalized half distribution"""
     res = _durationAvgLL(textgrid)
     res = _normalizar_halfdist(res[0], res[1])    
-    logger.info('PHO_ll_normhd: '+str(res))
+    logger.info('FON_ll_normhd: '+str(res))
     return res
 
 #==========================================================================================
@@ -441,18 +441,18 @@ def _durationAvgRR(textgrid):
     result = timeSyllableIntervals(syllableIntervals)
     return result, _durationOfEachPhoneme(textgrid)
 
-def PHO_rr_norm(textgrid):
+def FON_rr_norm(textgrid):
     """duration average of pattern rr normalized"""
     res = _durationAvgRR(textgrid)
     res = _normalizar(res[0], res[1])    
-    logger.info('PHO_rr_norm: '+str(res))
+    logger.info('FON_rr_norm: '+str(res))
     return res
 
-def PHO_rr_normhd(textgrid):
+def FON_rr_normhd(textgrid):
     """duration average of pattern rr normalized half distribution"""
     res = _durationAvgRR(textgrid)
     res = _normalizar_halfdist(res[0], res[1])    
-    logger.info('PHO_rr_normhd: '+str(res))
+    logger.info('FON_rr_normhd: '+str(res))
     return res
 
 #==========================================================================================
@@ -464,14 +464,14 @@ def _durationAvgSC(textgrid):
     result = timeSyllableIntervals(syllableIntervals)
     return result, _durationOfEachPhoneme(textgrid)
 
-def PHO_sc_norm(textgrid):
+def FON_sc_norm(textgrid):
     """duration average of pattern sc normalized"""
     res = _durationAvgSC(textgrid)
     res = _normalizar(res[0], res[1])    
-    logger.info('PHO_sc_norm: '+str(res))
+    logger.info('FON_sc_norm: '+str(res))
 
-def PHO_sc_normhd(textgrid):
+def FON_sc_normhd(textgrid):
     """duration average of pattern sc normalized half distribution"""
     res = _durationAvgSC(textgrid)
     res = _normalizar_halfdist(res[0], res[1])    
-    logger.info('PHO_sc_normhd: '+str(res))
+    logger.info('FON_sc_normhd: '+str(res))

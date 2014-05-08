@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 def extract():
 
-    mfcc_len = 13
+    mfcc_len = 33
 
     attributesFilter = {
         'place': ('bsas', 'cba'), 
@@ -29,40 +29,40 @@ def extract():
         'phraseId': 'NUMERIC',
         'attempt': 'NUMERIC',
 
-        'PHO_kt_norm': 'NUMERIC', 
-        'PHO_kt_normhd': 'NUMERIC',
-        'PHO_ll_norm': 'NUMERIC', 
-        'PHO_ll_normhd': 'NUMERIC', 
-        'PHO_rr_norm': 'NUMERIC',  
-        'PHO_rr_normhd': 'NUMERIC', 
-        'PHO_sc_norm': 'NUMERIC',
-        'PHO_sc_normhd': 'NUMERIC',
-        'PHO_Sfinal_norm': 'NUMERIC',
-        'PHO_Sfinal_normhd': 'NUMERIC',
+        'FON_kt_norm': 'NUMERIC', 
+        'FON_kt_normhd': 'NUMERIC',
+        'FON_ll_norm': 'NUMERIC', 
+        'FON_ll_normhd': 'NUMERIC', 
+        'FON_rr_norm': 'NUMERIC',  
+        'FON_rr_normhd': 'NUMERIC', 
+        'FON_sc_norm': 'NUMERIC',
+        'FON_sc_normhd': 'NUMERIC',
+        'FON_Sfinal_norm': 'NUMERIC',
+        'FON_Sfinal_normhd': 'NUMERIC',
         
-        'PHO_phoneme': 'NUMERIC',
-        'PHO_vowel_norm': 'NUMERIC', 
-        'PHO_vowel_normhd': 'NUMERIC', 
-        'PHO_consonant_norm': 'NUMERIC',
-        'PHO_consonant_normhd': 'NUMERIC',
+        'FON_phoneme': 'NUMERIC',
+        'FON_vowel_norm': 'NUMERIC', 
+        'FON_vowel_normhd': 'NUMERIC', 
+        'FON_consonant_norm': 'NUMERIC',
+        'FON_consonant_normhd': 'NUMERIC',
         
         'SIL_syllableAccent_norm': 'NUMERIC',
         'SIL_syllableAccent_normhd': 'NUMERIC',
         'SIL_prevSyllableAccent_norm': 'NUMERIC',
         'SIL_prevSyllableAccent_normhd': 'NUMERIC',
          
-        'MFCC_AverageKT': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MaxKT': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MinKT': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_AverageLL': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MaxLL': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MinLL': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_AverageRR': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MaxRR': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MinRR': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_AverageSC': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MaxSC': ['NUMERIC' for i in range(mfcc_len)],
-        'MFCC_MinSC': ['NUMERIC' for i in range(mfcc_len)]
+        'ACU_AverageKT': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MaxKT': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MinKT': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_AverageLL': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MaxLL': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MinLL': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_AverageRR': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MaxRR': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MinRR': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_AverageSC': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MaxSC': ['NUMERIC' for i in range(mfcc_len)],
+        'ACU_MinSC': ['NUMERIC' for i in range(mfcc_len)]
     }
 
     logger = logging.getLogger('Extract')

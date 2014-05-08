@@ -18,7 +18,7 @@ tStep = 10;                 % analysis frame shift (ms)
 alpha = 0.97;                 % preemphasis coefficient
 freqRange = [ 50 3800 ];       % frequency range to consider
 fbChannels = 25;            % number of filterbank channels 
-numCep = 13;                % number of cepstral coefficients
+numCep = 33;                % number of cepstral coefficients
 lifter = 22;                % cepstral sine lifter parameter
 
 filename=[ filepath ];
