@@ -11,7 +11,7 @@ import pymatlab
 #parametros MFCC
 nwin=25
 nfft=512
-nceps=13#33
+nceps=33#33
 
 winstep = 0.01
 

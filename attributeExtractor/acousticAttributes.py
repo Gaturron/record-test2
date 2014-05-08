@@ -8,7 +8,7 @@ import logging
 
 logger = logging.getLogger('acousticAttributes: ')
 
-mfcc_len = 13
+mfcc_len = 33 #33
 
 #=======================================================================
 # La 'c' antes de la 't' no suena
@@ -63,7 +63,7 @@ def _foundPattern(wordPattern, syllablePattern, textgrid, mfcc):
 
 KT = {'wordPattern': r'.CT.', 'syllablePattern': r'kt' } 
 
-def MFCC_AverageKT(textgrid, mfcc):
+def ACU_AverageKT(textgrid, mfcc):
     logger.debug('mfccAverageKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -72,7 +72,7 @@ def MFCC_AverageKT(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])
 
-def MFCC_MaxKT(textgrid, mfcc):
+def ACU_MaxKT(textgrid, mfcc):
     logger.debug('mfccMaxKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -81,7 +81,7 @@ def MFCC_MaxKT(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])
 
-def MFCC_MinKT(textgrid, mfcc):
+def ACU_MinKT(textgrid, mfcc):
     logger.debug('mfccMinKT: ')
     mfccTemp = _foundPattern(KT['wordPattern'], KT['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -93,7 +93,7 @@ def MFCC_MinKT(textgrid, mfcc):
 
 LL = {'wordPattern': r'LL.', 'syllablePattern': r'Z.'}
 
-def MFCC_AverageLL(textgrid, mfcc):
+def ACU_AverageLL(textgrid, mfcc):
     logger.debug('mfccAverageLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -102,7 +102,7 @@ def MFCC_AverageLL(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])        
 
-def MFCC_MaxLL(textgrid, mfcc):
+def ACU_MaxLL(textgrid, mfcc):
     logger.debug('mfccMaxLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -111,7 +111,7 @@ def MFCC_MaxLL(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])        
 
-def MFCC_MinLL(textgrid, mfcc):
+def ACU_MinLL(textgrid, mfcc):
     logger.debug('mfccMinLL: ')
     mfccTemp = _foundPattern(LL['wordPattern'], LL['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -125,7 +125,7 @@ def MFCC_MinLL(textgrid, mfcc):
     
 RR = {'wordPattern': r'.RR.', 'syllablePattern': r'R.'}
 
-def MFCC_AverageRR(textgrid, mfcc):
+def ACU_AverageRR(textgrid, mfcc):
     logger.debug('mfccAverageRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -134,7 +134,7 @@ def MFCC_AverageRR(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)]) 
 
-def MFCC_MaxRR(textgrid, mfcc):
+def ACU_MaxRR(textgrid, mfcc):
     logger.debug('mfccMaxRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -143,7 +143,7 @@ def MFCC_MaxRR(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)]) 
 
-def MFCC_MinRR(textgrid, mfcc):
+def ACU_MinRR(textgrid, mfcc):
     logger.debug('mfccMinRR: ')
     mfccTemp = _foundPattern(RR['wordPattern'], RR['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -156,7 +156,7 @@ def MFCC_MinRR(textgrid, mfcc):
 
 SC = {'wordPattern': r'.SC.', 'syllablePattern': r'hk'}
 
-def MFCC_AverageSC(textgrid, mfcc):
+def ACU_AverageSC(textgrid, mfcc):
     logger.debug('mfccAverageSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -165,7 +165,7 @@ def MFCC_AverageSC(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])         
 
-def MFCC_MaxSC(textgrid, mfcc):
+def ACU_MaxSC(textgrid, mfcc):
     logger.debug('mfccMaxSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
@@ -174,7 +174,7 @@ def MFCC_MaxSC(textgrid, mfcc):
     else:
         return np.array([None for i in range(mfcc_len)])         
 
-def MFCC_MinSC(textgrid, mfcc):
+def ACU_MinSC(textgrid, mfcc):
     logger.debug('mfccMinSC: ')
     mfccTemp = _foundPattern(SC['wordPattern'], SC['syllablePattern'], textgrid, mfcc)
     if isinstance(mfccTemp, tuple):
