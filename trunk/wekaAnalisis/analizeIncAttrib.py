@@ -66,6 +66,16 @@ def runJRip(train, test):
     evaluation.evaluateModel(jrip, test)
     printSummary(jrip, train, evaluation)
 
+def runNaiveBayes(train, test):
+    naiveBayes = NaiveBayes()
+    naiveBayes.setDebug(True)
+
+    naiveBayes.buildClassifier(train)
+    evaluation = Evaluation(train)
+
+    evaluation.evaluateModel(naiveBayes, test)
+    printSummary(naiveBayes, train, evaluation)
+
 def filterByAttributes(attributesToDelete, train, test):
     listAttributeTrain = []
     for att in attributesToDelete:
@@ -94,7 +104,7 @@ if len(sys.argv) != 2:
     
 #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 path = sys.argv[1]
-i = 1
+i = 0
 
 file = FileReader(path+"train"+str(i)+".arff")
 train = Instances(file)
@@ -112,10 +122,10 @@ print "Baseline"
 runZeroR(train1, test1)
 
 print "JRip con atributos de SIL + FON + ACU"
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)
 
 #calculos previos
-acuAtt = [ "MFCC_"+size+type+"_"+str(i) 
+acuAtt = [ "ACU_"+size+type+"_"+str(i) 
             for i in range(12+1) 
             for size in ["Min", "Average", "Max"] 
             for type in ["KT", "LL", "RR", "SC"]     ]
@@ -124,7 +134,7 @@ silAtt = [ "SIL_"+type+"_"+norm
             for type in ["prevSyllableAccent", "syllableAccent" ] 
             for norm in ["norm", "normhd"]      ]
 
-fonAtt = ["PHO_"+type+"_"+norm
+fonAtt = [ "FON_"+type+"_"+norm
             for type in ["Sfinal", "consonant", "kt", "ll", "rr", "sc", "vowel"]
             for norm in ["norm", "normhd"]      ]
 
@@ -133,32 +143,39 @@ attributesToDelete = acuAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)
 
 print "JRip con atributos de FON + ACU"
 attributesToDelete = silAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)
+
+print "JRip con atributos de SIL + ACU"
+attributesToDelete = fonAtt
+(train1, test1) = filterByAttributes(attributesToDelete, train, test)
+train1.setClassIndex(train1.attribute('place').index())
+test1.setClassIndex(test1.attribute('place').index())
+runNaiveBayes(train1, test1)
 
 print "JRip con atributos de SIL"
 attributesToDelete = acuAtt + fonAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)
 
 print "JRip con atributos de FON"
 attributesToDelete = acuAtt + silAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)
 
 print "JRip con atributos de ACU"
 attributesToDelete = silAtt + fonAtt 
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runJRip(train1, test1)
+runNaiveBayes(train1, test1)

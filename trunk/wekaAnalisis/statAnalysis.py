@@ -30,7 +30,9 @@ p_status = p.wait()
 if p_status != 0:
     print 'ERROR: '+str(err)
 
+#print "Output:"
 #print output
+
 # Parse output
 
 lines = output.split('\n')
