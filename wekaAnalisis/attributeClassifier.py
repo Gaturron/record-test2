@@ -30,7 +30,7 @@ import weka.attributeSelection.InfoGainAttributeEval as InfoGainAttributeEval
 import weka.attributeSelection.GreedyStepwise as GreedyStepwise
 import weka.attributeSelection.Ranker as Ranker
 
-filepath = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/test2014-04- 5 17:09:37/extractionTotal.arff"
+filepath = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/test2014-05-08/extractionTotal.arff"
 
 file = FileReader(filepath)
 data = Instances(file)

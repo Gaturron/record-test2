@@ -707,9 +707,9 @@ Primero realizaremos Wilcox Test ya que necesita menos presunciones. Para realiz
     %Data are paired and come from the same population.
     \item Los datos son presentados de a pares y vienen de la misma población: esto sucede gracias a como armamos los tests. La población también siempre es la misma.
     %Each pair is chosen randomly and independently.
-    \item Cada par es elegído de forrma azarosa y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
+    \item Cada par es elegído al azar y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
     %The data are measured at least on an ordinal scale, but need not be normal.
-    \item Los datos estan medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta caracteristica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
+    \item Los datos estan medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
 \end{itemize}
 
 El input del mismo va a ser el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis van a ser:
@@ -768,21 +768,21 @@ Todos tests fueron realizados utilizando R versión 3.0.1.
 %tabla de weka comparando cada uno de los clasificadores: ZeroR, JRIp, J48, FSMO, NaiveBayes
 Los resultados para los distintos clasificadores fueron:
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-\textbf{Test 1}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 2}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 3}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 4}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 5}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 6}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 7}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 8}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 9}  & 0 & 0 & 0 & 0 & 0\\ \hline
-\textbf{Test 10} & 0 & 0 & 0 & 0 & 0\\ \hline
+\textbf{Test 1}  & 44.6809 & 57.4468 & 44.6809 & 55.3191 & 59.5745\\ \hline
+\textbf{Test 2}  & 24.3243 & 45.9459 & 24.3243 & 51.3514 & 40.5405\\ \hline
+\textbf{Test 3}  & 32.1429 & 46.4286 & 32.1429 & 46.4286 & 64.2857\\ \hline
+\textbf{Test 4}  & 48.8889 & 46.6667 & 48.8889 & 62.2222 & 57.7778\\ \hline
+\textbf{Test 5}  & 30.303 & 39.3939 & 30.303 & 45.4545 & 63.6364\\ \hline
+\textbf{Test 6}  & 46.3415 & 53.6585 & 46.3415 & 68.2927 & 68.2927\\ \hline
+\textbf{Test 7}  & 38.7097 & 38.7097 & 25.8065 & 45.1613 & 58.0645\\ \hline
+\textbf{Test 8}  & 30.303 & 39.3939 & 30.303 & 45.4545 & 63.6364\\ \hline
+\textbf{Test 9}  & 30.303 & 39.3939 & 30.303 & 45.4545 & 63.6364\\ \hline
+\textbf{Test 10} & 37.2881 & 42.3729 & 37.2881 & 49.1525 & 54.2373\\ \hline
 \end{tabular}
 \end{table}
 
@@ -792,15 +792,15 @@ donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así 
 
 Vamos a mostrar los resultados de estos tests estadísticos.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{Student Test} & \textbf{Wilcox Test} \\ \hline
-\textbf{ZeroR y JRip}  & 0 & 0 \\ \hline
-\textbf{ZeroR y J48}  & 0 & 0 \\ \hline
-\textbf{ZeroR y NaiveBayes}  & 0 & 0 \\ \hline
-\textbf{ZeroR y Function SMO}  & 0 & 0 \\ \hline
+\textbf{ZeroR y JRip}  & 0.001644 & 0.006269 \\ \hline
+\textbf{ZeroR y J48}  & 0.8283 & 0.9772 \\ \hline
+\textbf{ZeroR y NaiveBayes}  & 1.225e-05 & 0.002897 \\ \hline
+\textbf{ZeroR y Function SMO}  & 8.266e-06 & 0.002897 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -813,48 +813,99 @@ En esta sección se aplicará a los distintos atributos evaluadores para analiza
 
 \paragraph*{Utilizando todos los atributos}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\begin{tabular}{|l|c|c|c|c|c|c|}
+\begin{tabular}{|c|l|c|c|c|c|c|}
 \hline
-\textbf{}  & \textbf{}  \\ \hline
-0 & attr1\\ \hline
-0 & attr2\\ \hline
-0 & attr3\\ \hline
-0 & attr4\\ \hline
-0 & attr5\\ \hline
+ 0.07231     & FON\_consonant\_norm \\ \hline
+ 0.07217     & FON\_vowel\_norm \\ \hline
+ 0.03963     & \textbf{SIL\_syllableAccent\_normhd} \\ \hline
+ 0.03963     & \textbf{SIL\_prevSyllableAccent\_normhd }\\ \hline
+ 0.02332     & FON\_ll\_norm \\ \hline
+ 0.02285     & FON\_Sfinal\_norm \\ \hline
+ 0.02226     & ACU\_MinLL\_1 \\ \hline
+ 0.02144     & ACU\_AverageLL\_1 \\ \hline
+ 
 \end{tabular}
 \end{table}
 
-\paragraph*{Utilizando solo los atributos PHO}
-\paragraph*{Utilizando solo los atributos SIL}
-\paragraph*{Utilizando solo los atributos ACO}
+\paragraph*{Utilizando solo los atributos sobre fonemas}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+ 0.07231     & FON\_consonant\_norm \\ \hline
+ 0.07217     & FON\_vowel\_norm \\ \hline
+ 0.02332     & FON\_ll\_norm \\ \hline
+ 0.02285     & FON\_Sfinal\_norm \\ \hline
+ 0.00857     & FON\_ll\_normhd  \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph*{Utilizando solo los atributos silábicos}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+ 0.03963     & SIL\_syllableAccent\_normhd \\ \hline
+ 0.03963     & SIL\_prevSyllableAccent\_normhd \\ \hline
+ 0           & SIL\_prevSyllableAccent\_norm \\ \hline
+ 0           & SIL\_syllableAccent\_norm \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph*{Utilizando solo los atributos acústicos}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+ 0.02226     & ACU\_MinLL\_1  \\ \hline
+ 0.02144     & ACU\_AverageLL\_1  \\ \hline
+ 0.01438     & ACU\_MaxLL\_5  \\ \hline
+ 0.01232     & ACU\_MaxKT\_15  \\ \hline
+ 0.01219     & ACU\_MaxLL\_6  \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection*{Attribute Evaluator: ClassifierSubsetEvaluator}
 
-\paragraph*{Utilizando todos los atributos}
-\paragraph*{Utilizando solo los atributos PHO}
-\paragraph*{Utilizando solo los atributos SIL}
-\paragraph*{Utilizando solo los atributos ACO}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+ACU\_AverageRR\_0 \\ \hline
+ACU\_MaxKT\_11 \\ \hline
+ACU\_MaxSC\_7 \\ \hline
+ACU\_MinKT\_0 \\ \hline
+ACU\_MinLL\_1 \\ \hline
+ACU\_MinSC\_22 \\ \hline
+FON\_Sfinal\_normhd \\ \hline
+FON\_vowel\_normhd \\ \hline
+ 
+\end{tabular}
+\end{table}
 
 \section{Combinando clases de atributos}
 
 Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Vamos a agregar los tipos de atributos y vamos a analizar como se incrementa el porcentaje de exactitud para la clasificación. El conjunto de datos utilizado es el \textit{test0} y se utiliza \textit{JRip} como clasificador.
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\begin{tabular}{|l|c|}
+\begin{tabular}{|l|c|c|}
 \hline
-\textbf{}  & \textbf{Porcentaje \%}  \\ \hline
-Baseline & attr1\\ \hline
-SIL & attr2\\ \hline
-FON & attr3\\ \hline
-ACU & attr4\\ \hline
-SIL + FON & attr5\\ \hline
-FON + ACU & attr5\\ \hline
-SIL + ACU & attr5\\ \hline
-SIL + FON + ACU & attr5\\ \hline
+\textbf{}  & \textbf{Porcentaje  JRip}  & \textbf{Porcentaje  NaiveBayes}   \\ \hline
+Baseline & 44.6809 & 44.6809 \\ \hline
+SIL & 42.5532 & 53.1915 \\ \hline
+FON & 55.3191 & 57.4468 \\ \hline
+ACU & 55.3191 & 59.5745 \\ \hline
+SIL + FON & 42.5532 & 57.4468 \\ \hline
+FON + ACU & 53.1915 & 61.7021 \\ \hline
+SIL + ACU & 57.4468 &  61.7021 \\ \hline
+SIL + FON + ACU & 57.4468 & 59.5745 \\ \hline
 \end{tabular}
 \end{table}
 
