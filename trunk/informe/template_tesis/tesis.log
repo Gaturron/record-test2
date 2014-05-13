@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  12 MAY 2014 01:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  13 MAY 2014 01:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -841,51 +841,55 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 788.
 LaTeX Info: Redefining \% on input line 788.
  [28]
-LaTeX Info: Redefining \. on input line 837.
-LaTeX Info: Redefining \% on input line 837.
+Underfull \vbox (badness 8094) has occurred while \output is active []
 
-[29]
-LaTeX Info: Redefining \. on input line 902.
-LaTeX Info: Redefining \% on input line 902.
+LaTeX Info: Redefining \. on input line 833.
+LaTeX Info: Redefining \% on input line 833.
+ [29]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 913.
+LaTeX Info: Redefining \% on input line 913.
  [30]
-LaTeX Info: Redefining \. on input line 922.
-LaTeX Info: Redefining \% on input line 922.
- [31]
-LaTeX Info: Redefining \. on input line 922.
-LaTeX Info: Redefining \% on input line 922.
+LaTeX Info: Redefining \. on input line 937.
+LaTeX Info: Redefining \% on input line 937.
+
+[31]
+LaTeX Info: Redefining \. on input line 937.
+LaTeX Info: Redefining \% on input line 937.
  [32
 
 ]
 Cap\'{\i }tulo 7.
 [33]
-LaTeX Info: Redefining \. on input line 923.
-LaTeX Info: Redefining \% on input line 923.
+LaTeX Info: Redefining \. on input line 938.
+LaTeX Info: Redefining \% on input line 938.
  [34
 
 ]
 Cap\'{\i }tulo 8.
 [35]
-LaTeX Info: Redefining \. on input line 937.
-LaTeX Info: Redefining \% on input line 937.
+LaTeX Info: Redefining \. on input line 952.
+LaTeX Info: Redefining \% on input line 952.
  [36
 
 ]
 Cap\'{\i }tulo 9.
 
-Underfull \vbox (badness 10000) detected at line 964
+Underfull \vbox (badness 10000) detected at line 979
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 970--970
+Underfull \hbox (badness 4217) in paragraph at lines 985--985
 \OT1/cmr/m/n/10.95 'ra'], ['Bes*'], ['kojn', 'si*', 'De'], ['kon'], ['la'],
  []
 
 [37]
-LaTeX Info: Redefining \. on input line 994.
-LaTeX Info: Redefining \% on input line 994.
+LaTeX Info: Redefining \. on input line 1009.
+LaTeX Info: Redefining \% on input line 1009.
  [38] [39]
-LaTeX Info: Redefining \. on input line 997.
-LaTeX Info: Redefining \% on input line 997.
+LaTeX Info: Redefining \. on input line 1012.
+LaTeX Info: Redefining \% on input line 1012.
  [40
 
 ]
@@ -918,7 +922,7 @@ amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb>
-Output written on tesis.pdf (50 pages, 1688036 bytes).
+Output written on tesis.pdf (50 pages, 1692447 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  153 compressed objects within 2 object streams
