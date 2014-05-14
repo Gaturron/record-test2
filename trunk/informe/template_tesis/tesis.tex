@@ -456,22 +456,16 @@ Los atributos acústicos utilizan las propiedades de los wavs grabados. Para ell
 
 La forma en que hablamos se produce por varias articulaciones. Algunas de ellas pueden ser: dientes, lengua, traquea etc. Estas articulaciones trabajan de forma tal para producir el sonido. Pero también funcionan para darle forma y aplicarle un filtro al sonido producido. Si sabemos correctamente que filtro se le aplica, podremos saber que sonido produce. La forma y el filtro asociado nos muestra donde esta la fuerza en el fonema. Este filtro es muy importante para entender la percepción humana.
 
-Las señales de audio cambian constantemente poseen muchas variaciones. En periodos cortos de tiempo estas variaciones se reducen. Vamos a dividir todo el audio en pequeños frames para calcular en ellos los coeficientes. El tamaño de cada frame esta entre 20-40 ms. Si la variación es menor a este frame, habrá pocas pruebas para tenerla en cuenta y entonces la descartaremos.
+Las señales de audio poseen muchas variaciones continuamente. En periodos cortos de tiempo estas variaciones se reducen. Vamos a dividir todo el audio en pequeños frames para calcular en ellos los coeficientes. El tamaño de cada frame esta entre 20-40 ms. Si la variación es menor a este frame, habrá pocas pruebas para tenerla en cuenta y entonces la descartaremos.
 
 Luego para cada frame se calcula el espectro de frecuencia. Esto se viene motivado por un órgano que se encuentra en la oreja llamado Cóclea. Este vibra de diferente forma al llegarle cada frecuencia del sonido. Al vibrar, activa nervios que representan las distintas frecuencias que escuchamos. Dividir el sonido en períodos intenta mostrar que frecuencias están activas.
 
-El Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alejada esta esa frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de fórma lineal. A partir de ese valor, se comporta de forma logarítmica. 
+La Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alejada esta esa frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de fórma lineal. A partir de ese valor, se comporta de forma logarítmica. 
 
 %http://i.stack.imgur.com/YUH48.gif
 
-\begin{figure}
-    \centerline{\includegraphics[width=0.5\textwidth]{mfcc} }
-    \caption{Filtro MFCC}
-    \label{mfcc}
-\end{figure}
-
 % todo: Aca se introduce los filtros onda serrucho. 
-Mientras mas aumentamos la frecuencia, mas anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. (Ver Fig. \ref{mfcc}) Lo importante es ver cuanta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos el logaritmo. Esto se ajunta mejor a como escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
+Mientras mas aumentamos la frecuencia, mas anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. Lo importante es ver cuanta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos la función logaritmo. De esta forma, para valores grandes de frecuencias su valor se decrementarán y no será igual que las pequeñas que poseen forma lineal. Esto se ajunta mejor a como escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
 
 El siguiente pseudocódigo explica paso a paso como se calcula los coeficientes:
 \lstset{ %
@@ -507,7 +501,7 @@ Debemos extraer datos de los wavs grabados. Para ello debemos analizarlos y que 
 
 \subsubsection{Implementación}
 
-Para realizar el calculo de estos coeficientes se utilizó un script en Matlab. El creador del script es BLA y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para calcular el script y luego continuar con la extracción.
+Para realizar el calculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para calcular el script y luego continuar con la extracción.
 
 \chapter{Datos obtenidos}
 
@@ -590,7 +584,7 @@ Para corregir los errores descriptos debimos chequear cada uno de los textgrids.
 \end{table}
 
 %todo: leer bien el mail de prosodylab
-Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de forma automática puede ser de la siguiente forma. Cuando se realiza la alineación, se crea un archivo llamado .SCORES. Este archivo posee los valores de verosimilitud de cada alineación. Entonces este archivo podría servir para definir si un audio esta bien alineado. Si la alineación superó un umbral pre-configurado, el audio estará bien alineado y se podrá utilizar para el estudio, sino el audio se descartará. Vale aclarar que esto puede tener falsos positivos. Esta idea podría realizarse en trabajos futuros.
+Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de forma automática puede ser de la siguiente forma. Cuando se realiza la alineación, se crea un archivo llamado $.SCORES$. Este archivo posee los valores de verosimilitud de cada alineación. Entonces este archivo podría servir para definir si un audio esta bien alineado. Si la alineación superó un umbral pre-configurado, el audio estará bien alineado y se podrá utilizar para el estudio, sino el audio se descartará. Vale aclarar que esto puede tener falsos positivos. Esta idea podría realizarse en trabajos futuros.
 
 \chapter{Análisis}
 
@@ -600,7 +594,7 @@ En esta sección mostraremos los resultados que obtuvimos luego de realizar la e
 
 No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que el baseline se va a determinar a través del algoritmo mayority class.
 
-Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejemplo Buenos Aires. Este algoritmo utilizando nuestros datos tendría una performance buena. Al tener más hablantes de Buenos Aires que de Córdoba en nuestro set de datos acertaría más del 50\% de las veces. En nuestro caso tendrá (Completame XX)\% de efectividad. Este es el porcentaje a superar. 
+Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejemplo Buenos Aires. Este algoritmo utilizando nuestros datos tendría una performance buena. En nuestro caso estará llegando al 45\% de efectividad aproximadamente. Este es el porcentaje a superar. 
 
 %Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
 
@@ -762,11 +756,7 @@ La ventaja de usarlo es que, al saber que distribución representa, vamos a ser 
 
 \section{Resultados}
 
-Todos tests fueron realizados utilizando R versión 3.0.1.
-
-\subsection{Clasificadores}
-%tabla de weka comparando cada uno de los clasificadores: ZeroR, JRIp, J48, FSMO, NaiveBayes
-Los resultados para los distintos clasificadores fueron:
+Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para los distintos clasificadores fueron:
 
 \begin{table}[H]
 \centering
@@ -803,6 +793,65 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 \textbf{ZeroR y Function SMO}  & 8.266e-06 & 0.002897 \\ \hline
 \end{tabular}
 \end{table}
+
+Analizando estos resultados notamos que para los clasificadores JRip, NaiveBayes y Function SMO poseen $p-valor$ menor a 0,05. Esto quiere decir que el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR. Por otro lado, J48 no pudo lograr este cometido. 
+
+\subsection{Clasificadores encontrados}
+
+Veamos los clasificadores obtenidos y sus matrices de confusión. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
+
+\paragraph*{Clasificador JRip:}
+
+\begin{flushleft}
+\begin{itemize}
+\item $(FON\_vowel\_norm >= 6.277) and (FON\_consonant\_normhd <= 37.578) $
+$and (SIL\_prevSyllableAccent\_normhd >= 51.219) => place=cba (25.0/5.0)$ \\
+\item $(FON\_rr\_norm <= -14.791) => place=cba (15.0/6.0)$\\
+\item $(FON\_ll\_norm <= -7.975) => place=cba (14.0/5.0)$\\
+\item $(FON\_Sfinal\_normhd <= 32.083) and (FON\_consonant\_norm <= -2.53) and (FON\_consonant\_norm >= -6.197) => place=cba (12.0/0.0)$\\
+\item $ else => place=bsas (191.0/13.0)$
+\end{itemize}
+\end{flushleft}
+ 
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+  a &  b &  classified as \\ \hline
+ 19 &  2 &  a = bsas \\ \hline
+ 18 &  8 &  b = cba \\ \hline
+\end{tabular}
+\end{table}
+ 
+\paragraph*{Function SMO:}
+
+En este caso no se mostró el clasificador por ser una ecuación muy extensa.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+  a & b &  classified as \\ \hline
+ 17 & 4 &  a = bsas \\ \hline
+ 17 & 9 &  b = cba \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph*{NaiveBayes:}
+
+Ídem por tener un clasificador muy extenso.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+  a & b & classified as \\ \hline
+ 19 & 2 &  a = bsas \\ \hline
+ 17 & 9 &  b = cba \\ \hline
+\end{tabular}
+\end{table}
+
+Podemos notar que en los tres la matriz de confusión dió falsos positivos a la hora de clasificar un hablante de Buenos Aires como uno de Córdoba. También podemos ver que los atributos utilizados en el clasificador JRip son los que poseen mayor ganancia de información. Esto último lo veremos más adelante.
 
 \section{Selección de atributos de forma automática}
 
@@ -934,6 +983,46 @@ SIL + FON + ACU & 57.4468 & 59.5745 \\ \hline
 
 Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atrbutos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
 
+\section{Clustering}
+
+Vamos a aplicar un algoritmo de Clustering para nuestro conjunto de datos. El mismo corresponde al algoritmo K-Means utilizando como función de distancia la euclideana. La cantidad de grupos va a ser dos por cada grupo de clasificación. Los atributos utilizados para calcularlo fueron los fonéticos y silábicos. Utilizando dos iteraciones, los centroides encontrados para cada atributo fueron:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline                                 
+Attribute & Full Data (304)& Cluster 0 (215) & Cluster 1 (89) \\ \hline
+\hline 
+FON\_Sfinal\_norm                  &  -3.0914  &  -0.1208  & -10.2674 \\ \hline
+FON\_Sfinal\_normhd                &  47.5851  &  50.3944  &  40.7985 \\ \hline 
+FON\_consonant\_norm               &  -5.3549  &  -4.3661  &  -7.7437 \\ \hline
+FON\_consonant\_normhd             &  48.1372  &  50.2145  &   43.119 \\ \hline
+FON\_kt\_norm                      & -17.4269  & -16.4959  & -19.6759 \\ \hline
+FON\_kt\_normhd                    &  31.3212  &  31.9983  &  29.6855 \\ \hline
+FON\_ll\_norm                      &   9.2458  &  12.1903  &   2.1326 \\ \hline
+FON\_ll\_normhd                    &  63.1703  &  65.9467  &  56.4633 \\ \hline
+FON\_rr\_norm                      &  -2.6304  &   -1.203  &  -6.0788 \\ \hline
+FON\_rr\_normhd                    &  55.9126  &  58.0582  &  50.7295 \\ \hline
+FON\_sc\_norm                      &        0  &        0  &        0 \\ \hline
+FON\_sc\_normhd                    &        0  &        0  &        0 \\ \hline
+FON\_vowel\_norm                   &   6.7144  &    5.478  &   9.7011 \\ \hline
+FON\_vowel\_normhd                 &  60.2065  &  60.0586  &  60.5638 \\ \hline
+SIL\_prevSyllableAccent\_norm      &  -2.1108  &  -2.6443  &   -0.822 \\ \hline
+SIL\_prevSyllableAccent\_normhd    &  52.8959  &  51.0182  &  57.4318 \\ \hline
+SIL\_syllableAccent\_norm          &   6.4228  &   6.4887  &   6.2638 \\ \hline
+SIL\_syllableAccent\_normhd        &  61.4295  &  60.1512  &  64.5176 \\ \hline
+
+\end{tabular}
+\end{table}
+
+Se puede notar que para cada cluster los centroides de cada atributo se diferencian en varios valores. De esta forma podemos ver que creando dos grupos se puede ver marcada la diferencia en cada atributo. Se puede analizar estas diferencias utilizando un gráfico. Graficando en el eje x FON\_ll\_norm podemos ver las distintas instancias y como se agrupa del lado izquierdo el grupo de córdoba y del lado derecho Buenos Aires.
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.8\textwidth]{weka-clustering} }
+    \caption{Visualizador de Clustering}
+    \label{click_final}
+\end{figure}
+ 
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
 
