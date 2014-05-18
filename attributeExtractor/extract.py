@@ -5,6 +5,7 @@ from acousticExtractor import acousticExtractor
 import logging
 import time
 import os
+import pickle
 
 import testGenerator as testGenerator
 
@@ -96,10 +97,12 @@ def extract():
     logger.debug('Res: '+ str(res1))
 
     # Creamos los archivos de test
-
     path = PathTests+'/test'+time.strftime("%Y-%m-%e %H:%M:%S")
 
     os.makedirs(path)
+
+    # salvamos el diccionario
+    pickle.dump( res1, open( path+"/extractionTotalDicc.p", "wb" ) )
 
     # Generate tests
     attributesFilter1 = dict(attributesFilter)
@@ -110,8 +113,6 @@ def extract():
     attributesFilter1.pop("duration", None)
 
     dTA.diccToArff(res1, path+'/extractionTotal.arff', attributesFilter1)
-
-    testGenerator.generate(res1, path, attributesFilter1)
 
 if __name__ == '__main__':
     extract()
