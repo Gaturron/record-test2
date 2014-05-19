@@ -97,7 +97,7 @@ class textgridExtractor(object):
 if __name__ == '__main__':
     logger.info('Prueba TextGrid: ')
     logging.basicConfig(level=logging.DEBUG)
-    tgExtractor = textgridExtractor({ 'PHO_Sfinal_norm': 'NUMERIC',
-                                      'PHO_Sfinal_normhd': 'NUMERIC'
+    tgExtractor = textgridExtractor({ 'FON_sc_norm': 'NUMERIC',
+                                      'FON_sc_normhd': 'NUMERIC'
                                       })
-    logger.info(tgExtractor.textgridToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/bsas_u7_t30_a1.TextGrid'))
+    logger.info(tgExtractor.textgridToAtt('/home/fernando/Tesis/Prosodylab-Aligner-master/data1.complete/bsas_u30_t5_a3.TextGrid'))
