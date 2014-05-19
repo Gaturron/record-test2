@@ -10,7 +10,9 @@ def filter(pathFolder):
     logger = logging.getLogger('AlignmentFilter')
     logger.info('starting')
 
-    file = open(pathFolder+'.SCORES.txt', 'r')
+    #Comentamos el viejo y agregamos el nuevo para no tener varios intentos 
+    #file = open(pathFolder+'.SCORES.txt', 'r')
+    file = open(pathFolder+'.SCORES_sinIntentos.txt', 'r')
     lines = file.readlines()
 
     logger.debug('Files applying the filter:')

@@ -469,9 +469,11 @@ def FON_sc_norm(textgrid):
     res = _durationAvgSC(textgrid)
     res = _normalizar(res[0], res[1])    
     logger.info('FON_sc_norm: '+str(res))
+    return res
 
 def FON_sc_normhd(textgrid):
     """duration average of pattern sc normalized half distribution"""
     res = _durationAvgSC(textgrid)
     res = _normalizar_halfdist(res[0], res[1])    
     logger.info('FON_sc_normhd: '+str(res))
+    return res
