@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import division
 
 from sets import Set
@@ -9,7 +10,7 @@ import os
 import pickle
 import operator
 
-path = os.path.abspath(os.getcwd())+'/tests/test2014-05-17'
+path = os.path.abspath(os.getcwd())+'/tests/test2014-05-19'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 def generate(attributesFilter):
@@ -33,7 +34,7 @@ def generate(attributesFilter):
 
     resultsPaired = []
 
-    while len(resultsPaired) < 10:
+    while len(resultsPaired) < 5:
 
         sorted_users = sorted(users.iteritems(), key=operator.itemgetter(1))
         #print sorted_users
@@ -44,7 +45,7 @@ def generate(attributesFilter):
         while sorted_users:
 
             #sacar los 4 mayores y sacar al azar uno de ellos
-            biggersUsers = sorted_users[-4:]
+            biggersUsers = sorted_users[-12:]
             userRandom = biggersUsers[randint(0, len(biggersUsers) - 1)]
 
             #print 'userRandom: '+str(userRandom)
@@ -59,21 +60,34 @@ def generate(attributesFilter):
 
             sorted_users.remove(userRandom)
 
-        statusTrain = "train: ( bsas: "+str(len(bsas(train)))+" cba: "+str(len(cba(train)))+")"
-        statusTest =  "test: ( bsas: "+str(len(bsas(test)))+" cba: "+str(len(cba(test)))+")"
-        print statusTrain+" "+statusTest
-
-        #me fijo que ese train test no lo tenga ya
-        if (train, test) not in resultsPaired:
+        #me fijo que ese train test no lo tenga ya... y si las instancias son el 50% distintas
+        if ((train, test) not in resultsPaired) and (greaterCommonInstancesPct(test, resultsPaired) < 0.5):
             resultsPaired = resultsPaired + [(train, test)]
+            statusTrain = "train: ( bsas: "+str(len(bsas(train)))+" cba: "+str(len(cba(train)))+")"
+            statusTest =  "test: ( bsas: "+str(len(bsas(test)))+" cba: "+str(len(cba(test)))+")"
+            print statusTrain+" "+statusTest
 
     #resultsPaired tiene los test generados
     resPairedToArff(resultsPaired, attributesFilter)
 
+def greaterCommonInstancesPct(testInstance, resultsPaired):
+    "Saca para test el mayor porcentaje de instancias que comparte con los demás"
+    def commonInstancesPct(d1, d2):
+        common = set(d1.keys()) & set(d2.keys())
+        return len(common) / len(d1.keys())
+
+    pct = 0
+    for (train, test) in resultsPaired:
+        if pct < commonInstancesPct(testInstance, test):
+            pct = commonInstancesPct(testInstance, test)
+    return pct
+
 def bsas(dicc):
+    "Cantidad de instancias de bsas"
     return dict((k,v) for k, v in dicc.items() if v["place"] == "bsas")
 
 def cba(dicc):
+    "Cantidad de instancias de cba"
     return dict((k,v) for k, v in dicc.items() if v["place"] == "cba")
 
 def insertInBestDicc(i, dicc1, dicc2):
@@ -93,16 +107,6 @@ def insertInBestDicc(i, dicc1, dicc2):
 
 def resPairedToArff(resultsPaired, attributesFilter):
     items = ["userId", "phraseId", "attempt", "phrases"]
-
-    # for (train, test) in resultsPaired:
-    #     for k, v in train.items():
-    #         for i in items:
-    #             #v.pop(i)
-    #             pass
-    #     for k, v in test.items():
-    #         for i in items:
-    #             #v.pop(i)
-    #             pass
 
     i = 0
     for (train, test) in resultsPaired:
