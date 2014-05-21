@@ -2,7 +2,6 @@
 from __future__ import division
 
 from sets import Set
-from random import randint
 
 import diccToArff1 as dTA
 
@@ -12,6 +11,7 @@ import operator
 
 import multiprocessing
 import time
+import random
 
 path = os.path.abspath(os.getcwd())+'/tests/test_'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
@@ -38,33 +38,26 @@ def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"
 
     resultsPaired = []
 
-    while len(resultsPaired) < numGroups:
+    usersInTests = []
 
-        sorted_users = sorted(users.iteritems(), key=operator.itemgetter(1))
-        #print sorted_users
+    while len(resultsPaired) < numGroups:
 
         train = {}
         test = {}
 
-        while sorted_users:
+        #Armo test: una parte de usados + una parte nueva
+        balance = 0.2
+        size = 12
+        testUsers = []
+        if len(usersInTests) > balance * size:
+            testUsers = testUsers + random.sample(usersInTests, balance * size)
 
-            #sacar los 4 mayores y sacar al azar uno de ellos
-            #biggersUsers = sorted_users[-12:]
-            biggersUsers = sorted_users[:]   
-            userRandom = biggersUsers[randint(0, len(biggersUsers) - 1)]
+        testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int((1 - balance) * size))
+        test = dict((k,v) for k, v in dicc.items() if v["userId"] in testUsers)
 
-            #print 'userRandom: '+str(userRandom)
-
-            #obtener todas su informacion
-            userRandomDicc = dict((k,v) for k, v in dicc.items() if v["userId"] == userRandom[0])
-            
-            if (len(train) * balanceGroup["test"] < len(test) * balanceGroup["train"]):
-
-                insertInBestDicc(userRandomDicc, train, test, balanceRatio)
-            else:
-                insertInBestDicc(userRandomDicc, test, train, balanceRatio)
-
-            sorted_users.remove(userRandom)
+        #Armo train
+        trainUsers = [ x for x in users.keys() if x not in testUsers]
+        train = dict((k,v) for k, v in dicc.items() if v["userId"] in trainUsers)
 
         #me fijo que ese train test no lo tenga ya... y si las instancias son el 50% distintas
         pct = greaterCommonInstancesPct(test, resultsPaired)
