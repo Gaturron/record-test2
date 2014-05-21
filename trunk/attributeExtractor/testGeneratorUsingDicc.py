@@ -10,16 +10,20 @@ import os
 import pickle
 import operator
 
-path = os.path.abspath(os.getcwd())+'/tests/test2014-05-19'
+import multiprocessing
+import time
+
+path = os.path.abspath(os.getcwd())+'/tests/test_'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
-def generate(attributesFilter):
+def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}):
 
     #print dicc
 
     # Vamos a armar los casos de tests
     print "Casos de tests:"
     print "==============="
+    print "Parametros: "+str(commonPct)+" "+str(numGroups)+" "+str(balanceRatio)
 
     #ordenar por usuario y mayor aparicion
     users = {} 
@@ -30,11 +34,11 @@ def generate(attributesFilter):
         else:
             users[userId] = 1
 
-    print users
+    #print users
 
     resultsPaired = []
 
-    while len(resultsPaired) < 5:
+    while len(resultsPaired) < numGroups:
 
         sorted_users = sorted(users.iteritems(), key=operator.itemgetter(1))
         #print sorted_users
@@ -45,7 +49,8 @@ def generate(attributesFilter):
         while sorted_users:
 
             #sacar los 4 mayores y sacar al azar uno de ellos
-            biggersUsers = sorted_users[-12:]
+            #biggersUsers = sorted_users[-12:]
+            biggersUsers = sorted_users[:]   
             userRandom = biggersUsers[randint(0, len(biggersUsers) - 1)]
 
             #print 'userRandom: '+str(userRandom)
@@ -54,21 +59,23 @@ def generate(attributesFilter):
             userRandomDicc = dict((k,v) for k, v in dicc.items() if v["userId"] == userRandom[0])
             
             if (len(train) < len(test)):
-                insertInBestDicc(userRandomDicc, train, test)
+                insertInBestDicc(userRandomDicc, train, test, balanceRatio)
             else:
-                insertInBestDicc(userRandomDicc, test, train)
+                insertInBestDicc(userRandomDicc, test, train, balanceRatio)
 
             sorted_users.remove(userRandom)
 
         #me fijo que ese train test no lo tenga ya... y si las instancias son el 50% distintas
-        if ((train, test) not in resultsPaired) and (greaterCommonInstancesPct(test, resultsPaired) < 0.5):
+        pct = greaterCommonInstancesPct(test, resultsPaired)
+
+        if ((train, test) not in resultsPaired) and (pct < commonPct):
             resultsPaired = resultsPaired + [(train, test)]
             statusTrain = "train: ( bsas: "+str(len(bsas(train)))+" cba: "+str(len(cba(train)))+")"
             statusTest =  "test: ( bsas: "+str(len(bsas(test)))+" cba: "+str(len(cba(test)))+")"
-            print statusTrain+" "+statusTest
+            print statusTrain+" "+statusTest+" - "+str(pct)
 
     #resultsPaired tiene los test generados
-    resPairedToArff(resultsPaired, attributesFilter)
+    resPairedToArff(resultsPaired, attributesFilter, "conf_pct"+str(commonPct)+"_numGroups"+str(numGroups)+"_(bsas"+str(balanceRatio["bsas"])+"cba"+str(balanceRatio["cba"])+")")
 
 def greaterCommonInstancesPct(testInstance, resultsPaired):
     "Saca para test el mayor porcentaje de instancias que comparte con los demás"
@@ -90,9 +97,8 @@ def cba(dicc):
     "Cantidad de instancias de cba"
     return dict((k,v) for k, v in dicc.items() if v["place"] == "cba")
 
-def insertInBestDicc(i, dicc1, dicc2):
+def insertInBestDicc(i, dicc1, dicc2, balanceRatio = {"bsas": 60, "cba": 40}):
     "Inserta i en donde mejor quepa"
-    balanceRatio = {"bsas": 60, "cba": 40}
 
     place = [ v["place"] for k, v in i.items() ][0]
 
@@ -105,13 +111,15 @@ def insertInBestDicc(i, dicc1, dicc2):
     else:
         dicc1.update(i)
 
-def resPairedToArff(resultsPaired, attributesFilter):
-    items = ["userId", "phraseId", "attempt", "phrases"]
+def resPairedToArff(resultsPaired, attributesFilter, folder):
+
+    if not os.path.exists(path+'/'+folder):
+        os.makedirs(path+'/'+folder)
 
     i = 0
     for (train, test) in resultsPaired:
-        dTA.diccToArff(train, path+'/train'+str(i)+'.arff', attributesFilter)
-        dTA.diccToArff(test, path+'/test'+str(i)+'.arff', attributesFilter)        
+        dTA.diccToArff(train, path+'/'+folder+'/train'+str(i)+'.arff', attributesFilter)
+        dTA.diccToArff(test, path+'/'+folder+'/test'+str(i)+'.arff', attributesFilter)        
         i = i+1
 
 if __name__ == '__main__':
@@ -157,4 +165,21 @@ if __name__ == '__main__':
         'ACU_MinSC': ['NUMERIC' for i in range(mfcc_len)]
     }
 
-    generate(attributesFilter)
+    #Varias ejecuciones:
+    def lotsOfExecutions():
+        for balanceRatio in [{"bsas": 60, "cba": 40}, {"bsas": 55, "cba": 45}, {"bsas": 50, "cba": 50}]:
+            for numGroups in [5]:
+                for commonPct in [0.5, 0.45, 0.4, 0.38, 0.36, 0.35, 0.32, 0.3, 0.28, 0.25, 0.2, 0.1]:
+
+                    p = multiprocessing.Process(target= generate, name="generate", args=(attributesFilter, commonPct, numGroups, balanceRatio,))
+                    p.start()
+
+                    p.join(900)
+
+                    if p.is_alive():
+                        print "Paso el tiempo ... a matarlo"
+
+                        p.terminate()
+                        p.join()
+
+    lotsOfExecutions()
