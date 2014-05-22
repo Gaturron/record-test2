@@ -13,7 +13,7 @@ import multiprocessing
 import time
 import random
 
-path = os.path.abspath(os.getcwd())+'/tests/test_'
+path = os.path.abspath(os.getcwd())+'/tests/test_v2'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 70, "test": 30}):
@@ -46,13 +46,15 @@ def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"
         test = {}
 
         #Armo test: una parte de usados + una parte nueva
-        balance = 0.2
-        size = 12
+        balance = commonPct
+        size = len(users.keys())*1.6
         testUsers = []
-        if len(usersInTests) > balance * size:
-            testUsers = testUsers + random.sample(usersInTests, balance * size)
-
-        testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int((1 - balance) * size))
+        if len(usersInTests) > int(balance * size):
+            testUsers = testUsers + random.sample(usersInTests, int(balance * size))
+            testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int((1 - balance) * size))
+        else:
+            testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int(balance * size))
+            
         test = dict((k,v) for k, v in dicc.items() if v["userId"] in testUsers)
 
         #Armo train
@@ -178,4 +180,4 @@ if __name__ == '__main__':
 
     #lotsOfExecutions()
 
-    generate(attributesFilter, commonPct=0.3)
+    generate(attributesFilter, commonPct=0.2)
