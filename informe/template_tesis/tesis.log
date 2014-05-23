@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  14 MAY 2014 02:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  23 MAY 2014 00:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -815,86 +815,93 @@ LaTeX Info: Redefining \% on input line 589.
 Cap\'{\i }tulo 6.
 [25]
 
-LaTeX Warning: Citation `Cohen1995' on page 26 undefined on input line 664.
+LaTeX Warning: Citation `Cohen1995' on page 26 undefined on input line 667.
 
 
-LaTeX Warning: Citation `Quinlan1993' on page 26 undefined on input line 671.
+LaTeX Warning: Citation `Quinlan1993' on page 26 undefined on input line 674.
 
 
 LaTeX Warning: Citation `Platt98sequentialminimal' on page 26 undefined on inpu
-t line 680.
+t line 683.
 
-
-LaTeX Warning: Citation `DBLP:conf/flairs/Zhang04' on page 26 undefined on inpu
-t line 687.
-
-LaTeX Info: Redefining \. on input line 688.
-LaTeX Info: Redefining \% on input line 688.
+LaTeX Info: Redefining \. on input line 684.
+LaTeX Info: Redefining \% on input line 684.
 [26]
-LaTeX Info: Redefining \. on input line 736.
-LaTeX Info: Redefining \% on input line 736.
- [27]
-LaTeX Info: Redefining \. on input line 780.
-LaTeX Info: Redefining \% on input line 780.
+
+LaTeX Warning: Citation `DBLP:conf/flairs/Zhang04' on page 27 undefined on inpu
+t line 690.
+
+LaTeX Info: Redefining \. on input line 727.
+LaTeX Info: Redefining \% on input line 727.
+[27]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 781.
+LaTeX Info: Redefining \% on input line 781.
  [28]
-LaTeX Info: Redefining \. on input line 852.
-LaTeX Info: Redefining \% on input line 852.
- [29]
-LaTeX Info: Redefining \. on input line 887.
-LaTeX Info: Redefining \% on input line 887.
+LaTeX Info: Redefining \. on input line 828.
+LaTeX Info: Redefining \% on input line 828.
+
+[29]
+Underfull \vbox (badness 2189) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 885.
+LaTeX Info: Redefining \% on input line 885.
  [30]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 983.
-LaTeX Info: Redefining \% on input line 983.
+LaTeX Info: Redefining \. on input line 965.
+LaTeX Info: Redefining \% on input line 965.
  [31]
-LaTeX Info: Redefining \. on input line 1019.
-LaTeX Info: Redefining \% on input line 1019.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[32] <Images/weka-clustering.png, id=166, 1013.7875pt x 622.325pt>
+LaTeX Info: Redefining \. on input line 1020.
+LaTeX Info: Redefining \% on input line 1020.
+ [32]
+<Images/weka-clustering.png, id=166, 1013.7875pt x 622.325pt>
 File: Images/weka-clustering.png Graphic file (type png)
 
 <use Images/weka-clustering.png>
-Package pdftex.def Info: Images/weka-clustering.png used on input line 1021.
+Package pdftex.def Info: Images/weka-clustering.png used on input line 1024.
 (pdftex.def)             Requested size: 341.43437pt x 209.59355pt.
-LaTeX Info: Redefining \. on input line 1026.
-LaTeX Info: Redefining \% on input line 1026.
+LaTeX Info: Redefining \. on input line 1029.
+LaTeX Info: Redefining \% on input line 1029.
  [33 <./Images/weka-clustering.png>]
-LaTeX Info: Redefining \. on input line 1026.
-LaTeX Info: Redefining \% on input line 1026.
+LaTeX Info: Redefining \. on input line 1029.
+LaTeX Info: Redefining \% on input line 1029.
  [34
 
 ]
 Cap\'{\i }tulo 7.
 [35]
-LaTeX Info: Redefining \. on input line 1027.
-LaTeX Info: Redefining \% on input line 1027.
+LaTeX Info: Redefining \. on input line 1030.
+LaTeX Info: Redefining \% on input line 1030.
  [36
 
 ]
 Cap\'{\i }tulo 8.
 [37]
-LaTeX Info: Redefining \. on input line 1041.
-LaTeX Info: Redefining \% on input line 1041.
+LaTeX Info: Redefining \. on input line 1044.
+LaTeX Info: Redefining \% on input line 1044.
  [38
 
 ]
 Cap\'{\i }tulo 9.
 
-Underfull \vbox (badness 10000) detected at line 1068
+Underfull \vbox (badness 10000) detected at line 1071
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 1074--1074
+Underfull \hbox (badness 4217) in paragraph at lines 1077--1077
 \OT1/cmr/m/n/10.95 'ra'], ['Bes*'], ['kojn', 'si*', 'De'], ['kon'], ['la'],
  []
 
 [39]
-LaTeX Info: Redefining \. on input line 1098.
-LaTeX Info: Redefining \% on input line 1098.
- [40] [41]
 LaTeX Info: Redefining \. on input line 1101.
 LaTeX Info: Redefining \% on input line 1101.
+ [40] [41]
+LaTeX Info: Redefining \. on input line 1104.
+LaTeX Info: Redefining \% on input line 1104.
  [42
 
 ]
@@ -913,7 +920,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  5553 strings out of 493307
  74916 string characters out of 6139905
- 202695 words of memory out of 5000000
+ 215695 words of memory out of 5000000
  8891 multiletter control sequences out of 15000+600000
  10762 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -930,7 +937,7 @@ amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb>
-Output written on tesis.pdf (52 pages, 1727937 bytes).
+Output written on tesis.pdf (52 pages, 1728107 bytes).
 PDF statistics:
  241 PDF objects out of 1000 (max. 8388607)
  157 compressed objects within 2 object streams

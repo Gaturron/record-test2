@@ -610,6 +610,9 @@ La complejidad del problema y la forma en que fue realizado el experimento nos l
 
 Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Vamos a dividir los grupos de train y test eligiendo al azar hablantes. Cuando tomemos un hablante al azar, debemos agregar todos sus audios grabados. En el siguiente pseudocódigo se explica la metodología. 
 
+Nuevo:
+Vamos a generar el test de cross validation de la siguiente forma. Iremos generando conjuntos de instancias para train y test. Pero con una salvedad. Para armar el conjunto de test vamos a utilizar el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, vamos a regular la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Algo importante es que la cantidad de instancias en test es la mitad que el train. Esto es para poder utilizar instancias nuevas en los 5 conjuntos utilizados. 
+
 \lstset{ %
 language=C++,                % choose the language of the code
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code

@@ -45,7 +45,7 @@
 \contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{26}
 \contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{26}
 \contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{26}
-\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{26}
+\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{27}
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{27}
 \contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{27}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{28}
@@ -54,7 +54,7 @@
 \contentsline {subsection}{\numberline {6.5.1}Wilcox y Student Test}{29}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{29}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{30}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{31}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{32}
 \contentsline {section}{\numberline {6.8}Clustering}{32}
 \contentsline {chapter}{\numberline {7.}Conclusiones}{35}
 \contentsline {chapter}{\numberline {8.}Trabajos futuros}{37}
