@@ -606,12 +606,11 @@ Utilizamos la herramienta de Machine Learning Weka para poder hacer el análisis
 
 \section{Modelo de testing}
 
-La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en 2 grupos, uno lo usaríamos para entrenar y otro para testear. Podría surgir el problema de que un hablante tenga audios en el conjunto de training y en el de testing. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
+La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en 2 grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
 
-Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Vamos a dividir los grupos de train y test eligiendo al azar hablantes. Cuando tomemos un hablante al azar, debemos agregar todos sus audios grabados. En el siguiente pseudocódigo se explica la metodología. 
+Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Vamos a dividir a los hablantes en los 2 conjuntos. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante puede llegar a aportar 30 grabaciones mientras que otro sólo puede aportar 5. Tomando en cuenta esto la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Vamos a descartar estos casos y tomaremos que el conjunto de train va a tener el 70\% de las instancias mientras que el restante 30\% va a ser destinado para test.
 
-Nuevo:
-Vamos a generar el test de cross validation de la siguiente forma. Iremos generando conjuntos de instancias para train y test. Pero con una salvedad. Para armar el conjunto de test vamos a utilizar el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, vamos a regular la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Algo importante es que la cantidad de instancias en test es la mitad que el train. Esto es para poder utilizar instancias nuevas en los 5 conjuntos utilizados. 
+Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar eso vamos a generar el test de cross validation de la siguiente forma: Iremos generando conjuntos de instancias para train y test, pero con una salvedad. Para armar el conjunto de test vamos a utilizar el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, vamos a regular la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto es para poder utilizar instancias nuevas en los 5 conjuntos utilizados. 
 
 \lstset{ %
 language=C++,                % choose the language of the code
@@ -634,25 +633,34 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 \begin{lstlisting}
     Generador de Test:
     Input: conjunto audios
-    Output: < conjunto train, conjunto test >
-    train <- audios
+    Output: conjunto de < conjunto train, conjunto test >
+
+    resultado <- {} 
+    train <- {}
     test <- {}
-    mientras percentage < 0.1:
-        hablante_BsAs <- Elegir al azar(audios)
-        grabaciones_BsAs <- ObtenerGrabaciones(hablante_BsAs, audios)
-    
-        hablante_Cba <- Elegir al azar(audios)
-        grabaciones_Cba <- ObtenerGrabaciones(hablante_Cba, audios)
-    
-        tests <- tests U grabaciones_BsAs U grabaciones_Cba
-        train <- train - grabaciones_BsAs - grabaciones_Cba
-    
-        percentage <- Tam(test) / Tam(train) 
-    
-    Devolver <train, test>
+    hablantesEnTests <- {}
+
+    hablantes <- ObtenerHablantes(audios)
+    tamTest <- tam(hablantes)
+
+    Repetir 5 veces:
+
+    	  hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2)
+    	  hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8)
+    	  hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
+
+    	  test <- ObtenerAudios(hablantesTest, audios)
+
+    	  train <- ObtenerAudios(hablantes - hablantesTest, audios)
+
+    	  Si < train, test > no esta en resultado y porcentajeMaximoDeSimilitud(test, resultado, 0.2):
+    	  			Agregar <train, test> a resultado
+    	  			Agregar hablantesTest a hablantesEnTests
+
+    Devolver resultado
 \end{lstlisting}
 
-Este proceso lo debemos realizar 10 veces para poder evitar que hayamos tenido suerte al generar el test. Luego de generado estos 10 pares de grupos de train y test vamos a utilizarlos para entrenar clasificadores.
+Este proceso lo debemos realizar 5 veces para poder evitar que hayamos tenido suerte al generar el test. Luego de generado estos 5 pares de grupos de train y test vamos a utilizarlos para entrenar clasificadores.
 
 \section{Clasificadores}
 

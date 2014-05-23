@@ -93,20 +93,6 @@ def cba(dicc):
     "Cantidad de instancias de cba"
     return dict((k,v) for k, v in dicc.items() if v["place"] == "cba")
 
-def insertInBestDicc(i, dicc1, dicc2, balanceRatio = {"bsas": 60, "cba": 40}):
-    "Inserta i en donde mejor quepa"
-
-    place = [ v["place"] for k, v in i.items() ][0]
-
-    if(( len(bsas(dicc1)) * balanceRatio["cba"] < len(cba(dicc1)) * balanceRatio["bsas"] and place == "bsas")
-    or ( len(bsas(dicc1)) * balanceRatio["cba"] > len(cba(dicc1)) * balanceRatio["bsas"] and place == "cba")):
-        dicc1.update(i)
-    elif(( len(bsas(dicc2)) * balanceRatio["cba"] < len(cba(dicc2)) * balanceRatio["bsas"] and place == "bsas")
-    or   ( len(bsas(dicc2)) * balanceRatio["cba"] > len(cba(dicc2)) * balanceRatio["bsas"] and place == "cba")):
-        dicc2.update(i)
-    else:
-        dicc1.update(i)
-
 def resPairedToArff(resultsPaired, attributesFilter, folder):
 
     if not os.path.exists(path+'/'+folder):
