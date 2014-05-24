@@ -12,18 +12,19 @@ import operator
 import multiprocessing
 import time
 import random
+import sys
 
-path = os.path.abspath(os.getcwd())+'/tests/test_v2'
+path = os.path.abspath(os.getcwd())+'/tests/test_vf'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
-def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 70, "test": 30}):
+def generate(attributesFilter, commonPct = 0.2, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 70, "test": 30}):
 
     #print dicc
 
     # Vamos a armar los casos de tests
     print "Casos de tests:"
     print "==============="
-    print "Parametros: "+str(commonPct)+" "+str(numGroups)+" "+str(balanceRatio)
+    print "Parametros: "+str(commonPct)+" "+str(numGroups)+" "+str(balanceRatio)+" "+str(balanceGroup)
 
     #ordenar por usuario y mayor aparicion
     users = {} 
@@ -47,14 +48,21 @@ def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"
 
         #Armo test: una parte de usados + una parte nueva
         balance = commonPct
-        size = len(users.keys())*1.6
+        size = int(len(users.keys()) * 0.01 * balanceGroup["test"])
         testUsers = []
-        if len(usersInTests) > int(balance * size):
-            testUsers = testUsers + random.sample(usersInTests, int(balance * size))
-            testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int((1 - balance) * size))
-        else:
-            testUsers = testUsers + random.sample( [ x for x in users.keys() if x not in usersInTests], int(balance * size))
-            
+
+        usersNotInTests = [ x for x in users.keys() if x not in usersInTests]
+        #print "size: "+str(size)+"usersInTests: "+str(len(usersInTests))+" usersNotInTests "+str(len(usersNotInTests))
+        if len(usersInTests) > int(balance * size) and len(usersNotInTests) > int((1 - balance) * size):
+            testUsers = testUsers + random.sample( usersInTests, int(balance * size))
+            testUsers = testUsers + random.sample( usersNotInTests, int((1 - balance) * size))
+            #print " usados: "+ str(int(balance * size))+" nuevos: "+ str(int((1 - balance) * size))
+        elif len(usersNotInTests) > int(size):
+            testUsers = testUsers + random.sample(usersNotInTests, int(size))
+            #print " nuevos: "+ str(int((1 - balance) * size))
+        else: 
+            sys.exit("No hay mas instancias en usersInTests o en usersNotInTests")
+
         test = dict((k,v) for k, v in dicc.items() if v["userId"] in testUsers)
 
         #Armo train
@@ -64,8 +72,9 @@ def generate(attributesFilter, commonPct = 0.5, numGroups = 5, balanceRatio = {"
         #me fijo que ese train test no lo tenga ya... y si las instancias son el 50% distintas
         pct = greaterCommonInstancesPct(test, resultsPaired)
 
-        if ((train, test) not in resultsPaired) and (pct < commonPct):
+        if ((train, test) not in resultsPaired) and (pct < commonPct) and balanceCheck(train, balanceRatio) and balanceCheck(test, balanceRatio):
             resultsPaired = resultsPaired + [(train, test)]
+            usersInTests = usersInTests + testUsers
             statusTrain = "train: ( bsas: "+str(len(bsas(train)))+" cba: "+str(len(cba(train)))+" => Tot: "+str(len(cba(train))+len(bsas(train)))+")"
             statusTest =  "test: ( bsas: "+str(len(bsas(test)))+" cba: "+str(len(cba(test)))+" => Tot: "+str(len(cba(test))+len(bsas(test)))+")"
             print statusTrain+" "+statusTest+" - "+str(pct)
@@ -92,6 +101,16 @@ def bsas(dicc):
 def cba(dicc):
     "Cantidad de instancias de cba"
     return dict((k,v) for k, v in dicc.items() if v["place"] == "cba")
+
+def balanceCheck(dicc, balanceRatio = {"bsas": 60, "cba": 40}):
+    size = len(dicc)
+    bsas = len(dict((k,v) for k, v in dicc.items() if v["place"] == "bsas"))
+    cba = len(dict((k,v) for k, v in dicc.items() if v["place"] == "cba"))
+
+    ckBsas = size * balanceRatio["bsas"] * 0.006 <= bsas <= size * balanceRatio["bsas"] * 0.014
+    ckCba = size * balanceRatio["cba"] * 0.006 <= cba <= size * balanceRatio["cba"] * 0.014
+
+    return ckBsas and ckCba 
 
 def resPairedToArff(resultsPaired, attributesFilter, folder):
 
@@ -148,22 +167,22 @@ if __name__ == '__main__':
     }
 
     #Varias ejecuciones:
-    def lotsOfExecutions():
-        for balanceRatio in [{"bsas": 60, "cba": 40}, {"bsas": 55, "cba": 45}, {"bsas": 50, "cba": 50}]:
-            for numGroups in [5]:
-                for commonPct in [0.5, 0.45, 0.4, 0.38, 0.36, 0.35, 0.32, 0.3, 0.28, 0.25, 0.2, 0.1]:
+    # def lotsOfExecutions():
+    #     for balanceRatio in [{"bsas": 60, "cba": 40}, {"bsas": 55, "cba": 45}, {"bsas": 50, "cba": 50}]:
+    #         for numGroups in [5]:
+    #             for commonPct in [0.5, 0.45, 0.4, 0.38, 0.36, 0.35, 0.32, 0.3, 0.28, 0.25, 0.2, 0.1]:
 
-                    p = multiprocessing.Process(target= generate, name="generate", args=(attributesFilter, commonPct, numGroups, balanceRatio,))
-                    p.start()
+    #                 p = multiprocessing.Process(target= generate, name="generate", args=(attributesFilter, commonPct, numGroups, balanceRatio,))
+    #                 p.start()
 
-                    p.join(900)
+    #                 p.join(900)
 
-                    if p.is_alive():
-                        print "Paso el tiempo ... a matarlo"
+    #                 if p.is_alive():
+    #                     print "Paso el tiempo ... a matarlo"
 
-                        p.terminate()
-                        p.join()
+    #                     p.terminate()
+    #                     p.join()
 
     #lotsOfExecutions()
 
-    generate(attributesFilter, commonPct=0.2)
+    generate(attributesFilter, commonPct=0.5)
