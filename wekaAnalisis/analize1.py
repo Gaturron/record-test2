@@ -105,7 +105,7 @@ if len(sys.argv) != 2:
 #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 path = sys.argv[1]
 
-for i in range(10):
+for i in range(5):
 
     file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)

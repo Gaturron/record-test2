@@ -1,6 +1,9 @@
 webpage:
 http://weka.wikispaces.com/Use+Weka+in+your+Java+code
 
-Acordarse de ejecutar
-
+Acordarse de ejecutar:
 export CLASSPATH=$CLASSPATH:/home/fernando/Tesis/weka-3-6-10/weka.jar
+
+Scripts:
+analize1.py: porcentajes de cada clasificador
+statAnalysis.py: se fija si significativamente es relevante con R

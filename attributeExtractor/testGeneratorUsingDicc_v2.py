@@ -17,7 +17,7 @@ import sys
 path = os.path.abspath(os.getcwd())+'/tests/test_vf'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
-def generate(attributesFilter, commonPct = 0.2, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 70, "test": 30}):
+def generate(attributesFilter, commonPct = 0.2, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 75, "test": 25}):
 
     #print dicc
 
@@ -185,4 +185,4 @@ if __name__ == '__main__':
 
     #lotsOfExecutions()
 
-    generate(attributesFilter, commonPct=0.5)
+    generate(attributesFilter, commonPct=0.2)

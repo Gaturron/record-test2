@@ -41,16 +41,16 @@
 \contentsline {chapter}{\numberline {6.}An\IeC {\'a}lisis}{25}
 \contentsline {section}{\numberline {6.1}Baseline}{25}
 \contentsline {section}{\numberline {6.2}Modelo de testing}{25}
-\contentsline {section}{\numberline {6.3}Clasificadores}{26}
-\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{26}
-\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{26}
-\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{26}
+\contentsline {section}{\numberline {6.3}Clasificadores}{27}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{27}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{27}
+\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{27}
 \contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{27}
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{27}
-\contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{27}
+\contentsline {subsection}{\numberline {6.4.1}Wilcox Test}{28}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{28}
 \contentsline {subsection}{\numberline {6.4.3}Student Test}{28}
-\contentsline {section}{\numberline {6.5}Resultados}{28}
+\contentsline {section}{\numberline {6.5}Resultados}{29}
 \contentsline {subsection}{\numberline {6.5.1}Wilcox y Student Test}{29}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{29}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{30}
