@@ -1,6 +1,7 @@
-\documentclass[11pt,a4paper,twoside]{tesis}
+%\documentclass[11pt,a4paper,twoside]{tesis}
 % SI NO PENSAS IMPRIMIRLO EN FORMATO LIBRO PODES USAR
 %\documentclass[11pt,a4paper]{tesis}
+\documentclass[a4paper,12pt,twoside]{book}
 
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -11,6 +12,9 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage{longtable}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=15cm, height=8cm}
 
 \graphicspath{ {Images/} }
 
@@ -715,7 +719,7 @@ Más adelante describiremos los parámetros utilizados para cada uno.
 
 \section{Tests estadísticos}
 
-Vamos a utilizar los resultados de cada clasificador para ver si los resultados son significativamente relevantes. Los resultados que vamos a utilizar van a ser el vector resultante de los 10 grupos de tests utilizando el clasificador ZeroR contrastado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO, NaiveBayes.
+Vamos a utilizar los resultados de cada clasificador para ver si los resultados son significativamente relevantes. Los resultados que vamos a utilizar van a ser el vector resultante de los 5 grupos de tests utilizando el clasificador ZeroR contrastado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO, NaiveBayes.
 Para ello vamos a realizar dos principales tests: Wilcoxon signed-rank y Test de Student. 
 
 \subsection{Wilcox Test}
@@ -728,7 +732,7 @@ Primero realizaremos Wilcox Test ya que necesita menos presunciones. Para realiz
     %Each pair is chosen randomly and independently.
     \item Cada par es elegído al azar y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
     %The data are measured at least on an ordinal scale, but need not be normal.
-    \item Los datos estan medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
+    \item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
 \end{itemize}
 
 El input del mismo va a ser el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis van a ser:
@@ -793,10 +797,37 @@ Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para l
 \textbf{Test 3}  & 69 & 72 & 69 & 86 & 75\\ \hline
 \textbf{Test 4}  & 69 & 54 & 69 & 75 & 64\\ \hline
 \textbf{Test 5}  & 60 & 73 & 60 & 67 & 71\\ \hline
+\hline \hline
+\textbf{Promedio}  & 63 & 60 & 63 & 70 & 72 \\ \hline
 \end{tabular}
 \end{table}
 
 donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así sucesivamente.
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Porcentaje de cada clasificador en cada tests},
+    xlabel={Tests},
+    ylabel={Porcentaje},
+    xmin=0, xmax=6,
+    ymin=20, ymax=100,
+    xtick={1,2,3,4,5},
+    ytick={20,40,60,80,100},
+    legend pos=south west,
+    ymajorgrids=true,
+    grid style=dashed,
+] 
+\addplot[color=red,mark=square,]coordinates {
+    (1,55)(2,65)(3,69)(4,69)(5,60) };\addlegendentry{ZeroR}
+\addplot[color=blue,mark=square,]coordinates {
+    (1,57)(2,48)(3,72)(4,54)(5,73) };\addlegendentry{JRip}
+\addplot[color=green,mark=square,]coordinates {
+    (1,61)(2,65)(3,86)(4,75)(5,67) };\addlegendentry{Function SMO}
+\addplot[color=black,mark=square,]coordinates {
+    (1,78)(2,75)(3,75)(4,64)(5,71) };\addlegendentry{NaiveBayes}
+ 
+\end{axis}
+\end{tikzpicture}
 
 \subsection{Wilcox y Student Test}
 
