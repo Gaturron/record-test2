@@ -1033,47 +1033,6 @@ SIL + FON + ACU & 57.4468 & 59.5745 \\ \hline
 \end{table}
 
 Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atrbutos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
-
-\section{Clustering}
-
-Vamos a aplicar un algoritmo de Clustering para nuestro conjunto de datos. El mismo corresponde al algoritmo K-Means utilizando como función de distancia la euclideana. La cantidad de grupos va a ser dos por cada grupo de clasificación. Los atributos utilizados para calcularlo fueron los fonéticos y silábicos. Utilizando dos iteraciones, los centroides encontrados para cada atributo fueron:
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|c|}
-\hline                                 
-Attribute & Full Data (304)& Cluster 0 (215) & Cluster 1 (89) \\ \hline
-\hline 
-FON\_Sfinal\_norm                  &  -3.0914  &  -0.1208  & -10.2674 \\ \hline
-FON\_Sfinal\_normhd                &  47.5851  &  50.3944  &  40.7985 \\ \hline 
-FON\_consonant\_norm               &  -5.3549  &  -4.3661  &  -7.7437 \\ \hline
-FON\_consonant\_normhd             &  48.1372  &  50.2145  &   43.119 \\ \hline
-FON\_kt\_norm                      & -17.4269  & -16.4959  & -19.6759 \\ \hline
-FON\_kt\_normhd                    &  31.3212  &  31.9983  &  29.6855 \\ \hline
-FON\_ll\_norm                      &   9.2458  &  12.1903  &   2.1326 \\ \hline
-FON\_ll\_normhd                    &  63.1703  &  65.9467  &  56.4633 \\ \hline
-FON\_rr\_norm                      &  -2.6304  &   -1.203  &  -6.0788 \\ \hline
-FON\_rr\_normhd                    &  55.9126  &  58.0582  &  50.7295 \\ \hline
-FON\_sc\_norm                      &        0  &        0  &        0 \\ \hline
-FON\_sc\_normhd                    &        0  &        0  &        0 \\ \hline
-FON\_vowel\_norm                   &   6.7144  &    5.478  &   9.7011 \\ \hline
-FON\_vowel\_normhd                 &  60.2065  &  60.0586  &  60.5638 \\ \hline
-SIL\_prevSyllableAccent\_norm      &  -2.1108  &  -2.6443  &   -0.822 \\ \hline
-SIL\_prevSyllableAccent\_normhd    &  52.8959  &  51.0182  &  57.4318 \\ \hline
-SIL\_syllableAccent\_norm          &   6.4228  &   6.4887  &   6.2638 \\ \hline
-SIL\_syllableAccent\_normhd        &  61.4295  &  60.1512  &  64.5176 \\ \hline
-
-\end{tabular}
-\end{table}
-
-Se puede notar que para cada cluster los centroides de cada atributo se diferencian en varios valores. De esta forma podemos ver que creando dos grupos se puede ver marcada la diferencia en cada atributo. Se puede analizar estas diferencias utilizando un gráfico. Graficando en el eje x FON\_ll\_norm podemos ver las distintas instancias y como se agrupa del lado izquierdo el grupo de córdoba y del lado derecho Buenos Aires.
-
-\begin{figure}[h!]
-    \centerline{\includegraphics[width=0.8\textwidth]{weka-clustering} }
-    \caption{Visualizador de Clustering}
-    \label{click_final}
-\end{figure}
- 
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
 
