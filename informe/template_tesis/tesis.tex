@@ -806,25 +806,29 @@ donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así 
 
 \begin{tikzpicture}
 \begin{axis}[
+	width=16cm,
+	height=10cm,
+	xmayorgrids,
+	ymayorgrids,
     title={Porcentaje de cada clasificador en cada tests},
     xlabel={Tests},
     ylabel={Porcentaje},
     xmin=0, xmax=6,
-    ymin=20, ymax=100,
+    ymin=40, ymax=90,
     xtick={1,2,3,4,5},
     ytick={20,40,60,80,100},
-    legend pos=south west,
+    legend pos=south east,
     ymajorgrids=true,
-    grid style=dashed,
+    grid style=dashed
 ] 
-\addplot[color=red,mark=square,]coordinates {
-    (1,55)(2,65)(3,69)(4,69)(5,60) };\addlegendentry{ZeroR}
-\addplot[color=blue,mark=square,]coordinates {
-    (1,57)(2,48)(3,72)(4,54)(5,73) };\addlegendentry{JRip}
-\addplot[color=green,mark=square,]coordinates {
-    (1,61)(2,65)(3,86)(4,75)(5,67) };\addlegendentry{Function SMO}
-\addplot[color=black,mark=square,]coordinates {
-    (1,78)(2,75)(3,75)(4,64)(5,71) };\addlegendentry{NaiveBayes}
+\addplot[mark=square*,dash pattern=on 10pt off 2pt on 10pt off 2pt]coordinates {
+    (1,55)(2,65)(3,69)(4,69)(5,60) };\addlegendentry{ZeroR};
+\addplot[mark=diamond*,dash pattern=on 10pt off 2pt on 3pt off 2pt]coordinates {
+    (1,57)(2,48)(3,72)(4,54)(5,73) };\addlegendentry{JRip};
+\addplot[mark=triangle*,dashed]coordinates {
+    (1,61)(2,65)(3,86)(4,75)(5,67) };\addlegendentry{Function SMO};
+\addplot[mark=square*,]coordinates {
+    (1,78)(2,75)(3,75)(4,64)(5,71) };\addlegendentry{NaiveBayes};
  
 \end{axis}
 \end{tikzpicture}
@@ -1016,21 +1020,57 @@ FON\_vowel\_normhd \\ \hline
 Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Vamos a agregar los tipos de atributos y vamos a analizar como se incrementa el porcentaje de exactitud para la clasificación. El conjunto de datos utilizado es el \textit{test0} y se utiliza \textit{JRip} como clasificador.
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|c|c|}
+\begin{tabular}{|l|c|}
 \hline
-\textbf{}  & \textbf{Porcentaje  JRip}  & \textbf{Porcentaje  NaiveBayes}   \\ \hline
-Baseline & 44.6809 & 44.6809 \\ \hline
-SIL & 42.5532 & 53.1915 \\ \hline
-FON & 55.3191 & 57.4468 \\ \hline
-ACU & 55.3191 & 59.5745 \\ \hline
-SIL + FON & 42.5532 & 57.4468 \\ \hline
-FON + ACU & 53.1915 & 61.7021 \\ \hline
-SIL + ACU & 57.4468 &  61.7021 \\ \hline
-SIL + FON + ACU & 57.4468 & 59.5745 \\ \hline
+\textbf{}  & \textbf{NaiveBayes}   \\ \hline
+SIL + FON + ACU & 59.5745 \\ \hline
+SIL + FON & 57.4468 \\ \hline
+FON + ACU & 61.7021 \\ \hline
+SIL + ACU & 61.7021 \\ \hline
+SIL &  53.1915 \\ \hline
+FON &  57.4468 \\ \hline
+ACU &  59.5745 \\ \hline
+Baseline &  44.6809 \\ \hline
 \end{tabular}
 \end{table}
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    title={Porcentaje de cada grupo en cada tests},
+    xlabel={Tests},
+    ylabel={Porcentaje},
+    xmin=0, xmax=6,
+    ymin=0, ymax=100,
+    xtick={1,2,3,4,5},
+    ytick={0,20,40,60,80,100},
+    ymajorgrids=true,
+    grid style=dashed,
+] 
+\addplot[mark=triangle*,densely dashdotted, line width=1pt]coordinates {
+    (1,10)(2,10)(3,10)(4,10)(5,10) };
+\addplot[mark=triangle,dashdotted, line width=1pt]coordinates {
+    (1,20)(2,20)(3,20)(4,20)(5,20) };
+\addplot[mark=otimes*,densely dashedline width=1pt]coordinates {
+    (1,30)(2,30)(3,30)(4,30)(5,30) };
+\addplot[mark=otimes,dash pattern=on 8pt off 2pt on 8pt off 2pt,line width=1pt]coordinates {
+    (1,40)(2,40)(3,40)(4,40)(5,40) };
+\addplot[mark=diamond*,dash pattern=on 6pt off 2pt on 6pt off 6pt,line width=1pt]coordinates {
+    (1,50)(2,50)(3,50)(4,50)(5,50) };
+\addplot[mark=square*,dotted]coordinates {
+    (1,60)(2,60)(3,60)(4,60)(5,60) };
+\addplot[mark=diamond*,dashed]coordinates {
+    (1,70)(2,70)(3,70)(4,70)(5,70) };
+\addplot[mark=square,solid,]coordinates {
+    (1,80)(2,80)(3,80)(4,80)(5,80) };
+
+\node [left] at (axis cs: 1,  10) {Baseline};
+
+\end{axis}
+\end{tikzpicture}
 
 Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atrbutos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
 \chapter{Conclusiones}

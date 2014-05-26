@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.2)  25 MAY 2014 17:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.30)  26 MAY 2014 15:03
 entering extended mode
  %&-line parsing enabled.
 **tesis.tex
@@ -963,12 +963,6 @@ File: Images/categorizando_audios.png Graphic file (type png)
 <use Images/categorizando_audios.png> [14] [15 <./Images/categorizando_audios.p
 ng (PNG copy)>] [16]
 Cap\'{\i }tulo 4.
-
-LaTeX Warning: Citation `prosodylab' on page 17 undefined on input line 373.
-
-
-LaTeX Warning: Citation `rabiner' on page 17 undefined on input line 378.
-
 [17
 
 ] <Images/diagrama_workflow.jpg, id=115, 300.12125pt x 316.18124pt>
@@ -997,17 +991,155 @@ copy)> <./Images/click_al_final_inf.png (PNG copy)>] [26]
 Cap\'{\i }tulo 6.
 [27
 
-] [28]
+] [28] [29] [30]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Citation `Cohen1995' on page 29 undefined on input line 693.
+ [31]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 
 
-LaTeX Warning: Citation `Quinlan1993' on page 29 undefined on input line 700.
+! Package pgfkeys Error: I do not know the key '/tikz/xmayorgrids' and I am goi
+ng to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.833 \end{axis}
+                
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/ymayorgrids' and I am goi
+ng to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.833 \end{axis}
+                
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/legend pos' and I am goin
+g to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.833 \end{axis}
+                
+? 
+
+Overfull \hbox (39.58002pt too wide) in paragraph at lines 834--835
+[][] 
+ []
 
 
-LaTeX Warning: Citation `Platt98sequentialminimal' on page 29 undefined on inpu
-t line 709.
+Underfull \vbox (badness 4156) has occurred while \output is active []
 
-[29]
+ [32]
+[33] [34]
+Underfull \vbox (badness 5533) has occurred while \output is active []
 
-LaTeX Warn
+ [35]
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline width'
+ and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1072 \end{axis}
+                 
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline width'
+ and I am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1072 \end{axis}
+                 
+? 
+
+Overfull \hbox (11.12543pt too wide) in paragraph at lines 1073--1074
+[][] 
+ []
+
+[36]
+Cap\'{\i }tulo 7.
+[37
+
+] [38
+
+]
+Cap\'{\i }tulo 8.
+[39] [40
+
+]
+Cap\'{\i }tulo 9.
+
+Underfull \hbox (badness 1590) in paragraph at lines 1105--1105
+[]|\OT1/cmr/m/n/12 'caminante no hay ca-
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 1114--1114
+[]|\OT1/cmr/m/n/12 'la sue-gra y el doc-tor
+ []
+
+
+Underfull \hbox (badness 5403) in paragraph at lines 1115--1115
+[]|\OT1/cmr/m/n/12 'a la mu-jer pi-ca-res-ca
+ []
+
+
+Underfull \hbox (badness 4242) in paragraph at lines 1116--1116
+[]|\OT1/cmr/m/n/12 'quien siem-bra vien-tos
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1118
+ []
+
+
+Underfull \hbox (badness 3746) in paragraph at lines 1119--1119
+[]|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
+ []
+
+[41] [42] [43] [44
+
+] (./tesis.bbl) [45
+
+] (./tesis.aux) ) 
+Here is how much of TeX's memory you used:
+ 16720 strings out of 493848
+ 342988 string characters out of 1152823
+ 482533 words of memory out of 3000000
+ 19634 multiletter control sequences out of 15000+50000
+ 10409 words of font info for 36 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 63i,17n,69p,1404b,1827s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
+0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr1
+7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tesis.pdf (55 pages, 1620362 bytes).
+PDF statistics:
+ 246 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+
