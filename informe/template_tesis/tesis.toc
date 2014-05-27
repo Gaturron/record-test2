@@ -54,7 +54,8 @@
 \contentsline {subsection}{\numberline {6.5.1}Wilcox y Student Test}{32}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{33}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{34}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{36}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{35}
 \contentsline {chapter}{\numberline {7}Conclusiones}{37}
 \contentsline {chapter}{\numberline {8}Trabajos futuros}{39}
 \contentsline {chapter}{\numberline {9}Ap\IeC {\'e}ndice: marcas pros\IeC {\'o}dicas}{41}
+\contentsline {chapter}{\numberline {10}Ap\IeC {\'e}ndice: nomenclatura de atributos}{45}

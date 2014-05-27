@@ -212,7 +212,7 @@ La mínima cantidad de grabaciones que puede realizar un hablante son 5 grabacio
 
 Debemos definir qué frases y en que orden se debe decir durante el experimento. Sucede que el orden que utilicemos va a ser crucial para tener muestras. No es lo mismo empezar por una frase que sólo referencia a una regla que a varias. Si referencia a varias reglas a la vez, en un sólo audio podremos sacarle más información.
 
-Una traza es una lista de las frases que puede grabar un hablante. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden. Optamos por tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10.000 trazas generadas. 
+Una traza es una lista de las frases que puede grabar un hablante. Un hablante al empezar se le dará una de estas y grabará sucesivamente en ese orden. Elegimos tener precalculada las trazas para evitar cálculos innecesarios a la hora de empezar el experimento. Es por eso que guardamos 10.000 trazas generadas. 
 
 La generación de trazas sigue el siguiente algoritmo:
 
@@ -347,7 +347,7 @@ Luego de obtener varios audios podemos exportar todos los datos a traves de urls
 
 Debemos evitar grabar audios saturados. Para ello se nos ocurrió medir el volumen de la grabación cuando sucede la misma. El resultado es una serie de valores entre 0 a 100. Sobre estos valores vamos a calcular el máximo y el mínimo. Si el primero es mayor a un cierto umbral (o sea mayor a 80) quiere decir que en la grabación se saturó en algún momento. Si el mínimo es menor a un cierto umbral (o sea menor a 20 por ejemplo) quiere decir que hay mucho sonido ambiente. En cualquiera de los dos casos podemos pedirle al usuario que grabe devuelta el experimento. De esta forma podemos filtar audios que no nos servirán para reconocer el acento.
 
-Si bien esta característica esta fue programada, no fue utilizada en la recolección de datos. El motivo fue que queríamos chequear cuan bien funcionaba la herramienta sin filtros y con completa participación de los usuarios. Otro motivo fue la paciencia de los hablantes. Puede suceder que al tratar de grabar no logre un ambiente beneficioso para grabar. Esto quiere decir que aunque quiera grabar el filtro rechace todos sus audios. También notamos que había grabaciones que dieron mal el filtrado del volumen pero la grabación era buena. Esto no lo queremos como primer experimento del framework. Por eso optamos por aceptar todos sus audios.
+Si bien esta característica esta fue programada, no fue utilizada en la recolección de datos. El motivo fue que queríamos chequear cuan bien funcionaba la herramienta sin filtros y con completa participación de los usuarios. Otro motivo fue la paciencia de los hablantes. Puede suceder que al tratar de grabar no logre un ambiente beneficioso para grabar. Esto quiere decir que aunque quiera grabar el filtro rechace todos sus audios. También notamos que había grabaciones que dieron mal el filtrado del volumen pero la grabación era buena. Esto no lo queremos como primer experimento del framework. Por eso elegimos aceptar todos sus audios.
 
 Para los audios que salieron saturados, más adelante vamos a realizar un estudio para intentar sacarles el ruido y de esta forma intentar rescatarlos.
 
@@ -808,8 +808,6 @@ donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así 
 \begin{axis}[
 	width=16cm,
 	height=10cm,
-	xmayorgrids,
-	ymayorgrids,
     title={Porcentaje de cada clasificador en cada tests},
     xlabel={Tests},
     ylabel={Porcentaje},
@@ -989,32 +987,6 @@ Los demás atributos son entendibles a la hora de analizar su ganancia de inform
 %\end{tabular}
 %\end{table}
 
-\subsection*{Attribute Evaluator: ClassifierSubsetEvaluator}
-
-En este análisis utilizamos ClassifierSubsetEvaluator utilizando el clasificador JRip. El método de búsqueda fue GreedyStepwise. La idea es encontrar un subconjunto que pueda mejorar los porcentajes del clasificador propuesto. Primero se va a entrenar con un subconjunto de atributos, luego se modificará ese subconjunto agregando o quitando un atributo. Si llega a ser mejor en porcentaje se continua con este subconjunto. Después de varias iteraciones, se llega a la condición de parada y el algoritmo termina. El método de búsqueda en cada paso en cada atributo es goloso.
-
-Los atributos elegidos por este método son:
-
-%Many popular search approaches use greedy hill climbing, which iteratively evaluates a candidate subset of features, then modifies the subset and evaluates if the new subset is an improvement over the old. Evaluation of the subsets requires a scoring metric that grades a subset of features. Exhaustive search is generally impractical, so at some implementor (or operator) defined stopping point, the subset of features with the highest score discovered up to that point is selected as the satisfactory feature subset. The stopping criterion varies by algorithm; possible criteria include: a subset score exceeds a threshold, a program's maximum allowed run time has been surpassed, etc.
-%Alternative search-based techniques are based on targeted projection pursuit which finds low-dimensional projections of the data that score highly: the features that have the largest projections in the lower-dimensional space are then selected.
-%Search approaches include: Exhaustive, Best first,Simulated annealing,Genetic algorithm,Greedy forward selection
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|c|c|c|c|}
-\hline
-ACU\_AverageRR\_0 \\ \hline 
-ACU\_MaxKT\_11 \\ \hline
-ACU\_MaxSC\_7 \\ \hline
-ACU\_MinKT\_0 \\ \hline
-ACU\_MinLL\_1 \\ \hline
-ACU\_MinSC\_22 \\ \hline
-FON\_Sfinal\_normhd \\ \hline
-FON\_vowel\_normhd \\ \hline
- 
-\end{tabular}
-\end{table}
-
 \section{Combinando clases de atributos}
 
 Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Vamos a agregar los tipos de atributos y vamos a analizar como se incrementa el porcentaje de exactitud para la clasificación. El conjunto de datos utilizado es el \textit{test0} y se utiliza \textit{JRip} como clasificador.
@@ -1052,9 +1024,9 @@ Baseline &  44.6809 \\ \hline
 ] 
 \addplot[mark=triangle*,densely dashdotted, line width=1pt]coordinates {
     (1,10)(2,10)(3,10)(4,10)(5,10) };
-\addplot[mark=triangle,dashdotted, line width=1pt]coordinates {
+\addplot[mark=triangle,dashdotted, line, width=1pt]coordinates {
     (1,20)(2,20)(3,20)(4,20)(5,20) };
-\addplot[mark=otimes*,densely dashedline width=1pt]coordinates {
+\addplot[mark=otimes*,densely dashedline, width=1pt]coordinates {
     (1,30)(2,30)(3,30)(4,30)(5,30) };
 \addplot[mark=otimes,dash pattern=on 8pt off 2pt on 8pt off 2pt,line width=1pt]coordinates {
     (1,40)(2,40)(3,40)(4,40)(5,40) };
@@ -1072,7 +1044,7 @@ Baseline &  44.6809 \\ \hline
 \end{axis}
 \end{tikzpicture}
 
-Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atrbutos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
+Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atributos acústicos. Al agregar este conjunto la performance baja notablemente. Creemos que esto sucede por los distintos ambientes de grabación de cada hablante. Estos aportan mucho ruido y por ello no se puede extraer información útil para la clasificación.
 \chapter{Conclusiones}
 \chapter{Trabajos futuros}
 
@@ -1147,6 +1119,66 @@ En la figura \ref{tab:myfirstlongtable} podemos ver las marcas prosódicas de ca
 \label{tab:myfirstlongtable}
 \end{longtable}
 
+\chapter{Apéndice: nomenclatura de atributos}
+
+En la tabla \ref{tab:attr} se puede ver la nomenclatura de los atributos elegidos. 
+\centering
+\begin{longtable}{| p{0.3\textwidth} | p{0.6\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+ACU\_AverageKT\_0 al ACU\_AverageKT\_32 & Componentes promedio de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_AverageLL\_0 al ACU\_AverageLL\_32 & Componentes promedio de MFCC del fonema /ll/\\ \hline
+ACU\_AverageRR\_0 al ACU\_AverageRR\_32 & Componentes promedio de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_AverageSC\_0 al ACU\_AverageSC\_32 & Componentes promedio de MFCC del fonema /s/ anterior a /c/\\ \hline
+ACU\_MaxKT\_0 al ACU\_MaxKT\_32 & Componentes máximo de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_MaxLL\_0 al ACU\_MaxLL\_32 & Componentes máximo de MFCC del fonema /ll/\\ \hline
+ACU\_MaxRR\_0 al ACU\_MaxRR\_32 & Componentes máximo de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_MaxSC\_0 al ACU\_MaxSC\_32 & Componentes máximo de MFCC del fonema /s/ anterior a /c/\\ \hline
+ACU\_MinKT\_0 al ACU\_MinKT\_32 & Componentes mínimo de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_MinLL\_0 al ACU\_MinLL\_32 & Componentes mínimo de MFCC del fonema /ll/\\ \hline
+ACU\_MinRR\_0 al ACU\_MinRR\_32 & Componentes mínimo de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_MinSC\_0 al ACU\_MinSC\_32 & Componentes mínimo de MFCC del fonema /s/ anterior a /c/ \\ \hline
+FON\_phoneme & Duración del fonema\\ \hline
+place & Lugar del hablante en la grabación\\ \hline
+\caption{Atributos normalizados} 
+\label{tab:attr}
+\end{longtable}
+
+En la tabla \ref{tab:attrNorm} se muestra la nomenclatura de los atributos que se les aplicó normalización.
+\centering
+\begin{longtable}{| p{0.3\textwidth} | p{0.6\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+FON\_vowel\_norm & Duración de las vocales \\ \hline
+FON\_consonant\_norm & Duración de la consonantes \\ \hline
+FON\_Sfinal\_norm & Duración de la /s/ final de palabra \\ \hline
+FON\_kt\_norm & Duración del fonema /k/ anterior a /t/ \\ \hline
+FON\_ll\_norm & Duración de la /ll/ \\ \hline
+FON\_rr\_norm & Duración del fonema /r/ fuerte \\ \hline
+FON\_sc\_norm & Duración del fonema /s/ anterior a /c/ \\ \hline
+SIL\_prevSyllableAccent\_norm & Duración de la silaba anterior a la acentuada aplicando normalización\\ \hline
+SIL\_syllableAccent\_norm & Duración de la silaba acentuada aplicando normalización \\ \hline
+\caption{Atributos normalizados} 
+\label{tab:attrNorm}
+\end{longtable}
+
+En la tabla \ref{tab:attrNormhd} se muestra la nomenclatura de los atributos que se les aplicó normalización tomando como $mu$ = 0.
+\centering
+\begin{longtable}{| p{0.4\textwidth} | p{0.4\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+FON\_vowel\_normhd & Duración de las vocales \\ \hline
+FON\_consonant\_normhd & Duración de la consonantes \\ \hline
+FON\_Sfinal\_normhd & Duración de la /s/ final de palabra \\ \hline
+FON\_kt\_normhd & Duración del fonema /k/ anterior a /t/ \\ \hline
+FON\_ll\_normhd & Duración de la /ll/ \\ \hline
+FON\_rr\_normhd & Duración del fonema /r/ fuerte \\ \hline
+FON\_sc\_normhd & Duración del fonema /s/ anterior a /c/ \\ \hline
+SIL\_prevSyllableAccent\_normhd & Duración de la silaba anterior a la acentuada aplicando normalización\\ \hline
+SIL\_syllableAccent\_normhd & Duración de la silaba acentuada aplicando normalización \\ \hline
+\caption{Atributos normalizados} 
+\label{tab:attrNormhd}
+\end{longtable}
 %%%% BIBLIOGRAFIA
 \backmatter
 \bibliography{ref}
