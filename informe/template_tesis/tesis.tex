@@ -64,9 +64,9 @@
 % todo: AGREGAR FONTANELLA Y VIDAL DE BATTINI
 % RESCRIBIR
 
-El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. Estudiar estas características del habla nos permite conocer mejor la cultura de las personas. Nos permite identificar a los hablantes para saber al lugar donde pertenecen y conocer mejor su cultura.
+El uso de la lengua siempre ha caracterizado a las personas que la utilizan. La forma en como nos comunicamos no sólo posee la información del mensaje a trasmitir, sino que también posee características del hablante. Estudiar estas características del habla nos permite conocer mejor la cultura de las personas. Nos permite identificar a los hablantes para saber al lugar donde pertenecen.
 
-Identificar y extraer características del habla es una tarea muy difícil de realizar. No solo se debe obtener muestras muy variadas de muchos hablantes en distintas regiones, sino que también hay que prestarle importante atención a su edad, su sexo, su situación económica etc. Realizar un estudio de estas características es muy complejo y, por sobre todo, costoso. Además de estudiar cada grupo se debe utilizar muchos recursos: por ejemplo se deben utilizar soporte para grabar en buena calidad las muestras. Se debe realizar varios viajes para buscar los diferentes hablantes. Se debe analizar cada uno de los audios de manera individual. entre otras cosas. 
+Identificar y extraer características del habla es una tarea muy difícil de realizar. No solo se debe obtener muestras muy variadas de muchos hablantes en distintas regiones, sino que también hay que prestarle importante atención a su edad, su sexo, su situación económica etc. Realizar un estudio de estas características es muy complejo y, por sobre todo, costoso. Además de estudiar cada grupo se debe utilizar muchos recursos: por ejemplo se deben utilizar soporte para grabar en buena calidad las muestras. Se debe realizar varios viajes para buscar los diferentes hablantes. Se debe analizar cada uno de los audios de manera individual entre otras cosas. 
 
 \begin{figure}[h!]
     \includegraphics[width=0.5\textwidth]{Dialectos_del_idioma_espanol_en_Argentina} 
@@ -76,7 +76,7 @@ Identificar y extraer características del habla es una tarea muy difícil de re
 
 La motivación de esta tesis es realizar un sistema que pueda facilitar estos problemas. Vamos a enfrentar cada uno de ellos y intentar resolverlos de forma computacional. De los problemas descriptos el problema principal radica en obtener cada grabación. Si los grupos se encuentran muy alejados esto puede ser muy costoso por los viajes. También estas grabaciones deben ser de calidad aceptable como para realizar el estudio en cuestión. Se podría utilizar el teléfono para algunos experimentos pero hay que tener en cuenta que posee muy baja calidad. De hecho, se utiliza en algunos experimentos donde esta característica no afecta. 
 
-El sistema desarrollado utiliza Internet como herramienta para obtener muestras. De esta forma, se puede realizar varias grabaciones sin necesidad de viajar a cada lugar. Es cierto que no todos los lugares poseen acceso a Internet y para lugares alejados puede ser muy contraproducente. De cualquier forma, pensamos su utilización soluciona muchos inconvenientes. Otra ventaja radica en que se puede manejar la calidad de la grabación. Utilizando distintas tecnologías a través de esta red se puede configurar la calidad para que sea lo más precisa posible para el experimento. Vamos a realizar un sistema para mejorar este proceso y diseñaremos un experimento para corroborar las ventajas y desventajas de utilizarlo. 
+El sistema desarrollado utiliza Internet como herramienta para obtener muestras. De esta forma, se puede realizar varias grabaciones sin necesidad de viajar a cada lugar. Es cierto que no todos los lugares poseen acceso a Internet y para lugares alejados puede ser muy contraproducente. De cualquier forma, pensamos su utilización soluciona muchos inconvenientes. Otra ventaja radica en que se puede manejar la calidad de la grabación. Utilizando distintas tecnologías a través de esta red se puede configurar la calidad para que sea lo más precisa posible para el experimento. Vamos a realizar un sistema para mejorar este proceso y diseñaremos un experimento para corroborar las ventajas y desventajas del mismo.
 
 El experimento que tomamos como caso particular es las diferencias en el habla entre Córdoba y Buenos Aires. Estos dos grupos se encuentran uno en la zona central de nuestro país y el otro cerca del Río de la Plata, como se puede observar en la Figura \ref{fig11}. Ya se encuentran estudios que explican estas diferencias. Algunos de ellos son: \textit{El español en la Argentina} de Beatríz Fontanella de Weinberg  y \textit{Español en la Argentina} de Elena Vidal  
 
@@ -124,7 +124,7 @@ Palabras con el fonema /r/ deben ser suaves y no vibrar.
 
 Ejemplo: 'Espárrago' debe ser suave en comparación de Buenos Aires. 
 
-Cabe destacar que estas reglas se producen en habla espontánea. No surgen de habla leída. Algunas pueden agudizarse si se encuentran en lugares económicamente más vulnerables. Pero en cualquier ambiente se cumple.
+Cabe destacar que estas reglas se producen en habla espontánea. No surgen de habla leída. Algunas pueden agudizarse si se encuentran en lugares económicamente más vulnerables, pero en cualquier ambiente se cumple.
 
 Vamos a diseñar el experimento para obtener muestras en este caso.
 
@@ -143,7 +143,7 @@ Utilizando estudios previos de ambos dialectos, pude extraer dichas reglas que d
 
 \subsection{Frases conocidas}
 
-Como el acento se potencia cuando se realiza habla espontánea, vamos a querer que el hablante lo diga de forma lo más natural posible. Es por ello que se nos ocurrió como actividad pronunciar frases popularmente conocidas. Pensé que si el hablante conoce la frase y es frecuente de pronunciarla, es más fácil obtener habla espontánea.
+Como el acento se potencia cuando se realiza habla espontánea, vamos a intentar que el hablante lo diga de forma lo más natural posible. Es por ello que se nos ocurrió como actividad pronunciar frases popularmente conocidas. La intención es que si el hablante conoce la frase y es frecuente de utilizarla entonces es más fácil que su pronunciación sea utilizando habla espontánea.
 
 Vamos a querer utilizar frases lo mas conocidas posibles, para que el hablante ya tenga registrada como decirla sin poderle eliminar el acento.
 
@@ -154,7 +154,14 @@ Para realizar las grabaciones debemos darle a cada hablante una serie de frases 
 \paragraph{Descripción de los 2 tipos de frases}
 %-Descripción de los 2 grupos. Porque cada uno. Espontaneidad vs Regla 1
 
-Vamos a tener dos formas de grabaciones: frases comunes que tratan de cubrir la espontaneidad (cubriendo las reglas 2 al 5) y frases AMPER que tratan de cubrir el acento barriendo por cada tipo de acentuación (regla 1). A continuación vemos las reglas en sus dos conjuntos.
+Vamos a tener dos formas de grabaciones: 
+
+\begin{itemize}
+  \item Frases comunes que tratan de cubrir la espontaneidad. Estas frases van a cubrir las reglas 2 a 6. Estas tienen que ver con la duración y la pronunciación de distintos fonémas.  
+  \item Frases AMPER que tratan de cubrir el acento barriendo por cada tipo de acentuación. Estas corresponden a la regla 1 que hace incapié en la longitud de la sílaba anterior a la acentuada.
+\end{itemize}
+
+A continuación vemos las reglas en sus dos conjuntos.
 
 \subsection{Frases utilizadas}
 
