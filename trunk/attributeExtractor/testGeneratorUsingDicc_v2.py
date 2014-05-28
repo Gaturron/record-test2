@@ -14,7 +14,7 @@ import time
 import random
 import sys
 
-path = os.path.abspath(os.getcwd())+'/tests/test_vf'
+path = os.path.abspath(os.getcwd())+'/tests/test_temp'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 def generate(attributesFilter, commonPct = 0.2, numGroups = 5, balanceRatio = {"bsas": 60, "cba": 40}, balanceGroup = {"train": 75, "test": 25}):
@@ -80,7 +80,7 @@ def generate(attributesFilter, commonPct = 0.2, numGroups = 5, balanceRatio = {"
             print statusTrain+" "+statusTest+" - "+str(pct)
 
     #resultsPaired tiene los test generados
-    resPairedToArff(resultsPaired, attributesFilter, "conf_pct"+str(commonPct)+"_numGroups"+str(numGroups)+"_(bsas"+str(balanceRatio["bsas"])+"cba"+str(balanceRatio["cba"])+")")
+    resPairedToArff(resultsPaired, attributesFilter, "conf_pct"+str(commonPct)+"_numGroups"+str(numGroups)+"_bsas"+str(balanceRatio["bsas"])+"cba"+str(balanceRatio["cba"]))
 
 def greaterCommonInstancesPct(testInstance, resultsPaired):
     "Saca para test el mayor porcentaje de instancias que comparte con los demás"
@@ -109,8 +109,9 @@ def balanceCheck(dicc, balanceRatio = {"bsas": 60, "cba": 40}):
 
     ckBsas = size * balanceRatio["bsas"] * 0.006 <= bsas <= size * balanceRatio["bsas"] * 0.014
     ckCba = size * balanceRatio["cba"] * 0.006 <= cba <= size * balanceRatio["cba"] * 0.014
+    ckBoth = cba < bsas
 
-    return ckBsas and ckCba 
+    return ckBsas and ckCba and ckBoth
 
 def resPairedToArff(resultsPaired, attributesFilter, folder):
 
@@ -185,4 +186,4 @@ if __name__ == '__main__':
 
     #lotsOfExecutions()
 
-    generate(attributesFilter, commonPct=0.2)
+    generate(attributesFilter, commonPct=0.3)
