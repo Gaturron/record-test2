@@ -451,7 +451,7 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el Anexo.
+Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el Apéndice.
 
 \subsection{Atributos acústicos}
 
@@ -531,7 +531,7 @@ Los audios recolectados tuvieron algunos problemas al grabarse. El principal pro
 
 \subsection{Mediciones}
 
-Escuché los audios para determinar si se realizaron correctamente. Los fuimos clasificando en: Conservar, Sonido saturado, Mucho ruido de fondo, Problema en el habla. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
+Escuchamos los audios para determinar si se realizaron correctamente. Los fuimos clasificando en: Conservar, Sonido saturado, Mucho ruido de fondo, Problema en el habla. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
 
 \begin{table}[h]
 \centering
@@ -562,21 +562,16 @@ Vamos a continuar con el análisis basándonos en los audios clasificados como C
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. Sucede que muchas veces alinea mal. 
-
-\begin{figure}[h!]
-    \centerline{\includegraphics[width=0.8\textwidth]{alineacion_mala_inf} }
-    \caption{Alineación mala}
-\end{figure}
-
-
-\subsection{Errores comunes}
-
-Es muy importante descartar los audios mal alineados ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio y analizando si la alineación fue correcta. Para realizar esta tarea utilizamos el programa Praat. Los errores mas comunes fueron:
+El alineador automático no realiza su función de forma perfecta. Sucede que muchas veces alinea mal. Es muy importante descartar los audios mal alineados ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Para realizar esta tarea utilizamos el programa Praat. Los errores mas comunes fueron:
 %todo citar bien a praat
 
 \begin{itemize}
     \item \textbf{Ruido de fondo:} los casos donde el alineador se comporta de peor manera son los que se escuchan ruido de fondo. En esos casos las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es muy común. 
+
+\begin{figure}[h!]
+    \centerline{\includegraphics[width=0.8\textwidth]{alineacion_mala_inf} }
+    \caption{Ejemplo de alineación mala por ruido}
+\end{figure}
 
     \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación (Ver Fig. \ref{click_final}). Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
     
@@ -602,14 +597,12 @@ Para corregir los errores descriptos debimos chequear cada uno de los textgrids.
 \textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 \textbf{Modificados}  & 101 & 88 & 189 \\ \hline
 \textbf{Correctos sin modificación}  & 119 & 2 & 121 \\ \hline
-\textbf{Total} & 220 & 90 & 310
+\textbf{Total} & 220 & 90 & 310 \\ \hline
 \end{tabular}
 \end{table}
 
 %todo: leer bien el mail de prosodylab
-Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de forma automática puede ser de la siguiente forma. Cuando se realiza la alineación, se crea un archivo llamado $.SCORES$. Este archivo posee los valores de verosimilitud de cada alineación. Entonces este archivo podría servir para definir si un audio esta bien alineado. Si la alineación superó un umbral pre-configurado, el audio estará bien alineado y se podrá utilizar para el estudio, sino el audio se descartará. Vale aclarar que esto puede tener falsos positivos. Esta idea podría realizarse en trabajos futuros.
-
-De estos 310 debemos sacar las grabaciones que se realizaron varias veces... explayarse
+Esta forma se realizó ya que eran pocos audios pero en un experimento con más hablantes se debe utilizar la opción de '.SCORES' antes descripta. De estos 310 debemos sacar las grabaciones que se realizaron varias veces. Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma grabación con la idea de que la última va a ser la mejor. Debemos quitar estos casos para no contabilizar más de una vez la misma grabación. Los audios repetidos son alrededor de 50. Quitando estos podemos empezar con el análisis. 
 
 \chapter{Análisis}
 
@@ -1081,7 +1074,7 @@ Algunos trabajos futuros que se desprenden de este trabajo son:
 
 \paragraph*{Clasificación en vivo:} Realizar la clasificación al agregar un hablante nuevo. De esta forma, se puede darle una respuesta a que grupo pertenece. Revalidar el modelo al agregarse un nuevo Hablante. 
 
-\chapter{Apéndice: marcas prosódicas}
+\chapter*{Apéndice: marcas prosódicas}
 
 En la figura \ref{tab:myfirstlongtable} podemos ver las marcas prosódicas de cada frase.
 
@@ -1161,7 +1154,7 @@ ACU\_MinRR\_0 al ACU\_MinRR\_32 & Componentes mínimo de MFCC del fonema /r/ fue
 ACU\_MinSC\_0 al ACU\_MinSC\_32 & Componentes mínimo de MFCC del fonema /s/ anterior a /c/ \\ \hline
 FON\_phoneme & Duración del fonema\\ \hline
 place & Lugar del hablante en la grabación\\ \hline
-\caption{Atributos normalizados} 
+\caption*{Atributos normalizados} 
 \label{tab:attr}
 \end{longtable}
 
