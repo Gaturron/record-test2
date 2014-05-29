@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  26 MAY 2014 21:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  29 MAY 2014 01:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -776,18 +776,18 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count139
@@ -845,8 +845,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 24.
-LaTeX Info: Redefining \% on input line 24.
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -913,7 +913,7 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 24.
+ on input line 25.
 
 (./caratula.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -965,7 +965,7 @@ File: Images/Dialectos_del_idioma_espanol_en_Argentina.png Graphic file (type p
 ng)
  <use Images/Dialectos_del_idioma_espanol_en_Argentina.png>
 Package pdftex.def Info: Images/Dialectos_del_idioma_espanol_en_Argentina.png u
-sed on input line 72.
+sed on input line 73.
 (pdftex.def)             Requested size: 213.39568pt x 371.36032pt.
 
 
@@ -980,37 +980,43 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 Underfull \vbox (badness 8170) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 87.
-LaTeX Info: Redefining \% on input line 87.
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
  [2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>] [3]
-LaTeX Info: Redefining \. on input line 131.
-LaTeX Info: Redefining \% on input line 131.
+LaTeX Info: Redefining \. on input line 132.
+LaTeX Info: Redefining \% on input line 132.
  [4]
 Cap\'{\i }tulo 2.
-<Images/reglas_AMPER.png, id=63, 639.38875pt x 221.82875pt>
+[5
+
+] <Images/reglas_AMPER.png, id=66, 639.38875pt x 221.82875pt>
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
-Package pdftex.def Info: Images/reglas_AMPER.png used on input line 162.
+Package pdftex.def Info: Images/reglas_AMPER.png used on input line 170.
 (pdftex.def)             Requested size: 426.79135pt x 148.07274pt.
- [5
 
-]
 <Images/frases_inf.png, id=67, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
-Package pdftex.def Info: Images/frases_inf.png used on input line 168.
+Package pdftex.def Info: Images/frases_inf.png used on input line 176.
 (pdftex.def)             Requested size: 426.79135pt x 339.5197pt.
 
-Underfull \vbox (badness 1009) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 182.
-LaTeX Info: Redefining \% on input line 182.
- [6 <./Images/reglas_AMPER.png> <./Images/frases_inf.png>]
-LaTeX Info: Redefining \. on input line 206.
-LaTeX Info: Redefining \% on input line 206.
- [7]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Citation `amper' on page 6 undefined on input line 189.
+
+LaTeX Info: Redefining \. on input line 205.
+LaTeX Info: Redefining \% on input line 205.
+[6 <./Images/reglas_AMPER.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+ [7 <./Images/frases_inf.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
@@ -1020,239 +1026,234 @@ File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 241.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 249.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 241.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 242.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 250.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 242.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 250.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 242.
+(Font)              <7> on input line 250.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 242.
-
-<Images/cant_frases_traza_inf.png, id=74, 602.25pt x 372.39125pt>
+(Font)              <5> on input line 250.
+LaTeX Info: Redefining \. on input line 261.
+LaTeX Info: Redefining \% on input line 261.
+ [8]
+<Images/cant_frases_traza_inf.png, id=81, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
 <use Images/cant_frases_traza_inf.png>
-Package pdftex.def Info: Images/cant_frases_traza_inf.png used on input line 25
-6.
+Package pdftex.def Info: Images/cant_frases_traza_inf.png used on input line 26
+4.
 (pdftex.def)             Requested size: 384.1096pt x 237.51703pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Info: Redefining \. on input line 263.
-LaTeX Info: Redefining \% on input line 263.
-[8]
-LaTeX Info: Redefining \. on input line 263.
-LaTeX Info: Redefining \% on input line 263.
+LaTeX Info: Redefining \. on input line 271.
+LaTeX Info: Redefining \% on input line 271.
  [9 <./Images/cant_frases_traza_inf.png>]
-LaTeX Info: Redefining \. on input line 263.
-LaTeX Info: Redefining \% on input line 263.
- [10
+LaTeX Info: Redefining \. on input line 271.
+LaTeX Info: Redefining \% on input line 271.
+[10
 
 ]
 Cap\'{\i }tulo 3.
-<Images/pag-inicio2.png, id=89, 1071.00125pt x 624.3325pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+<Images/pag-inicio2.png, id=93, 1071.00125pt x 624.3325pt>
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 274.
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 288.
 (pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<Images/pag-allow1.png, id=90, 1371.1225pt x 770.88pt>
+<Images/pag-allow1.png, id=94, 1371.1225pt x 770.88pt>
 File: Images/pag-allow1.png Graphic file (type png)
 
 <use Images/pag-allow1.png>
-Package pdftex.def Info: Images/pag-allow1.png used on input line 280.
+Package pdftex.def Info: Images/pag-allow1.png used on input line 294.
 (pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: Images/pag-inicio2.png Graphic file (type png)
-<use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 286.
+ <use Images/pag-inicio2.png>
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 300.
 (pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-grabar1.png, id=91, 1371.1225pt x 770.88pt>
+<Images/pag-grabar1.png, id=95, 1371.1225pt x 770.88pt>
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
-Package pdftex.def Info: Images/pag-grabar1.png used on input line 292.
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 306.
 (pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-play1.png, id=92, 1371.1225pt x 770.88pt>
+<Images/pag-play1.png, id=96, 1371.1225pt x 770.88pt>
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
-Package pdftex.def Info: Images/pag-play1.png used on input line 298.
+Package pdftex.def Info: Images/pag-play1.png used on input line 312.
 (pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11]
-
-LaTeX Warning: Text page 12 contains only floats.
-
-LaTeX Info: Redefining \. on input line 306.
-LaTeX Info: Redefining \% on input line 306.
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
 [12 <./Images/pag-inicio2.png> <./Images/pag-allow1.png>]
-LaTeX Info: Redefining \. on input line 314.
-LaTeX Info: Redefining \% on input line 314.
- [13 <./Images/pag-grabar1.png> <./Images/pag-play1.png>]
-<Images/categorizando_audios.png, id=102, 347.2975pt x 346.29375pt>
-File: Images/categorizando_audios.png Graphic file (type png)
 
-<use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 333
-.
-(pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
+LaTeX Warning: Text page 13 contains only floats.
+
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
+[13 <./Images/pag-grabar1.png> <./Images/pag-play1.png>]
 LaTeX Info: Redefining \. on input line 336.
 LaTeX Info: Redefining \% on input line 336.
  [14]
-LaTeX Info: Redefining \. on input line 351.
-LaTeX Info: Redefining \% on input line 351.
- [15 <./Images/categorizando_audios.png>]
-LaTeX Info: Redefining \. on input line 360.
-LaTeX Info: Redefining \% on input line 360.
- [16]
+<Images/categorizando_audios.png, id=108, 347.2975pt x 346.29375pt>
+File: Images/categorizando_audios.png Graphic file (type png)
+
+<use Images/categorizando_audios.png>
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 348
+.
+(pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 364.
+LaTeX Info: Redefining \% on input line 364.
+[15]
+LaTeX Info: Redefining \. on input line 369.
+LaTeX Info: Redefining \% on input line 369.
+ [16 <./Images/categorizando_audios.png>]
 Cap\'{\i }tulo 4.
 
-LaTeX Warning: Citation `prosodylab' on page 17 undefined on input line 373.
+LaTeX Warning: Citation `prosodylab' on page 17 undefined on input line 382.
 
 
-LaTeX Warning: Citation `rabiner' on page 17 undefined on input line 378.
+LaTeX Warning: Citation `rabiner' on page 17 undefined on input line 387.
 
 [17
 
-] <Images/diagrama_workflow.jpg, id=116, 300.12125pt x 316.18124pt>
+] <Images/diagrama_workflow.jpg, id=119, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 399.
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 404.
 (pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 406.
-LaTeX Info: Redefining \% on input line 406.
+LaTeX Info: Redefining \. on input line 413.
+LaTeX Info: Redefining \% on input line 413.
 [18]
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
+LaTeX Info: Redefining \. on input line 436.
+LaTeX Info: Redefining \% on input line 436.
  [19 <./Images/diagrama_workflow.jpg>]
-LaTeX Info: Redefining \. on input line 455.
-LaTeX Info: Redefining \% on input line 455.
+LaTeX Info: Redefining \. on input line 463.
+LaTeX Info: Redefining \% on input line 463.
  [20]
-LaTeX Info: Redefining \. on input line 503.
-LaTeX Info: Redefining \% on input line 503.
+LaTeX Info: Redefining \. on input line 485.
+LaTeX Info: Redefining \% on input line 485.
  [21]
-LaTeX Info: Redefining \. on input line 510.
-LaTeX Info: Redefining \% on input line 510.
+LaTeX Info: Redefining \. on input line 528.
+LaTeX Info: Redefining \% on input line 528.
  [22]
 Cap\'{\i }tulo 5.
 [23
 
-] <Images/alineacion_mala_inf.png, id=137, 1290.8225pt x 664.4825pt>
+] <Images/alineacion_mala_inf.png, id=140, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
-Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 550.
+Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 568.
 
 (pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 564.
-LaTeX Info: Redefining \% on input line 564.
-[24] <Images/click_al_final_inf.png, id=141, 1281.78876pt x 663.47874pt>
+LaTeX Info: Redefining \. on input line 582.
+LaTeX Info: Redefining \% on input line 582.
+[24] <Images/click_al_final_inf.png, id=144, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
-Package pdftex.def Info: Images/click_al_final_inf.png used on input line 566.
+Package pdftex.def Info: Images/click_al_final_inf.png used on input line 584.
 (pdftex.def)             Requested size: 341.43437pt x 176.73216pt.
-LaTeX Info: Redefining \. on input line 574.
-LaTeX Info: Redefining \% on input line 574.
+LaTeX Info: Redefining \. on input line 592.
+LaTeX Info: Redefining \% on input line 592.
  [25 <./Images/alineacion_mala_inf.png> <./Images/click_al_final_inf.png>]
-LaTeX Info: Redefining \. on input line 593.
-LaTeX Info: Redefining \% on input line 593.
+LaTeX Info: Redefining \. on input line 611.
+LaTeX Info: Redefining \% on input line 611.
  [26]
 Cap\'{\i }tulo 6.
 [27
 
 ]
-LaTeX Info: Redefining \. on input line 667.
-LaTeX Info: Redefining \% on input line 667.
+LaTeX Info: Redefining \. on input line 685.
+LaTeX Info: Redefining \% on input line 685.
  [28]
 
-LaTeX Warning: Citation `Cohen1995' on page 29 undefined on input line 693.
+LaTeX Warning: Citation `Cohen1995' on page 29 undefined on input line 711.
 
 
-LaTeX Warning: Citation `Quinlan1993' on page 29 undefined on input line 700.
+LaTeX Warning: Citation `Quinlan1993' on page 29 undefined on input line 718.
 
 
 LaTeX Warning: Citation `Platt98sequentialminimal' on page 29 undefined on inpu
-t line 709.
+t line 727.
 
-LaTeX Info: Redefining \. on input line 710.
-LaTeX Info: Redefining \% on input line 710.
+LaTeX Info: Redefining \. on input line 728.
+LaTeX Info: Redefining \% on input line 728.
 [29]
 
 LaTeX Warning: Citation `DBLP:conf/flairs/Zhang04' on page 30 undefined on inpu
-t line 716.
+t line 734.
 
-LaTeX Info: Redefining \. on input line 751.
-LaTeX Info: Redefining \% on input line 751.
+LaTeX Info: Redefining \. on input line 769.
+LaTeX Info: Redefining \% on input line 769.
 [30]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 803.
-LaTeX Info: Redefining \% on input line 803.
+LaTeX Info: Redefining \. on input line 821.
+LaTeX Info: Redefining \% on input line 821.
  [31]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (39.58002pt too wide) in paragraph at lines 832--833
+Overfull \hbox (39.58002pt too wide) in paragraph at lines 850--851
 [][] 
  []
 
 
 Underfull \vbox (badness 4156) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 849.
-LaTeX Info: Redefining \% on input line 849.
+LaTeX Info: Redefining \. on input line 867.
+LaTeX Info: Redefining \% on input line 867.
  [32]
-LaTeX Info: Redefining \. on input line 906.
-LaTeX Info: Redefining \% on input line 906.
+LaTeX Info: Redefining \. on input line 924.
+LaTeX Info: Redefining \% on input line 924.
 
 [33]
-LaTeX Info: Redefining \. on input line 938.
-LaTeX Info: Redefining \% on input line 938.
+LaTeX Info: Redefining \. on input line 956.
+LaTeX Info: Redefining \% on input line 956.
  [34]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
@@ -1262,7 +1263,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1028     (1,20)(2,20)(3,20)(4,20)(5,20) };
+l.1046     (1,20)(2,20)(3,20)(4,20)(5,20) };
                                             
 ? 
 
@@ -1273,7 +1274,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1030     (1,30)(2,30)(3,30)(4,30)(5,30) };
+l.1048     (1,30)(2,30)(3,30)(4,30)(5,30) };
                                             
 ? 
 
@@ -1284,7 +1285,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1044 \end{axis}
+l.1062 \end{axis}
                  
 ? 
 
@@ -1295,7 +1296,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1044 \end{axis}
+l.1062 \end{axis}
                  
 ? 
 
@@ -1306,7 +1307,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1044 \end{axis}
+l.1062 \end{axis}
                  
 ? 
 
@@ -1317,164 +1318,159 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1044 \end{axis}
+l.1062 \end{axis}
                  
 ? 
 
-Overfull \hbox (11.12543pt too wide) in paragraph at lines 1045--1046
+Overfull \hbox (11.12543pt too wide) in paragraph at lines 1063--1064
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 1047.
-LaTeX Info: Redefining \% on input line 1047.
+LaTeX Info: Redefining \. on input line 1065.
+LaTeX Info: Redefining \% on input line 1065.
  [35]
-LaTeX Info: Redefining \. on input line 1048.
-LaTeX Info: Redefining \% on input line 1048.
+LaTeX Info: Redefining \. on input line 1066.
+LaTeX Info: Redefining \% on input line 1066.
 
 [36]
 Cap\'{\i }tulo 7.
 [37
 
 ]
-LaTeX Info: Redefining \. on input line 1049.
-LaTeX Info: Redefining \% on input line 1049.
+LaTeX Info: Redefining \. on input line 1067.
+LaTeX Info: Redefining \% on input line 1067.
  [38
 
 ]
 Cap\'{\i }tulo 8.
 [39]
-LaTeX Info: Redefining \. on input line 1063.
-LaTeX Info: Redefining \% on input line 1063.
+LaTeX Info: Redefining \. on input line 1081.
+LaTeX Info: Redefining \% on input line 1081.
  [40
 
 ]
 Cap\'{\i }tulo 9.
 
-Underfull \hbox (badness 1590) in paragraph at lines 1077--1077
+Underfull \hbox (badness 1590) in paragraph at lines 1095--1095
 []|\OT1/cmr/m/n/12 'caminante no hay ca-
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 1086--1086
+Underfull \hbox (badness 1565) in paragraph at lines 1104--1104
 []|\OT1/cmr/m/n/12 'la sue-gra y el doc-tor
  []
 
 
-Underfull \hbox (badness 5403) in paragraph at lines 1087--1087
+Underfull \hbox (badness 5403) in paragraph at lines 1105--1105
 []|\OT1/cmr/m/n/12 'a la mu-jer pi-ca-res-ca
  []
 
 
-Underfull \hbox (badness 4242) in paragraph at lines 1088--1088
+Underfull \hbox (badness 4242) in paragraph at lines 1106--1106
 []|\OT1/cmr/m/n/12 'quien siem-bra vien-tos
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1090
+Underfull \vbox (badness 10000) detected at line 1108
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 1091--1091
+Underfull \hbox (badness 3746) in paragraph at lines 1109--1109
 []|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
  []
 
 [41]
-LaTeX Info: Redefining \. on input line 1120.
-LaTeX Info: Redefining \% on input line 1120.
+LaTeX Info: Redefining \. on input line 1138.
+LaTeX Info: Redefining \% on input line 1138.
  [42] [43]
-LaTeX Info: Redefining \. on input line 1122.
-LaTeX Info: Redefining \% on input line 1122.
+LaTeX Info: Redefining \. on input line 1140.
+LaTeX Info: Redefining \% on input line 1140.
  [44
 
 ]
 Cap\'{\i }tulo 10.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
 []|\OT1/cmr/m/n/12 ACU[]AverageKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1130
+Underfull \hbox (badness 10000) in paragraph at lines 1148--1148
 []|\OT1/cmr/m/n/12 ACU[]AverageLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1131--1131
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1149
 []|\OT1/cmr/m/n/12 ACU[]AverageRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1132
+Underfull \hbox (badness 10000) in paragraph at lines 1150--1150
 []|\OT1/cmr/m/n/12 ACU[]AverageSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1133--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1151
 []|\OT1/cmr/m/n/12 ACU[]MaxKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1134
+Underfull \hbox (badness 10000) in paragraph at lines 1152--1152
 []|\OT1/cmr/m/n/12 ACU[]MaxLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1135--1135
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1153
 []|\OT1/cmr/m/n/12 ACU[]MaxRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1136--1136
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1154
 []|\OT1/cmr/m/n/12 ACU[]MaxSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1137--1137
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1155
 []|\OT1/cmr/m/n/12 ACU[]MinKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1138
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1156
 []|\OT1/cmr/m/n/12 ACU[]MinLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1139--1139
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1157
 []|\OT1/cmr/m/n/12 ACU[]MinRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1140
+Underfull \hbox (badness 10000) in paragraph at lines 1158--1158
 []|\OT1/cmr/m/n/12 ACU[]MinSC[]0 al
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1145
- []
-
-[45]
-Overfull \hbox (23.20445pt too wide) in paragraph at lines 1159--1159
-[]|\OT1/cmr/m/n/12 SIL[]prevSyllableAccent[]norm| 
  []
 
 
 Underfull \vbox (badness 10000) detected at line 1163
  []
 
-
-Overfull \hbox (66.68173pt too wide) in alignment at lines 1167--1181
- [] [] 
+[45]
+Overfull \hbox (23.20445pt too wide) in paragraph at lines 1177--1177
+[]|\OT1/cmr/m/n/12 SIL[]prevSyllableAccent[]norm| 
  []
 
 
 Underfull \vbox (badness 10000) detected at line 1181
  []
 
-LaTeX Info: Redefining \. on input line 1183.
-LaTeX Info: Redefining \% on input line 1183.
+
+Underfull \vbox (badness 10000) detected at line 1199
+ []
+
+LaTeX Info: Redefining \. on input line 1201.
+LaTeX Info: Redefining \% on input line 1201.
 [46]
 No file tesis.bbl.
 (./tesis.aux
@@ -1486,13 +1482,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21343 strings out of 493307
- 480430 string characters out of 6139905
- 694580 words of memory out of 5000000
- 24348 multiletter control sequences out of 15000+600000
+ 21342 strings out of 493307
+ 480431 string characters out of 6139905
+ 694584 words of memory out of 5000000
+ 24347 multiletter control sequences out of 15000+600000
  10409 words of font info for 36 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,17n,83p,955b,1913s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,17n,83p,967b,1913s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1501,13 +1497,14 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti12.pfb>
-Output written on tesis.pdf (56 pages, 1680456 bytes).
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tesis.pdf (56 pages, 1702345 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 260 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
