@@ -12,6 +12,7 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage[spanish]{babel}
 
 \usepackage{pgfplots}
 \pgfplotsset{width=15cm, height=8cm}
@@ -257,7 +258,7 @@ morekeywords={GeneradorDeTest, GenradorDeTrazas, checkBalance, Input, Output, Re
 
 La idea del algoritmo es la siguiente: Al generar las trazas vamos a utilizar un contador que nos va a decir cuantas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Esta elección lo lleva a cabo la función \textit{ObtenerDeLaReglaLasMasPonderadas}. Esta se encarga de elegir la frase que haga referencia a la regla menos grabada en el contador y además que represente a mas de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones y ponderamos las frases que referencien a más reglas. 
 
-Esta idea es importante ya que maximizamos la cantidad de información de cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de todas las reglas. Escluimos del gráfico la regla 1 ya que esta utiliza con las frases AMPER.
+Esta idea es importante ya que maximizamos la cantidad de información de cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de todas las reglas. Excluimos del gráfico la regla 1 ya que esta utiliza con las frases AMPER.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
@@ -272,6 +273,12 @@ En conclusión, se grabarán de a 5 frases. Teniendo en cuenta que las primeras 
 Para poder obtener audios de distintas personas se desarrolló una página web. Esto nos da muchas ventajas ya que nos permite grabar fácilmente desde cualquier lugar. En esta sección explicaremos la arquitectura del sistema y sus detalles técnicos.
 
 La página web esta desarrollada en Django versión 1.4.2 que es un framework para la creación de paginas web. Se eligió este framework por su facilidad a la hora de salvar objetos a la base de datos y también por la cantidad importante de librerías que posee Python. La versión utilizada de Python es 2.7.3. Esta misma necesita una base de datos para guardar cada clase de dominio. En esta base de datos vamos a guardar la información de cada hablante, las frases a grabar y las trazas principalmente. La base de datos utilizada fue PostgreSQL versión 9.1 y se eligió esta ya que es de código abierto. Los archivos de audio se van a grabar en archivos \textit{.wav} por separado y vamos a guardar una referencia al nombre del archivo generado en la base de datos. Para el servidor HTTP se utilizó Apache versión 2.2.22. El servidor corre en el sistema operativo Ubuntu 12.04.4 LTS.
+
+
+\section{Requerimientos}
+
+Los requerimientos son básicos: micrófono, conexión a internet. 
+Tuvimos problemas sobre el browser que utilizaba. Wami necesita Flash versión 11.04 que no se encuentra en los repositorios tradicionales de Ubuntu. De esta manera, los navegadores que utilicen Flash instalado por el sistema operativo Ubuntu no podrán correr. Otros sistemas operativos, como Windows o IOs, no tienen problemas en la versión de Flash instalada. De todas formas el navegador Chrome posee preinstalado dicha versión de Flash, entonces este navegador puede correr perfectamente la aplicación sin importar el sistema operativo.
 
 \section{Recolección de datos}
 
@@ -307,30 +314,31 @@ Cuando un usuario visita nuestra página, primero le hace llenar un formulario. 
     \label{reproduciendo}
 \end{figure}
 
-En la pantalla de grabación el usuario deberá confirmar tener acceso al micrófono que posee en su dispositivo, como se puede ver en la Figura \ref{allowmic}.  Una vez hecho esto, se le explica las instrucciones (Fig. \ref{inicio}) y puede empezar a grabar. Cada nuevo experimento utiliza una nueva traza. El experimento en total consiste en realizar 40 grabaciones. El hablante va grabando de a 5 frases, cada vez que las termina de grabar ofrece la opción de seguir grabando otras 5 más. De esta forma, aporta el tiempo que puede. La interfaz de como se ve cuando el usuario graba se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}.
+En la pantalla de grabación el usuario deberá confirmar tener acceso al micrófono que posee en su dispositivo, como se puede ver en la Figura \ref{allowmic}.  Una vez hecho esto, se le explica las instrucciones (Fig. \ref{inicio}) y puede empezar a grabar. Cada nuevo experimento utiliza una nueva traza. El experimento en total consiste en realizar 40 grabaciones. El hablante va grabando de a 5 frases, cada vez que las termina de grabar ofrece la opción de seguir grabando otras 5 más. De esta forma, aporta el tiempo que puede. La interfaz que aprecia el usuario al grabar se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}.
 
-Cada vez que se confirma una grabación, esta se graba en un archivo wav en el servidor. 
+Cada vez que se confirma una grabación, esta se graba en un archivo wav en el servidor. El archivo wav que se genera tiene una frecuencia de muestreo de 22050 Hz y posee un sólo canal. Con estas características pudimos obtener un audio de calidad buena.
 
 %todo: PONER DATOS TECNICOS DEL TIPO DE WAV
 
 \section{Grabación a través del browser}
 
-Los navegadores actuales no pueden soportar acceder al micrófono directamente. Durante la tesis, se desarrolla HTML5 que podrá soportar acceder al micrófono más fácil. No se eligió basarse en este porque sólo algunos browsers lo soportaban y al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y eso excluiría gente. Es por eso que debimos utilizar alguna tecnología alternativa. Buscando encontré un proyecto llamado WAMI que es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. 
+Los navegadores actuales no pueden soportar acceder al micrófono directamente. Durante la tesis, se desarrolla HTML5 que podrá soportar acceder al micrófono más fácil. No se eligió basarse en este porque sólo algunos browsers lo soportaban. Al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y eso excluiría gente. Es por eso que debimos utilizar alguna tecnología alternativa. Buscando encontré un proyecto llamado WAMI que es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. 
 
-El proyecto WAMI (http://code.google.com/p/wami-recorder/) nos permite acceder al micrófono de la computadora utilizando Flash. Este posee una interfaz que permite utilizar la aplicación Flash desde Javascript. De esta forma, no es necesario meterse en la implementación. Utilizando dicha interfaz se puede configurar varias urls. Una de ellas es donde envía la información de lo grabado.
+El proyecto WAMI \footnote{http://code.google.com/p/wami-recorder/} nos permite acceder al micrófono de la computadora utilizando Flash. Este posee una interfaz que permite utilizar la aplicación Flash desde Javascript. De esta forma, no es necesario analizar en la implementación. Utilizando dicha interfaz se puede configurar varias urls. Una de ellas es donde envía la información de lo grabado.
 
 Cuando termina de grabar, se envía un mensaje POST al servidor. Este obtiene el paquete de información y lo guarda como archivo .wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a través de la interfaz. El servidor lo responde con el audio requerido y se reproduce en el navegador. 
 
 Como se mencionó antes, para poder acceder al micrófono el usuario debe habilitar permisos para que la aplicación acceda al hardware de su computadora. Esto aparece como una ventana emergente al principio del experimento. Esto se puede ver en la Figura \ref{allowmic}. También se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. Se guarda un registro de nivel de volumen sobre la interfaz para utilizar esos datos en algún proyecto futuro.
 
-\section{Requerimientos}
+\section{Varias grabaciones por frase}
 
-Los requerimientos son básicos: micrófono, conexión a internet. 
-Tuvimos problemas sobre el browser que utilizaba. Wami necesita Flash versión 11.04 (chequear) que no se encuentra en los repositorios tradicionales de Ubuntu. De esta manera, los navegadores que utilicen Flash instalado por el sistema operativo Ubuntu no podrán correr. Otros sistemas operativos, como Windows o IOs, no tienen problemas en la versión de Flash instalada. De todas formas el navegador Chrome posee preinstalado dicha versión de Flash, entonces este navegador podía correr perfectamente la aplicación sin importar el sistema operativo.
+Siguiendo con la idea de tener la mejor grabación de cada hablante, le dimos la opción a cada hablante de que después de grabar un audio de una frase puedan escucharse como quedó. Esto requiere un ida y vuelta entre el cliente (navegador) y el servidor. Al grabar, el cliente manda un mensaje HTTP POST para el servidor con los datos de grabación. Las frases son de corta longitud entonces no es necesario preocuparse por la longitud del paquete. Cuando el cliente quiere escucharlo envía un mensaje GET a ese mismo audio anteriormente grabado. El servidor envía la grabación y es reproducida en el cliente. Esta ida y vuelta de la grabación podría ser optimizada para que la grabación pueda ser escuchada sin tener interacción con el servidor. En nuestro experimento, no tuvimos problemas graves en lo que respecta a latencias pero si es un punto débil del sistema.
+
+A cada hablante le dimos la opción que pueda escuchar y volver a grabar la frase cuantas veces quisiera. Esto lo hicimos para poder detectar cual es el disparador que hace que diga mal una frase. Puede resultar interesante analizar los anteriores audios y porque se queda con el último.
 
 \section{Sistema de administración}
 
-El sistema debe tener datos cargados para estan online recolectando audios. Los minimos datos para poder tener la página funcionando en vivo son los datos de las trazas y la clasificación de los audios. Este cargo de datos se pueden guardar con fixtures del framework Django. Una vez cargado esos datos, los hablantes van a acceder a una url donde van a poder realizar el experimento grabando los distintos audios.
+El sistema debe tener datos precargados para estar activado recolectando hablantes. Los mínimos datos para poder tener la página funcionando en vivo son los datos de las trazas y la clasificación de los audios. Este cargo de datos se pueden guardar con fixtures del framework Django. Esta es un característica que nos permite guardar en un archivo datos para cargar antes de habilitar la web para estar online. Una vez cargado esos datos, los hablantes van a acceder a una url donde van a poder realizar el experimento grabando los distintos audios.
 
 \subsection{Etiquetando audios}
 
@@ -358,15 +366,9 @@ Si bien esta característica esta fue programada, no fue utilizada en la recolec
 
 Para los audios que salieron saturados, más adelante vamos a realizar un estudio para intentar sacarles el ruido y de esta forma intentar rescatarlos.
 
-\section{Varias grabaciones por frase}
-
-Siguiendo con la idea de tener la mejor grabación de cada hablante, le dimos la opción a cada hablante de que después de grabar un audio de una frase puedan escucharse como quedó. Esto requiere un ida y vuelta entre el cliente (navegador) y el servidor. Al grabar, el cliente manda un mensaje HTTP POST para el servidor con los datos de grabación. Las frases son cortas entonces no es necesario preocuparse por la longitud del paquete. Cuando el cliente quiere escucharlo envía un mensaje GET a ese mismo audio anteriormente grabado. El servidor envía la grabación y es reproducida en el cliente. Esta ida y vuelta de la grabación podría ser optimizada para que la grabación pueda ser escuchada sin tener interacción con el servidor. En nuestro experimento, no tuvimos problemas graves en lo que respecta a latencias pero si es un punto débil del sistema.
-
-A cada hablante le dimos la opción que pueda escuchar y volver a grabar la frase cuantas veces quisiera. Esto lo hicimos para poder detectar cual es el disparador que hace que diga mal una frase. Puede resultar interesante analizar los anteriores audios y porque se queda con el último.
-
 \chapter{Extracción de información}
 
-Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿Cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. 
+Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. 
 
 \section{Alineación forzada}
 
@@ -386,17 +388,13 @@ Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script
 
 %Una de las ventajas que posee es que puede utilizarse para cualquier idioma. Sólo se necesita una hora de audio grabado y un diccionario fonético sobre las palabras a reconocer. 
 
-La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a Laboratorio de Investigaciones Sensoriales - INIGEM que nos prestó su diccionario pudimos utilizar esta herramienta. El diccionario fonético nos provee para cada palabra los distintos fonemas que la componen. Esta herramienta se utiliza para generar la lista de fonemas que aparecen en cada grabación. De esta manera, se puede realizar una alineación acorde al español.
+La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a \textit{Laboratorio de Investigaciones Sensoriales} que nos prestó su diccionario pudimos utilizar esta herramienta. El diccionario fonético nos provee para cada palabra los distintos fonemas que la componen. Esta herramienta se utiliza para generar la lista de fonemas que aparecen en cada grabación. De esta manera, se puede realizar una alineación acorde al español.
 
 \subsection{Diccionario TranscriptorFonetico2 del LIS}
 
 Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra para cada grabación.
 
 \section{Extracción de atributos}
-
-En esta sección vamos a analizar como extraer cada uno de los atributos que planteamos en cada regla.
-
-\subsection{Implementación}
 
 La extracción de datos fue realizado utilizando el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy versión 1.6.1. Esta es una librería para el calculo preciso en aplicaciones científicas.
 
@@ -409,7 +407,7 @@ El extractor posee como input los archivos .wav y los archivos textgrid que corr
 \end{figure}
 
 
-El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama '.SCORES' y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos.
+El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama '.SCORES' y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos uno por uno.
 
 Luego de esto, el extractor va a correr un conjunto de funciones que van a extraer cada uno de los atributos. Este conjunto de funciones se dividen en dos: las que computan atributos temporales y las que computan atributos acústicos. Veamos cada uno:
 
@@ -434,15 +432,14 @@ los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada
 \subsubsection{Atributos fonéticos}
 
 \begin{itemize}
-    \item \textbf{Duración de la 'kt':} con este atributo vamos a buscar el patrón 'kt' en los TextGrids y luego a medir normalizando de las dos formas el fonema 'k'.  
-    \item \textbf{Duración de la 'sc':} ídem con 'sc' y midiendo el fonema 's'.
-    \item \textbf{Duración de la 'll':} buscamos el patrón 'll' y lo medimos normalizandolo de las dos formas.
-    \item \textbf{Duración de la 'rr':} ídem para 'rr'.
-    \item \textbf{Duración de la 's' final:} Ídem para las 's' de final de palabra.
-    
+    \item \textbf{Duración de la 'kt':} este atributo vamos a buscar el patrón /kt/ en los TextGrids y luego a medir la duración del fonema /k/. Este atributo intenta medir la diferencia explicada en la regla 4 que nos dice medir dicho fonema.
+    \item \textbf{Duración de la 'sc':} ídem con /sc/ y midiendo el fonema /s/. Este corresponde a la regla 3 que referencia a la duración del fonema /s/ anterior a /c/.  
+    \item \textbf{Duración de la 'll':} buscamos el patrón /ll/ y lo medimos. Este atributo hace referencia a la regla 5 que mide dicho fonema.
+    \item \textbf{Duración de la 'rr':} ídem para /r/ fuerte. Referencia a la regla 6 que hace hincapié en este fonema.
+    \item \textbf{Duración de la 's' final:} ídem para las /s/ de final de palabra. Corresponde a la regla 2 que hace referencia a la aspiración de la /s/ de final de las palabras.  
     \item \textbf{Duración de cada fonema:} este atributo mide la cantidad de fonemas y realiza un promedio. Este no se realiza normalización.  
     \item \textbf{Duración de cada vocal:} contabilizamos cada vocal y luego realizamos su normalización utilizando la duración de cada fonema.
-    \item \textbf{Duración de cada consonante:} Ídem para consonantes. 
+    \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
 
 \subsubsection{Atributos silábicos}
@@ -513,6 +510,20 @@ Debemos extraer datos de los wavs grabados. Para ello debemos analizarlos y que 
 \subsubsection{Implementación}
 
 Para realizar el calculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para calcular el script y luego continuar con la extracción.
+
+\subsection{Nomenclatura utilizada}
+Para referenciar cada una de los atributos debimos definir una nomenclatura. La definición que tomamos es la siguiente:
+\begin{center}
+\textit{TIPO+``\_''+ATRIBUTO+``\_''+NORMALIZACIÓN} 
+\end{center}
+donde:
+\begin{itemize}
+  \item \emph{TIPO} puede ser \emph{FON, SIL o ACU}. Esto corresponde al tipo de atributo, si es fonético, silábico o acústico.
+  \item \emph{ATRIBUTO} puede ser \emph{kt, ll, sc, rr, Sfinal, vowel o consonant} haciendo alusión a cada una de los atributos. También aquí se encuentran los atributos generados por MFCC cuyos nombres son de la forma \emph{(Min $|$ Max $|$ Avg) + (KT $|$ LL $|$ SC $|$ RR)}. Parahacer referencia a las reglas sobre atributos silábicos utilizamos los nombres de \emph{syllableAccent} y \emph{prevSyllableAccent} para la duración de la silaba acentuada y su anterior.
+  \item \emph{NORMALIZACIÓN} corresponde al tipo de normalización realizada. Estas pueden ser \emph{norm} haciendo alusión a normalización o \emph{normhd} haciendo alusión a normalización tomando $mu=0$.
+\end{itemize}
+ 
+Por ejemplo: definimos  SIL\_prevSyllableAccent\_normhd como la duración de la silaba anterior ala acentuada aplicando normalización. Todos los nombres y a que atributo se refieren se puede ver en el apéndice de atributos.
 
 \chapter{Datos obtenidos}
 
@@ -591,11 +602,14 @@ Para corregir los errores descriptos debimos chequear cada uno de los textgrids.
 \textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 \textbf{Modificados}  & 101 & 88 & 189 \\ \hline
 \textbf{Correctos sin modificación}  & 119 & 2 & 121 \\ \hline
+\textbf{Total} & 220 & 90 & 310
 \end{tabular}
 \end{table}
 
 %todo: leer bien el mail de prosodylab
 Esta forma se realizó ya que eran pocos audios. Otro modo de hacer esto pero de forma automática puede ser de la siguiente forma. Cuando se realiza la alineación, se crea un archivo llamado $.SCORES$. Este archivo posee los valores de verosimilitud de cada alineación. Entonces este archivo podría servir para definir si un audio esta bien alineado. Si la alineación superó un umbral pre-configurado, el audio estará bien alineado y se podrá utilizar para el estudio, sino el audio se descartará. Vale aclarar que esto puede tener falsos positivos. Esta idea podría realizarse en trabajos futuros.
+
+De estos 310 debemos sacar las grabaciones que se realizaron varias veces... explayarse
 
 \chapter{Análisis}
 
