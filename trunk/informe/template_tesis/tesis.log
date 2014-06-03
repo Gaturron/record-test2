@@ -1,20 +1,14 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.30)  29 MAY 2014 11:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  3 JUN 2014 01:00
 entering extended mode
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **tesis.tex
 (./tesis.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
-(/usr/share/texmf-texlive/tex/latex/base/book.cls
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/bk12.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo
 File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,44 +24,51 @@ File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
 \Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/share/texmf-texlive/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -217,7 +218,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -248,7 +249,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -272,35 +273,38 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/var/lib/texmf/tex/generic/babel/babel.sty
-Package: babel 2008/07/06 v3.8l The Babel package
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/05/16 v3.9f The Babel package
 
-(/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf
-Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2010/05/23 v5.0j Spanish support from the babel system
 
-(/usr/share/texmf-texlive/tex/generic/babel/babel.def
-File: babel.def 2008/07/06 v3.8l Babel common definitions
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/05/16 v3.9f Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen105
 )
 \es@datefmt=\count90
 \es@quottoks=\toks17
 \es@quotdepth=\count91
-Package babel Info: Making " an active character on input line 492.
-Package babel Info: Making . an active character on input line 585.
-Package babel Info: Making < an active character on input line 630.
-Package babel Info: Making > an active character on input line 630.
+Package babel Info: Making " an active character on input line 495.
+Package babel Info: Making . an active character on input line 588.
+Package babel Info: Making < an active character on input line 633.
+Package babel Info: Making > an active character on input line 633.
 ))
-(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
-Package: geometry 2008/12/21 v4.2 Page Geometry
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count92
 \Gm@cntv=\count93
@@ -309,56 +313,59 @@ Package ifvtex Info: VTeX not detected.
 \Gm@wd@mp=\dimen107
 \Gm@odd@mp=\dimen108
 \Gm@even@mp=\dimen109
+\Gm@layoutwidth=\dimen110
+\Gm@layoutheight=\dimen111
+\Gm@layouthoffset=\dimen112
+\Gm@layoutvoffset=\dimen113
 \Gm@dimlist=\toks18
-
-(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
-(/usr/share/texmf-texlive/tex/latex/sidecap/sidecap.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
 Package: sidecap 2003/06/06 v1.6f SideCap Package (RN/HjG)
 
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\SC@BOXWD=\dimen110
-\SC@CAPWD=\dimen111
-\SC@tempdima=\dimen112
-\SC@tempdimb=\dimen113
+\SC@BOXWD=\dimen114
+\SC@CAPWD=\dimen115
+\SC@tempdima=\dimen116
+\SC@tempdimb=\dimen117
 \c@SC@C=\count95
 \SC@BOX=\box26
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count96
 \lst@gtempboxa=\box27
 \lst@token=\toks19
 \lst@length=\count97
-\lst@currlwidth=\dimen114
+\lst@currlwidth=\dimen118
 \lst@column=\count98
 \lst@pos=\count99
-\lst@lostspace=\dimen115
-\lst@width=\dimen116
+\lst@lostspace=\dimen119
+\lst@width=\dimen120
 \lst@newlines=\count100
 \lst@lineno=\count101
-\lst@maxwidth=\dimen117
+\lst@maxwidth=\dimen121
 
-(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 \c@lstnumber=\count102
 \lst@skipnumbers=\count103
 \lst@framebox=\box28
 )
-(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
-File: listings.cfg 2007/02/22 1.4 listings configuration
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/06/27 1.5pre1 listings configuration
 ))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
+Package: listings 2013/07/10 1.5 (Carsten Heinz)
 
-(/usr/share/texmf-texlive/tex/latex/float/float.sty
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count104
 \float@exts=\toks20
@@ -366,14 +373,14 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks21
 \@floatcapt=\box30
 )
-(/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip43
 \LTright=\skip44
 \LTpre=\skip45
 \LTpost=\skip46
 \LTchunksize=\count105
-\LTcapwidth=\dimen118
+\LTcapwidth=\dimen122
 \LT@head=\box31
 \LT@firsthead=\box32
 \LT@foot=\box33
@@ -384,8 +391,9 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count109
 \LT@p@ftn=\toks22
 )
-(/usr/share/texmf-texlive/tex/latex/pgfplots/pgfplots.sty
-Package: pgfplots 2009/02/14 Version 1.2.2
+(/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2013/03/17 v1.8 Data Visualization (1.8-3-gaf58a29)
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -396,7 +404,7 @@ Package: pgfplots 2009/02/14 Version 1.2.2
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box35
 
-(/usr/share/texmf-texlive/tex/latex/ms/everyshi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
@@ -416,14 +424,14 @@ Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks26
 ))
-\pgf@x=\dimen119
-\pgf@y=\dimen120
-\pgf@xa=\dimen121
-\pgf@ya=\dimen122
-\pgf@xb=\dimen123
-\pgf@yb=\dimen124
-\pgf@xc=\dimen125
-\pgf@yc=\dimen126
+\pgf@x=\dimen123
+\pgf@y=\dimen124
+\pgf@xa=\dimen125
+\pgf@ya=\dimen126
+\pgf@xb=\dimen127
+\pgf@yb=\dimen128
+\pgf@xc=\dimen129
+\pgf@yc=\dimen130
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
 \c@pgf@counta=\count110
@@ -453,7 +461,7 @@ File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 (/usr/share/texmf/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -475,7 +483,7 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen127
+\pgfmath@dimen=\dimen131
 \pgfmath@count=\count116
 \pgfmath@box=\box36
 \pgfmath@toks=\toks27
@@ -495,30 +503,30 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 ))
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
-\pgf@picminx=\dimen128
-\pgf@picmaxx=\dimen129
-\pgf@picminy=\dimen130
-\pgf@picmaxy=\dimen131
-\pgf@pathminx=\dimen132
-\pgf@pathmaxx=\dimen133
-\pgf@pathminy=\dimen134
-\pgf@pathmaxy=\dimen135
-\pgf@xx=\dimen136
-\pgf@xy=\dimen137
-\pgf@yx=\dimen138
-\pgf@yy=\dimen139
-\pgf@zx=\dimen140
-\pgf@zy=\dimen141
+\pgf@picminx=\dimen132
+\pgf@picmaxx=\dimen133
+\pgf@picminy=\dimen134
+\pgf@picmaxy=\dimen135
+\pgf@pathminx=\dimen136
+\pgf@pathmaxx=\dimen137
+\pgf@pathminy=\dimen138
+\pgf@pathmaxy=\dimen139
+\pgf@xx=\dimen140
+\pgf@xy=\dimen141
+\pgf@yx=\dimen142
+\pgf@yy=\dimen143
+\pgf@zx=\dimen144
+\pgf@zy=\dimen145
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
-\pgf@path@lastx=\dimen142
-\pgf@path@lasty=\dimen143
+\pgf@path@lastx=\dimen146
+\pgf@path@lasty=\dimen147
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
-\pgf@shorten@end@additional=\dimen144
-\pgf@shorten@start@additional=\dimen145
+\pgf@shorten@end@additional=\dimen148
+\pgf@shorten@start@additional=\dimen149
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
@@ -529,13 +537,13 @@ File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
-\pgflinewidth=\dimen146
+\pgflinewidth=\dimen150
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
-\pgf@pt@x=\dimen147
-\pgf@pt@y=\dimen148
-\pgf@pt@temp=\dimen149
+\pgf@pt@x=\dimen151
+\pgf@pt@y=\dimen152
+\pgf@pt@temp=\dimen153
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
@@ -551,7 +559,7 @@ File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
-\pgf@max=\dimen150
+\pgf@max=\dimen154
 \pgf@sys@shading@range@num=\count119
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
@@ -579,8 +587,8 @@ File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
 )
 (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen151
-\pgf@nodesepend=\dimen152
+\pgf@nodesepstart=\dimen155
+\pgf@nodesepend=\dimen156
 )
 (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
@@ -590,8 +598,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
 (/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
-\pgffor@iter=\dimen153
-\pgffor@skip=\dimen154
+\pgffor@iter=\dimen157
+\pgffor@skip=\dimen158
 \pgffor@stack=\toks30
 \pgffor@toks=\toks31
 ))
@@ -601,14 +609,14 @@ Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
 \pgf@plot@mark@count=\count120
-\pgfplotmarksize=\dimen155
+\pgfplotmarksize=\dimen159
 )
-\tikz@lastx=\dimen156
-\tikz@lasty=\dimen157
-\tikz@lastxsaved=\dimen158
-\tikz@lastysaved=\dimen159
-\tikzleveldistance=\dimen160
-\tikzsiblingdistance=\dimen161
+\tikz@lastx=\dimen160
+\tikz@lasty=\dimen161
+\tikz@lastxsaved=\dimen162
+\tikz@lastysaved=\dimen163
+\tikzleveldistance=\dimen164
+\tikzsiblingdistance=\dimen165
 \tikz@figbox=\box42
 \tikz@tempbox=\box43
 \tikztreelevel=\count121
@@ -627,67 +635,117 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
-))) (/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplots.code.tex (/usr/shar
-e/texmf-texlive/tex/generic/pgfplots/pgfplotscore.code.tex
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks32
 \t@pgfplots@tokb=\toks33
 \t@pgfplots@tokc=\toks34
-\pgfplots@tmpa=\dimen162
-)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsup
-p_loader.code.tex
+\pgfplots@tmpa=\dimen166
+\c@pgfplots@coordindex=\count129
+\c@pgfplots@scanlineindex=\count130
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
+.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_loader.code.tex
 Package pgfplots: loading complementary code for your PGF version...
 
-(/usr/share/texmf-texlive/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsup
-p_misc.code.tex)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsup
-p_pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks35
-)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsup
-p_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count129
-)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsup
-p_pgflibraryplothandlers.code.tex
-File: pgfplotsoldpgfsupp_pgflibraryplothandlers.code.tex 2009/02/13 v2.10 (rcs-
-revision 1.7)
-\pgf@plot@mark@count=\count130
-\pgfplotmarksize=\dimen163
-)
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryfpu.code.tex))
-(/usr/share/texmf-texlive/tex/generic/pgfplots/util/pgfplotsutil.code.tex
-(/usr/share/texmf-texlive/tex/generic/pgfplots/liststructure/pgfplotsliststruct
-ure.code.tex)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/liststructure/pgfplotsliststruct
-ureext.code.tex)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/liststructure/pgfplotsarray.code
-.tex
-\c@pgfplotsarray@tmp=\count131
-)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/numtable/pgfplotstable.code.tex
-\c@pgfplotstable@counta=\count132
-\pgfplotstable@outfile=\write4
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_misc.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
 
-(/usr/share/texmf-texlive/tex/generic/pgfplots/numtable/pgfplotstable.coltype.c
-ode.tex)))
-(/usr/share/texmf-texlive/tex/generic/pgfplots/util/pgfplotscolormap.code.tex)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplots.stackedplots.code.tex)
-(/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex
-) (/usr/share/texmf-texlive/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks37
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count131
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2012/09/11 v2.10 (rcs-revision 1.17)
+\pgf@plot@mark@count=\count132
+\pgfplotmarksize=\dimen167
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryfpu.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2012/11/30  (rcs-revision 1.38)
+\pgfpic=\box44
+\pgf@hbox=\box45
+\pgf@layerbox@main=\box46
+\pgf@picture@serial@count=\count133
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2012/11/07  (rcs-revision 1.5)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructure.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructureext.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
+.code.tex
+\c@pgfplotsarray@tmp=\count134
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
+x.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
+d.code.tex
+\c@pgfplotstable@counta=\count135
+\t@pgfplotstable@a=\toks38
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
+x
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
+de.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
+fshading.code.tex
+\c@pgfplotslibrarysurf@no=\count136
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
+shading.pgfsys-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
+tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
+ex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
+e.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
 ations.code.tex
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen164
-\pgfdecoratedremainingdistance=\dimen165
-\pgfdecoratedinputsegmentcompleteddistance=\dimen166
-\pgfdecoratedinputsegmentremainingdistance=\dimen167
-\pgf@decorate@distancetomove=\dimen168
-\pgf@decorate@repeatstate=\count133
-\pgfdecorationsegmentamplitude=\dimen169
-\pgfdecorationsegmentlength=\dimen170
+\pgfdecoratedcompleteddistance=\dimen168
+\pgfdecoratedremainingdistance=\dimen169
+\pgfdecoratedinputsegmentcompleteddistance=\dimen170
+\pgfdecoratedinputsegmentremainingdistance=\dimen171
+\pgf@decorate@distancetomove=\dimen172
+\pgf@decorate@repeatstate=\count137
+\pgfdecorationsegmentamplitude=\dimen173
+\pgfdecorationsegmentlength=\dimen174
 )
-\tikz@lib@dec@box=\box44
+\tikz@lib@dec@box=\box47
 )
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
 ations.pathmorphing.code.tex
@@ -697,13 +755,13 @@ athmorphing.code.tex))
 ations.pathreplacing.code.tex
 (/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
 athreplacing.code.tex))
-\pgfplots@numplots=\count134
-\pgfplots@xmin@reg=\dimen171
-\pgfplots@xmax@reg=\dimen172
-\pgfplots@ymin@reg=\dimen173
-\pgfplots@ymax@reg=\dimen174
-\pgfplots@zmin@reg=\dimen175
-\pgfplots@zmax@reg=\dimen176
+\pgfplots@numplots=\count138
+\pgfplots@xmin@reg=\dimen175
+\pgfplots@xmax@reg=\dimen176
+\pgfplots@ymin@reg=\dimen177
+\pgfplots@ymax@reg=\dimen178
+\pgfplots@zmin@reg=\dimen179
+\pgfplots@zmax@reg=\dimen180
 )
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotm
 arks.code.tex
@@ -712,7 +770,10 @@ File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
 )))
-(./tesis.aux)
+(./tesis.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+)
 \openout1 = `tesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -727,66 +788,108 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
- (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count135
-\scratchdimen=\dimen177
-\scratchbox=\box45
-\nofMPsegments=\count136
-\nofMParguments=\count137
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count138
-\MPscratchDim=\dimen178
-\MPnumerator=\count139
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count139
+\scratchdimen=\dimen181
+\scratchbox=\box48
+\nofMPsegments=\count140
+\nofMParguments=\count141
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen182
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
+\everyMPtoPDFconversion=\toks40
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-*geometry auto-detecting driver*
-*geometry detected driver: pdftex*
--------------------- Geometry parameters
-paper: a4paper
-landscape: --
-twocolumn: --
-twoside: true
-asymmetric: --
-h-parts: 85.35826pt, 426.79135pt, 85.35826pt
-v-parts: 99.58464pt, 645.87756pt, 99.58464pt
-hmarginratio: --
-vmarginratio: --
-lines: --
-heightrounded: --
-bindingoffset: 0.0pt
-truedimen: --
-includehead: --
-includefoot: --
-includemp: --
-driver: pdftex
--------------------- Page layout dimensions and switches
-\paperwidth  597.50787pt
-\paperheight 845.04684pt
-\textwidth  426.79135pt
-\textheight 645.87756pt
-\oddsidemargin  13.08827pt
-\evensidemargin 13.08827pt
-\topmargin  -4.55914pt
-\headheight 12.0pt
-\headsep    19.8738pt
-\footskip   30.0pt
-\marginparwidth 88.0pt
-\marginparsep   7.0pt
-\columnsep  10.0pt
-\skip\footins  10.8pt plus 4.0pt minus 2.0pt
-\hoffset 0.0pt
-\voffset 0.0pt
-\mag 1000
-\@twosidetrue \@mparswitchtrue 
-(1in=72.27pt, 1cm=28.45pt)
------------------------
-(/usr/share/texmf-texlive/tex/latex/ms/ragged2e.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(99.58464pt, 645.87756pt, 99.58464pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=645.87756pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-4.55914pt
+* \headheight=12.0pt
+* \headsep=19.8738pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=88.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 
-(/usr/share/texmf-texlive/tex/latex/ms/everysel.sty
-Package: everysel 1999/06/08 v1.03 EverySelectfont Package (MS)
-LaTeX Info: Redefining \selectfont on input line 125.
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 126.
 )
 \CenteringLeftskip=\skip47
 \RaggedLeftLeftskip=\skip48
@@ -803,24 +906,34 @@ LaTeX Info: Redefining \selectfont on input line 125.
 \RaggedRightParindent=\skip59
 \JustifyingParindent=\skip60
 )
-\c@lstlisting=\count140
+\c@lstlisting=\count145
 
-ABD: EveryShipout initializing macros (./caratula.tex
+ABD: EveryShipout initializing macros
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
+our preamble.
+ on input line 25.
+
+(./caratula.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 9.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 9.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
-
-<logofcen.pdf, id=4, 108.405pt x 108.405pt>
+ <logofcen.pdf, id=4, 108.405pt x 108.405pt>
 File: logofcen.pdf Graphic file (type pdf)
- <use logofcen.pdf> [1
+ <use logofcen.pdf>
+Package pdftex.def Info: logofcen.pdf used on input line 10.
+(pdftex.def)             Requested size: 73.97733pt x 73.98073pt.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logofcen.pdf>]) [2
-
-] (./abs_esp.tex)
 [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logofcen.pdf>])
+[2
+
+] (./abs_esp.tex) [1
 
 ] [2
 
@@ -830,25 +943,31 @@ File: logofcen.pdf Graphic file (type pdf)
 
 ] (./dedicatoria.tex) [5] [6
 
-]
-(./tesis.toc
+] (./tesis.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
 Underfull \vbox (badness 1308) has occurred while \output is active []
 
  [7
 
 ])
-\tf@toc=\write5
-\openout5 = `tesis.toc'.
+\tf@toc=\write4
+\openout4 = `tesis.toc'.
 
 
 [8]
 Cap\'{\i }tulo 1.
 
-<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=45, 411.136pt x 715.4
+<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=46, 411.136pt x 715.4
 73pt>
 File: Images/Dialectos_del_idioma_espanol_en_Argentina.png Graphic file (type p
 ng)
  <use Images/Dialectos_del_idioma_espanol_en_Argentina.png>
+Package pdftex.def Info: Images/Dialectos_del_idioma_espanol_en_Argentina.png u
+sed on input line 73.
+(pdftex.def)             Requested size: 213.39568pt x 371.36032pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -861,38 +980,56 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 Underfull \vbox (badness 8170) has occurred while \output is active []
 
- [2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>] [3] [4]
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
+ [2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>] [3]
+LaTeX Info: Redefining \. on input line 132.
+LaTeX Info: Redefining \% on input line 132.
+ [4]
 Cap\'{\i }tulo 2.
 [5
 
-] <Images/reglas_AMPER.png, id=65, 639.38875pt x 221.82875pt>
+] <Images/reglas_AMPER.png, id=66, 639.38875pt x 221.82875pt>
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
-<Images/frases_inf.png, id=66, 854.19125pt x 679.53876pt>
+Package pdftex.def Info: Images/reglas_AMPER.png used on input line 170.
+(pdftex.def)             Requested size: 426.79135pt x 148.07274pt.
+
+<Images/frases_inf.png, id=67, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
+Package pdftex.def Info: Images/frases_inf.png used on input line 176.
+(pdftex.def)             Requested size: 426.79135pt x 339.5197pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6 <./Images/reglas_AMPER.png (PNG copy)>]
+
+LaTeX Warning: Citation `amper' on page 6 undefined on input line 189.
+
+LaTeX Info: Redefining \. on input line 205.
+LaTeX Info: Redefining \% on input line 205.
+[6 <./Images/reglas_AMPER.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./Images/frases_inf.png (PNG copy)>]
-(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+ [7 <./Images/frases_inf.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
-(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
-(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 )
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 249.
 
 
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -900,7 +1037,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 250.
 
 
-(/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
@@ -909,11 +1046,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 250.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 250.
+LaTeX Info: Redefining \. on input line 261.
+LaTeX Info: Redefining \% on input line 261.
  [8]
-<Images/cant_frases_traza_inf.png, id=80, 602.25pt x 372.39125pt>
+<Images/cant_frases_traza_inf.png, id=81, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
-<use Images/cant_frases_traza_inf.png> [9 <./Images/cant_frases_traza_inf.png>]
+<use Images/cant_frases_traza_inf.png>
+Package pdftex.def Info: Images/cant_frases_traza_inf.png used on input line 26
+4.
+(pdftex.def)             Requested size: 384.1096pt x 237.51703pt.
+LaTeX Info: Redefining \. on input line 271.
+LaTeX Info: Redefining \% on input line 271.
+ [9 <./Images/cant_frases_traza_inf.png>]
+LaTeX Info: Redefining \. on input line 271.
+LaTeX Info: Redefining \% on input line 271.
 [10
 
 ]
@@ -922,133 +1069,438 @@ Cap\'{\i }tulo 3.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
-<Images/pag-inicio2.png, id=92, 1071.00125pt x 624.3325pt>
+<Images/pag-inicio2.png, id=93, 1071.00125pt x 624.3325pt>
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
-<Images/pag-allow1.png, id=93, 1371.1225pt x 770.88pt>
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 288.
+(pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
+
+<Images/pag-allow1.png, id=94, 1371.1225pt x 770.88pt>
 File: Images/pag-allow1.png Graphic file (type png)
 
 <use Images/pag-allow1.png>
+Package pdftex.def Info: Images/pag-allow1.png used on input line 294.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
 File: Images/pag-inicio2.png Graphic file (type png)
  <use Images/pag-inicio2.png>
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 300.
+(pdftex.def)             Requested size: 298.75264pt x 174.15457pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-grabar1.png, id=94, 1371.1225pt x 770.88pt>
+<Images/pag-grabar1.png, id=95, 1371.1225pt x 770.88pt>
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 306.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-play1.png, id=95, 1371.1225pt x 770.88pt>
+<Images/pag-play1.png, id=96, 1371.1225pt x 770.88pt>
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
+Package pdftex.def Info: Images/pag-play1.png used on input line 312.
+(pdftex.def)             Requested size: 298.75264pt x 167.9591pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12 <./Images/pag-inicio2.png (PNG copy)> <./Images/pag-allow1.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
+[12 <./Images/pag-inicio2.png> <./Images/pag-allow1.png>]
 
 LaTeX Warning: Text page 13 contains only floats.
 
-[13 <./Images/pag-grabar1.png (PNG copy)> <./Images/pag-play1.png (PNG copy)>]
-[14] <Images/categorizando_audios.png, id=107, 347.2975pt x 346.29375pt>
+LaTeX Info: Redefining \. on input line 318.
+LaTeX Info: Redefining \% on input line 318.
+[13 <./Images/pag-grabar1.png> <./Images/pag-play1.png>]
+LaTeX Info: Redefining \. on input line 336.
+LaTeX Info: Redefining \% on input line 336.
+ [14]
+<Images/categorizando_audios.png, id=108, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 348
+.
+(pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] [16 <./Images/categorizando_audios.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 364.
+LaTeX Info: Redefining \% on input line 364.
+[15]
+LaTeX Info: Redefining \. on input line 369.
+LaTeX Info: Redefining \% on input line 369.
+ [16 <./Images/categorizando_audios.png>]
 Cap\'{\i }tulo 4.
+
+LaTeX Warning: Citation `prosodylab' on page 17 undefined on input line 382.
+
+
+LaTeX Warning: Citation `rabiner' on page 17 undefined on input line 387.
+
 [17
 
-] <Images/diagrama_workflow.jpg, id=118, 300.12125pt x 316.18124pt>
+] <Images/diagrama_workflow.jpg, id=119, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 404.
+(pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18] [19 <./Images/diagrama_workflow.jpg>] [20] [21] [22]
+LaTeX Info: Redefining \. on input line 413.
+LaTeX Info: Redefining \% on input line 413.
+[18]
+LaTeX Info: Redefining \. on input line 436.
+LaTeX Info: Redefining \% on input line 436.
+ [19 <./Images/diagrama_workflow.jpg>]
+LaTeX Info: Redefining \. on input line 466.
+LaTeX Info: Redefining \% on input line 466.
+ [20]
+LaTeX Info: Redefining \. on input line 508.
+LaTeX Info: Redefining \% on input line 508.
+ [21]
+LaTeX Info: Redefining \. on input line 528.
+LaTeX Info: Redefining \% on input line 528.
+ [22]
 Cap\'{\i }tulo 5.
 [23
 
-] <Images/alineacion_mala_inf.png, id=139, 1290.8225pt x 664.4825pt>
+]
+
+LaTeX Warning: Citation `praat' on page 24 undefined on input line 565.
+
+<Images/alineacion_mala_inf.png, id=140, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
+Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 572.
+
+(pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/click_al_final_inf.png, id=140, 1281.78876pt x 663.47874pt>
+<Images/click_al_final_inf.png, id=141, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
+Package pdftex.def Info: Images/click_al_final_inf.png used on input line 579.
+(pdftex.def)             Requested size: 341.43437pt x 176.73216pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+LaTeX Info: Redefining \. on input line 585.
+LaTeX Info: Redefining \% on input line 585.
 [24]
 Underfull \vbox (badness 2469) has occurred while \output is active []
 
- [25 <./Images/alineacion_mala_inf.png (PNG copy)> <./Images/click_al_final_inf
-.png (PNG copy)>] [26]
+LaTeX Info: Redefining \. on input line 602.
+LaTeX Info: Redefining \% on input line 602.
+ [25 <./Images/alineacion_mala_inf.png> <./Images/click_al_final_inf.png>]
+LaTeX Info: Redefining \. on input line 607.
+LaTeX Info: Redefining \% on input line 607.
+ [26]
 Cap\'{\i }tulo 6.
 [27
 
-] [28] [29] [30]
+]
+LaTeX Info: Redefining \. on input line 681.
+LaTeX Info: Redefining \% on input line 681.
+ [28]
+
+LaTeX Warning: Citation `Cohen1995' on page 29 undefined on input line 707.
+
+
+LaTeX Warning: Citation `Quinlan1993' on page 29 undefined on input line 714.
+
+
+LaTeX Warning: Citation `Platt98sequentialminimal' on page 29 undefined on inpu
+t line 723.
+
+LaTeX Info: Redefining \. on input line 724.
+LaTeX Info: Redefining \% on input line 724.
+[29]
+
+LaTeX Warning: Citation `DBLP:conf/flairs/Zhang04' on page 30 undefined on inpu
+t line 730.
+
+LaTeX Info: Redefining \. on input line 765.
+LaTeX Info: Redefining \% on input line 765.
+[30]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+LaTeX Info: Redefining \. on input line 803.
+LaTeX Info: Redefining \% on input line 803.
  [31]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 
-
-! Package pgfkeys Error: I do not know the key '/tikz/legend pos' and I am goin
-g to ignore it. Perhaps you misspelled it.
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/anchors'
+. I am going to ignore this key.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.845 \end{axis}
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/labels'.
+ I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/empty li
+ne'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/scaling'
+. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/scale mo
+de'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/general'
+. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/BB'. I a
+m going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/path rep
+lacement'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/plot3gra
+phics'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/bar widt
+h by units'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.806 ...tsset{width=10cm, height=6cm, compat=1.9}
+                                                  
+? 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 820.
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/anchors'
+. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/labels'.
+ I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/empty li
+ne'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/scaling'
+. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/scale mo
+de'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/general'
+. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/BB'. I a
+m going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/path rep
+lacement'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/plot3gra
+phics'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/bar widt
+h by units'. I am going to ignore this key.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.826 ...tsset{width=10cm, height=4cm, compat=1.9}
+                                                  
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.880     (1,64)(2,71)(3,67)(4,55)(5,66) };
+                                           \addlegendentry{ZeroR};
+? 
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.887 \end{axis}
                 
 ? 
 
-Overfull \hbox (39.58002pt too wide) in paragraph at lines 846--847
-[][] 
- []
-
-
-Underfull \vbox (badness 4156) has occurred while \output is active []
-
- [32]
-[33] [34]
-
-! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
-gnore it. Perhaps you misspelled it.
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
 
 See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1058 \end{axis}
-                 
-? 
-
-! Package pgfkeys Error: I do not know the key '/tikz/width' and I am going to 
-ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
+l.887 \end{axis}
+                
 ? 
 
 ! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
@@ -1058,224 +1510,269 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1058 \end{axis}
-                 
+l.887 \end{axis}
+                
 ? 
 
-! Package pgfkeys Error: I do not know the key '/tikz/width' and I am going to 
-ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
-? 
-
-! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
-gnore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
-? 
-
-! Package pgfkeys Error: I do not know the key '/tikz/width' and I am going to 
-ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
-? 
-
-! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
- am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
-? 
-
-! Package pgfkeys Error: I do not know the key '/tikz/width' and I am going to 
-ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1058 \end{axis}
-                 
-? 
-
-Overfull \hbox (11.12543pt too wide) in paragraph at lines 1059--1060
-[][] 
+Overfull \hbox (27.83014pt too wide) in paragraph at lines 888--889
+ [][] 
  []
 
+LaTeX Info: Redefining \. on input line 908.
+LaTeX Info: Redefining \% on input line 908.
+[32]
+LaTeX Info: Redefining \. on input line 922.
+LaTeX Info: Redefining \% on input line 922.
+ [33]
+LaTeX Info: Redefining \. on input line 976.
+LaTeX Info: Redefining \% on input line 976.
+ [34]
+Underfull \vbox (badness 3758) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+LaTeX Info: Redefining \. on input line 1052.
+LaTeX Info: Redefining \% on input line 1052.
  [35]
+
+! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
+gnore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1087     (1,20)(2,20)(3,20)(4,20)(5,20) };
+                                            
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1089     (1,30)(2,30)(3,30)(4,30)(5,30) };
+                                            
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
+gnore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1103 \end{axis}
+                 
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1103 \end{axis}
+                 
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
+gnore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1103 \end{axis}
+                 
+? 
+
+! Package pgfkeys Error: I do not know the key '/tikz/densely dashedline' and I
+ am going to ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1103 \end{axis}
+                 
+? 
+
+Overfull \hbox (11.12543pt too wide) in paragraph at lines 1104--1105
+[][] 
+ []
+
+LaTeX Info: Redefining \. on input line 1107.
+LaTeX Info: Redefining \% on input line 1107.
 [36]
 Cap\'{\i }tulo 7.
 [37
 
-] [38
+]
+LaTeX Info: Redefining \. on input line 1108.
+LaTeX Info: Redefining \% on input line 1108.
+ [38
 
 ]
 Cap\'{\i }tulo 8.
-[39] [40
+[39]
+LaTeX Info: Redefining \. on input line 1122.
+LaTeX Info: Redefining \% on input line 1122.
+ [40
 
 ]
-Underfull \hbox (badness 1590) in paragraph at lines 1091--1091
+Underfull \hbox (badness 1590) in paragraph at lines 1136--1136
 []|\OT1/cmr/m/n/12 'caminante no hay ca-
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 1100--1100
+Underfull \hbox (badness 1565) in paragraph at lines 1145--1145
 []|\OT1/cmr/m/n/12 'la sue-gra y el doc-tor
  []
 
 
-Underfull \hbox (badness 5403) in paragraph at lines 1101--1101
+Underfull \hbox (badness 5403) in paragraph at lines 1146--1146
 []|\OT1/cmr/m/n/12 'a la mu-jer pi-ca-res-ca
  []
 
 
-Underfull \hbox (badness 4242) in paragraph at lines 1102--1102
+Underfull \hbox (badness 4242) in paragraph at lines 1147--1147
 []|\OT1/cmr/m/n/12 'quien siem-bra vien-tos
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1104
+Underfull \vbox (badness 10000) detected at line 1149
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 1105--1105
+Underfull \hbox (badness 3746) in paragraph at lines 1150--1150
 []|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
  []
 
-[41] [42] [43] [44
+[41]
+LaTeX Info: Redefining \. on input line 1179.
+LaTeX Info: Redefining \% on input line 1179.
+ [42] [43]
+LaTeX Info: Redefining \. on input line 1181.
+LaTeX Info: Redefining \% on input line 1181.
+ [44
 
 ]
 Cap\'{\i }tulo 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1143--1143
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1188
 []|\OT1/cmr/m/n/12 ACU[]AverageKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1144--1144
+Underfull \hbox (badness 10000) in paragraph at lines 1189--1189
 []|\OT1/cmr/m/n/12 ACU[]AverageLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1145--1145
+Underfull \hbox (badness 10000) in paragraph at lines 1190--1190
 []|\OT1/cmr/m/n/12 ACU[]AverageRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1146--1146
+Underfull \hbox (badness 10000) in paragraph at lines 1191--1191
 []|\OT1/cmr/m/n/12 ACU[]AverageSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+Underfull \hbox (badness 10000) in paragraph at lines 1192--1192
 []|\OT1/cmr/m/n/12 ACU[]MaxKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1148--1148
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1193
 []|\OT1/cmr/m/n/12 ACU[]MaxLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1149
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1194
 []|\OT1/cmr/m/n/12 ACU[]MaxRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1150
+Underfull \hbox (badness 10000) in paragraph at lines 1195--1195
 []|\OT1/cmr/m/n/12 ACU[]MaxSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1151--1151
+Underfull \hbox (badness 10000) in paragraph at lines 1196--1196
 []|\OT1/cmr/m/n/12 ACU[]MinKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1152--1152
+Underfull \hbox (badness 10000) in paragraph at lines 1197--1197
 []|\OT1/cmr/m/n/12 ACU[]MinLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1153--1153
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1198
 []|\OT1/cmr/m/n/12 ACU[]MinRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1154--1154
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1199
 []|\OT1/cmr/m/n/12 ACU[]MinSC[]0 al
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1159
+Underfull \vbox (badness 10000) detected at line 1204
  []
 
 [45]
-Overfull \hbox (23.20445pt too wide) in paragraph at lines 1173--1173
+Overfull \hbox (23.20445pt too wide) in paragraph at lines 1218--1218
 []|\OT1/cmr/m/n/12 SIL[]prevSyllableAccent[]norm| 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1177
+Underfull \vbox (badness 10000) detected at line 1222
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1195
+Underfull \vbox (badness 10000) detected at line 1240
  []
 
-[46] (./tesis.bbl) [47
+LaTeX Info: Redefining \. on input line 1242.
+LaTeX Info: Redefining \% on input line 1242.
+[46]
+No file tesis.bbl.
+(./tesis.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+)
 
-
-] (./tesis.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16727 strings out of 493848
- 343029 string characters out of 1152823
- 482533 words of memory out of 3000000
- 19641 multiletter control sequences out of 15000+50000
- 10409 words of font info for 36 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
- 63i,17n,69p,967b,1814s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmti12.pfb>
-Output written on tesis.pdf (57 pages, 1642465 bytes).
+ 21376 strings out of 493307
+ 481095 string characters out of 6139905
+ 694181 words of memory out of 5000000
+ 24381 multiletter control sequences out of 15000+600000
+ 11025 words of font info for 38 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 63i,19n,83p,967b,2009s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tesis.pdf (56 pages, 1703878 bytes).
 PDF statistics:
  260 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
