@@ -799,6 +799,47 @@ La ventaja de usarlo es que, al saber que distribución representa, vamos a ser 
 
 \section{Resultados}
 
+Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como es este conjunto:
+
+\begin{figure}[H]
+\centering
+\pgfplotsset{width=10cm, height=6cm, compat=1.9}
+\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{axis}[
+    ybar,
+    tick label style={font=\small},
+    tickpos=left,
+    xticklabels={Train1, Train2, Train3, Train4, Train5}, 
+    xtick={1,2,3,4,5},
+    ymin=0,
+    legend entries={BsAs,Cba},
+    ]
+    \addplot +[bar shift=-.2cm, area legend] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
+
+    \addplot  +[bar shift=.2cm, area legend]coordinates {(1,53) (2,68) (3,57) (4,61) (5,69)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\pgfplotsset{width=10cm, height=4cm, compat=1.9}
+\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{axis}[
+    ybar,
+    tick label style={font=\small},
+    tickpos=left,
+    xticklabels={Test1, Test2, Test3, Test4, Test5}, 
+    xtick={1,2,3,4,5},
+    ymin=0,
+    ]
+    \addplot +[bar shift=-.2cm, area legend] coordinates {(1,47) (2,27) (3,46) (4,22) (5,20)};
+
+    \addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
 Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para los distintos clasificadores fueron:
 
 \begin{table}[H]
@@ -806,18 +847,20 @@ Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para l
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-\textbf{Test 1}  & 55 & 57 & 55 & 61 & 78 \\ \hline
-\textbf{Test 2}  & 65 & 48 & 65 & 65 & 75 \\ \hline
-\textbf{Test 3}  & 69 & 72 & 69 & 86 & 75\\ \hline
-\textbf{Test 4}  & 69 & 54 & 69 & 75 & 64\\ \hline
-\textbf{Test 5}  & 60 & 73 & 60 & 67 & 71\\ \hline
+\textbf{Test 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
+\textbf{Test 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
+\textbf{Test 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
+\textbf{Test 4}  & 55 & 52 & 55 & 67 & 80 \\ \hline
+\textbf{Test 5}  & 66 & 70 & 66 & 70 & 70 \\ \hline
 \hline \hline
-\textbf{Promedio}  & 63 & 60 & 63 & 70 & 72 \\ \hline
+\textbf{Promedio} & 64 & 61 & 60 & 72 & 70 \\ \hline
 \end{tabular}
 \end{table}
 
-donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así sucesivamente.
+donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
+\begin{figure}
+\centering
 \begin{tikzpicture}
 \begin{axis}[
 	width=16cm,
@@ -826,24 +869,26 @@ donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así 
     xlabel={Tests},
     ylabel={Porcentaje},
     xmin=0, xmax=6,
-    ymin=40, ymax=90,
+    ymin=50, ymax=90,
     xtick={1,2,3,4,5},
-    ytick={20,40,60,80,100},
+    ytick={20,30,40,50,60,70,80,90,100},
     legend pos=south east,
     ymajorgrids=true,
     grid style=dashed
 ] 
-\addplot[mark=square*,dash pattern=on 10pt off 2pt on 10pt off 2pt]coordinates {
-    (1,55)(2,65)(3,69)(4,69)(5,60) };\addlegendentry{ZeroR};
-\addplot[mark=diamond*,dash pattern=on 10pt off 2pt on 3pt off 2pt]coordinates {
-    (1,57)(2,48)(3,72)(4,54)(5,73) };\addlegendentry{JRip};
-\addplot[mark=triangle*,dashed]coordinates {
-    (1,61)(2,65)(3,86)(4,75)(5,67) };\addlegendentry{Function SMO};
-\addplot[mark=square*,]coordinates {
-    (1,78)(2,75)(3,75)(4,64)(5,71) };\addlegendentry{NaiveBayes};
- 
+\addplot [mark=otimes*,densely dashedline, width=1pt] coordinates {
+    (1,64)(2,71)(3,67)(4,55)(5,66) };\addlegendentry{ZeroR};
+%\addplot[mark=diamond*,dash pattern=on 10pt off 2pt on 3pt off 2pt]coordinates {
+%    (1,61)(2,68)(3,54)(4,52)(5,70) };\addlegendentry{JRip};
+\addplot [mark=diamond*,dash pattern=on 3pt off 2pt on 3pt off 2pt]coordinates {
+    (1,73)(2,76)(3,75)(4,67)(5,70) };\addlegendentry{Function SMO};
+\addplot [mark=square*,dash pattern=on 10pt off 8pt on 10pt off 2pt]coordinates {
+    (1,63)(2,71)(3,67)(4,80)(5,70) };\addlegendentry{NaiveBayes};
 \end{axis}
 \end{tikzpicture}
+\caption{Porcentaje de ZeroR, Function SMO y NaiveBayes}
+\label{porcentajexClasificador}
+\end{figure}
 
 \subsection{Wilcox y Student Test}
 
@@ -854,14 +899,14 @@ Vamos a mostrar los resultados de estos tests estadísticos.
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{Student Test} & \textbf{Wilcox Test} \\ \hline
-\textbf{ZeroR y JRip}  & 0.001644 & 0.006269 \\ \hline
-\textbf{ZeroR y J48}  & 0.8283 & 0.9772 \\ \hline
-\textbf{ZeroR y NaiveBayes}  & 1.225e-05 & 0.002897 \\ \hline
-\textbf{ZeroR y Function SMO}  & 8.266e-06 & 0.002897 \\ \hline
+\textbf{ZeroR y JRip}  & 0.8438 & 0.87 \\ \hline
+\textbf{ZeroR y J48}  & 0.9772 & 0.813 \\ \hline
+\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
+\textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
 \end{tabular}
 \end{table}
 
-Analizando estos resultados notamos que para los clasificadores JRip, NaiveBayes y Function SMO poseen $p-valor$ menor a 0,05. Esto quiere decir que el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR. Por otro lado, J48 no pudo lograr este cometido. 
+Analizando estos resultados notamos que para el clasificador Function SMO poseen $p-valor$ menor a 0,05. Esto quiere decir que el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR. Por otro lado, los demás no pudo lograr este cometido. 
 
 \subsection{Clasificadores encontrados}
 
