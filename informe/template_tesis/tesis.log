@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  3 JUN 2014 01:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  4 JUN 2014 00:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1474,7 +1474,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.880     (1,64)(2,71)(3,67)(4,55)(5,66) };
+l.882     (1,64)(2,71)(3,67)(4,55)(5,66) };
                                            \addlegendentry{ZeroR};
 ? 
 Missing character: There is no ; in font nullfont!
@@ -1488,7 +1488,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.887 \end{axis}
+l.889 \end{axis}
                 
 ? 
 
@@ -1499,7 +1499,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.887 \end{axis}
+l.889 \end{axis}
                 
 ? 
 
@@ -1510,28 +1510,51 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.887 \end{axis}
+l.889 \end{axis}
                 
 ? 
 
-Overfull \hbox (27.83014pt too wide) in paragraph at lines 888--889
+Overfull \hbox (27.83014pt too wide) in paragraph at lines 890--891
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 908.
-LaTeX Info: Redefining \% on input line 908.
+LaTeX Info: Redefining \. on input line 894.
+LaTeX Info: Redefining \% on input line 894.
 [32]
-LaTeX Info: Redefining \. on input line 922.
-LaTeX Info: Redefining \% on input line 922.
- [33]
-LaTeX Info: Redefining \. on input line 976.
-LaTeX Info: Redefining \% on input line 976.
- [34]
-Underfull \vbox (badness 3758) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 901--910
 
-LaTeX Info: Redefining \. on input line 1052.
-LaTeX Info: Redefining \% on input line 1052.
- [35]
+ []
+
+LaTeX Info: Redefining \. on input line 911.
+LaTeX Info: Redefining \% on input line 911.
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 916--925
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 931--940
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 952--961
+
+ []
+
+LaTeX Info: Redefining \. on input line 962.
+LaTeX Info: Redefining \% on input line 962.
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 967--976
+
+ []
+
+LaTeX Info: Redefining \. on input line 1008.
+LaTeX Info: Redefining \% on input line 1008.
+[35]
+LaTeX Info: Redefining \. on input line 1047.
+LaTeX Info: Redefining \% on input line 1047.
+ [36]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
 gnore it. Perhaps you misspelled it.
@@ -1540,7 +1563,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1087     (1,20)(2,20)(3,20)(4,20)(5,20) };
+l.1137     (1,20)(2,20)(3,20)(4,20)(5,20) };
                                             
 ? 
 
@@ -1551,7 +1574,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1089     (1,30)(2,30)(3,30)(4,30)(5,30) };
+l.1139     (1,30)(2,30)(3,30)(4,30)(5,30) };
                                             
 ? 
 
@@ -1562,7 +1585,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1103 \end{axis}
+l.1153 \end{axis}
                  
 ? 
 
@@ -1573,7 +1596,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1103 \end{axis}
+l.1153 \end{axis}
                  
 ? 
 
@@ -1584,7 +1607,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1103 \end{axis}
+l.1153 \end{axis}
                  
 ? 
 
@@ -1595,151 +1618,158 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1103 \end{axis}
+l.1153 \end{axis}
                  
 ? 
 
-Overfull \hbox (11.12543pt too wide) in paragraph at lines 1104--1105
+Overfull \hbox (11.12543pt too wide) in paragraph at lines 1154--1155
 [][] 
  []
 
-LaTeX Info: Redefining \. on input line 1107.
-LaTeX Info: Redefining \% on input line 1107.
-[36]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 1156.
+LaTeX Info: Redefining \% on input line 1156.
+ [37]
+LaTeX Info: Redefining \. on input line 1157.
+LaTeX Info: Redefining \% on input line 1157.
+
+[38]
 Cap\'{\i }tulo 7.
-[37
+[39
 
 ]
-LaTeX Info: Redefining \. on input line 1108.
-LaTeX Info: Redefining \% on input line 1108.
- [38
-
-]
-Cap\'{\i }tulo 8.
-[39]
-LaTeX Info: Redefining \. on input line 1122.
-LaTeX Info: Redefining \% on input line 1122.
+LaTeX Info: Redefining \. on input line 1158.
+LaTeX Info: Redefining \% on input line 1158.
  [40
 
 ]
-Underfull \hbox (badness 1590) in paragraph at lines 1136--1136
+Cap\'{\i }tulo 8.
+[41]
+LaTeX Info: Redefining \. on input line 1172.
+LaTeX Info: Redefining \% on input line 1172.
+ [42
+
+]
+Underfull \hbox (badness 1590) in paragraph at lines 1186--1186
 []|\OT1/cmr/m/n/12 'caminante no hay ca-
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 1145--1145
+Underfull \hbox (badness 1565) in paragraph at lines 1195--1195
 []|\OT1/cmr/m/n/12 'la sue-gra y el doc-tor
  []
 
 
-Underfull \hbox (badness 5403) in paragraph at lines 1146--1146
+Underfull \hbox (badness 5403) in paragraph at lines 1196--1196
 []|\OT1/cmr/m/n/12 'a la mu-jer pi-ca-res-ca
  []
 
 
-Underfull \hbox (badness 4242) in paragraph at lines 1147--1147
+Underfull \hbox (badness 4242) in paragraph at lines 1197--1197
 []|\OT1/cmr/m/n/12 'quien siem-bra vien-tos
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1149
+Underfull \vbox (badness 10000) detected at line 1199
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 1150--1150
+Underfull \hbox (badness 3746) in paragraph at lines 1200--1200
 []|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
  []
 
-[41]
-LaTeX Info: Redefining \. on input line 1179.
-LaTeX Info: Redefining \% on input line 1179.
- [42] [43]
-LaTeX Info: Redefining \. on input line 1181.
-LaTeX Info: Redefining \% on input line 1181.
- [44
+[43]
+LaTeX Info: Redefining \. on input line 1229.
+LaTeX Info: Redefining \% on input line 1229.
+ [44] [45]
+LaTeX Info: Redefining \. on input line 1231.
+LaTeX Info: Redefining \% on input line 1231.
+ [46
 
 ]
 Cap\'{\i }tulo 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1188--1188
+Underfull \hbox (badness 10000) in paragraph at lines 1238--1238
 []|\OT1/cmr/m/n/12 ACU[]AverageKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1189--1189
+Underfull \hbox (badness 10000) in paragraph at lines 1239--1239
 []|\OT1/cmr/m/n/12 ACU[]AverageLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1190--1190
+Underfull \hbox (badness 10000) in paragraph at lines 1240--1240
 []|\OT1/cmr/m/n/12 ACU[]AverageRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1191
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1241
 []|\OT1/cmr/m/n/12 ACU[]AverageSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1192--1192
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1242
 []|\OT1/cmr/m/n/12 ACU[]MaxKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1193--1193
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1243
 []|\OT1/cmr/m/n/12 ACU[]MaxLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1194--1194
+Underfull \hbox (badness 10000) in paragraph at lines 1244--1244
 []|\OT1/cmr/m/n/12 ACU[]MaxRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1195--1195
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1245
 []|\OT1/cmr/m/n/12 ACU[]MaxSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1196--1196
+Underfull \hbox (badness 10000) in paragraph at lines 1246--1246
 []|\OT1/cmr/m/n/12 ACU[]MinKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1197--1197
+Underfull \hbox (badness 10000) in paragraph at lines 1247--1247
 []|\OT1/cmr/m/n/12 ACU[]MinLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1198--1198
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1248
 []|\OT1/cmr/m/n/12 ACU[]MinRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1199--1199
+Underfull \hbox (badness 10000) in paragraph at lines 1249--1249
 []|\OT1/cmr/m/n/12 ACU[]MinSC[]0 al
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1204
+Underfull \vbox (badness 10000) detected at line 1254
  []
 
-[45]
-Overfull \hbox (23.20445pt too wide) in paragraph at lines 1218--1218
+[47]
+Overfull \hbox (23.20445pt too wide) in paragraph at lines 1268--1268
 []|\OT1/cmr/m/n/12 SIL[]prevSyllableAccent[]norm| 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1222
+Underfull \vbox (badness 10000) detected at line 1272
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1240
+Underfull \vbox (badness 10000) detected at line 1290
  []
 
-LaTeX Info: Redefining \. on input line 1242.
-LaTeX Info: Redefining \% on input line 1242.
-[46]
+LaTeX Info: Redefining \. on input line 1292.
+LaTeX Info: Redefining \% on input line 1292.
+[48]
 No file tesis.bbl.
 (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
@@ -1750,10 +1780,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21376 strings out of 493307
- 481095 string characters out of 6139905
- 694181 words of memory out of 5000000
- 24381 multiletter control sequences out of 15000+600000
+ 21372 strings out of 493307
+ 481045 string characters out of 6139905
+ 695482 words of memory out of 5000000
+ 24377 multiletter control sequences out of 15000+600000
  11025 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  63i,19n,83p,967b,2009s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1769,10 +1799,10 @@ c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tesis.pdf (56 pages, 1703878 bytes).
+Output written on tesis.pdf (58 pages, 1707349 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
+ 266 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
