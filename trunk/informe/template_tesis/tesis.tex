@@ -838,9 +838,11 @@ Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener poco
     \addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
 \end{axis}
 \end{tikzpicture}
+\caption{Cantidad de instancias de Buenos Aires y Córdoba según cada grupo de Train y Tests}
+\label{TestsInstances}
 \end{figure}
 
-Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para los distintos clasificadores fueron:
+Todos los tests realizados de aquí en mas fueron realizados utilizando R versión 3.0.1. Los resultados para los distintos clasificadores fueron:
 
 \begin{table}[H]
 \centering
@@ -857,9 +859,9 @@ Todos tests fueron realizados utilizando R versión 3.0.1. Los resultados para l
 \end{tabular}
 \end{table}
 
-donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+Donde Test 1 corresponde al primer par (conjunto train, conjunto test) y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -890,6 +892,95 @@ donde Test 1 corresponde al primer par < conjunto train, conjunto test > y así 
 \label{porcentajexClasificador}
 \end{figure}
 
+Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline. 
+
+Algo interesante sucede con el clasificador Function SMO: se comporta muy similar a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances} es que de todos los tests el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y de Córdoba. Al tener mitad instancias de cada grupo y como ZeroR debe elegir en uno de esos dos, va a poseer un porcentaje de acierto de alrededor del 50\% como sucede.  
+
+El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. \textit{Recall} se define como la cantidad de verdaderos negativos sobre la cantidad de verdaderos y falsos negativos. Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4.
+
+\paragraph*{ZeroR:}\mbox{}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|l|c|c|c|c|}
+\hline
+ BsAs & Cba &  \\ \hline
+ 22 &  18 &  Clasificado como BsAs \\ \hline
+ 0  &   0 &  Clasificado como Cba \\ \hline
+\end{tabular}
+\end{table}
+\begin{center}
+\textbf{Precision = 22/40 = 0.55;} \textbf{Recall = 1}\\
+\textbf{Instancias correctas = 55\%}
+\end{center}
+
+\paragraph*{Function SMO:}\mbox{}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|l|c|c|c|c|}
+\hline
+ BsAs & Cba &  \\ \hline
+ 22 &  13 &  Clasificado como BsAs \\ \hline
+ 0  &   5 &  Clasificado como Cba \\ \hline
+\end{tabular}
+\end{table}
+\begin{center}
+\textbf{Precision = 22/35 = 0.63;} \textbf{Recall = 1}\\
+\textbf{Instancias correctas = 67\%}
+\end{center}
+
+\paragraph*{NaiveBayes:}\mbox{}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|l|c|c|c|c|}
+\hline
+ BsAs & Cba &  \\ \hline
+ 20 &  6 &  Clasificado como BsAs \\ \hline
+ 2  &  12 &  Clasificado como Cba \\ \hline
+\end{tabular}
+\end{table}
+\begin{center}
+\textbf{Precision = 20/26 = 0.77;} \textbf{Recall = 20/22 = 0.9}\\
+\textbf{Instancias correctas = 80\%}
+\end{center}
+
+Viendo estas matrices de confusión y sus métricas podemos observar cual es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad no lo es). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente  predecir y por eso los Errores de tipo I y II están mas distribuidos.
+
+Otro dato a tener en cuenta es que si bien el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance, por eso en el caso de NaiveBayes si bien ningún valor dio 1 ambos están cerca y posee en mayor porcentaje de instancias correctas.
+
+Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del test 0. Veamos para los clasificadores ZeroR y NaiveBayes.
+
+\paragraph*{NaiveBayes:}\mbox{}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|l|c|c|c|c|}
+\hline
+ BsAs & Cba &  \\ \hline
+ 47 &  26 &  Clasificado como BsAs \\ \hline
+ 0 &  0 &  Clasificado como Cba \\ \hline
+\end{tabular}
+\end{table}
+\begin{center}
+\textbf{Precision = 47/73 = 0.64;} \textbf{Recall = 47/47 = 1}\\
+\textbf{Instancias correctas = 64\%}
+\end{center}
+
+\paragraph*{NaiveBayes:}\mbox{}\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|l|c|c|c|c|}
+\hline
+ BsAs & Cba &  \\ \hline
+ 33 &  13 &  Clasificado como BsAs \\ \hline
+ 14 &  13 &  Clasificado como Cba \\ \hline
+\end{tabular}
+\end{table}
+\begin{center}
+\textbf{Precision = 33/46 = 0.7;} \textbf{Recall = 33/47 = 0.7}\\
+\textbf{Instancias correctas = 63\%}
+\end{center}
+
+En este caso podemos notar como a pesar de que den valores cercanos en instancias correctas, uno posee todo su error en un tipo solo mientras que el otro lo distribuye entre los dos tipos.
+
 \subsection{Wilcox y Student Test}
 
 Vamos a mostrar los resultados de estos tests estadísticos.
@@ -910,60 +1001,19 @@ Analizando estos resultados notamos que para el clasificador Function SMO poseen
 
 \subsection{Clasificadores encontrados}
 
-Veamos los clasificadores obtenidos y sus matrices de confusión. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
+Veamos los clasificadores obtenidos para analizar que atributos tuvieron en cuenta. Cada conjunto de test va a clasificar distinto y por ende utilizará una serie de reglas distinta. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
 
 \paragraph*{Clasificador JRip:}
 
 \begin{flushleft}
 \begin{itemize}
-\item $(FON\_vowel\_norm >= 6.277) and (FON\_consonant\_normhd <= 37.578) $
-$and (SIL\_prevSyllableAccent\_normhd >= 51.219) => place=cba (25.0/5.0)$ \\
-\item $(FON\_rr\_norm <= -14.791) => place=cba (15.0/6.0)$\\
-\item $(FON\_ll\_norm <= -7.975) => place=cba (14.0/5.0)$\\
-\item $(FON\_Sfinal\_normhd <= 32.083) and (FON\_consonant\_norm <= -2.53) and (FON\_consonant\_norm >= -6.197) => place=cba (12.0/0.0)$\\
-\item $ else => place=bsas (191.0/13.0)$
+
+\item $(FON\_ll\_norm <= -11.08) and (ACU\_AverageLL\_6 <= 4.308) => place=cba (12.0/0.0)$ \\
+\item $(FON\_Sfinal\_normhd <= 27.874) and (SIL\_prevSyllableAccent\_norm >= -4.265) => place=cba (11.0/1.0)$ \\
+\item $(FON\_rr\_normhd <= 31.355) => place=cba (10.0/2.0)$ \\
+\item $ else  => place=bsas (154.0/23.0)$
 \end{itemize}
 \end{flushleft}
- 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-  a &  b &  classified as \\ \hline
- 19 &  2 &  a = bsas \\ \hline
- 18 &  8 &  b = cba \\ \hline
-\end{tabular}
-\end{table}
- 
-\paragraph*{Function SMO:}
-
-En este caso no se mostró el clasificador por ser una ecuación muy extensa.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-  a & b &  classified as \\ \hline
- 17 & 4 &  a = bsas \\ \hline
- 17 & 9 &  b = cba \\ \hline
-\end{tabular}
-\end{table}
-
-\paragraph*{NaiveBayes:}
-
-Ídem por tener un clasificador muy extenso.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-  a & b & classified as \\ \hline
- 19 & 2 &  a = bsas \\ \hline
- 17 & 9 &  b = cba \\ \hline
-\end{tabular}
-\end{table}
-
-Podemos notar que en los tres la matriz de confusión dió falsos positivos a la hora de clasificar un hablante de Buenos Aires como uno de Córdoba. También podemos ver que los atributos utilizados en el clasificador JRip son los que poseen mayor ganancia de información. Esto último lo veremos más adelante.
 
 \section{Selección de atributos de forma automática}
 
