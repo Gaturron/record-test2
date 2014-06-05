@@ -1,0 +1,60 @@
+\chapter*{Apéndice: nomenclatura de atributos}
+
+En la tabla \ref{tab:attr} se puede ver la nomenclatura de los atributos elegidos. 
+\centering
+\begin{longtable}{| p{0.3\textwidth} | p{0.6\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+ACU\_AverageKT\_0 al ACU\_AverageKT\_32 & Componentes promedio de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_AverageLL\_0 al ACU\_AverageLL\_32 & Componentes promedio de MFCC del fonema /ll/\\ \hline
+ACU\_AverageRR\_0 al ACU\_AverageRR\_32 & Componentes promedio de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_AverageSC\_0 al ACU\_AverageSC\_32 & Componentes promedio de MFCC del fonema /s/ anterior a /c/\\ \hline
+ACU\_MaxKT\_0 al ACU\_MaxKT\_32 & Componentes máximo de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_MaxLL\_0 al ACU\_MaxLL\_32 & Componentes máximo de MFCC del fonema /ll/\\ \hline
+ACU\_MaxRR\_0 al ACU\_MaxRR\_32 & Componentes máximo de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_MaxSC\_0 al ACU\_MaxSC\_32 & Componentes máximo de MFCC del fonema /s/ anterior a /c/\\ \hline
+ACU\_MinKT\_0 al ACU\_MinKT\_32 & Componentes mínimo de MFCC del fonema /k/ anterior a /t/\\ \hline
+ACU\_MinLL\_0 al ACU\_MinLL\_32 & Componentes mínimo de MFCC del fonema /ll/\\ \hline
+ACU\_MinRR\_0 al ACU\_MinRR\_32 & Componentes mínimo de MFCC del fonema /r/ fuerte\\ \hline
+ACU\_MinSC\_0 al ACU\_MinSC\_32 & Componentes mínimo de MFCC del fonema /s/ anterior a /c/ \\ \hline
+FON\_phoneme & Duración del fonema\\ \hline
+place & Lugar del hablante en la grabación\\ \hline
+\caption*{Atributos normalizados} 
+\label{tab:attr}
+\end{longtable}
+
+En la tabla \ref{tab:attrNorm} se muestra la nomenclatura de los atributos que se les aplicó normalización.
+\centering
+\begin{longtable}{| p{0.3\textwidth} | p{0.6\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+FON\_vowel\_norm & Duración de las vocales \\ \hline
+FON\_consonant\_norm & Duración de la consonantes \\ \hline
+FON\_Sfinal\_norm & Duración de la /s/ final de palabra \\ \hline
+FON\_kt\_norm & Duración del fonema /k/ anterior a /t/ \\ \hline
+FON\_ll\_norm & Duración de la /ll/ \\ \hline
+FON\_rr\_norm & Duración del fonema /r/ fuerte \\ \hline
+FON\_sc\_norm & Duración del fonema /s/ anterior a /c/ \\ \hline
+SIL\_prevSyllableAccent\_norm & Duración de la silaba anterior a la acentuada aplicando normalización\\ \hline
+SIL\_syllableAccent\_norm & Duración de la silaba acentuada aplicando normalización \\ \hline
+\caption{Atributos normalizados} 
+\label{tab:attrNorm}
+\end{longtable}
+
+En la tabla \ref{tab:attrNormhd} se muestra la nomenclatura de los atributos que se les aplicó normalización tomando como $mu$ = 0.
+\centering
+\begin{longtable}{| p{0.4\textwidth} | p{0.4\textwidth} |} 
+\hline
+\textbf{Nomenclatura}  & \textbf{Referencia}   \\ \hline
+FON\_vowel\_normhd & Duración de las vocales \\ \hline
+FON\_consonant\_normhd & Duración de la consonantes \\ \hline
+FON\_Sfinal\_normhd & Duración de la /s/ final de palabra \\ \hline
+FON\_kt\_normhd & Duración del fonema /k/ anterior a /t/ \\ \hline
+FON\_ll\_normhd & Duración de la /ll/ \\ \hline
+FON\_rr\_normhd & Duración del fonema /r/ fuerte \\ \hline
+FON\_sc\_normhd & Duración del fonema /s/ anterior a /c/ \\ \hline
+SIL\_prevSyllableAccent\_normhd & Duración de la silaba anterior a la acentuada aplicando normalización\\ \hline
+SIL\_syllableAccent\_normhd & Duración de la silaba acentuada aplicando normalización \\ \hline
+\caption{Atributos normalizados} 
+\label{tab:attrNormhd}
+\end{longtable}
