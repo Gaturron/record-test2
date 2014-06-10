@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  9 JUN 2014 21:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  10 JUN 2014 14:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -986,25 +986,28 @@ Cap\'{\i }tulo 2.
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
-Package pdftex.def Info: Images/reglas_AMPER.png used on input line 23.
+Package pdftex.def Info: Images/reglas_AMPER.png used on input line 47.
 (pdftex.def)             Requested size: 426.79135pt x 148.07274pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <Images/frases_inf.png, id=51, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
-Package pdftex.def Info: Images/frases_inf.png used on input line 29.
+Package pdftex.def Info: Images/frases_inf.png used on input line 57.
 (pdftex.def)             Requested size: 426.79135pt x 339.5197pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 50.
-LaTeX Info: Redefining \% on input line 50.
-[5 <./Images/reglas_AMPER.png>]
 LaTeX Info: Redefining \. on input line 63.
 LaTeX Info: Redefining \% on input line 63.
- [6 <./Images/frases_inf.png>]
+[5]
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
+ [6 <./Images/reglas_AMPER.png> <./Images/frases_inf.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
@@ -1014,41 +1017,42 @@ File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/07/10 1.5 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 102.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 103.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 95.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 103.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 96.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 103.
+(Font)              <7> on input line 96.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 103.
-LaTeX Info: Redefining \. on input line 114.
-LaTeX Info: Redefining \% on input line 114.
- [7]
-<Images/cant_frases_traza_inf.png, id=66, 602.25pt x 372.39125pt>
+(Font)              <5> on input line 96.
+
+<Images/cant_frases_traza_inf.png, id=58, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
 <use Images/cant_frases_traza_inf.png>
 Package pdftex.def Info: Images/cant_frases_traza_inf.png used on input line 11
-7.
+0.
 (pdftex.def)             Requested size: 384.1096pt x 237.51703pt.
-) (./sistema_grabacion_online.tex
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
+[7]) (./sistema_grabacion_online.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-
-[8 <./Images/cant_frases_traza_inf.png>]
+ [8 <./Images/cant_frases_traza_inf.png>]
 Cap\'{\i }tulo 3.
 [9
 
@@ -1686,12 +1690,15 @@ LaTeX Info: Redefining \% on input line 6.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 21395 strings out of 493307
- 481367 string characters out of 6139905
+ 21396 strings out of 493307
+ 481400 string characters out of 6139905
  694999 words of memory out of 5000000
- 24376 multiletter control sequences out of 15000+600000
+ 24377 multiletter control sequences out of 15000+600000
  11025 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  63i,19n,83p,1005b,2009s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1707,7 +1714,7 @@ c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tesis.pdf (45 pages, 1154084 bytes).
+Output written on tesis.pdf (45 pages, 1154519 bytes).
 PDF statistics:
  223 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams
