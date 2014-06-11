@@ -44,20 +44,17 @@ En la pantalla de grabación el usuario debió confirmar tener acceso al micróf
 
 Cada nuevo experimento utilizó una nueva traza del conjunto de trazas descriptas en la capitulo anterior. La interfaz que ve el usuario al grabar se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}. 
 
-Una vez que el hablante chequeó que su grabación se escucha bien la confirma. Cada vez que se confirma una grabación, esta se graba en un archivo wav en el servidor. El archivo wav que se genera tiene una frecuencia de muestreo de 22050 Hz, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
+Una vez que el hablante chequeó que su grabación se escucha bien la confirma. Cada vez que se graba un audio, esta se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
 
 Los hablantes fueron grabando cada 5 frases. Una vez terminado estas 5 frases se le preguntó si quiere seguir grabando o terminar el experimento. De esta forma, aporta el tiempo que el hablante pudo tener en ese momento.
 
-%todo: PONER DATOS TECNICOS DEL TIPO DE WAV
-
 \section{Grabación a través del browser}
 
-Los navegadores actuales no pueden soportar acceder al micrófono directamente. Durante la tesis se desarrolló HTML5 que podrá soportar acceder al micrófono y a recursos similares de forma más fácil. No se eligió basarse en este porque sólo algunos browsers lo soportaban. Al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y utilizarlo hubiera excluido mucha gente. Teniendo en cuenta esto debimos utilizar una tecnología alternativa. Encontramos un proyecto llamado WAMI: Web Accessible Multimodal Interfaces, es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. 
+Los navegadores actuales no pueden soportar acceder al micrófono directamente. Durante la tesis se desarrolló HTML5 que podrá soportar acceder al micrófono y a recursos similares de forma más fácil. No se eligió basarse en este porque sólo algunos browsers lo soportaban. Al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y utilizarlo hubiera excluido mucha gente. Teniendo en cuenta esto debimos utilizar una tecnología alternativa. 
 
-El proyecto WAMI \footnote{https://code.google.com/p/wami/} nos permite acceder al micrófono de la computadora utilizando Flash.
-Esta herramienta nos permite configurar dos urls importantes: una que se utilizará para enviar el audio grabado y otra para escucharlo.  
+Encontramos un proyecto llamado WAMI: Web Accessible Multimodal Interfaces \footnote{Página web: https://code.google.com/p/wami/} , es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. El proyecto WAMI nos permite acceder al micrófono de la computadora utilizando Flash. Esta herramienta nos permite configurar dos urls importantes: una que se utilizará para enviar el audio grabado y otra para escucharlo.  
 
-Cuando termina de grabar, se envía un mensaje POST al servidor a la url configurada. El servidor obtiene el paquete de información y lo guarda como archivo .wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a la otra url. El servidor lo responde con el audio requerido y se reproduce en el navegador. También se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. 
+Cuando termina de grabar, se envía un mensaje POST al servidor a la url configurada. El servidor obtiene el paquete de información y lo guarda como archivo .wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a la otra url. El servidor lo responde con el audio requerido y se reproduce en el navegador. También con WAMI se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. 
 
 \subsection{Requerimientos}
 
@@ -89,7 +86,7 @@ Para acceder a los audios que fueron etiquetados de una determinada manera, el s
 
 \section{Backups automáticos}
 
-El sistema posee backups que se generan a la noche automáticamente. Los backups consisten en un dump de la base de datos y en la  sincronización de los audios con una carpeta externa de backup. De esta forma, se guardan todos los datos cada día, y los audios quedan a salvo.
+El sistema posee backups que se generan a la noche automáticamente. Los backups consisten en un dump de la base de datos y en la sincronización de los audios con una carpeta externa de backup. De esta forma, se guardan todos los datos cada día, y quedan a salvo.
 
 \section{Análisis del volumen}
 
@@ -97,4 +94,4 @@ Un objetivo primordial de este experimento es evitar grabaciones saturadas. Para
 
 Si bien esta característica fue programada, no fue utilizada en la recolección de datos. El motivo fue que queríamos chequear cuán bien funcionaba la herramienta sin filtros y con completa participación de los usuarios. Otro motivo fue la paciencia de los hablantes. Puede suceder que al tratar de grabar no logre un ambiente beneficioso para grabar. Esto quiere decir que aunque quiera grabar el filtro rechace todos sus audios. También notamos que había grabaciones que dieron mal el filtrado del volumen pero la grabación era buena. Esto no lo queremos como primer experimento del framework. Por eso elegimos aceptar todos sus audios.
 
-Para los audios que salieron saturados, en trabajo futuro vamos a realizar un estudio para intentar sacarles el ruido y de esta forma intentar rescatarlos.
+Para los audios que salieron saturados, en trabajo futuro vamos a realizar un estudio para intentar sacarles el ruido y de esta forma intentar rescatarlos. A continuación veremos como utilizamos esta información recolectada para el objetivo del experimento.

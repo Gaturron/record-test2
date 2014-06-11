@@ -1,30 +1,27 @@
 \chapter{Extracción de información}
 
-Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente que partes de la información nos sirve y que partes podemos descartar. 
+Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente qué partes de la información nos sirve y qué partes podemos descartar. 
 
 \section{Alineación forzada}
 
-Un dato muy importante es que esta selección idealmente no debe tener que ser realizada con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esas pequeños pedazos de audios para analizar sus diferencias. 
+Una grabación de una frase posee muchísima información. Debemos seleccionar que parte de esta grabación nos interesa y que parte puede ser descartada. Para ello etiquetamos utilizando la duración del audio en que partes se pronunció cada fonema y también cada palabra. Por ejemplo: si tenemos la grabación de la frase `El canapé salió espectacular’ vamos a tener un archivo aparte que básicamente nos dice `espectacular se escucha entre el minuto 0.90 y 1.18’. Lo mismo sucede para cada fonema de la grabación.
+
+Un dato muy importante es que este etiquetado idealmente no debe tener que ser realizado con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esos pequeños fragmentos de audio para analizar sus diferencias. 
 
 \subsection{Prosodylab Aligner}
 
 %If you use this tool, we would appreciate it if you cite the following paper:
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
-Luego de buscar bastantes, encontramos con una herramienta llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que momento se dijo. El formato utilizado para devolver estas marcas es el TextGrid. El problema de la alineación es un sub-problema de la alineación automática.
+Luego de buscar bastante encontramos con una herramienta llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina cada fonema en que momento se dijo. El formato utilizado para devolver estas marcas es el TextGrid. El problema de la alineación es un caso particular de la alineación automática.
 
-Algo que destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. 
+Algo que destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. Esta herramienta esta hecha íntegramente en lenguaje Python (versión 2.5) y scripts de Linux. Utiliza fuertemente HTK que es una libreria para utilizar Modelos Ocultos de Markov fácilmente y SoX que nos permite trabajar con audio a través de la consola. Para realizar la alineación se utiliza Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM). Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante un modelo matemático el programa analiza en cuales grabaciones de la misma frase se produce un mismo fonema. Ese fonema va a ser marcado de igual forma en el TextGrid de las tres grabaciones.
 
-%implementación
-Esta herramienta esta hecha íntegramente en lenguaje Python (ver. 2.5) y script de Linux. Utiliza fuertemente de HTK (ver. 3.4) y SoX (ver. 14.1.0). Para realizar la alineación utiliza Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM). Básicamente trata de predecir que fonemas aparecen en cada parte del los audios utilizando las diferentes muestras y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante un modelo matemático el programa analiza que en muchas grabaciones de la misma frase se produce un mismo fonema. Ese fonema va a ser marcado de igual forma en el TextGrid de las tres grabaciones.
-
-%Una de las ventajas que posee es que puede utilizarse para cualquier idioma. Sólo se necesita una hora de audio grabado y un diccionario fonético sobre las palabras a reconocer. 
-
-La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a \textit{Laboratorio de Investigaciones Sensoriales} que nos prestó su diccionario pudimos utilizar esta herramienta. El diccionario fonético nos provee para cada palabra los distintos fonemas que la componen. Esta herramienta se utiliza para generar la lista de fonemas que aparecen en cada grabación. De esta manera, se puede realizar una alineación acorde al español.
+Los requisitos para utilizar esta herramienta son: una hora de grabación y un diccionario que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a \textit{Laboratorio de Investigaciones Sensoriales} que nos prestó su diccionario pudimos utilizar esta herramienta. Esta herramienta se utiliza para generar la lista de fonemas que aparecen en cada grabación. De esta manera, se puede realizar una alineación acorde al español.
 
 \subsection{Diccionario TranscriptorFonetico2 del LIS}
 
-Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra para cada grabación.
+Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 \section{Extracción de atributos}
 
@@ -38,8 +35,7 @@ El extractor posee como input los archivos .wav y los archivos textgrid que corr
     \label{workflow}
 \end{figure}
 
-
-El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama '.SCORES' y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos uno por uno.
+El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama `.SCORES’ y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos uno por uno.
 
 Luego de esto, el extractor va a correr un conjunto de funciones que van a extraer cada uno de los atributos. Este conjunto de funciones se dividen en dos: las que computan atributos temporales y las que computan atributos acústicos. Veamos cada uno:
 
@@ -59,12 +55,12 @@ Esta ultima tiene el nombre de half normal distribution.
 
 %todo: agregar imagen explicando normalización
 
-los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada grupo calcula igual la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
+Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada grupo calcula igual la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
 
 \subsubsection{Atributos fonéticos}
 
 \begin{itemize}
-    \item \textbf{Duración de la 'kt':} este atributo vamos a buscar el patrón /kt/ en los TextGrids y luego a medir la duración del fonema /k/. Este atributo intenta medir la diferencia explicada en la regla 4 que nos dice medir dicho fonema.
+    \item \textbf{Duración de la 'kt':} este atributo vamos a buscar el patrón /kt/ en los TextGrids y luego a medir la duración del fonema /k/. Este atributo intenta medir la diferencia explicada en la regla 4 que nos indica medir dicho fonema.
     \item \textbf{Duración de la 'sc':} ídem con /sc/ y midiendo el fonema /s/. Este corresponde a la regla 3 que referencia a la duración del fonema /s/ anterior a /c/.  
     \item \textbf{Duración de la 'll':} buscamos el patrón /ll/ y lo medimos. Este atributo hace referencia a la regla 5 que mide dicho fonema.
     \item \textbf{Duración de la 'rr':} ídem para /r/ fuerte. Referencia a la regla 6 que hace hincapié en este fonema.
@@ -88,7 +84,6 @@ Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la m
 \subsection{Atributos acústicos}
 
 Los atributos acústicos utilizan las propiedades de los wavs grabados. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de MFCC ya que tiene relación directa con la percepción auditiva humana. 
-
 
 \subsubsection{Mel Frequency Cepstral Coefficients}
 
