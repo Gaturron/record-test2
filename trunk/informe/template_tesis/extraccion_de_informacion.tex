@@ -55,12 +55,12 @@ Esta ultima tiene el nombre de half normal distribution.
 
 %todo: agregar imagen explicando normalización
 
-Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada grupo calcula igual la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
+Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada grupo calcula de la misma forma la normalización pero uno va a tener en cuenta fonemas y otro sílabas. Veamos cuales son:
 
 \subsubsection{Atributos fonéticos}
 
 \begin{itemize}
-    \item \textbf{Duración de la `kt’:} este atributo vamos a buscar el patrón /kt/ en los TextGrids y luego a medir la duración del fonema /k/. Este atributo intenta medir la diferencia explicada en la regla 4 que nos indica medir dicho fonema.
+    \item \textbf{Duración de la `kt’:} este atributo vamos a buscar el patrón /kt/ en los TextGrids y luego a medir la duración del fonema /k/ en ese intervalo. Este atributo intenta medir la diferencia explicada en la regla 4 que nos indica medir dicho fonema.
     \item \textbf{Duración de la `sc’:} ídem con /sc/ y midiendo el fonema /s/. Este corresponde a la regla 3 que referencia a la duración del fonema /s/ anterior a /c/.  
     \item \textbf{Duración de la `ll’:} buscamos el patrón /ll/ y lo medimos. Este atributo hace referencia a la regla 5 que mide dicho fonema.
     \item \textbf{Duración de la `rr’:} ídem para /r/ fuerte. Referencia a la regla 6 que hace hincapié en este fonema.
@@ -69,6 +69,8 @@ Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada
     \item \textbf{Duración de cada vocal:} contabilizamos cada vocal y luego realizamos su normalización utilizando la duración de cada fonema.
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
+
+En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización primero conuna variante y luego con otra.
 
 \subsubsection{Atributos silábicos}
 
