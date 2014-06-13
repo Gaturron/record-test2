@@ -41,15 +41,15 @@ Luego de esto, el extractor va a correr un conjunto de funciones que van a extra
 
 \subsection{Atributos temporales}
 
-Corresponden a los atributos de duración en los fonemas y la sílabas de cada frase. Para calcularlos utilizamos como input el textgrid generado en la alineación. Básicamente estas funciones recorren el textgrid buscando un patrón en particular y lo miden.
+Los atributos temporales corresponden a los atributos de duración de los fonemas y la sílabas de cada frase. Para calcularlos utilizamos como input el textgrid generado en la alineación. Básicamente estas funciones recorren el textgrid buscando un patrón en particular y lo miden.
 
 Las mediciones son normalizadas de dos formas: primero una normalización utilizando:
 
-\hspace{2cm} \[\frac{X - \mu }{ \sigma }\]
+\hspace{2cm} \[\frac{ \bar{X} - \mu }{ \sigma }\]
 
 y luego otra asumiendo que $\mu = 0$. 
 
-\hspace{2cm} \[\frac{X}{ \sigma }\]
+\hspace{2cm} \[\frac{ \bar{X} }{ \sigma }\]
 
 Esta ultima tiene el nombre de half normal distribution.
 
@@ -70,7 +70,9 @@ Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
 
-En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización primero conuna variante y luego con otra.
+El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos que queremos calcular la duración de la `kt’. Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonémas en la frase en cuestión. Para $\sigma$ será el desvío estandar de la duración de los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/.
+
+En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas. 
 
 \subsubsection{Atributos silábicos}
 
@@ -80,6 +82,8 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
     \item \textbf{Duración de la sílaba acentuada:} en cada una de las frases vamos a buscar la sílaba acentuada de cada palabra, mediremos su duración y normalizaremos con las demás sílabas.
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
+
+El cálculo de un atributo silábico se realiza tomando estos valores: $\mu$ representará el promedio de duración de sílabas en la frase. $\sigma$ será el desvío estandar de la duración de las sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas acentuadas en la frase. Para cada uno de estos valores se calcula los dos tipos de normalización.
 
 Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el Apéndice.
 
