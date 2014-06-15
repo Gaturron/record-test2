@@ -1,10 +1,10 @@
 \chapter{Extracción de información}
 
-Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente qué partes de la información nos sirve y qué partes podemos descartar. 
+Utilizando nuestra página web se van a poder obtener distintas muestras de Córdoba y Buenos Aires. Pero ¿ cómo podemos analizar estos audios correctamente?. Un archivo wav, como los que captura la página cada una de las pruebas, posee muchísima información. Es por esto que debemos seleccionar correctamente qué partes de la información nos sirve y qué partes podemos descartar. 
 
 \section{Alineación forzada}
 
-Una grabación de una frase posee muchísima información. Debemos seleccionar que parte de esta grabación nos interesa y que parte puede ser descartada. Para ello etiquetamos utilizando la duración del audio en que partes se pronunció cada fonema y también cada palabra. Por ejemplo: si tenemos la grabación de la frase `El canapé salió espectacular’ vamos a tener un archivo aparte que básicamente nos dice `espectacular se escucha entre el minuto 0.90 y 1.18’. Lo mismo sucede para cada fonema de la grabación.
+Una grabación de una frase posee muchísima información. Debemos seleccionar que parte de esta grabación nos interesa y que parte puede ser descartada. Para ello etiquetamos en la duración del audio en que partes se pronunció cada fonema y también cada palabra. Por ejemplo: si tenemos la grabación de la frase `El canapé salió espectacular’ vamos a tener un archivo aparte que básicamente nos dice \textit{`espectacular se escucha entre el minuto 0.90 y 1.18’}. Lo mismo sucede para cada fonema de la grabación.
 
 Un dato muy importante es que este etiquetado idealmente no debe tener que ser realizado con intervención de un humano. Ya que, si tenemos muchos audios tendríamos que hacerlo uno por uno y sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de los audios son las partes donde se encuentran la diferencias de cada regla descripta anteriormente. Debemos tener una herramienta que nos permita obtener esos pequeños fragmentos de audio para analizar sus diferencias. 
 
@@ -15,15 +15,19 @@ Un dato muy importante es que este etiquetado idealmente no debe tener que ser r
 
 Luego de buscar bastante encontramos con una herramienta llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. O sea, va analizar cada audio y mediante un diccionario determina en que momento se dijo cada fonema. El formato utilizado para devolver estas marcas es TextGrid. El problema de la alineación es un caso particular de la alineación automática.
 
-Algo en que se destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. Esta herramienta esta hecha íntegramente en lenguaje Python (versión 2.5) y scripts de Linux. Utiliza fuertemente HTK que es una libreria para utilizar Modelos Ocultos de Markov fácilmente y SoX que nos permite trabajar con audio a través de la consola. Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) básicamente tratan de predecir que fonemas aparecen en cada parte de los audios utilizando las diferentes muestras y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático el programa analiza en cuales grabaciones de la misma frase se produce un mismo fonema. Ese fonema va a ser marcado de igual forma en el TextGrid de cada grabacion.
+Algo en que se destaca esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra ventaja es que puede utilizarse para cualquier idioma. Esta herramienta esta hecha íntegramente en lenguaje Python (versión 2.5) y scripts de Linux. Utiliza fuertemente HTK que es una librería para utilizar Modelos Ocultos de Markov fácilmente y SoX que nos permite trabajar con audio a través de la consola. Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) básicamente tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando las diferentes muestras y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático el programa analiza en cuales grabaciones de la misma frase se produce un mismo fonema. Ese fonema va a ser marcado de igual forma en el TextGrid de cada grabacion.
 
-Los requisitos para utilizar esta herramienta son: una hora de grabación y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario era más complicado, ya que debía ser en español. Gracias a \textit{Laboratorio de Investigaciones Sensoriales} que nos prestó su diccionario pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
+Los requisitos para utilizar esta herramienta son: una hora de grabación y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias a \textit{Laboratorio de Investigaciones Sensoriales} que nos prestó su diccionario pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su división en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 \section{Extracción de atributos}
 
-La extracción de datos fue realizado utilizando el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy versión 1.6.1. Esta librería se utiliza para el cálculo preciso en aplicaciones científicas. Nosotros la utilizamos para tener buena presición en el cálculo de cada uno de los atributos.
+La extracción de datos fue realizado utilizando el lenguaje Python. Elegimos ese ya que es un lenguaje de fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una muy conocida llamada Numpy versión 1.6.1. Esta librería se utiliza para realizar cálculos matemáticos de precisión. Nosotros la utilizamos para tener buena precisión en el cálculo de cada uno de los atributos.
 
-El extractor posee como input los archivos .wav y los archivos textgrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El extractor se debe ejecutar después de la alineación realizada por Prosodylab Aligner. El workflow del extractor se puede ver en \ref{workflow}). El main principal del programa va a agarrar de a uno las grabaciones y va a aplicarle dos tipos de extractores: uno correspondiente a atributos temporales o definídos en el TextGrid y otro con atributos acústicos. Definimos para cada atributo temporal una función que lo calcula. Cada grabación va ejecutando cada una de estas funciones. Lo mismo sucede con los atributos acústicos. Estos utilizan también el calculo de MFCC. Luego juntamos todos los atributos y generamos el archivo Arff.
+El primer paso antes de extraer atributos es alinear con el ProsodyLab Aligner. Este al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama `.SCORES’ y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos uno por uno.
+
+Después de la alineación realizada se ejecuta el extractor de atributos. Este posee como input los archivos Wav y los archivos TextGrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El workflow del extractor se puede ver en \ref{workflow}). 
+
+El main principal del programa va a tomar de a uno las grabaciones y va a aplicarle un conjunto de funciones. Cada una de estas funciones van a calcular un atributo. Los atributos se pueden dividir en dos tipos: uno correspondiente a atributos temporales o calculados solamente en el TextGrid y otro a atributos acústicos utilizando no sólo el TextGrid sino el calculo de MFCC que veremos más adelante. Si el atributo esta presente en la grabación tendremos ese dato en la extracción, sino se dejará como nulo. Luego juntamos todos los resultados de estas grabaciones y generamos el archivo Arff. El archivo Arff básicamente tiene por cada linea una grabación y  seguido todos los resultados del calculo de los atributos separado por comas. 
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{diagrama_workflow} }
@@ -31,13 +35,11 @@ El extractor posee como input los archivos .wav y los archivos textgrid que corr
     \label{workflow}
 \end{figure}
 
-El ProsodyLab-Algner al finalizar una alineación nos devuelve un archivo donde se encuentra como fueron realizadas esas alineaciones. Este archivo se llama `.SCORES’ y en el se encuentra una lista de todos los audios seguidos de un valor. Este valor nos permite ver la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este va a ser el primer filtro para el extractor. Ordenando los audios en esta escala notamos que los menores poseen alineaciones malas, entonces definimos un umbral para el cual aceptar y rechazar la alineación. Si bien este procedimiento es efectivo, notamos que se encuentran algunos falsos positivos, o sea archivos que tienen un buen punto de score pero la alineación es mala. Al tener pocas grabaciones no pudimos aceptar estos casos, debimos corregirlos uno por uno.
-
-Luego de esto, el extractor va a correr un conjunto de funciones que van a extraer cada uno de los atributos. Este conjunto de funciones se dividen en dos: las que computan atributos temporales y las que computan atributos acústicos. Veamos cada uno:
+Veamos cada uno de los dos tipos de atributos:
 
 \subsection{Atributos temporales}
 
-Los atributos temporales corresponden a los atributos de duración de los fonemas y la sílabas de cada frase. Para calcularlos utilizamos como input el textgrid generado en la alineación. Básicamente estas funciones recorren el textgrid buscando un patrón en particular y lo miden.
+Los atributos temporales corresponden a los atributos de duración de los fonemas y la sílabas de cada frase. Para calcularlos utilizamos como input el TextGrid generado en la alineación. Básicamente estas funciones recorren el TextGrid buscando un patrón en particular y lo miden.
 
 Las mediciones son normalizadas de dos formas: primero una normalización utilizando:
 
@@ -66,9 +68,9 @@ Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. Cada
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
 
-El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos que queremos calcular la duración de la `kt’. Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonémas en la frase en cuestión. Para $\sigma$ será el desvío estandar de la duración de los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/.
+El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos que queremos calcular la duración de la `kt’. Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Para $\sigma$ será el desvío estándar de la duración de los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/. Ídem para los demás atributos.
 
-En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas. 
+En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas utilizando esos valores. 
 
 \subsubsection{Atributos silábicos}
 
@@ -79,7 +81,7 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-El cálculo de un atributo silábico se realiza tomando estos valores: $\mu$ representará el promedio de duración de sílabas en la frase. $\sigma$ será el desvío estandar de la duración de las sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas acentuadas en la frase. Para cada uno de estos valores se calcula los dos tipos de normalización.
+El cálculo de un atributo silábico se realiza tomando estos valores: tomando como atributo la duración de la sílaba acentuada $\mu$ representará el promedio de duración de sílabas en la frase. $\sigma$ será el desvío estándar de la duración de las sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas acentuadas en la frase. Para cada uno de estos valores se calcula los dos tipos de normalización.
 
 Estos atributos usamos para poder medir fuertemente la Regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el Apéndice.
 
@@ -97,7 +99,7 @@ Las señales de audio poseen muchas variaciones continuamente. En periodos corto
 
 Luego para cada frame se calcula el espectro de frecuencia. Esto se viene motivado por un órgano que se encuentra en la oreja llamado Cóclea. Este vibra de diferente forma al llegarle cada frecuencia del sonido. Al vibrar, activa nervios que representan las distintas frecuencias que escuchamos. Dividir el sonido en períodos intenta mostrar que frecuencias están activas.
 
-La Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alejada esta esa frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de fórma lineal. A partir de ese valor, se comporta de forma logarítmica. 
+La Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alejada esta esa frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de forma lineal. A partir de ese valor, se comporta de forma logarítmica. 
 
 %http://i.stack.imgur.com/YUH48.gif
 
@@ -152,4 +154,6 @@ donde:
   \item \emph{NORMALIZACIÓN} corresponde al tipo de normalización realizada. Estas pueden ser \emph{norm} haciendo alusión a normalización o \emph{normhd} haciendo alusión a normalización tomando $mu=0$.
 \end{itemize}
  
-Por ejemplo: definimos  SIL\_prevSyllableAccent\_normhd como la duración de la silaba anterior ala acentuada aplicando normalización. Todos los nombres y a que atributo se refieren se puede ver en el apéndice de atributos.
+Por ejemplo: definimos SIL\_prevSyllableAccent\_normhd como la duración de la silaba anterior a la acentuada aplicando normalización con $mu=0$. Todos los nombres y a que atributo se refieren se puede ver en el apéndice de atributos.
+
+A continuación veamos el análisis que realizamos utilizando todos estos atributos.
