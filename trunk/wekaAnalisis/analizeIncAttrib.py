@@ -76,6 +76,16 @@ def runNaiveBayes(train, test):
     evaluation.evaluateModel(naiveBayes, test)
     printSummary(naiveBayes, train, evaluation)
 
+def runFunctSMO(train, test):
+    functSMO = functionsSMO()
+    functSMO.setDebug(True)
+
+    functSMO.buildClassifier(train)
+    evaluation = Evaluation(train)
+
+    evaluation.evaluateModel(functSMO, test)
+    printSummary(functSMO, train, evaluation)
+
 def filterByAttributes(attributesToDelete, train, test):
     listAttributeTrain = []
     for att in attributesToDelete:
@@ -121,8 +131,8 @@ print "Baseline"
 (train1, test1) = (train, test)
 runZeroR(train1, test1)
 
-print "JRip con atributos de SIL + FON + ACU"
-runNaiveBayes(train1, test1)
+print "runFunctSMO con atributos de SIL + FON + ACU"
+runFunctSMO(train1, test1)
 
 #calculos previos
 acuAtt = [ "ACU_"+size+type+"_"+str(i) 
@@ -138,44 +148,44 @@ fonAtt = [ "FON_"+type+"_"+norm
             for type in ["Sfinal", "consonant", "kt", "ll", "rr", "sc", "vowel"]
             for norm in ["norm", "normhd"]      ]
 
-print "JRip con atributos de SIL + FON"
+print "runFunctSMO con atributos de SIL + FON"
 attributesToDelete = acuAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
 
-print "JRip con atributos de FON + ACU"
+print "runFunctSMO con atributos de FON + ACU"
 attributesToDelete = silAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
 
-print "JRip con atributos de SIL + ACU"
+print "runFunctSMO con atributos de SIL + ACU"
 attributesToDelete = fonAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
 
-print "JRip con atributos de SIL"
+print "runFunctSMO con atributos de SIL"
 attributesToDelete = acuAtt + fonAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
 
-print "JRip con atributos de FON"
+print "runFunctSMO con atributos de FON"
 attributesToDelete = acuAtt + silAtt
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
 
-print "JRip con atributos de ACU"
+print "runFunctSMO con atributos de ACU"
 attributesToDelete = silAtt + fonAtt 
 (train1, test1) = filterByAttributes(attributesToDelete, train, test)
 train1.setClassIndex(train1.attribute('place').index())
 test1.setClassIndex(test1.attribute('place').index())
-runNaiveBayes(train1, test1)
+runFunctSMO(train1, test1)
