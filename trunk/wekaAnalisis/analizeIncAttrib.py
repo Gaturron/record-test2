@@ -107,6 +107,82 @@ def filterByAttributes(attributesToDelete, train, test):
 
     return (train1, test1)
 
+def runClassifier(i, classifier):
+
+    file = FileReader(path+"train"+str(i)+".arff")
+    train = Instances(file)
+    train.setClassIndex(train.attribute('place').index())
+
+    file = FileReader(path+"test"+str(i)+".arff")
+    test = Instances(file)
+    test.setClassIndex(test.attribute('place').index())
+
+    print "Classif.: "+classifier.__name__+" corriendo paired wilcoxon tests: train"+str(i)+" test"+str(i)
+    print "=================================================================================="
+    print "Baseline"
+
+    (train1, test1) = (train, test)
+    runZeroR(train1, test1)
+
+    print "Atributos de SIL + FON + ACU"
+    classifier(train1, test1)
+
+    #calculos previos
+    acuAtt = [ "ACU_"+size+type+"_"+str(i) 
+                for i in range(12+1) 
+                for size in ["Min", "Average", "Max"] 
+                for type in ["KT", "LL", "RR", "SC"]     ]
+
+    silAtt = [ "SIL_"+type+"_"+norm
+                for type in ["prevSyllableAccent", "syllableAccent" ] 
+                for norm in ["norm", "normhd"]      ]
+
+    fonAtt = [ "FON_"+type+"_"+norm
+                for type in ["Sfinal", "consonant", "kt", "ll", "rr", "sc", "vowel"]
+                for norm in ["norm", "normhd"]      ]
+
+    print "Atributos de SIL + FON"
+    attributesToDelete = acuAtt
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
+    print "Atributos de FON + ACU"
+    attributesToDelete = silAtt
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
+    print "Atributos de SIL + ACU"
+    attributesToDelete = fonAtt
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
+    print "Atributos de SIL"
+    attributesToDelete = acuAtt + fonAtt
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
+    print "Atributos de FON"
+    attributesToDelete = acuAtt + silAtt
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
+    print "Atributos de ACU"
+    attributesToDelete = silAtt + fonAtt 
+    (train1, test1) = filterByAttributes(attributesToDelete, train, test)
+    train1.setClassIndex(train1.attribute('place').index())
+    test1.setClassIndex(test1.attribute('place').index())
+    classifier(train1, test1)
+
 if len(sys.argv) != 2:
     print "Pasar como parametro el path de los tests"
     print "Por ejemplo: /home/fernando/Tesis/record-test2/attributeExtractor/tests/"
@@ -114,78 +190,3 @@ if len(sys.argv) != 2:
     
 #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 path = sys.argv[1]
-i = 0
-
-file = FileReader(path+"train"+str(i)+".arff")
-train = Instances(file)
-train.setClassIndex(train.attribute('place').index())
-
-file = FileReader(path+"test"+str(i)+".arff")
-test = Instances(file)
-test.setClassIndex(test.attribute('place').index())
-
-print "Corriendo paired wilcoxon tests: train"+str(i)+" test"+str(i)
-print "====================================================================="
-print "Baseline"
-
-(train1, test1) = (train, test)
-runZeroR(train1, test1)
-
-print "runFunctSMO con atributos de SIL + FON + ACU"
-runFunctSMO(train1, test1)
-
-#calculos previos
-acuAtt = [ "ACU_"+size+type+"_"+str(i) 
-            for i in range(12+1) 
-            for size in ["Min", "Average", "Max"] 
-            for type in ["KT", "LL", "RR", "SC"]     ]
-
-silAtt = [ "SIL_"+type+"_"+norm
-            for type in ["prevSyllableAccent", "syllableAccent" ] 
-            for norm in ["norm", "normhd"]      ]
-
-fonAtt = [ "FON_"+type+"_"+norm
-            for type in ["Sfinal", "consonant", "kt", "ll", "rr", "sc", "vowel"]
-            for norm in ["norm", "normhd"]      ]
-
-print "runFunctSMO con atributos de SIL + FON"
-attributesToDelete = acuAtt
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
-
-print "runFunctSMO con atributos de FON + ACU"
-attributesToDelete = silAtt
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
-
-print "runFunctSMO con atributos de SIL + ACU"
-attributesToDelete = fonAtt
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
-
-print "runFunctSMO con atributos de SIL"
-attributesToDelete = acuAtt + fonAtt
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
-
-print "runFunctSMO con atributos de FON"
-attributesToDelete = acuAtt + silAtt
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
-
-print "runFunctSMO con atributos de ACU"
-attributesToDelete = silAtt + fonAtt 
-(train1, test1) = filterByAttributes(attributesToDelete, train, test)
-train1.setClassIndex(train1.attribute('place').index())
-test1.setClassIndex(test1.attribute('place').index())
-runFunctSMO(train1, test1)
