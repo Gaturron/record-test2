@@ -197,7 +197,7 @@ Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener poco
 
 \begin{figure}[H]
 \centering
-\pgfplotsset{width=10cm, height=6cm, compat=1.9}
+\pgfplotsset{width=10cm, height=6cm}
 \begin{tikzpicture}[trim axis left, trim axis right]
 \begin{axis}[
     ybar,
@@ -217,7 +217,7 @@ Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener poco
 
 \begin{figure}[H]
 \centering
-\pgfplotsset{width=10cm, height=4cm, compat=1.9}
+\pgfplotsset{width=10cm, height=4cm}
 \begin{tikzpicture}[trim axis left, trim axis right]
 \begin{axis}[
     ybar,
@@ -496,53 +496,46 @@ Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
+%Datos: {'bayes.NaiveBayes': {'SIL + FON + ACU': 70.0, 'SIL + ACU': 67.0, 'FON + ACU': 71.0, 'ACU': 68.0, 'FON': 69.0, 'SIL + FON': 69.0, 'SIL': 66.0}, 'functions.SMO': {'SIL + FON + ACU': 73.0, 'SIL + ACU': 70.0, 'FON + ACU': 71.0, 'ACU': 69.0, 'FON': 65.0, 'SIL + FON': 66.0, 'SIL': 66.0}}
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|c|}
+\begin{tabular}{|l|c|c|}
 \hline
-\textbf{}  & \textbf{NaiveBayes}   \\ \hline
-SIL + FON + ACU & 59.5745 \\ \hline
-SIL + FON & 57.4468 \\ \hline
-FON + ACU & 61.7021 \\ \hline
-SIL + ACU & 61.7021 \\ \hline
-SIL &  53.1915 \\ \hline
-FON &  57.4468 \\ \hline
-ACU &  59.5745 \\ \hline
-Baseline &  44.6809 \\ \hline
+\textbf{} & \textbf{NaiveBayes} & \textbf{Functions SMO}   \\ \hline
+SIL + FON + ACU & 70 & 73 \\ \hline
+SIL + FON & 69 & 66 \\ \hline
+FON + ACU & 71 & 71 \\ \hline
+SIL + ACU & 67 & 70 \\ \hline
+ACU & 68 & 69 \\ \hline
+SIL & 66 & 66 \\ \hline
+FON & 69 & 65 \\ \hline
 \end{tabular}
 \end{table}
 
 
 \begin{tikzpicture}
+
 \begin{axis}[
     title={Porcentaje de cada grupo en cada tests},
-    xlabel={Tests},
     ylabel={Porcentaje},
-    xmin=0, xmax=6,
-    ymin=0, ymax=100,
-    xtick={1,2,3,4,5},
-    ytick={0,20,40,60,80,100},
+    xmin=-1, xmax=8,
+    ymin=60, ymax=75,
+    xtick={1,2,3,4,5,6,7},
+    xticklabels={FON,SIL,ACU,SIL+ACU,FON+ACU,SIL+FON, SIL+FON+ACU},
+    x tick label style={rotate=45, anchor=east, font=\footnotesize},
+    ytick={60,65,70,75},
     ymajorgrids=true,
     grid style=dashed,
 ] 
-\addplot[mark=triangle*,densely dashdotted, line width=1pt]coordinates {
-    (1,10)(2,10)(3,10)(4,10)(5,10) };
-\addplot[mark=triangle,dashdotted, line, width=1pt]coordinates {
-    (1,20)(2,20)(3,20)(4,20)(5,20) };
-\addplot[mark=otimes*,densely dashedline, width=1pt]coordinates {
-    (1,30)(2,30)(3,30)(4,30)(5,30) };
-\addplot[mark=otimes,dash pattern=on 8pt off 2pt on 8pt off 2pt,line width=1pt]coordinates {
-    (1,40)(2,40)(3,40)(4,40)(5,40) };
-\addplot[mark=diamond*,dash pattern=on 6pt off 2pt on 6pt off 6pt,line width=1pt]coordinates {
-    (1,50)(2,50)(3,50)(4,50)(5,50) };
-\addplot[mark=square*,dotted]coordinates {
-    (1,60)(2,60)(3,60)(4,60)(5,60) };
-\addplot[mark=diamond*,dashed]coordinates {
-    (1,70)(2,70)(3,70)(4,70)(5,70) };
-\addplot[mark=square,solid,]coordinates {
-    (1,80)(2,80)(3,80)(4,80)(5,80) };
 
-\node [left] at (axis cs: 1,  10) {Baseline};
+\addplot[mark=diamond*,dashed]coordinates {
+    (1,69)(2,66)(3,68)(4,67)(5,71)(6,69)(7,70) };
+\addplot[mark=square,solid,]coordinates {
+    (1,65)(2,66)(3,69)(4,70)(5,71)(6,66)(7,73) };
+
+\node [left] at (axis cs: 1, 69) {NaiveBayes};
+\node [left] at (axis cs: 1, 65) {Function SMO};
 
 \end{axis}
 \end{tikzpicture}
