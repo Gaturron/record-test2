@@ -107,7 +107,7 @@ def filterByAttributes(attributesToDelete, train, test):
 
     return (train1, test1)
 
-def runClassifier(i, classifier):
+def runClassifier(i, classifier, path):
 
     file = FileReader(path+"train"+str(i)+".arff")
     train = Instances(file)
@@ -117,12 +117,11 @@ def runClassifier(i, classifier):
     test = Instances(file)
     test.setClassIndex(test.attribute('place').index())
 
-    print "Classif.: "+classifier.__name__+" corriendo paired wilcoxon tests: train"+str(i)+" test"+str(i)
     print "=================================================================================="
+    print "Clasificador: "+classifier.__name__+" corriendo paired wilcoxon tests: train"+str(i)+" test"+str(i)
     print "Baseline"
 
     (train1, test1) = (train, test)
-    runZeroR(train1, test1)
 
     print "Atributos de SIL + FON + ACU"
     classifier(train1, test1)
@@ -190,3 +189,14 @@ if len(sys.argv) != 2:
     
 #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
 path = sys.argv[1]
+
+runClassifier(0,runNaiveBayes, path)
+runClassifier(1,runNaiveBayes, path)
+runClassifier(2,runNaiveBayes, path)
+runClassifier(3,runNaiveBayes, path)
+runClassifier(4,runNaiveBayes, path)
+runClassifier(0,runFunctSMO, path)
+runClassifier(1,runFunctSMO, path)
+runClassifier(2,runFunctSMO, path)
+runClassifier(3,runFunctSMO, path)
+runClassifier(4,runFunctSMO, path)

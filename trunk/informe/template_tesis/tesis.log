@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  13 JUN 2014 00:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  18 JUN 2014 01:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1137,51 +1137,82 @@ LaTeX Info: Redefining \% on input line 1.
 Cap\'{\i }tulo 4.
 [16
 
-] <Images/diagrama_workflow.jpg, id=103, 300.12125pt x 316.18124pt>
+]
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
+ [17] <Images/diagrama_workflow.jpg, id=106, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
 Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 33.
 (pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Info: Redefining \. on input line 39.
-LaTeX Info: Redefining \% on input line 39.
-[17]
-LaTeX Info: Redefining \. on input line 52.
-LaTeX Info: Redefining \% on input line 52.
+LaTeX Info: Redefining \. on input line 46.
+LaTeX Info: Redefining \% on input line 46.
  [18 <./Images/diagrama_workflow.jpg>]
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
- [19]
-LaTeX Info: Redefining \. on input line 104.
-LaTeX Info: Redefining \% on input line 104.
+LaTeX Info: Redefining \. on input line 74.
+LaTeX Info: Redefining \% on input line 74.
+
+[19]
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
  [20]
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
- [21]) (./analisis.tex
+LaTeX Info: Redefining \. on input line 144.
+LaTeX Info: Redefining \% on input line 144.
+ [21]) (./datos_obtenidos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-
-[22]
+ [22]
 Cap\'{\i }tulo 5.
 [23
 
 ]
+
+LaTeX Warning: Citation `praat' on page 24 undefined on input line 38.
+
+<Images/alineacion_mala_inf.png, id=127, 1290.8225pt x 664.4825pt>
+File: Images/alineacion_mala_inf.png Graphic file (type png)
+
+<use Images/alineacion_mala_inf.png>
+Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 45.
+(pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `click_final' on page 24 undefined on input line 49.
+
+LaTeX Info: Redefining \. on input line 50.
+LaTeX Info: Redefining \% on input line 50.
+[24] <Images/click_al_final_inf.png, id=131, 1281.78876pt x 663.47874pt>
+File: Images/click_al_final_inf.png Graphic file (type png)
+
+<use Images/click_al_final_inf.png>
+Package pdftex.def Info: Images/click_al_final_inf.png used on input line 52.
+(pdftex.def)             Requested size: 341.43437pt x 176.73216pt.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+ [25 <./Images/alineacion_mala_inf.png> <./Images/click_al_final_inf.png>]) (./
+analisis.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [26]
+Cap\'{\i }tulo 6.
+[27
+
+]
 LaTeX Info: Redefining \. on input line 75.
 LaTeX Info: Redefining \% on input line 75.
- [24]
+ [28]
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
- [25]
+ [29]
 LaTeX Info: Redefining \. on input line 159.
 LaTeX Info: Redefining \% on input line 159.
- [26]
+ [30]
 LaTeX Info: Redefining \. on input line 197.
 LaTeX Info: Redefining \% on input line 197.
- [27]
+ [31]
 
 ! Package pgfkeys Error: Choice '1.9' unknown in key '/pgfplots/compat/anchors'
 . I am going to ignore this key.
@@ -1458,14 +1489,14 @@ Overfull \hbox (27.83014pt too wide) in paragraph at lines 284--285
 
 LaTeX Info: Redefining \. on input line 288.
 LaTeX Info: Redefining \% on input line 288.
-[28]
+[32]
 Underfull \hbox (badness 10000) in paragraph at lines 295--304
 
  []
 
 LaTeX Info: Redefining \. on input line 305.
 LaTeX Info: Redefining \% on input line 305.
-[29]
+[33]
 Underfull \hbox (badness 10000) in paragraph at lines 310--319
 
  []
@@ -1482,17 +1513,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 346--355
 
 LaTeX Info: Redefining \. on input line 356.
 LaTeX Info: Redefining \% on input line 356.
-[30]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 361--370
 
  []
 
 LaTeX Info: Redefining \. on input line 402.
 LaTeX Info: Redefining \% on input line 402.
-[31]
+[35]
 LaTeX Info: Redefining \. on input line 441.
 LaTeX Info: Redefining \% on input line 441.
- [32]
+ [36]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/line' and I am going to i
 gnore it. Perhaps you misspelled it.
@@ -1566,12 +1597,12 @@ Overfull \hbox (11.12543pt too wide) in paragraph at lines 548--549
 
 LaTeX Info: Redefining \. on input line 550.
 LaTeX Info: Redefining \% on input line 550.
-[33]) (./conclusiones.tex
+[37]) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [34]
-Cap\'{\i }tulo 6.
-) (./marcas_prosodicas.tex [35
+ [38]
+Cap\'{\i }tulo 7.
+) (./marcas_prosodicas.tex [39
 
 ]
 Underfull \hbox (badness 1590) in paragraph at lines 15--15
@@ -1602,15 +1633,15 @@ Underfull \hbox (badness 3746) in paragraph at lines 29--29
 []|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
  []
 
-[36
+[40
 
 ]
 LaTeX Info: Redefining \. on input line 58.
 LaTeX Info: Redefining \% on input line 58.
- [37]) (./nomenclatura_de_atributos.tex
+ [41]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [38]
+ [42]
 Underfull \hbox (badness 10000) in paragraph at lines 8--8
 []|\OT1/cmr/m/n/12 ACU[]AverageKT[]0 al
  []
@@ -1679,7 +1710,7 @@ Overfull \hbox (23.20445pt too wide) in paragraph at lines 38--38
 []|\OT1/cmr/m/n/12 SIL[]prevSyllableAccent[]norm| 
  []
 
-[39
+[43
 
 ]
 Underfull \vbox (badness 10000) detected at line 42
@@ -1690,9 +1721,9 @@ Underfull \vbox (badness 10000) detected at line 60
  []
 
 )
-LaTeX Info: Redefining \. on input line 73.
-LaTeX Info: Redefining \% on input line 73.
- [40] (./tesis.bbl) [41
+LaTeX Info: Redefining \. on input line 74.
+LaTeX Info: Redefining \% on input line 74.
+ [44] (./tesis.bbl) [45
 
 
 ] (./tesis.aux
@@ -1702,15 +1733,18 @@ LaTeX Info: Redefining \% on input line 6.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 21396 strings out of 493307
- 481400 string characters out of 6139905
- 694998 words of memory out of 5000000
- 24377 multiletter control sequences out of 15000+600000
+ 21411 strings out of 493307
+ 481794 string characters out of 6139905
+ 695113 words of memory out of 5000000
+ 24387 multiletter control sequences out of 15000+600000
  11025 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,19n,83p,1020b,2009s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,19n,83p,1071b,2009s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1723,10 +1757,10 @@ c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tesis.pdf (47 pages, 1156916 bytes).
+Output written on tesis.pdf (51 pages, 1710822 bytes).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
+ 244 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
