@@ -4,9 +4,9 @@ Utilizando estudios previos de ambas variantes del español pudimos obtener las 
 
 \section{Elección de las frases}
 
-El acento se potencia cuando se realiza habla espontánea. Utilizando este concepto intentaremos que el hablante lo diga de forma lo más natural posible. Es por ello que decidimos como actividad pronunciar frases popularmente conocidas. Si el hablante conoce la frase y la utiliza con frecuencia entonces es más fácil que su pronunciación sea espontánea. Con esta idea vamos a cubrir las reglas 2 al 6. 
+El acento se potencia cuando se realiza habla espontánea. Utilizando este concepto intentamos que el hablante lo diga de forma lo más natural posible. Es por ello que decidimos como actividad pronunciar frases popularmente conocidas. Si el hablante conoce la frase y la utiliza con frecuencia entonces es más fácil que su pronunciación sea espontánea. Con esta idea vamos a cubrir las reglas 2 al 6. 
 
-También tenemos que hacer énfasis en las sílabas acentuadas. Recordemos que en el capítulo anterior la regla 1 nos decía que había una diferencia en la duración de la silaba previa a la acentuada: para hablantes de Córdoba esta duración es mas corta que para hablantes de Buenos Aires. La sílaba acentuada varía según que tipo de palabra se refiere. No es lo mismo utilizar una palabra aguda que una esdrújula en esta regla. Para cubrir esta regla utilizamos un esquema de frases con una estructura fija pero que varía sus palabras. Este esquema se llama AMPER y lo veremos en detalle más adelante.
+También tenemos que hacer énfasis en las sílabas acentuadas. Recordemos que en el capítulo anterior la regla 1 nos decía que había una diferencia en la duración de la silaba previa a la acentuada: para hablantes de Córdoba esta duración es mas corta que para hablantes de Buenos Aires. La sílaba acentuada varía según que tipo de palabra se refiere. No es lo mismo utilizar una palabra aguda que una esdrújula en esta regla. Para cubrir esta regla utilizamos un esquema de frases con una estructura fija pero que varía sus palabras según su entonación. Este esquema se llama AMPER y lo veremos en detalle más adelante.
 
 Entonces los esquemas van a ser: 
 
@@ -17,7 +17,7 @@ Entonces los esquemas van a ser:
 
 A continuación vemos las reglas en sus dos conjuntos.
 
-\subsection{Utilizar frases con esquema AMPER}
+\subsection{Frases utilizando esquema AMPER}
 
 %AMPER-ARGENTINA: VARIABILIDAD RÍTMICA EN DOS CORPUS 
 %Jorge A. Gurlekian LIS - Conicet y UBA jag@fmed.uba.ar 
@@ -27,7 +27,7 @@ A continuación vemos las reglas en sus dos conjuntos.
 
 Utilizamos este esquema para analizar todas las variantes posibles de la Regla 1. Recordemos que esa regla nos dice que hay que estirar la sílaba anterior a la acentuada. Esta regla es la más conocida y puede aparecer de varias formas. Es por eso que este esquema nos va a resultar muy útil. 
 
-Para tomar este esquema nos basamos en el trabajo de \cite{amper} donde utilizan un esquema similar. Este trabajo estudió los acentos del español Argentino utilizando todas sus combinaciones. En nuestro trabajo tenemos un problema similar por ello lo tomamos como referencia.
+Para tomar este esquema nos basamos en el trabajo de variabilidad rítmica en dos corpus \cite{amper} donde utilizan un esquema similar. Este trabajo estudió los acentos del español Argentino utilizando todas sus combinaciones. En nuestro trabajo tenemos un problema similar por ello lo tomamos como referencia.
 
 Para el esquema AMPER se fija un patrón de estructura de frases y se va cambiando las palabras que utiliza. 
 El esquema AMPER utilizado es: 
@@ -39,7 +39,7 @@ El esquema AMPER utilizado es:
 	\item Objeto puede ser \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
 	\item Adjetivo puede ser \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
 \end{itemize}
-Utilizamos estas palabras ya que cubren por la acentuación de cada tipo de palabra, o sea pasa por agudas grave y esdrújula. 
+Utilizamos estas palabras ya que cubren los tres tipos de acentuación, o sea pasa por aguda, grave y esdrújula. 
 
 Por ejemplo: \textit{``El canapé salió delicioso’’}. Canapé tiene acento en la última sílaba, es una palabra aguda, mientras que delicioso es grave. En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos. Armamos las combinaciones para obtener muchas variantes de dónde se encuentra el acento. De esta forma estudiamos en detalle la regla 1. Todas las combinaciones se pueden ver en la Figura \ref{fig21}.
 
@@ -49,7 +49,7 @@ Por ejemplo: \textit{``El canapé salió delicioso’’}. Canapé tiene acento 
     \label{fig21}
 \end{figure}
 
-\subsection{Utilizar frases conocidas}
+\subsection{Frases comunes}
 
 Como afirmamos antes, se utilizaron frases comunes para poder obtener los acentos de cada grupo de forma natural. Se pensó que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle su acento. Todas las frases conocidas utilizadas se pueden ver en la Figura \ref{fig22}.
 
@@ -67,7 +67,7 @@ Ya definimos cuales van a ser las frases, ahora debemos definir qué frases y en
 
 ¿ Porqué quisiéramos cubrir mas reglas en una misma frase? Más adelante veremos que una frase grabada que cubre una regla aportará información sobre el hablante de esa regla en particular. Si una frase cubre varias reglas estaríamos obteniendo más información y solo con una grabación. Por eso es importante maximizar el cubrimiento de las frases.  
 
-La generación de trazas sigue el siguiente algoritmo:
+El orden de las frases sigue el siguiente algoritmo:
 
 \lstset{ %
 language=C++,                % choose the language of the code
@@ -104,7 +104,7 @@ morekeywords={GeneradorDeTest, GenradorDeTrazas, checkBalance, Input, Output, Re
 
 La idea del algoritmo es la siguiente: vamos a utilizar un contador que nos va a decir cuántas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Esta elección la lleva a cabo la función \textit{ObtenerDeLaReglaLasMasPonderadas}. Esta se encarga de elegir la frase que haga referencia a la regla menos grabada en el contador y además que represente a más de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones y ponderamos las frases que referencien a más reglas. 
 
-Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de todas las reglas.
+Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en el gráfico \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de alrededor del 40\% en todas las reglas.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
