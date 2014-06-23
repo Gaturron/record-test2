@@ -24,10 +24,10 @@ Algo importante de ver es que los datos obtenidos están desbalanceados. No pudi
 
 Las categorías establecidas anteriormente describen los errores comunes mas frecuentes. Podemos observar que del total de 391 grabaciones, 64 tuvo algún problema. Este es alrededor del 16\% de los audios grabados. Es un número alto para ser un experimento guiado. 
 
-La gran causa de este número es la faltante de un chequeo en el mismo momento que va grabando cada uno de los audios. Un trabajo futuro sería analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posible sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo, por ejemplo 1 segundo. Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
+La gran causa de este número es la faltante de un chequeo en el mismo momento que va grabando cada uno de los audios. Un trabajo futuro podría ser analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posible sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo, por ejemplo 1 segundo. Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
 
 %todo: esto nose si va mejor en Trabajos Futuros
-También se le podría dar mas información al hablante. Sabiendo que el micrófono tuvo un pico de volumen se podría pedirle al hablante que no hable tan fuerte. Ídem si habla muy bajo. Otras posibles soluciones a este problema es analizar antes de empezar el experimento si el sonido ambiente es muy alto o no. Y luego de ello aceptar una grabación nueva. Todas esas soluciones e pueden realizar en la aplicación web sin intervenir en el servidor.
+También se le podría dar mas información al hablante. Sabiendo que el micrófono tuvo un pico de volumen se podría pedirle al hablante que no hable tan fuerte. Ídem si habla muy bajo. Otras posibles soluciones a este problema es analizar antes de empezar el experimento si el sonido ambiente es muy alto o no. Y luego de ello aceptar una grabación nueva. Todas esas soluciones se pueden realizar en la aplicación web sin intervenir en el servidor.
 
 Para análisis mas precisos se puede aplicar mejores filtros cuando llega la grabación del lado del servidor. Cuando llega el mensaje del audio al servidor, este ya puede obtener el wav y realizarle todo tipo de análisis mas precisos. Recordemos que el servidor esta implementado en Python que posee muchas librerías útiles para el análisis de audios. Al momento de terminar el análisis del audio en cuestión, deberá enviar la respuesta al hablante informándole si se debe realizar devuelta la grabación o si fue exitosa. Es importante notar que esta solución necesita buena conexión para el server. 
 
@@ -35,7 +35,7 @@ Vamos a continuar con el análisis basándonos en los audios clasificados como C
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. Sucede que muchas veces alinea mal. Es muy importante descartar los audios mal alineados ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Para realizar esta tarea utilizamos el programa Praat. Los errores mas comunes fueron:
+El alineador automático no realiza su función de forma perfecta. Sucede que muchas veces alinea mal. Es muy importante descartar los audios mal alineados ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio etiquetado como conservado y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores mas comunes fueron:
 %todo citar bien a praat
 
 \begin{itemize}
@@ -46,12 +46,12 @@ El alineador automático no realiza su función de forma perfecta. Sucede que mu
     \caption{Ejemplo de alineación mala por ruido}
 \end{figure}
 
-    \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación (Ver Fig. \ref{click_final}). Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
+    \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación (Ver Fig. \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
     
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{click_al_final_inf} }
     \caption{Click al final}
-    \label{click_final}
+    \label{clickFinal}
 \end{figure}
 
     \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Sucede que muchas veces la grabación fue buena pero al final tuvo una entonación mas mucho mas fuerte que las demás, haciendo que posteriormente la alineación no sea precisa.
@@ -61,7 +61,7 @@ El alineador automático no realiza su función de forma perfecta. Sucede que mu
 
 \section{Corrección de errores}
 
-Para corregir los errores descriptos debimos chequear cada uno de los textgrids. Los resultados de la cantidad de textgrid corregidos son:
+Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Los resultados de la cantidad de TextGrid corregidos son:
 
 \begin{table}[h]
 \centering
