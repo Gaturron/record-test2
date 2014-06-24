@@ -387,7 +387,7 @@ Vamos a mostrar los resultados de estos tests estadísticos. Todos los tests est
 \end{tabular}
 \end{table}
 
-Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO poseen p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
+Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO poseen p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{Function SMO tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
 \subsection{Clasificadores encontrados}
 
@@ -407,7 +407,7 @@ Cada conjunto de test va a clasificar distinto y por ende utilizará una serie d
 \end{itemize}
 \end{flushleft}
 
-Podemos notar en el anterior árbol de decisión que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los más relevantes para este clasificador. Si bien este clasificador no obtuvo buena performance, analizar su árbol de decisión nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
+Podemos notar en el anterior árbol de decisión que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar su árbol de decisión nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
 
 Veamos con otro método cuales de los atributos aportan mayor información para la clasificación de los hablantes.   
 
@@ -419,8 +419,6 @@ En esta sección se aplicará a los distintos atributos evaluadores para analiza
 %http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
 
 Vamos a utilizar InfoGain para analizar la importancia de cada atributo y utilizaremos Ranker para el puntaje de los atributos. Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo que ese atributo se cumple. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede espresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. De esta forma, cuanto menor sea la entropía sabiendo ese atributo mayor será la ganancia de información para ese atributo.
-
-\paragraph*{Utilizando todos los atributos}
 
 \begin{table}[H]
 \centering
@@ -492,7 +490,7 @@ También algo que se desprende de este análisis es que todas las reglas del tip
 
 \section{Combinando clases de atributos}
 
-Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que se promedió los resultados de los 5 tests generados.  
+Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgen del promedio de los resultados de los 5 tests generados.  
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
