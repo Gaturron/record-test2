@@ -1,6 +1,6 @@
 \chapter{Análisis}
 
-En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el Baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo.
+En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo.
 
 \section{Baseline}
 
@@ -20,9 +20,9 @@ Utilizamos la herramienta de Machine Learning Weka para poder hacer el análisis
 
 La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en 2 grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
 
-Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Vamos a dividir a los hablantes en los 2 conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante puede llegar a aportar 30 grabaciones mientras que otro sólo puede aportar 5. Tomando en cuenta esto la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Vamos a descartar estos casos y tomaremos que el conjunto de train va a tener el 70\% de las instancias mientras que el restante 30\% va a ser destinado para test.
+Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos a los hablantes en los 2 conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante pudo llegar a aportar 30 grabaciones mientras que otro sólo pudo aportar 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Descartamos estos casos y tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sean destinadas para test. En definitiva, creamos 5 conjuntos de test de la forma $<$ train, test $>$ con las características antes descriptas. A esto lo llamamos cross-validation test. 
 
-Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar eso vamos a generar el test de cross validation de la siguiente forma: Generamos conjuntos de instancias para train y test, pero con una salvedad. Para armar el conjunto de test vamos a utilizar el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, vamos a regular la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto es para poder utilizar instancias nuevas en los 5 conjuntos utilizados. 
+Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar eso el test de cross-validation será de la siguiente forma: Generamos conjuntos de instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió  utilizar instancias nuevas en los 5 conjuntos utilizados. 
 
 A continuación el código generador del test cross-validation:
 \lstset{ %
@@ -86,9 +86,9 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
     Devolver bool_bsas y bool_cba
 \end{lstlisting}
 
-Vemos que en las lineas 11 y 12 agregamos los hablantes usados en los test y los nuevos hablantes todavía no utilizados. Luego de esos hablantes obtenemos los datos extraidos de sus audios en las lineas 15 y 17. Finalmente chequeamos los últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (linea 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
+Vemos que en las lineas 11 y 12 agregamos los hablantes usados en los test y los nuevos hablantes todavía no utilizados. Luego de esos hablantes obtenemos los datos extraídos de sus audios en las lineas 15 y 17. Finalmente chequeamos los últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (linea 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
 
-A continuación veremos los clasificadores utilizados.
+A continuación veremos los clasificadores que utilizaremos para predecir de que lugar pertenece cada hablante.
 
 \section{Clasificadores}
 
@@ -127,8 +127,7 @@ Un clasificador de este tipo asume que cada atributo muestra una característica
 
 \section{Tests estadísticos}
 
-Vamos a utilizar los resultados de cada clasificador para ver si los resultados son significativamente relevantes. Los resultados que vamos a utilizar van a ser el vector resultante de los 5 grupos de tests utilizando el clasificador ZeroR contrastado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO, NaiveBayes.
-Para ello vamos a realizar dos principales tests: Wilcoxon signed-rank y Test de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 grupos de test generados. Los clasificadores utilizados son ZeroR, o sea el baseline, comparado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO, NaiveBayes. Para estos resultados vamos a realizar dos principales tests: Wilcoxon signed-rank y Test de Student. 
 
 \subsection{Wilcox Test}
 
@@ -138,7 +137,7 @@ Primero realizaremos Wilcox Test ya que necesita menos presunciones. Para realiz
     %Data are paired and come from the same population.
     \item Los datos son presentados de a pares y vienen de la misma población: esto sucede gracias a como generamos los tests. La población también siempre es la misma.
     %Each pair is chosen randomly and independently.
-    \item Cada par es elegído al azar y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
+    \item Cada par es elegido al azar y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
     %The data are measured at least on an ordinal scale, but need not be normal.
     \item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
 \end{itemize}
@@ -152,7 +151,7 @@ El input del mismo va a ser el vector resultante del test baseline ZeroR con el 
 \hspace{2cm}H1: Clasificador alternativo es mejor que ZeroR
 \vspace{0.5cm}
 
-donde Clasificador alternativo se refiere a los demás clasificadores. Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05 no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
+Clasificador alternativo se refiere a los demás clasificadores. Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05 no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
 
 Luego chequearemos si nuestra muestra es de distribución Normal. Si es ese el caso haremos el Test de Student. Para chequear Normalidad vamos a utilizar el test de Shapiro-Wilk.
 
@@ -163,7 +162,7 @@ Luego chequearemos si nuestra muestra es de distribución Normal. Si es ese el c
 
 %En estadística, el Test de Shapiro–Wilk se usa para contrastar la normalidad de un conjunto de datos. Se plantea como hipótesis nula que una muestra x1, ..., xn proviene de una población normalmente distribuida. Fue publicado en 1965 por Samuel Shapiro y Martin Wilk.1 Se considera uno de los test más potentes para el contraste de normalidad, sobre todo para muestras pequeñas (n<30).
 
-El Test de Shapiro-Wilk lo utilizamos para poder afirmar si conjunto de datos proviene de una distribución Normal. Lo utilizamos ya que posee un buen desempeño en pequeñas muestras.
+El Test de Shapiro-Wilk lo utilizamos para poder afirmar si conjunto de datos proviene de una distribución Normal. Una caracteristica importante es que posee un buen desempeño en pequeñas muestras.
 
 %Interpretación: Siendo la hipótesis nula que la población está distribuida normalmente, si el p-valor es menor a alfa (nivel de confianza) entonces la hipótesis nula es rechazada (se concluye que los datos no vienen de una distribución normal). Si el p-valor es mayor a alfa, no se rechaza la hipótesis y se concluye que los datos siguen una distribución normal.
 
@@ -177,7 +176,7 @@ Este test se realiza individualmente para cada vector resultado. O sea, debemos 
 
 %A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
 
-Para los vectores que poseen una distribución Normal vamos a aplicarle este test. Este nos provee una forma de determinar si dos conjuntos de test son significativa mente distintos. De la misma forma que planteamos la hipótesis de Wilcox test, este va a tener las mismas hipótesis. O sea: 
+Para los vectores que poseen una distribución Normal vamos a aplicarle este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos. De la misma forma que planteamos la hipótesis de Wilcox test, este va a tener las mismas hipótesis. O sea: 
 
 \vspace{0.5cm}
 \hspace{2cm}Ho: Clasificador alternativo no es mejor que ZeroR
@@ -190,7 +189,7 @@ La ventaja de usarlo es que, al saber que distribución representa, vamos a tene
 
 \section{Resultados}
 
-Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como es este conjunto:
+Utilizamos un conjunto de test generado por el algoritmo anterior. Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
 
 \begin{figure}[H]
 \centering
@@ -233,7 +232,7 @@ Utilizamos un conjunto de test generado por el algoritmo anterior. Al tener poco
 \label{TestsInstances}
 \end{figure}
 
-Todos los tests realizados de aquí en mas fueron realizados utilizando R versión 3.0.1. Los resultados en porcentaje para los distintos clasificadores fueron:
+Los resultados en porcentaje para los distintos clasificadores fueron:
 
 \begin{table}[H]
 \centering
@@ -250,7 +249,7 @@ Todos los tests realizados de aquí en mas fueron realizados utilizando R versi�
 \end{tabular}
 \end{table}
 
-Donde Test 1 corresponde al primer par (conjunto train, conjunto test) y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+Donde Test 1 corresponde al primer par $<$ train, test $>$ y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
 \begin{figure}[H]
 \centering
@@ -283,11 +282,11 @@ Donde Test 1 corresponde al primer par (conjunto train, conjunto test) y así su
 \label{porcentajexClasificador}
 \end{figure}
 
-Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline. 
+Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este baseline. 
 
-Algo interesante sucede con el clasificador Function SMO: se comporta muy similar a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances} es que de todos los tests el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y de Córdoba. Al tener mitad instancias de cada grupo y como ZeroR debe elegir en uno de esos dos, va a poseer un porcentaje de acierto de alrededor del 50\% como sucede.  
+Algo interesante sucede con el clasificador Function SMO: se comporta muy similar a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y de Córdoba. Al tener mitad instancias de cada grupo y como ZeroR debe elegir en uno de esos dos, va a poseer un porcentaje de acierto de alrededor del 50\% como sucede.  
 
-El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. \textit{Recall} se define como la cantidad de verdaderos negativos sobre la cantidad de verdaderos y falsos negativos. Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4 que es el más interesante.
+El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. \textit{Recall} se define como la cantidad de verdaderos negativos sobre la cantidad de verdaderos y falsos negativos. Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4, que es el más interesante.
 
 \paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
@@ -340,7 +339,7 @@ Otro dato a tener en cuenta es que si bien el clasificador ZeroR tuvo un valor a
 
 Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del test 0. Veamos para los clasificadores ZeroR y NaiveBayes.
 
-\paragraph*{NaiveBayes:}\mbox{}\\
+\paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|l|c|c|c|c|}
@@ -374,7 +373,7 @@ En este caso podemos notar como a pesar de que den valores cercanos en instancia
 
 \subsection{Wilcox y Student Test}
 
-Vamos a mostrar los resultados de estos tests estadísticos. Recordemos que los resultados surgen de realizar los test de Wilcox y Student para el vector resultado de cada clasificador con respecto a ZeroR.
+Vamos a mostrar los resultados de estos tests estadísticos. Todos los tests estadísticos realizados fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgen de realizar los test de Wilcox y Student para el vector resultado de cada clasificador con respecto a ZeroR.
 
 \begin{table}[H]
 \centering
@@ -388,11 +387,13 @@ Vamos a mostrar los resultados de estos tests estadísticos. Recordemos que los 
 \end{tabular}
 \end{table}
 
-Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO poseen p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudo lograr este cometido. 
+Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO poseen p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{el clasificador obtenido tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
 \subsection{Clasificadores encontrados}
 
-Veamos los clasificadores obtenidos para analizar que atributos tuvieron en cuenta. Cada conjunto de test va a clasificar distinto y por ende utilizará una serie de reglas distinta. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
+Veamos los clasificadores obtenidos para analizar que atributos tuvieron en cuenta. Analizamos el clasificador JRip ya que de los clasificadores elegidos es el que utiliza una cantidad manejable de atributos. Los demás clasificadores utilizaron muchos más atributos y por ende debimos descartarlos ya que el análisis se tornaba engorroso. 
+
+Cada conjunto de test va a clasificar distinto y por ende utilizará una serie de reglas distinta. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
 
 \paragraph*{Clasificador JRip:}
 
@@ -405,6 +406,10 @@ Veamos los clasificadores obtenidos para analizar que atributos tuvieron en cuen
 \item $ else  => place=bsas (154.0/23.0)$
 \end{itemize}
 \end{flushleft}
+
+Podemos notar en el anterior árbol de decisión que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los más relevantes para este clasificador. Si bien este clasificador no obtuvo buena performance, analizar su árbol de decisión nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
+
+Veamos con otro método cuales de los atributos aportan mayor información para la clasificación de los hablantes.   
 
 \section{Selección de atributos de forma automática}
 
@@ -487,7 +492,7 @@ También algo que se desprende de este análisis es que todas las reglas del tip
 
 \section{Combinando clases de atributos}
 
-Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Vamos a agregar los tipos de atributos y vamos a analizar como se incrementa el porcentaje de exactitud para la clasificación. El conjunto de datos utilizado es el \textit{test0} y se utiliza \textit{JRip} como clasificador.
+Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que se promedió los resultados de los 5 tests generados.  
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
@@ -535,4 +540,6 @@ FON & 69 & 65 \\ \hline
 \end{axis}
 \end{tikzpicture}
 
-Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. A grandes rasgos, aquí sucede pero dejando de lado el conjunto de atributos acústicos. 
+Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
+
+Podemos notar como en tipos de atributo el que posee mayor porcentaje son los atributos acústicos ya que se encuentran en los tres primeros grupos que obtuvieron mejor porcentaje. Quizás individualmente no tengan un atributo con mucha información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.

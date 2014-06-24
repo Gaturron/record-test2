@@ -1,0 +1,4 @@
+latex tesis
+bibtex tesis
+latex tesis
+pdflatex tesis
