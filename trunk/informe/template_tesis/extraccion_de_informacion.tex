@@ -78,6 +78,43 @@ Veamos cada uno de los atributos en particular:
 
 El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos por ejemplo que queremos calcular la duración de la `kt’. Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Para $\sigma$ será el desvío estándar de la duración de los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/. La misma idea se aplica en el calculo de los demás atributos.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=1.5cm]
+\draw[mygreen,->,thick,>=latex]
+(0,0) -- (5,0) node[below right] {$\scriptstyle t$};
+\foreach \Xc in {0,...,4}
+{
+	\draw[mygreen,thick] 
+	(\Xc,0) -- ++(0,5pt) node[above] {$\scriptstyle \Xc$};
+}
+\foreach \Xc/\Texto in {1/Load,2/Escape,3/Shoot}
+{
+	\fill[myred] 
+	([xshift=5pt]\Xc,0.25)  
+	rectangle node[above] {\strut\small\Texto} 
+	([xshift=-5pt]\Xc+1,0.35);  
+}
+\node[below,align=left,anchor=north,inner xsep=0pt,color=myred] 
+at (0,0) 
+{\myent{a}{\neg l}{\neg h}};  
+\node[below,align=left,anchor=north,inner xsep=0pt] 
+at (1,0) 
+{\myent{a?}{l?}{h?}};  
+\node[below,align=left,anchor=north,inner xsep=0pt] 
+at (2,0) 
+{\myent{a?}{\color{myred}l\ast}{h?}};  
+\node[below,align=left,anchor=north,inner xsep=0pt] 
+at (3,0) 
+{\myent{a?}{l?}{\color{myred}h\ast}};  
+\node[below,align=left,anchor=north,inner xsep=0pt] 
+at (4,0) 
+{\myent{a?}{\color{myred}\neg l\ast}{h?}};  
+\end{tikzpicture}
+\caption{Ejemplo de cálculo de atributo}
+\label{ejemplo}
+\end{figure}
+
 En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas utilizando esos valores. 
 
 \subsubsection{Atributos silábicos}
