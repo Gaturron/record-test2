@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  29 JUN 2014 19:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  1 JUL 2014 01:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -833,18 +833,18 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count151
@@ -902,8 +902,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 39.
-LaTeX Info: Redefining \% on input line 39.
+LaTeX Info: Redefining \. on input line 44.
+LaTeX Info: Redefining \% on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -970,7 +970,7 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 39.
+ on input line 44.
 
 (./caratula.tex <logofcen.pdf, id=4, 108.405pt x 108.405pt>
 File: logofcen.pdf Graphic file (type pdf)
@@ -1196,171 +1196,14 @@ LaTeX Info: Redefining \. on input line 75.
 LaTeX Info: Redefining \% on input line 75.
 
 [19]
-! Argument of \language@active@arg> has an extra }.
-<inserted text> 
-                \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I've run across a `}' that doesn't seem to match anything.
-For example, `\def\a#1{...}' and `\a}' would produce
-this error. If you simply proceed now, the `\par' that
-I've just inserted will cause me to report a runaway
-argument that might be the root of the problem. But if
-your `}' was spurious, just type `2' and it will go away.
-
-Runaway argument?
-! Paragraph ended before \language@active@arg> was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-Runaway argument?
--
-! Paragraph ended before \pgfkeys@addpath was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-Runaway argument?
--
-! Paragraph ended before \pgfkeys@splitter was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-Missing character: There is no / in font nullfont!
-Missing character: There is no / in font nullfont!
-
-! Package pgfkeys Error: I do not know the key '-\par ' and I am going to ignor
-e it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
-
-! Argument of \language@active@arg> has an extra }.
-<inserted text> 
-                \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I've run across a `}' that doesn't seem to match anything.
-For example, `\def\a#1{...}' and `\a}' would produce
-this error. If you simply proceed now, the `\par' that
-I've just inserted will cause me to report a runaway
-argument that might be the root of the problem. But if
-your `}' was spurious, just type `2' and it will go away.
-
-Runaway argument?
-! Paragraph ended before \language@active@arg> was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-Runaway argument?
-! Paragraph ended before \pgfkeys@addpath was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-! Missing \endcsname inserted.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-The control sequence marked <to be read again> should
-not appear between \csname and \endcsname.
-
-Runaway argument?
-! Paragraph ended before \pgfkeys@splitter was complete.
-<to be read again> 
-                   \par 
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-Missing character: There is no / in font nullfont!
-Missing character: There is no / in font nullfont!
-
-! Package pgfkeys Error: I do not know the key '\par ' and I am going to ignore
- it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 \draw[mygreen,->,thick,>=latex]
-                                    
-(That was another \errmessage.)
-
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
-[20]
-LaTeX Info: Redefining \. on input line 173.
-LaTeX Info: Redefining \% on input line 173.
+LaTeX Info: Redefining \. on input line 155.
+LaTeX Info: Redefining \% on input line 155.
+ [20]
+LaTeX Info: Redefining \. on input line 176.
+LaTeX Info: Redefining \% on input line 176.
  [21]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
+LaTeX Info: Redefining \. on input line 222.
+LaTeX Info: Redefining \% on input line 222.
  [22]) (./datos_obtenidos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1368,7 +1211,7 @@ LaTeX Info: Redefining \% on input line 1.
 Cap\'{\i }tulo 5.
 [24
 
-] <Images/alineacion_mala_inf.png, id=131, 1290.8225pt x 664.4825pt>
+] <Images/alineacion_mala_inf.png, id=130, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
@@ -1378,7 +1221,7 @@ Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 45.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/click_al_final_inf.png, id=132, 1281.78876pt x 663.47874pt>
+<Images/click_al_final_inf.png, id=131, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
@@ -1587,8 +1430,8 @@ Underfull \vbox (badness 10000) detected at line 60
  []
 
 )
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
  [45] (./tesis.bbl) [46
 
 
@@ -1597,30 +1440,29 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 22014 strings out of 493307
- 488634 string characters out of 6139905
- 691841 words of memory out of 5000000
- 24972 multiletter control sequences out of 15000+600000
+ 22047 strings out of 493307
+ 489493 string characters out of 6139905
+ 691840 words of memory out of 5000000
+ 25005 multiletter control sequences out of 15000+600000
  12377 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,19n,82p,1072b,2003s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,19n,82p,1072b,2037s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tesis.pdf (52 pages, 1723336 bytes).
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on tesis.pdf (52 pages, 1715001 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 247 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

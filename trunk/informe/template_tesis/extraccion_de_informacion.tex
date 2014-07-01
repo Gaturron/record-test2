@@ -80,39 +80,32 @@ El cálculo de un atributo fonético se realiza de la siguiente forma: supongamo
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[x=1.5cm]
-\draw[mygreen,->,thick,>=latex]
-(0,0) -- (5,0) node[below right] {$\scriptstyle t$};
-\foreach \Xc in {0,...,4}
+\begin{tikzpicture}[xscale=0.8]
+\draw[x=2cm,step=0.05pt,thick,>=latex](0,0) -- (7.5,0);
+\foreach \Xc in {0,...,15}
 {
-	\draw[mygreen,thick] 
-	(\Xc,0) -- ++(0,5pt) node[above] {$\scriptstyle \Xc$};
+	\draw[thick] 
+	(\Xc,0) -- ++(0,05pt);
 }
-\foreach \Xc/\Texto in {1/Load,2/Escape,3/Shoot}
+\draw[dotted,thick] (-0.5,0) -- (0,0);
+\draw[dotted,thick] (15,0) -- (15.5,0);
+% la victoria se conoce
+\foreach \Xc/\Texto in 
+{5/c}
 {
 	\fill[myred] 
-	([xshift=5pt]\Xc,0.25)  
-	rectangle node[above] {\strut\small\Texto} 
-	([xshift=-5pt]\Xc+1,0.35);  
+		([xshift=2pt]\Xc,0.05)  
+			rectangle node[above] {\strut\small\Texto} 
+		([xshift=-2pt]\Xc+1,0.15);  
 }
-\node[below,align=left,anchor=north,inner xsep=0pt,color=myred] 
-at (0,0) 
-{\myent{a}{\neg l}{\neg h}};  
-\node[below,align=left,anchor=north,inner xsep=0pt] 
-at (1,0) 
-{\myent{a?}{l?}{h?}};  
-\node[below,align=left,anchor=north,inner xsep=0pt] 
-at (2,0) 
-{\myent{a?}{\color{myred}l\ast}{h?}};  
-\node[below,align=left,anchor=north,inner xsep=0pt] 
-at (3,0) 
-{\myent{a?}{l?}{\color{myred}h\ast}};  
-\node[below,align=left,anchor=north,inner xsep=0pt] 
-at (4,0) 
-{\myent{a?}{\color{myred}\neg l\ast}{h?}};  
+\foreach \Xc/\Texto in 
+{0/l,1/a,2/" ",3/b,4/i,6/t,7/o,8/r,9/j,10/a,11/" ",12/s, 13/e, 14/" "}
+{
+	\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
+}
 \end{tikzpicture}
 \caption{Ejemplo de cálculo de atributo}
-\label{ejemplo}
+\label{ejemploAtribFon}
 \end{figure}
 
 En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas utilizando esos valores. 
@@ -127,6 +120,36 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
 \end{itemize}
 
 El cálculo de un atributo silábico se realiza tomando estos valores: tomando como atributo la duración de la sílaba acentuada $\mu$ representará el promedio de duración de sílabas en la frase. $\sigma$ será el desvío estándar de la duración de las sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas acentuadas en la frase. Para cada uno de estos valores se calcula los dos tipos de normalización.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[xscale=0.8]
+	\draw[x=2cm,step=0.05cm,thick,>=latex](0,0) -- (7.5,0);
+	\foreach \Xc in {0,...,15}
+	{
+		\draw[thick] 
+		(\Xc,0) -- ++(0,05pt);
+	}
+	\draw[dotted,thick] (-0.5,0) -- (0,0);
+	\draw[dotted,thick] (15,0) -- (15.5,0);
+	% la victoria se conoce
+	\foreach \Xc/\Texto in 
+	{2/bik,8/ko}
+	{
+		\fill[myred] 
+		([xshift=2pt]\Xc,0.05)  
+		rectangle node[above] {\strut\small\Texto} 
+		([xshift=-2pt]\Xc+1,0.15);  
+	}
+	\foreach \Xc/\Texto in 
+	{0/la,1/" ",3/to,4/rja,5/" ",6/se,7/" ",9/no,10/se,11/" ",12/al, 13/" ", 14/ka}
+	{
+		\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
+	}
+	\end{tikzpicture}
+	\caption{Ejemplo de cálculo de atributo}
+	\label{ejemploAtribSil}
+\end{figure}
 
 Estos atributos usamos para poder medir fuertemente la regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe.
 
