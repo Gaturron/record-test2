@@ -14,7 +14,6 @@
 \usepackage{longtable}
 \usepackage{tikz}
 \usepackage{amsmath}
-\usepackage[spanish]{babel}
 
 \usepackage{pgfplots}
 \pgfplotsset{width=15cm, height=8cm}
@@ -33,6 +32,12 @@
 	$\begin{array}{@{}r@{}} 
 	#1 \\ #2 \\#3
 	\end{array}$%
+}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
 }
 %fin timeline
 
