@@ -76,7 +76,11 @@ Veamos cada uno de los atributos en particular:
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
 
-El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos por ejemplo que queremos calcular la duración de la `kt’. Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Para $\sigma$ será el desvío estándar de la duración de los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/. La misma idea se aplica en el calculo de los demás atributos.
+El cálculo de un atributo fonético se realiza de la siguiente forma: supongamos por ejemplo que queremos calcular la duración de la `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado solo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué tiempo se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la Figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempo para cada fonema\footnote{Aclaración: la duración de los fonemas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. Se marca con rojo la duración donde aparece la `kt’.
+
+Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Viendo la Figura \ref{ejemploAtribFon} será el promedio de los tiempos marcados para todos los fonemas. Para $\sigma$ será el desvío estándar de la duración de todos los fonemas de la frase. Y para $\bar{X}$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/. La única aparición de este fonema es en la palabra ``biktorja’’ y en el gráfico está marcado en rojo.
+
+La misma idea se aplica en el calculo de los demás atributos.
 
 \begin{figure}[H]
 \centering
@@ -91,7 +95,7 @@ El cálculo de un atributo fonético se realiza de la siguiente forma: supongamo
 \draw[dotted,thick] (15,0) -- (15.5,0);
 % la victoria se conoce
 \foreach \Xc/\Texto in 
-{5/c}
+{5/k}
 {
 	\fill[myred] 
 		([xshift=2pt]\Xc,0.05)  
@@ -119,7 +123,7 @@ Vamos a hacer un análisis de la sílabas. Los atributos que usamos son:
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-El cálculo de un atributo silábico se realiza tomando estos valores: tomando como atributo la duración de la sílaba acentuada $\mu$ representará el promedio de duración de sílabas en la frase. $\sigma$ será el desvío estándar de la duración de las sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas acentuadas en la frase. Para cada uno de estos valores se calcula los dos tipos de normalización.
+Veamos cómo se realiza el cálculo de un atributo silábico. Supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calcula los dos tipos de normalización. En la Figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente. El analizador cuando calcule este atributo va a identificar las sílabas acentuadas y tomará su antecesora. 
 
 \begin{figure}[H]
 	\centering
@@ -142,7 +146,7 @@ El cálculo de un atributo silábico se realiza tomando estos valores: tomando c
 		([xshift=-2pt]\Xc+1,0.15);  
 	}
 	\foreach \Xc/\Texto in 
-	{0/la,1/" ",3/to,4/rja,5/" ",6/se,7/" ",9/no,10/se,11/" ",12/al, 13/" ", 14/ka}
+	{0/la,1/" ",3/to*,4/rja,5/" ",6/se,7/" ",9/no*,10/se,11/" ",12/al, 13/" ", 14/ka}
 	{
 		\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
 	}
@@ -151,7 +155,7 @@ El cálculo de un atributo silábico se realiza tomando estos valores: tomando c
 	\label{ejemploAtribSil}
 \end{figure}
 
-Estos atributos usamos para poder medir fuertemente la regla 1, que esta es la más resaltada de la tonada cordobesa. Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe.
+ Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe. Estos atributos usamos para poder medir fuertemente la regla 1, que esta es la más resaltada de la tonada cordobesa.
 
 \subsection{Atributos acústicos}
 
