@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  2 JUL 2014 00:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 JUL 2014 01:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1019,17 +1019,20 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]
-LaTeX Info: Redefining \. on input line 27.
-LaTeX Info: Redefining \% on input line 27.
+LaTeX Info: Redefining \. on input line 26.
+LaTeX Info: Redefining \% on input line 26.
  [2 <./Images/Dialectos_del_idioma_espanol_en_Argentina.png>])
 (./disenio_experimento.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [3]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [4]
 Cap\'{\i }tulo 2.
-[4
+[5
 
-] <Images/reglas_AMPER.png, id=50, 639.38875pt x 221.82875pt>
+] <Images/reglas_AMPER.png, id=53, 639.38875pt x 221.82875pt>
 File: Images/reglas_AMPER.png Graphic file (type png)
 
 <use Images/reglas_AMPER.png>
@@ -1039,7 +1042,7 @@ Package pdftex.def Info: Images/reglas_AMPER.png used on input line 48.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/frases_inf.png, id=51, 854.19125pt x 679.53876pt>
+<Images/frases_inf.png, id=54, 854.19125pt x 679.53876pt>
 File: Images/frases_inf.png Graphic file (type png)
 
 <use Images/frases_inf.png>
@@ -1051,10 +1054,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 64.
 LaTeX Info: Redefining \% on input line 64.
-[5]
-LaTeX Info: Redefining \. on input line 65.
-LaTeX Info: Redefining \% on input line 65.
- [6 <./Images/reglas_AMPER.png> <./Images/frases_inf.png>]
+[6]
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+ [7 <./Images/reglas_AMPER.png> <./Images/frases_inf.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
@@ -1079,7 +1082,7 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 97.
 
-<Images/cant_frases_traza_inf.png, id=58, 602.25pt x 372.39125pt>
+<Images/cant_frases_traza_inf.png, id=62, 602.25pt x 372.39125pt>
 File: Images/cant_frases_traza_inf.png Graphic file (type png)
 
 <use Images/cant_frases_traza_inf.png>
@@ -1092,12 +1095,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
-[7]) (./sistema_grabacion_online.tex
+[8]) (./sistema_grabacion_online.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [8 <./Images/cant_frases_traza_inf.png>]
+ [9 <./Images/cant_frases_traza_inf.png>]
 Cap\'{\i }tulo 3.
-<Images/pag-inicio2.png, id=71, 1071.00125pt x 624.3325pt>
+<Images/pag-inicio2.png, id=74, 1071.00125pt x 624.3325pt>
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
@@ -1107,7 +1110,7 @@ Package pdftex.def Info: Images/pag-inicio2.png used on input line 14.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-allow1.png, id=72, 1371.1225pt x 770.88pt>
+<Images/pag-allow1.png, id=75, 1371.1225pt x 770.88pt>
 File: Images/pag-allow1.png Graphic file (type png)
 
 <use Images/pag-allow1.png>
@@ -1125,7 +1128,7 @@ Package pdftex.def Info: Images/pag-inicio2.png used on input line 26.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-grabar1.png, id=73, 1371.1225pt x 770.88pt>
+<Images/pag-grabar1.png, id=76, 1371.1225pt x 770.88pt>
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
@@ -1135,7 +1138,7 @@ Package pdftex.def Info: Images/pag-grabar1.png used on input line 32.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-play1.png, id=74, 1371.1225pt x 770.88pt>
+<Images/pag-play1.png, id=77, 1371.1225pt x 770.88pt>
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
@@ -1145,19 +1148,19 @@ Package pdftex.def Info: Images/pag-play1.png used on input line 38.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9
+[10
 
 ]
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
- [10 <./Images/pag-inicio2.png> <./Images/pag-allow1.png>]
+ [11 <./Images/pag-inicio2.png> <./Images/pag-allow1.png>]
 LaTeX Info: Redefining \. on input line 56.
 LaTeX Info: Redefining \% on input line 56.
- [11 <./Images/pag-grabar1.png>]
-LaTeX Info: Redefining \. on input line 66.
-LaTeX Info: Redefining \% on input line 66.
- [12 <./Images/pag-play1.png>]
-<Images/categorizando_audios.png, id=89, 347.2975pt x 346.29375pt>
+ [12 <./Images/pag-grabar1.png>]
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
+ [13 <./Images/pag-play1.png>]
+<Images/categorizando_audios.png, id=93, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
@@ -1168,15 +1171,12 @@ Package pdftex.def Info: Images/categorizando_audios.png used on input line 80.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
-[13]
-LaTeX Info: Redefining \. on input line 97.
-LaTeX Info: Redefining \% on input line 97.
- [14 <./Images/categorizando_audios.png>]) (./extraccion_de_informacion.tex
+LaTeX Info: Redefining \. on input line 94.
+LaTeX Info: Redefining \% on input line 94.
+[14]) (./extraccion_de_informacion.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-[15]
+ [15 <./Images/categorizando_audios.png>]
 Cap\'{\i }tulo 4.
 [16
 
@@ -1460,7 +1460,7 @@ msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on tesis.pdf (52 pages, 1728672 bytes).
+Output written on tesis.pdf (52 pages, 1728788 bytes).
 PDF statistics:
  251 PDF objects out of 1000 (max. 8388607)
  166 compressed objects within 2 object streams
