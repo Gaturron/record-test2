@@ -19,11 +19,11 @@
 \contentsline {section}{\numberline {4.1}Alineaci\IeC {\'o}n forzada}{16}
 \contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{16}
 \contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{17}
-\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{19}
+\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{18}
 \contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{19}
 \contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{21}
-\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{21}
-\contentsline {subsubsection}{Mel Frequency Cepstral Coefficients}{21}
+\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{22}
+\contentsline {subsubsection}{Mel Frequency Cepstral Coefficients}{22}
 \contentsline {subsubsection}{Implementaci\IeC {\'o}n}{23}
 \contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{23}
 \contentsline {chapter}{\numberline {5}Datos obtenidos}{24}
