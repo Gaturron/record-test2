@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  8 JUL 2014 00:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  9 JUL 2014 01:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1193,22 +1193,26 @@ File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 <use Images/diagrama_workflow.jpg>
 Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 39.
 (pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
-LaTeX Info: Redefining \. on input line 46.
-LaTeX Info: Redefining \% on input line 46.
- [18 <./Images/diagrama_workflow.jpg>]
-LaTeX Info: Redefining \. on input line 74.
-LaTeX Info: Redefining \% on input line 74.
 
-[19]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
+[18]
+LaTeX Info: Redefining \. on input line 76.
+LaTeX Info: Redefining \% on input line 76.
+ [19 <./Images/diagrama_workflow.jpg>]
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
  [20]
-LaTeX Info: Redefining \. on input line 173.
-LaTeX Info: Redefining \% on input line 173.
+LaTeX Info: Redefining \. on input line 170.
+LaTeX Info: Redefining \% on input line 170.
  [21]
-LaTeX Info: Redefining \. on input line 217.
-LaTeX Info: Redefining \% on input line 217.
- [22]) (./datos_obtenidos.tex
+LaTeX Info: Redefining \. on input line 216.
+LaTeX Info: Redefining \% on input line 216.
+ [22])
+(./datos_obtenidos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [23]
@@ -1450,7 +1454,7 @@ Here is how much of TeX's memory you used:
  25019 multiletter control sequences out of 15000+600000
  12842 words of font info for 46 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,19n,82p,985b,2037s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,19n,82p,1184b,2037s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/t
@@ -1465,7 +1469,7 @@ cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on tesis.pdf (52 pages, 1736793 bytes).
+Output written on tesis.pdf (52 pages, 1737765 bytes).
 PDF statistics:
  255 PDF objects out of 1000 (max. 8388607)
  169 compressed objects within 2 object streams
