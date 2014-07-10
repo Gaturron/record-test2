@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{18}
 \contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{19}
 \contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{21}
-\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{22}
+\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{21}
 \contentsline {subsubsection}{Mel Frequency Cepstral Coefficients}{22}
 \contentsline {subsubsection}{Implementaci\IeC {\'o}n}{23}
 \contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{23}
