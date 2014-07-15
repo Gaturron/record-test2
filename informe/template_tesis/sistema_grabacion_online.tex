@@ -4,7 +4,7 @@ Para poder obtener audios de distintas personas se desarrolló una página web. 
 
 La página web está desarrollada en Django, versión 1.4.2. Se eligió este framework por su facilidad a la hora de guardar objetos a la base de datos y también por la cantidad importante de bibliotecas que posee Python. La versión de Python que se utilizó es 2.7.3. 
 
-En la base de datos se guardó la información de cada hablante, las frases a grabar y las trazas. La base de datos elegida fue PostgreSQL versión 9.1 y se eligió esta ya que es de código abierto. Los archivos de audio se guardaron en archivos \textit{wav} por separado y se guardó una referencia al nombre del archivo generado en la base de datos. Para el servidor HTTP se utilizó Apache versión 2.2.22. El servidor utilizó el sistema operativo Ubuntu 12.04.4 LTS.
+En la base de datos se guarda la información de cada hablante, las frases a grabar y las trazas. La base de datos elegida fue PostgreSQL versión 9.1 y se eligió esta ya que es de código abierto. Los archivos de audio se guardan en archivos \textit{wav} por separado y se guarda una referencia al nombre del archivo generado en la base de datos. Para el servidor HTTP se utiliza Apache versión 2.2.22. El servidor utiliza el sistema operativo Ubuntu 12.04.4 LTS.
 
 \section{Recolección de datos}
 
@@ -42,7 +42,7 @@ Cuando un usuario visitó nuestra página, primero debió llenar un formulario. 
 
 En la pantalla de grabación el usuario debió confirmar tener acceso al micrófono que posee en su dispositivo como se puede apreciar en la Figura \ref{allowmic}. Una vez hecho esto, se le explicó las instrucciones como se ve en la Figura \ref{inicio} y luego puede empezar a grabar. 
 
-Cada nuevo experimento utilizó una nueva traza del conjunto de trazas descriptas en la capitulo anterior. La interfaz que vio el usuario al grabar se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuchen lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}. 
+Cada nuevo experimento utiliza una nueva traza del conjunto de trazas descriptas en la capitulo anterior. La interfaz que vio el usuario al grabar se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas antes de ser confirmadas por el usuario. Lo importante es que la grabación se escuche lo mejor posible. Para reproducir se aprieta en el botón \textit{Reproducir} como se ve en Figura \ref{reproduciendo}. 
 
 Una vez que el hablante chequeó que su grabación se escucha bien, la confirma. Cada vez que se graba un audio, esta se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
 
