@@ -49,7 +49,7 @@ Luego, las mediciones son normalizadas. Se realizan dos normalizaciones. La prim
 
 \hspace{2cm} \[\frac{ X - \mu }{ \sigma }\]
 
-donde:
+\noindent donde:
 
 \begin{itemize}
 	\item $X$ es el valor a normalizar (por ejemplo: la duración de un fonema dado).
@@ -63,8 +63,7 @@ donde:
 
 \noindent Esta última tiene el nombre de Half-normal Distribution.
 
-%teniendo en cuenta la unidad en que se contabiliza: mientras uno va a tener en cuenta fonemas, el otro tiene en cuenta sílabas.
-Debemos utilizar los datos normalizados ya que necesitamos atributos que nos muestren, para un hablante en particular, si el fonema en cuestión es relevante con respecto a los demás de la grabación. Al normalizar un atributo vemos cuán fuera de lo común resulta en el marco de \textit{ese} hablante en particular en \textit{esa} grabación. No importa si habla lento o rápido. Lo importante es la relación del fonema a medir con respecto a los demás. Lo mismo sucede para las sílabas. Si utilizáramos valores absolutos, se perdería esta relación ya que variaría con respecto a la velocidad de la voz de cada hablante y cada grabación.
+El valor a normalizar puede variar: mientras uno va a tener en cuenta fonemas, el otro tiene en cuenta sílabas. Debemos utilizar los datos normalizados ya que necesitamos atributos que nos muestren, para un hablante en particular, si el fonema en cuestión es relevante con respecto a los demás de la grabación. Al normalizar un atributo vemos cuán fuera de lo común resulta en el marco de \textit{ese} hablante en particular en \textit{esa} grabación. No importa si habla lento o rápido. Lo importante es la relación del fonema a medir con respecto a los demás. Lo mismo sucede para las sílabas. Si utilizáramos valores absolutos, se perdería esta relación ya que variaría con respecto a la velocidad de la voz de cada hablante y cada grabación.
  
 A continuación veamos los atributos en particular para cada uno de los grupos y cómo se realiza su cálculo. 
 
@@ -83,7 +82,7 @@ Los atributos que contabilizan fonemas son:
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
 
-El cálculo de un atributo fonético se realiza de la siguiente manera: supongamos por ejemplo que queremos calcular la duración de `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado solo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué tiempo se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la Figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempos para cada fonema\footnote{Aclaración: la duración de los fonemas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. Se marca en negro el segmento donde aparece la `kt’.
+El cálculo de un atributo fonético se realiza de la siguiente manera: supongamos por ejemplo que queremos calcular la duración de `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado solo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué tiempo se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la Figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempos para cada fonema\footnote{Aclaración: la duración de los fonemas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para hacer más simple la figura.}. Se marca en negro el segmento donde aparece la `kt’.
 
 Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Viendo la Figura \ref{ejemploAtribFon} será el promedio de los tiempos marcados para todos los fonemas. $\sigma$ será el desvío estándar de la duración de todos los fonemas de la frase. Y $X$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/ correspondiente. La única aparición de este fonema es en la palabra ``biktorja’’ y en el gráfico está marcado en rojo. La misma idea se aplica en el cálculo de los demás atributos.
 
@@ -108,7 +107,7 @@ Los valores de la normalización serán: para $\mu$ se calculará como el promed
 		([xshift=-2pt]\Xc+1,0.15);  
 }
 \foreach \Xc/\Texto in 
-{0/l,1/a,2/"<sp>",3/b,4/i,6/t,7/o,8/r,9/j,10/a,11/"<sp>",12/s, 13/e, 14/"<sp>"}
+{0/l,1/a,2/$sil$,3/b,4/i,6/t,7/o,8/r,9/j,10/a,11/$sil$,12/s, 13/e, 14/$sil$}
 {
 	\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
 }
@@ -117,18 +116,18 @@ Los valores de la normalización serán: para $\mu$ se calculará como el promed
 \label{ejemploAtribFon}
 \end{figure}
 
-En definitiva se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas utilizando esos valores. 
+En definitiva, se busca el patrón definido por el atributo, se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de las dos formas utilizando esos valores. 
 
 \subsubsection{Atributos silábicos}
 
 Los atributos que contabilizan sílabas usados son:
 
 \begin{itemize}
-    \item \textbf{Duración de la sílaba acentuada:} en cada una de las frases buscamos la sílaba acentuada de cada palabra, mediremos su duración y normalizaremos con las demás sílabas.
+    \item \textbf{Duración de la sílaba acentuada:} en cada una de las frases buscamos la sílaba acentuada de cada palabra, medimos su duración y normalizamos con las demás sílabas.
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-Veamos cómo se realiza el cálculo de un atributo silábico: supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $\bar{X}$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calcula los dos tipos de normalización. En la Figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente\footnote{Aclaración: al igual al caso anterior, la duración de las sílabas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. No pudimos escribir toda la frase y todos sus acentos por cuestiones de espacio en la hoja. 
+Veamos cómo se realiza el cálculo de un atributo silábico: supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $X$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calcula los dos tipos de normalización. En la Figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente\footnote{Aclaración: al igual al caso anterior, la duración de las sílabas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. No pudimos escribir toda la frase y todos sus acentos por cuestiones de espacio en la hoja. 
 
 En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para distinguirlas. El analizador cuando calcule este atributo va a identificar las sílabas acentuadas y tomará su antecesora. 
 
@@ -153,7 +152,7 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 		([xshift=-2pt]\Xc+1,0.15);  
 	}
 	\foreach \Xc/\Texto in 
-	{0/la,1/" ",3/to*,4/rja,5/" ",6/se,7/" ",9/no*,10/se,11/" ",12/al, 13/" ", 14/ka}
+	{0/la,1/$sil$,3/to*,4/rja,5/$sil$,6/se,7/$sil$,9/no*,10/se,11/$sil$,12/al, 13/$sil$, 14/ka}
 	{
 		\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
 	}
@@ -162,30 +161,30 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 	\label{ejemploAtribSil}
 \end{figure}
 
- Para saber cual es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe. Estos atributos usamos para poder medir fuertemente la regla 1, que esta es la más resaltada de la tonada cordobesa.
+ Para saber cuál es la sílaba acentuada se realizó un script que describe para cada frase cuales son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe. Estos atributos los usamos para poder medir la regla 1, la más prominente de la tonada cordobesa.
 
 \subsection{Atributos acústicos}
 
 Los atributos acústicos utilizan las propiedades de los Wavs grabados. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de MFCC ya que tiene relación directa con la percepción auditiva humana. 
 
-\subsubsection{Mel Frequency Cepstral Coefficients}
+%\subsubsection{Mel Frequency Cepstral Coefficients}
 
 %http://practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/
 
-La forma en que hablamos se produce por varias articulaciones. Algunas de ellas pueden ser: dientes, lengua, traquea etc. Estas articulaciones trabajan de forma tal para producir el sonido. Pero también funcionan para darle forma y aplicarle un filtro al sonido producido. Si sabemos correctamente que filtro se le aplica, podremos saber que sonido produce. La forma y el filtro asociado nos muestra donde esta la fuerza en el fonema. Este filtro es muy importante para entender la percepción humana. Los coeficientes MFCC se encargan de representar estos filtros. Veamos como se calculan.
+La forma en que hablamos se produce por varias articulaciones, tales como dientes, lengua, tráquea etc. Estas articulaciones trabajan para darle forma y aplicarle un filtro al sonido producido. Si sabemos correctamente qué filtro se aplica, podremos saber qué sonido producen. La forma y el filtro asociado nos muestran dónde está la fuerza en el fonema. Este filtro es muy importante para entender la percepción humana. Los coeficientes MFCC se encargan de representar estos filtros. Veamos cómo se calculan.
 
-Las señales de audio poseen muchas variaciones continuamente. En periodos cortos de tiempo, estas variaciones se reducen. Supongamos que dividimos cada audio en pequeños frames para calcular en ellos los coeficientes. El tamaño de cada frame esta entre 20-40 ms. Si la variación es menor que esta duración la descartaremos.
+Las señales de audio poseen muchas variaciones continuamente. En períodos cortos de tiempo, estas variaciones se reducen. Supongamos que dividimos cada audio en pequeños frames para calcular en ellos los coeficientes. El tamaño de cada frame está entre 20-40 ms. Si la variación es menor que esta duración la descartamos.
 
-Luego para cada frame se calcula el espectro de frecuencia. Esto se viene motivado por un órgano que se encuentra en la oreja llamado Cóclea. Este vibra de diferente forma al llegarle cada frecuencia del sonido. Al vibrar, activa nervios que representan las distintas frecuencias que escuchamos. Dividir el sonido en períodos intenta mostrar que frecuencias están activas.
+Luego para cada frame se calcula el espectro de frecuencia. Esto viene motivado por un órgano que se encuentra en la oreja llamado Cóclea. Éste vibra de diferente forma al llegarle cada frecuencia del sonido. Al vibrar, activa nervios que representan las distintas frecuencias que escuchamos. Dividir el sonido en períodos intenta mostrar qué frecuencias están activas.
 
-La Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alejada esta esa frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de forma lineal. A partir de ese valor, se comporta de forma logarítmica. 
+La Cóclea no reconoce diferencias entre dos frecuencias muy cercanas. Esto se incrementa mientras más alta es la frecuencia. Para representar esta idea se utiliza un filtrado por escala de Mel. Esta escala es una aproximación de nuestra percepción. A frecuencias menores a los 1 Khz el filtro se comporta de forma lineal. A partir de ese valor, se comporta de forma logarítmica. 
 
 %http://i.stack.imgur.com/YUH48.gif
 
 % todo: Aca se introduce los filtros onda serrucho. 
-Mientras mas aumentamos la frecuencia, mas anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. Lo importante es ver cuanta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos la función logaritmo. De esta forma, para valores grandes de frecuencias su valor se decrementarán y no será igual que las pequeñas que poseen forma lineal. Esto se ajunta mejor a como escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
+Mientras más aumentamos la frecuencia, más anchos son los filtros aplicados. Por ejemplo, ya en 4 Khz se aplican 20 filtros. Lo importante es ver cuánta energía hay en las frecuencias involucradas en el filtro. Luego que tenemos la energía de estos tramos le aplicamos la función logaritmo. De esta forma, para valores grandes de frecuencias su valor se decrementará y no será igual que las pequeñas que poseen forma lineal. Esto se ajusta mejor a cómo escucha el oído. Para finalizar se computa DCT de las energías filtradas. 
 
-El siguiente pseudocódigo explica paso a paso como se calcula los coeficientes:
+El siguiente pseudocódigo explica paso a paso cómo se calculan los coeficientes:
 \lstset{ %
 language=C++,                % choose the language of the code
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -213,26 +212,22 @@ MFCC (Mel frequency cepstral coefficient):
 5) Los MFCC son las amplitudes del espectro resultante.
 \end{lstlisting}
 
-Este algoritmo se calcula para un segmento del audio. Como dijimos, el audio se debe dividir en frames de 20 o 30 milisegundos pero avanzando 10 o 15 milisegundos. Es por ello que hay superposiciones en cada segmento. Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Podemos realizar la derivada de estos atributos y la segunda derivada para obtener más atributos. Estos atributos corresponden a el estiramiento de los fonemas a través del tiempo. En total derivando dos veces llegan a 33 atributos acústicos.
+Este algoritmo se calcula para un segmento del audio. Como dijimos, el audio se debe dividir en frames de 20 o 30 milisegundos pero avanzando 10 o 15 milisegundos. Es por ello que hay superposiciones en cada segmento. Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Podemos realizar la derivada de estos atributos y la segunda derivada representa las variaciones temporales. En total derivando dos veces llegan a 33 atributos acústicos. Debemos extraer estas métricas para cada uno de los Wavs grabados.
 
-Debemos extraer estas métricas para cada uno de los Wavs grabados. Este análisis tiene en cuenta como lo percibe un humano. Las frecuencias de Mel ayudan a describir la percepción humana del lado de las frecuencias que escucha. 
-
-\subsubsection{Implementación}
-
-Para realizar el calculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para calcular el script y luego continuar con la extracción.
+Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción.
 
 \subsection{Nomenclatura utilizada}
-Para referenciar cada una de los atributos debimos definir una nomenclatura. La definición que tomamos es la siguiente:
+Para referenciar cada uno de los atributos debimos definir una nomenclatura. La definición que tomamos es la siguiente:
 \begin{center}
 \textit{TIPO+``\_''+ATRIBUTO+``\_''+NORMALIZACIÓN} 
 \end{center}
 
 \begin{itemize}
-  \item \emph{TIPO} puede ser \emph{FON, SIL o ACU}. Esto corresponde al tipo de atributo, si es fonético, silábico o acústico.
-  \item \emph{ATRIBUTO} puede ser \emph{kt, ll, sc, rr, Sfinal, vowel o consonant} haciendo alusión a cada una de los atributos. También aquí se encuentran los atributos generados por MFCC cuyos nombres son de la forma \emph{(Min $|$ Max $|$ Avg) + (KT $|$ LL $|$ SC $|$ RR)}. Para hacer referencia a las reglas sobre atributos silábicos utilizamos los nombres de \emph{syllableAccent} y \emph{prevSyllableAccent} para la duración de la silaba acentuada y su anterior.
-  \item \emph{NORMALIZACIÓN} corresponde al tipo de normalización realizada. Estas pueden ser \emph{norm} haciendo alusión a normalización o \emph{normhd} haciendo alusión a normalización tomando $mu=0$.
+  \item \emph{TIPO:} puede ser \emph{FON, SIL o ACU}. Esto corresponde al tipo de atributo, si es fonético, silábico o acústico.
+  \item \emph{ATRIBUTO:} puede ser \emph{kt, ll, sc, rr, Sfinal, vowel o consonant} haciendo alusión a cada una de los atributos. También aquí se encuentran los atributos generados por MFCC cuyos nombres son de la forma \emph{(Min $|$ Max $|$ Avg) + (KT $|$ LL $|$ SC $|$ RR)}. Para hacer referencia a las reglas sobre atributos silábicos utilizamos los nombres de \emph{syllableAccent} y \emph{prevSyllableAccent} para la duración de la sílaba acentuada y de la sílaba anterior a esta.
+  \item \emph{NORMALIZACIÓN:} corresponde al tipo de normalización realizada. Estas pueden ser \emph{norm} haciendo alusión a z-score o \emph{normhd} haciendo alusión a normalización tomando $mu=0$.
 \end{itemize}
  
-Por ejemplo: definimos \textit{SIL\_prevSyllableAccent\_normhd} como la duración de la silaba anterior a la acentuada aplicando normalización con $mu=0$. Todos los nombres y a que atributo se refieren se puede ver en el apéndice de atributos.
+Por ejemplo: definimos \textit{SIL\_prevSyllableAccent\_normhd} como la duración de la silaba anterior a la acentuada aplicando normalización con $mu=0$. Todos los nombres y a qué atributo se refieren se pueden ver en el apéndice de atributos.
 
-A continuación veamos los audios obtenidos en este experimento para luego analizar los atributos de cada uno.
+En la próxima sección veremos los audios obtenidos en este experimento para luego analizar los atributos de cada uno.
