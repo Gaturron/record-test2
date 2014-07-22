@@ -1,10 +1,10 @@
 \chapter{Datos obtenidos}
 
-En este capítulo vamos a describir los datos obtenidos a través del framework. Los audios recolectados tuvieron algunos problemas al grabarse. El principal problema fue que el ambiente que utilizó cada hablante no estaba completamente en silencio como para hacer una buena grabación. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono, saturación etc.. 
+En este capítulo vamos a describir los datos obtenidos a través del framework. Los audios recolectados tuvieron algunos problemas al grabarse. El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para hacer una buena grabación. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono, saturación etc.. 
 
 \subsection{Mediciones}
 
-Escuchamos los audios para determinar si se realizaron correctamente a través de la herramienta de administración que vimos en el capítulo 3. Los fuimos clasificando en: Conservar, Sonido saturado, Mucho ruido de fondo, Problema en el habla. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
+Escuchamos los audios para determinar si se realizaron correctamente a través de la herramienta de administración que vimos en el capítulo 3. Los fuimos clasificando en: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
 
 \begin{table}[h]
 \centering
@@ -18,35 +18,36 @@ Escuchamos los audios para determinar si se realizaron correctamente a través d
 \end{tabular}
 \end{table}
 
-Algo importante de ver es que los datos obtenidos están desbalanceados. No pudimos obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
+Notemos que los datos obtenidos están desbalanceados. No pudimos obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
 
 \subsection{Errores comunes}
 
-Las categorías establecidas anteriormente describen los errores comunes mas frecuentes. Podemos observar que del total de 391 grabaciones, 64 tuvo algún problema. Este es alrededor del 16\% de los audios grabados. Es un número alto para ser un experimento guiado. 
+Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que del total de 391 grabaciones, 64 tuvo algún problema. Este es alrededor del 16\% de los audios grabados. Es un número alto para ser un experimento guiado.
 
-La gran causa de este número es la faltante de un chequeo en el mismo momento que va grabando cada uno de los audios. Un trabajo futuro podría ser analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posible sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo, por ejemplo 1 segundo. Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
+La gran causa de este número es la faltante de un chequeo en el mismo momento que va grabando cada uno de los audios. Un trabajo futuro podría ser analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posible sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo (por ejemplo: 1 segundo). Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
 
 %todo: esto nose si va mejor en Trabajos Futuros
-También se le podría dar mas información al hablante. Sabiendo que el micrófono tuvo un pico de volumen se podría pedirle al hablante que no hable tan fuerte. Ídem si habla muy bajo. Otras posibles soluciones a este problema es analizar antes de empezar el experimento si el sonido ambiente es muy alto o no. Y luego de ello aceptar una grabación nueva. Todas esas soluciones se pueden realizar en la aplicación web sin intervenir en el servidor.
+También se le podría dar más información al hablante. Sabiendo que el micrófono tuvo un pico de volumen se podría pedirle al hablante que no hable tan fuerte. Ídem si habla muy bajo. Otras posibles soluciones a este problema es: analizar, antes de empezar el experimento, si el sonido ambiente no genera saturación. Si genera, pedirle que vaya a un lugar más silencioso. Si no, acepta realizar el experimento.
 
-Para análisis mas precisos se puede aplicar mejores filtros cuando llega la grabación del lado del servidor. Cuando llega el mensaje del audio al servidor, este ya puede obtener el wav y realizarle todo tipo de análisis mas precisos. Recordemos que el servidor esta implementado en Python que posee muchas librerías útiles para el análisis de audios. Al momento de terminar el análisis del audio en cuestión, deberá enviar la respuesta al hablante informándole si se debe realizar devuelta la grabación o si fue exitosa. Es importante notar que esta solución necesita buena conexión para el server. 
+Para análisis más precisos sobre la calidad del audio, podemos realizar varios análisis cuando llega la grabación al servidor. En ese momento, el servidor ya puede obtener el archivo wav y realizarle todo tipo de análisis (por ejemplo: detección de ruido ambiente). Recordemos que el servidor esta implementado en Python que posee muchas librerías útiles para el análisis de audios. Al momento de terminar el análisis del audio en cuestión, deberá enviar la respuesta al hablante informándole si se debe realizar devuelta la grabación o si fue exitosa. Es importante notar que esta solución necesita buena conexión para el server. 
 
-Vamos a continuar con el análisis basándonos en los audios clasificados como Conservados. Luego trataremos de realizar algún análisis para reutilizar algunos de estos que tuvieron algún problema. 
+De los audios obtenidos, seguiremos el análisis basándonos en los audios clasificados como ``Conservados’’.
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. Sucede que muchas veces alinea mal. Es muy importante descartar los audios mal alineados ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio etiquetado como conservado y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores mas comunes fueron:
+El alineador automático no realiza su función de forma perfecta. Sucede que, muchas veces, alinea mal. Es muy importante descartar los audios mal alineados, ya que sino cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio etiquetado como ``Conservado’’ y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores más comunes fueron:
 %todo citar bien a praat
 
 \begin{itemize}
-    \item \textbf{Ruido de fondo:} los casos donde el alineador se comporta de peor manera son los que se escuchan ruido de fondo. En esos casos las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es muy común. 
+    \item \textbf{Ruido de fondo:} los audios donde el alineador se comporta de peor manera son los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Fig. \ref{alinMala} se puede ver un ejemplo utilizando Praat.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{alineacion_mala_inf} }
     \caption{Ejemplo de alineación mala por ruido}
+    \label{alinMala}
 \end{figure}
 
-    \item \textbf{Mouse click al finalizar:} sucede que el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final de la grabación (Ver Fig. \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que se tomaba como habla.
+    \item \textbf{Mouse click al finalizar:} el ambiente donde los hablantes realizaban las grabaciones no estaba bien aislado. Pasó en muchas oportunidades que el click de finalizar del mouse se grabó como parte final en el audio (Ver Fig. \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que se reconoce como habla.
     
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{click_al_final_inf} }
@@ -54,9 +55,10 @@ El alineador automático no realiza su función de forma perfecta. Sucede que mu
     \label{clickFinal}
 \end{figure}
 
-    \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Sucede que muchas veces la grabación fue buena pero al final tuvo una entonación mas mucho mas fuerte que las demás, haciendo que posteriormente la alineación no sea precisa.
+    \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Muchas veces la grabación fue buena pero al final tuvo una entonación mucho más fuerte que las demás, haciendo que, posteriormente, la alineación no sea precisa.
 
-    \item \textbf{Estiramiento de la /s/ final:} en varias oportunidades se quiso exagerar la entonación. Las frases finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado. A pesar de que fue alineado correctamente en toda su duración, este fue llevado a una duración entendible. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma mas natural posible. Este fue el motivo por el cual se modificó.
+    \item \textbf{Entonación exagerada:} en algunas grabaciones se quiso exagerar la entonación. Por ejemplo, las palabras finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado de forma exagerada. Esta característica fue particular en algunos casos. En la mayoría de los audios no sucedió, por lo que no afectó el análisis del experimento. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma más natural posible. 
+    
 \end{itemize}
 
 \section{Corrección de errores}
@@ -75,4 +77,6 @@ Para corregir los errores descriptos debimos chequear cada uno de los TextGrids.
 \end{table}
 
 %todo: leer bien el mail de prosodylab
-Esta forma se realizó ya que eran pocos audios pero en un experimento con más hablantes se debe utilizar la opción de '.SCORES' antes descripta. De estos 310 debemos sacar las grabaciones que se realizaron varias veces. Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma grabación con la idea de que la última va a ser la mejor. Debemos quitar estos casos para no contabilizar más de una vez la misma grabación. Los audios repetidos son alrededor de 50. Quitando estos podemos empezar con el análisis. 
+Esta forma se realizó ya que eran pocos audios pero en un experimento con más hablantes se debe utilizar la opción de ``.SCORES’’ descripta en el capítulo anterior. 
+
+De estos 310 debemos sacar las grabaciones que se realizaron varias veces. Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma grabación con la idea de que la última va a ser la mejor. Debemos quitar estos casos para no contabilizar más de una vez la misma grabación. Los audios repetidos son alrededor de 50. Quitando estos podemos empezar con el análisis. 

@@ -1,28 +1,28 @@
 \chapter{Análisis}
 
-En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo.
+En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo. Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. 
 
 \section{Baseline}
 
-No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que el baseline se va a determinar a través del algoritmo mayority class.
-
-Imaginemos que tenemos un algoritmo que siempre elige un mismo grupo, por ejemplo Buenos Aires. Este algoritmo utilizando nuestros datos tendría una performance buena. En nuestro caso estará llegando al 45\% de efectividad aproximadamente. Este es el porcentaje a superar. 
+No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{mayority class}. Este algoritmo, utilizando nuestros datos, tendría una performance buena. En nuestro caso estará llegando al 45\% de efectividad aproximadamente. Este es el porcentaje a superar. 
 
 %Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
 
 %Cabe aclarar que nuestro set de datos no esta debidamente balanceado. Tuvimos más grabaciones de Buenos Aires que de Córdoba. Es por eso que el entrenamiento también va a ser desbalanceado. Por este motivo puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para características de Buenos Aires que de Córdoba. Lamentablemente eso es una problemática de los datos obtenidos.
 
-Cabe aclarar que si nuestro set de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Lo ideal sería poder tener muestras balanceadas. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para características de Buenos Aires que de Córdoba. Lamentablemente eso es una problemática de los datos obtenidos.
+Cabe aclarar que, si nuestro set de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Lo ideal sería poder tener muestras balanceadas. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para características de Buenos Aires que de Córdoba. Lamentablemente esto es una problemática de los datos obtenidos.
 
-Utilizamos la herramienta de Machine Learning Weka para poder hacer el análisis. Esta nos provee un clasificador dummy descripto anteriormente. Este se llama ZeroR que es el algoritmo que siempre elige el grupo mayoritario.
+La herramienta Weka provee un clasificador basado en mayority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
 \section{Modelo de testing}
 
-La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en 2 grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
+La complejidad del problema y la forma en que fue realizado el experimento nos llevó a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
 
-Para evitar este inconveniente debímos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos a los hablantes en los 2 conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante pudo llegar a aportar 30 grabaciones mientras que otro sólo pudo aportar 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Descartamos estos casos y tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sean destinadas para test. En definitiva, creamos 5 conjuntos de test de la forma $<$ train, test $>$ con las características antes descriptas. A esto lo llamamos cross-validation test. 
+Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un conjunto de test. 
 
-Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar eso el test de cross-validation será de la siguiente forma: Generamos conjuntos de instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió  utilizar instancias nuevas en los 5 conjuntos utilizados. 
+No podemos quedarnos con uno sólo conjunto de test, ya que haría encasillar a cada hablante en el conjunto de train o de test. Es por esto que creamos 5 conjuntos de test. En definitiva, creamos 5 conjuntos de test de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test}. 
+
+Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar esto, el test de cross-validation fue de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 conjuntos. 
 
 A continuación el código generador del test cross-validation:
 \lstset{ %
@@ -86,13 +86,13 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
     Devolver bool_bsas y bool_cba
 \end{lstlisting}
 
-Vemos que en las lineas 11 y 12 agregamos los hablantes usados en los test y los nuevos hablantes todavía no utilizados. Luego de esos hablantes obtenemos los datos extraídos de sus audios en las lineas 15 y 17. Finalmente chequeamos los últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (linea 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
+En las lineas 11 y 12, agregamos los hablantes usados en los test anteriores y luego los nuevos hablantes todavía no utilizados. Luego  en las lineas 15 y 17, de esos hablantes obtenemos los datos extraídos de sus audios. Finalmente chequeamos las últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
 
-A continuación veremos los clasificadores que utilizaremos para predecir de que lugar pertenece cada hablante.
+A continuación veremos los clasificadores que utilizaremos para predecir qué lugar pertenece cada hablante.
 
 \section{Clasificadores}
 
-Vamos a entrenar varios clasificadores para poder determinar si el análisis de atributos que realizamos aporta mayor información a la hora de detectar un hablante. Los clasificadores propuestos son: 
+Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y mejorar la performance del baseline. Los clasificadores propuestos son: 
 
 \paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
 
@@ -100,14 +100,14 @@ Vamos a entrenar varios clasificadores para poder determinar si el análisis de 
 %http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
 %https://indico.cern.ch/event/34666/session/13/material/slides/0?contribId=16 pag 21
 
-Este algoritmo divide el conjunto de entrada en pequeños grupos. Para cada uno va generando reglas que lo describan de forma golosa incremental. Luego cuando no puede describir más a ese grupo lo extrae y sigue con otro. Cuando estos conjuntos superan una cierta dimensión el algoritmo se detiene. Este algoritmo sirve mucho para datos no balanceados.
+Este algoritmo intenta describir el conjunto de entrada definiendo pequeños grupos. Primero localiza un grupo que posee la característica a clasificar, y genera reglas que lo describan. Va agregando reglas de forma golosa. Luego cuando se supera una cierta condición (por ejemplo: cantidad de reglas), lo extrae y sigue con otro grupo. Finaliza cuando describe todos los grupos del conjunto de entrada. Este algoritmo sirve mucho para datos no balanceados.
 
 \paragraph{C4.5 \cite{Quinlan1993} - Implementación J48:}
 
 %http://en.wikipedia.org/wiki/C4.5_algorithm
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
 
-Este algoritmo genera un árbol de decisión que es muy usado para clasificación. Dada una serie de muestras con varios atributos: Para cada atributo calcula la ganancia de información. Elige el que tenga mejor ganancia entre todos los atributos y con el crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja.
+Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con varios atributos se realiza lo siguiente: para cada atributo calcula su ganancia de información. Elige el que tenga mejor ganancia entre todos los atributos y con él crea un nodo en el árbol. Aplica recursivamente por cada rama. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja.
 
 \paragraph{Support Vector Machines \cite{Platt98sequentialminimal} - Implementación Function SMO:}
 
@@ -116,22 +116,22 @@ Este algoritmo genera un árbol de decisión que es muy usado para clasificació
 %http://en.wikipedia.org/wiki/Sequential_minimal_optimization
 %http://research.microsoft.com/pubs/69644/tr-98-14.pdf
 
-Support vector machines es un problema por el cual se intenta separar muestras en dos clasificaciones distintas a traves de un hiperplano. Este hiperplano se construye utilizando los datos de entrada y sirve para clasificar las muestras en los dos grupos de forma óptima. Entonces utilizando este hiperplano, se puede etiquetar cada dato de entrada con su clasificación observando de que lado del hiperplano se encuentra.
+Support vector machines define uno o varios hiperplanos para intentar clasificar muestras. Este hiperplano se construye utilizando combinaciones lineales de los datos de entrada y sirve para clasificar las muestras en los dos grupos de la mejor forma posible. Utilizando este hiperplano, se puede etiquetar cada dato de entrada con su clasificación observando de qué lado del hiperplano se encuentra.
 
 \paragraph{Naive Bayes \cite{DBLP:conf/flairs/Zhang04} - Implementación homónima:}
 
 %http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
 %http://en.wikipedia.org/wiki/Naive_Bayes_classifier
 
-Un clasificador de este tipo asume que cada atributo muestra una característica en particular de su clase pero no esta relacionado con otro atributo. Cada una de estos atributos contribuye de manera independiente a la clasificación de su clase. Utiliza fuertemente teorema de Bayes y que cada uno de los atributos es independiente. 
+Un clasificador de tipo Naive Bayes asume que cada atributo describe una característica de su clase y no esta relacionado con otro atributo. Cada uno de estos atributos contribuye de manera independiente a la clasificación de su clase. Se define una regla de decisión utilizando un modelo probabilístico basado en el teorema de Bayes para la clasificación de cada grupo.
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 grupos de test generados. Los clasificadores utilizados son ZeroR, o sea el baseline, comparado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO, NaiveBayes. Para estos resultados vamos a realizar dos principales tests: Wilcoxon signed-rank y Test de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 grupos de test generados. Los clasificadores utilizados son ZeroR, o sea el baseline, comparado con algún clasificador más sofisticado, por ejemplo: JRip, J48, Function SMO y NaiveBayes. Para estos resultados realizarmos dos principales tests: Wilcoxon signed-rank y Test de Student. 
 
 \subsection{Wilcox Test}
 
-Primero realizaremos Wilcox Test ya que necesita menos presunciones. Para realizar este test debemos cumplir que:
+Primero realizamos Wilcox Test ya que no estamos seguro que nuestros datos provengan de una distribucón Normal. Para realizar este test debemos cumplir que:
 
 \begin{itemize}
     %Data are paired and come from the same population.
@@ -139,10 +139,10 @@ Primero realizaremos Wilcox Test ya que necesita menos presunciones. Para realiz
     %Each pair is chosen randomly and independently.
     \item Cada par es elegido al azar y independiente del resto: cada grupo generado para testing esta armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma.
     %The data are measured at least on an ordinal scale, but need not be normal.
-    \item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que no estamos seguros que nuestros datos provengan de una distribución Normal.
+    \item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que, como dijimos, no estamos seguros que nuestros datos provengan de una distribución Normal.
 \end{itemize}
 
-El input del mismo va a ser el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis van a ser:
+El input del mismo fue el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis fueron:
 
 \vspace{0.5cm}
 \hspace{2cm}Ho: Clasificador alternativo no es mejor que ZeroR
@@ -151,9 +151,9 @@ El input del mismo va a ser el vector resultante del test baseline ZeroR con el 
 \hspace{2cm}H1: Clasificador alternativo es mejor que ZeroR
 \vspace{0.5cm}
 
-Clasificador alternativo se refiere a los demás clasificadores. Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05 no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
+Clasificador alternativo se refiere a los demás clasificadores descriptos. Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05, no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
 
-Luego chequearemos si nuestra muestra es de distribución Normal. Si es ese el caso haremos el Test de Student. Para chequear Normalidad vamos a utilizar el test de Shapiro-Wilk.
+Luego chequeamos si nuestra muestra corresponde a una distribución Normal. Para chequear Normalidad utilizamos el test de Shapiro-Wilk.
 
 \subsection{Análisis Shapiro-Wilk Test}
 
@@ -162,13 +162,13 @@ Luego chequearemos si nuestra muestra es de distribución Normal. Si es ese el c
 
 %En estadística, el Test de Shapiro–Wilk se usa para contrastar la normalidad de un conjunto de datos. Se plantea como hipótesis nula que una muestra x1, ..., xn proviene de una población normalmente distribuida. Fue publicado en 1965 por Samuel Shapiro y Martin Wilk.1 Se considera uno de los test más potentes para el contraste de normalidad, sobre todo para muestras pequeñas (n<30).
 
-El Test de Shapiro-Wilk lo utilizamos para poder afirmar si conjunto de datos proviene de una distribución Normal. Una caracteristica importante es que posee un buen desempeño en pequeñas muestras.
+El Test de Shapiro-Wilk lo utilizamos para poder afirmar si conjunto de datos proviene de una distribución Normal. Una característica importante es que posee un buen desempeño en pequeñas muestras.
 
 %Interpretación: Siendo la hipótesis nula que la población está distribuida normalmente, si el p-valor es menor a alfa (nivel de confianza) entonces la hipótesis nula es rechazada (se concluye que los datos no vienen de una distribución normal). Si el p-valor es mayor a alfa, no se rechaza la hipótesis y se concluye que los datos siguen una distribución normal.
 
 El test de Shapiro-Wilk se basa en plantear como hipótesis nula que la población esta distribuida de forma Normal. Aplicamos el estadístico de este test: si el p-valor nos da menor a 0,05 entonces la hipótesis nula es rechazada y se afirma que los datos no provienen de una distribución Normal. Si, en cambio, es mayor a 0,05 no se puede rechazar Ho y por ende se afirma que los datos siguen una distribución Normal.
 
-Este test se realiza individualmente para cada vector resultado. O sea, debemos chequear que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en Shapiro-Wilk test un p-valor mayor 0,05  se puede realizar el Student Test. 
+Este test se realiza individualmente para cada vector resultado. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el Student Test para ellos dos. 
 
 \subsection{Student Test}
 
@@ -176,7 +176,7 @@ Este test se realiza individualmente para cada vector resultado. O sea, debemos 
 
 %A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
 
-Para los vectores que poseen una distribución Normal vamos a aplicarle este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos. De la misma forma que planteamos la hipótesis de Wilcox test, este va a tener las mismas hipótesis. O sea: 
+Para los vectores que poseen una distribución Normal aplicamos este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos. De la misma forma que planteamos la hipótesis de Wilcox test, este va a tener las mismas hipótesis. O sea: 
 
 \vspace{0.5cm}
 \hspace{2cm}Ho: Clasificador alternativo no es mejor que ZeroR
@@ -185,11 +185,11 @@ Para los vectores que poseen una distribución Normal vamos a aplicarle este tes
 \hspace{2cm}H1: Clasificador alternativo es mejor que ZeroR
 \vspace{0.5cm}
 
-La ventaja de usarlo es que, al saber que distribución representa, vamos a tener resultados mas precisos. Aplicando el estadístico vamos a obtener un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar Ho. De lo contrario, si hay evidencia y rechazamos Ho.
+La ventaja de usarlo es que, al saber que distribución representa, vamos a tener resultados mas precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar Ho. De lo contrario, si hay evidencia y rechazamos Ho.
 
 \section{Resultados}
 
-Utilizamos un conjunto de test generado por el algoritmo anterior. Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
+Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
 
 \begin{figure}[H]
 \centering
@@ -249,7 +249,7 @@ Los resultados en porcentaje para los distintos clasificadores fueron:
 \end{tabular}
 \end{table}
 
-Donde Test 1 corresponde al primer par $<$ train, test $>$ y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+Donde Test 1 corresponde al primer par $<$train, test$>$ y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
 \begin{figure}[H]
 \centering
@@ -284,9 +284,19 @@ Donde Test 1 corresponde al primer par $<$ train, test $>$ y así sucesivamente.
 
 Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este baseline. 
 
-Algo interesante sucede con el clasificador Function SMO: se comporta muy similar a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y de Córdoba. Al tener mitad instancias de cada grupo y como ZeroR debe elegir en uno de esos dos, va a poseer un porcentaje de acierto de alrededor del 50\% como sucede.  
+Algo interesante sucede con el clasificador Function SMO: posee métricas muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
 
-El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. \textit{Recall} se define como la cantidad de verdaderos negativos sobre la cantidad de verdaderos y falsos negativos. Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4, que es el más interesante.
+El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. \textit{Recall} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos positivos y falsos negativos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. Falsos negativos si el hablante es de Buenos Aires pero es clasificado como Córdoba. Y falso positivo si el hablante es de Córdoba pero es clasificado como Buenos Aires. 
+
+%http://en.wikipedia.org/wiki/Precision_and_recall
+
+Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4, que es el más interesante.
+
+% Precision = VP / VP + FP
+% Recall = VP / VP + FN
+% VP = "BsAs classif. como BsAs"
+% FN = "BsAs classif. como Cba"
+% FP = "Cba classif. como BsAs" 
 
 \paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
@@ -333,11 +343,11 @@ El porcentaje de exactitud en la clasificación se puede apreciar con la métric
 \textbf{Instancias correctas = 80\%}
 \end{center}
 
-Viendo estas matrices de confusión y sus métricas podemos observar cual es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad no lo es). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente  predecir y por eso los Errores de tipo I y II están mas distribuidos.
+Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están mas distribuidos.
 
-Otro dato a tener en cuenta es que si bien el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance, por eso en el caso de NaiveBayes si bien ningún valor dio 1 ambos están cerca y posee en mayor porcentaje de instancias correctas.
+Otro dato a tener en cuenta es que si bien, el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
 
-Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del test 0. Veamos para los clasificadores ZeroR y NaiveBayes.
+Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Este caso para los clasificadores ZeroR y NaiveBayes es:
 
 \paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
@@ -369,11 +379,11 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 \textbf{Instancias correctas = 63\%}
 \end{center}
 
-En este caso podemos notar como a pesar de que den valores cercanos en instancias correctas, uno posee todo su error en un tipo solo mientras que el otro lo distribuye entre los dos tipos.
+En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, ZeroR concentra grán parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
 
 \subsection{Wilcox y Student Test}
 
-Vamos a mostrar los resultados de estos tests estadísticos. Todos los tests estadísticos realizados fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgen de realizar los test de Wilcox y Student para el vector resultado de cada clasificador con respecto a ZeroR.
+En esta sección mostramos los resultados de estos tests estadísticos. Todos los tests estadísticos realizados fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgieron de realizar los test de Wilcox y Student para el vector resultado de cada clasificador con respecto a ZeroR.
 
 \begin{table}[H]
 \centering
@@ -387,13 +397,13 @@ Vamos a mostrar los resultados de estos tests estadísticos. Todos los tests est
 \end{tabular}
 \end{table}
 
-Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO poseen p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{Function SMO tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
+Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{Function SMO tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
 \subsection{Clasificadores encontrados}
 
-Veamos los clasificadores obtenidos para analizar que atributos tuvieron en cuenta. Analizamos el clasificador JRip ya que de los clasificadores elegidos es el que utiliza una cantidad manejable de atributos. Los demás clasificadores utilizaron muchos más atributos y por ende debimos descartarlos ya que el análisis se tornaba engorroso. 
+Analizamos la salida del clasificador JRip ya que, de los clasificadores elegidos, es el que utiliza una cantidad manejable de atributos. Los demás clasificadores utilizaron muchos más atributos y por ende debimos descartarlos ya que el análisis se tornaba engorroso. 
 
-Cada conjunto de test va a clasificar distinto y por ende utilizará una serie de reglas distinta. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
+Cada conjunto de test devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
 
 \paragraph*{Clasificador JRip:}
 
@@ -409,16 +419,16 @@ Cada conjunto de test va a clasificar distinto y por ende utilizará una serie d
 
 Podemos notar en el anterior árbol de decisión que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar su árbol de decisión nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
 
-Veamos con otro método cuales de los atributos aportan mayor información para la clasificación de los hablantes.   
+Analizamos a continuación cuales atributos aportan mayor información.
 
 \section{Selección de atributos de forma automática}
 
-En esta sección se aplicará a los distintos atributos evaluadores para analizar cual posee mayor importancia. El evaluador utilizados fue InfoGain. 
+En esta sección aplicaremos a los distintos atributos evaluadores para analizar cual posee mayor importancia. 
 
 \subsection*{Attribute Evaluator: InfoGain}
 %http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
 
-Vamos a utilizar InfoGain para analizar la importancia de cada atributo y utilizaremos Ranker para el puntaje de los atributos. Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo que ese atributo se cumple. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede espresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. De esta forma, cuanto menor sea la entropía sabiendo ese atributo mayor será la ganancia de información para ese atributo.
+El evaluador utilizado fue InfoGain para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo que ese atributo se cumple. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. De esta forma, cuanto menor sea la entropía sabiendo ese atributo mayor será la ganancia de información para ese atributo.
 
 \begin{table}[H]
 \centering
@@ -436,11 +446,11 @@ Vamos a utilizar InfoGain para analizar la importancia de cada atributo y utiliz
 \end{tabular}
 \end{table}
 
-Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información ya que es la característica primordial para distinguir los dos grupos. No es extraño encontrarlos entre los primeros lugares. 
+Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información ya que es la característica conocida para distinguir los dos grupos. No es extraño encontrarlos entre los primeros lugares. 
 
-Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas sobre consonantes primordialmente. Vocales también pero en menor medida. Esto quiere decir que si se cumple que la duración es menor para un par de tipos de consonantes luego para el total de consonantes va a seguir respetándose. Son variables fuertemente correlacionadas. 
+Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
-También algo que se desprende de este análisis es que todas las reglas del tipo fonéticas (empezadas con FON) y silábicas (empezadas con SIL) son sobre duración de tiempos. Sumar estos atributos y dividirlos en dos grupos es lo que logra los atributos sobre vocales y consonantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo o grabó pocas. 
+También algo que se desprende de este análisis es: todas las reglas del tipo fonéticas (empezadas con FON) y silábicas (empezadas con SIL) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consolantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
 
 %\paragraph*{Posibles causas de porque FON\_consonant\_norm y FON\_vowel\_norm van primeros:}
 %Todas las reglas (salvo la 1) corresponden a consonantes.
@@ -490,7 +500,7 @@ También algo que se desprende de este análisis es que todas las reglas del tip
 
 \section{Combinando clases de atributos}
 
-Combinando los tipos de atributos definidos se puede apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgen del promedio de los resultados de los 5 tests generados.  
+Combinando los tipos de atributos definidos pudimos apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgieron del promedio de los resultados de los 5 tests generados.  
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
@@ -538,6 +548,6 @@ FON & 69 & 65 \\ \hline
 \end{axis}
 \end{tikzpicture}
 
-Lo esperable es que aumentando los atributos se aumenta el porcentaje de clasificación. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
+Lo esperable es que aumentando los atributos se aumente el porcentaje de clasificación. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
 
-Podemos notar como en tipos de atributo el que posee mayor porcentaje son los atributos acústicos ya que se encuentran en los tres primeros grupos que obtuvieron mejor porcentaje. Quizás individualmente no tengan un atributo con mucha información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.
+Podemos notar que el tipo de atributo que posee mayor presencia son los atributos acústicos, ya que se encuentran en los tres primeros grupos que obtuvieron mejor porcentaje. Quizás individualmente no tengan un atributo con mucha información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.
