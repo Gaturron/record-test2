@@ -23,8 +23,6 @@
 \contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{19}
 \contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{21}
 \contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{21}
-\contentsline {subsubsection}{Mel Frequency Cepstral Coefficients}{22}
-\contentsline {subsubsection}{Implementaci\IeC {\'o}n}{23}
 \contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{23}
 \contentsline {chapter}{\numberline {5}Datos obtenidos}{24}
 \contentsline {subsection}{\numberline {5.0.4}Mediciones}{24}
@@ -36,7 +34,7 @@
 \contentsline {section}{\numberline {6.2}Modelo de testing}{28}
 \contentsline {section}{\numberline {6.3}Clasificadores}{30}
 \contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{30}
-\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{30}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{31}
 \contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{31}
 \contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{31}
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{31}
@@ -46,6 +44,6 @@
 \contentsline {section}{\numberline {6.5}Resultados}{33}
 \contentsline {subsection}{\numberline {6.5.1}Wilcox y Student Test}{36}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{37}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{37}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{38}
-\contentsline {chapter}{\numberline {7}Conclusiones}{40}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{38}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{39}
+\contentsline {chapter}{\numberline {7}Conclusiones}{41}
