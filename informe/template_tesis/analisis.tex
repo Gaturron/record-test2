@@ -1,10 +1,12 @@
 \chapter{Análisis}
 
-En esta sección mostraremos los resultados que obtuvimos luego de realizar la extracción. Primero presentaremos el baseline que consideramos. Luego describiremos el modelo de testing utilizando los datos recolectados. Explicaremos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizaremos los atributos más descriptivos de cada grupo. Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. 
+En esta sección, analizamos los datos obtenidos para clasificarlos en Buenos Aires y Córdoba. Tomamos los 260 audios obtenidos a través de la página web y les aplicamos el extractor de atributos descripto en el capítulo 4. El resultado nos dió la descripción de cada grabación a través de los atrbutos que definimos. 
+
+Primero presentamos el baseline que consideramos. El baseline nos sirve para detectar si realizamos una clasificación aceptable. Luego describimos el modelo de testing utilizando los datos recolectados. Explicamos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizemos los atributos más descriptivos de cada grupo. Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. 
 
 \section{Baseline}
 
-No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{mayority class}. Este algoritmo, utilizando nuestros datos, tendría una performance buena. En nuestro caso estará llegando al 45\% de efectividad aproximadamente. Este es el porcentaje a superar. 
+No hay ningún trabajo que trate de distinguir entre porteños y cordobéces a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo, utilizando nuestros datos, tendría una performance buena. En nuestro caso estará llegando al 45\% de efectividad aproximadamente. Este es el porcentaje a superar. 
 
 %Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
 

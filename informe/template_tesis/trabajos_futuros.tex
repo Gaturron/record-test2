@@ -8,6 +8,10 @@ Algunos trabajos futuros que se desprenden de este trabajo son:
 
 \paragraph*{Chequeador cruzado:} Que el hablante diga si una grabación de un hablante anterior dijo lo que tenía que decir, o se equivocó. En este caso, serviría mucho para chequear los datos. 
 
-\paragraph*{Validación de calidad de sonido:} Cuando un hablante graba un audio este debe pasar una validación en el servidor para poder continuar con el siguiente. Sino fue satisfactorio, se pude grabar devuelta. Evitaría el ruido generado por el ambiente. 
+\paragraph*{Validación de calidad de sonido:} En el momento de grabación analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posibilidad sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo (por ejemplo: 1 segundo). Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
+
+También se le podría dar más información al hablante. Sabiendo que el micrófono tuvo un pico de volumen, se podría pedir al hablante que baje el nivel de voz o se aleje del micrófono. Ídem si habla muy bajo. Otras posibles soluciones a este problema son: analizar, antes de empezar el experimento, si el ruido ambiente no genera saturación. En tal caso, pedir al usuario que realice el experimento en un lugar más silencioso. 
+
+Podemos realizar análisis más precisos sobre la calidad del audio cuando llega la grabación al servidor. En ese momento, el servidor ya puede obtener el archivo wav y realizarle todo tipo de análisis (por ejemplo: detección de ruido ambiente). Recordemos que el servidor esta implementado en Python que posee muchas librerías útiles para realizar esto. Al momento de terminar de procesar el audio en cuestión, deberá enviar la respuesta al hablante informándole si se debe realizar devuelta la grabación o si fue exitosa. Es importante notar que esta solución necesita buena conexión para servidor. 
 
 \paragraph*{Clasificación en vivo:} Realizar la clasificación al agregar un hablante nuevo. De esta forma, se puede darle una respuesta a que grupo pertenece. Revalidar el modelo al agregarse un nuevo Hablante. 
