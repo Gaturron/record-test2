@@ -6,12 +6,14 @@ En este capítulo vamos a describir los datos obtenidos a través del framework.
 
 Se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Esta clasificación se realizó a  través de la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
 
+%Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/Datos crudo
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
-\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
+%\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
+\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
 \textbf{Problemas en el habla}  & 33 & 15 & 48 \\ \hline
 \textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 \textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
@@ -60,6 +62,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 %TODO: Corregir y explicar bien para qe se entiende la opcion de SCORES acá y en el capitulo anterior - leer bien el mail de prosodylab
 Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Esta forma se realizó ya que eran pocos audios pero en un experimento con más hablantes se debe utilizar la opción de ``.SCORES’’ descripta en el capítulo anterior. Los resultados de la cantidad de alineamientos corregidos son:
 
+%Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/data1.complete
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|c|}
