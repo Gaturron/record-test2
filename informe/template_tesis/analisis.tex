@@ -1,14 +1,14 @@
 \chapter{Análisis}
 
-En esta sección, analizamos los datos obtenidos para clasificarlos en Buenos Aires y Córdoba. Tomamos los 260 audios obtenidos a través de la página web y les aplicamos el extractor de atributos descripto en el capítulo 4. El resultado nos dió la descripción de cada grabación a través de los atrbutos que definimos. 
+En esta sección, analizamos los datos obtenidos para entrenar clasificadores que distingan entre Buenos Aires y Córdoba. Recordemos que tomamos los 260 audios obtenidos a través de la página web y les aplicamos el extractor de atributos descripto en el capítulo 4. El resultado nos dió la descripción de cada grabación a través de los atrbutos que definimos. 
 
-Primero presentamos el baseline que consideramos. Este nos sirve para detectar si realizamos una clasificación aceptable. Luego describimos el modelo de testing utilizando los datos recolectados. Explicamos los clasificadores utilizados y en base a test estadísticos notaremos si aportan datos significativos. Por último, analizamos los atributos más descriptivos de cada grupo. 
+Primero presentaremos el baseline que consideramos. Este nos servirá para tener una clasificación aceptable que luego trataremos de superar. Explicaremos los clasificadores utilizados para vencer esta marca y en base a test estadísticos notaremos si aportan datos significativos. También describiremos el modelo de testing utilizando los datos recolectados. Por último, analizamos los atributos más descriptivos de Buenos Aires y Córdoba. 
 
 Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. 
 
 \section{Baseline}
 
-El Baseline nos define el clasificador mas simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo, utilizando nuestros datos, tuvo una performance buena. En nuestro caso  llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. 
+El baseline nos define el clasificador mas simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo, utilizando nuestros datos, tuvo una performance buena. En nuestro caso llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. 
 
 %Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
 
@@ -20,15 +20,17 @@ La herramienta Weka provee un clasificador basado en majority class llamado \tex
 
 \section{Modelo de testing}
 
-Para testear los distintos clasificadores definimos un modelo de test que separe una parte de los datos obtenidos para entrenar el clasificador y otro para testearlo.
+Para medir el rendimiento de los distintos clasificadores definimos un modelo de testing. Este separa una parte de los datos obtenidos para entrenar el clasificador y otro para testearlo.
 
 La complejidad del problema y la forma en que fue realizado el experimento nos llevó a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos que luego serían testeados.
 
-Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante es muy variable. Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
+Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
 
-No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 conjuntos de test. En definitiva, creamos 5 conjuntos de test de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test}. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba.
+%TODO: quizas es buena idea hacer un gráfico de esto.
 
-Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar esto, el test de cross-validation fue de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 conjuntos. 
+No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test de 5-folds}. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba.
+
+Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar esto, el test de cross-validation fue de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 folds. 
 
 A continuación el código generador del test cross-validation:
 \lstset{ %
@@ -60,21 +62,28 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
  test <- {}
  hablantesEnTests <- {}
  hablantes <- ObtenerHablantes(audios)
- tamTest <- tam(hablantes) * 0.3
+ tamTest <- tam(hablantes) * 0.3 #Esta cte nos define el tamaño del fold
  Repetir 5 veces:
-    hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2)
-    hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8)
+    hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) #Esta cte nos define porcentaje de hablantes usados
+    hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
     hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
 
     test <- ObtenerAudios(hablantesTest, audios)
 
     train <- ObtenerAudios(hablantes - hablantesTest, audios)
 
-    Si <train, test> no esta en resultado y 
-    porcentajeMaximoDeSimilitud(test, resultado, 0.2) y
-    checkBalance(train) y checkBalance(test):
+    Si <train, test> no esta en resultado 
+    #No es un fold ya creado
+    
+    y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
+    #El test creado solo puede ser 20 % parecido a uno anterior
+    
+    y checkBalance(train) y checkBalance(test)
+    # Chequeo del habalnce entre audios de BsAs y Cba
+    {
        Agregar <train, test> a resultado
        Agregar hablantesTest a hablantesEnTests
+    }
  Devolver resultado
     
  porcentajeMaximoDeSimilitud(conj, resultado, 0.2):
@@ -87,18 +96,20 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
  checkBalance:
  Input: conj, pct
  Output: booleano
- bool_bsas <- #(conj) * 0.55 < #bsas(conj) < #(conj) * 0.65
- bool_cba <- #(conj) * 0.45 < #cba(conj) < #(conj) * 0.45
- Devolver bool_bsas y bool_cba
+ ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
+ ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
+ ck_both <- #cba(conj) < #bsas(conj)
+ Devolver ck_bsas y ck_cba
 \end{lstlisting}
 
-En las lineas 11 y 12, agregamos los hablantes usados en los test anteriores y luego los nuevos hablantes todavía no utilizados. Luego  en las lineas 15 y 17, de esos hablantes obtenemos los datos extraídos de sus audios. Finalmente chequeamos las últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
+%TODO: explicar mejor el algoritmo
+En las lineas 11 y 12, agregamos los hablantes que ya fueron usados en los test anteriores y luego los nuevos hablantes todavía no utilizados. Luego, en las lineas 15 y 17, de esos hablantes obtenemos los datos extraídos de sus audios. Finalmente chequeamos las últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
 
 A continuación veremos los clasificadores que utilizaremos para predecir qué lugar pertenece cada hablante.
 
 \section{Clasificadores}
 
-Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y mejorar la performance del baseline. Los clasificadores propuestos son: 
+Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y mejorar la performance del Baseline. Los clasificadores propuestos son: 
 
 \paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
 
@@ -133,11 +144,14 @@ Un clasificador de tipo Naive Bayes asume que cada atributo describe una caracte
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 grupos de test generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizarmos dos principales tests: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 folds  generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos principales tests: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
 
 \subsection{Test de Wilcoxon}
 
-Primero realizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribucón Normal. Para realizar este test se debe cumplir que:
+%TODO: explicar un poco mejor para entender porque se aplica
+Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos va a afirmar si hay razones estadísticas para decir si un clasificador es mejor que otro.
+
+Para realizar este test se debe cumplir que:
 
 \begin{itemize}
     %Data are paired and come from the same population.
@@ -151,13 +165,15 @@ Primero realizamos el test de Wilcoxon ya que no estamos seguros que nuestros da
 El input fue el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis fueron:
 
 \vspace{0.5cm}
-\hspace{2cm}Ho: Clasificador alternativo no es mejor que ZeroR
+\hspace{2cm}Ho: Clasificador alternativo no es diferente que ZeroR
 \vspace{0.25cm}
 
-\hspace{2cm}H1: Clasificador alternativo es mejor que ZeroR
+\hspace{2cm}H1: Clasificador alternativo es diferente que ZeroR
 \vspace{0.5cm}
 
-Clasificador alternativo se refiere a los demás clasificadores descriptos. Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05, no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
+Clasificador alternativo se refiere a los demás clasificadores descriptos. 
+
+Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05, no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar Ho y asegurar que el alternativo es mejor. 
 
 Luego chequeamos si nuestra muestra corresponde a una distribución Normal. Para chequear Normalidad utilizamos el test de Shapiro-Wilk.
 
@@ -174,7 +190,7 @@ Utilizamos el test de Shapiro-Wilk para poder afirmar si conjunto de datos provi
 
 El test de Shapiro-Wilk se basa en plantear como hipótesis nula que la población esta distribuida de forma Normal. Aplicamos el estadístico de este test: si el p-valor nos da menor a 0,05 entonces la hipótesis nula es rechazada y se afirma que los datos no provienen de una distribución Normal. Si, en cambio, es mayor a 0,05 no hay evidencia suficiente  para rechazar Ho y por ende se afirma que los datos siguen una distribución Normal.
 
-Este test se realiza individualmente para cada vector resultado. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el Student Test para ellos dos. 
+Este test se realiza individualmente para cada vector resultado. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el t de Student para ellos dos. 
 
 \subsection{Student Test}
 
@@ -238,24 +254,24 @@ Recordemos que al tener pocos datos debimos repetir instancias en los grupos de 
 \label{TestsInstances}
 \end{figure}
 
-Los resultados en porcentaje de clasificación correcta para los distintos clasificadores fueron:
+Los resultados de clasificación correcta (en porcentaje) para los distintos clasificadores fueron:
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-\textbf{Test 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
-\textbf{Test 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
-\textbf{Test 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
-\textbf{Test 4}  & 55 & 52 & 55 & 67 & 80 \\ \hline
-\textbf{Test 5}  & 66 & 70 & 66 & 70 & 70 \\ \hline
+\textbf{Fold 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
+\textbf{Fold 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
+\textbf{Fold 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
+\textbf{Fold 4}  & 55 & 52 & 55 & 67 & 80 \\ \hline
+\textbf{Fold 5}  & 66 & 70 & 66 & 70 & 70 \\ \hline
 \hline \hline
 \textbf{Promedio} & 64 & 61 & 60 & 72 & 70 \\ \hline
 \end{tabular}
 \end{table}
 
-Donde Test 1 corresponde al primer par $<$train, test$>$, Test 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de cada tests en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+Donde Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de instancias correctamente clasificadas de cada fold en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
 \begin{figure}[H]
 \centering
@@ -288,9 +304,9 @@ Donde Test 1 corresponde al primer par $<$train, test$>$, Test 2 al segundo par 
 \label{porcentajexClasificador}
 \end{figure}
 
-Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este baseline. 
+Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline.
 
-Algo interesante sucede con el clasificador NaiveBayes: posee métricas muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el test 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
+Algo interesante sucede con el clasificador NaiveBayes: posee métricas muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
 
 El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. \textit{Recall} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos positivos y falsos negativos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. Falsos negativos si el hablante es de Buenos Aires pero es clasificado como Córdoba. Y falso positivo si el hablante es de Córdoba pero es clasificado como Buenos Aires. 
 
@@ -389,7 +405,9 @@ En este caso notamos que, a pesar de que el porcentaje de instancias correctas d
 
 \subsection{Wilcoxon y Test t de Student}
 
-En esta sección mostramos los resultados de estos tests estadísticos. Todos los tests estadísticos realizados fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR.
+En esta sección mostramos los resultados de estos tests estadísticos. Todos los tests estadísticos fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR.
+
+%TODO: Tambien quizas vendria bien una imagen
 
 \begin{table}[H]
 \centering
@@ -453,7 +471,7 @@ El evaluador utilizado fue InfoGain para analizar la importancia de cada atribut
 \end{tabular}
 \end{table}
 
-Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información ya que es la característica conocida para distinguir los dos grupos. No es extraño encontrarlos entre los primeros lugares. 
+Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información ya que es la característica conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
@@ -555,6 +573,6 @@ FON & 69 & 65 \\ \hline
 \end{axis}
 \end{tikzpicture}
 
-Lo esperable es que aumentando los atributos se aumente el porcentaje de clasificación. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
+Lo esperable es que aumentando los atributos se aumente el porcentaje de instancias correctas clasificadas. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
 
-Podemos notar que el tipo de atributo que posee mayor presencia es el que corresponde a los atributos acústicos (ACU), ya que se encuentran en los tres primeros grupos que obtuvieron mejor porcentaje (estos son: SIL+FON+ACU, FON+ACU y SIL+ACU). Quizás no haya entre los atributos acústicos uno con información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.
+Podemos notar que el tipo de atributo que posee mayor presencia es el que corresponde a los atributos acústicos (ACU), ya que se encuentran en los tres primeros grupos de atributos que obtuvieron mejor porcentaje (estos son: SIL+FON+ACU, FON+ACU y SIL+ACU). Quizás entre los atributos acústicos no haya uno con información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.

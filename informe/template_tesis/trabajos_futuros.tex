@@ -2,11 +2,15 @@
 
 Algunos trabajos futuros que se desprenden de este trabajo son:
 
-\paragraph*{Filtro por ruido con SoX:} Se podría analizar mejor los audios si se le aplicara algún filtro que extraiga el ruido. De esta forma se podría mejorar los atributos acústicos. 
+%\paragraph*{Filtro por ruido con SoX:} Se podría analizar mejor los audios si se le aplicara algún filtro que extraiga el ruido. De esta forma se podría mejorar los atributos acústicos. 
 
-\paragraph*{Chequeador cruzado con grabación:} Que no se muestre la frase a decir, sino que se escuche un audio y se tenga repetirlo. Este audio es el de un hablante anterior pero que se le aplicó un filtro para evitar exponer su acento. De esta forma, chequeamos que se diga lo que se quiere decir y nos aseguramos espontaneidad.
+%\paragraph*{Chequeador cruzado con grabación:} Que no se muestre la frase a decir, sino que se escuche un audio y se tenga repetirlo. Este audio es el de un hablante anterior pero que se le aplicó un filtro para evitar exponer su acento. De esta forma, chequeamos que se diga lo que se quiere decir y nos aseguramos espontaneidad.
 
 \paragraph*{Chequeador cruzado:} Que el hablante diga si una grabación de un hablante anterior dijo lo que tenía que decir, o se equivocó. En este caso, serviría mucho para chequear los datos. 
+
+Una mejora, por parte del análisis de datos, podría ser que los audios sean chequeados entre los hablantes. Un hablante, entre grabación y grabación, debe escuchar un audio (y su frase asociada) de otro hablante que previamente realizó el experimento. Luego de escucharla, deberá decidir si en la grabación se escucha correctamente la frase en cuestión. Si es así, se podrá ya decidir que esa grabación es buena para el extractor y que se mantiene como conservada.
+
+Si se logra que cada hablante pueda chequear si otra frase se dijo correctamente permitiría que no sea necesario por parte de los administradores del sistema realizar este trabajo. Además balancea la carga 
 
 \paragraph*{Validación de calidad de sonido:} En el momento de grabación analizar el audio grabado y rechazarlo si no supera un nivel aceptable auditivo. Esto puede implementarse de varias formas. Una posibilidad sería cuando esta grabando medir el volumen del micrófono cada una cierta cantidad de tiempo (por ejemplo: 1 segundo). Si en esa medición el volumen no se encuentra entre rango máximo y mínimo de volumen, descartar el audio y pedirle al hablante que vuelva a grabar.
 
