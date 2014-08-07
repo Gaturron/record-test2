@@ -4,7 +4,7 @@ En este capítulo vamos a describir los datos obtenidos a través del framework.
 
 \subsection{Mediciones}
 
-Se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Esta clasificación se realizó a  través de la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
+Se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/Datos crudo
 \begin{table}[h]
@@ -24,7 +24,7 @@ Los datos obtenidos están desbalanceados. No fue posible obtener la misma canti
 
 \subsection{Errores comunes}
 
-Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que del total de 391 grabaciones, 64 tuvo algún problema. Esto representa alrededor del 16\% de los audios grabados. Es un número alto para ser un experimento guiado.
+Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvo algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado.
 
 La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
 
@@ -32,7 +32,7 @@ El análisis que se presenta a continuación está basado en los audios clasific
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar los audios mal alineados, ya que si no cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio etiquetado como ``Conservado’’ y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores de alineamiento más comunes se debieron a:
+El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar los audios mal alineados, ya que si no cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio, etiquetado como ``Conservado’’, y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores de alineamiento más comunes se debieron a:
 
 \begin{itemize}
     \item \textbf{Ruido de fondo:} los audios donde el alineador se comporta de peor manera son aquellos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Fig. \ref{alinMala} se puede ver un ejemplo utilizando Praat.
@@ -43,7 +43,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
     \label{alinMala}
 \end{figure}
 
-    \item \textbf{Mouse clic al finalizar:} las grabaciones recibieron muchos ruidos del ambiente. Pasó en muchas oportunidades que el clic de finalizar del mouse se grabó como parte final en el audio (Ver Fig. \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que el alineador lo confunde como habla.
+    \item \textbf{Mouse clic al finalizar:} las grabaciones recibieron ruido del movimiento propio del hablante. Pasó en muchas oportunidades que el clic de finalizar del mouse se grabó como parte final en el audio (Ver Fig. \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que el alineador lo confunde con habla.
     
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{click_al_final_inf} }
@@ -59,8 +59,11 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 
 \section{Corrección de errores}
 
-%TODO: Corregir y explicar bien para qe se entiende la opcion de SCORES acá y en el capitulo anterior - leer bien el mail de prosodylab
-Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Esta forma se realizó ya que eran pocos audios pero en un experimento con más hablantes se debe utilizar la opción de ``.SCORES’’ descripta en el capítulo anterior. Los resultados de la cantidad de alineamientos corregidos son:
+%Corregir y explicar bien para qe se entiende la opcion de SCORES acá y en el capitulo anterior 
+% ===> Llegué a la conclusión que mejor es no poner nada de SCORES en el documento y si decirlo en trabajos futuros
+%TODO: leer bien el mail de prosodylab
+Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Esta forma se realizó ya que eran pocos audios. Los resultados de la cantidad de alineamientos corregidos son:
+%Texto viejo: ...pero en un experimento con más hablantes se debe utilizar la opción de ``.SCORES’’ descripta en el capítulo anterior... 
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/data1.complete
 \begin{table}[h]
@@ -69,13 +72,12 @@ Para corregir los errores descriptos debimos chequear cada uno de los TextGrids.
 \hline
 \textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 \textbf{Modificados}  & 101 & 88 & 189 \\ \hline
-\textbf{Correctos sin modificación}  & 119 & 2 & 121 \\ \hline
+\textbf{Correctos}  & 119 & 2 & 121 \\ \hline
 \textbf{Total} & 220 & 90 & 310 \\ \hline
 \end{tabular}
 \end{table}
 
-%TODO: acordarse porque acá tengo 310 audios y no se corresponde con los 327 que son el total de conservados.
-Entonces las grabaciones que utilizamos salierond de estas 310 alineaciones. 
+Entonces las grabaciones que utilizamos salieron de estas 310 alineaciones. 
 
 Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación sea la mejor grabada. Debemos quitar estos casos para no favorecer a las frases repetidas mas que a las frase grabadas una sola vez. Los audios repetidos, en este conjunto de 310 alineamientos, son 50. Entonces, para finalizar, quitamos las grabaciones repetidas. Las grabaciones que utilizamos para seguir realizando este análisis son 260. 
 
