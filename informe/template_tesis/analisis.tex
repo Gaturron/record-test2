@@ -57,40 +57,45 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
  GeneradorDeTest:
  Input: conjunto audios
  Output: conjunto de <train, test>
- resultado <- {} 
+ resultado <-{}
  train <- {}
  test <- {}
  hablantesEnTests <- {}
  hablantes <- ObtenerHablantes(audios)
- tamTest <- tam(hablantes) * 0.3 #Esta cte nos define el tamaño del fold
+ tamTest <- tam(hablantes) * 0.3 
+      #Esta cte nos define el tamano del fold
  Repetir 5 veces:
-    hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) #Esta cte nos define porcentaje de hablantes usados
+ {
+    hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
+    #Esta cte nos define porcentaje de hablantes usados
+    
     hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
+    
     hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
 
     test <- ObtenerAudios(hablantesTest, audios)
-
     train <- ObtenerAudios(hablantes - hablantesTest, audios)
 
     Si <train, test> no esta en resultado 
-    #No es un fold ya creado
-    
+       #No es un fold ya creado
     y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
-    #El test creado solo puede ser 20 % parecido a uno anterior
-    
-    y checkBalance(train) y checkBalance(test)
-    # Chequeo del habalnce entre audios de BsAs y Cba
+       #El test creado solo puede ser 20 % parecido a uno anterior
+    y checkBalance(train) y checkBalance(test) 
+       #Chequeo del habalnce entre audios de BsAs y Cba
     {
        Agregar <train, test> a resultado
        Agregar hablantesTest a hablantesEnTests
     }
+ }
  Devolver resultado
     
- porcentajeMaximoDeSimilitud(conj, resultado, 0.2):
- Input: conj, conjunto de <train, test>, pct
+ porcentajeMaximoDeSimilitud:
+ Input: conj, conjunto de fold, pct
  Output: booleano
- Recorrer test de conjunto de <train, test>:
+ Recorrer test de conjunto de fold:
+ {
     pct <- Maximo(pct, porcentajeSimilitud(conj, test))
+ }
  Devolver pct < 0.2	
 
  checkBalance:
@@ -99,11 +104,15 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
  ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
  ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
  ck_both <- #cba(conj) < #bsas(conj)
- Devolver ck_bsas y ck_cba
+ Devolver ck_bsas y ck_cba y ck_both
 \end{lstlisting}
 
 %TODO: explicar mejor el algoritmo
 En las lineas 11 y 12, agregamos los hablantes que ya fueron usados en los test anteriores y luego los nuevos hablantes todavía no utilizados. Luego, en las lineas 15 y 17, de esos hablantes obtenemos los datos extraídos de sus audios. Finalmente chequeamos las últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
+
+La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene solamente a lo sumo 20\% de audios en común con las demás instancias.
+
+La función $checkBalance$ nos define si un conjunto cumple con las restricciones. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentajde Córdoba y debe ser entre 25-45\%. Finalmente, al última condición pide tener mas audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
 A continuación veremos los clasificadores que utilizaremos para predecir qué lugar pertenece cada hablante.
 
