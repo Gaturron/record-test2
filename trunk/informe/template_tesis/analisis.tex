@@ -108,11 +108,14 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
 \end{lstlisting}
 
 %TODO: explicar mejor el algoritmo
+
+El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Luego, se obtienen de cada uno de los hablantes sus respectivos audios. Finalmente se chequea que el grupo generado cumpla con las restricciones que habíamos definido.  
+
 En las lineas 11 y 12, agregamos los hablantes que ya fueron usados en los test anteriores y luego los nuevos hablantes todavía no utilizados. Luego, en las lineas 15 y 17, de esos hablantes obtenemos los datos extraídos de sus audios. Finalmente chequeamos las últimas características: que el par generado no sea uno ya previamente generado, que el conjunto test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que el balance de Córdoba y de Buenos Aires sea aproximadamente de un 40\% y 60\% respectivamente.
 
 La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene solamente a lo sumo 20\% de audios en común con las demás instancias.
 
-La función $checkBalance$ nos define si un conjunto cumple con las restricciones. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentajde Córdoba y debe ser entre 25-45\%. Finalmente, al última condición pide tener mas audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
+La función $checkBalance$ nos define si un conjunto cumple con las restricciones. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Finalmente, al última condición pide tener mas audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
 A continuación veremos los clasificadores que utilizaremos para predecir qué lugar pertenece cada hablante.
 
