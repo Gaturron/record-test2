@@ -25,13 +25,16 @@ Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora d
 No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la figura \ref{graficoFold} se diagrama este modelo de testing.
 
 \begin{figure}[H]
-	\begin{tikzpicture}[node distance=1.2cm]
+	\begin{tikzpicture}[node distance=1cm]
+	
 	\node (train1) [train] {Train};
 	\node (train2) [train, xshift=-3.0cm] {Train};
 	\node (train3) [train, xshift=-6.0cm] {Train};
 	\node (train4) [train, xshift=-9.0cm] {Train};
 	\node (train5) [train, xshift=-12.0cm] {Train};
 	
+	\node (data) [datos, below of=train5, yshift=4.0cm,  xshift=6.0cm] {Datos};
+
 	\node (fold1) [fold, above of=train5] {\textit{Fold 1}};
 	\node (fold2) [fold, above of=train4] {\textit{Fold 2}};
 	\node (fold3) [fold, above of=train3] {\textit{Fold 3}};
@@ -43,13 +46,28 @@ No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado p
 	\node (test3) [test, below of=train3] {Test};
 	\node (test4) [test, below of=train4] {Test};
 	\node (test5) [test, below of=train5] {Test};
-	\node (prom) [prom, below of=test3] {Promedio};
 	
-	\draw [arrow] (test1) |- (prom);
-	\draw [arrow] (test2) -- (prom);
-	\draw [arrow] (test3) -- (prom);
-	\draw [arrow] (test4) -- (prom);
-	\draw [arrow] (test5) |- (prom);
+	\node (proc1) [proc, below of=test1, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc2) [proc, below of=test2, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc3) [proc, below of=test3, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc4) [proc, below of=test4, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc5) [proc, below of=test5, yshift=-1.2cm] {Entrenar y testear};
+	
+	\node (prom) [prom, below of=test3, yshift=-3.0cm] {Promedio};
+	
+	\draw [arrowBig] (data) -- (fold3);
+	
+	\draw [arrow] (test1) -- (proc1);
+	\draw [arrow] (test2) -- (proc2);
+	\draw [arrow] (test3) -- (proc3);
+	\draw [arrow] (test4) -- (proc4);
+	\draw [arrow] (test5) -- (proc5);
+	
+	\draw [arrow] (proc1) -- (prom);
+	\draw [arrow] (proc2) -- (prom);
+	\draw [arrow] (proc3) -- (prom);
+	\draw [arrow] (proc4) -- (prom);
+	\draw [arrow] (proc5) -- (prom);
 	
 	\end{tikzpicture}
 	\caption{Esquema de test 5-folds}
@@ -505,7 +523,7 @@ El evaluador utilizado fue InfoGain para analizar la importancia de cada atribut
 \end{tabular}
 \end{table}
 
-Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información ya que es la característica conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es vulgarmente la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
