@@ -32,19 +32,19 @@
 \contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{28}
 \contentsline {section}{\numberline {6.1}Baseline}{28}
 \contentsline {section}{\numberline {6.2}Modelo de testing}{29}
-\contentsline {section}{\numberline {6.3}Clasificadores}{31}
-\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{31}
-\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{31}
-\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{31}
+\contentsline {section}{\numberline {6.3}Clasificadores}{32}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{32}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{32}
+\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{32}
 \contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{32}
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{32}
-\contentsline {subsection}{\numberline {6.4.1}Test de Wilcoxon}{32}
+\contentsline {subsection}{\numberline {6.4.1}Test de Wilcoxon}{33}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{33}
-\contentsline {subsection}{\numberline {6.4.3}Student Test}{33}
+\contentsline {subsection}{\numberline {6.4.3}Student Test}{34}
 \contentsline {section}{\numberline {6.5}Resultados}{34}
-\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{37}
-\contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{38}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{38}
+\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{38}
+\contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{39}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{39}
 \contentsline {section}{\numberline {6.7}Combinando clases de atributos}{40}
 \contentsline {chapter}{\numberline {7}Trabajos futuros}{42}
 \contentsline {chapter}{\numberline {8}Conclusiones}{44}

@@ -4,17 +4,13 @@ En esta sección, analizamos los datos obtenidos para entrenar clasificadores qu
 
 Primero presentaremos el baseline que consideramos. Este nos servirá para tener una clasificación aceptable que luego trataremos de superar. Explicaremos los clasificadores utilizados para vencer esta marca y en base a test estadísticos notaremos si aportan datos significativos. También describiremos el modelo de testing utilizando los datos recolectados. Por último, analizamos los atributos más descriptivos de Buenos Aires y Córdoba. 
 
-Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. 
+Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta nos provee varios algoritmos de Machine Learning. Para los tests estadísticos utilizamos la herramienta R versión 3.0.1. 
 
 \section{Baseline}
 
-El baseline nos define el clasificador mas simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo, utilizando nuestros datos, tuvo una performance buena. En nuestro caso llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. 
+El baseline nos define el clasificador mas simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria.
 
-%Pensemos que para determinar si una persona corresponde a alguno de los grupos vamos a tirar una moneda. Empíricamente podemos afirmar que en promedio la probabilidad de que salga algún grupo es 1/2. Gracias a la Ley de los Grandes Números podemos afirmar que, para valores grandes, esto va a tender a la Esperanza. Entonces, si nosotros queremos identificar un hablante utilizando el azar nos dará el 50\% de efetividad.
-
-%Cabe aclarar que nuestro set de datos no esta debidamente balanceado. Tuvimos más grabaciones de Buenos Aires que de Córdoba. Es por eso que el entrenamiento también va a ser desbalanceado. Por este motivo puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para características de Buenos Aires que de Córdoba. Lamentablemente eso es una problemática de los datos obtenidos.
-
-Cabe aclarar que, si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee mas grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba. Lamentablemente esto es una problemática de los datos obtenidos.
+Este algoritmo, utilizando nuestros datos, tuvo una performance buena. Veremos más adelante que llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee mas grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba. Lamentablemente esto es una problemática de los datos obtenidos.
 
 La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
@@ -26,9 +22,39 @@ La complejidad del problema y la forma en que fue realizado el experimento nos l
 
 Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
 
-%TODO: quizas es buena idea hacer un gráfico de esto.
+No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la figura \ref{graficoFold} se diagrama este modelo de testing.
 
-No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. A esto lo llamamos \textbf{cross-validation test de 5-folds}. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba.
+\begin{figure}[H]
+	\begin{tikzpicture}[node distance=1.2cm]
+	\node (train1) [train] {Train};
+	\node (train2) [train, xshift=-3.0cm] {Train};
+	\node (train3) [train, xshift=-6.0cm] {Train};
+	\node (train4) [train, xshift=-9.0cm] {Train};
+	\node (train5) [train, xshift=-12.0cm] {Train};
+	
+	\node (fold1) [fold, above of=train5] {\textit{Fold 1}};
+	\node (fold2) [fold, above of=train4] {\textit{Fold 2}};
+	\node (fold3) [fold, above of=train3] {\textit{Fold 3}};
+	\node (fold4) [fold, above of=train2] {\textit{Fold 4}};
+	\node (fold5) [fold, above of=train1] {\textit{Fold 5}};
+	
+	\node (test1) [test, below of=train1] {Test};
+	\node (test2) [test, below of=train2] {Test};
+	\node (test3) [test, below of=train3] {Test};
+	\node (test4) [test, below of=train4] {Test};
+	\node (test5) [test, below of=train5] {Test};
+	\node (prom) [prom, below of=test3] {Promedio};
+	
+	\draw [arrow] (test1) |- (prom);
+	\draw [arrow] (test2) -- (prom);
+	\draw [arrow] (test3) -- (prom);
+	\draw [arrow] (test4) -- (prom);
+	\draw [arrow] (test5) |- (prom);
+	
+	\end{tikzpicture}
+	\caption{Esquema de test 5-folds}
+	\label{graficoFold}
+\end{figure}
 
 Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Para solucionar esto, el test de cross-validation fue de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizarmos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 folds. 
 
