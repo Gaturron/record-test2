@@ -41,6 +41,20 @@
 }
 %fin timeline
 
+%definicion para grafico en analisis de fold
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{train} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{test} = [rectangle, minimum width=2cm, minimum height=0.5cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{prom} = [rectangle, rounded corners, minimum width=8cm, minimum height=0.5cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{fold} = [rectangle, minimum width=2cm, minimum height=0.5cm, text centered]
+
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%fin fold
+
 \begin{document}
 
 %%%% CARATULA
