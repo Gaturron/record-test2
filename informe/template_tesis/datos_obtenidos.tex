@@ -63,7 +63,6 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 % ===> Llegué a la conclusión que mejor es no poner nada de SCORES en el documento y si decirlo en trabajos futuros
 %TODO: leer bien el mail de prosodylab
 Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Esta forma se realizó ya que eran pocos audios. Los resultados de la cantidad de alineamientos corregidos son:
-%Texto viejo: ...pero en un experimento con más hablantes se debe utilizar la opción de ``.SCORES’’ descripta en el capítulo anterior... 
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/data1.complete
 \begin{table}[h]
@@ -79,6 +78,17 @@ Para corregir los errores descriptos debimos chequear cada uno de los TextGrids.
 
 Entonces las grabaciones que utilizamos salieron de estas 310 alineaciones. 
 
-Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación sea la mejor grabada. Debemos quitar estos casos para no favorecer a las frases repetidas mas que a las frase grabadas una sola vez. Los audios repetidos, en este conjunto de 310 alineamientos, son 50. Entonces, para finalizar, quitamos las grabaciones repetidas. Las grabaciones que utilizamos para seguir realizando este análisis son 260. 
+Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación sea la mejor grabada. Debemos quitar estos casos para no favorecer a las frases repetidas más que a las frase grabadas una sola vez. Contabilizamos los audios repetidos y los mostramos en la siguiente tabla.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
+\textbf{Todos los intentos}  & 220 & 90 & 310 \\ \hline
+\textbf{Último intento}  & \textbf{181} & \textbf{79} & \textbf{260} \\ \hline
+\end{tabular}
+\end{table}
+
+Entonces los audios extraidos con la herramienta y que vamos a utilizar para clasificar cada uno de los hablantes son: 181 audios para Buenos Aires y 79 audios para Córdoba.
 En la próxima sección veremos el análisis que realizamos con estas grabaciones. 
