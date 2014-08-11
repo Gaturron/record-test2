@@ -8,9 +8,9 @@ Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página 
 
 \section{Baseline}
 
-El baseline nos define el clasificador mas simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria.
+El baseline nos define el clasificador más simple, que posteriormente tratamos de vencer. No hay ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria.
 
-Este algoritmo, utilizando nuestros datos, tuvo una performance buena. Veremos más adelante que llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee mas grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba. Lamentablemente esto es una problemática de los datos obtenidos.
+Este algoritmo, utilizando nuestros datos, tuvo una performance buena. Veremos más adelante que llegó a superar el 50\% de efectividad aproximadamente. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje no sería tan alto. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba. Lamentablemente esto es una problemática de los datos obtenidos.
 
 La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
@@ -98,64 +98,64 @@ escapeinside={\%*}{*)},          % if you want to add a comment within your code
 morekeywords={GeneradorDeTest, porcentajeMaximoDeSimilitud, checkBalance, Input, Output, Repetir, veces, Si, Agregar, Recorrer, Devolver, y, no, esta, en},
 literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&&} {$\cap$}{2} {||} {$\cup$}{2} }
 \begin{lstlisting}
- GeneradorDeTest:
- Input: conjunto audios
- Output: conjunto de <train, test>
- resultado <-{}
- train <- {}
- test <- {}
- hablantesEnTests <- {}
- hablantes <- ObtenerHablantes(audios)
- tamTest <- tam(hablantes) * 0.3 
-      #Esta cte nos define el tamano del fold
- Repetir 5 veces:
- {
-    hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
-    #Esta cte nos define porcentaje de hablantes usados
-    
-    hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
-    
-    hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
-
-    test <- ObtenerAudios(hablantesTest, audios)
-    train <- ObtenerAudios(hablantes - hablantesTest, audios)
-
-    Si <train, test> no esta en resultado 
-       #No es un fold ya creado
-    y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
-       #El test creado solo puede ser 20 % parecido a uno anterior
-    y checkBalance(train) y checkBalance(test) 
-       #Chequeo del habalnce entre audios de BsAs y Cba
+    GeneradorDeTest:
+    Input: conjunto audios
+    Output: conjunto de <train, test>
+    resultado <-{}
+    train <- {}
+    test <- {}
+    hablantesEnTests <- {}
+    hablantes <- ObtenerHablantes(audios)
+    tamTest <- tam(hablantes) * 0.3 
+        #Esta cte nos define el tamano del fold
+    Repetir 5 veces:
     {
-       Agregar <train, test> a resultado
-       Agregar hablantesTest a hablantesEnTests
-    }
- }
- Devolver resultado
+        hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
+            #Esta cte nos define porcentaje de hablantes usados
     
- porcentajeMaximoDeSimilitud:
- Input: conj, conjunto de fold, pct
- Output: booleano
- Recorrer test de conjunto de fold:
- {
-    pct <- Maximo(pct, porcentajeSimilitud(conj, test))
- }
- Devolver pct < 0.2	
+        hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
+    
+        hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
 
- checkBalance:
- Input: conj, pct
- Output: booleano
- ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
- ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
- ck_both <- #cba(conj) < #bsas(conj)
- Devolver ck_bsas y ck_cba y ck_both
+        test <- ObtenerAudios(hablantesTest, audios)
+        train <- ObtenerAudios(hablantes - hablantesTest, audios)
+
+        Si <train, test> no esta en resultado 
+           #No es un fold ya creado
+        y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
+           #El test creado solo puede ser 20 % parecido a uno anterior
+        y checkBalance(train) y checkBalance(test) 
+           #Chequeo del habalnce entre audios de BsAs y Cba
+        {
+           Agregar <train, test> a resultado
+           Agregar hablantesTest a hablantesEnTests
+        }
+    }
+    Devolver resultado
+    
+    porcentajeMaximoDeSimilitud:
+    Input: conj, conjunto de fold, pct
+    Output: booleano
+    Recorrer test de conjunto de fold:
+    {
+        pct <- Maximo(pct, porcentajeSimilitud(conj, test))
+    }
+    Devolver pct < 0.2	
+
+    checkBalance:
+    Input: conj, pct
+    Output: booleano
+    ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
+    ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
+    ck_both <- #cba(conj) < #bsas(conj)
+    Devolver ck_bsas y ck_cba y ck_both
 \end{lstlisting}
 
 El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las lineas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (lineas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tenga como máximo 20\% de elementos repetidos de los demás tests (lineas 20 y 26) y que la cantidad de audios de Córdoba y de Buenos Aires es balanceado.
 
 La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene solamente a lo sumo 20\% de audios en común con las demás instancias.
 
-La función $checkBalance$ nos define si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Finalmente, al última condición pide tener mas audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
+La función $checkBalance$ nos define si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Finalmente, al última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
 A continuación veremos los clasificadores que utilizaremos para predecir qué lugar pertenece cada hablante.
 
@@ -196,12 +196,12 @@ Un clasificador de tipo Naive Bayes asume que cada atributo describe una caracte
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos son el vector resultante de entrenar con train y clasificar con test para los 5 folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos principales tests: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos surgen del porcentaje de instancias correctas para los 5 folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos principales tests: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
 
 \subsection{Test de Wilcoxon}
 
 %TODO: explicar un poco mejor para entender porque se aplica
-Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos va a afirmar si hay razones estadísticas para decir si un clasificador es mejor que otro.
+Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos va a afirmar si hay razones estadísticas para decir si un clasificador es distinto que otro. El input utilizado fue el vector resultante del porcentaje de instancias correctas para cada fold para el baseline ZeroR y para los demás clasificadores.
 
 Para realizar este test se debe cumplir que:
 
@@ -214,7 +214,7 @@ Para realizar este test se debe cumplir que:
     \item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que, como dijimos, no estamos seguros que nuestros datos provengan de una distribución Normal.
 \end{itemize}
 
-El input fue el vector resultante del test baseline ZeroR con el vector de los demás clasificadores. Las hipótesis fueron:
+Las hipótesis fueron:
 
 \vspace{0.5cm}
 \hspace{2cm}Ho: Clasificador alternativo no es diferente que ZeroR
@@ -240,9 +240,9 @@ Utilizamos el test de Shapiro-Wilk para poder afirmar si conjunto de datos provi
 
 %Interpretación: Siendo la hipótesis nula que la población está distribuida normalmente, si el p-valor es menor a alfa (nivel de confianza) entonces la hipótesis nula es rechazada (se concluye que los datos no vienen de una distribución normal). Si el p-valor es mayor a alfa, no se rechaza la hipótesis y se concluye que los datos siguen una distribución normal.
 
-El test de Shapiro-Wilk se basa en plantear como hipótesis nula que la población esta distribuida de forma Normal. Aplicamos el estadístico de este test: si el p-valor nos da menor a 0,05 entonces la hipótesis nula es rechazada y se afirma que los datos no provienen de una distribución Normal. Si, en cambio, es mayor a 0,05 no hay evidencia suficiente  para rechazar Ho y por ende se afirma que los datos siguen una distribución Normal.
+El test de Shapiro-Wilk se basa en plantear como hipótesis nula que la población esta distribuida de forma Normal. Aplicamos el estadístico de este test: si el p-valor nos da menor a 0,05 entonces la hipótesis nula es rechazada y se afirma que los datos no provienen de una distribución Normal. Si, en cambio, es mayor a 0,05 no hay evidencia suficiente para rechazar Ho y por ende se afirma que los datos siguen una distribución Normal.
 
-Este test se realiza individualmente para cada vector resultado. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el t de Student para ellos dos. 
+Este test se realiza individualmente para cada vector resultado de porcentaje de instancias correctas para cada clasificador. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el t de Student para ellos dos. 
 
 \subsection{Student Test}
 
@@ -250,7 +250,7 @@ Este test se realiza individualmente para cada vector resultado. O sea, chequeam
 
 %A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
 
-Para los vectores provenientes de una distribución Normal se le aplica este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos. De la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las mismas hipótesis. O sea: 
+Para los vectores resultado provenientes de una distribución Normal se le aplica este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos pero teniendo en cuenta que surgen de una distribución Normal. De la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las siguientes hipótesis. 
 
 \vspace{0.5cm}
 \hspace{2cm}Ho: No hay diferencias entre ZeroR y clasificador
@@ -259,7 +259,7 @@ Para los vectores provenientes de una distribución Normal se le aplica este tes
 \hspace{2cm}H1: Hay diferencias entre ZeroR y clasificador
 \vspace{0.5cm}
 
-La ventaja de usarlo es que, al saber qué distribución representa, vamos a tener resultados mas precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar Ho. De lo contrario, si hay evidencia y rechazamos Ho.
+La ventaja de usarlo es que, al saber qué distribución representa, vamos a tener resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar Ho. De lo contrario, si hay evidencia y rechazamos Ho.
 
 \section{Resultados}
 
@@ -417,7 +417,7 @@ Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas
 \textbf{Instancias correctas = 80\%}
 \end{center}
 
-Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están mas distribuidos.
+Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están más distribuidos.
 
 Otro dato a tener en cuenta es que si bien, el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
 
@@ -479,7 +479,7 @@ Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar 
 
 Analizamos la salida del clasificador JRip ya que, de los clasificadores elegidos, es el que utiliza una cantidad manejable de atributos. 
 
-Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación $train 0$ y $test 0$.
+Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
 
 \paragraph*{Clasificador JRip:}
 
@@ -493,7 +493,7 @@ Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente 
 \end{itemize}
 \end{flushleft}
 
-Podemos notar en la regla anterior que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar su árbol de decisión nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
+Podemos notar en la regla anterior que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
 
 Analizamos a continuación cuales atributos aportan mayor información.
 

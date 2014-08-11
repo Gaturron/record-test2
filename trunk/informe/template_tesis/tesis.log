@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  9 AUG 2014 15:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  10 AUG 2014 22:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1280,8 +1280,8 @@ LaTeX Info: Redefining \% on input line 197.
 LaTeX Info: Redefining \. on input line 231.
 LaTeX Info: Redefining \% on input line 231.
  [33]
-LaTeX Info: Redefining \. on input line 287.
-LaTeX Info: Redefining \% on input line 287.
+LaTeX Info: Redefining \. on input line 267.
+LaTeX Info: Redefining \% on input line 267.
  [34]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1350,23 +1350,13 @@ Cap\'{\i }tulo 8.
 ) (./marcas_prosodicas.tex [44
 
 ]
-Underfull \hbox (badness 1590) in paragraph at lines 15--15
-[]|\OT1/cmr/m/n/12 'caminante no hay ca-
+Underfull \hbox (badness 3536) in paragraph at lines 25--25
+[]|\OT1/cmr/m/n/12 'A la mu-jer pi-ca-res-ca
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 24--24
-[]|\OT1/cmr/m/n/12 'la sue-gra y el doc-tor
- []
-
-
-Underfull \hbox (badness 5403) in paragraph at lines 25--25
-[]|\OT1/cmr/m/n/12 'a la mu-jer pi-ca-res-ca
- []
-
-
-Underfull \hbox (badness 4242) in paragraph at lines 26--26
-[]|\OT1/cmr/m/n/12 'quien siem-bra vien-tos
+Underfull \hbox (badness 2057) in paragraph at lines 26--26
+[]|\OT1/cmr/m/n/12 'Quien siem-bra vien-tos
  []
 
 
@@ -1378,12 +1368,21 @@ Underfull \hbox (badness 3735) in paragraph at lines 29--29
 []|\OT1/cmr/m/n/12 [['el'], ['a', 'mor*'], ['ak', 'tw*', 'a'], ['kon'],
  []
 
+
+Underfull \hbox (badness 2932) in paragraph at lines 31--31
+\OT1/cmr/m/n/12 mu-cha-cho, idea-lis-ta; el
+ []
+
 [45
 
 ]
+Underfull \hbox (badness 2913) in paragraph at lines 49--49
+[]|\OT1/cmr/m/n/12 'El es-pa-rra-go sa-li^^So ri-
+ []
+
 LaTeX Info: Redefining \. on input line 58.
 LaTeX Info: Redefining \% on input line 58.
- [46]) (./nomenclatura_de_atributos.tex
+[46]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [47]
@@ -1478,7 +1477,7 @@ LaTeX Info: Redefining \% on input line 6.
 Here is how much of TeX's memory you used:
  23027 strings out of 493307
  512149 string characters out of 6139905
- 755160 words of memory out of 5000000
+ 755379 words of memory out of 5000000
  25964 multiletter control sequences out of 15000+600000
  12842 words of font info for 46 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1497,7 +1496,7 @@ cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on tesis.pdf (56 pages, 1750503 bytes).
+Output written on tesis.pdf (56 pages, 1752075 bytes).
 PDF statistics:
  268 PDF objects out of 1000 (max. 8388607)
  178 compressed objects within 2 object streams
