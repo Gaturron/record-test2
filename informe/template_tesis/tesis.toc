@@ -25,10 +25,9 @@
 \contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{21}
 \contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{22}
 \contentsline {chapter}{\numberline {5}Datos obtenidos}{24}
-\contentsline {subsection}{\numberline {5.0.4}Mediciones}{24}
-\contentsline {subsection}{\numberline {5.0.5}Errores comunes}{24}
-\contentsline {section}{\numberline {5.1}Alineaci\IeC {\'o}n forzada}{25}
-\contentsline {section}{\numberline {5.2}Correcci\IeC {\'o}n de errores}{26}
+\contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{24}
+\contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{25}
+\contentsline {section}{\numberline {5.3}Correcci\IeC {\'o}n de errores}{26}
 \contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{28}
 \contentsline {section}{\numberline {6.1}Baseline}{28}
 \contentsline {section}{\numberline {6.2}Modelo de testing}{29}
@@ -40,7 +39,7 @@
 \contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{33}
 \contentsline {subsection}{\numberline {6.4.1}Test de Wilcoxon}{33}
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{34}
-\contentsline {subsection}{\numberline {6.4.3}Student Test}{34}
+\contentsline {subsection}{\numberline {6.4.3}Student t Test}{34}
 \contentsline {section}{\numberline {6.5}Resultados}{35}
 \contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{38}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{39}

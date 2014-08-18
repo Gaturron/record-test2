@@ -1,10 +1,10 @@
 \chapter{Datos obtenidos}
 
-En este capítulo vamos a describir los datos obtenidos a través del framework. Tuvimos algunos problemas al recolectar los audios. El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para hacer una buena grabación. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono y saturación. 
+En este capítulo vamos a describir los datos obtenidos a través del framework desarrollado. Tuvimos algunos problemas al recolectar los audios. El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para hacer una buena grabación. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono y saturación. 
 
-\subsection{Mediciones}
+\section{Evaluación manual de las grabaciones}
 
-Se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. Esta clasificación fue empírica, o sea no realizando ningún análisis sino que escuchando manualmente cada una. La cantidad de cada clase fue la siguiente:
+Como primer paso, se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. La cantidad de cada clase fue la siguiente:
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/Datos crudo
 \begin{table}[h]
@@ -20,19 +20,15 @@ Se realizó una clasificación manual de las grabaciones para determinar si las 
 \end{tabular}
 \end{table}
 
-Los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
+Como puede observarse, los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
 
-\subsection{Errores comunes}
+Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvieron algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado. La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
 
-Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvo algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado.
-
-La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
-
-El análisis que se presenta a continuación está basado en los audios clasificados como ``Conservados’’.
+El análisis que se presenta a continuación está basado solamente en los audios clasificados como ``Conservar’’.
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar los audios mal alineados, ya que si no cuando los procese el extractor nos darían información errónea. Fuimos chequeando cada audio, etiquetado como ``Conservado’’, y analizando si la alineación fue correcta con la aplicación Praat \cite{praat}. Los errores de alineamiento más comunes se debieron a:
+El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar los audios mal alineados, ya que si no, cuando los procese el extractor de atributos nos darían información errónea. Chequeamos cada audio etiquetado como ``Conservar’’, y analizamos con la aplicación Praat \cite{praat} si la alineación fue correcta. Los errores de alineamiento más comunes se debieron a:
 
 \begin{itemize}
     \item \textbf{Ruido de fondo:} los audios donde el alineador se comporta de peor manera son aquellos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Fig. \ref{alinMala} se puede ver un ejemplo utilizando Praat.
@@ -52,8 +48,9 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 \end{figure}
 
     \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Muchas veces la grabación fue buena pero al final tuvo una entonación mucho más fuerte que las demás, haciendo que, posteriormente, la alineación no sea precisa.
+    %TODO: cambiar "entonacion fuerte"
 
-    \item \textbf{Entonación exagerada:} en algunas grabaciones se quiso exagerar la entonación. Por ejemplo, las palabras finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado de forma exagerada. En la mayoría de los audios no sucedió, por lo que no afectó el análisis del experimento. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma más natural posible. 
+    \item \textbf{Entonación exagerada:} en algunas grabaciones se quiso exagerar la entonación. Por ejemplo, las palabras finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado. En la mayoría de los audios no sucedió, por lo que no afectó el análisis del experimento. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma más natural posible. 
     
 \end{itemize}
 
@@ -62,7 +59,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 %Corregir y explicar bien para qe se entiende la opcion de SCORES acá y en el capitulo anterior 
 % ===> Llegué a la conclusión que mejor es no poner nada de SCORES en el documento y si decirlo en trabajos futuros
 %TODO: leer bien el mail de prosodylab
-Para corregir los errores descriptos debimos chequear cada uno de los TextGrids. Esta forma se realizó ya que eran pocos audios. Los resultados de la cantidad de alineamientos corregidos son:
+Para corregir los errores descriptos debimos chequear manualmente cada uno de los TextGrids. Los resultados de la cantidad de alineamientos corregidos son:
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/data1.complete
 \begin{table}[h]
@@ -78,7 +75,8 @@ Para corregir los errores descriptos debimos chequear cada uno de los TextGrids.
 
 Entonces las grabaciones que utilizamos salieron de estas 310 alineaciones. 
 
-Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación sea la mejor grabada. Debemos quitar estos casos para no favorecer a las frases repetidas más que a las frase grabadas una sola vez. Contabilizamos los audios repetidos y los mostramos en la siguiente tabla.
+Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación fuera la mejor grabada. Debemos quitar estos casos para no favorecer a las frases repetidas más que a las frases grabadas una sola vez. Contabilizamos los audios repetidos y los mostramos en la siguiente tabla.
+%TODO: arreglar anterior 
 
 \begin{table}[H]
 \centering
