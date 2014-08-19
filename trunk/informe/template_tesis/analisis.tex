@@ -264,6 +264,8 @@ La ventaja de usarlo es que, al saber qué distribución representa, vamos a ten
 
 \section{Resultados}
 
+%TODO:: según agustin esto no va acá, pero nose donde mas ponerlo.
+
 Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
 
 \begin{figure}[H]
@@ -307,8 +309,9 @@ Recordemos que al tener pocos datos debimos repetir instancias en los grupos de 
 \label{TestsInstances}
 \end{figure}
 
-Los resultados de clasificación correcta (en porcentaje) para los distintos clasificadores fueron:
+La tabla de la Figura \ref{class_corr_en_pct} resume los resultados de clasificación correcta (en porcentaje) para los distintos clasificadores.
 
+\begin{figure}[H]
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
@@ -323,8 +326,11 @@ Los resultados de clasificación correcta (en porcentaje) para los distintos cla
 \textbf{Promedio} & 64 & 61 & 60 & 72 & 70 \\ \hline
 \end{tabular}
 \end{table}
+\caption{Clasificación correcta en porcentaje}
+\label{class_corr_en_pct}
+\end{figure}
 
-Donde Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de instancias correctamente clasificadas de cada fold en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de instancias correctamente clasificadas de cada fold en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
 \begin{figure}[H]
 \centering
@@ -333,7 +339,7 @@ Donde Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par 
 	width=16cm,
 	height=10cm,
     title={Porcentaje de cada clasificador en cada tests},
-    xlabel={Tests},
+    xlabel={Folds},
     ylabel={Porcentaje},
     xmin=0, xmax=6,
     ymin=50, ymax=90,
@@ -359,13 +365,13 @@ Donde Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par 
 
 Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline.
 
-Algo interesante sucede con el clasificador NaiveBayes: posee métricas muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
+Algo interesante sucede con el clasificador NaiveBayes: muestra resultados muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la Figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
 
-El porcentaje de exactitud en la clasificación se puede apreciar con la métrica \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. \textit{Recall} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos positivos y falsos negativos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. Falsos negativos si el hablante es de Buenos Aires pero es clasificado como Córdoba. Y falso positivo si el hablante es de Córdoba pero es clasificado como Buenos Aires. 
+El porcentaje de exactitud en la clasificación se puede apreciar con las métricas \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. \textit{Recall} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos positivos y falsos negativos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. Falsos negativos si el hablante es de Buenos Aires pero es clasificado como Córdoba. Y falso positivo si el hablante es de Córdoba pero es clasificado como Buenos Aires. 
 
 %http://en.wikipedia.org/wiki/Precision_and_recall
 
-Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4, que es el más interesante.
+Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matrizconf} muestran los valores que  surgen de la matriz de confusión. Vamos a analizar como son estas métricas para el caso del test 4, que es el más interesante.
 
 % Precision = VP / VP + FP
 % Recall = VP / VP + FN
@@ -373,6 +379,12 @@ Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas
 % FN = "BsAs classif. como Cba"
 % FP = "Cba classif. como BsAs" 
 
+\begin{center}
+\Large Matrices de confusión para test 4
+\end{center}
+
+\begin{figure}[H]
+\centering
 \paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
 \centering
@@ -387,7 +399,12 @@ Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas
 \textbf{Precision = 22/40 = 0.55;} \textbf{Recall = 1}\\
 \textbf{Instancias correctas = 55\%}
 \end{center}
+\caption{Matriz de confusión para ZeroR en el test 4}
+\label{ZeroR_matrizconf}
+\end{figure}
 
+\begin{figure}[H]
+\centering
 \paragraph*{Function SMO:}\mbox{}\\
 \begin{table}[H]
 \centering
@@ -402,7 +419,12 @@ Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas
 \textbf{Precision = 22/35 = 0.63;} \textbf{Recall = 1}\\
 \textbf{Instancias correctas = 67\%}
 \end{center}
+\caption{Matriz de confusión para Func. SMO en el test 4}
+\label{FSMO_matrizconf}
+\end{figure}
 
+\begin{figure}[H]
+\centering
 \paragraph*{NaiveBayes:}\mbox{}\\
 \begin{table}[H]
 \centering
@@ -417,13 +439,22 @@ Estos valores surgen de la matriz de confusión. Vamos a analizar como son estas
 \textbf{Precision = 20/26 = 0.77;} \textbf{Recall = 20/22 = 0.9}\\
 \textbf{Instancias correctas = 80\%}
 \end{center}
+\caption{Matriz de confusión para NaiveBayes en el test 4}
+\label{NaiveBayes_matrizconf}
+\end{figure}
 
-Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} ( clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están más distribuidos.
+Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} (clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige solo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están más distribuidos.
 
-Otro dato a tener en cuenta es que si bien, el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
+Otro dato a tener en cuenta es que, si bien el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
 
-Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Este caso para los clasificadores ZeroR y NaiveBayes es:
+Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Las tablas \ref{ZeroR_matrizconf_2}, \ref{NaiveBayes_matrizconf_2} muestran este caso para los clasificadores ZeroR y NaiveBayes es:
 
+\begin{center}
+\Large Matrices de confusión para test 1
+\end{center}
+
+\begin{figure}[H]
+\centering
 \paragraph*{ZeroR:}\mbox{}\\
 \begin{table}[H]
 \centering
@@ -438,7 +469,12 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 \textbf{Precision = 47/73 = 0.64;} \textbf{Recall = 47/47 = 1}\\
 \textbf{Instancias correctas = 64\%}
 \end{center}
+\caption{Matriz de confusión para ZeroR en el test 1}
+\label{ZeroR_matrizconf_2}
+\end{figure}
 
+\begin{figure}[H]
+\centering
 \paragraph*{NaiveBayes:}\mbox{}\\
 \begin{table}[H]
 \centering
@@ -453,15 +489,19 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 \textbf{Precision = 33/46 = 0.7;} \textbf{Recall = 33/47 = 0.7}\\
 \textbf{Instancias correctas = 63\%}
 \end{center}
+\caption{Matriz de confusión para NavieBayes en el test 1}
+\label{NaiveBayes_matrizconf_2}
+\end{figure}
 
-En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, ZeroR concentra grán parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
+En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, ZeroR concentra gran parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
 
 \subsection{Wilcoxon y Test t de Student}
 
-En esta sección mostramos los resultados de estos tests estadísticos. Todos los tests estadísticos fueron realizados utilizando R versión 3.0.1. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR.
+En esta sección mostramos los resultados de estos tests estadísticos. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR. Los resultados expresados en p-valor se pueden observar en la Figura \ref{res_tests_wilcoxon_student}.
 
 %TODO: Tambien quizas vendria bien una imagen
 
+\begin{figure}[H]
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
@@ -473,8 +513,11 @@ En esta sección mostramos los resultados de estos tests estadísticos. Todos lo
 \textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
 \end{tabular}
 \end{table}
+\caption{Resultados de cada test representado en p-valor}
+\label{res_tests_wilcoxon_student}
+\end{figure}
 
-Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando estos resultados notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{Function SMO tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
+Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando los resultados resumidos en la Figura \ref{res_tests_wilcoxon_student} notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que \textbf{Function SMO tiene evidencia suficiente para ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
 \subsection{Clasificadores encontrados}
 
@@ -494,19 +537,20 @@ Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente 
 \end{itemize}
 \end{flushleft}
 
-Podemos notar en la regla anterior que la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
+En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuales atributos tienen mayor importancia a la hora de la clasificación.
 
-Analizamos a continuación cuales atributos aportan mayor información.
+Analizamos a continuación cuáles atributos aportan mayor información.
 
 \section{Selección de atributos de forma automática}
 
-En esta sección aplicaremos a los distintos atributos evaluadores para analizar cual posee mayor importancia. 
-
-\subsection*{Attribute Evaluator: InfoGain}
+%\subsection*{Attribute Evaluator: InfoGain}
 %http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
 
-El evaluador utilizado fue InfoGain para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo que ese atributo se cumple. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. De esta forma, cuanto menor sea la entropía sabiendo ese atributo mayor será la ganancia de información para ese atributo.
+%TODO: explicar bien InfoGain
+%leer http://en.wikipedia.org/wiki/Information_gain_ratio
 
+En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo que ese atributo se cumple. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. De esta forma, cuanto menor sea la entropía sabiendo ese atributo mayor será la ganancia de información para ese atributo.
+\begin{figure}[H]
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|l|c|c|c|c|c|}
@@ -520,11 +564,13 @@ El evaluador utilizado fue InfoGain para analizar la importancia de cada atribut
  0.02285     & FON\_Sfinal\_norm \\ \hline
  0.02226     & ACU\_MinLL\_1 \\ \hline
  0.02144     & ACU\_AverageLL\_1 \\ \hline
- 
 \end{tabular}
 \end{table}
+\label{infogain}
+\caption{Resultados de InfoGain}
+\end{figure}
 
-Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es vulgarmente la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
