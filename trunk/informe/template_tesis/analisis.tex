@@ -570,11 +570,11 @@ En esta sección aplicaremos evaluadores a los distintos atributos para analizar
 \caption{Resultados de InfoGain}
 \end{figure}
 
-Analizando los resultados vemos que los más preponderantes se refieren a la duración de consonantes, vocales, duración de la sílaba acentuada y su sílaba anterior. El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+La tabla de la Figura \ref{infogain} nos muestra que los más preponderantes se refieren a la duración de consonantes (FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
-También algo que se desprende de este análisis es: todas los atributos del tipo fonéticas (empezadas con FON) y silábicas (empezadas con SIL) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consolantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
+También algo que se desprende de este análisis es: todos los atributos del tipo fonético (empezadas con FON) y silábicas (empezadas con SIL) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consolantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
 
 %\paragraph*{Posibles causas de porque FON\_consonant\_norm y FON\_vowel\_norm van primeros:}
 %Todas las reglas (salvo la 1) corresponden a consonantes.
@@ -624,28 +624,32 @@ También algo que se desprende de este análisis es: todas los atributos del tip
 
 \section{Combinando clases de atributos}
 
-Combinando los tipos de atributos definidos pudimos apreciar cuanto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la siguiente tabla se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgieron del promedio de los resultados de los 5 tests generados.  
+Combinando los tipos de atributos definidos pudimos apreciar cuánto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la tabla de la Figura \ref{comb_atrib} se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgieron del promedio de los resultados de los 5 tests generados.  
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
 %Datos: {'bayes.NaiveBayes': {'SIL + FON + ACU': 70.0, 'SIL + ACU': 67.0, 'FON + ACU': 71.0, 'ACU': 68.0, 'FON': 69.0, 'SIL + FON': 69.0, 'SIL': 66.0}, 'functions.SMO': {'SIL + FON + ACU': 73.0, 'SIL + ACU': 70.0, 'FON + ACU': 71.0, 'ACU': 69.0, 'FON': 65.0, 'SIL + FON': 66.0, 'SIL': 66.0}}
 
+\begin{figure}[H]
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{} & \textbf{NaiveBayes} & \textbf{Functions SMO}   \\ \hline
-SIL + FON + ACU & 70 & 73 \\ \hline
-SIL + FON & 69 & 66 \\ \hline
-FON + ACU & 71 & 71 \\ \hline
-SIL + ACU & 67 & 70 \\ \hline
-ACU & 68 & 69 \\ \hline
-SIL & 66 & 66 \\ \hline
-FON & 69 & 65 \\ \hline
+SIL + FON + ACU & 70 \% & 73 \% \\ \hline
+SIL + FON & 69 \% & 66 \% \\ \hline
+FON + ACU & 71 \% & 71 \% \\ \hline
+SIL + ACU & 67 \% & 70 \% \\ \hline
+ACU & 68 \% & 69 \% \\ \hline
+SIL & 66 \% & 66 \% \\ \hline
+FON & 69 \% & 65 \% \\ \hline
 \end{tabular}
 \end{table}
+\label{comb_atrib}
+\caption{Combinación de atributos y su resultado}
+\end{figure}
 
-
+\begin{figure}[H]
 \begin{tikzpicture}
 
 \begin{axis}[
@@ -671,6 +675,9 @@ FON & 69 & 65 \\ \hline
 
 \end{axis}
 \end{tikzpicture}
+\label{comb_atrib_graf}
+\caption{Gráfico combinando distintos grupos de atributos}
+\end{figure}
 
 Lo esperable es que aumentando los atributos se aumente el porcentaje de instancias correctas clasificadas. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
 
