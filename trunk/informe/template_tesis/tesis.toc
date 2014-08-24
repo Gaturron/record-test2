@@ -45,5 +45,4 @@
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{39}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{40}
 \contentsline {section}{\numberline {6.7}Combinando clases de atributos}{41}
-\contentsline {chapter}{\numberline {7}Trabajos futuros}{43}
-\contentsline {chapter}{\numberline {8}Conclusiones}{45}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{43}
