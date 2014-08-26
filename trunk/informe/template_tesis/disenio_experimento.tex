@@ -80,8 +80,10 @@ Como afirmamos antes, se utilizaron frases comunes para poder obtener los acento
 %    \label{fig22}
 %\end{figure}
 
+\newgeometry{margin=1cm} 
+\begin{landscape}
 \scriptsize
-\begin{longtable}{| p{0.3\textwidth} || p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth}| p{0.1\textwidth} | } 
+\begin{longtable}{| p{0.5\textwidth} || p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth}| p{0.15\textwidth} | } 
 	\hline
 	\textbf{Frase} & \textbf{2 - Aspiración y elisión de /s/} & \textbf{3 - La 's' antes de la 'c' o 't' no suenan} & \textbf{4 - La 'c' antes de la 't' no suenan}& \textbf{5 - La 'y' y 'll' se pasa a 'i'} & \textbf{6 - La 'r' no debe sonar} \\ \hline	
 	
@@ -126,6 +128,8 @@ Como afirmamos antes, se utilizaron frases comunes para poder obtener los acento
 	\caption{Frases conocidas} 
 	\label{fig22tabla}
 \end{longtable}
+\end{landscape}
+\restoregeometry
 
 \normalsize
 
@@ -176,17 +180,17 @@ La idea del algoritmo es la siguiente: vamos a utilizar un contador que nos va a
 
 Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en la Figura \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de alrededor del 40\% en todas las reglas.
 
-\begin{figure}[h!]
-    \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
+%\begin{figure}[h!]
+%    \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
     %\caption{Cantidad de frases por traza}
     %\label{figFracesTraza}
-\end{figure}
+%\end{figure}
 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
 	\begin{axis}[
-	width=16cm,
+	width=14cm,
 	height=10cm,
 	title={Cantidad de frases por regla a través de una traza},
 	xlabel={Cantidad de grabaciones},
@@ -197,26 +201,32 @@ Esta idea es importante ya que llevamos al máximo la cantidad de información e
 	ytick={0, 25, 50, 75, 100},
 	legend pos=south east,
 	ymajorgrids=true,
+	xmajorgrids=true,
 	grid style=dashed
 	] 
 	
-	\addplot [mark=otimes*, width=5pt] coordinates {
-  		(1, 0)(2, 5)(3, 11)(4, 17)(5, 17)(6, 23)(7, 29)(8, 35)(9, 41)(10, 41)(11, 47)(12, 52)(13, 52)(14, 52)(15,58)(16, 64)(17, 64)(18, 70)(19, 76)(20, 76)(21, 76)(22, 82)(23, 82)(24, 88)(25, 94)(26, 100)
+	\addplot [mark=times*, line width=0.5pt]
+	coordinates {
+  		(0,0)(1, 0)(2, 5)(3, 11)(4, 17)(5, 17)(6, 23)(7, 29)(8, 35)(9, 41)(10, 41)(11, 47)(12, 52)(13, 52)(14, 52)(15,58)(16, 64)(17, 64)(18, 70)(19, 76)(20, 76)(21, 76)(22, 82)(23, 82)(24, 88)(25, 94)(26, 100)
 	};\addlegendentry{Regla 2};
 	
-	\addplot [mark=otimes*, width=5pt] coordinates {
-		(1,0)(2,0)(3,25)(4,25)(5,25)(6,25)(7,25)(8,50)(9,50)(10,50)(11,50)(12,50)(13,75)(14,75)(15,75)(16,75)(17,75)(8,75)(19,75)(20,100)(21,100)(22,100)(23,100)(24,100)(25,100)(26,100)
+	\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=0.5pt]
+	coordinates {
+		(0,0)(1,0)(2,0)(3,25)(4,25)(5,25)(6,25)(7,25)(8,50)(9,50)(10,50)(11,50)(12,50)(13,75)(14,75)(15,75)(16,75)(17,75)(18,75)(19,75)(20,100)(21,100)(22,100)(23,100)(24,100)(25,100)(26,100)
 	};\addlegendentry{Regla 3};
 	
-	\addplot [mark=otimes*, width=5pt] coordinates {
-		(1, 0)(2, 0)(3, 0)(4, 25)(5, 25)(6, 50)(7, 50)(8, 50)(9, 75)(10, 75)(11, 75)(12, 75)(13, 75)(14, 75)(15,75)(16, 75)(17, 75)(18, 75)(19, 75)(20, 75)(21, 100)(22, 100)(23, 100)(24,100)(25,100)(26, 100)
+	\addplot [mark=times*, line width=2pt] 
+	coordinates {
+		(0,0)(1, 0)(2, 0)(3, 0)(4, 25)(5, 25)(6, 50)(7, 50)(8, 50)(9, 75)(10, 75)(11, 75)(12, 75)(13, 75)(14, 75)(15,75)(16, 75)(17, 75)(18, 75)(19, 75)(20, 75)(21, 100)(22, 100)(23, 100)(24,100)(25,100)(26, 100)
 	};\addlegendentry{Regla 4};
 	
-	\addplot [mark=otimes*, width=5pt] coordinates {
+	\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=2pt]
+	coordinates {
 		(0,0)(4,0)(5,50)(13,50)(14,100)(26,100) 
 	};\addlegendentry{Regla 5};
 	
-	\addplot [mark=otimes*, width=5pt] coordinates {
+	\addplot [mark=times*, dotted, line width=2pt] 
+	coordinates {
 		(0,0)(2,20)(6,20)(7,40)(9,40)(10,60)(16,60)(17,80)(22,80)(23,100) 
 	};\addlegendentry{Regla 6};
 		
