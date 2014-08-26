@@ -8,6 +8,8 @@ Al analizar las grabaciones recolectadas, nos enfrentamos a distintos problemas 
 % explico el analisis
 Una vez obtenidos los datos y extraídos los atributos, analizamos cómo poder testear debidamente los clasificadores entrenados. Pudimos definir el baseline que logramos superar proponiendo diferentes clasificadores. También analizamos qué atributos tienen más información a la hora de clasificar en cada grupo y comprobamos que estos son los mismos que uno intuye popularmente.
 
+Realizando este trabajo aprendimos la dificultad que surge al tener un dataset desequilibrado. Esto fue un inconveniente difícil de sobrepasar y se notó al realizar el modelo de testing. Este modelo tuvo una forma de armar los \textit{folds} poco tradicional que si tuviéramos un dataset balanceado en clases esto no sería necesario. Otra lección que aprendimos es que; si bien los atributos elegidos fueron correctos, creemos que se podría mejorar los atributos acústicos. Teniendo audios más limpios y sin ruido, la calidad de estos sería mejor y por ende mejor la información que aportan. Con respecto a los clasificadores entrenados, encontramos que \textit{Function SMO} tuvo mejor performance ya que utiliza transformaciones lineales teniendo en cuenta todos los atributos.
+
 % explico los trabajos futuros
 A partir de este trabajo que pueden surgir muchas mejoras descriptas en los trabajos futuros, que enumeraremos a continuación:
 
