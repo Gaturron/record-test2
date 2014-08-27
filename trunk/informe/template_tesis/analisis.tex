@@ -4,7 +4,7 @@ En esta sección, analizamos los datos obtenidos para entrenar clasificadores qu
 
 Primero presentaremos el baseline que consideramos. Este nos servirá para tener una clasificación aceptable que luego trataremos de superar. Explicaremos los clasificadores utilizados para vencer esta marca y en base a tests estadísticos notaremos si aportan datos significativos. También describiremos el modelo de testing utilizando los datos recolectados. Por último, analizamos los atributos más descriptivos del habla de Buenos Aires y Córdoba. 
 
-Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta provee varios algoritmos de Machine Learning. Para los tests estadísticos utilizamos la herramienta R versión 3.0.1. 
+Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Esta provee varios algoritmos de machine learning. Para los tests estadísticos utilizamos la herramienta R versión 3.0.1. 
 
 \section{Baseline}
 
@@ -22,7 +22,7 @@ La complejidad del problema y la forma en que fue realizado el experimento nos l
 
 Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
 
-No podemos quedarnos con un solo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la figura \ref{graficoFold} se diagrama este modelo de testing.
+No podemos quedarnos con un solo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la Figura \ref{graficoFold} se diagrama este modelo de testing.
 
 \begin{figure}[H]
 	\begin{tikzpicture}[node distance=1cm]
@@ -272,12 +272,14 @@ Recordemos que al tener pocos datos debimos repetir instancias en los grupos de 
 \begin{tikzpicture}[trim axis left, trim axis right]
 \begin{axis}[
     ybar,
+    area legend,
     tick label style={font=\small},
     tickpos=left,
     xticklabels={Train1, Train2, Train3, Train4, Train5}, 
     xtick={1,2,3,4,5},
     ymin=0,
     legend entries={BsAs,Cba},
+    legend style={at={(1.04,1.002)}, anchor=north west,draw=black}, 
     ]
     \addplot +[bar shift=-.2cm, area legend] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
 
@@ -328,7 +330,7 @@ La tabla de la Figura \ref{class_corr_en_pct} resume los resultados de clasifica
 \label{class_corr_en_pct}
 \end{figure}
 
-En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver el porcentaje de instancias correctamente clasificadas de cada fold en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la Figura \ref{porcentajexClasificador} se puede ver el porcentaje de instancias correctamente clasificadas de cada fold en comparación. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
 
 \begin{figure}[H]
 \centering
@@ -336,7 +338,7 @@ En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al seg
 \begin{axis}[
 	width=16cm,
 	height=10cm,
-    title={Porcentaje de cada clasificador en cada tests},
+    title={Porcentaje de cada clasificador en cada fold},
     xlabel={Folds},
     ylabel={Porcentaje},
     xmin=0, xmax=6,
@@ -361,7 +363,7 @@ En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al seg
 \label{porcentajexClasificador}
 \end{figure}
 
-Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline.
+Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la Figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline.
 
 Algo interesante sucede con el clasificador NaiveBayes: muestra resultados muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la Figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
 
@@ -542,7 +544,6 @@ Analizamos a continuación cuáles atributos aportan mayor información.
 %\subsection*{Attribute Evaluator: InfoGain}
 %http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
 
-%TODO: explicar bien InfoGain
 %leer http://en.wikipedia.org/wiki/Information_gain_ratio
 
 En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. 
@@ -568,15 +569,15 @@ De esta forma; cuanto menor sea la entropía condicional con respecto a la entro
  0.02144     & ACU\_AverageLL\_1 \\ \hline
 \end{tabular}
 \end{table}
-\label{infogain}
 \caption{Resultados de InfoGain}
+\label{infogain-table}
 \end{figure}
 
-La tabla de la Figura \ref{infogain} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+La tabla de la Figura \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
-También algo que se desprende de este análisis es: todos los atributos del tipo fonético (empezadas con FON) y silábicas (empezadas con SIL) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consolantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
+También algo que se desprende de este análisis es: todos los atributos del tipo fonético (empezadas con \textit{FON}) y silábicas (empezadas con \textit{SIL}) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consolantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
 
 %\paragraph*{Posibles causas de porque FON\_consonant\_norm y FON\_vowel\_norm van primeros:}
 %Todas las reglas (salvo la 1) corresponden a consonantes.
@@ -626,7 +627,7 @@ También algo que se desprende de este análisis es: todos los atributos del tip
 
 \section{Combinando clases de atributos}
 
-Combinando los tipos de atributos definidos pudimos apreciar cuánto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la tabla de la Figura \ref{comb_atrib} se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgieron del promedio de los resultados de los 5 tests generados.  
+Combinando los tipos de atributos definidos pudimos apreciar cuánto aporta cada clase de los mismos. Realizamos todas las combinaciones de cada uno de los tipos de atributos. Estos son: silábicos, fonéticos y acústicos. Para cada una de esas combinaciones, corrimos los clasificadores NaiveBayes y Function SMO, que son los que mejores resultados arrojaron. Las instancias utilizadas para estos tests fueron las del cross-validation generado anteriormente. En la tabla de las Figuras \ref{comb_atrib} y \ref{comb_atrib_graf} se puede apreciar los resultados. Cabe aclarar que los valores de la tabla surgieron del promedio de los resultados de los 5 tests generados.  
 
 %poner tabla: FON, SIL, ACU y sus combinaciones para clasificacion 
 
@@ -647,8 +648,8 @@ SIL & 66 \% & 66 \% \\ \hline
 FON & 69 \% & 65 \% \\ \hline
 \end{tabular}
 \end{table}
-\label{comb_atrib}
 \caption{Combinación de atributos y su resultado}
+\label{comb_atrib}
 \end{figure}
 
 \begin{figure}[H]
@@ -677,8 +678,8 @@ FON & 69 \% & 65 \% \\ \hline
 
 \end{axis}
 \end{tikzpicture}
-\label{comb_atrib_graf}
 \caption{Gráfico combinando distintos grupos de atributos}
+\label{comb_atrib_graf}
 \end{figure}
 
 Lo esperable es que aumentando la cantidad de atributos se aumente el porcentaje de instancias  clasificadas correctamente. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
