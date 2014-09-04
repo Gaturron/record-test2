@@ -125,7 +125,7 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
         y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
            #El test creado solo puede ser 20 % parecido a uno anterior
         y checkBalance(train) y checkBalance(test) 
-           #Chequeo del habalnce entre audios de BsAs y Cba
+           #Chequeo del balance entre audios de BsAs y Cba
         {
            Agregar <train, test> a resultado
            Agregar hablantesTest a hablantesEnTests
@@ -151,7 +151,7 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
     Devolver ck_bsas y ck_cba y ck_both
 \end{lstlisting}
 
-El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las lineas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que la cantidad de audios de Córdoba y de Buenos Aires es balanceado.
+El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las lineas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que la cantidad de audios de Córdoba y de Buenos Aires es balanceada.
 
 La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene a lo sumo 20\% de audios en común con las demás instancias.
 
@@ -176,7 +176,7 @@ Este algoritmo intenta describir el conjunto de entrada definiendo pequeños gru
 %http://en.wikipedia.org/wiki/C4.5_algorithm
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
 
-Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con varios atributos se realiza lo siguiente: para cada atributo calcula su ganancia de información. Elige el que tenga mejor ganancia entre todos los atributos y con él crea un nodo en el árbol. Por cada rama que se crea el algoritmo sigue de la misma forma. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja.
+Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con varios atributos se realiza lo siguiente: para cada atributo se calcula su ganancia de información. Elige el que tenga mejor ganancia entre todos los atributos y con él crea un nodo en el árbol. Por cada rama que se crea el algoritmo sigue de la misma forma. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea solo una hoja.
 
 \paragraph{Support Vector Machines \cite{Platt98sequentialminimal} - Implementación Function SMO:}
 
@@ -336,7 +336,7 @@ En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al seg
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-	width=16cm,
+	width=14cm,
 	height=10cm,
     title={Porcentaje de cada clasificador en cada fold},
     xlabel={Folds},
@@ -345,7 +345,7 @@ En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al seg
     ymin=50, ymax=90,
     xtick={1,2,3,4,5},
     ytick={20,30,40,50,60,70,80,90,100},
-    legend pos=south east,
+    legend pos=north east,
     ymajorgrids=true,
     grid style=dashed
 ] 
@@ -379,9 +379,9 @@ Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matr
 % FN = "BsAs classif. como Cba"
 % FP = "Cba classif. como BsAs" 
 
-\begin{center}
-\Large Matrices de confusión para test 4
-\end{center}
+%\begin{center}
+%\Large Matrices de confusión para test 4
+%\end{center}
 
 \begin{figure}[H]
 \centering
@@ -449,9 +449,9 @@ Otro dato a tener en cuenta es que, si bien el clasificador ZeroR tuvo un valor 
 
 Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Las tablas \ref{ZeroR_matrizconf_2}, \ref{NaiveBayes_matrizconf_2} muestran este caso para los clasificadores ZeroR y NaiveBayes es:
 
-\begin{center}
-\Large Matrices de confusión para test 1
-\end{center}
+%\begin{center}
+%\Large Matrices de confusión para test 1
+%\end{center}
 
 \begin{figure}[H]
 \centering
@@ -573,7 +573,7 @@ De esta forma; cuanto menor sea la entropía condicional con respecto a la entro
 \label{infogain-table}
 \end{figure}
 
-La tabla de la Figura \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+La tabla de la Figura \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
