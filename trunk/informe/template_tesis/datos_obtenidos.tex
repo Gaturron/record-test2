@@ -4,7 +4,7 @@ En este capítulo vamos a describir los datos obtenidos a través del framework 
 
 \section{Evaluación manual de las grabaciones}
 
-Como primer paso, se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. La cantidad de cada clase fue la siguiente:
+Como primer paso, se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. La cantidad de cada clase se puede ver en la tabla \ref{eva_table}.
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/Datos crudo
 \begin{table}[h]
@@ -18,6 +18,8 @@ Como primer paso, se realizó una clasificación manual de las grabaciones para 
 \textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 \textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
 \end{tabular}
+\caption{Evaluación manual de las grabaciones}
+\label{eva_table}
 \end{table}
 
 Como puede observarse, los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
@@ -57,7 +59,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 
 %Corregir y explicar bien para qe se entiende la opcion de SCORES acá y en el capitulo anterior 
 % ===> Llegué a la conclusión que mejor es no poner nada de SCORES en el documento y si decirlo en trabajos futuros
-Para corregir los errores descriptos debimos chequear manualmente cada uno de los TextGrids. Los resultados de la cantidad de alineamientos corregidos son:
+Para corregir los errores descriptos debimos chequear manualmente cada uno de los TextGrids. Los resultados de la cantidad de alineamientos corregidos se pueden ver en la tabla \ref{eva_table_align}.
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/data1.complete
 \begin{table}[h]
@@ -69,11 +71,13 @@ Para corregir los errores descriptos debimos chequear manualmente cada uno de lo
 \textbf{Correctos}  & 119 & 2 & 121 \\ \hline
 \textbf{Total} & 220 & 90 & 310 \\ \hline
 \end{tabular}
+\caption{Cantidad de alineamientos corregidos}
+\label{eva_table_align}
 \end{table}
 
 Entonces las grabaciones que utilizamos salieron de estas 310 alineaciones. 
 
-Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación fuera la mejor grabada. Debemos quitar estos casos para no analizar frases que están mal grabadas. Contabilizamos los audios repetidos y los mostramos en la siguiente tabla.
+Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación fuera la mejor grabada. Debemos quitar estos casos para no analizar frases que están mal grabadas. Contabilizamos los audios repetidos y los mostramos en la tabla \ref{eva_table_rep}.
 
 \begin{table}[H]
 \centering
@@ -83,6 +87,8 @@ Recordemos que cada hablante tenía la posibilidad de grabar varias veces la mis
 \textbf{Todos los intentos}  & 220 & 90 & 310 \\ \hline
 \textbf{Último intento}  & \textbf{181} & \textbf{79} & \textbf{260} \\ \hline
 \end{tabular}
+\caption{Cantidad de audios repetidos}
+\label{eva_table_rep}
 \end{table}
 
 Entonces los audios extraidos con la herramienta y que vamos a utilizar para clasificar cada uno de los hablantes son: 181 audios para Buenos Aires y 79 audios para Córdoba.
