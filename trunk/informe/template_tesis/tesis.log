@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.24)  27 AUG 2014 19:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.24)  5 SEP 2014 10:55
 entering extended mode
 **tesis.tex
 ("C:\Users\Licia y Emilia\Tesis\record-test2\informe\template_tesis\tesis.tex"
@@ -1257,18 +1257,7 @@ Overfull \hbox (3.70168pt too wide) in paragraph at lines 72--73
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (27.83014pt too wide) in paragraph at lines 361--362
- [][] 
- []
-
-[38] [39] [40] [41]
-Overfull \hbox (24.40166pt too wide) in paragraph at lines 576--577
-\OT1/cmr/m/n/12 vo-ca-les (FON[]vowel[]norm), du-ra-cion de la sla-ba acen-t
-ua-da (SIL[]syllableAccent[]normhd)
- []
-
-[42] [43])
+ [38] [39] [40] [41] [42] [43])
 ("C:\Users\Licia y Emilia\Tesis\record-test2\informe\template_tesis\conclusione
 s.tex" [44] [45]
 Cap\'{\i }tulo 7.
@@ -1298,82 +1287,82 @@ Underfull \hbox (badness 1360) in paragraph at lines 35--35
 ])
 ("C:\Users\Licia y Emilia\Tesis\record-test2\informe\template_tesis\nomenclatur
 a_de_atributos.tex" [50]
-Underfull \hbox (badness 10000) in paragraph at lines 10--10
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []|\OT1/cmr/m/n/10 ACU[]AverageKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--11
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
 []|\OT1/cmr/m/n/10 ACU[]AverageLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
 []|\OT1/cmr/m/n/10 ACU[]AverageRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--13
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
 []|\OT1/cmr/m/n/10 ACU[]AverageSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--14
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\OT1/cmr/m/n/10 ACU[]MaxKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
 []|\OT1/cmr/m/n/10 ACU[]MaxLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
 []|\OT1/cmr/m/n/10 ACU[]MaxRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
 []|\OT1/cmr/m/n/10 ACU[]MaxSC[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--18
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
 []|\OT1/cmr/m/n/10 ACU[]MinKT[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
 []|\OT1/cmr/m/n/10 ACU[]MinLL[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
 []|\OT1/cmr/m/n/10 ACU[]MinRR[]0 al
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
 []|\OT1/cmr/m/n/10 ACU[]MinSC[]0 al
  []
 
 
-Underfull \vbox (badness 10000) detected at line 26
+Underfull \vbox (badness 10000) detected at line 29
  []
 
 
-Overfull \hbox (0.74492pt too wide) in paragraph at lines 40--40
+Overfull \hbox (0.74492pt too wide) in paragraph at lines 46--46
 []|\OT1/cmr/m/n/10 SIL[]prevSyllableAccent[]norm| 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 44
+Underfull \vbox (badness 10000) detected at line 50
  []
 
 [51
 
 ]
-Underfull \vbox (badness 10000) detected at line 62
+Underfull \vbox (badness 10000) detected at line 71
  []
 
 ) [52]
@@ -1385,10 +1374,10 @@ Underfull \vbox (badness 10000) detected at line 62
 ("C:\Users\Licia y Emilia\Tesis\record-test2\informe\template_tesis\tesis.aux")
  ) 
 Here is how much of TeX's memory you used:
- 26104 strings out of 493921
- 622559 string characters out of 3147255
- 849145 words of memory out of 3000000
- 28887 multiletter control sequences out of 15000+200000
+ 26101 strings out of 493921
+ 622512 string characters out of 3147255
+ 849153 words of memory out of 3000000
+ 28884 multiletter control sequences out of 15000+200000
  14157 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  55i,19n,100p,1206b,2180s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1409,7 +1398,7 @@ ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latx
 font/lasy10.pfb>
-Output written on tesis.pdf (59 pages, 1740906 bytes).
+Output written on tesis.pdf (59 pages, 1737804 bytes).
 PDF statistics:
  282 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
