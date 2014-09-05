@@ -41,8 +41,8 @@
 \contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{36}
 \contentsline {subsection}{\numberline {6.4.3}Student t Test}{36}
 \contentsline {section}{\numberline {6.5}Resultados}{37}
-\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{41}
+\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{40}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{41}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{42}
 \contentsline {section}{\numberline {6.7}Combinando clases de atributos}{43}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{46}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{45}
