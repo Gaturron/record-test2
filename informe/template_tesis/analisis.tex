@@ -22,7 +22,7 @@ La complejidad del problema y la forma en que fue realizado el experimento nos l
 
 Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: Un hablante pudo haber aportado 30 grabaciones mientras que otro sólo pudo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un grupo con respecto a otro puede quedar muy desbalanceada. Para mitigar este problema, tomamos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
 
-No podemos quedarnos con un solo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la Figura \ref{graficoFold} se diagrama este modelo de testing.
+No podemos quedarnos con un sólo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la Figura \ref{graficoFold} se diagrama este modelo de testing.
 
 \begin{figure}[H]
 	\begin{tikzpicture}[node distance=1cm]
@@ -155,7 +155,7 @@ El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, e
 
 La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene a lo sumo 20\% de audios en común con las demás instancias.
 
-La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, al última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
+La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
 A continuación veremos los clasificadores que utilizamos para predecir a qué lugar pertenece cada hablante.
 
@@ -281,7 +281,7 @@ Recordemos que al tener pocos datos debimos repetir instancias en los grupos de 
     legend entries={BsAs,Cba},
     legend style={at={(1.04,1.002)}, anchor=north west,draw=black}, 
     ]
-    \addplot +[bar shift=-.2cm, area legend] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
+    \addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
 
     \addplot  +[bar shift=.2cm, area legend]coordinates {(1,53) (2,68) (3,57) (4,61) (5,69)};
 \end{axis}
@@ -300,7 +300,7 @@ Recordemos que al tener pocos datos debimos repetir instancias en los grupos de 
     xtick={1,2,3,4,5},
     ymin=0,
     ]
-    \addplot +[bar shift=-.2cm, area legend] coordinates {(1,47) (2,27) (3,46) (4,22) (5,20)};
+    \addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,47) (2,27) (3,46) (4,22) (5,20)};
 
     \addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
 \end{axis}
