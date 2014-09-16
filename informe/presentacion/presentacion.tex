@@ -1,58 +1,190 @@
 \documentclass[mathserif, blue]{beamer}%Agregar ,notes antes del ] para incluir las notas.
 %~ \documentclass[handout]{beamer}
 % Paquetes usados
-\usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
 \usepackage{indentfirst}
 \usepackage{beamerthemeshadow}
 \usepackage{xspace}
 \usepackage{latexsym}
 \usepackage{ulem}
 
-\newcommand{\bg}[2]{\sethlcolor{#1}\hl{#2}}
-
-\definecolor{ColorFg}{HTML}{FFFFFF}
-\definecolor{ColorBg}{HTML}{008000}
+\newcommand{\tab}[1]{\hspace{.12\textwidth}\rlap{#1}}
 
 \parskip=1ex
 
-\title{Recolecci�n online de grabaciones para el estudio de las variantes argentinas del espa�ol}
+\title{Recolección online de grabaciones para el estudio de las variantes argentinas del español}
 \author{Fernando Bugni}
-\institute{Departamento de Computaci�n - FCEyN - UBA}
+\institute{Departamento de Computación - FCEyN - UBA}
 \date{Fecha}
 
 \begin{document}
-		
-\title{Recolecci�n online de grabaciones para el estudio de las variantes argentinas del espa�ol}
+	
+\title{Recolección online de grabaciones para el estudio de las variantes argentinas del español}
 \author{Fernando Bugni}
-\institute{Departamento de Computaci�n - Facultad de Ciencias Exactas - \\Universidad de Buenos Aires}
+\institute{Departamento de Computación - Facultad de Ciencias Exactas - \\Universidad de Buenos Aires}
 \date{2014}
 
 \frame{\titlepage}
 
-\section{Introducci�n}
+% % % % Introducción
+
+\section{Introducción}
 \begin{frame}
-	\frametitle{Variantes del espa�ol en Argentina}
+	\frametitle{Variantes del español en Argentina}
 	\begin{figure}
 		\includegraphics[scale=0.3]{../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png}\\
 	\end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Diferencias entre C�rdoba y Buenos Aires}
-\begin{itemize}
-	\item \textbf{Los hablantes de C�rdoba estiran la s�laba anterior a la acentuada mientras los de Buenos Aires no realizan esto} \\ 
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Los hablantes de Córdoba estiran la sílaba anterior a la acentuada mientras los de Buenos Aires no realizan esto} \\ 
+	\end{itemize}	
 	
-	\pause
+	\begin{center}
+		\textit{`Especta\textcolor{red}{\textbf{\textit{cu}}}\textcolor{blue}{lar}'}
+	\end{center} 
 	
-	{\large 
-		\begin{center}
-			\textit{`Especta\textcolor{red}{\textbf{\textit{cu}}}\textcolor{blue}{lar}'}}
-		\end{center} \\
-	S�laba acentuada en \textcolor{blue}{\textit{`-lar'}}. \\ 
-	La s�laba anterior \textcolor{red}{\textit{`-cu-'}} se alarga solamente \\ para hablantes de C�rdoba.
+	\tab{Sílaba acentuada en \textcolor{blue}{\textit{`-lar'}}} \\ 
+	\tab{La sílaba anterior \textcolor{red}{\textit{`-cu-'}} se alarga para hablantes de Córdoba}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Los hablantes de Córdoba aspiran y elisionan la /s/ al finalizar una palabra. Esto no sucede para Buenos Aires} \\ 
+	\end{itemize}	
 	
-\end{itemize}
+	\begin{center}
+		\textit{`Pájaro\textcolor{red}{\textbf{\textit{s}}}'}
+	\end{center} 
+	
+	\begin{center}
+		/\textcolor{red}{\textbf{\textit{s}}}/ se acorta su duración en el hablante de Córdoba
+	\end{center}
+\end{frame}
+
+\begin{frame}
+ 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+ 	\begin{itemize}\itemsep=3ex
+ 		\item \textbf{Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan más suaves que para hablantes de Buenos Aires} \\ 
+ 	\end{itemize}
+ 	
+ 	\begin{center}
+ 		\textit{`Mo\textcolor{red}{s}ca'}
+ 	\end{center} 
+ 	
+ 	\begin{center}
+ 		/\textcolor{red}{s}/ suena más suave para Córdoba que para Buenos Aires
+ 	\end{center}
+\end{frame}
+ 
+\begin{frame}
+ 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+ 	\begin{itemize}\itemsep=3ex
+ 		\item \textbf{La `c' antes de la `t' se pronuncia con menor frecuencia para hablantes de Córdoba que para hablantes de Buenos Aires} \\ 
+ 	\end{itemize}
+ 	
+ 	\begin{center}
+ 		\textit{`Do\textcolor{red}{c}tor'}
+ 	\end{center} 
+ 	
+ 	\begin{center}
+ 		No debe sonar el fonema /\textcolor{red}{c}/
+ 	\end{center}
+\end{frame}
+ 
+\begin{frame}
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{En hablantes cordobeces la /r/ no vibra mientras que en Buenos Aires pasa lo contrario} \\ 
+	\end{itemize}	
+	
+	\begin{center}
+		\textit{`Espá\textcolor{red}{rr}ago'}
+	\end{center} 
+	
+	\begin{center}
+		Para Córdoba /\textcolor{red}{r}/ debe ser suave en comparación de Buenos Aires
+	\end{center}
+\end{frame} 
+
+% % % % Diseño del experimento
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	\begin{itemize}\itemsep=10ex
+		\item \textbf{Frases Comúnes}: habla espontánea
+		\item \textbf{Frases Amper}: reconocer palabra acentuada
+	\end{itemize}	
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	{\Large Frases Comúnes} \\
+	Pronunciar frases popularmente conocidas
+	
+	\begin{itemize}
+		\item Objetivo: pronunciación espontánea
+		\item Regla a cubrir: 
+	\end{itemize}
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	\begin{center}
+		\textbf{`En la pelea se conoce al soldado,} \\ 
+		\textbf{sólo en la \textcolor{red}{victoria} se conoce al \textcolor{red}{caballero}’}
+	\end{center}
+	
+	\begin{itemize}
+		\item \textcolor{red}{\textbf{`victoria’}} cubre la regla 4 que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. 
+		\item \textcolor{red}{\textbf{`caballero’}} para la regla 5: el fonema \textit{/ll/} se pasa a \textit{/i/} 
+	\end{itemize}	
+\end{frame} 
+
+\begin{frame}
+\frametitle{Diseño del experimento}
+	{\Large Frases Amper} \\
+	Pronunciar frases con una estructura fija variando acentuaciones
+	
+	\begin{itemize}
+		\item Objetivo: cubrir acentuaciones
+		\item Regla a cubrir: estiramiento de la sílaba anterior a la acentuada
+	\end{itemize}
+	
+{\footnotesize 	
+	\begin{center}
+		\textit{Sujeto+`` salió ’’+Adjetivo} 
+	
+		\begin{itemize}
+			\item Sujeto: \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
+			\item Adjetivo: \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
+		\end{itemize}
+		
+	\end{center}
+}
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+
+	\begin{center}
+		\textbf{``El canapé salió delicioso’’}
+	\end{center}
+	
+	\begin{itemize}
+		\item Canapé: palabra aguda
+		\item Delicioso: palabra grave
+	\end{itemize}
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	
+	Trazas: combinación de frases
+	
 \end{frame}
 
 \begin{frame}
@@ -68,6 +200,11 @@ A & B & A AND B \\
 \end{tabular}
 \end{figure}
 \end{frame}
+
+% % %
+
+
+\end{document}
 
 %
 %\begin{frame}
@@ -112,13 +249,11 @@ A & B & A AND B \\
 %\end{frame}
 %
 %\begin{frame}
-%\frametitle{La pr�ctica...}
+%\frametitle{La práctica...}
 %\begin{center}
-%Con lo visto hoy pueden realizar hasta\\ el ejercicio 13 de la pr�ctica 2.
+%Con lo visto hoy pueden realizar hasta\\ el ejercicio 13 de la práctica 2.
 %
 %Bibliograf\'ia recomendada: The Essentials of Computer Organization and Architecture - Linda Null
 %- Cap\'itulo 3
 %\end{center}
 %\end{frame}
-
-\end{document}
