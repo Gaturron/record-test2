@@ -31,4 +31,31 @@ TODO: "Este trabajo estudió los acentos del español argentino utilizando todas
 
 "En este ejemplo podemos analizar la sílaba anterior a la acentuada de estos dos grupos.(grupos BsAs Cba)" => "En este ejemplo podemos analizar la sílaba anterior a la acentuada de los dos grupos estudiados, Córdoba y Buenos Aires." 
 
+Pág. 7:
+TODO: arreglar falta de ortografía en frases y también en apéndice
+
+Pág. 8:
+"De esta forma cada frase tiene el mayor cubrimiento posible.(?)" => sacamos esa frase, me parece q no aporta nada
+
+TODO: "no es lo mismo empezar por una frase que sólo cubre una sola regla que (aunque) varias." => no entiendo esta corrección.
+
+TODO: " en un sólo audio podremos obtener más cubrimiento de reglas.(entonces)" => no entiendo esto
+Agregué "Diremos que una frase cubre una determinada regla si esta la satisface."
+
+TODO: "Si una frase cubre varias reglas estaríamos obteniendo más información y solo con una grabación.(no entiendo)" => "Si una frase cubre varias reglas estaríamos obteniendo más información sólo utilizando una grabación." chequear si se entiende mejor así
+
+TODO: Parece que no se entiende nada el algoritmo de orden de frases. Lo que había es:
+"La idea del algoritmo es la siguiente: vamos a utilizar un contador que nos va a decir cuántas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Esta elección la lleva a cabo la función \textit{ObtenerLaMasPonderada}. Esta se encarga de elegir la frase que haga referencia a la regla menos grabada y además que represente a más de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones y ponderamos las frases que referencien a más reglas."
+Lo cambiamos por:
+"
+La idea del algoritmo es la siguiente: vamos a contabilizar la cantidad de muestras por cada regla. Esto se realiza calculando, para cada regla, la cantidad de frases que ya utilizamos cubriendo esa regla; sobre la cantidad total de frases que cubren esa regla. Entonces tendremos para cada regla su porcentaje de cubrimiento. Esto lo guardaremos en \textit{DicPct}.
+
+Mientras haya frases sin ser seleccionadas para grabar, elegimos la regla que menos está cubierta. O sea, elegiremos como próxima regla a cubrir la que tenga menor porcentaje de cubrimiento. Esto se realiza en la función \textit{ObtenerReglaConMenorPorcentaje} utilizando como parámetro \textit{DicPct}.
+
+Tenemos definida la próxima regla a cubrir. Debemos elegir la frase que cubra esa regla. Recordemos que hay muchas frases que cubren una determinada regla. Para definir cuál frase elegir vamos a optar por la que cubra mayor cantidad de reglas. Si hay varias frases en esta situación, elegimos una de estas al azar. Entonces no sólo aumentamos la cantidad de frases de la regla menos cubierta, sino que con esa frase cubrimos otras reglas. Esto se realiza en la función \textit{ObtenerLaMásPonderada}.
+
+Para terminar, agregamos la frase elegida y recalculamos los porcentajes de cada regla en las lineas 9 y 10.
+"
+
+(¿Mejor hacer un ejemplo en latex y agregarlo? esta en tareasParaCadaExperimento.xlsx) 
 

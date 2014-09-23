@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  22 SEP 2014 01:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  22 SEP 2014 21:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1159,8 +1159,8 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 169.
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
  [9
 
 
@@ -1170,8 +1170,8 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Info: Redefining \. on input line 274.
-LaTeX Info: Redefining \% on input line 274.
+LaTeX Info: Redefining \. on input line 280.
+LaTeX Info: Redefining \% on input line 280.
  [10])
 (./sistema_grabacion_online.tex
 LaTeX Info: Redefining \. on input line 1.
@@ -1492,10 +1492,10 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 23198 strings out of 493307
- 514582 string characters out of 6139905
- 768250 words of memory out of 5000000
- 26119 multiletter control sequences out of 15000+600000
+ 23202 strings out of 493307
+ 514620 string characters out of 6139905
+ 769014 words of memory out of 5000000
+ 26123 multiletter control sequences out of 15000+600000
  14157 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1470b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1516,7 +1516,7 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on tesis.pdf (58 pages, 1708021 bytes).
+Output written on tesis.pdf (58 pages, 1708693 bytes).
 PDF statistics:
  282 PDF objects out of 1000 (max. 8388607)
  191 compressed objects within 2 object streams
