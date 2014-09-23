@@ -1,6 +1,6 @@
 \chapter{Extracción de información}
 
-Utilizando nuestra página web podemos obtener distintas muestras de Córdoba y Buenos Aires. ¿Cómo podemos analizar estos audios correctamente? Un archivo Wav, similar al que se genera en cada una de las muestras, posee muchísima información. Es por esto que debemos seleccionar correctamente qué partes de la información nos sirve y qué partes podemos descartar.
+Utilizando nuestra página web podemos obtener distintas muestras de Córdoba y Buenos Aires. ¿Cómo podemos analizar estos audios correctamente? Un archivo wav, similar al que se genera en cada una de las muestras, posee muchísima información. Es por esto que debemos seleccionar correctamente qué partes de la información nos sirven y qué partes podemos descartar.
 
 \section{Alineación forzada}
 
@@ -13,12 +13,12 @@ Un dato muy importante es que este etiquetado no debe tener que ser realizado co
 %If you use this tool, we would appreciate it if you cite the following paper:
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
-Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Encontramos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. Va analizar uno por uno cada audio y mediante un diccionario determina en que momento se dijo cada fonema y palabra. 
+Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Usamos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. Analiza uno por uno cada audio y mediante un diccionario determina en qué momento se dijo cada fonema y palabra. 
 %(TODO CORRECCIÓN DE AGUSTÍN: no se entiende si tengo que borrar todo el párrafo o no)
 
 %Como dijimos, el formato de archivo utilizado para devolver estas marcas es TextGrid. El problema de la alineación automática es un caso particular de la alineación de audios.
 
-Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una librería para crear y manipular Modelos Ocultos de Markov fácilmente y SoX que nos permite trabajar con audio a través de la consola. Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando las diferentes muestras analizadas y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de estas grabaciones. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
+Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una librería para crear y manipular Modelos Ocultos de Markov fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando las diferentes muestras analizadas y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de estas grabaciones. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
 Los requisitos para utilizar esta herramienta son: una hora de grabación y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
@@ -30,11 +30,11 @@ Los requisitos para utilizar esta herramienta son: una hora de grabación y un d
 
 \section{Extracción de atributos}
 
-La extracción de atributos fue realizada utilizando el lenguaje Python, que elegimos ya que es fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una librería muy conocida llamada Numpy (versión 1.6.1). Esta librería se utiliza para realizar cálculos matemáticos. Nosotros la utilizamos para tener buena precisión en el cálculo de los atributos.
+La extracción de atributos fue realizada utilizando el lenguaje Python, que elegimos ya que es fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una librería muy conocida llamada Numpy (versión 1.6.1). Esta se utiliza para realizar cálculos matemáticos. Nosotros la utilizamos para tener buena precisión en el cálculo de los atributos.
 
 Después de la alineación realizada, se ejecuta el extractor de atributos. Este posee como input los archivos Wav y TextGrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El workflow del extractor se puede ver en la Figura \ref{workflow}. 
 
-La rutina principal del programa toma de a una las grabaciones y les aplica un conjunto de funciones. Cada una de estas funciones calculan un atributo. Los atributos se pueden dividir en dos tipos: uno correspondiente a \textit{atributos temporales} o calculados solamente utilizando el TextGrid; y otro a \textit{atributos acústicos} utilizando no sólo el TextGrid sino también el cálculo de MFCC, que veremos más adelante. Si el atributo está presente en la grabación tendremos ese dato en la extracción, si no se dejará como nulo. Luego juntamos todos los resultados de estas grabaciones y generamos el archivo Arff.
+La rutina principal del programa toma de a una las grabaciones y les aplica un conjunto de funciones. Cada una de estas funciones calcula un atributo. Los atributos se pueden dividir en dos tipos: uno correspondiente a \textit{atributos temporales} o calculados solamente utilizando el TextGrid; y otro a \textit{atributos acústicos} utilizando no sólo el TextGrid sino también el cálculo de MFCC, que veremos más adelante. Si el atributo está presente en la grabación tendremos ese dato en la extracción, si no se dejará como nulo. Luego juntamos todos los resultados de estas grabaciones y generamos el archivo Arff.
 
 El archivo Arff  tiene por cada línea una grabación y seguido todos los resultados del cálculo de los atributos separado por comas. Necesitamos utilizar este formato ya que es necesario para ingresar datos en Weka, la plataforma que elegimos para correr algoritmos de \textit{machine learning}. Veamos cada uno de los dos tipos de atributos:
 
@@ -48,7 +48,7 @@ El archivo Arff  tiene por cada línea una grabación y seguido todos los result
 
 Los atributos temporales corresponden a atributos sobre la duración de los fonemas y las sílabas de cada frase. Para calcularlos utilizamos como input el TextGrid generado en la alineación. Básicamente estas funciones recorren el TextGrid buscando un patrón en particular y miden su duración. Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. 
 
-Luego, las mediciones son normalizadas. Se realizan dos normalizaciones. La primera, conocida z-score, será utilizando la forma:
+Luego, las mediciones son normalizadas. Se realizan dos normalizaciones. La primera, conocida como z-score, será utilizando la forma:
 
 \hspace{2cm} \[\frac{ X - \mu }{ \sigma }\]
 
@@ -80,7 +80,7 @@ Los atributos que contabilizan fonemas son:
     \item \textbf{Duración de la `ll’:} buscamos el patrón /ll/ y lo medimos. Este atributo hace referencia a la regla 5 que mide dicho fonema.
     \item \textbf{Duración de `rr’:} ídem para /r/ fuerte. Referencia a la regla 6 que hace hincapié en este fonema.
     \item \textbf{Duración de `s’ final:} ídem para las /s/ de final de palabra. Corresponde a la regla 2 que hace referencia a la aspiración de la /s/ de final de las palabras.  
-    \item \textbf{Duración de cada fonema:} este atributo mide la duración y la cantidad de todos los fonemas y luego realiza un promedio. Este no se realiza normalización ya que no se esta tratando de analizar si un atributo es destacado en comparación de los demás si no que se trata de ver la duración en promedio de un fonema.
+    \item \textbf{Duración de cada fonema:} este atributo mide la duración y la cantidad de todos los fonemas y luego realiza un promedio. Este no se realiza normalización ya que no se está tratando de analizar si un atributo es destacado en comparación de los demás si no que se trata de ver la duración en promedio de un fonema.
     \item \textbf{Duración de cada vocal:} medimos la duración media de las vocales y luego realizamos su normalización utilizando la duración de cada fonema.
     \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
 \end{itemize}
