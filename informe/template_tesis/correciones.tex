@@ -108,6 +108,37 @@ Pág. 22:
 
 cambiar "tiempo" por "instante" => OK
 
++Pág. 23: *** Atributos acústicos: explicar bien MFCC ***
 
++Capítulo 5: 
 
++Pág. 26: "El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para hacer una buena grabación (marcó algo q no se entiende)." => "El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para hacer buenas grabaciones"
 
+Capítulo 6:
+
+Pág. 30: "Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria.(explicar más)" => "... Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias vamos a elegir siempre Córdoba"
+
+"Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. (No, una cosa es efectividad, otra es distinto)"
+
+Pág. 31:
+TODO: "La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline.(Anter.)"
+
+Modelo de testing: párrafo 1 y 2 dice "Contradictorio". Cambiamos párrafo 1 por:
+"Para medir el rendimiento de clasificadores se define un modelo de testing. Este separa una parte de los datos para entrenar el clasificador y otro para testearlo. La complejidad de nuestro problema ..."
+
+Cambios menores ok.
+
+"el resultado se garantiza (?) independiente de la partición de los datos de entrenamiento y prueba." => cambiado por "el resultado es independiente de la partición de los datos de entrenamiento y prueba."
+
+"Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. (Porque esto mitiga el riesgo?)" => cambiado por 
+"Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de audios en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}." 
+TODO: preguntar si esta bien decir "sin haber entrenado lo suficiente", puede pasar que entrenes en train con menos audios pero que te den mucha información y te alcance para hacer una buena clasificación... pero por lo general no debería pasar.
+
+Pág. 33: 
+TODO: No se entiende la corrección "Incluido en posterior"
+lo demás OK
+
+Pág. 34:
+Cambios menores OK
+"Este hiperplano se construye utilizando transformaciones lineales de los datos de entrada y sirve para clasificar las muestras en los dos grupos de la mejor forma posible.(subrayado mejor forma posible como que no se entiende)" => cambiado por 
+"Este hiperplano se construye utilizando transformaciones lineales de los datos de entrada y sirve para clasificar las muestras en dos grupos."
