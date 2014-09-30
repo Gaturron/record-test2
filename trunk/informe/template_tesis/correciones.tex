@@ -190,3 +190,100 @@ TODO: "no se estira la sílaba de la palabra anterior?" ni idea
 
 "Ejemplo: `Mosca' en la variante de Córdoba posee una sílaba más suave en el fonema /s/ que en Buenos Aires. " => cambia por
 "Ejemplo: `Mosca' en la variante de Córdoba posee el fonema /s/ más suave que en Buenos Aires. "
+
+Pág. 5:
+
+Errores simples: OK
+TODO: AMPER el esquema fue inventado por Gublekian? Ni idea
+
+Pág. 6: 
+
+correciones OK
+
+Pág. 10:
+"Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento de alrededor del 40\% en todas las reglas." (40 \% de qué?) +> cambiado por
+"Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus frases ya grabadas. La regla 5 el 50\% de sus frases ya grabadas. O sea, en la grabación número 10 ya se grabó alrededor del 40\% de la cantidad total de frases para cada regla." TODO: nose si así se entiende bien.
+
+Capítulo 3: TODO *** REESCRIBIR TODO
+
+Capítulo 4:
+
+Pág. 19: 
+
+TODO: *** pensar una buena explicación con gráficos de HMM 
+Marcado en el .tex también
+
+Demás correciones ok
+
+Pág. 20: 
+"El archivo Arff tiene por cada línea una grabación y seguido todos los resultados del cálculo de los atributos separado por comas." (una grabación o un pedazo correspondiente a alguna regla? )
+El arff por cada linea representa una grabación porque por cada atributo va a realizar el promedio y el half normal distribution de ese mismo. Entonces si aparecen varias veces el atributo /s/ final de palabra no importa porque en su linea va a estar 1 sola vez.
+
+En el Gráfico: porqué las doble flechas? porque en inglés?
+Agregamos cuando nombra el diagrama lo siguiente:
+"El workflow del extractor se puede ver en la Figura \ref{workflow}. En él podemos observar cómo trabaja internamente. Tenemos un componente principal llamado ``Extractor'' que se encarga de tomar los archivos de input; estos son las grabaciones wavs y las etiquetas de lo dicho en cada grabación, y de llamar a distintos componentes que van a calcular cada atributo. Para calcular estos atributos vamos a dividir en dos componentes: ``Acoustic Extractor'' que se encarga de extraer atributos acústicos y ``TextGrid Extractor'' que se encarga de extraer atributos temporales. Veremos cada uno en detalle más adelante. Luego de realizado este trabajo, se arma el archivo  " MEdio al pedo ya estaba explicado!
+=> Agregamos los nombres al párrafo de la explicación OK
+
+TODO: "Los atributos temporales corresponden a atributos sobre la duración de los fonemas y las sílabas de cada frase." (de toda la frase???) No se como explicarlo mejor
+
+Pág. 21:
+"asumendo que mu = 0" : Creo que cuando arregle lo de fer s. ya se va a entender.
+
+TODO: "cada fonema en particular o juntando todos?" => juntando todos pero nose como ponerselo acá
+
+Pág. 22:
+TODO: "estos dos no están incluidos en el punto anterior?" => Sí... nose cómo aclarárselo.
+
+TODO: ("Un resumen así debería ir al pincipio") ... nose que hacer , es discutible.
+
+demás cambios OK
+
+Pág. 23:
+
+("no es un script sino una tabla") => es para que lo utilice el programa
+
+"Si la variación es menor que esta duración la descartamos." => cambiar descartar por ignoramos
+Si la variación es menor que esta duración la ignoramos.
+
+
+Pág. 24:
+TODO: Atributos acústicos cambiar la explicación ***
+
+Capítulo 5:
+Pág. 26: TODO ("agregar cuántos hablantes hubo para cada caso")
+
+Capítulo 6:
+
+Pág. 30: definir efectividad OK
+
+Pág. 31: ("no entiendo qué significa esto") => agrego algo para que se entienda mas
+"... ya que tengo más muestras para identificar a un hablante."
+
+TODO: "un hablante pudo haber... " (pone los max y min)
+
+TODO: Hacer cross-validation de a 1 hablante (ver mail Agustín) *** 
+
+Pág. 35:
+TODO: surgen (sé más concreto...) sino ponemos "son"
+
+TODO: "maximizar la independencia" (sí pero no son independientes) ***
+
+Pág. 36:
+TODO: superposición entre los tests. Esta parte esta bastante mal :(
+
+Pág. 38: 
+TODO: problema GRAVE DE LA INDEPENDENCIA ***
+TODO: Cambiar de nombre a los algoritmos y poner lo de los modelos.
+TODO: (Faltan detalles de cómo se usan los atributos en cada modulo) => no se a que se refiere
+TODO: (Qué haces con los atributos que no tienen un valor?) ***
+
+Pág. 40:
+TODO (Problemas con el desbalance) ni idea
+
+Pág. 42:
+Comprobar que pasa con atributos que estan con '?'
+
+Pág. 43: TODO ni idea
+
+Pág. 46 y 47: TODO 
+
