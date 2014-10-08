@@ -17,6 +17,12 @@ import types
 
 """
 Idea: 
+En el anterior varios atributos de los audios de 1 hablante se promediaban para dar 1 audio
+O sea, dado un hablante, varias filas se unian en 1 sola promediando sus atributos 
+
+Ahora la idea mejor es no descartar esos audios y a los valores con ? (o None) promediar 
+con los que si estan
+
 Atributos:    A1    A2    A3         .....     AN
 H1:  audio1   1     ?     2                    2   
      audio2   ?     ?     1                    ?
@@ -27,11 +33,15 @@ H2:  audio1   1     ?     ?                    ?
 
 esto pasaría a:
 Atributos:    A1    A2    A3         .....     AN
-H1:  audio1   1.5   ?     1.667                2   
+H1:  audio1   1     ?     2                    2   
+     audio2   1.5   ?     1                    2
+     audio3   2     ?     3                    2
+
 H2:  audio1   1     2     ?                    ?
+     audio2   1     2     ?                    ?
 """
 
-path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl_avgAttr'
+path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl_avgAttrXHab'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 mfcc_len = 33
@@ -61,6 +71,33 @@ attributesFilter = {
     'SIL_prevSyllableAccent_normhd': 'NUMERIC'
 }
 
+att_for_avg = [
+    'userId',
+    'place', 
+
+    'FON_kt_norm',
+    'FON_kt_normhd',
+    'FON_ll_norm',
+    'FON_ll_normhd',
+    'FON_rr_norm',
+    'FON_rr_normhd',
+    'FON_sc_norm',
+    'FON_sc_normhd',
+    'FON_Sfinal_norm',
+    'FON_Sfinal_normhd',
+    
+    'FON_phoneme',
+    'FON_vowel_norm',
+    'FON_vowel_normhd', 
+    'FON_consonant_norm',
+    'FON_consonant_normhd',
+
+    'SIL_syllableAccent_norm',
+    'SIL_syllableAccent_normhd',
+    'SIL_prevSyllableAccent_norm',
+    'SIL_prevSyllableAccent_normhd'
+]
+
 def resPairedToArff(resultsPaired, attributesFilter, folder):
 
     """
@@ -82,33 +119,7 @@ def juntandoGrabaciones(dicc):
     La idea es iterar en el dicc y si hay varias grabaciones de 1 hablante juntar 
     todas las metricas en 1 grabacion
     """
-    att_for_avg = [
-        'userId',
-        'place', 
-
-        'FON_kt_norm',
-        'FON_kt_normhd',
-        'FON_ll_norm',
-        'FON_ll_normhd',
-        'FON_rr_norm',
-        'FON_rr_normhd',
-        'FON_sc_norm',
-        'FON_sc_normhd',
-        'FON_Sfinal_norm',
-        'FON_Sfinal_normhd',
-        
-        'FON_phoneme',
-        'FON_vowel_norm',
-        'FON_vowel_normhd', 
-        'FON_consonant_norm',
-        'FON_consonant_normhd',
-
-        'SIL_syllableAccent_norm',
-        'SIL_syllableAccent_normhd',
-        'SIL_prevSyllableAccent_norm',
-        'SIL_prevSyllableAccent_normhd'
-    ]
-
+    
     print '1) ================================================='
 
     dicc2 = {}
@@ -196,7 +207,41 @@ def juntandoGrabaciones(dicc):
 if __name__ == '__main__':
 
     # promedio los atributos de los hablantes
-    dicc = juntandoGrabaciones(dicc)
+    diccAvg = juntandoGrabaciones(dicc)
+    
+    # si el attr es ? cambiar por supromedio local del hablante
+    dicc2 = {}
+    for k, v in dicc.items():
+        userId = v['userId'] 
+        if userId in dicc2:
+            dicc2[str(userId)] = [v] + dicc2[str(userId)] 
+        else:
+            dicc2[str(userId)] = [v] 
+
+    dicc3 = {}
+    for userId, audios in dicc2.items():
+        list_temp = []
+        for audio in audios:
+
+            diccAttr = {}
+            for att, value in audio.items():
+                if att in att_for_avg:
+                    if value == None:
+                        if diccAvg[userId][att] != None:
+                            diccAttr[att] = diccAvg[userId][att]
+                        else:
+                            diccAttr[att] = value    
+                    else:
+                        diccAttr[att] = value
+            
+            list_temp = [diccAttr] + list_temp
+
+        dicc3[userId] = list_temp
+
+    dicc = dicc3
+
+    print " Agregado el promedio en ? ========================================="
+    print dicc['24']
 
     # obtengo los usuarios
     cantTotal = 8
@@ -206,14 +251,14 @@ if __name__ == '__main__':
     users = set([])
     for k, v in dicc.items():
 
-        if v['place'] == 'cba' and v['userId'] not in users and cantCba < cantTotal:
+        if v[0]['place'] == 'cba' and v[0]['userId'] not in users and cantCba < cantTotal:
             cantCba = cantCba + 1
-            userId = v['userId']
+            userId = v[0]['userId']
             users.add(userId)
         
-        if v['place'] == 'bsas' and v['userId'] not in users and cantBsAs < cantTotal:
+        if v[0]['place'] == 'bsas' and v[0]['userId'] not in users and cantBsAs < cantTotal:
             cantBsAs = cantBsAs + 1
-            userId = v['userId']
+            userId = v[0]['userId']
             users.add(userId)
 
     print "Cantidad de hablantes de Córdoba "+str(cantCba)     
@@ -225,13 +270,16 @@ if __name__ == '__main__':
     print str(users)
 
     for u in users:
-        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u)
-        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u)
+        test = dict((k,v) for k, v in dicc.items() if v[0]["userId"] == u)
+        train = dict((k,v) for k, v in dicc.items() if v[0]["userId"] != u)
 
-        print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v["userId"] for k, v in test.items()])
+        print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v[0]["userId"] for k, v in test.items()])
         print "train "+str(len([k for k, v in train.items()]))
         print "----------------------------------------------"
 
-        resultsPaired = resultsPaired + [(train, test)]
+        #resultsPaired = resultsPaired + [(train, test)]
 
-    resPairedToArff(resultsPaired, attributesFilter, "version1")
+    #resPairedToArff(resultsPaired, attributesFilter, "version1")
+
+
+    #NO ANDAAAAAAAAAAAAAAAAAAAAAAAA
