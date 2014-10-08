@@ -95,7 +95,7 @@ def runNaiveBayes(train, test):
     evaluation.evaluateModel(naiveBayes, test)
     printSummary(naiveBayes, train, evaluation)
 
-if len(sys.argv) != 2:
+if len(sys.argv) != 3:
     print "Pasar como 1er parametro el path de los tests"
     print "Por ejemplo: /home/fernando/Tesis/record-test2/attributeExtractor/tests/version1/"
     print "Pasar como 2do parametro la cantidad de tests"
@@ -103,12 +103,11 @@ if len(sys.argv) != 2:
     sys.exit(0)
     
 #path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/"
+#path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/test_xHablante/version1/"
 path = sys.argv[1]
-path = "/home/fernando/Tesis/record-test2/attributeExtractor/tests/test_xHablante/version1/"
 
 # cantidad de tests por parametro
-#cantTests = int(sys.argv[2])
-cantTests = 27
+cantTests = int(sys.argv[2])
 
 for i in range(cantTests):
 
