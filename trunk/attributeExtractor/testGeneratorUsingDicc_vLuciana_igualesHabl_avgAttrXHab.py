@@ -210,38 +210,58 @@ if __name__ == '__main__':
     diccAvg = juntandoGrabaciones(dicc)
     
     # si el attr es ? cambiar por supromedio local del hablante
-    dicc2 = {}
-    for k, v in dicc.items():
-        userId = v['userId'] 
-        if userId in dicc2:
-            dicc2[str(userId)] = [v] + dicc2[str(userId)] 
-        else:
-            dicc2[str(userId)] = [v] 
+    # dicc2 = {}
+    # for k, v in dicc.items():
+    #     userId = v['userId'] 
+    #     if userId in dicc2:
+    #         dicc2[str(userId)] = [v] + dicc2[str(userId)] 
+    #     else:
+    #         dicc2[str(userId)] = [v] 
 
-    dicc3 = {}
-    for userId, audios in dicc2.items():
-        list_temp = []
-        for audio in audios:
+    # dicc3 = {}
+    # for userId, audios in dicc2.items():
+    #     list_temp = []
+    #     for audio in audios:
 
-            diccAttr = {}
-            for att, value in audio.items():
-                if att in att_for_avg:
-                    if value == None:
-                        if diccAvg[userId][att] != None:
-                            diccAttr[att] = diccAvg[userId][att]
-                        else:
-                            diccAttr[att] = value    
-                    else:
-                        diccAttr[att] = value
+    #         diccAttr = {}
+    #         for att, value in audio.items():
+    #             if att in att_for_avg:
+    #                 if value == None:
+    #                     if diccAvg[userId][att] != None:
+    #                         diccAttr[att] = diccAvg[userId][att]
+    #                     else:
+    #                         diccAttr[att] = value    
+    #                 else:
+    #                     diccAttr[att] = value
             
-            list_temp = [diccAttr] + list_temp
+    #         list_temp = [diccAttr] + list_temp
 
-        dicc3[userId] = list_temp
+    #     dicc3[userId] = list_temp
 
-    dicc = dicc3
+    # dicc = dicc3
+
+    dicc2 = {}
+    for audioKey, attrDic in dicc.items():
+
+        userId = attrDic['userId']
+
+        diccAttr = {}
+        for att, value in attrDic.items():
+            print " att: "+str(att)+" value: "+str(value)
+            if att in att_for_avg:
+                if value == None:
+                    if diccAvg[userId][att] != None:
+                        diccAttr[att] = diccAvg[userId][att]
+                    else:
+                        diccAttr[att] = value    
+                else:
+                    diccAttr[att] = value
+
+        dicc2[str(audioKey)] = diccAttr
+
+    dicc = dicc2
 
     print " Agregado el promedio en ? ========================================="
-    print dicc['24']
 
     # obtengo los usuarios
     cantTotal = 8
@@ -251,14 +271,14 @@ if __name__ == '__main__':
     users = set([])
     for k, v in dicc.items():
 
-        if v[0]['place'] == 'cba' and v[0]['userId'] not in users and cantCba < cantTotal:
+        if v['place'] == 'cba' and v['userId'] not in users and cantCba < cantTotal:
             cantCba = cantCba + 1
-            userId = v[0]['userId']
+            userId = v['userId']
             users.add(userId)
         
-        if v[0]['place'] == 'bsas' and v[0]['userId'] not in users and cantBsAs < cantTotal:
+        if v['place'] == 'bsas' and v['userId'] not in users and cantBsAs < cantTotal:
             cantBsAs = cantBsAs + 1
-            userId = v[0]['userId']
+            userId = v['userId']
             users.add(userId)
 
     print "Cantidad de hablantes de Córdoba "+str(cantCba)     
@@ -270,16 +290,13 @@ if __name__ == '__main__':
     print str(users)
 
     for u in users:
-        test = dict((k,v) for k, v in dicc.items() if v[0]["userId"] == u)
-        train = dict((k,v) for k, v in dicc.items() if v[0]["userId"] != u)
+        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u)
+        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u)
 
-        print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v[0]["userId"] for k, v in test.items()])
+        print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v["userId"] for k, v in test.items()])
         print "train "+str(len([k for k, v in train.items()]))
         print "----------------------------------------------"
 
-        #resultsPaired = resultsPaired + [(train, test)]
+        resultsPaired = resultsPaired + [(train, test)]
 
-    #resPairedToArff(resultsPaired, attributesFilter, "version1")
-
-
-    #NO ANDAAAAAAAAAAAAAAAAAAAAAAAA
+    resPairedToArff(resultsPaired, attributesFilter, "version1")
