@@ -1,0 +1,33 @@
+% Cada hablante que tenga un atributo '?' cambiarlo por el promedio de ese atributo en las demás audios
+\subsection{Promediando los atributos de cada hablante sólo si es desconocido}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+		\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+		\hline \hline
+		\textbf{Promedio} &  &  &  &  &  \\ \hline
+	\end{tabular}
+	\caption{Clasificación correcta en porcentaje}
+	\label{class_corr_en_pct}
+\end{table}
+
+\subsubsection{Wilcoxon y Test t de Student}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+		\textbf{ZeroR y JRip}  &  &  \\ \hline
+		\textbf{ZeroR y J48}  &  &  \\ \hline
+		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
+		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+	\end{tabular}
+	\caption{Resultados de cada test representado en p-valor}
+	\label{res_tests_wilcoxon_student}
+\end{table}
+
+% hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 

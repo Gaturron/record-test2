@@ -1,0 +1,69 @@
+% Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
+\subsection{Promediando los atributos de cada hablante}
+
+8 hablantes Buenos Aires
+8 Córdoba
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|ccccc|}
+		\hline
+		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+		\hline 
+		\textbf{Hablante 1} & \textbf{Audio1} & & & & & \\
+		& \textbf{Audio2} & & & & & \\
+		\hline
+		\textbf{Hablante 2} & \textbf{Audio1} & & & & & \\
+		& \textbf{Audio2} & & & & & \\
+		\hline
+	\end{tabular}
+	\caption{Clasificación correcta en porcentaje}
+	\label{class_corr_en_pct}
+\end{table}
+
+
+Atributos:      A1    A2    A3         .....     AN
+Hab1:  audio1   1     ?     2                    2   
+       audio2   ?     ?     1                    ?
+       audio3   2     ?     3                    ?
+
+Hab2:  audio1   1       ?       ?                      ?
+audio2   1       2       ?                      ?
+
+esto pasaría a:
+Atributos:                A1    A2    A3         .....     AN
+Hab1:  audio1   1.5   ?     1.667                2   
+Hab2:  audio1   1      2        ?                     ?
+
+\subsection{Resultados}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+		\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+		\hline \hline
+		\textbf{Promedio} &  &  &  &  &  \\ \hline
+	\end{tabular}
+	\caption{Clasificación correcta en porcentaje}
+	\label{class_corr_en_pct}
+\end{table}
+
+\subsubsection{Wilcoxon y Test t de Student}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+		\textbf{ZeroR y JRip}  &  &  \\ \hline
+		\textbf{ZeroR y J48}  &  &  \\ \hline
+		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
+		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+	\end{tabular}
+	\caption{Resultados de cada test representado en p-valor}
+	\label{res_tests_wilcoxon_student}
+\end{table}
+
+% hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 

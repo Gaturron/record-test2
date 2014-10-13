@@ -120,7 +120,7 @@ def juntandoGrabaciones(dicc):
     todas las metricas en 1 grabacion
     """
     
-    print '1) ================================================='
+    #print '1) ================================================='
 
     dicc2 = {}
     #ordenar por userId
@@ -131,8 +131,8 @@ def juntandoGrabaciones(dicc):
             dicc2[str(userId)] = [v] + dicc2[str(userId)] 
         else:
             dicc2[str(userId)] = [v]
-    print str(dicc2['24'])
-    print '2) =================================================='
+    #print str(dicc2['24'])
+    #print '2) =================================================='
 
     dicc3 = {}
     #recorro el diccionario juntando en cada atributo una lista con sus valores
@@ -147,8 +147,8 @@ def juntandoGrabaciones(dicc):
                     dicc_temp[k] = [ att ]
 
         dicc3[userId] = dicc_temp
-    print str(dicc3['24'])
-    print '4) =================================================='
+    #print str(dicc3['24'])
+    #print '4) =================================================='
 
     #recorro el diccionario haciendo el promedio de cada valor
     def avg(l):
@@ -199,8 +199,8 @@ def juntandoGrabaciones(dicc):
 
         dicc4[userId] = dicc_temp
     
-    print str(dicc4['24'])
-    print 'Fin  ==============================================='
+    #print str(dicc4['24'])
+    #print 'Fin  ==============================================='
 
     return dicc4
 
@@ -240,6 +240,12 @@ if __name__ == '__main__':
 
     # dicc = dicc3
 
+    # prueba
+    h24 = [v for k, v in dicc.items() if v['userId'] == '24']
+    print "Hablante attr: "
+    for x in h24:
+        print str([str(k)+": "+str(v) for k, v in x.items() if k in att_for_avg])
+
     dicc2 = {}
     for audioKey, attrDic in dicc.items():
 
@@ -247,7 +253,7 @@ if __name__ == '__main__':
 
         diccAttr = {}
         for att, value in attrDic.items():
-            print " att: "+str(att)+" value: "+str(value)
+            #print " att: "+str(att)+" value: "+str(value)
             if att in att_for_avg:
                 if value == None:
                     if diccAvg[userId][att] != None:
@@ -260,6 +266,7 @@ if __name__ == '__main__':
         dicc2[str(audioKey)] = diccAttr
 
     dicc = dicc2
+    print "Hablante attr CON PROM: "+str([v for k, v in dicc.items() if v['userId'] == '24'])
 
     print " Agregado el promedio en ? ========================================="
 

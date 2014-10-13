@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.1.1}Frases utilizando esquema AMPER}{6}
 \contentsline {subsection}{\numberline {2.1.2}Frases comunes}{7}
 \contentsline {subsubsection}{Orden de las frases}{9}
-\contentsline {subsection}{\numberline {2.1.3}Combinando los dos tipos de frases utilizando trazas}{10}
+\contentsline {subsection}{\numberline {2.1.3}Combinando los dos tipos de frases utilizando trazas}{11}
 \contentsline {chapter}{\numberline {3}Sistema de grabaci\IeC {\'o}n online}{12}
 \contentsline {section}{\numberline {3.1}Recolecci\IeC {\'o}n de datos}{12}
 \contentsline {section}{\numberline {3.2}Grabaci\IeC {\'o}n a trav\IeC {\'e}s del browser}{14}
@@ -21,9 +21,9 @@
 \contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{19}
 \contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{20}
 \contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{21}
-\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{22}
+\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{23}
 \contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{23}
-\contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{24}
+\contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{25}
 \contentsline {chapter}{\numberline {5}Datos obtenidos}{26}
 \contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{26}
 \contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{27}
@@ -43,6 +43,14 @@
 \contentsline {section}{\numberline {6.5}Resultados}{37}
 \contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{40}
 \contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{41}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{42}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{43}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{45}
+\contentsline {subsection}{\numberline {6.5.3}Un hablante para test y los dem\IeC {\'a}s para train}{42}
+\contentsline {subsection}{\numberline {6.5.4}Resultados}{42}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{42}
+\contentsline {subsection}{\numberline {6.5.5}Promediando los atributos de cada hablante}{43}
+\contentsline {subsection}{\numberline {6.5.6}Resultados}{43}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{43}
+\contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{43}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{44}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{44}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{45}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{48}
