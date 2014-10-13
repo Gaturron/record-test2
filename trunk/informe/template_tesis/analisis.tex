@@ -120,7 +120,7 @@ literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&
         test <- ObtenerAudios(hablantesTest, audios)
         train <- ObtenerAudios(hablantes - hablantesTest, audios)
 
-        Si <train, test> no está en resultado 
+        Si <train, test> no est'a en resultado 
            #No es un fold ya creado
         y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
            #El test creado solo puede ser 20 % parecido a uno anterior
@@ -532,6 +532,10 @@ Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente 
 \end{flushleft}
 
 En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuáles atributos tienen mayor importancia a la hora de la clasificación.
+
+\input{xvalidation-porHab.tex}
+\input{xvalidation-porHabProm.tex}
+\input{xvalidation-porHabPromMissAttr.tex}
 
 Analizamos a continuación cuáles atributos aportan mayor información.
 
