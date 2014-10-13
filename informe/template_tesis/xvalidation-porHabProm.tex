@@ -10,30 +10,34 @@
 		\hline
 		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
 		\hline 
-		\textbf{Hablante 1} & \textbf{Audio1} & & & & & \\
-		& \textbf{Audio2} & & & & & \\
+		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+		& \textbf{Audio2} & ? & ? & 1 & & ? \\
+		& \textbf{Audio3} & 2 & ? & 3 & & ? \\
 		\hline
-		\textbf{Hablante 2} & \textbf{Audio1} & & & & & \\
-		& \textbf{Audio2} & & & & & \\
+		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & & ? \\
+		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
-	\caption{Clasificación correcta en porcentaje}
-	\label{class_corr_en_pct}
+	\caption{}
+	\label{}
 \end{table}
 
-
-Atributos:      A1    A2    A3         .....     AN
-Hab1:  audio1   1     ?     2                    2   
-       audio2   ?     ?     1                    ?
-       audio3   2     ?     3                    ?
-
-Hab2:  audio1   1       ?       ?                      ?
-audio2   1       2       ?                      ?
-
 esto pasaría a:
-Atributos:                A1    A2    A3         .....     AN
-Hab1:  audio1   1.5   ?     1.667                2   
-Hab2:  audio1   1      2        ?                     ?
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|ccccc|}
+		\hline
+		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+		\hline 
+		\textbf{Hablante 1} & \textbf{Audio1} & 1.5 & ? & 1.667 & & 2\\
+		\hline
+		\textbf{Hablante 2} & \textbf{Audio1} & 1 & 2 & ? & & ? \\
+		\hline
+	\end{tabular}
+	\caption{}
+	\label{}
+\end{table}
 
 \subsection{Resultados}
 
