@@ -49,7 +49,7 @@
 \contentsline {subsection}{\numberline {6.5.5}Promediando los atributos de cada hablante}{43}
 \contentsline {subsection}{\numberline {6.5.6}Resultados}{43}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{43}
-\contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{43}
+\contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{44}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{44}
 \contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{44}
 \contentsline {section}{\numberline {6.7}Combinando clases de atributos}{45}
