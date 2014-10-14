@@ -44,7 +44,7 @@ Vamos a separar uno para test y todos los demás para train. Cuando nos referimo
 		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
 		%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
 		%\hline \hline
-		\textbf{Promedio} &  &  &  &  &  \\ \hline
+		\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
 	\label{}
@@ -53,15 +53,17 @@ Vamos a separar uno para test y todos los demás para train. Cuando nos referimo
 
 \subsubsection{Wilcoxon y Test t de Student}
 
+Valores del p-valor sobre cada test.
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  &  &  \\ \hline
-		\textbf{ZeroR y J48}  &  &  \\ \hline
-		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
-		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+		\textbf{ZeroR y JRip}  & 0.5816 & 0.6234 \\ \hline
+		\textbf{ZeroR y J48}  & 1 & 1 \\ \hline
+		\textbf{ZeroR y NaiveBayes}  & 0.4383 & 0.4042 \\ \hline
+		\textbf{ZeroR y Function SMO}  & 0.4302 & 0.2646 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}

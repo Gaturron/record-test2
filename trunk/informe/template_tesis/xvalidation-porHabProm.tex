@@ -13,7 +13,7 @@ Cross validation similar al anterior pero con sólo 16 hablantes.
 	\centering
 	\begin{tabular}{cccccccccccc}
 		& \multicolumn{11}{c}{\textit{Número de hablante}} \\
-		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 25 & 26 & 27 \\
+		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 14 & 15 & 16 \\
 		\hline \\
 		Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
 		
@@ -29,7 +29,6 @@ Cross validation similar al anterior pero con sólo 16 hablantes.
 	\caption{Esquema de cross-validation}
 	\label{}
 \end{table}
-
 
 Juntamos los atributos de cada hablante de la siguiente forma.
 
@@ -72,14 +71,14 @@ O sea, una fila de atributos por cada hablante.
 
 \subsection{Resultados}
 
+EL resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa.
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Fold 1}  &  &  &  &  &  \\ \hline
-		\hline \hline
-		\textbf{Promedio} &  &  &  &  &  \\ \hline
+		\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
 	\label{class_corr_en_pct}
