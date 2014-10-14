@@ -23,6 +23,24 @@ Una particularidad que se destaca de esta herramienta es que no necesita datos d
 %TODO acá agregar explicación, al final de este parrafo
 Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando las diferentes muestras analizadas y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de estas grabaciones. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
+Veamos un ejemplo de cómo funcionan los HMM en nuestro trabajo. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{espectograma_u3_t33_a1} 
+	\caption{Características audio 1}
+	\label{car_a1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{espectograma_u27_t33_a1} 
+	\caption{Características audio 2}
+	\label{car_a2}
+\end{figure}
+
+Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones de dos hablantes distintos que pronuncian la misma frase. Estas características están representadas por tres gráficos. El primero nos muestra la onda del sonido de la grabación a través del tiempo, el segundo el espectograma y el tercero corresponde al comienzo y fin de cada fonema en la grabación. Podemos observar que el espectograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir cada desde y hasta qué tiempo se encuentra cada fonema.
+
 Los requisitos para utilizar esta herramienta son: una hora de grabación con alineamientos y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 %TODO: arreglar sin poner SCORES

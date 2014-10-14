@@ -1,8 +1,37 @@
 % Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
 \subsection{Promediando los atributos de cada hablante}
 
-8 hablantes Buenos Aires
-8 Córdoba
+8 hablantes Buenos Aires. 8 Córdoba.
+
+Cross validation similar al anterior pero con sólo 16 hablantes.
+
+\begin{center}
+	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
+\end{center}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{cccccccccccc}
+		& \multicolumn{11}{c}{\textit{Número de hablante}} \\
+		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 25 & 26 & 27 \\
+		\hline \\
+		Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		\multicolumn{11}{c}{\textit{...}}	\\
+		
+		Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+		
+	\end{tabular}
+	\caption{Esquema de cross-validation}
+	\label{}
+\end{table}
+
+
+Juntamos los atributos de cada hablante de la siguiente forma.
 
 \begin{table}[H]
 	\centering
@@ -11,10 +40,10 @@
 		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
 		\hline 
 		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
-		& \textbf{Audio2} & ? & ? & 1 & & ? \\
+		& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
 		& \textbf{Audio3} & 2 & ? & 3 & & ? \\
 		\hline
-		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & & ? \\
+		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
 		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
@@ -30,14 +59,16 @@ esto pasaría a:
 		\hline
 		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
 		\hline 
-		\textbf{Hablante 1} & \textbf{Audio1} & 1.5 & ? & 1.667 & & 2\\
+		\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{1.667} & ... & \textbf{2}\\
 		\hline
-		\textbf{Hablante 2} & \textbf{Audio1} & 1 & 2 & ? & & ? \\
+		\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
 		\hline
 	\end{tabular}
 	\caption{}
 	\label{}
 \end{table}
+
+O sea, una fila de atributos por cada hablante.
 
 \subsection{Resultados}
 

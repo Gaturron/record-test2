@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  13 OCT 2014 03:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  14 OCT 2014 01:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -692,6 +692,54 @@ LaTeX Info: Redefining \] on input line 2666.
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen175
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
+\c@tracingmulticols=\count141
+\mult@box=\box46
+\multicol@leftmargin=\dimen176
+\c@unbalance=\count142
+\c@collectmore=\count143
+\doublecol@number=\count144
+\multicoltolerance=\count145
+\multicolpretolerance=\count146
+\full@width=\dimen177
+\page@free=\dimen178
+\premulticols=\dimen179
+\postmulticols=\dimen180
+\multicolsep=\skip50
+\multicolbaselineskip=\skip51
+\partial@page=\box47
+\last@line=\box48
+\mult@rightbox=\box49
+\mult@grightbox=\box50
+\mult@gfirstbox=\box51
+\mult@firstbox=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\c@columnbadness=\count147
+\c@finalcolumnbadness=\count148
+\last@try=\dimen181
+\multicolovershoot=\dimen182
+\multicolundershoot=\dimen183
+\mult@nat@firstbox=\box70
+\colbreak@box=\box71
+\multicol@sort@counter=\count149
+)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
@@ -705,14 +753,14 @@ Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen176
-\extrarowheight=\dimen177
+\col@sep=\dimen184
+\extrarowheight=\dimen185
 \NC@list=\toks37
-\extratabsurround=\skip50
-\backup@length=\skip51
+\extratabsurround=\skip52
+\backup@length=\skip53
 )
 \everycr=\toks38
-\minrowclearance=\skip52
+\minrowclearance=\skip54
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
@@ -723,9 +771,9 @@ Package: pgfplots 2013/03/17 v1.8 Data Visualization (1.8-3-gaf58a29)
 \t@pgfplots@toka=\toks39
 \t@pgfplots@tokb=\toks40
 \t@pgfplots@tokc=\toks41
-\pgfplots@tmpa=\dimen178
-\c@pgfplots@coordindex=\count141
-\c@pgfplots@scanlineindex=\count142
+\pgfplots@tmpa=\dimen186
+\c@pgfplots@coordindex=\count150
+\c@pgfplots@scanlineindex=\count151
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
 .tex))
@@ -748,23 +796,23 @@ gfsupp_pgfkeysfiltered.code.tex
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count143
+\c@pgfmathroundto@lastzeros=\count152
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2012/09/11 v2.10 (rcs-revision 1.17)
-\pgf@plot@mark@count=\count144
-\pgfplotmarksize=\dimen179
+\pgf@plot@mark@count=\count153
+\pgfplotmarksize=\dimen187
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgflibraryfpu.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2012/11/30  (rcs-revision 1.38)
-\pgfpic=\box46
-\pgf@hbox=\box47
-\pgf@layerbox@main=\box48
-\pgf@picture@serial@count=\count145
+\pgfpic=\box72
+\pgf@hbox=\box73
+\pgf@layerbox@main=\box74
+\pgf@picture@serial@count=\count154
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
 gfsupp_pgfcorelayers.code.tex
@@ -777,13 +825,13 @@ tructure.code.tex)
 tructureext.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
 .code.tex
-\c@pgfplotsarray@tmp=\count146
+\c@pgfplotsarray@tmp=\count155
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
 x.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
 d.code.tex
-\c@pgfplotstable@counta=\count147
+\c@pgfplotstable@counta=\count156
 \t@pgfplotstable@a=\toks45
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
@@ -796,7 +844,7 @@ de.tex))
 .tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
 fshading.code.tex
-\c@pgfplotslibrarysurf@no=\count148
+\c@pgfplotslibrarysurf@no=\count157
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
 shading.pgfsys-pdftex.def)))
@@ -818,16 +866,16 @@ e.tex)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
 ations.code.tex
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen180
-\pgfdecoratedremainingdistance=\dimen181
-\pgfdecoratedinputsegmentcompleteddistance=\dimen182
-\pgfdecoratedinputsegmentremainingdistance=\dimen183
-\pgf@decorate@distancetomove=\dimen184
-\pgf@decorate@repeatstate=\count149
-\pgfdecorationsegmentamplitude=\dimen185
-\pgfdecorationsegmentlength=\dimen186
+\pgfdecoratedcompleteddistance=\dimen188
+\pgfdecoratedremainingdistance=\dimen189
+\pgfdecoratedinputsegmentcompleteddistance=\dimen190
+\pgfdecoratedinputsegmentremainingdistance=\dimen191
+\pgf@decorate@distancetomove=\dimen192
+\pgf@decorate@repeatstate=\count158
+\pgfdecorationsegmentamplitude=\dimen193
+\pgfdecorationsegmentlength=\dimen194
 )
-\tikz@lib@dec@box=\box49
+\tikz@lib@dec@box=\box75
 )
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
 ations.pathmorphing.code.tex
@@ -837,13 +885,13 @@ athmorphing.code.tex))
 ations.pathreplacing.code.tex
 (/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
 athreplacing.code.tex))
-\pgfplots@numplots=\count150
-\pgfplots@xmin@reg=\dimen187
-\pgfplots@xmax@reg=\dimen188
-\pgfplots@ymin@reg=\dimen189
-\pgfplots@ymax@reg=\dimen190
-\pgfplots@zmin@reg=\dimen191
-\pgfplots@zmax@reg=\dimen192
+\pgfplots@numplots=\count159
+\pgfplots@xmin@reg=\dimen195
+\pgfplots@xmax@reg=\dimen196
+\pgfplots@ymin@reg=\dimen197
+\pgfplots@ymax@reg=\dimen198
+\pgfplots@zmin@reg=\dimen199
+\pgfplots@zmax@reg=\dimen200
 )
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotm
 arks.code.tex
@@ -866,17 +914,23 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen193
+\arrowsize=\dimen201
 ))
 (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 
 
-LaTeX Warning: Label `class_corr_en_pct' multiply defined.
+LaTeX Warning: Label `' multiply defined.
 
 
 LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
 
 
 LaTeX Warning: Label `' multiply defined.
@@ -888,6 +942,12 @@ LaTeX Warning: Label `class_corr_en_pct' multiply defined.
 LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
 
 
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
 LaTeX Warning: Label `class_corr_en_pct' multiply defined.
 
 
@@ -896,30 +956,30 @@ LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count151
-\scratchdimen=\dimen194
-\scratchbox=\box50
-\nofMPsegments=\count152
-\nofMParguments=\count153
+\scratchcounter=\count160
+\scratchdimen=\dimen202
+\scratchbox=\box76
+\nofMPsegments=\count161
+\nofMParguments=\count162
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count154
-\MPscratchDim=\dimen195
-\MPnumerator=\count155
-\makeMPintoPDFobject=\count156
+\MPscratchCnt=\count163
+\MPscratchDim=\dimen203
+\MPnumerator=\count164
+\makeMPintoPDFobject=\count165
 \everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -965,8 +1025,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 65.
-LaTeX Info: Redefining \% on input line 65.
+LaTeX Info: Redefining \. on input line 66.
+LaTeX Info: Redefining \% on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1011,29 +1071,29 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 126.
 )
-\CenteringLeftskip=\skip53
-\RaggedLeftLeftskip=\skip54
-\RaggedRightLeftskip=\skip55
-\CenteringRightskip=\skip56
-\RaggedLeftRightskip=\skip57
-\RaggedRightRightskip=\skip58
-\CenteringParfillskip=\skip59
-\RaggedLeftParfillskip=\skip60
-\RaggedRightParfillskip=\skip61
-\JustifyingParfillskip=\skip62
-\CenteringParindent=\skip63
-\RaggedLeftParindent=\skip64
-\RaggedRightParindent=\skip65
-\JustifyingParindent=\skip66
+\CenteringLeftskip=\skip55
+\RaggedLeftLeftskip=\skip56
+\RaggedRightLeftskip=\skip57
+\CenteringRightskip=\skip58
+\RaggedLeftRightskip=\skip59
+\RaggedRightRightskip=\skip60
+\CenteringParfillskip=\skip61
+\RaggedLeftParfillskip=\skip62
+\RaggedRightParfillskip=\skip63
+\JustifyingParfillskip=\skip64
+\CenteringParindent=\skip65
+\RaggedLeftParindent=\skip66
+\RaggedRightParindent=\skip67
+\JustifyingParindent=\skip68
 )
-\c@lstlisting=\count157
+\c@lstlisting=\count166
 
 ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 65.
+ on input line 66.
 
 (./caratula.tex <logofcen.pdf, id=4, 108.405pt x 108.405pt>
 File: logofcen.pdf Graphic file (type pdf)
@@ -1284,45 +1344,67 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [18
 
 ]
+<Images/espectograma_u3_t33_a1.png, id=108, 817.0525pt x 549.05125pt>
+File: Images/espectograma_u3_t33_a1.png Graphic file (type png)
+
+<use Images/espectograma_u3_t33_a1.png>
+Package pdftex.def Info: Images/espectograma_u3_t33_a1.png used on input line 3
+0.
+(pdftex.def)             Requested size: 341.43437pt x 229.4438pt.
+
+<Images/espectograma_u27_t33_a1.png, id=109, 1059.96pt x 549.05125pt>
+File: Images/espectograma_u27_t33_a1.png Graphic file (type png)
+
+<use Images/espectograma_u27_t33_a1.png>
+Package pdftex.def Info: Images/espectograma_u27_t33_a1.png used on input line 
+37.
+(pdftex.def)             Requested size: 341.43437pt x 176.85612pt.
 LaTeX Info: Redefining \. on input line 41.
 LaTeX Info: Redefining \% on input line 41.
- [19]
-<Images/diagrama_workflow.jpg, id=113, 300.12125pt x 316.18124pt>
+ [19 <./Images/espectograma_u3_t33_a1.png>]
+LaTeX Info: Redefining \. on input line 55.
+LaTeX Info: Redefining \% on input line 55.
+ [20 <./Images/espectograma_u27_t33_a1.png>]
+<Images/diagrama_workflow.jpg, id=118, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 45.
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 63.
 (pdftex.def)             Requested size: 213.39568pt x 224.82314pt.
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
- [20 <./Images/diagrama_workflow.jpg>]
-LaTeX Info: Redefining \. on input line 86.
-LaTeX Info: Redefining \% on input line 86.
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Info: Redefining \. on input line 81.
+LaTeX Info: Redefining \% on input line 81.
 [21]
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
- [22]
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
+ [22 <./Images/diagrama_workflow.jpg>]
+LaTeX Info: Redefining \. on input line 141.
+LaTeX Info: Redefining \% on input line 141.
  [23]
-LaTeX Info: Redefining \. on input line 224.
-LaTeX Info: Redefining \% on input line 224.
- [24]) (./datos_obtenidos.tex
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [24]
+LaTeX Info: Redefining \. on input line 236.
+LaTeX Info: Redefining \% on input line 236.
+ [25])
+(./datos_obtenidos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [25]
+ [26]
 Cap\'{\i }tulo 5.
-[26
+[27
 
-] <Images/alineacion_mala_inf.png, id=137, 1290.8225pt x 664.4825pt>
+] <Images/alineacion_mala_inf.png, id=142, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
 Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 39.
 (pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
 
-<Images/click_al_final_inf.png, id=138, 1281.78876pt x 663.47874pt>
+<Images/click_al_final_inf.png, id=143, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
@@ -1334,15 +1416,15 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Info: Redefining \. on input line 53.
 LaTeX Info: Redefining \% on input line 53.
-[27 <./Images/alineacion_mala_inf.png>]
+[28 <./Images/alineacion_mala_inf.png>]
 LaTeX Info: Redefining \. on input line 93.
 LaTeX Info: Redefining \% on input line 93.
- [28 <./Images/click_al_final_inf.png>]) (./analisis.tex
+ [29 <./Images/click_al_final_inf.png>]) (./analisis.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [29]
+ [30]
 Cap\'{\i }tulo 6.
-[30
+[31
 
 ]
 Overfull \hbox (3.70168pt too wide) in paragraph at lines 72--73
@@ -1351,69 +1433,75 @@ Overfull \hbox (3.70168pt too wide) in paragraph at lines 72--73
 
 LaTeX Info: Redefining \. on input line 76.
 LaTeX Info: Redefining \% on input line 76.
-[31]
+[32]
 LaTeX Info: Redefining \. on input line 116.
 LaTeX Info: Redefining \% on input line 116.
- [32]
+ [33]
 LaTeX Info: Redefining \. on input line 159.
 LaTeX Info: Redefining \% on input line 159.
- [33]
+ [34]
 LaTeX Info: Redefining \. on input line 196.
 LaTeX Info: Redefining \% on input line 196.
- [34]
+ [35]
 LaTeX Info: Redefining \. on input line 228.
 LaTeX Info: Redefining \% on input line 228.
- [35]
+ [36]
 LaTeX Info: Redefining \. on input line 268.
 LaTeX Info: Redefining \% on input line 268.
- [36]
+ [37]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 LaTeX Info: Redefining \. on input line 363.
 LaTeX Info: Redefining \% on input line 363.
- [37]
+ [38]
 LaTeX Info: Redefining \. on input line 373.
 LaTeX Info: Redefining \% on input line 373.
- [38]
+ [39]
 LaTeX Info: Redefining \. on input line 446.
 LaTeX Info: Redefining \% on input line 446.
- [39]
+ [40]
 LaTeX Info: Redefining \. on input line 499.
 LaTeX Info: Redefining \% on input line 499.
- [40] (./xvalidation-porHab.tex
-LaTeX Info: Redefining \. on input line 12.
-LaTeX Info: Redefining \% on input line 12.
+ [41] (./xvalidation-porHab.tex
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
 
-[41]) (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 24.
-LaTeX Info: Redefining \% on input line 24.
- [42]) (./xvalidation-porHabPromMissAttr.tex
-LaTeX Info: Redefining \. on input line 16.
-LaTeX Info: Redefining \% on input line 16.
-[43])
-LaTeX Info: Redefining \. on input line 574.
-LaTeX Info: Redefining \% on input line 574.
- [44]
-LaTeX Info: Redefining \. on input line 630.
-LaTeX Info: Redefining \% on input line 630.
- [45]) (./conclusiones.tex
+[42]) (./xvalidation-porHabProm.tex
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+ [43]
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
+ [44])
+(./xvalidation-porHabPromMissAttr.tex
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
+ [45]) (./seleccion_de_atributos.tex
+LaTeX Info: Redefining \. on input line 34.
+LaTeX Info: Redefining \% on input line 34.
+
+[46]) (./combinando_clases_de_atributos.tex
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+ [47])) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [46]
+ [48]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [47]
+
+[49]
 Cap\'{\i }tulo 7.
-(./trabajos_futuros.tex [48
+(./trabajos_futuros.tex [50
 
 ]
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
- [49])) (./marcas_prosodicas.tex
+ [51])) (./marcas_prosodicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [50]
+ [52]
 Underfull \vbox (badness 10000) detected at line 31
  []
 
@@ -1428,12 +1516,12 @@ Underfull \hbox (badness 1360) in paragraph at lines 35--35
 \OT1/cmr/m/n/10 go to-dos los d^^S^^Pas con-mi-go
  []
 
-[51
+[53
 
 ]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [52]
+ [54]
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []|\OT1/cmr/m/n/10 ACU[]AverageKT[]0 al
  []
@@ -1506,16 +1594,16 @@ Overfull \hbox (0.74492pt too wide) in paragraph at lines 46--46
 Underfull \vbox (badness 10000) detected at line 50
  []
 
-[53
+[55
 
 ]
 Underfull \vbox (badness 10000) detected at line 71
  []
 
 )
-LaTeX Info: Redefining \. on input line 114.
-LaTeX Info: Redefining \% on input line 114.
- [54] (./tesis.bbl) [55
+LaTeX Info: Redefining \. on input line 115.
+LaTeX Info: Redefining \% on input line 115.
+ [56] (./tesis.bbl) [57
 
 
 ] (./tesis.aux
@@ -1527,10 +1615,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23177 strings out of 493307
- 514744 string characters out of 6139905
- 769256 words of memory out of 5000000
- 26089 multiletter control sequences out of 15000+600000
+ 23284 strings out of 493307
+ 516642 string characters out of 6139905
+ 773159 words of memory out of 5000000
+ 26185 multiletter control sequences out of 15000+600000
  14157 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1470b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1551,10 +1639,10 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on tesis.pdf (61 pages, 1714496 bytes).
+Output written on tesis.pdf (63 pages, 2155489 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 200 compressed objects within 2 object streams
+ 305 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 75 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 
