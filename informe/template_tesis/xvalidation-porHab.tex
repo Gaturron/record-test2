@@ -6,25 +6,35 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-27 hablantes
+Tenemos 27 hablantes.
 
-\begin{itemize}
-	\item[] \mycirc[blue] Hablante para train
-	\item[] \mycirc[red] Hablante para test
-\end{itemize}
+Vamos a separar uno para test y todos los demás para train. Cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
-\begin{tabular}{rc}
-	& \textit{Hablantes} \\
-	Fold 1 &\mycirc[red]\foreach \n in {1,...,6}{\mycirc[blue]} ... \foreach \n in {1,...,3}{\mycirc[blue]} \\
-	
-	Fold 2 &\mycirc[blue]\mycirc[red]\foreach \n in {1,...,5}{\mycirc[blue]} ... \foreach \n in {1,...,3}{\mycirc[blue]}  \\
-	
-	Fold 3 &\mycirc[blue]\mycirc[blue]\mycirc[red]\foreach \n in {1,...,4}{\mycirc[blue]} ... \foreach \n in {1,...,3}{\mycirc[blue]}  \\
-	                         ... \\
-	
-	Fold 27 &\foreach \n in {1,...,7}{\mycirc[blue]} ... \foreach \n in {2,...,3}{\mycirc[blue]}\mycirc[red] \\
-\end{tabular}
+\begin{center}
+	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
+\end{center}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{cccccccccccc}
+		& \multicolumn{11}{c}{\textit{Número de hablante}} \\
+		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 25 & 26 & 27 \\
+		\hline \\
+		Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+	
+		\multicolumn{11}{c}{\textit{...}}	\\
+		
+		Fold 27 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+	
+	\end{tabular}
+	\caption{Esquema de cross-validation}
+	\label{}
+\end{table}
+		
 \subsection{Resultados}
 
 \begin{table}[H]
@@ -32,12 +42,12 @@
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Fold 1}  &  &  &  &  &  \\ \hline
-		\hline \hline
+		%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+		%\hline \hline
 		\textbf{Promedio} &  &  &  &  &  \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{class_corr_en_pct}
+	\label{}
 \end{table}
 
 

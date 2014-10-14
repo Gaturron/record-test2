@@ -1,0 +1,85 @@
+
+\section{Selección de atributos de forma automática}
+
+%\subsection*{Attribute Evaluator: InfoGain}
+%http://weka.sourceforge.net/doc.dev/weka/attributeSelection/InfoGainAttributeEval.html
+
+%leer http://en.wikipedia.org/wiki/Information_gain_ratio
+
+En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. 
+
+Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
+
+$H(Class)$ representa el valor de la entropía de la clase a predecir. En otras palabras, mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular. Recordemos que cuando decimos clase nos referimos a Buenos Aires o Córdoba. $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$. A esta se le llama \textit{entropía condicional}. Si este atributo tiene información que ayude a predecir la clase, entonces la entropía condicional será menor a la entropía de la clase. O sea, $H(Class | Attribute) < H(Class)$.  
+
+De esta forma; cuanto menor sea la entropía condicional con respecto a la entropía de la clase, mayor será la ganancia de información para ese atributo.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+\textbf{Ganancia de Información} & \textbf{Atributo} \\ \hline
+ 0.07231     & FON\_consonant\_norm \\ \hline
+ 0.07217     & FON\_vowel\_norm \\ \hline
+ 0.03963     & SIL\_syllableAccent\_normhd \\ \hline
+ 0.03963     & SIL\_prevSyllableAccent\_normhd \\ \hline
+ 0.02332     & FON\_ll\_norm \\ \hline
+ 0.02285     & FON\_Sfinal\_norm \\ \hline
+ 0.02226     & ACU\_MinLL\_1 \\ \hline
+ 0.02144     & ACU\_AverageLL\_1 \\ \hline
+\end{tabular}
+\caption{Resultados de InfoGain}
+\label{infogain-table}
+\end{table}
+
+La tabla \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+
+Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas utilizando consonantes. Vocales también pero en menor medida. Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
+
+También algo que se desprende de este análisis es: todos los atributos del tipo fonético (empezadas con \textit{FON}) y silábicas (empezadas con \textit{SIL}) son sobre duración de tiempos. Si tomamos todos estos atributos y los separamos en dos grupos; uno de vocales y otro de consonantes se podría reconstruir aproximadamente los valores de los atributos sobre vocales y consonantes. Esta suma de atributos sobre vocales o consonantes van a estar definidos para todos los hablantes, mientras que atributos sobre otras reglas, por ejemplo duración de la /r/ o de la /ll/, pueden ser desconocidos o tener pocas instancias si ese hablante no grabó una frase con ese atributo. 
+
+%\paragraph*{Posibles causas de porque FON\_consonant\_norm y FON\_vowel\_norm van primeros:}
+%Todas las reglas (salvo la 1) corresponden a consonantes.
+%Estos atributos estan en todos los hablantes, nunca pasa que tienen un valor desconocido (o sea con ? )
+%Todas las reglas (FON + SIL) son sobre duración de tiempos. Sumar estos atributos y dividirlos en 2 grupos hacen que estos atributos se noten mas porque estan todos juntos. Van sumando las diferencias y luego queda algo mucho mas diferente. También suma la regla 1.
+
+%\paragraph*{Utilizando solo los atributos sobre fonemas}
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{|c|l|c|c|c|c|c|}
+%\hline
+% 0.07231     & FON\_consonant\_norm \\ \hline
+% 0.07217     & FON\_vowel\_norm \\ \hline
+% 0.02332     & FON\_ll\_norm \\ \hline
+% 0.02285     & FON\_Sfinal\_norm \\ \hline
+% 0.00857     & FON\_ll\_normhd  \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%\paragraph*{Utilizando solo los atributos silábicos}
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{|c|l|c|c|c|c|c|}
+%\hline
+% 0.03963     & SIL\_syllableAccent\_normhd \\ \hline
+% 0.03963     & SIL\_prevSyllableAccent\_normhd \\ \hline
+% 0           & SIL\_prevSyllableAccent\_norm \\ \hline
+% 0           & SIL\_syllableAccent\_norm \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%\paragraph*{Utilizando solo los atributos acústicos}
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{|c|l|c|c|c|c|c|}
+%\hline
+% 0.02226     & ACU\_MinLL\_1  \\ \hline
+% 0.02144     & ACU\_AverageLL\_1  \\ \hline
+% 0.01438     & ACU\_MaxLL\_5  \\ \hline
+% 0.01232     & ACU\_MaxKT\_15  \\ \hline
+% 0.01219     & ACU\_MaxLL\_6  \\ \hline
+%\end{tabular}
+%\end{table}

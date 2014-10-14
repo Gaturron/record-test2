@@ -3,6 +3,44 @@
 
 \begin{table}[H]
 	\centering
+	\begin{tabular}{|l|l|ccccc|}
+		\hline
+		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+		\hline 
+		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+		& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
+		& \textbf{Audio3} & 2 & ? & 3 & & ? \\
+		\hline
+		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
+		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+		\hline
+	\end{tabular}
+	\caption{}
+	\label{}
+\end{table}
+
+Se cambia a ...
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|ccccc|}
+		\hline
+		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+		\hline 
+		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+		& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
+		& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
+		\hline
+		\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
+		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+		\hline
+	\end{tabular}
+	\caption{}
+	\label{}
+\end{table}
+
+\begin{table}[H]
+	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline

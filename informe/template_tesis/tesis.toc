@@ -18,39 +18,39 @@
 \contentsline {chapter}{\numberline {4}Extracci\IeC {\'o}n de informaci\IeC {\'o}n}{18}
 \contentsline {section}{\numberline {4.1}Alineaci\IeC {\'o}n forzada}{18}
 \contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{18}
-\contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{19}
-\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{20}
-\contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{21}
-\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{23}
-\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{23}
-\contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{25}
-\contentsline {chapter}{\numberline {5}Datos obtenidos}{26}
-\contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{26}
-\contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{27}
-\contentsline {section}{\numberline {5.3}Correcci\IeC {\'o}n de errores}{28}
-\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{30}
-\contentsline {section}{\numberline {6.1}Baseline}{30}
-\contentsline {section}{\numberline {6.2}Modelo de testing}{31}
-\contentsline {section}{\numberline {6.3}Clasificadores}{34}
-\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{34}
-\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{34}
-\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{34}
-\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{34}
-\contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{35}
-\contentsline {subsection}{\numberline {6.4.1}Test de Wilcoxon}{35}
-\contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{36}
-\contentsline {subsection}{\numberline {6.4.3}Student t Test}{36}
-\contentsline {section}{\numberline {6.5}Resultados}{37}
-\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{40}
-\contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{41}
-\contentsline {subsection}{\numberline {6.5.3}Un hablante para test y los dem\IeC {\'a}s para train}{42}
-\contentsline {subsection}{\numberline {6.5.4}Resultados}{42}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{42}
-\contentsline {subsection}{\numberline {6.5.5}Promediando los atributos de cada hablante}{43}
-\contentsline {subsection}{\numberline {6.5.6}Resultados}{43}
+\contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{21}
+\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{21}
+\contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{23}
+\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{24}
+\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{25}
+\contentsline {subsection}{\numberline {4.2.3}Nomenclatura utilizada}{26}
+\contentsline {chapter}{\numberline {5}Datos obtenidos}{27}
+\contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{27}
+\contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{28}
+\contentsline {section}{\numberline {5.3}Correcci\IeC {\'o}n de errores}{29}
+\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{31}
+\contentsline {section}{\numberline {6.1}Baseline}{31}
+\contentsline {section}{\numberline {6.2}Modelo de testing}{32}
+\contentsline {section}{\numberline {6.3}Clasificadores}{35}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{35}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{35}
+\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{35}
+\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{35}
+\contentsline {section}{\numberline {6.4}Tests estad\IeC {\'\i }sticos}{36}
+\contentsline {subsection}{\numberline {6.4.1}Test de Wilcoxon}{36}
+\contentsline {subsection}{\numberline {6.4.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{37}
+\contentsline {subsection}{\numberline {6.4.3}Student t Test}{37}
+\contentsline {section}{\numberline {6.5}Resultados}{38}
+\contentsline {subsection}{\numberline {6.5.1}Wilcoxon y Test t de Student}{41}
+\contentsline {subsection}{\numberline {6.5.2}Clasificadores encontrados}{42}
+\contentsline {subsection}{\numberline {6.5.3}Un hablante para test y los dem\IeC {\'a}s para train}{43}
+\contentsline {subsection}{\numberline {6.5.4}Resultados}{43}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{43}
-\contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{44}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{44}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{44}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{45}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{48}
+\contentsline {subsection}{\numberline {6.5.5}Promediando los atributos de cada hablante}{44}
+\contentsline {subsection}{\numberline {6.5.6}Resultados}{45}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{45}
+\contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{45}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{46}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{46}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{47}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{50}
