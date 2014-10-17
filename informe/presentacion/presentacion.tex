@@ -22,6 +22,7 @@
 \usepackage{pgfplots}
 \usepackage{colortbl, xcolor}
 \usepackage{longtable}
+\usepackage{graphicx}
 
 %definicion para grafico en analisis de fold
 \usetikzlibrary{shapes.geometric, arrows}
@@ -693,8 +694,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Análisis}
-	\Large {Grupo de hablantes}
+	\frametitle {Grupo de hablantes}
 	
 	\begin{figure}
 		\begin{tikzpicture}[node distance=1cm, scale=0.6, every node/.style={scale=0.6}]
@@ -748,6 +748,93 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Grupo de hablantes}
+	
+	\begin{figure}[H]
+		\centering
+		\pgfplotsset{width=10cm, height=6cm}
+		\begin{tikzpicture}[trim axis left, trim axis right, scale=0.7]
+		\begin{axis}[
+		ybar,
+		area legend,
+		tick label style={font=\small},
+		tickpos=left,
+		xticklabels={Train1, Train2, Train3, Train4, Train5}, 
+		xtick={1,2,3,4,5},
+		ymin=0,
+		legend entries={BsAs,Cba},
+		legend style={at={(1.04,1.002)}, anchor=north west,draw=black}, 
+		]
+		\addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
+		
+		\addplot  +[bar shift=.2cm, area legend]coordinates {(1,53) (2,68) (3,57) (4,61) (5,69)};
+		\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\pgfplotsset{width=10cm, height=4cm}
+		\begin{tikzpicture}[trim axis left, trim axis right, scale=0.7]
+		\begin{axis}[
+		ybar,
+		tick label style={font=\small},
+		tickpos=left,
+		xticklabels={Test1, Test2, Test3, Test4, Test5}, 
+		xtick={1,2,3,4,5},
+		ymin=0,
+		]
+		\addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,47) (2,27) (3,46) (4,22) (5,20)};
+		
+		\addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Cantidad de instancias de Buenos Aires y Córdoba según cada grupo de Train y Tests}
+		\label{TestsInstances}
+	\end{figure}
+		
+\end{frame}
+
+\begin{frame}
+	\frametitle{Grupo de hablantes}
+	
+	\begin{table}[H]
+		\centering
+		\resizebox{9cm}{!} {
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{Fold 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
+			\textbf{Fold 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
+			\textbf{Fold 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
+			\textbf{Fold 4}  & 55 & 52 & 55 & 67 & 80 \\ \hline
+			\textbf{Fold 5}  & 66 & 70 & 66 & 70 & 70 \\ \hline
+			\hline \hline
+			\textbf{Promedio} & 64 & 61 & 60 & 72 & 70 \\ \hline
+		\end{tabular}
+		}
+		\caption{Clasificación correcta en porcentaje}
+		\label{class_corr_en_pct}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\resizebox{9cm}{!} {
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+			\textbf{ZeroR y JRip}  & 0.8438 & 0.87 \\ \hline
+			\textbf{ZeroR y J48}  & 0.9772 & 0.813 \\ \hline
+			\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
+			\textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
+		\end{tabular}
+		}
+		\caption{Resultados de cada test representado en p-valor}
+		\label{res_tests_wilcoxon_student}
+	\end{table}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Dejando un hablante fuera promediando los atributos}
 	
 	\begin{center}
@@ -783,6 +870,7 @@
 	
 	\begin{table}[H]
 		\centering
+		\resizebox{7cm}{!} {
 		\begin{tabular}{|l|l|ccccc|}
 			\hline
 			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
@@ -795,6 +883,7 @@
 			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 			\hline
 		\end{tabular}
+		}
 		\caption{}
 		\label{}
 	\end{table}
@@ -803,6 +892,7 @@
 	
 	\begin{table}[H]
 		\centering
+		\resizebox{7cm}{!} {
 		\begin{tabular}{|l|l|ccccc|}
 			\hline
 			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
@@ -812,6 +902,7 @@
 			\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
 			\hline
 		\end{tabular}
+		}
 		\caption{}
 		\label{}
 	\end{table}
@@ -822,6 +913,7 @@
 	
 	\begin{table}[H]
 		\centering
+		\resizebox{7cm}{!} {
 		\begin{tabular}{|l|l|ccccc|}
 			\hline
 			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
@@ -834,29 +926,33 @@
 			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 			\hline
 			\end{tabular}
+		}
+		\caption{}
+		\label{}
+		\end{table}
+		
+			
+		Se cambia a ...
+		
+		\begin{table}[H]
+			\centering
+			\resizebox{7cm}{!} {
+			\begin{tabular}{|l|l|ccccc|}
+				\hline
+				\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+				\hline 
+				\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+				& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
+				& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
+				\hline
+				\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
+				& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+				\hline
+			\end{tabular}
+			}
 			\caption{}
 			\label{}
-			\end{table}
-			
-			Se cambia a ...
-			
-			\begin{table}[H]
-				\centering
-				\begin{tabular}{|l|l|ccccc|}
-					\hline
-					\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
-					\hline 
-					\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
-					& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
-					& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
-					\hline
-					\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
-					& \textbf{Audio2} & 1 & 2 & ? & & ? \\
-					\hline
-					\end{tabular}
-					\caption{}
-					\label{}
-					\end{table}
+		\end{table}
 \end{frame}
 
 \begin{frame}
