@@ -47,7 +47,7 @@
 \contentsline {subsection}{\numberline {6.5.4}Resultados}{43}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{43}
 \contentsline {subsection}{\numberline {6.5.5}Promediando los atributos de cada hablante}{44}
-\contentsline {subsection}{\numberline {6.5.6}Resultados}{45}
+\contentsline {subsection}{\numberline {6.5.6}Resultados}{44}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{45}
 \contentsline {subsection}{\numberline {6.5.7}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{45}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{46}

@@ -23,6 +23,27 @@
 \usepackage{colortbl, xcolor}
 \usepackage{longtable}
 
+%definicion para grafico en analisis de fold
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{datos} = [rectangle, rounded corners, minimum width=12cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{train} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{test} = [rectangle, minimum width=2cm, minimum height=0.5cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{prom} = [rectangle, rounded corners, minimum width=8cm, minimum height=0.5cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{fold} = [rectangle, minimum width=2cm, minimum height=0.5cm, text centered]
+\tikzstyle{proc} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=0.8cm, text centered, text width=2cm, draw=black, fill=blue!30]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrowBig} = [line width=8pt,->,>=stealth]
+
+%fin fold
+
+%definicion otros x validations
+\usetikzlibrary{shapes.geometric}
+\tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
+\newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
+
+
 \graphicspath{ {Images/} }
 
 \newcommand{\tab}[1]{\hspace{.12\textwidth}\rlap{#1}}
@@ -352,7 +373,7 @@
 		ymin=0, ymax=100,
 		xtick={0,5,10,15,20,25,30},
 		ytick={0, 25, 50, 75, 100},
-		%legend pos=south east,
+		legend pos=south east,
 		ymajorgrids=true,
 		xmajorgrids=true,
 		grid style=dashed
@@ -669,6 +690,173 @@
 		\item Dejando un hablante fuera promediando los atributos
 		\item Dejando un hablante fuera promediando los atributos desconocidos
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Análisis}
+	\Large {Grupo de hablantes}
+	
+	\begin{figure}
+		\begin{tikzpicture}[node distance=1cm, scale=0.6, every node/.style={scale=0.6}]
+		
+		\node (train1) [train] {Train};
+		\node (train2) [train, xshift=-3.0cm] {Train};
+		\node (train3) [train, xshift=-6.0cm] {Train};
+		\node (train4) [train, xshift=-9.0cm] {Train};
+		\node (train5) [train, xshift=-12.0cm] {Train};
+		
+		\node (data) [datos, below of=train5, yshift=4.0cm,  xshift=6.0cm] {Datos};
+		
+		\node (fold1) [fold, above of=train5] {\textit{Fold 1}};
+		\node (fold2) [fold, above of=train4] {\textit{Fold 2}};
+		\node (fold3) [fold, above of=train3] {\textit{Fold 3}};
+		\node (fold4) [fold, above of=train2] {\textit{Fold 4}};
+		\node (fold5) [fold, above of=train1] {\textit{Fold 5}};
+		
+		\node (test1) [test, below of=train1] {Test};
+		\node (test2) [test, below of=train2] {Test};
+		\node (test3) [test, below of=train3] {Test};
+		\node (test4) [test, below of=train4] {Test};
+		\node (test5) [test, below of=train5] {Test};
+		
+		\node (proc1) [proc, below of=test1, yshift=-1.2cm] {Entrenar y testear};
+		\node (proc2) [proc, below of=test2, yshift=-1.2cm] {Entrenar y testear};
+		\node (proc3) [proc, below of=test3, yshift=-1.2cm] {Entrenar y testear};
+		\node (proc4) [proc, below of=test4, yshift=-1.2cm] {Entrenar y testear};
+		\node (proc5) [proc, below of=test5, yshift=-1.2cm] {Entrenar y testear};
+		
+		\node (prom) [prom, below of=test3, yshift=-3.0cm] {Promedio};
+		
+		\draw [arrowBig] (data) -- (fold3);
+		
+		\draw [arrow] (test1) -- (proc1);
+		\draw [arrow] (test2) -- (proc2);
+		\draw [arrow] (test3) -- (proc3);
+		\draw [arrow] (test4) -- (proc4);
+		\draw [arrow] (test5) -- (proc5);
+		
+		\draw [arrow] (proc1) -- (prom);
+		\draw [arrow] (proc2) -- (prom);
+		\draw [arrow] (proc3) -- (prom);
+		\draw [arrow] (proc4) -- (prom);
+		\draw [arrow] (proc5) -- (prom);
+		
+		\end{tikzpicture}
+		\caption{Esquema de test 5-folds}
+		\label{graficoFold}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos}
+	
+	\begin{center}
+		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
+	\end{center}
+	
+	\begin{table}[H, scale=0.3]
+		\centering
+		\begin{tabular}{cccccccccccc}
+			& \multicolumn{11}{c}{\textit{Número de hablante}} \\
+			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 14 & 15 & 16 \\
+			\hline \\
+			Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			\multicolumn{11}{c}{\textit{...}}	\\
+			
+			Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+			
+		\end{tabular}
+		\caption{Esquema de cross-validation}
+		\label{}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos}
+	
+	Juntamos los atributos de cada hablante de la siguiente forma.
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|l|ccccc|}
+			\hline
+			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+			\hline 
+			\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+			& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
+			& \textbf{Audio3} & 2 & ? & 3 & & ? \\
+			\hline
+			\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
+			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+			\hline
+		\end{tabular}
+		\caption{}
+		\label{}
+	\end{table}
+	
+	esto pasaría a:
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|l|ccccc|}
+			\hline
+			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+			\hline 
+			\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{1.667} & ... & \textbf{2}\\
+			\hline
+			\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
+			\hline
+		\end{tabular}
+		\caption{}
+		\label{}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|l|ccccc|}
+			\hline
+			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+			\hline 
+			\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+			& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
+			& \textbf{Audio3} & 2 & ? & 3 & & ? \\
+			\hline
+			\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
+			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+			\hline
+			\end{tabular}
+			\caption{}
+			\label{}
+			\end{table}
+			
+			Se cambia a ...
+			
+			\begin{table}[H]
+				\centering
+				\begin{tabular}{|l|l|ccccc|}
+					\hline
+					\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+					\hline 
+					\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+					& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
+					& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
+					\hline
+					\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
+					& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+					\hline
+					\end{tabular}
+					\caption{}
+					\label{}
+					\end{table}
 \end{frame}
 
 \begin{frame}
