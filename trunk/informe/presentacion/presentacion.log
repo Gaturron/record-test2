@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  17 OCT 2014 01:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  17 OCT 2014 10:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1234,20 +1234,20 @@ LaTeX Warning: Label `' multiply defined.
 )
 \openout1 = `presentacion.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1313,7 +1313,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 58.
+Package hyperref Info: Link coloring OFF on input line 59.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1323,9 +1323,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count187
 )
-LaTeX Info: Redefining \ref on input line 58.
-LaTeX Info: Redefining \pageref on input line 58.
-LaTeX Info: Redefining \nameref on input line 58.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (./presentacion.out) (./presentacion.out)
 \@outlinefile=\write5
@@ -1356,37 +1356,37 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 58.
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
+LaTeX Info: Redefining \includegraphics on input line 59.
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 58.
+ on input line 59.
 
 (./presentacion.nav)
-Overfull \hbox (62.39598pt too wide) in paragraph at lines 58--58
+Overfull \hbox (62.39598pt too wide) in paragraph at lines 59--59
  [][]  \OT1/cmss/bx/n/6 ([])  
  []
 
 
-Overfull \hbox (121.75954pt too wide) in paragraph at lines 58--58
+Overfull \hbox (121.75954pt too wide) in paragraph at lines 59--59
  [][][][]  
  []
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 61.
+(hyperref)                setting the option has no effect on input line 62.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 66.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 66.
 
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1408,7 +1408,7 @@ aphic file (type png)
 
 <use ../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>
 Package pdftex.def Info: ../template_tesis/Images/Dialectos_del_idioma_espanol_
-en_Argentina.png used on input line 75.
+en_Argentina.png used on input line 76.
 (pdftex.def)             Requested size: 123.34175pt x 214.64355pt.
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1425,7 +1425,7 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
  <../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 90.
+(Font)              using `OT1/cmss/bx/n' instead on input line 91.
 
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1577,16 +1577,16 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Font Info:    Try loading font information for U+msa on input line 441.
+LaTeX Font Info:    Try loading font information for U+msa on input line 442.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 441.
+LaTeX Font Info:    Try loading font information for U+msb on input line 442.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 441.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 442.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -1606,7 +1606,7 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 452.
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 453.
 (pdftex.def)             Requested size: 273.83728pt x 159.6266pt.
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1625,13 +1625,13 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 File: Images/pag-info2.png Graphic file (type png)
 
 <use Images/pag-info2.png>
-Package pdftex.def Info: Images/pag-info2.png used on input line 472.
+Package pdftex.def Info: Images/pag-info2.png used on input line 473.
 (pdftex.def)             Requested size: 273.83728pt x 153.94977pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.472 \end{frame}
+l.473 \end{frame}
                  
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/bx/n/6 ([])  
@@ -1649,13 +1649,13 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
-Package pdftex.def Info: Images/pag-grabar1.png used on input line 482.
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 483.
 (pdftex.def)             Requested size: 273.83728pt x 153.94977pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.482 \end{frame}
+l.483 \end{frame}
                  
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/bx/n/6 ([])  
@@ -1673,16 +1673,16 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 492
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 493
 .
 (pdftex.def)             Requested size: 205.37926pt x 204.79237pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.492 \end{frame}
+l.493 \end{frame}
                  
-Overfull \vbox (35.27763pt too high) detected at line 492
+Overfull \vbox (35.27763pt too high) detected at line 493
  []
 
 
@@ -1713,10 +1713,10 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 539.
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 540.
 (pdftex.def)             Requested size: 136.91603pt x 144.24382pt.
 
-Overfull \vbox (4.98047pt too high) detected at line 539
+Overfull \vbox (4.98047pt too high) detected at line 540
  []
 
 
@@ -1737,10 +1737,10 @@ File: Images/espectograma_u3_t33_a1.png Graphic file (type png)
 
 <use Images/espectograma_u3_t33_a1.png>
 Package pdftex.def Info: Images/espectograma_u3_t33_a1.png used on input line 5
-48.
+49.
 (pdftex.def)             Requested size: 308.06367pt x 207.01634pt.
 
-Overfull \vbox (7.95715pt too high) detected at line 548
+Overfull \vbox (7.95715pt too high) detected at line 549
  []
 
 
@@ -1840,8 +1840,8 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 [29
 
 ]
-
-Package hyperref Warning: Ignoring empty anchor on input line 777.
+Overfull \vbox (7.83974pt too high) detected at line 796
+ []
 
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1856,17 +1856,6 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 [30
 
 ]
-
-Package hyperref Warning: Ignoring empty anchor on input line 818.
-
-
-Package hyperref Warning: Ignoring empty anchor on input line 818.
-
-
-Overfull \vbox (15.88786pt too high) detected at line 818
- []
-
-
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/bx/n/6 ([])  
  []
@@ -1880,14 +1869,7 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 
 ]
 
-Package hyperref Warning: Ignoring empty anchor on input line 860.
-
-
-Package hyperref Warning: Ignoring empty anchor on input line 860.
-
-
-Overfull \vbox (51.96284pt too high) detected at line 860
- []
+Package hyperref Warning: Ignoring empty anchor on input line 864.
 
 
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
@@ -1902,6 +1884,13 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 [32
 
 ]
+
+Package hyperref Warning: Ignoring empty anchor on input line 909.
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 909.
+
+
 Overfull \hbox (188.06322pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/bx/n/6 ([])  
  []
@@ -1914,6 +1903,41 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 [33
 
 ]
+
+Package hyperref Warning: Ignoring empty anchor on input line 956.
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 956.
+
+
+Overfull \vbox (19.62788pt too high) detected at line 956
+ []
+
+
+Overfull \hbox (188.06322pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/bx/n/6 ([])  
+ []
+
+
+Overfull \hbox (121.75954pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[34
+
+]
+Overfull \hbox (188.06322pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/bx/n/6 ([])  
+ []
+
+
+Overfull \hbox (121.75954pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[35
+
+]
 \tf@nav=\write6
 \openout6 = `presentacion.nav'.
 
@@ -1923,14 +1947,14 @@ Overfull \hbox (121.75954pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 879.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 879.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 975.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 975.
  (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 879.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 879.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 975.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 975.
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: C0B912B31B3B566FE4617E0ED878D498;50.
 
@@ -1944,16 +1968,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 879.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 975.
  ) 
 Here is how much of TeX's memory you used:
- 27942 strings out of 493307
- 625205 string characters out of 6139905
- 846591 words of memory out of 5000000
- 30661 multiletter control sequences out of 15000+600000
- 14994 words of font info for 60 fonts, out of 8000000 for 9000
+ 27988 strings out of 493307
+ 626039 string characters out of 6139905
+ 846775 words of memory out of 5000000
+ 30701 multiletter control sequences out of 15000+600000
+ 14635 words of font info for 59 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 52i,18n,74p,737b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,18n,84p,737b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
@@ -1962,13 +1986,12 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb>
-Output written on presentacion.pdf (33 pages, 864287 bytes).
+lic/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb>
+Output written on presentacion.pdf (35 pages, 862375 bytes).
 PDF statistics:
- 352 PDF objects out of 1000 (max. 8388607)
- 280 compressed objects within 3 object streams
- 73 named destinations out of 1000 (max. 500000)
+ 366 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
+ 80 named destinations out of 1000 (max. 500000)
  134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
