@@ -837,6 +837,8 @@
 \begin{frame}
 	\frametitle{Dejando un hablante fuera promediando los atributos}
 	
+	\Large{Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
+	
 	\begin{center}
 		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
 	\end{center}
@@ -909,6 +911,36 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje}
+		\label{class_corr_en_pct}
+	\end{table}
+	
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|c|}
+		\hline
+		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+		\textbf{ZeroR y JRip}  &  &  \\ \hline
+		\textbf{ZeroR y J48}  &  &  \\ \hline
+		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
+		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+	\end{tabular}
+	\caption{Resultados de cada test representado en p-valor}
+	\label{res_tests_wilcoxon_student}
+\end{table}
+	
+\end{frame}
+
+\begin{frame}
 	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
 	
 	\begin{table}[H]
@@ -954,74 +986,24 @@
 			\label{}
 		\end{table}
 \end{frame}
-
+	
 \begin{frame}
-\frametitle{Compuertas - AND}
-\begin{figure}
-\begin{tabular}{cc|c}
-A & B & A AND B \\
-\hline
-0 & 0 & 0\\
-0 & 1 & 0\\
-1 & 0 & 0\\
-1 & 1 & 1
-\end{tabular}
-\end{figure}
+	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+			\hline \hline
+			\textbf{Promedio} &  &  &  &  &  \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje}
+		\label{class_corr_en_pct}
+	\end{table}	
+		
 \end{frame}
-
 % % %
 
-
 \end{document}
-
-%
-%\begin{frame}
-%	\frametitle{Compuertas - datasheet}
-%	\begin{figure}
-%		\includegraphics[scale=0.4]{datasheetDM7408N.png}\\
-%	\end{figure}
-%\end{frame}
-
-%\begin{frame}
-%	\frametitle{Propiedades}
-%	\begin{center}
-%	\begin{footnotesize}
-%	\begin{tabular}[h]{|c|c|c|}
-%	\hline
-%	Identidad & $1.A=A$                      &     $0+A=A$            \\
-%	 Nulo            &      $0.A=0$                      &     $1+A=1$            \\
-%	 Idempotencia    &       $A.A=A$                      &     $A+A=A$            \\      
-%	 Inverso         &       $A.\overline{A}=0$           &     $A+\overline{A}=1$ \\      
-%	 Conmutatividad  &       $A.B=B.A$                    &     $A+B=B+A$          \\
-%	 Asociatividad   &       $(A.B).C=A.(B.C)$            &     $(A+B)+C=A+(B+C)$  \\
-%	 Distributividad &      $A+(B.C) = (A+B).(A+C)$      &     $A.(B+C)=A.B+A.C$  \\
-%	 Absorci\'on     &       $A.(A+B)=A$                  &     $A+A.B = A$        \\
-%	 De Morgan       &  $\overline{A.B} = \overline{A} + \overline{B}$ & $\overline{A+B} = \overline{A} . \overline{B}$ \\
-%	\hline
-%	\end{tabular}\\
-%	\end{footnotesize}
-%	\end{center}
-%\end{frame}
-
-
-%\begin{frame}
-%\frametitle{M\'as circuitos combinatorios!}
-%\pause			
-%\underline{Decodificador de n bits:} Tiene n entradas y $2^n$ salidas. Sea k el n\'umero representado en binario en la entrada del decodificador, la salida $e_k$ tendr\'a un uno l\'ogico, mientras que para todas las dem\'as se\~nales de salida habr\'a un cero l\'ogico.\\
-%\pause
-%\underline{Codificador de n bits:} Tiene n entradas y $log_2(n)$ salidas. En la salida muestra en binario el n\'umero de la entrada que esta levantada, de haber mas de una o ninguna, el comportamiento del circuito depender\'a de la implementaci\'on del fabricante.\\
-%\pause
-%\underline{Multiplexor de n entradas:} Tienen n entradas, una salida y $log_2(n)$ se\~nales de control. Mediante las se\~nales de control se indica cual entrada es requerida en la salida.\\
-%\pause
-%\underline{Demultiplexor de n salidas:} Tienen n salidas, una entrada y $log_2(n)$ se\~nales de control. Igual que el multiplexor, pero elijo mediante las se\~nales de control por cual se\~nal de salida muestro la entrada.
-%\end{frame}
-%
-%\begin{frame}
-%\frametitle{La práctica...}
-%\begin{center}
-%Con lo visto hoy pueden realizar hasta\\ el ejercicio 13 de la práctica 2.
-%
-%Bibliograf\'ia recomendada: The Essentials of Computer Organization and Architecture - Linda Null
-%- Cap\'itulo 3
-%\end{center}
-%\end{frame}
