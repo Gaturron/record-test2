@@ -261,7 +261,7 @@ Etiquetamos cada audio para marcar dónde comienza y termina cada fonema. Para e
 \end{center}
 
 \large {
-La métrica utilizada es: \textbf{$\frac{ X - \mu }{ \sigma }$} donde $X$ es el valor a normalizar (por ej.: la duración de un fonema o sílaba dado). $\mu$ es el promedio de duración de la unidad utilizada en la grabación. $\sigma$ es el desvío estándar de esta unidad utilizada.
+La métrica utilizada es: \textbf{$\frac{ X - \mu }{ \sigma }$} donde $X$ es el valor a normalizar (por ej.: la duración de un fonema o sílaba dado). $\mu$ es el promedio de duración de la unidad utilizada en la grabación. $\sigma$ es el desvío estándar de esta unidad utilizada. Esta métrica la realizamos para cada una de las reglas.
 }
 
 \section*{Análisis de datos y clasificación}
@@ -318,7 +318,7 @@ Realizamos tres tipos de cross-validations para realizar la clasificación.
 		\end{tikzpicture}
 			\end{center}
 	
-	\item \textbf{CV2 - Dejando un hablante fuera promediando los atributos: } En este esquema dejamos un hablante afuera para test y entrenamos con el resto. También equilibramos la cantidad de hablantes: 8 Buenos Aires, 8 Córdoba. 
+	\item \textbf{CV2 - Dejando un hablante fuera promediando los atributos: } En este esquema dejamos un hablante afuera para test y entrenamos con el resto. También equilibramos la cantidad de hablantes: 8 Buenos Aires, 8 Córdoba. Para cada hablante promediamos sus atributos.
 	
 	\begin{center}
 		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -346,7 +346,7 @@ Realizamos tres tipos de cross-validations para realizar la clasificación.
 
 \section*{Resultados}
 
-Promediando el resultado de cada fold según clasificación.
+En la \textbf{tabla 2} podemos ver el resultado del promedio de cada fold según cada clasificador.
 
 \begin{wraptable}{l}{22cm}
 	\begin{tabular}{l c c c c c c }
