@@ -835,6 +835,23 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Grupo de hablantes}
+	
+	Detalles:
+	\begin{itemize}
+		\item Tenemos en cada fold más hablantes de Buenos Aires que de Córdoba. \\
+		Esto se ve reflejado en el clasificador ZeroR con un porcentaje de aciertos major al 50 \% \\
+		Necesitamos \textbf{equilibrar los hablantes} para analizar si se esta sacando provecho a los clasificadores.
+
+		\pause
+
+		\item Analizando la salida de cada clasificador, observamos que J48 nos da un árbol sólo de 1 hoja. \\
+		Inclusive vemos que tiene igual porcentaje que ZeroR. \\
+		Analizando J48 vemos que su algoritmo puede generar árboles de pocos atributos si en los datos hay muchos \textbf{missing values}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Dejando un hablante fuera promediando los atributos}
 	
 	\Large{Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
@@ -929,15 +946,36 @@
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  &  &  \\ \hline
-		\textbf{ZeroR y J48}  &  &  \\ \hline
-		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
-		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+		\textbf{ZeroR y JRip}  & 0.3351 & 0.3828 \\ \hline
+		\textbf{ZeroR y J48}  & 0.2908 &  0.3864 \\ \hline
+		\textbf{ZeroR y NaiveBayes}  & 0.05191 & 0.06472 \\ \hline
+		\textbf{ZeroR y Function SMO}  &  0.004282 & 0.009828 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
 \end{table}
 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos}
+	
+	Detalles:
+	
+	\begin{itemize}
+		\item Cada clasificación tiene 1 instancia para analizar \\
+		Matrices de confusión muy pobres.
+	\end{itemize}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+		\hline
+		Buenos Aires & Córdoba & \\ \hline
+		1 & 0 & Buenos Aires\\ \hline
+		0 & 0 & Córdoba\\ \hline
+		\end{tabular}
+	\end{table}
 \end{frame}
 
 \begin{frame}
@@ -995,13 +1033,25 @@
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
 			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-			\textbf{Fold 1}  &  &  &  &  &  \\ \hline
-			\hline \hline
-			\textbf{Promedio} &  &  &  &  &  \\ \hline
+			\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje}
 		\label{class_corr_en_pct}
 	\end{table}	
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+			\textbf{ZeroR y JRip}  & 0.06537 & 0.1284 \\ \hline
+			\textbf{ZeroR y J48}  & 0.06156 &  0.1111 \\ \hline
+			\textbf{ZeroR y NaiveBayes}  & 0.03916 & 0.06111 \\ \hline
+			\textbf{ZeroR y Function SMO}  &  0.02936 & 0.03522 \\ \hline
+		\end{tabular}
+		\caption{Resultados de cada test representado en p-valor}
+		\label{res_tests_wilcoxon_student}
+	\end{table}
 		
 \end{frame}
 % % %
