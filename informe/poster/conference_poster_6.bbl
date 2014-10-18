@@ -1,13 +1,31 @@
 \begin{thebibliography}{1}
 
-\bibitem{Smith:2013jd}
-A.~B. Jones and J.~M. Smith.
-\newblock {A}rticle {T}itle.
-\newblock {\em Journal title}, 13(52):123--456, March 2013.
+\bibitem{praat}
+Paul Boersma and David Weenink.
+\newblock Praat: doing phonetics by computer [computer program] version 5.3.51,
+  retrieved 2 june 2013 from http://www.praat.org/.
+\newblock 2013.
 
-\bibitem{Smith:2012qr}
-J.~M. Smith and A.~B. Jones.
-\newblock {\em {B}ook {T}itle}.
-\newblock Publisher, 7th edition, 2012.
+\bibitem{Vidal1964}
+{Elena Vidal de Battini}.
+\newblock Español en la argentina.
+\newblock 1964.
+
+\bibitem{prosodylab}
+Kyle Gorman, Jonathan Howell, and Michael Wagner.
+\newblock Prosodylab-aligner: A tool for forced alignment of laboratory speech.
+  canadian acoustics. 39.3. 192–193.
+\newblock In {\em Proceedings of Acoustics Week in Canada, Quebec City}, 2011.
+
+\bibitem{amper}
+Jorge~A. Gurlekian, Reina Yanagida, Mónica~Noemí Trípodi, and Guillermo
+  Toledo.
+\newblock Amper-argentina: Variabilidad rÍtmica en dos corpus.
+\newblock 2009.
+
+\bibitem{Fontanella2000}
+{María Beatriz Fontanella de Weinberg}.
+\newblock El español en la argentina y sus variedades regionales.
+\newblock 2000.
 
 \end{thebibliography}
