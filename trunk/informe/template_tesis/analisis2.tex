@@ -1,0 +1,133 @@
+%version corregida de analisis
+
+\chapter{Análisis}
+
+En esta sección, analizamos los datos obtenidos para entrenar clasificadores que distingan entre hablantes de Buenos Aires y Córdoba. Recordemos que tomamos los 260 audios obtenidos a través de la página web y les aplicamos el extractor de atributos descripto en el capítulo 4. El resultado nos dio la descripción de cada grabación a través de los atributos que definimos. 
+
+Primero presentaremos el baseline que consideramos. Este nos servirá para tener una clasificación aceptable que luego trataremos de superar. Explicaremos los clasificadores utilizados para vencer esta marca y en base a tests estadísticos notaremos si aportan datos significativos. También describiremos el modelo de testing utilizando los datos recolectados. Por último, analizamos los atributos más descriptivos del habla de Buenos Aires y Córdoba. 
+
+Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página web: http://www.cs.waikato.ac.nz/ml/weka/}. Ésta provee varios algoritmos de machine learning. Para los tests estadísticos utilizamos la herramienta R versión 3.0.1. 
+
+\section{Baseline}
+
+El baseline define el clasificador más simple, que posteriormente tratamos de vencer. No encontramos ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria. Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias vamos a elegir siempre Córdoba.
+
+Este algoritmo, utilizando nuestros datos, tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad a la probabilidad de clasificar correctamente un hablante. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante.
+
+La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
+
+\section{Clasificadores}
+
+Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y superar la performance del clasificador baseline. Los clasificadores propuestos son: 
+
+\paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
+
+%http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/JRip.html
+%http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
+%https://indico.cern.ch/event/34666/session/13/material/slides/0?contribId=16 pag 21
+
+Este algoritmo intenta describir el conjunto de entrada definiendo pequeños grupos. Primero localiza un grupo que posee la característica a clasificar, y genera reglas que lo describan. Va agregando reglas de forma golosa. Luego cuando se supera una cierta condición (por ejemplo: cantidad de reglas), lo extrae y sigue con otro grupo. Finaliza cuando describe todos los grupos del conjunto de entrada. Este algoritmo es útil para datos no balanceados.
+
+\paragraph{C4.5 \cite{Quinlan1993} - Implementación J48:}
+
+%http://en.wikipedia.org/wiki/C4.5_algorithm
+%http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
+
+Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con varios atributos se realiza lo siguiente: para cada atributo se calcula su ganancia de información. Elige el atributo que tenga mejor ganancia entre todos los atributos y con él crea un nodo en el árbol. Por cada rama que se crea el algoritmo sigue de la misma forma. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea sólo una hoja.
+
+\paragraph{Support Vector Machines \cite{Platt98sequentialminimal} - Implementación Function SMO:}
+
+%http://en.wikipedia.org/wiki/Support_vector_machine
+%http://machinelearning.wustl.edu/mlpapers/paper_files/BordesEWB05.pdf
+%http://en.wikipedia.org/wiki/Sequential_minimal_optimization
+%http://research.microsoft.com/pubs/69644/tr-98-14.pdf
+
+Support vector machines define uno o varios hiperplanos para intentar clasificar muestras. Este hiperplano se construye utilizando transformaciones lineales de los datos de entrada y sirve para clasificar las muestras en dos grupos. Utilizando este hiperplano, se puede etiquetar cada dato de entrada con su clasificación observando de qué lado del hiperplano se encuentra.
+
+\paragraph{Naive Bayes \cite{DBLP:conf/flairs/Zhang04} - Implementación homónima:}
+
+%http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
+%http://en.wikipedia.org/wiki/Naive_Bayes_classifier
+
+Un clasificador de tipo Naive Bayes asume que cada atributo describe una característica de su clase y no está relacionado con otro atributo. Cada uno de estos atributos contribuye de manera independiente a la clasificación de su clase. Se define una regla de decisión utilizando un modelo probabilístico basado en el teorema de Bayes para la clasificación de cada grupo.
+
+\section{Tests estadísticos}
+
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos surgen del porcentaje de instancias correctas para los 5 folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+
+\subsection{Test de Wilcoxon}
+
+Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos ayudará a determinar si hay razones estadísticas para decir si un clasificador es distinto que otro. El input utilizado fue un vector de 5 posiciones resultante del porcentaje de instancias correctas para cada fold para cada clasificador baseline ZeroR y los demás clasificadores.
+
+Para realizar este test se debe cumplir que:
+
+\begin{itemize}
+	%Data are paired and come from the same population.
+	\item Los datos son presentados de a pares y vienen de la misma población: esto sucede gracias a cómo generamos los tests. La población también siempre es la misma.
+	%Each pair is chosen randomly and independently.
+	\item Cada par es elegido al azar e independiente del resto: cada grupo generado para testing está armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma. Además, tratamos de maximizar la independencia entre folds, como vimos en la sección 6.2.
+	%The data are measured at least on an ordinal scale, but need not be normal.
+	\item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que, como dijimos, no estamos seguros que nuestros datos provengan de una distribución Normal.
+\end{itemize}
+
+Las hipótesis fueron:
+
+\vspace{0.5cm}
+\hspace{2cm}$H_0$: Clasificador alternativo no es diferente que ZeroR
+\vspace{0.25cm}
+
+\hspace{2cm}$H_1$: Clasificador alternativo es diferente que ZeroR
+\vspace{0.5cm}
+
+Clasificador alternativo se refiere a los demás clasificadores descriptos. 
+
+Cada uno de los tests nos va a dar un p-valor. Si este es mayor 0,05, consideramos que no hay evidencia suficiente para determinar que el clasificador alternativo es mejor. Si de lo contrario es menor, sí podemos rechazar $H_0$ y asegurar que el alternativo es mejor. 
+
+Luego chequeamos si nuestra muestra corresponde a una distribución Normal. Para chequear Normalidad utilizamos el test de Shapiro-Wilk.
+
+\subsection{Análisis Shapiro-Wilk Test}
+
+%todo: pensar si debo explicar todo el metodo o no hace falta
+%http://es.wikipedia.org/wiki/Test_de_Shapiro%E2%80%93Wilk
+
+%En estadística, el Test de Shapiro–Wilk se usa para contrastar la normalidad de un conjunto de datos. Se plantea como hipótesis nula que una muestra x1, ..., xn proviene de una población normalmente distribuida. Fue publicado en 1965 por Samuel Shapiro y Martin Wilk.1 Se considera uno de los test más potentes para el contraste de normalidad, sobre todo para muestras pequeñas (n<30).
+
+Utilizamos el test de Shapiro-Wilk para poder afirmar si un conjunto de datos proviene de una distribución Normal.
+
+%Interpretación: Siendo la hipótesis nula que la población está distribuida normalmente, si el p-valor es menor a alfa (nivel de confianza) entonces la hipótesis nula es rechazada (se concluye que los datos no vienen de una distribución normal). Si el p-valor es mayor a alfa, no se rechaza la hipótesis y se concluye que los datos siguen una distribución normal.
+
+El test de Shapiro-Wilk se basa en plantear como hipótesis nula que la población esta distribuida de forma Normal. Aplicamos el estadístico de este test: si el p-valor nos da menor a 0,05 entonces la hipótesis nula es rechazada y se afirma que los datos no provienen de una distribución Normal. Si, en cambio, es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$ y por ende se afirma que los datos siguen una distribución Normal.
+
+Este test se realiza individualmente para cada vector resultado de porcentaje de instancias correctas para cada clasificador. O sea, chequeamos que los resultados de cada clasificador se asemejen a la distribución Normal. Por ejemplo si los resultados de ambos clasificadores ZeroR y J48 tuvieron en el test Shapiro-Wilk un p-valor mayor a 0,05, se puede realizar el t de Student para ellos dos. En caso contrario, se debe usar el test de Wilcoxon.
+
+\subsection{Student t Test}
+
+%En estadística, una prueba t de Student, prueba t-Student, o Test-T es cualquier prueba en la que el estadístico utilizado tiene una distribución t de Student si la hipótesis nula es cierta. Se aplica cuando la población estudiada sigue una distribución normal pero el tamaño muestral es demasiado pequeño como para que el estadístico en el que está basada la inferencia esté normalmente distribuido, utilizándose una estimación de la desviación típica en lugar del valor real. Es utilizado en análisis discriminante.
+
+%A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
+
+Para los vectores resultado provenientes de una distribución Normal se les aplica este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos, suponiendo que surgen de una distribución Normal. De la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las siguientes hipótesis. 
+
+\vspace{0.5cm}
+\hspace{2cm}$H_0$: No hay diferencias entre ZeroR y clasificador
+\vspace{0.25cm}
+
+\hspace{2cm}$H_1$: Hay diferencias entre ZeroR y clasificador
+\vspace{0.5cm}
+
+La ventaja de usarlo es que, al saber qué distribución representa, vamos a tener resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$. De lo contrario, sí hay evidencia y rechazamos $H_0$.
+
+\section{Cross validations}
+
+En esta sección vamos a explicar en detalle varios cross-validations que surgieron a partir de los datos que obtuvimos, así como también qué resultados obtuvimos en cada uno de ellos.
+
+\input{xvalidation-porGrupoViejo.tex}
+
+\input{xvalidation-porHab.tex}
+\input{xvalidation-porHabProm.tex}
+\input{xvalidation-porHabPromMissAttr.tex}
+
+Analizamos a continuación cuáles atributos aportan mayor información.
+
+\input{seleccion_de_atributos.tex}
+\input{combinando_clases_de_atributos.tex}
