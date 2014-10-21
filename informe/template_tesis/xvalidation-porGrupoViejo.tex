@@ -1,0 +1,147 @@
+% grupos de hablantes viejo
+% la primer entrega de cross validation 
+
+\section{Grupos de hablantes}
+
+%Para medir el rendimiento de los distintos clasificadores definimos un modelo de testing. Este separa una parte de los datos obtenidos para entrenar el clasificador y otro para testearlo.
+
+La complejidad del problema y la forma en que fue realizado el experimento nos llevará a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que estaríamos entrenando con datos un hablante que luego sería testeado.
+
+Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: Un hablante pudo haber aportado 30 grabaciones mientras que otro pudo sólo haber realizado 5. Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de audios en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
+
+No podemos quedarnos con un solo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la Figura \ref{graficoFold} se diagrama este modelo de testing.
+
+\begin{figure}[H]
+	\begin{tikzpicture}[node distance=1cm]
+	
+	\node (train1) [train] {Train};
+	\node (train2) [train, xshift=-3.0cm] {Train};
+	\node (train3) [train, xshift=-6.0cm] {Train};
+	\node (train4) [train, xshift=-9.0cm] {Train};
+	\node (train5) [train, xshift=-12.0cm] {Train};
+	
+	\node (data) [datos, below of=train5, yshift=4.0cm,  xshift=6.0cm] {Datos};
+	
+	\node (fold1) [fold, above of=train5] {\textit{Fold 1}};
+	\node (fold2) [fold, above of=train4] {\textit{Fold 2}};
+	\node (fold3) [fold, above of=train3] {\textit{Fold 3}};
+	\node (fold4) [fold, above of=train2] {\textit{Fold 4}};
+	\node (fold5) [fold, above of=train1] {\textit{Fold 5}};
+	
+	\node (test1) [test, below of=train1] {Test};
+	\node (test2) [test, below of=train2] {Test};
+	\node (test3) [test, below of=train3] {Test};
+	\node (test4) [test, below of=train4] {Test};
+	\node (test5) [test, below of=train5] {Test};
+	
+	\node (proc1) [proc, below of=test1, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc2) [proc, below of=test2, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc3) [proc, below of=test3, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc4) [proc, below of=test4, yshift=-1.2cm] {Entrenar y testear};
+	\node (proc5) [proc, below of=test5, yshift=-1.2cm] {Entrenar y testear};
+	
+	\node (prom) [prom, below of=test3, yshift=-3.0cm] {Promedio};
+	
+	\draw [arrowBig] (data) -- (fold3);
+	
+	\draw [arrow] (test1) -- (proc1);
+	\draw [arrow] (test2) -- (proc2);
+	\draw [arrow] (test3) -- (proc3);
+	\draw [arrow] (test4) -- (proc4);
+	\draw [arrow] (test5) -- (proc5);
+	
+	\draw [arrow] (proc1) -- (prom);
+	\draw [arrow] (proc2) -- (prom);
+	\draw [arrow] (proc3) -- (prom);
+	\draw [arrow] (proc4) -- (prom);
+	\draw [arrow] (proc5) -- (prom);
+	
+	\end{tikzpicture}
+	\caption{Esquema de test 5-folds}
+	\label{graficoFold}
+\end{figure}
+
+Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Este requerimiento no es tan sencillo si uno posee tan pocas instancias, ya que podría suceder que se repita mucha cantidad de instancias entre folds haciendo que no sea provechoso el test. Para solucionar esto, el test de cross-validation fue realizado de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizamos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 folds. 
+
+A continuación el código generador del test cross-validation:
+\lstset{ %
+	language=C++,                % choose the language of the code
+	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\small,      % the size of the fonts that are used for the line-numbers
+	stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+	numbersep=1pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=lines,           % adds a frame around the code
+	tabsize=1,          % sets default tabsize to 2 spaces
+	captionpos=b,           % sets the caption-position to bottom
+	breaklines=true,        % sets automatic line breaking
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+	escapeinside={\%*}{*)},          % if you want to add a comment within your code
+	morekeywords={GeneradorDeTest, porcentajeMaximoDeSimilitud, checkBalance, Input, Output, Repetir, veces, Si, Agregar, Recorrer, Devolver, y, no, esta, en},
+	literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&&} {$\cap$}{2} {||} {$\cup$}{2} }
+\begin{lstlisting}
+GeneradorDeTest:
+Input: conjunto audios
+Output: conjunto de <train, test>
+resultado <-{}
+train <- {}
+test <- {}
+hablantesEnTest <- {}
+hablantes <- ObtenerHablantes(audios)
+tamTest <- tam(hablantes) * 0.3 
+#Esta cte nos define el tamano del fold
+Repetir 5 veces:
+{
+hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
+#Esta cte nos define porcentaje de hablantes usados
+
+hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
+
+hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
+
+test <- ObtenerAudios(hablantesTest, audios)
+train <- ObtenerAudios(hablantes - hablantesTest, audios)
+
+Si <train, test> no est'a en resultado 
+#No es un fold ya creado
+y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
+#El test creado solo puede ser 20 % parecido a uno anterior
+y checkBalance(train) y checkBalance(test) 
+#Chequeo del balance entre audios de BsAs y Cba
+{
+Agregar <train, test> a resultado
+Agregar hablantesTest a hablantesEnTests
+}
+}
+Devolver resultado
+
+porcentajeMaximoDeSimilitud:
+Input: conj, conjunto de fold, pctMax
+Output: booleano
+Recorrer test de conjunto de fold:
+{
+pct <- Maximo(pct, porcentajeSimilitud(conj, test))
+}
+Devolver pct < pctMax
+
+checkBalance:
+Input: conj
+Output: booleano
+ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
+ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
+ck_both <- #cba(conj) < #bsas(conj)
+Devolver ck_bsas y ck_cba y ck_both
+\end{lstlisting}
+
+El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las líneas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que las cantidades de audios de Córdoba y de Buenos Aires están balanceadas.
+
+La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene a lo sumo 20\% de audios en común con las demás instancias.
+
+La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
+
+A continuación veremos los clasificadores que utilizamos para predecir a qué lugar pertenece cada hablante.
