@@ -55,12 +55,39 @@
 \author{Fernando Bugni}
 \institute{Departamento de Computación - FCEyN - UBA}
 \date{Fecha}
+\newcommand{\director}{Directores:\\ Agustín Gravano, \\ Miguel Martínez Soler}
+
+\setbeamertemplate{title page}{
+	\centering
+	\begin{beamercolorbox}[rounded=true,shadow=true,sep=8pt,center]{title}
+		\inserttitle \par
+	\end{beamercolorbox}
+	\vfill
+	\begin{beamercolorbox}[leftskip=8cm,center,wd=0.7\textwidth]{author}
+		\begin{columns}[T]
+			\begin{column}{.49\textwidth}%
+				\centering
+				\insertauthor
+			\end{column}
+			\begin{column}{.49\textwidth}%
+				\centering
+				\director
+			\end{column}
+		\end{columns}
+	\end{beamercolorbox}
+	\vfill
+	\usebeamerfont{institute}\insertinstitute \par
+	\vfill
+	\centering
+	\insertdate\par
+	\vfill
+}
 
 \begin{document}
 	
-\title{Recolección online de grabaciones para el estudio de las variantes argentinas del español}
-\author{Fernando Bugni}
-\institute{Departamento de Computación - Facultad de Ciencias Exactas - \\Universidad de Buenos Aires}
+\title[Recolección online de grabaciones]{Recolección online de grabaciones para el estudio de las variantes argentinas del español}
+\author[Fernando Bugni]{Fernando Bugni}
+\institute[DC-FCEyN-UBA]{Departamento de Computación - Facultad de Ciencias Exactas - \\Universidad de Buenos Aires}
 \date{2014}
 
 \frame{\titlepage}
@@ -163,6 +190,12 @@
 	\begin{center}
 		Para Córdoba /\textcolor{red}{r}/ debe ser suave en comparación de Buenos Aires
 	\end{center}
+	
+	{\tiny Bibliografía:
+		\begin{itemize}
+			\item El español en la Argentina y sus variedades regionales - María Beatriz Fontanella de Weinberg
+			\item Español en la Argentina - Elena Vidal de Battini
+		\end{itemize}}		
 \end{frame} 
 
 % % % % Diseño del experimento
@@ -198,30 +231,27 @@
 	\end{itemize}	
 \end{frame} 
 
-%\begin{frame}
-%	\frametitle{Diseño del experimento}
-%	\scriptsize
-%	\begin{longtable}{| p{0.3\textwidth} || p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth}| p{0.15\textwidth} | } 
-%		\hline
-%		\textbf{Frase} & \textbf{2 - Aspiración y elisión de /s/} & \textbf{3 - La 's' antes de la 'c' o 't' no suenan} & \textbf{4 - La 'c' antes de la 't' no suenan}& \textbf{5 - La 'y' y 'll' se pasa a 'i'} & \textbf{6 - La 'r' no debe sonar} \\ \hline	
-%		
-%		
-%		'No hay dos sin tres' & dos, tres & & & & \\ \hline
-%		'Más difícil que encontrar una aguja en un pajar' & más &&&& \\ \hline
-%		'Más perdido que turco en la neblina' & más &&&&  \\ \hline
-%		'No le busques la quinta pata al gato' & busques & busques &&&  \\ \hline
-%		%	'Todo bicho que camina va al asador' &  \\ \hline
-%		%	'Caminante no hay camino se hace camino al andar' &  \\ \hline
-%		'Se te escapó la tortuga' && escapó &&&  \\ \hline
-%		'Todos los caminos conducen a Roma' & todos, los, caminos &&&&  \\ \hline
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	\scriptsize
+	\begin{longtable}{| p{0.6\textwidth} || p{0.3\textwidth} |} 
+		\hline
+		\textbf{Frase} & \textbf{Frase que cubre} \\ \hline	
+		
+		'No hay dos sin tres' & Regla 2: 'dos', 'tres'\\ \hline
+		'Más difícil que encontrar una aguja en un pajar' & Regla 2: 'más' \\ \hline
+		'Más perdido que turco en la neblina' & Regla 2: 'más' \\ \hline
+		'No le busques la quinta pata al gato' & Regla 2: 'busques', Regla 3: 'busques'   \\ \hline
+		'Se te escapó la tortuga' & Regla 3: 'escapó'   \\ \hline
+		'Todos los caminos conducen a Roma' & Regla2: 'todos', 'los', 'caminos' \\ \hline
 %		'No hay mal que dure cien anos' & años &&&& \\ \hline
-%		'Siempre que llovió paro' &&&& llovió & \\ \hline
+		'Siempre que llovió paro' & Regla 5: llovió  \\ \hline
 %		'Cría cuervos que te sacaran los ojos' & cuervos, los, ojos &&&&  \\ \hline
 %		'La tercera es la vencida' & es &&&& \\ \hline
 %		'Calavera no chilla' &&&& chilla &  \\ \hline
 %		'La gota que rebalsó el vaso' &&&&& rebasó \\ \hline
-%		'La suegra y el doctor cuanto más lejos mejor' & más, lejos & doctor&&& \\ \hline
-%		'A la mujer picaresca cualquiera la pesca' && picaresca &&&  \\ \hline
+		'La suegra y el doctor cuanto más lejos mejor' & Regla 2: más, lejos , Regla 4: doctor \\ \hline
+%		'A la mujer picaresca cualquiera la pesca' & Regla 3:  picaresca  \\ \hline
 %		'Quien siembra vientos recoge tempestades' & vientos &&&& recoge  \\ \hline
 %		%	'Un grano no hace granero pero ayuda a su compañero' & \\ \hline
 %		'La arquitectura es el arte de organizar el espacio' & es && arquitectura && \\ \hline
@@ -230,8 +260,8 @@
 %		%	'El niño es realista; el muchacho, idealista; el hombre, escéptico, y el viejo místico' &  \\ \hline
 %		'Perro que ladra no muerde' &&&&& perro \\ \hline
 %		'La musica es sinónimo de libertad, de tocar lo que quieras y como quieras' & es, quieras &&&& \\ \hline
-%		'La belleza que atrae rara vez coincide con la belleza que enamora' &&&& belleza & \\ \hline
-%		'No esta mal ser bella lo que esta mal es la obligación de serlo' &&&& bella & \\ \hline
+		'La belleza que atrae rara vez coincide con la belleza que enamora' & Regla 5: belleza  \\ \hline
+		'No esta mal ser bella lo que esta mal es la obligación de serlo' & Regla 5: bella \\ \hline
 %		'La batalla más difícil la tengo todos los días conmigo mismo' & más &&& batalla & \\ \hline
 %		'El que no llora no mama' &&&& llora & \\ \hline
 %		'En la pelea se conoce al soldado solo en la victoria se conoce al caballero' &&& victoria & caballero &\\ \hline
@@ -240,123 +270,15 @@
 %		'En boca cerrada no entran moscas' & moscas & moscas &&& cerrada  \\ \hline
 %		'Más vale pájaro en mano que cien volando' & más &&&& \\ \hline
 %		%	'La curiosidad mató al gato' &  \\ \hline
-%		'Río revuelto ganancia de pescadores' & pescadores & pescadores &&& río, revuelto  \\ \hline
+		'Río revuelto ganancia de pescadores' & Regla 3: pescadores, Regla 2: pescadores, Regla 6: río, revuelto  \\ \hline
 %		'No hay que pedirle peras al olmo' & peras &&&& \\ \hline
 %		
-%		\caption{Frases conocidas} 
-%		\label{fig22tabla}
-%		\end{longtable}
-%\end{frame}
-
-\begin{frame}
-\frametitle{Diseño del experimento}
-	{\Large Frases Amper} \\
-	Pronunciar frases con una estructura fija variando acentuaciones
-	
-	\begin{itemize}
-		\item Objetivo: cubrir acentuaciones
-		\item Regla a cubrir: 1
-	\end{itemize}
-	
-{\footnotesize 	
-	\begin{center}
-		\textit{Sujeto+`` salió ’’+Adjetivo} 
-	
-		\begin{itemize}
-			\item Sujeto: \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
-			\item Adjetivo: \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
-		\end{itemize}
+		... & \\ \hline
+		\end{longtable}
 		
-	\end{center}
-}
-\end{frame} 
-
-\begin{frame}
-	\frametitle{Diseño del experimento}
-
-	\begin{center}
-		\textbf{``El \textcolor{red}{canapé} salió \textcolor{red}{delicioso}’’}
-	\end{center}
-	
-	\begin{itemize}
-		\item Canapé: palabra aguda
-		\item Delicioso: palabra grave
-	\end{itemize}
-\end{frame} 
-
-%\begin{frame}
-%	\frametitle{Frases Amper}
-%	
-%	\small 
-%	\begin{center}
-%		\begin{longtable}{| p{0.15\textwidth} | p{0.08\textwidth} | p{0.15\textwidth} || p{0.15\textwidth} | p{0.12\textwidth} | p{0.15\textwidth} |} 
-%		\hline
-%		%\multicolumn{6}{| p{0.9\textwidth} |} {\textbf{1 - Localice la sílaba acentuada en la palabra y estirar la sílaba anterior}} \\ \hline
-%		\multicolumn{3}{| p{0.45\textwidth} ||}{Frase} & \textbf{Aguda} & \textbf{Grave} & \textbf{Esdrújula} \\ \hline 
-%		\textit{El canapé} & \textit{salió} & \textit{espectacular} & espectacular, canapé & & \\ \hline
-%		\textit{El canapé} & \textit{salió} & \textit{delicioso} & canapé & delicioso & \\ \hline
-%		\textit{El canapé} & \textit{salió} & \textit{riquísimo} & canapé & & riquísimo \\ \hline
-%		\textit{El repollo} & \textit{salió} & \textit{espectacular} & espectacular & repollo & \\ \hline
-%		\textit{El repollo} & \textit{salió} & \textit{delicioso} &  & repollo, delicioso & \\ \hline	
-%		\textit{El repollo} & \textit{salió} & \textit{riquísimo} & & repollo & riquísimo \\ \hline
-%		\textit{El espárrago} & \textit{salió} & \textit{espectacular} & espectacular & & \\ \hline
-%		\textit{El espárrago} & \textit{salió} & \textit{delicioso} & & delicioso & \\ \hline
-%		\textit{El espárrago} & \textit{salió} & \textit{riquísimo} & & & riquísimo \\ \hline	
-%		
-%		\caption{Frases AMPER} 
-%		\label{fig21table}
-%	\end{longtable}
-%	\end{center}
-%\end{frame}
-
-\begin{frame}
-	\frametitle{Diseño del experimento}
-	
-	\Large{Trazas: combinación de frases}
-	
-	\begin{center}
-		\begin{tikzpicture}
-			%1-3 comun 4 amper 5-6 comun 6 amper 7-9 comun
-			%10 amper 11-13 comun 14 amper
-			%\fill[red!20](0,0) rectangle (0.4,0.4); 
-			%\fill[blue!20!white](0.4,0) rectangle (0.8,0.4); 
-			\fill[blue!20!white](0,0) rectangle (0.4*3,0.4);
-			\fill[red!20](0.4*3,0) rectangle (0.4*5,0.4); 
-			\fill[blue!20!white](0.4*5,0) rectangle (0.4*7,0.4);
-			\fill[red!20](0.4*7,0) rectangle (0.4*8,0.4); 
-			\fill[blue!20!white](0.4*8,0) rectangle (0.4*10,0.4);
-			\fill[red!20](0.4*10,0) rectangle (0.4*11,0.4);
-			\fill[blue!20!white](0.4*11,0) rectangle (0.4*13,0.4);
-			\fill[red!20](0.4*13,0) rectangle (0.4*14,0.4);
-			\fill[blue!20!white](0.4*14,0) rectangle (0.4*16,0.4);
-			\fill[red!20](0.4*16,0) rectangle (0.4*17,0.4);			
-			\fill[blue!20!white](0.4*17,0) rectangle (0.4*19,0.4);
-			\fill[red!20](0.4*19,0) rectangle (0.4*20,0.4);			
-			\fill[blue!20!white](0.4*20,0) rectangle (0.4*22,0.4);
-			\fill[red!20](0.4*22,0) rectangle (0.4*24,0.4);			
-			\fill[blue!20!white](0.4*24,0) rectangle (0.4*25,0.4);
-			
-			\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (10,0.4);
-			
-		\end{tikzpicture}
-		
-		\begin{itemize}
-			\item[] 
-				\begin{tikzpicture}
-					\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (0.4,0.4) rectangle (0,0);
-				\end{tikzpicture} Frases comúnes
-			\item[] 
-			\begin{tikzpicture}
-			\draw[step=0.4cm,very thin,fill=red!20] (0,0) grid (0.4,0.4) rectangle (0,0);
-			\end{tikzpicture} Frases Amper				
-		\end{itemize}
-		
-		\begin{center}
-			Intercalado: 1 ó 3 Frases comúnes cada una Amper
-		\end{center}
-	\end{center}
-	
+		\textbf{Agrega 31 Frases populares para grabar}
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{Diseño del experimento}
@@ -441,6 +363,120 @@
 	\end{figure}
 \end{frame}
 
+\begin{frame}
+\frametitle{Diseño del experimento}
+	{\Large Frases Amper} \\
+	Pronunciar frases con una estructura fija variando acentuaciones
+	
+	\begin{itemize}
+		\item Objetivo: cubrir acentuaciones
+		\item Regla a cubrir: 1
+	\end{itemize}
+	
+{\footnotesize 	
+	\begin{center}
+		\textit{Sujeto+`` salió ’’+Adjetivo} 
+	
+		\begin{itemize}
+			\item Sujeto: \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
+			\item Adjetivo: \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
+		\end{itemize}
+		
+	\end{center}
+}
+
+{\tiny Bibliografía: AMPER-ARGENTINA: VARIABILIDAD RÍTMICA EN DOS CORPUS - Jorge A. Gurlekian, Reina Yanagida, Mónica Noemí Trípodi y Guillermo Toledo}
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+
+	\begin{center}
+		\textbf{``El \textcolor{red}{canapé} salió \textcolor{red}{delicioso}’’}
+	\end{center}
+	
+	\begin{itemize}
+		\item Canapé: palabra aguda
+		\item Delicioso: palabra grave
+	\end{itemize}
+	
+	
+	\textbf{Agrega 9 frases amper}
+\end{frame} 
+
+%\begin{frame}
+%	\frametitle{Frases Amper}
+%	
+%	\small 
+%	\begin{center}
+%		\begin{longtable}{| p{0.15\textwidth} | p{0.08\textwidth} | p{0.15\textwidth} || p{0.15\textwidth} | p{0.12\textwidth} | p{0.15\textwidth} |} 
+%		\hline
+%		%\multicolumn{6}{| p{0.9\textwidth} |} {\textbf{1 - Localice la sílaba acentuada en la palabra y estirar la sílaba anterior}} \\ \hline
+%		\multicolumn{3}{| p{0.45\textwidth} ||}{Frase} & \textbf{Aguda} & \textbf{Grave} & \textbf{Esdrújula} \\ \hline 
+%		\textit{El canapé} & \textit{salió} & \textit{espectacular} & espectacular, canapé & & \\ \hline
+%		\textit{El canapé} & \textit{salió} & \textit{delicioso} & canapé & delicioso & \\ \hline
+%		\textit{El canapé} & \textit{salió} & \textit{riquísimo} & canapé & & riquísimo \\ \hline
+%		\textit{El repollo} & \textit{salió} & \textit{espectacular} & espectacular & repollo & \\ \hline
+%		\textit{El repollo} & \textit{salió} & \textit{delicioso} &  & repollo, delicioso & \\ \hline	
+%		\textit{El repollo} & \textit{salió} & \textit{riquísimo} & & repollo & riquísimo \\ \hline
+%		\textit{El espárrago} & \textit{salió} & \textit{espectacular} & espectacular & & \\ \hline
+%		\textit{El espárrago} & \textit{salió} & \textit{delicioso} & & delicioso & \\ \hline
+%		\textit{El espárrago} & \textit{salió} & \textit{riquísimo} & & & riquísimo \\ \hline	
+%		
+%		\caption{Frases AMPER} 
+%		\label{fig21table}
+%	\end{longtable}
+%	\end{center}
+%\end{frame}
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	
+	\Large{Trazas: combinación de frases}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			%1-3 comun 4 amper 5-6 comun 6 amper 7-9 comun
+			%10 amper 11-13 comun 14 amper
+			%\fill[red!20](0,0) rectangle (0.4,0.4); 
+			%\fill[blue!20!white](0.4,0) rectangle (0.8,0.4); 
+			\fill[blue!20!white](0,0) rectangle (0.4*3,0.4);
+			\fill[red!20](0.4*3,0) rectangle (0.4*5,0.4); 
+			\fill[blue!20!white](0.4*5,0) rectangle (0.4*7,0.4);
+			\fill[red!20](0.4*7,0) rectangle (0.4*8,0.4); 
+			\fill[blue!20!white](0.4*8,0) rectangle (0.4*10,0.4);
+			\fill[red!20](0.4*10,0) rectangle (0.4*11,0.4);
+			\fill[blue!20!white](0.4*11,0) rectangle (0.4*13,0.4);
+			\fill[red!20](0.4*13,0) rectangle (0.4*14,0.4);
+			\fill[blue!20!white](0.4*14,0) rectangle (0.4*16,0.4);
+			\fill[red!20](0.4*16,0) rectangle (0.4*17,0.4);			
+			\fill[blue!20!white](0.4*17,0) rectangle (0.4*19,0.4);
+			\fill[red!20](0.4*19,0) rectangle (0.4*20,0.4);			
+			\fill[blue!20!white](0.4*20,0) rectangle (0.4*22,0.4);
+			\fill[red!20](0.4*22,0) rectangle (0.4*24,0.4);			
+			\fill[blue!20!white](0.4*24,0) rectangle (0.4*25,0.4);
+			
+			\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (10,0.4);
+			
+		\end{tikzpicture}
+		
+		\begin{itemize}
+			\item[] 
+				\begin{tikzpicture}
+					\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (0.4,0.4) rectangle (0,0);
+				\end{tikzpicture} Frases comúnes
+			\item[] 
+			\begin{tikzpicture}
+			\draw[step=0.4cm,very thin,fill=red!20] (0,0) grid (0.4,0.4) rectangle (0,0);
+			\end{tikzpicture} Frases Amper				
+		\end{itemize}
+		
+		\begin{center}
+			Intercalado: 1 ó 3 Frases comúnes cada una Amper
+		\end{center}
+	\end{center}
+	
+\end{frame}
 
 \begin{frame}
 	\frametitle{Sistema de grabación online}
@@ -526,19 +562,17 @@
 \begin{frame}
 	\frametitle{Extracción de información}
 	
+	¿Cómo estraer atributos (features) de un audio?
+	
+	Etiquetamos en qué momento se escuchó cada fonema.
+	
 	\begin{center}
-		\begin{itemize}
-			\item ProsodyLab
-			\item Python 2.7, SciPy y Numpy
-			\item Pymatlab 
-		\end{itemize}
+			\textbf{ProsodyLab-Aligner}
 	\end{center}
 	
-	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.4\textwidth]{diagrama_workflow} }
-	\end{figure}
+	Utilizando \textbf{Hidden markov models} alinea cada audio
+	
 \end{frame}
-
 
 \begin{frame}
 	\frametitle{Extracción de información}
@@ -546,6 +580,42 @@
 	\begin{figure}[h!]
 		\centerline{\includegraphics[width=0.9\textwidth]{espectograma_u3_t33_a1} }
 	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extracción de información}
+	
+	Definimos tipos de atributos:
+	\begin{itemize}
+		\item Atributo acústico
+		\item Atributo fonético
+		\item Atributo silábico
+	\end{itemize}
+	{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
+	
+	\begin{figure}[h!]
+		\centerline{\includegraphics[width=0.4\textwidth]{diagrama_workflow} }
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extracción de información}
+	\Large {Atributos acústicos}
+	
+	{\normalsize \textbf{Escala Mel:} escala sobre la precepción auditiva humana
+	
+	\begin{itemize}
+		\item 1 - Frame the signal into short frames.
+		\item 2 - For each frame estimate the power spectrum (Fast Fourier Transform).
+		\item 3 - Apply the mel filterbank to the power spectra, sum the energy in each filter.
+		\item 4 - Take the logarithm of all filterbank energies.
+		\item 5 - Take the DCT of the log filterbank energies. (DCT=discrete cosine transform)
+		\item 6 - Keep DCT coefficients 2-13, discard the rest.
+	\end{itemize}
+	
+	Script en Matlab llamado por Pymatlab
+	
+	}
 \end{frame}
 
 \begin{frame}
@@ -626,7 +696,7 @@
 
 \begin{frame}
 	\frametitle{Extracción de información}
-	\Large {Atributos silábico: cálculo duración de `kt’}
+	\Large {Atributos silábico: sílaba anterior a la acentuada}
 
 	\begin{center}
 		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
@@ -789,7 +859,7 @@
 		\addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
 		\end{axis}
 		\end{tikzpicture}
-		\caption{Cantidad de instancias de Buenos Aires y Córdoba según cada grupo de Train y Tests}
+		\caption{Cantidad de audios de Buenos Aires y Córdoba según cada grupo de Train y Tests}
 		\label{TestsInstances}
 	\end{figure}
 		
@@ -803,7 +873,7 @@
 		\resizebox{9cm}{!} {
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
-			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{}  & \textbf{Zero Rules} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 			\textbf{Fold 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
 			\textbf{Fold 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
 			\textbf{Fold 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
@@ -823,10 +893,10 @@
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
 			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-			\textbf{ZeroR y JRip}  & 0.8438 & 0.87 \\ \hline
-			\textbf{ZeroR y J48}  & 0.9772 & 0.813 \\ \hline
+			\textbf{ZeroR y Ripper}  & 0.8438 & 0.87 \\ \hline
+			\textbf{ZeroR y C4.5}  & 0.9772 & 0.813 \\ \hline
 			\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
-			\textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
+			\textbf{ZeroR y SVM}  & 0.03125 & 0.004545 \\ \hline
 		\end{tabular}
 		}
 		\caption{Resultados de cada test representado en p-valor}
@@ -840,14 +910,14 @@
 	Detalles:
 	\begin{itemize}
 		\item Tenemos en cada fold más hablantes de Buenos Aires que de Córdoba. \\
-		Esto se ve reflejado en el clasificador ZeroR con un porcentaje de aciertos major al 50 \% \\
+		Esto se ve reflejado en el clasificador Zero Rules con un porcentaje de aciertos mayor al 50 \% \\
 		Necesitamos \textbf{equilibrar los hablantes} para analizar si se esta sacando provecho a los clasificadores.
 
 		\pause
 
-		\item Analizando la salida de cada clasificador, observamos que J48 nos da un árbol sólo de 1 hoja. \\
-		Inclusive vemos que tiene igual porcentaje que ZeroR. \\
-		Analizando J48 vemos que su algoritmo puede generar árboles de pocos atributos si en los datos hay muchos \textbf{missing values}.
+		\item Analizando la salida de cada clasificador, observamos que C4.5 nos da un árbol sólo de 1 hoja. \\
+		Inclusive vemos que tiene igual porcentaje que Zero Rules. \\
+		Analizando C4.5 vemos que su algoritmo puede generar árboles de pocos atributos si en los datos hay muchos \textbf{missing values}.
 	\end{itemize}
 \end{frame}
 
@@ -903,7 +973,7 @@
 			\hline
 		\end{tabular}
 		}
-		\caption{}
+		\caption{Original}
 		\label{}
 	\end{table}
 	
@@ -922,7 +992,7 @@
 			\hline
 		\end{tabular}
 		}
-		\caption{}
+		\caption{Modificado}
 		\label{}
 	\end{table}
 \end{frame}
@@ -933,7 +1003,7 @@
 		\centering
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
-			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 			\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ \hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje}
@@ -946,10 +1016,10 @@
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  & 0.3351 & 0.3828 \\ \hline
-		\textbf{ZeroR y J48}  & 0.2908 &  0.3864 \\ \hline
+		\textbf{ZeroR y Ripper}  & 0.3351 & 0.3828 \\ \hline
+		\textbf{ZeroR y C4.5}  & 0.2908 &  0.3864 \\ \hline
 		\textbf{ZeroR y NaiveBayes}  & 0.05191 & 0.06472 \\ \hline
-		\textbf{ZeroR y Function SMO}  &  0.004282 & 0.009828 \\ \hline
+		\textbf{ZeroR y SVM}  &  0.004282 & 0.009828 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
@@ -997,7 +1067,7 @@
 			\hline
 			\end{tabular}
 		}
-		\caption{}
+		\caption{Original}
 		\label{}
 		\end{table}
 		
@@ -1020,7 +1090,7 @@
 				\hline
 			\end{tabular}
 			}
-			\caption{}
+			\caption{Modificado}
 			\label{}
 		\end{table}
 \end{frame}
@@ -1032,7 +1102,7 @@
 		\centering
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
-			\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 			\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje}
@@ -1044,16 +1114,76 @@
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
 			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-			\textbf{ZeroR y JRip}  & 0.06537 & 0.1284 \\ \hline
-			\textbf{ZeroR y J48}  & 0.06156 &  0.1111 \\ \hline
+			\textbf{ZeroR y Ripper}  & 0.06537 & 0.1284 \\ \hline
+			\textbf{ZeroR y C4.5}  & 0.06156 &  0.1111 \\ \hline
 			\textbf{ZeroR y NaiveBayes}  & 0.03916 & 0.06111 \\ \hline
-			\textbf{ZeroR y Function SMO}  &  0.02936 & 0.03522 \\ \hline
+			\textbf{ZeroR y SVM}  &  0.02936 & 0.03522 \\ \hline
 		\end{tabular}
 		\caption{Resultados de cada test representado en p-valor}
 		\label{res_tests_wilcoxon_student}
 	\end{table}
 		
 \end{frame}
+
+\begin{frame}
+	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+	
+	Matríz de confusión mejores
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Buenos Aires & Córdoba & \\ \hline
+			33 & 1 & Buenos Aires\\ \hline
+			0 & 0 & Córdoba\\ \hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Selección de atributos de forma automática}
+	
+	Para cada atributo calcula la entropía de la clase y luego calcula la entropía\footnote{Cuán frecuente es una clase en una serie de muestras} de la misma sabiendo el valor de este atributo
+	
+	\begin{center}
+		$InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$
+	\end{center}
+	
+	\begin{itemize}
+		\item $H(Class)$ representa el valor de la entropía de la clase a predecir. Mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular.
+		\item $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Selección de atributos de forma automática}
+		
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|l|c|c|c|c|c|}
+			\hline
+			\textbf{Ganancia de Información} & \textbf{Atributo} \\ \hline
+			0.07231     & FON\_consonant\_norm \\ \hline
+			0.07217     & FON\_vowel\_norm \\ \hline
+			0.03963     & \textbf{SIL\_syllableAccent\_normhd }\\ \hline
+			0.03963     & \textbf{SIL\_prevSyllableAccent\_normhd} \\ \hline
+			0.02332     & FON\_ll\_norm \\ \hline
+			0.02285     & FON\_Sfinal\_norm \\ \hline
+			0.02226     & ACU\_MinLL\_1 \\ \hline
+			0.02144     & ACU\_AverageLL\_1 \\ \hline
+		\end{tabular}
+		\caption{Resultados de InfoGain}
+		\label{infogain-table}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		{\Large ¿Preguntas?}
+	\end{center}
+\end{frame}
+
 % % %
 
 \end{document}
