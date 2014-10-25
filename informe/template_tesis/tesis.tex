@@ -5,11 +5,17 @@
 
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla]{babel}
+\usepackage[spanish, es-tabla, activeacute]{babel}
 \usepackage[left=3cm,right=3cm,bottom=3.5cm,top=3.5cm]{geometry}
 \usepackage{sidecap} 
 \usepackage{color}
 \usepackage{listings}
+
+\lstset{
+	literate={ñ}{{\~n}}1
+	{í}{{\'i}}1
+}
+
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{tikz}
