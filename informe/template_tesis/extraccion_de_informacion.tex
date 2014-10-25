@@ -20,8 +20,37 @@ Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos
 
 Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una librería para crear y manipular Modelos Ocultos de Markov fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
 
-%TODO acá agregar explicación, al final de este parrafo
-Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando las diferentes muestras analizadas y la lista de fonemas pronunciada en cada grabación. Por ejemplo: mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de estas grabaciones. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
+%explicación teórica con ejemplo
+\subsubsection*{Modelos ocultos de Markov}
+Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) son modelos estadísticos por los cuales tratan de predecir parámetros ocultos a través de observaciones. Se llaman ``ocultos'' ya que el estado a predecir no se puede observar directamente. Sólo se puede predecir en qué estado oculto está a través de observaciones. 
+
+Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la Figura \ref{ex_hmm} se puede apreciar este ejemplo. Para saber en qué estado oculto se encuentra a través de las observaciones se utiliza el algoritmo Viterbi.
+
+\begin{figure}[htbp]
+	\begin{center}
+		\begin{tikzpicture}[]
+		% states
+		\node[state] (s1) at (-0.5,2.5) {$Baja$}
+		edge [loop above] node[auto,swap,left=2] {$0.3$} ();
+		\node[state] (s2) at (2.5,2.5) {$Alta$}
+		edge [<-,bend right=40] node[auto,swap] {$0.7$} (s1)
+		edge [->,bend left=40] node[auto,swap] {$0.2$} (s1)
+		edge [loop above] node[auto,swap,right=2] {$0.8$} ();
+		% observations
+		\node[observation] (y1) at (-1,0) {$Lluvia$}
+		edge [lightedge] node[auto,swap] {$0.6$} (s1)
+		edge [lightedge] node[auto,swap] {$0.4$} (s2);
+		\node[observation] (y2) at (3,0) {$Seco$}
+		edge [lightedge] node[auto,swap] {$0.4$} (s1)
+		edge [lightedge] node[auto,swap] {$0.6$} (s2);
+		\end{tikzpicture}
+	\end{center}
+	\caption{HMM}
+	\label{ex_hmm}
+\end{figure}
+
+%ejemplo de audio sobre el trabajo
+Llevado esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando la lista de fonemas pronunciada en cada grabación. Mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de las grabaciones. Los estados ocultos a predecir son los fonemas de cada frase, en cambio las observaciones provienen del análisis de cada audio. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
 Veamos un ejemplo de cómo funcionan los HMM en nuestro trabajo. 
 
@@ -39,9 +68,12 @@ Veamos un ejemplo de cómo funcionan los HMM en nuestro trabajo.
 	\label{car_a2}
 \end{figure}
 
-Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones de dos hablantes distintos que pronuncian la misma frase. Estas características están representadas por tres gráficos. El primero nos muestra la onda del sonido de la grabación a través del tiempo, el segundo el espectograma y el tercero corresponde al comienzo y fin de cada fonema en la grabación. Podemos observar que el espectograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir cada desde y hasta qué tiempo se encuentra cada fonema.
+Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones, de dos hablantes distintos, que pronuncian la misma frase. Estas características están representadas por tres gráficos. El primero nos muestra la onda del sonido de la grabación a través del tiempo, el segundo el espectograma y el tercero corresponde al comienzo y fin de cada fonema en la grabación. 
 
-Los requisitos para utilizar esta herramienta son: una hora de grabación con alineamientos y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
+Podemos observar que el espectograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients se verán cómo se calcular más adelante} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir cada desde y hasta qué tiempo se encuentra cada fonema.
+\\
+
+Volviendo a nuestro sistema, los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con alineamientos y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 %TODO: arreglar sin poner SCORES
 %Una vez terminada la alineación, ProsodyLab Aligner genera un archivo donde muestra cómo fueron esas alineaciones utilizando un puntaje. Este archivo se llama \textit{`.SCORES’} y en él se encuentra una lista de todos los audios seguidos de un valor, corresponde a la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este puede ser el primer filtro para el extractor. 
