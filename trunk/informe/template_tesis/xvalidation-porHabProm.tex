@@ -1,9 +1,9 @@
 % Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
 \subsection{Promediando los atributos de cada hablante}
 
-8 hablantes Buenos Aires. 8 Córdoba.
+Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos saber si utilizando los atributos que definidos podemos realizar una mejor clasificación.
 
-Cross validation similar al anterior pero con sólo 16 hablantes.
+Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. Como el esquema anterior, vamos a tener un fold por cada hablante. En la Tabla \ref{cv-porHabProm} vemos este esquema.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -27,10 +27,12 @@ Cross validation similar al anterior pero con sólo 16 hablantes.
 		
 	\end{tabular}
 	\caption{Esquema de cross-validation}
-	\label{}
+	\label{cv-porHabProm}
 \end{table}
 
-Juntamos los atributos de cada hablante de la siguiente forma.
+Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Esto hace que clasificadores como C 4.5 devuelvan resultados muy pobre. 
+
+Para evitar esto realizamos lo siguiente: juntamos los atributos de cada hablante de la siguiente forma.
 
 \begin{table}[H]
 	\centering
@@ -67,11 +69,9 @@ esto pasaría a:
 	\label{}
 \end{table}
 
-O sea, una fila de atributos por cada hablante.
+O sea, una fila de atributos por cada hablante. Esto minimizaría la cantidad de valores desconocidos por cada hablante. 
 
 \subsection{Resultados}
-
-EL resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa.
 
 \begin{table}[H]
 	\centering
@@ -100,4 +100,24 @@ EL resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto su
 	\label{res_tests_wilcoxon_student}
 \end{table}
 
-% hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 
+
+\subsection{Características}
+
+Este modelo de test dió muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C 4.5 pudo armar árboles mejores. 
+
+Sin embargo, la forma con la que evitamos los valores desconocidos no es la mejor. El resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa. 
+
+Esto también se ve reflejado en las matrices de confusión de cada fold. Cada una de ellas son de la forma: 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Buenos Aires & Córdoba & \\ \hline
+		1 & 0 & Buenos Aires\\ \hline
+		0 & 0 & Córdoba\\ \hline
+	\end{tabular}
+\end{table}
+
+Donde siempre se encuentra sólo una instancia.
+
