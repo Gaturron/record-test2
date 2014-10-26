@@ -1,6 +1,10 @@
 % Cada hablante que tenga un atributo '?' cambiarlo por el promedio de ese atributo en las demás audios
 \subsection{Promediando los atributos de cada hablante sólo si es desconocido}
 
+En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Sí bien esto es cierto, no es necesario promediar en todo los casos. 
+
+Veamos un ejemplo: supongamos que tenemos como conjunto de datos a la Tabla \ref{attr_orig}. Si para cada hablante promediamos sus atributos estaríamos perdiendo información. El hablante 1 tiene en el Audio1 el atributo A1 definido como 1, mientras que en el Audio3 como 2. Si realizaramos el promedio, estos valores los perderíamos.
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|ccccc|}
@@ -15,11 +19,13 @@
 		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
-	\caption{}
-	\label{}
+	\caption{Atributos original}
+	\label{attr_orig}
 \end{table}
 
-Se cambia a ...
+Es por ello que proponemos esta variante. Cuando haya un atributo desconocido en un audio, vamos a promediarlo con los atributos de los demás audios del mismo hablante. En la tabla \ref{attr_mod} se puede ver el resultado de esta variante. 
+
+Por ejemplo: para el hablante 1, el audio1 no tiene definido el atributo 1. Entonces vamos a promediarlo con los demás audios. El audio1 y audio3 sí tienen este atributo definido y sus valores son 2 y 1 respectivamente. Realizamos el promedio: $ 2 + 1 / 2 = 1,5$ entonces el valor del atributo 1 para el audio2 es 1,5. De esta forma, no perdemos información con respecto al audio extraído.
 
 \begin{table}[H]
 	\centering
@@ -35,8 +41,8 @@ Se cambia a ...
 		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
-	\caption{}
-	\label{}
+	\caption{Atributos modificado}
+	\label{attr_mod}
 \end{table}
 
 \begin{table}[H]
@@ -66,6 +72,20 @@ Se cambia a ...
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
+\end{table}
+
+\subsection{Características}
+
+Con esta esquema mejoramos las matrices de confusión. La siguiente corresponde al fold 1. Ahora se extrae mas información.	
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Buenos Aires & Córdoba & \\ \hline
+		33 & 1 & Buenos Aires\\ \hline
+		0 & 0 & Córdoba\\ \hline
+	\end{tabular}
 \end{table}
 
 % hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 

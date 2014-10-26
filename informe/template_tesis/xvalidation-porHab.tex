@@ -6,9 +6,9 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-Tenemos 27 hablantes.
+Vamos a definir un modelo de test mucho más simple. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}.
 
-Vamos a separar uno para test y todos los demás para train. Cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
+En nuestro conjunto de datos tenemos 27 hablantes. Es por eso qye vamos a tener 27 folds distintos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -32,10 +32,12 @@ Vamos a separar uno para test y todos los demás para train. Cuando nos referimo
 	
 	\end{tabular}
 	\caption{Esquema de cross-validation}
-	\label{}
+	\label{esq_cv}
 \end{table}
 		
 \subsection{Resultados}
+
+Espesaremos solamente el promedio de los folds para cada clasificador.
 
 \begin{table}[H]
 	\centering
@@ -71,8 +73,15 @@ Valores del p-valor sobre cada test.
 
 % hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 
 
-Problemas:
-\begin{itemize}
-	\item desbalance
-	\item missing values
-\end{itemize}
+\subsection{Características}
+
+Si bien este modelo de test simplificó mucho la forma de modelar, nos sigue mostrando resultados llamativos. 
+
+El clasificador ZeroR sigue teniendo muy buena performance solamente por tener un conjunto de datos desequilibrado. También el clasificador C4.5 posee muy bajo performance y su árbol de clasificación sigue siendo muy pobre.  
+
+%Ver bien el mail de Miguel
+Analizando el algoritmo del clasificador C4.5 notamos que el árbol generado puede ser muy pobre si en sus datos de entrenamiento hay muchos valores desconocidos. 
+
+El algoritmo para armar el árbol de clasificación va tomando el atributo con mayor ganancia de información y agregándolo como un nuevo nodo al árbol. Luego se llama recursivamente. Si hay muchas instancias con atributos  desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Es por eso que los árboles de este clasificador nos quedan de 1 nivel.
+
+%citar libro y quizas gráfico
