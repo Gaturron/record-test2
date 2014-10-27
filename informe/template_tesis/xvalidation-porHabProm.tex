@@ -3,7 +3,7 @@
 
 Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos saber si utilizando los atributos que definidos podemos realizar una mejor clasificación.
 
-Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. Como el esquema anterior, vamos a tener un fold por cada hablante. En la Tabla \ref{cv-porHabProm} vemos este esquema.
+Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, vamos a tener un fold por cada hablante. En la Tabla \ref{cv-porHabProm} vemos este esquema.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -30,9 +30,9 @@ Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunt
 	\label{cv-porHabProm}
 \end{table}
 
-Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Esto hace que clasificadores como C 4.5 devuelvan resultados muy pobre. 
+Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
 
-Para evitar esto realizamos lo siguiente: juntamos los atributos de cada hablante de la siguiente forma.
+Para evitar esto realizamos lo siguiente: juntamos los atributos para cada hablante de la siguiente forma.
 
 \begin{table}[H]
 	\centering
