@@ -117,9 +117,9 @@ Para los vectores resultado provenientes de una distribución Normal se les apli
 
 La ventaja de usarlo es que, al saber qué distribución representa, vamos a tener resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$. De lo contrario, sí hay evidencia y rechazamos $H_0$.
 
-\section{Cross validations}
+\section{Modelos de tests}
 
-En esta sección vamos a explicar en detalle varios cross-validations que surgieron a partir de los datos que obtuvimos, así como también qué resultados obtuvimos en cada uno de ellos.
+En esta sección vamos a explicar en detalle varios modelos de tests que surgieron a partir de los datos que obtuvimos, así como también qué resultados obtuvimos en cada uno de ellos. Cada uno de ellos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. Los modelos que probamos fueron:
 
 \input{xvalidation-porGrupoViejo.tex}
 
