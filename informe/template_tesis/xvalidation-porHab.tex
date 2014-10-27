@@ -6,9 +6,9 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-Vamos a definir un modelo de test mucho más simple. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}.
+Vamos a definir un modelo de test mucho más simple. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en ingles: Leave-one-out cross-validation)
 
-En nuestro conjunto de datos tenemos 27 hablantes. Es por eso qye vamos a tener 27 folds distintos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
+En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Córdoba. Vamos a tener 27 folds distintos para cada uno de ellos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -37,7 +37,7 @@ En nuestro conjunto de datos tenemos 27 hablantes. Es por eso qye vamos a tener 
 		
 \subsection{Resultados}
 
-Espesaremos solamente el promedio de los folds para cada clasificador.
+Espesaremos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resultó relevante mostrar el porcentaje de clasificación correcta para cada fold. 
 
 \begin{table}[H]
 	\centering
@@ -55,7 +55,7 @@ Espesaremos solamente el promedio de los folds para cada clasificador.
 
 \subsubsection{Wilcoxon y Test t de Student}
 
-Valores del p-valor sobre cada test.
+Vamos a correr los test estadísticos. Estos resultados se pueden observar en la tabla  \ref{res_tests_wilcoxon_student}. Los valores expresados corresponden al p-valor. Estos test estadísticos mostraron que los resultados de cada clasificador dieron que no son estadísticamente significativos.
 
 \begin{table}[H]
 	\centering
@@ -73,15 +73,36 @@ Valores del p-valor sobre cada test.
 
 % hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 
 
-\subsection{Características}
+\subsection{Características del modelo de test}
 
 Si bien este modelo de test simplificó mucho la forma de modelar, nos sigue mostrando resultados llamativos. 
 
-El clasificador ZeroR sigue teniendo muy buena performance solamente por tener un conjunto de datos desequilibrado. También el clasificador C4.5 posee muy bajo performance y su árbol de clasificación sigue siendo muy pobre.  
+El clasificador ZeroR sigue teniendo muy buen rendimiento solamente por tener un conjunto de datos desequilibrado. También el clasificador C4.5 posee muy bajo performance y su árbol de clasificación sigue siendo muy pobre.  
 
 %Ver bien el mail de Miguel
 Analizando el algoritmo del clasificador C4.5 notamos que el árbol generado puede ser muy pobre si en sus datos de entrenamiento hay muchos valores desconocidos. 
 
-El algoritmo para armar el árbol de clasificación va tomando el atributo con mayor ganancia de información y agregándolo como un nuevo nodo al árbol. Luego se llama recursivamente. Si hay muchas instancias con atributos  desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Es por eso que los árboles de este clasificador nos quedan de 1 nivel.
+Recordemos que el algoritmo C4.5 para armar el árbol de clasificación va tomando el atributo con mayor ganancia de información y agregándolo como un nuevo nodo al árbol. Luego descarta el atributo ya elegido y se llama recursivamente en cada rama. 
+
+Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Recordemos que para un hablante, cada uno de sus audios sólo define atributos para la frase grabada. Si en la grabación no se extrae ese atributo, quedará con valor desconocido. 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|ccccccccc|}
+		\hline
+		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & A4 & A5 & A6 & A7 & ... & AN \\
+		\hline 
+		\textbf{Hablante 1} & \textbf{Audio1} & 1 & 2 & ? & ? & ? & ? & ? & ... & 2 \\
+		& \textbf{Audio2} & ? & ? & 1 & 3 & 4 & ? & ? & ... & ? \\
+		& \textbf{Audio3} & ? & ? & ? & ? & ? & 4 & 2 &  ... & ? \\
+		\hline
+	\end{tabular}
+	\caption{Ejemplo de atributos para un hablante}
+	\label{hablante_ej}
+\end{table}
+
+Veamos un ejemplo: en la tabla \ref{hablante_ej} podemos ver los atributos extraídos de un hablante  ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
+
+Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. %Es por eso que los árboles de este clasificador nos quedan de 1 nivel.
 
 %citar libro y quizas gráfico

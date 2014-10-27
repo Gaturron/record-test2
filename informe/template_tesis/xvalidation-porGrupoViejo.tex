@@ -144,7 +144,7 @@ La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto d
 
 La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
-\section{Resultados}
+\subsection{Resultados}
 
 Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
 
@@ -415,16 +415,16 @@ Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente 
 
 En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuáles atributos tienen mayor importancia a la hora de la clasificación.
 
-\subsection{Características}
+\subsection{Características del modelo de test}
 
-En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ellos analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
+En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
 
 \begin{itemize}
-	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de este cross-validation sucede que tiene instancias de audios repetidas. Esto es una característica que intentarémos evitar en los próximos CVs.
+	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de este cross-validation sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos CVs.
 	
-	\item \textbf{El clasificador C 4.5 tiene la misma performance que ZeroR:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con ZeroR vemos que inclusive es menor. Viendo el clasificador creado por C 4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
+	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que ZeroR:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con ZeroR vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
 	
-	\item \textbf{ZeroR tiene una performance mejor al 50 \%: } Este clasificador elige siempre la clase mayoritaria. Si su performance es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra/ Particularmente, hay más instancias de Buenos Aires que de Córdoba.
+	\item \textbf{ZeroR tiene un rendimiento mejor al 50 \%: } Este clasificador elige siempre la clase mayoritaria. Si su rendimiento es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra. Particularmente, hay más instancias de Buenos Aires que de Córdoba.
 \end{itemize}
 
 En los próximos cross-validations intentaremos mejorar estos problemas.
