@@ -103,6 +103,4 @@ Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrá
 
 Veamos un ejemplo: en la tabla \ref{hablante_ej} podemos ver los atributos extraídos de un hablante  ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
 
-Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. %Es por eso que los árboles de este clasificador nos quedan de 1 nivel.
-
-%citar libro y quizas gráfico
+Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools}. En la página 194 está la explicación que nos ayudó a razonar esta idea. Vamos a probar otro modelo de test que intente evitar tener tantos valores desconocidos. 

@@ -1,31 +1,31 @@
 % Cada hablante que tenga un atributo '?' cambiarlo por el promedio de ese atributo en las demás audios
 \subsection{Promediando los atributos de cada hablante sólo si es desconocido}
 
-En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Sí bien esto es cierto, no es necesario promediar en todo los casos. 
+En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Sí bien esto es cierto, no es necesario promediar en todos los casos. 
 
-Veamos un ejemplo: supongamos que tenemos como conjunto de datos a la Tabla \ref{attr_orig}. Si para cada hablante promediamos sus atributos estaríamos perdiendo información. El hablante 1 tiene en el Audio1 el atributo A1 definido como 1, mientras que en el Audio3 como 2. Si realizaramos el promedio, estos valores los perderíamos.
+Supongamos que tenemos el mismo conjunto de datos a la Tabla \ref{datos_orig}. Si para cada hablante promediamos sus atributos estaríamos perdiendo información. El hablante 1 tiene en el Audio1 el atributo A1 definido como 1, mientras que en el Audio3 como 2. Si realizáramos el promedio, estos valores específicos para estos audios los perderíamos.
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|l|ccccc|}
-		\hline
-		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
-		\hline 
-		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
-		& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
-		& \textbf{Audio3} & 2 & ? & 3 & & ? \\
-		\hline
-		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
-		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
-		\hline
-	\end{tabular}
-	\caption{Atributos original}
-	\label{attr_orig}
-\end{table}
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|l|ccccc|}
+%		\hline
+%		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+%		\hline 
+%		\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+%		& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
+%		& \textbf{Audio3} & 2 & ? & 3 & & ? \\
+%		\hline
+%		\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
+%		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+%		\hline
+%	\end{tabular}
+%	\caption{Atributos original}
+%	\label{attr_orig}
+%\end{table}
 
-Es por ello que proponemos esta variante. Cuando haya un atributo desconocido en un audio, vamos a promediarlo con los atributos de los demás audios del mismo hablante. En la tabla \ref{attr_mod} se puede ver el resultado de esta variante. 
+Es por ello que proponemos esta variante. Cuando haya un atributo desconocido en un audio, vamos a promediarlo con los atributos de los demás audios del mismo hablante. En la tabla \ref{attr_mod} se puede ver el resultado de esta variante marcado con negrita los nuevos valores. 
 
-Por ejemplo: para el hablante 1, el audio1 no tiene definido el atributo 1. Entonces vamos a promediarlo con los demás audios. El audio1 y audio3 sí tienen este atributo definido y sus valores son 2 y 1 respectivamente. Realizamos el promedio: $ 2 + 1 / 2 = 1,5$ entonces el valor del atributo 1 para el audio2 es 1,5. De esta forma, no perdemos información con respecto al audio extraído.
+Por ejemplo: para el Hablante 1, el Audio1 no tiene definido el atributo A1. Entonces vamos a promediarlo con los demás audios. El Audio1 y Audio3 sí tienen este atributo definido y sus valores son 2 y 1 respectivamente. Realizamos el promedio nuevamente: $ 2 + 1 / 2 = 1,5$ entonces el valor del atributo 1 para el Audio2 es 1,5. De esta forma, no perdemos información con respecto al audio extraído.
 
 \begin{table}[H]
 	\centering
@@ -41,18 +41,18 @@ Por ejemplo: para el hablante 1, el audio1 no tiene definido el atributo 1. Ento
 		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
-	\caption{Atributos modificado}
+	\caption{Atributos modificados 2}
 	\label{attr_mod}
 \end{table}
+
+Podemos observar los resultados del promedio de los folds para cada clasificador en la tabla \ref{class_corr_en_pct}. En este caso Zero rule dió el porcentaje esperado y los demás por arriba de su valor. Esto nos muestra que utilizando estos atributos se puede superar el baseline.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Fold 1}  &  &  &  &  &  \\ \hline
-		\hline \hline
-		\textbf{Promedio} &  &  &  &  &  \\ \hline
+		\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
 	\label{class_corr_en_pct}
@@ -60,15 +60,17 @@ Por ejemplo: para el hablante 1, el audio1 no tiene definido el atributo 1. Ento
 
 \subsubsection{Wilcoxon y Test t de Student}
 
+Corrimos los test estadísticos y obtuvimos que los resultados de los folds de NaiveBayes y SVM tienen evidencia estadística para ser mejor que Zero rules. 
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  &  &  \\ \hline
-		\textbf{ZeroR y J48}  &  &  \\ \hline
-		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
-		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+		\textbf{ZeroR y Ripper}  & 0.06537 & 0.1284 \\ \hline
+		\textbf{ZeroR y C4.5}  & 0.06156 &  0.1111 \\ \hline
+		\textbf{ZeroR y NaiveBayes}  & 0.03916 & 0.06111 \\ \hline
+		\textbf{ZeroR y SVM}  &  0.02936 & 0.03522 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
@@ -76,7 +78,7 @@ Por ejemplo: para el hablante 1, el audio1 no tiene definido el atributo 1. Ento
 
 \subsection{Características del modelo de test}
 
-Con esta esquema mejoramos las matrices de confusión. La siguiente corresponde al fold 1. Ahora se extrae mas información.	
+Con esta esquema mejoramos las matrices de confusión. La tabla \ref{mat_conf_f1} corresponde al primer fold. Notamos que ahora sí se analiza cada audio y se intenta clasificarlo. 
 
 \begin{table}[H]
 	\centering
@@ -86,6 +88,8 @@ Con esta esquema mejoramos las matrices de confusión. La siguiente corresponde 
 		33 & 1 & Buenos Aires\\ \hline
 		0 & 0 & Córdoba\\ \hline
 	\end{tabular}
+	\caption{Matriz de confusión fold 1}
+	\label{mat_conf_f1}
 \end{table}
 
 % hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 

@@ -32,7 +32,7 @@ Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunt
 
 Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
 
-Para evitar esto realizamos lo siguiente: juntamos los atributos para cada hablante de la siguiente forma.
+Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada hablante calculando su promedio para cada atributo. Veamos en la tabla \ref{datos_orig} un ejemplo de datos extraídos para entender la idea. 
 
 \begin{table}[H]
 	\centering
@@ -48,11 +48,11 @@ Para evitar esto realizamos lo siguiente: juntamos los atributos para cada habla
 		& \textbf{Audio2} & 1 & 2 & ? & & ? \\
 		\hline
 	\end{tabular}
-	\caption{}
-	\label{}
+	\caption{Datos originales}
+	\label{datos_orig}
 \end{table}
 
-esto pasaría a:
+Para cada hablante vamos a juntar sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no vamos a poder definir ningún valor y va a quedar como valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -65,11 +65,11 @@ esto pasaría a:
 		\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
 		\hline
 	\end{tabular}
-	\caption{}
-	\label{}
+	\caption{Atributos modificados}
+	\label{datos_comb}
 \end{table}
 
-O sea, una fila de atributos por cada hablante. Esto minimizaría la cantidad de valores desconocidos por cada hablante. 
+Resumiendo por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
 
 \subsection{Resultados}
 
@@ -104,7 +104,7 @@ O sea, una fila de atributos por cada hablante. Esto minimizaría la cantidad de
 
 Este modelo de test dió muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C 4.5 pudo armar árboles mejores. 
 
-Sin embargo, la forma con la que evitamos los valores desconocidos no es la mejor. El resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa. 
+Sin embargo, la forma que evitamos los valores desconocidos no es la mejor. El resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa. 
 
 Esto también se ve reflejado en las matrices de confusión de cada fold. Cada una de ellas son de la forma: 
 
