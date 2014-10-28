@@ -12,7 +12,7 @@ Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página 
 
 El baseline define el clasificador más simple, que posteriormente tratamos de vencer. No encontramos ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria. Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias vamos a elegir siempre Córdoba.
 
-Este algoritmo, utilizando nuestros datos, tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad a la probabilidad de clasificar correctamente un hablante. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante.
+Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Utilizando nuestros datos, este baseline tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad a la probabilidad de clasificar correctamente un hablante. Este fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtenga mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante.
 
 La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
@@ -53,22 +53,26 @@ Un clasificador de tipo Naive Bayes asume que cada atributo describe una caracte
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos surgen del porcentaje de instancias correctas para los 5 folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Los resultados que utilizamos surgen del porcentaje de instancias correctas para los folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
 
 \subsection{Test de Wilcoxon}
 
-Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos ayudará a determinar si hay razones estadísticas para decir si un clasificador es distinto que otro. El input utilizado fue un vector de 5 posiciones resultante del porcentaje de instancias correctas para cada fold para cada clasificador baseline ZeroR y los demás clasificadores.
+Utilizamos el test de Wilcoxon ya que no estamos seguros que nuestros datos provengan de una distribución Normal. Este nos ayudará a determinar si hay razones estadísticas para decir si un clasificador es distinto que otro. Para realizar este test armamos un vector para cada clasificador incluyendo el baseline. Este vector tendrá el porcentaje de instancias correctas para cada uno de los folds. Entonces correremos el test estadístico utilizando el vector del clasificador baseline y el vector de otro clasificador, por ejemplo Support vector machines.
 
-Para realizar este test se debe cumplir que:
-
-\begin{itemize}
-	%Data are paired and come from the same population.
-	\item Los datos son presentados de a pares y vienen de la misma población: esto sucede gracias a cómo generamos los tests. La población también siempre es la misma.
-	%Each pair is chosen randomly and independently.
-	\item Cada par es elegido al azar e independiente del resto: cada grupo generado para testing está armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma. Además, tratamos de maximizar la independencia entre folds, como vimos en la sección 6.2.
-	%The data are measured at least on an ordinal scale, but need not be normal.
-	\item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que, como dijimos, no estamos seguros que nuestros datos provengan de una distribución Normal.
-\end{itemize}
+%TODO: comentar que esto lo saqué
+%Para realizar este test se debe cumplir que:
+%
+%\begin{itemize}
+%	%Data are paired and come from the same population.
+%	\item Los datos son presentados de a pares y vienen de la misma población: esto sucede gracias a cómo generamos los tests. La población también siempre es la misma.
+%	%Each pair is chosen randomly and independently.
+%	\item Cada par es elegido al azar e independiente del resto: cada grupo generado para testing está armado de forma azarosa ya que la elección de cada hablante se realiza de esta forma. 
+%	%TODO: Tratamos de maximizar la independencia entre folds.
+%	%ojo acá hay que tener mucho cuidado con el primer test estadistico el de la primer versión
+%	
+%	%The data are measured at least on an ordinal scale, but need not be normal.
+%	\item Los datos están medidos sobre una escala ordinal y no necesariamente debe provenir de una distribución Normal: esta característica es fundamental ya que, como dijimos, no estamos seguros que nuestros datos provengan de una distribución Normal.
+%\end{itemize}
 
 Las hipótesis fueron:
 
@@ -106,7 +110,8 @@ Este test se realiza individualmente para cada vector resultado de porcentaje de
 
 %A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
 
-Para los vectores resultado provenientes de una distribución Normal se les aplica este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos, suponiendo que surgen de una distribución Normal. De la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las siguientes hipótesis. 
+Para los vectores resultado provenientes de una distribución Normal se les aplica este test. Este nos provee una forma de determinar si dos conjuntos de test son significativamente distintos, suponiendo que surgen de una distribución Normal. Para realizar este test utilizamos, como en el Test de Wilcoxon, dos vectores: uno para los resultados de Zero R y otro para un clasificador alternativo. 
+También de la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las siguientes hipótesis. 
 
 \vspace{0.5cm}
 \hspace{2cm}$H_0$: No hay diferencias entre ZeroR y clasificador
@@ -119,10 +124,12 @@ La ventaja de usarlo es que, al saber qué distribución representa, vamos a ten
 
 \section{Modelos de tests}
 
-En esta sección vamos a explicar en detalle varios modelos de tests que surgieron a partir de los datos que obtuvimos, así como también qué resultados obtuvimos en cada uno de ellos. Cada uno de ellos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. Los modelos que probamos fueron:
+En esta sección vamos a explicar en detalle varios modelos de tests así como también qué resultados obtuvimos en cada uno de ellos. Éstos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. Los modelos que probamos fueron:
 
+%viejo
 \input{xvalidation-porGrupoViejo.tex}
 
+%nuevos
 \input{xvalidation-porHab.tex}
 \input{xvalidation-porHabProm.tex}
 \input{xvalidation-porHabPromMissAttr.tex}

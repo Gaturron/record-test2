@@ -38,9 +38,9 @@
 \contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{34}
 \contentsline {section}{\numberline {6.3}Tests estad\IeC {\'\i }sticos}{35}
 \contentsline {subsection}{\numberline {6.3.1}Test de Wilcoxon}{35}
-\contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{36}
+\contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{35}
 \contentsline {subsection}{\numberline {6.3.3}Student t Test}{36}
-\contentsline {section}{\numberline {6.4}Modelos de tests}{37}
+\contentsline {section}{\numberline {6.4}Modelos de tests}{36}
 \contentsline {section}{\numberline {6.5}Grupos de hablantes}{37}
 \contentsline {subsection}{\numberline {6.5.1}Resultados}{40}
 \contentsline {subsection}{\numberline {6.5.2}Wilcoxon y Test t de Student}{44}
