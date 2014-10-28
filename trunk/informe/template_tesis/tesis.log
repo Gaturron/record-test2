@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  27 OCT 2014 01:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  28 OCT 2014 02:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -979,12 +979,6 @@ LaTeX Info: Redefining \% on input line 7.
 LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
 
 
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
 LaTeX Warning: Label `class_corr_en_pct' multiply defined.
 
 
@@ -1366,7 +1360,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: Images/pag-inicio2.png Graphic file (type png)
 <use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 26.
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 27.
 (pdftex.def)             Requested size: 341.43437pt x 199.03789pt.
 
 
@@ -1376,7 +1370,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
-Package pdftex.def Info: Images/pag-grabar1.png used on input line 32.
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 33.
 (pdftex.def)             Requested size: 341.43437pt x 191.95496pt.
 
 
@@ -1386,7 +1380,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
-Package pdftex.def Info: Images/pag-play1.png used on input line 38.
+Package pdftex.def Info: Images/pag-play1.png used on input line 39.
 (pdftex.def)             Requested size: 341.43437pt x 191.95496pt.
 
 
@@ -1395,28 +1389,28 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [12
 
 ]
-LaTeX Info: Redefining \. on input line 51.
-LaTeX Info: Redefining \% on input line 51.
+LaTeX Info: Redefining \. on input line 52.
+LaTeX Info: Redefining \% on input line 52.
  [13 <./Images/pag-inicio2.png> <./Images/pag-allow1.png>]
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
  [14 <./Images/pag-grabar1.png>]
-LaTeX Info: Redefining \. on input line 66.
-LaTeX Info: Redefining \% on input line 66.
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
  [15 <./Images/pag-play1.png>]
 <Images/categorizando_audios.png, id=97, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 80.
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 81.
 
 (pdftex.def)             Requested size: 213.39568pt x 212.78708pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
 [16]) (./extraccion_de_informacion.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1572,34 +1566,37 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX Info: Redefining \. on input line 73.
 LaTeX Info: Redefining \% on input line 73.
 
-[46]
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
- [47]) (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 71.
-LaTeX Info: Redefining \% on input line 71.
- [48])
+[46]) (./xvalidation-porHabProm.tex
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+ [47]
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
+ [48]
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+ [49])
 (./xvalidation-porHabPromMissAttr.tex
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
- [49]
-LaTeX Info: Redefining \. on input line 76.
-LaTeX Info: Redefining \% on input line 76.
- [50]) (./seleccion_de_atributos.tex
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Info: Redefining \. on input line 47.
+LaTeX Info: Redefining \% on input line 47.
+ [50]
 
-[51]) (./combinando_clases_de_atributos.tex
-LaTeX Info: Redefining \. on input line 5.
-LaTeX Info: Redefining \% on input line 5.
- [52])) (./conclusiones.tex
+LaTeX Warning: Reference `mat_conf_f1' on page 51 undefined on input line 81.
+
+) (./seleccion_de_atributos.tex
+LaTeX Info: Redefining \. on input line 10.
+LaTeX Info: Redefining \% on input line 10.
+ [51]
+LaTeX Info: Redefining \. on input line 38.
+LaTeX Info: Redefining \% on input line 38.
+ [52])
+(./combinando_clases_de_atributos.tex
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
+ [53])) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [53]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
-
-[54]
+ [54]
 Cap\'{\i }tulo 7.
 (./trabajos_futuros.tex [55
 
@@ -1713,14 +1710,17 @@ LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23736 strings out of 493307
- 523707 string characters out of 6139905
- 775835 words of memory out of 5000000
- 26585 multiletter control sequences out of 15000+600000
+ 23739 strings out of 493307
+ 523775 string characters out of 6139905
+ 775882 words of memory out of 5000000
+ 26588 multiletter control sequences out of 15000+600000
  87511 words of font info for 70 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1470b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1740,7 +1740,7 @@ xmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on tesis.pdf (68 pages, 2312716 bytes).
+Output written on tesis.pdf (68 pages, 2313820 bytes).
 PDF statistics:
  330 PDF objects out of 1000 (max. 8388607)
  223 compressed objects within 3 object streams

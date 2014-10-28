@@ -53,10 +53,10 @@
 \contentsline {subsection}{\numberline {6.5.8}Promediando los atributos de cada hablante}{48}
 \contentsline {subsection}{\numberline {6.5.9}Resultados}{49}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{49}
-\contentsline {subsection}{\numberline {6.5.10}Caracter\IeC {\'\i }sticas del modelo de test}{49}
+\contentsline {subsection}{\numberline {6.5.10}Caracter\IeC {\'\i }sticas del modelo de test}{50}
 \contentsline {subsection}{\numberline {6.5.11}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{50}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{51}
 \contentsline {subsection}{\numberline {6.5.12}Caracter\IeC {\'\i }sticas del modelo de test}{51}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{51}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{52}
+\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{52}
+\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{53}
 \contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{55}
