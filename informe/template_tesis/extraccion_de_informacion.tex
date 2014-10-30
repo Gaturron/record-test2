@@ -221,8 +221,6 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 
 \subsection{Atributos acústicos}
 
-\subsection{Atributos acústicos}
-
 Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de coeficientes cepstrales en escala de mel (en inglés MFCC) ya que tiene relación directa con la percepción auditiva humana. Veamos el cálculo de estos coeficientes.
 
 La forma en que hablamos se produce por varias articulaciones en nuestra boca. Estas conectan a dientes, lengua, tráquea, etc. Estas articulaciones trabajan en conjunto para darle forma al sonido producido. 
@@ -246,9 +244,11 @@ El siguiente pseudocódigo explica paso a paso cómo se calculan los coeficiente
    6) Los MFCC son las amplitudes del espectro resultante.
 \end{lstlisting}
 
-Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Podemos realizar la derivada de estos atributos y la segunda derivada representa las variaciones temporales. En total derivando dos veces llegan a 33 atributos acústicos. Debemos extraer estas métricas para cada uno de los wavs grabados.
+Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Agregamos también la derivada de estos atributos y la segunda derivada que representan las variaciones temporales. En total derivando dos veces llegan a 33 atributos acústicos. Debemos extraer estas métricas para cada uno de los wavs grabados.
 
-Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y este calcula  sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción
+Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y este calcula  sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción.
+
+Este calculo de atributos acústicos lo realizamos entre el principio y el fin de cada atributo encontrado. Por ejemplo: si encontramos el atributo fonético /r/, calculamos los atributos acústicos en el intervalo donde suena este fonema. Con éstos vectores, calculamos el valor máximo, mínimo y promedio para cada posición del vector. Por ejemplo: ....
 
 %versión nueva
 %Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de MFCC ya que tiene relación directa con la percepción auditiva humana. 
@@ -301,6 +301,12 @@ Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab.
 %Este algoritmo se calcula para un segmento del audio. Como dijimos, el audio se debe dividir en frames de 20 o 30 milisegundos pero avanzando 10 o 15 milisegundos. Es por ello que hay superposiciones en cada segmento. Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Podemos realizar la derivada de estos atributos y la segunda derivada representa las variaciones temporales. En total derivando dos veces llegan a 33 atributos acústicos. Debemos extraer estas métricas para cada uno de los Wavs grabados.
 %
 %Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y utiliza los 33 atributos utilizando sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción.
+
+\subsection{Atributos desconocidos}
+
+Una grabación no puede definir todos los atributos que declaramos. Cada frase define sólo algunos atributos y los demás no sabe cuál es su posible valor. Es por eso que debemos tomar una decisión sobre qué hacer con los atributos que no conocemos. 
+
+Determinamos que a los atributos que no pudieron ser extraídos en la grabación los marcaremos como desconocidos. Si para una grabación un atributo es desconocido, no vamos a poder saber ese valor para ese hablante. Debemos analizar otra grabación del mismo hablante que defina ese atributo.
 
 \subsection{Nomenclatura utilizada}
 Para referenciar cada uno de los atributos debimos definir una nomenclatura. La definición que tomamos es la siguiente:
