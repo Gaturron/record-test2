@@ -6,7 +6,7 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-Vamos a definir un modelo de test mucho más simple. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en ingles: Leave-one-out cross-validation)
+Vamos a definir un modelo de test distinto. Este va a enfatizar más la idea del hablante y de cómo distinguirlo. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en ingles: Leave-one-out cross-validation)
 
 En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Córdoba. Vamos a tener 27 folds distintos para cada uno de ellos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
@@ -35,7 +35,7 @@ En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Có
 	\label{esq_cv}
 \end{table}
 		
-\subsection{Resultados}
+\subsubsection{Resultados}
 
 Espesaremos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resultó relevante mostrar el porcentaje de clasificación correcta para cada fold. 
 
@@ -52,10 +52,26 @@ Espesaremos solamente el promedio de clasificación correcta de los folds para c
 	\label{}
 \end{table}
 
+\subsubsection{Clasificadores encontrados}
+
+Analizamos los clasificadores armados para cada fold. En este modelo de test también los clasificadores Support vector machines y NaiveBayes utilizaron todos los atributos ponderando cada uno de diferente forma. El clasificador C4.5 tuvo también una performance pobre por tener un árbol de un nivel solo. 
+
+Veamos el clasificador Ripper para el fold 4. Este es el conjunto de reglas que generó:
+\paragraph*{Clasificador Ripper:}
+\begin{flushleft}
+	\begin{itemize}
+		\item $(FON\_rr\_norm <= -6.901) and (ACU\_AverageRR\_7 <= 11.23) => place=cba (18.0/3.0)$ \\
+		\item $(FON\_ll\_norm <= -7.975) and (ACU\_AverageLL\_6 <= 4.308) => place=cba (15.0/0.0)$
+		\item $else => place=bsas (222.0/49.0)$
+	\end{itemize}
+\end{flushleft}
+
+Notamos que sigue utilizando los atributos temporales y en menor medida los atributos acústicos.
+
 
 \subsubsection{Wilcoxon y Test t de Student}
 
-Vamos a correr los test estadísticos. Estos resultados se pueden observar en la tabla  \ref{res_tests_wilcoxon_student}. Los valores expresados corresponden al p-valor. Estos test estadísticos mostraron que los resultados de cada clasificador dieron que no son estadísticamente significativos.
+Vamos a correr los test estadísticos. Estos resultados se pueden observar en la tabla  \ref{res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
@@ -71,9 +87,11 @@ Vamos a correr los test estadísticos. Estos resultados se pueden observar en la
 	\label{res_tests_wilcoxon_student}
 \end{table}
 
+ Los valores expresados corresponden al p-valor. Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. A pesar de esto, realizamos ambos tests estadísticos para cada uno. Estos test mostraron que los resultados de cada clasificador dieron que no son estadísticamente significativos.
+
 % hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 
 
-\subsection{Características del modelo de test}
+\subsubsection{Características del modelo de test}
 
 Si bien este modelo de test simplificó mucho la forma de modelar, nos sigue mostrando resultados llamativos. 
 

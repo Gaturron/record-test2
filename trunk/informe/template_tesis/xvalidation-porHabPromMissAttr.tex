@@ -60,7 +60,7 @@ Podemos observar los resultados del promedio de los folds para cada clasificador
 
 \subsubsection{Wilcoxon y Test t de Student}
 
-Corrimos los test estadísticos y obtuvimos que los resultados de los folds de NaiveBayes y SVM tienen evidencia estadística para ser mejor que Zero rules. 
+Corrimos los test estadísticos y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machines tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
 
 \begin{table}[H]
 	\centering
@@ -76,7 +76,11 @@ Corrimos los test estadísticos y obtuvimos que los resultados de los folds de N
 	\label{res_tests_wilcoxon_student}
 \end{table}
 
-\subsection{Características del modelo de test}
+\subsubsection{Clasificadores encontrados}
+
+Analizando los clasificadores para cada fold notamos que todos armaron clasificadores utilizando los atributos definidos. Como el modelo de test anterior, Support vector machine y NaiveBayes utilizaron todos los atributos mientras C4.5 y Ripper utilizaron reglas más simples.
+
+\subsubsection{Características del modelo de test}
 
 Con esta esquema mejoramos las matrices de confusión. La tabla \ref{mat_conf_f1} corresponde al primer fold. Notamos que ahora sí se analiza cada audio y se intenta clasificarlo. 
 
