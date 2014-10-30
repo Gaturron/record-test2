@@ -71,7 +71,11 @@ Para cada hablante vamos a juntar sus audios realizando el promedio de cada atri
 
 Resumiendo por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
 
-\subsection{Resultados}
+Esta variante la realizamos solamente utilizando los atributos temporales. Descartamos los atributos acústicos porque corresponden a grabaciones que en muchas oportunidades sufren de ruido y pensamos que también podía ser una causa por la cual los clasificadores tienen mal rendimiento.
+
+\subsubsection{Resultados}
+
+Los resultados de este cross-validaton podemos observarlo en la página \ref{class_corr_en_pct}.
 
 \begin{table}[H]
 	\centering
@@ -84,23 +88,46 @@ Resumiendo por cada hablante se define una fila de atributos. Esto minimizaría 
 	\label{class_corr_en_pct}
 \end{table}
 
+Podemos observar que el clasificador Zero Rule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados.
+
 \subsubsection{Wilcoxon y Test t de Student}
+
+Los resultados sobre el p-valor de cada test estadístico se puede ver en la tabla \ref{res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  &  &  \\ \hline
-		\textbf{ZeroR y J48}  &  &  \\ \hline
-		\textbf{ZeroR y NaiveBayes}  &  &  \\ \hline
-		\textbf{ZeroR y Function SMO}  &  & \\ \hline
+		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline		
+			\textbf{ZeroR y Ripper}  & 0.3351 & 0.3828 \\ \hline
+			\textbf{ZeroR y C4.5}  & 0.2908 &  0.3864 \\ \hline
+			\textbf{ZeroR y NaiveBayes}  & 0.05191 & 0.06472 \\ \hline
+			\textbf{ZeroR y SVM}  &  0.004282 & 0.009828 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
 \end{table}
 
-\subsection{Características del modelo de test}
+Podemos observar que para el clasificador Support vector machines posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Support vector machines hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
+
+\subsubsection{Clasificadores encontrados}
+
+Analizando los clasificadores notamos que el clasificador C4.5 armó árboles de decisión más elaborados. Notamos eso también viendo que su performance superó a Zero Rules. 
+
+Veamos un árbol de decisión generado por C4.5. Este corresponde al fold 7. 
+
+\subsubsection*{Clasificador C4.5}
+
+\dirtree{%
+	.1 root.
+	.2 $FON\_vowel\_norm <= 7.221824$.
+	.3 $FON\_ll\_norm <= -24.007: cba (2.33/0.22)$.
+	.3 $FON\_ll\_norm > -24.007: bsas (18.67/0.89)$.
+	.2 $FON\_vowel\_norm > 7.221824: cba (5.0)$.
+}
+Los árboles de decisión generados esta vez utilizan mucho  atributos como $FON\_ll\_norm$ y $FON\_vowel\_norm$ en varios folds. Los demás clasificadores también armaron sus reglas: SVM y NaiveBayes ponderaron cada atributo para su clasificación mientras que Ripper armó sus reglas parecidas a C4.5. 
+
+\subsubsection{Características del modelo de test}
 
 Este modelo de test dió muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C 4.5 pudo armar árboles mejores. 
 

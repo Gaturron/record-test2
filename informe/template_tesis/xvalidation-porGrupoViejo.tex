@@ -1,7 +1,7 @@
 % grupos de hablantes viejo
 % la primer entrega de cross validation 
 
-\section{Grupos de hablantes}
+\subsection{Grupos de hablantes}
 
 %Para medir el rendimiento de los distintos clasificadores definimos un modelo de testing. Este separa una parte de los datos obtenidos para entrenar el clasificador y otro para testearlo.
 
@@ -144,7 +144,7 @@ La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto d
 
 La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
-\subsection{Resultados}
+\subsubsection{Resultados}
 
 Recordemos que al tener pocos datos debimos repetir instancias en los grupos de tests. El porcentaje de instancias repetidas es menor al 20\%. Vamos a mostrar como son estos conjuntos:
 
@@ -375,33 +375,37 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 
 En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, ZeroR concentra gran parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
 
-\subsection{Wilcoxon y Test t de Student}
+No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para este modelo de test. La razón es que los conjuntos de test de cada fold no son independientes. Recordemos que tienen 20 \% de instancias repetidas, entonces cada fold por separado no sería estadísticamente independiente. Es por ello que dejamos de lado los tests estadísticos.
 
-En esta sección mostramos los resultados de estos tests estadísticos. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR. Los resultados expresados en p-valor se pueden observar en la tabla \ref{res_tests_wilcoxon_student}.
+%\subsection{Wilcoxon y Test t de Student}
+%
+%En esta sección mostramos los resultados de estos tests estadísticos. Recordemos que los resultados surgieron de realizar los test de Wilcoxon y t de Student para el vector resultado de cada clasificador con respecto a ZeroR. Los resultados expresados en p-valor se pueden observar en la tabla \ref{res_tests_wilcoxon_student}.
+%
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|c|c|c|c|c|c|}
+%		\hline
+%		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+%		\textbf{ZeroR y JRip}  & 0.8438 & 0.87 \\ \hline
+%		\textbf{ZeroR y J48}  & 0.9772 & 0.813 \\ \hline
+%		\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
+%		\textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
+%	\end{tabular}
+%	\caption{Resultados de cada test representado en p-valor}
+%	\label{res_tests_wilcoxon_student}
+%\end{table}
+%
+%Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando los resultados resumidos en la Figura \ref{res_tests_wilcoxon_student} notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Function SMO hay evidencia suficiente de ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|c|c|c|c|c|c|}
-		\hline
-		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  & 0.8438 & 0.87 \\ \hline
-		\textbf{ZeroR y J48}  & 0.9772 & 0.813 \\ \hline
-		\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
-		\textbf{ZeroR y Function SMO}  & 0.03125 & 0.004545 \\ \hline
-	\end{tabular}
-	\caption{Resultados de cada test representado en p-valor}
-	\label{res_tests_wilcoxon_student}
-\end{table}
+\subsubsection{Clasificadores encontrados}
 
-Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando los resultados resumidos en la Figura \ref{res_tests_wilcoxon_student} notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Function SMO hay evidencia suficiente de ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
+Analizamos los clasificadores armados para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machines y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
 
-\subsection{Clasificadores encontrados}
+Para analizar mas en profundidad, veamos la salida del clasificador JRip ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos.
 
-Analizamos la salida del clasificador JRip ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos.
+Cada uno de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
 
-Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
-
-\paragraph*{Clasificador JRip:}
+\paragraph*{Clasificador Ripper:}
 
 \begin{flushleft}
 	\begin{itemize}
@@ -415,7 +419,7 @@ Cada un de los folds devolvió un conjunto de reglas y no fueron necesariamente 
 
 En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la palabra, la duración sobre /r/ y la duración de la sílaba anterior a la acentuada fueron los elegidos para clasificar los dos grupos. Si bien este clasificador no obtuvo buena performance, analizar sus reglas nos permite pensar cuáles atributos tienen mayor importancia a la hora de la clasificación.
 
-\subsection{Características del modelo de test}
+\subsubsection{Características del modelo de test}
 
 En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
 

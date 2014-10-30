@@ -41,22 +41,24 @@
 \contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{35}
 \contentsline {subsection}{\numberline {6.3.3}Student t Test}{36}
 \contentsline {section}{\numberline {6.4}Modelos de tests}{36}
-\contentsline {section}{\numberline {6.5}Grupos de hablantes}{37}
-\contentsline {subsection}{\numberline {6.5.1}Resultados}{40}
-\contentsline {subsection}{\numberline {6.5.2}Wilcoxon y Test t de Student}{44}
-\contentsline {subsection}{\numberline {6.5.3}Clasificadores encontrados}{44}
-\contentsline {subsection}{\numberline {6.5.4}Caracter\IeC {\'\i }sticas del modelo de test}{45}
-\contentsline {subsection}{\numberline {6.5.5}Un hablante para test y los dem\IeC {\'a}s para train}{45}
-\contentsline {subsection}{\numberline {6.5.6}Resultados}{46}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{46}
-\contentsline {subsection}{\numberline {6.5.7}Caracter\IeC {\'\i }sticas del modelo de test}{47}
-\contentsline {subsection}{\numberline {6.5.8}Promediando los atributos de cada hablante}{48}
-\contentsline {subsection}{\numberline {6.5.9}Resultados}{49}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{49}
-\contentsline {subsection}{\numberline {6.5.10}Caracter\IeC {\'\i }sticas del modelo de test}{50}
-\contentsline {subsection}{\numberline {6.5.11}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{50}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{51}
-\contentsline {subsection}{\numberline {6.5.12}Caracter\IeC {\'\i }sticas del modelo de test}{51}
-\contentsline {section}{\numberline {6.6}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{52}
-\contentsline {section}{\numberline {6.7}Combinando clases de atributos}{53}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{55}
+\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{37}
+\contentsline {subsubsection}{Resultados}{40}
+\contentsline {subsubsection}{Clasificadores encontrados}{44}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{45}
+\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{45}
+\contentsline {subsubsection}{Resultados}{46}
+\contentsline {subsubsection}{Clasificadores encontrados}{46}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{47}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{47}
+\contentsline {subsection}{\numberline {6.4.3}Promediando los atributos de cada hablante}{48}
+\contentsline {subsubsection}{Resultados}{49}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{50}
+\contentsline {subsubsection}{Clasificadores encontrados}{50}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{51}
+\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{51}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{52}
+\contentsline {subsubsection}{Clasificadores encontrados}{52}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{52}
+\contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{53}
+\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{54}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{56}
