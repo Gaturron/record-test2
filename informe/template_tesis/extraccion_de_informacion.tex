@@ -265,7 +265,7 @@ La forma en que hablamos se produce por varias articulaciones en nuestra boca. E
 	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2+.05);
 	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2-.05);
 }
-	
+
 \begin{figure}[H]
 	\begin{center}		
 		\begin{tikzpicture}[samples=200, domain=0:5*360]
@@ -279,42 +279,59 @@ La forma en que hablamos se produce por varias articulaciones en nuestra boca. E
 		\addplot [no markers, smooth] {sin(x)+rand*2};
 		\end{axis}
 		
-		%flecha tiempo
-		\draw [->] (8.5,-0.5) -- (9.5,-0.5);
-		\node [align=center,below] at (9,-0.5) {tiempo};
+		\def \posy {-1};
 
+		%flecha tiempo
+		\draw [->] (8.5,-0.5+\posy) -- (9.5,-0.5+\posy);
+		\node [align=center,below] at (9,-0.5+\posy) {tiempo};
+
+		%grilla fonetica
+		\draw [->] (0,0.5+\posy) -- (10.5,0.5+\posy);
+		\draw (1.2,-.1+0.5+\posy) -- (1.2, .1+0.5+\posy);
+		\node [align=center,below] at (0.5,1.2+\posy) {/a/};
+		\draw (4,-.1+0.5+\posy) -- (4, .1+0.5+\posy);
+		\node [align=center,below] at (2.8,1.2+\posy) {/r/};
+		\draw (6.8,-.1+0.5+\posy) -- (6.8, .1+0.5+\posy);
+		\node [align=center,below] at (5.5,1.2+\posy) {/a/};	
+		\draw (9.6,-.1+0.5+\posy) -- (9.6, .1+0.5+\posy);
+		\node [align=center,below] at (8.3,1.2+\posy) {/g/};
+		
+		%linea vertical
+		\draw[dotted] (1.2,0.5+\posy) -- (1.2,-0.4+\posy);
+		\draw[dotted] (4,0.5+\posy) -- (4,-1.4+\posy);
+		
 		%grilla
-		\draw (0,0) -- (10.5,0);	
+		\draw [->] (0,0+\posy) -- (10.5,0+\posy);	
 		\foreach \r in {0,0.4,0.8,...,10.5}
-			\draw (\r,-.1) -- (\r, .1);
+			\draw (\r,-.1+\posy) -- (\r, .1+\posy);
 
 		%ventanas
-		\intervalo{1.2}{-0.4};
-		\intervalo{1.6}{-0.6};
-		\intervalo{2}{-0.8};
-		\intervalo{2.4}{-1};
-		\node at (3,-1.2) {...};
-		\intervalo{3.2}{-1.4};
+		\intervalo{1.2}{-0.4+\posy};
+		\intervalo{1.6}{-0.6+\posy};
+		\intervalo{2}{-0.8+\posy};
+		\intervalo{2.4}{-1+\posy};
+		\node at (3,-1.2+\posy) {...};
+		\intervalo{3.2}{-1.4+\posy};
 		
-		\mfccvec{-0.5}{-2.5}{Trama T1};
-		\draw[blue, thick,->] (1.2,-0.55) -- (-0.5,-1.8);
+		\mfccvec{-0.5}{-2.5+\posy}{Trama T1};
+		\draw[blue, thick,->] (1.2,-0.55+\posy) -- (-0.5,-1.8+\posy);
 		
-		\mfccvec{0.8}{-2.5}{Trama T2};
-		\draw[blue, thick,->] (1.6,-0.75) -- (0.8,-1.8);
+		\mfccvec{0.8}{-2.5+\posy}{Trama T2};
+		\draw[blue, thick,->] (1.6,-0.75+\posy) -- (0.8,-1.8+\posy);
 		
-		\mfccvec{2.1}{-2.5}{Trama T3};
-		\draw[blue, thick,->] (2,-0.95) -- (2,-1.8);
+		\mfccvec{2.1}{-2.5+\posy}{Trama T3};
+		\draw[blue, thick,->] (2,-0.95+\posy) -- (2,-1.8+\posy);
 		
-		\mfccvec{3.4}{-2.5}{Trama T4};
-		\draw[blue, thick,->] (2.4,-1.15) -- (3.4,-1.8);
+		\mfccvec{3.4}{-2.5+\posy}{Trama T4};
+		\draw[blue, thick,->] (2.4,-1.15+\posy) -- (3.4,-1.8+\posy);
 		
-		\node at (4.2, -2.5) {...};
-		\mfccvec{5}{-2.5}{Trama TM};
-		\draw[blue, thick,->] (4,-1.55) -- (5,-1.8);
+		\node at (4.2, -2.5+\posy) {...};
+		\mfccvec{5}{-2.5+\posy}{Trama TM};
+		\draw[blue, thick,->] (4,-1.55+\posy) -- (5,-1.8+\posy);
 		
 		%resultado
-		\mfccvecmax{9.2}{-2.5}{Resultado vector máximos}
-		\draw[decorate,decoration={brace,amplitude=7pt}] (6,-1.8) -- (6,-3.5);
+		\mfccvecmax{9.2}{-2.5+\posy}{Resultado vector máximos}
+		\draw[decorate,decoration={brace,amplitude=7pt}] (6,-1.8+\posy) -- (6,-3.5+\posy);
 
 	\end{tikzpicture}
 	\end{center}

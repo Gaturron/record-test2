@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  2 NOV 2014 03:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  2 NOV 2014 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -993,6 +993,13 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 \arrowsize=\dimen211
 ))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
+gs.code.tex
+File: tikzlibraryfadings.code.tex 2009/11/15 v2.10 (rcs-revision 1.2)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2008/02/07 v2.10 (rcs-revision 1.3)
+))
 (./tesis.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
@@ -1186,7 +1193,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 9.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<logofcen.pdf, id=4, 108.405pt x 108.405pt>
+<logofcen.pdf, id=20, 108.405pt x 108.405pt>
 File: logofcen.pdf Graphic file (type pdf)
  <use logofcen.pdf>
 Package pdftex.def Info: logofcen.pdf used on input line 10.
@@ -1217,7 +1224,7 @@ LaTeX Info: Redefining \% on input line 1.
 [5] (./introduccion.tex
 Cap\'{\i }tulo 1.
 
-<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=33, 411.136pt x 715.4
+<Images/Dialectos_del_idioma_espanol_en_Argentina.png, id=49, 411.136pt x 715.4
 73pt>
 File: Images/Dialectos_del_idioma_espanol_en_Argentina.png Graphic file (type p
 ng)
@@ -1357,7 +1364,7 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [11]
 Cap\'{\i }tulo 3.
-<Images/pag-inicio2.png, id=79, 1071.00125pt x 624.3325pt>
+<Images/pag-inicio2.png, id=95, 1071.00125pt x 624.3325pt>
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
@@ -1367,7 +1374,7 @@ Package pdftex.def Info: Images/pag-inicio2.png used on input line 14.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-allow1.png, id=80, 1371.1225pt x 770.88pt>
+<Images/pag-allow1.png, id=96, 1371.1225pt x 770.88pt>
 File: Images/pag-allow1.png Graphic file (type png)
 
 <use Images/pag-allow1.png>
@@ -1377,7 +1384,7 @@ Package pdftex.def Info: Images/pag-allow1.png used on input line 20.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-grabar1.png, id=81, 1371.1225pt x 770.88pt>
+<Images/pag-grabar1.png, id=97, 1371.1225pt x 770.88pt>
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
@@ -1387,7 +1394,7 @@ Package pdftex.def Info: Images/pag-grabar1.png used on input line 26.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/pag-play1.png, id=82, 1371.1225pt x 770.88pt>
+<Images/pag-play1.png, id=98, 1371.1225pt x 770.88pt>
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
@@ -1409,7 +1416,7 @@ LaTeX Info: Redefining \% on input line 50.
 LaTeX Info: Redefining \. on input line 68.
 LaTeX Info: Redefining \% on input line 68.
  [15]
-<Images/categorizando_audios.png, id=97, 347.2975pt x 346.29375pt>
+<Images/categorizando_audios.png, id=113, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
@@ -1432,7 +1439,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 LaTeX Info: Redefining \. on input line 55.
 LaTeX Info: Redefining \% on input line 55.
  [19]
-<Images/espectograma_u3_t33_a1.png, id=113, 817.0525pt x 549.05125pt>
+<Images/espectograma_u3_t33_a1.png, id=129, 817.0525pt x 549.05125pt>
 File: Images/espectograma_u3_t33_a1.png Graphic file (type png)
 
 <use Images/espectograma_u3_t33_a1.png>
@@ -1440,7 +1447,7 @@ Package pdftex.def Info: Images/espectograma_u3_t33_a1.png used on input line 5
 9.
 (pdftex.def)             Requested size: 341.43437pt x 229.4438pt.
 
-<Images/espectograma_u27_t33_a1.png, id=114, 1059.96pt x 549.05125pt>
+<Images/espectograma_u27_t33_a1.png, id=130, 1059.96pt x 549.05125pt>
 File: Images/espectograma_u27_t33_a1.png Graphic file (type png)
 
 <use Images/espectograma_u27_t33_a1.png>
@@ -1458,7 +1465,7 @@ LaTeX Info: Redefining \% on input line 75.
 >]
 LaTeX Info: Redefining \. on input line 92.
 LaTeX Info: Redefining \% on input line 92.
- [21] <Images/diagrama_workflow.jpg, id=121, 300.12125pt x 316.18124pt>
+ [21] <Images/diagrama_workflow.jpg, id=137, 300.12125pt x 316.18124pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
@@ -1486,35 +1493,36 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
+Missing character: There is no ; in font nullfont!
+LaTeX Info: Redefining \. on input line 341.
+LaTeX Info: Redefining \% on input line 341.
  [25]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 332
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 349
 .
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \. on input line 343.
-LaTeX Info: Redefining \% on input line 343.
- [26])
+LaTeX Info: Redefining \. on input line 360.
+LaTeX Info: Redefining \% on input line 360.
+ [26]
+LaTeX Info: Redefining \. on input line 435.
+LaTeX Info: Redefining \% on input line 435.
+ [27])
 (./datos_obtenidos.tex
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [27]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [28]
 Cap\'{\i }tulo 5.
 [29
 
-] <Images/alineacion_mala_inf.png, id=150, 1290.8225pt x 664.4825pt>
+] <Images/alineacion_mala_inf.png, id=166, 1290.8225pt x 664.4825pt>
 File: Images/alineacion_mala_inf.png Graphic file (type png)
 
 <use Images/alineacion_mala_inf.png>
 Package pdftex.def Info: Images/alineacion_mala_inf.png used on input line 39.
 (pdftex.def)             Requested size: 341.43437pt x 175.76256pt.
 
-<Images/click_al_final_inf.png, id=151, 1281.78876pt x 663.47874pt>
+<Images/click_al_final_inf.png, id=167, 1281.78876pt x 663.47874pt>
 File: Images/click_al_final_inf.png Graphic file (type png)
 
 <use Images/click_al_final_inf.png>
@@ -1735,10 +1743,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23957 strings out of 493307
- 528054 string characters out of 6139905
- 839638 words of memory out of 5000000
- 26798 multiletter control sequences out of 15000+600000
+ 24013 strings out of 493307
+ 529894 string characters out of 6139905
+ 845053 words of memory out of 5000000
+ 26848 multiletter control sequences out of 15000+600000
  88447 words of font info for 73 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1759,10 +1767,10 @@ xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
 ts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on tesis.pdf (69 pages, 2370534 bytes).
+Output written on tesis.pdf (69 pages, 2370959 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
+ 357 PDF objects out of 1000 (max. 8388607)
  231 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
