@@ -21,10 +21,10 @@ Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos
 Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una librería para crear y manipular Modelos Ocultos de Markov fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
 
 %explicación teórica con ejemplo
-\subsubsection*{Modelos ocultos de Markov}
-Los Modelos Ocultos de Markov \cite{rabiner} (en ingles HMM) son modelos estadísticos por los cuales tratan de predecir parámetros ocultos a través de observaciones. Se llaman ``ocultos'' ya que el estado a predecir no se puede observar directamente. Sólo se puede predecir en qué estado oculto está a través de observaciones. 
+\subsubsection*{Modelos Ocultos de Markov}
+Los Modelos Ocultos de Markov \cite{rabiner} (en inglés Hidden Markov Model) son modelos estadísticos por los cuales tratan de predecir estados ocultos a partir de observaciones. Se llaman ``ocultos'' ya que el estado a predecir no se puede observar directamente. Sólo se puede predecir en qué estado oculto está el modelo a través de observaciones. 
 
-Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la Figura \ref{ex_hmm} se puede apreciar este ejemplo. Para saber en qué estado oculto se encuentra a través de las observaciones se utiliza el algoritmo Viterbi.
+Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la Figura \ref{ex_hmm} se puede apreciar este ejemplo. Para computar la secuencia más probable de estados ocultos dada una secuencia de observaciones, se utiliza el algoritmo de Viterbi.
 
 \begin{figure}[htbp]
 	\begin{center}
@@ -45,32 +45,32 @@ Un ejemplo de este modelo podría ser predecir la presión atmosférica observan
 		edge [lightedge] node[auto,swap] {$0.6$} (s2);
 		\end{tikzpicture}
 	\end{center}
-	\caption{HMM}
+	\caption{Ejemplo de HMM}
 	\label{ex_hmm}
 \end{figure}
 
 %ejemplo de audio sobre el trabajo
 Llevado esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando la lista de fonemas pronunciada en cada grabación. Mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de las grabaciones. Los estados ocultos a predecir son los fonemas de cada frase, en cambio las observaciones provienen del análisis de cada audio. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
-Veamos un ejemplo de cómo funcionan los HMM en nuestro trabajo. 
+A continuación se presenta un ejemplo de cómo funcionan estos modelos en nuestro trabajo. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{espectograma_u3_t33_a1} 
+	\includegraphics[width=0.8\textwidth]{espectrograma_u3_t33_a1_ver1} 
 	\caption{Características audio 1}
 	\label{car_a1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{espectograma_u27_t33_a1} 
+	\includegraphics[width=0.8\textwidth]{espectrograma_u27_t33_a1_ver1} 
 	\caption{Características audio 2}
 	\label{car_a2}
 \end{figure}
 
-Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones, de dos hablantes distintos, que pronuncian la misma frase. Estas características están representadas por tres gráficos. El primero nos muestra la onda del sonido de la grabación a través del tiempo, el segundo el espectograma y el tercero corresponde al comienzo y fin de cada fonema en la grabación. 
+Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones, de dos hablantes distintos, que pronuncian la misma frase. Estas características están representadas por dos gráficos. El primero nos muestra el espectrograma cd cada uno y el segundo corresponde al comienzo y fin de cada fonema en la grabación. 
 
-Podemos observar que el espectograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients se verán cómo se calcular más adelante} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir desde y hasta qué tiempo se encuentra cada fonema.
+Podemos observar que el espectrograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectrograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectrograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients se verán cómo se calcular más adelante} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir desde y hasta qué tiempo se encuentra cada fonema.
 \\
 
 Volviendo a nuestro sistema, los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con alineamientos y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
@@ -221,13 +221,13 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 
 \subsection{Atributos acústicos}
 
-Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de coeficientes cepstrales en escala de mel (en inglés MFCC) ya que tiene relación directa con la percepción auditiva humana. Veamos el cálculo de estos coeficientes.
+Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de coeficientes cepstrales en escala de mel (en inglés MFCC: Mel Frequency Cepstral Coefficient) ya que tiene relación directa con la percepción auditiva humana. Veamos el cálculo de estos coeficientes.
 
 La forma en que hablamos se produce por varias articulaciones en nuestra boca. Estas conectan a dientes, lengua, tráquea, etc. Estas articulaciones trabajan en conjunto para darle forma al sonido producido. 
 
-%El tracto vocal suele modificarse de manera bastante lenta y se la puede considerar constante en intervalos de alrededor de 10 − 20 ms. Por otro lado, la señal de audio poseen muchas variaciones continuamente. Para minimizar las discontinuidades de la señal se aplica un ventaneo sobre la señal del habla. 
+El tracto vocal suele modificarse de manera bastante lenta y se la puede considerar constante en intervalos de alrededor de 10 a 20 ms. Por otro lado, la señal de audio poseen muchas variaciones continuamente. Para minimizar las discontinuidades de la señal se aplica un ventaneo sobre la señal del habla. 
 
-%(Poner gráfico del PhD)
+Las ventanas consecutivas, aplicadas a la señal del habla, se solapan. Esto permite evitar las transiciones abruptas de la señal. Las ventanas empleadas son de 20 a 40 ms de duración, pero los vectores de atributos suelen calcularse cada 10 ms. Estos intervalos son conocidos como trama o frame. Este ventaneo se puede apreciar en la Figura \ref{ej_mfcc_graf}.
 
 \newcommand{\mfccvec}[3]% x, y
 {  
@@ -335,30 +335,28 @@ La forma en que hablamos se produce por varias articulaciones en nuestra boca. E
 
 	\end{tikzpicture}
 	\end{center}
-	\label{a}
-	\caption{a}
+	\caption{Representación del cálculo de MFCC: al encontrar el fonema /r/ aplicamos el ventaneo en toda su duración. Para cada uno de ellos, se calcula los coeficientes MFCC. Finalmente se arma una traza con los máximos de cada coeficiente. Ídem para el mínimo y promedio.}
+	\label{ej_mfcc_graf}
 \end{figure}
 
-Las ventanas consecutivas, aplicadas a la señal del habla, se solapan. Esto permite evitar las transiciones abruptas de la señal. Las ventanas empleadas son de 20 a 40 ms de duración, pero los vectores de atributos suelen calcularse cada 10 ms. Estos intervalos son conocidos como trama o frame.
+Luego de tener separada la señal en pequeñas tramas, para cada una de ellas se calcula la Transformada Discreta de Fourier. Posteriormente se utiliza un banco de filtros solapados y espaciados uniformemente sobre la escala de Mel (conocido en inglés como Mel Filterbank). Como dijimos antes, esta escala es importante ya que representa la percepción auditiva humana. A los valores de energía que superaron este filtro se les aplica logaritmo. Para finalizar, a estos se les aplica la Transformada Discreta del Coseno.
 
-Luego de tener separada la señal en pequeñas tramas, para cada una de ellas se calcula la transformada discreta de fourier. posteriormente se utiliza un banco de filtros solapados y espaciados uniformemente sobre la escala de mel (conocido en inglés como mel filterbank). Como dijimos antes, esta escala representa la percepción auditiva humana. A los valores de energía que superaron este filtro se les aplica logaritmo. Para finalizar, a estos se les aplica la transformada discreta coseno (llamada en ingles DCT)
+%El siguiente pseudocódigo explica paso a paso cómo se calculan los coeficientes:
+%\begin{lstlisting}[numbers=none, keywordstyle=\ttfamily]
+%   MFCC (Mel frequency cepstral coefficient):
+%   1) Partir la señal en pequeñas tramas 
+%   2) Para cada frame estimar su espectro de energía utilizando Transformada Rapida de Fourier (FFT)
+%   3) Aplicar el banco de filtros solapados sobre escala mel. Sumar los valores en cada filtro
+%   4) Aplicar logaritmo a los valores de cada filtro
+%   5) Aplicar Transformada de Coseno Discreta
+%   6) Los MFCC son las amplitudes del espectro resultante.
+%\end{lstlisting}
 
-El siguiente pseudocódigo explica paso a paso cómo se calculan los coeficientes:
-\begin{lstlisting}[numbers=none, keywordstyle=\ttfamily]
-   MFCC (Mel frequency cepstral coefficient):
-   1) Partir la señal en pequeñas tramas 
-   2) Para cada frame estimar su espectro de energía utilizando Transformada Rapida de Fourier (FFT)
-   3) Aplicar el banco de filtros solapados sobre escala mel. Sumar los valores en cada filtro
-   4) Aplicar logaritmo a los valores de cada filtro
-   5) Aplicar Transformada de Coseno Discreta
-   6) Los MFCC son las amplitudes del espectro resultante.
-\end{lstlisting}
+Terminado el algoritmo obtenemos 13 atributos acústicos de ese segmento. Agregamos también la derivada de estos atributos y la segunda derivada que representan las variaciones temporales. En total derivando dos veces llegan a 39 atributos acústicos. Debemos extraer estas métricas para cada uno de los wavs grabados.
 
-Al finalizar el algoritmo obtenemos 13 atributos acústicos de ese segmento. Agregamos también la derivada de estos atributos y la segunda derivada que representan las variaciones temporales. En total derivando dos veces llegan a 33 atributos acústicos. Debemos extraer estas métricas para cada uno de los wavs grabados.
+Este cálculo de vectores de MFCC lo realizamos entre el principio y fin de cada atributo que represente una regla. Por ejemplo como observamos en la Figura \ref{ej_mfcc}: si encontramos el atributo fonético /r/, calculamos los vectores MFCC en el intervalo donde suena este fonema. Con éstos vectores, calculamos el valor máximo, mínimo y promedio para cada enésima posición y armamos tres vectores con estos valores. O sea, el vector de valores máximos tendrá en su primer elemento el valor máximo de los primeros elementos de todos los vectores, así sucesivamente. Ídem para el vector mínimo y promedio. 
 
-Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab. El creador del script es Kamil Wojcicki y este calcula  sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer. Es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción.
-
-Este calculo de vectores de MFCC lo realizamos entre el principio y fin de cada atributo que represente una regla. Por ejemplo: si encontramos el atributo fonético /r/, calculamos los vectores MFCC en el intervalo donde suena este fonema. Con éstos vectores, calculamos el valor máximo, mínimo y promedio para cada enésima posición y armamos tres vectores con estos valores. O sea, el vector de valores máximos tendrá en su primer elemento el valor máximo de los primeros elementos de todos los vectores, así sucesivamente. Ídem para el vector mínimo y promedio. 
+Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab\footnote{El creador del script es Kamil Wojcicki y se puede descargar de l a página web http://www.mathworks.com/matlabcentral/fileexchange/32849-htk-mfcc-matlab/}. Este calcula  sus primeras y segundas derivadas. El extractor necesita estos valores para cada audio a extraer, es por eso que se conecta con Matlab a través de un wrapper para ejecutar el script y luego continuar con la extracción.
 
 %versión nueva
 %Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de MFCC ya que tiene relación directa con la percepción auditiva humana. 
