@@ -86,56 +86,56 @@ A continuación el código generador del test cross-validation:
 	literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&&} {$\cap$}{2} {||} {$\cup$}{2} }
 \begin{lstlisting}
 GeneradorDeTest:
-Input: conjunto audios
-Output: conjunto de <train, test>
-resultado <-{}
-train <- {}
-test <- {}
-hablantesEnTest <- {}
-hablantes <- ObtenerHablantes(audios)
-tamTest <- tam(hablantes) * 0.3 
-#Esta cte nos define el tamano del fold
-Repetir 5 veces:
-{
-hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
-#Esta cte nos define porcentaje de hablantes usados
+      Input: conjunto audios
+      Output: conjunto de <train, test>
+      resultado <-{}
+      train <- {}
+      test <- {}
+      hablantesEnTest <- {}
+      hablantes <- ObtenerHablantes(audios)
+      tamTest <- tam(hablantes) * 0.3 
+      #Esta cte nos define el tamano del fold
+      
+      Repetir 5 veces:
+      {
+      hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
+      #Esta cte nos define porcentaje de hablantes usados
 
-hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
+      hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
 
-hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
+      hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
 
-test <- ObtenerAudios(hablantesTest, audios)
-train <- ObtenerAudios(hablantes - hablantesTest, audios)
+      test <- ObtenerAudios(hablantesTest, audios)
+      train <- ObtenerAudios(hablantes - hablantesTest, audios)
 
-Si <train, test> no est'a en resultado 
-#No es un fold ya creado
-y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
-#El test creado solo puede ser 20 % parecido a uno anterior
-y checkBalance(train) y checkBalance(test) 
-#Chequeo del balance entre audios de BsAs y Cba
-{
-Agregar <train, test> a resultado
-Agregar hablantesTest a hablantesEnTests
-}
-}
-Devolver resultado
+      Si <train, test> no est'a en resultado #No es un fold ya creado
+      y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
+      #El test creado solo puede ser 20 % parecido a uno anterior
+      y checkBalance(train) y checkBalance(test) 
+      #Chequeo del balance entre audios de BsAs y Cba
+            {
+                  Agregar <train, test> a resultado
+                  Agregar hablantesTest a hablantesEnTests
+            }
+      }
+      Devolver resultado
 
 porcentajeMaximoDeSimilitud:
-Input: conj, conjunto de fold, pctMax
-Output: booleano
-Recorrer test de conjunto de fold:
-{
-pct <- Maximo(pct, porcentajeSimilitud(conj, test))
-}
-Devolver pct < pctMax
+      Input: conj, conjunto de fold, pctMax
+      Output: booleano
+      Recorrer test de conjunto de fold:
+      {
+            pct <- Maximo(pct, porcentajeSimilitud(conj, test))
+      }
+      Devolver pct < pctMax
 
 checkBalance:
-Input: conj
-Output: booleano
-ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
-ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
-ck_both <- #cba(conj) < #bsas(conj)
-Devolver ck_bsas y ck_cba y ck_both
+      Input: conj
+      Output: booleano
+      ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
+      ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
+      ck_both <- #cba(conj) < #bsas(conj)
+      Devolver ck_bsas y ck_cba y ck_both
 \end{lstlisting}
 
 El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las líneas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que las cantidades de audios de Córdoba y de Buenos Aires están balanceadas.
