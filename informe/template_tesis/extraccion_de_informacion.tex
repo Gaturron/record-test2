@@ -228,23 +228,99 @@ La forma en que hablamos se produce por varias articulaciones en nuestra boca. E
 %El tracto vocal suele modificarse de manera bastante lenta y se la puede considerar constante en intervalos de alrededor de 10 − 20 ms. Por otro lado, la señal de audio poseen muchas variaciones continuamente. Para minimizar las discontinuidades de la señal se aplica un ventaneo sobre la señal del habla. 
 
 %(Poner gráfico del PhD)
-%\begin{figure}[H]
-%	\begin{center}		
-%		\begin{tikzpicture}[samples=200, domain=0:5*360]
-%		\begin{axis}[
-%		width=10cm, height=4cm,
-%		enlarge x limits=false,
-%		xtick=\empty,
-%		axis lines*=middle,
-%		hide y axis
-%		]
-%		\addplot [no markers, smooth] {sin(x)+rand*2};
-%		\end{axis}
-%		\end{tikzpicture}
-%	\end{center}
-%	\label{a}
-%	\caption{a}
-%\end{figure}
+
+\newcommand{\mfccvec}[3]% x, y
+{  
+	\node[fill={rgb:black,1;white,2;white,3}, rounded corners, draw, inner sep=+0pt] at (#1,#2) {\tiny \begin{tabular}{c}
+		Coef 1\\\hline
+		Coef 2\\\hline
+		Coef 3\\\hline
+		...\\\hline
+		Coef N\\
+	\end{tabular}};
+	\node at (#1, #2-1) {{\tiny #3}};
+}
+
+\newcommand{\mfccvecmax}[3]% x, y
+{  
+	\node[fill={rgb:red,1;white,2;white,3}, rounded corners, draw, inner sep=+0pt] at (#1,#2) {\tiny \begin{tabular}{c}
+		Max(T1.coef1, T2.coef1, ... , TM.coef1)\\\hline
+		Max(T1.coef2, T2.coef2, ... , TM.coef2)\\\hline
+		Max(T1.coef3, T2.coef3, ... , TM.coef3)\\\hline
+		...\\\hline
+		Max(T1.coefN, T2.coefN, ... , TM.coefN)\\
+	\end{tabular}};
+	\node at (#1, #2-1) {{\tiny #3}};
+}
+
+\newcommand{\intervalo}[2]% x, y
+{  
+	\draw (#1,#2) -- (#1+0.8,#2);
+	\draw (#1,#2-.1) -- (#1, #2+.1);
+	\draw (#1+0.8,#2-.1) -- (#1+0.8, #2+.1);
+
+	\draw (#1,#2) -- (#1+.1,#2+.05);
+	\draw (#1,#2) -- (#1+.1,#2-.05);
+
+	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2+.05);
+	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2-.05);
+}
+	
+\begin{figure}[H]
+	\begin{center}		
+		\begin{tikzpicture}[samples=200, domain=0:5*360]
+		\begin{axis}[
+		width=12cm, height=4cm,
+		enlarge x limits=false,
+		xtick=\empty,
+		axis lines*=middle,
+		hide y axis
+		]
+		\addplot [no markers, smooth] {sin(x)+rand*2};
+		\end{axis}
+		
+		%flecha tiempo
+		\draw [->] (8.5,-0.5) -- (9.5,-0.5);
+		\node [align=center,below] at (9,-0.5) {tiempo};
+
+		%grilla
+		\draw (0,0) -- (10.5,0);	
+		\foreach \r in {0,0.4,0.8,...,10.5}
+			\draw (\r,-.1) -- (\r, .1);
+
+		%ventanas
+		\intervalo{1.2}{-0.4};
+		\intervalo{1.6}{-0.6};
+		\intervalo{2}{-0.8};
+		\intervalo{2.4}{-1};
+		\node at (3,-1.2) {...};
+		\intervalo{3.2}{-1.4};
+		
+		\mfccvec{-0.5}{-2.5}{Trama T1};
+		\draw[blue, thick,->] (1.2,-0.55) -- (-0.5,-1.8);
+		
+		\mfccvec{0.8}{-2.5}{Trama T2};
+		\draw[blue, thick,->] (1.6,-0.75) -- (0.8,-1.8);
+		
+		\mfccvec{2.1}{-2.5}{Trama T3};
+		\draw[blue, thick,->] (2,-0.95) -- (2,-1.8);
+		
+		\mfccvec{3.4}{-2.5}{Trama T4};
+		\draw[blue, thick,->] (2.4,-1.15) -- (3.4,-1.8);
+		
+		\node at (4.2, -2.5) {...};
+		\mfccvec{5}{-2.5}{Trama TM};
+		\draw[blue, thick,->] (4,-1.55) -- (5,-1.8);
+		
+		%resultado
+		\mfccvecmax{9.2}{-2.5}{Resultado vector máximos}
+		\draw[decorate,decoration={brace,amplitude=7pt}] (6,-1.8) -- (6,-3.5);
+
+	\end{tikzpicture}
+	\end{center}
+	\label{a}
+	\caption{a}
+\end{figure}
 
 Las ventanas consecutivas, aplicadas a la señal del habla, se solapan. Esto permite evitar las transiciones abruptas de la señal. Las ventanas empleadas son de 20 a 40 ms de duración, pero los vectores de atributos suelen calcularse cada 10 ms. Estos intervalos son conocidos como trama o frame.
 
