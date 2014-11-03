@@ -188,7 +188,10 @@ Para terminar, agregamos la frase elegida y recalculamos los porcentajes de cada
 
 Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en la Figura \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus frases ya grabadas. La regla 5 el 50\% de sus frases ya grabadas. O sea, en la grabación número 10 ya se grabó alrededor del 40\% de la cantidad total de frases para cada regla.
 
-TODO: escribir ejemplo
+Podemos ver un ejemplo de este algoritmo en la tabla BLA. Este muestra los pasos que sigue el algoritmo en cada una de las filas. La columna Tarea nos muestra el número de orden de la frase a grabar, Número de Frase nos indica qué frase fue la elegída en esa Tarea y las columnas Regla X vemos el porcentaje de apariciones ya grabadas de esa regla. Por ejemplo: El primer paso todas loas reglas estan en 0\%, entonces elegimos una frase que cumpla alguna regla. Se elige azarosamente la regla 24: Esta cubre la regla 2 y 6. Entonces el porcentaje de cubrimiento de esas reglas se incrementa.
+
+Podemos notar cómo el algoritmo, en cada paso, elege una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 4 la regla 5 no tiene ninguna instancia grabada. O sea, hasta ahora no hay ninguna frase grabada anteriormente que cumpla con la regla 5. En el próximo paso, el algoritmo elige una frase que cubra esa regla. Como hay pocas frases de la regla 5, al agregar una frase ya estamos cubriendo el 50\% de las frases de esa regla. Con esto podemos observar que las grabaciones intentan de ser parejas para no perder instancias de ninguna regla. CHEQUEAR (TODO)
+
 {\tiny \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|c|c|c|c|c|}
@@ -222,7 +225,7 @@ TODO: escribir ejemplo
 		26 & 30 & 100\% & 100\% & 100\% & 100\% & 100\% \\ \hline
 	\end{tabular}
 	\caption{}
-	\label{}
+	\label{BLA}
 \end{table}
 }
 %\begin{figure}[h!]
