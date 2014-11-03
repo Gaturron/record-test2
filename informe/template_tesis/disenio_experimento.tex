@@ -188,6 +188,43 @@ Para terminar, agregamos la frase elegida y recalculamos los porcentajes de cada
 
 Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento. Esto se puede ver en la Figura \ref{figFracesTraza} que representa el porcentaje de frases completadas mientras se va aumentando la cantidad de grabaciones. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus frases ya grabadas. La regla 5 el 50\% de sus frases ya grabadas. O sea, en la grabación número 10 ya se grabó alrededor del 40\% de la cantidad total de frases para cada regla.
 
+TODO: escribir ejemplo
+{\tiny \begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|c|c|c|c|c|}
+		\hline
+		 \textbf{Tarea}  & \textbf{Nro de Frase} &  \textbf{Regla 2} & \textbf{Regla 3} & \textbf{Regla 4} & \textbf{Regla 5} & \textbf{Regla 6} \\ \hline
+		1 & 0 & 0\% & 0\% & 0\% & 0\% & 0\%\\ \hline
+		2 & 24 & 5\% & 0\% & 0\% & 0\% & 20\% \\ \hline
+		3 & 5 & 11\% & 25\% & 0\% & 0\% & 20\% \\ \hline
+		4 & 26 & 17\% & 25\% & 25\% & 0\% & 20\%\\ \hline
+		5 & 20 & 17\% & 25\% & 25\% & 50\% & 20\%\\ \hline
+		6 & 22 & 23\% & 25\% & 50\% & 50\% & 20\%\\ \hline
+		7 & 16 & 29\% & 25\% & 50\% & 50\% & 40\%\\ \hline
+		8 & 8 & 35\% & 50\% & 50\% & 50\% & 40\%\\ \hline
+		9 & 28 & 41\% & 50\% & 75\% & 50\% & 40\%\\ \hline
+		10 & 21 & 41\% & 50\% & 75\% & 50\% & 60\%\\ \hline
+		11 & 1 &  47\% & 50\% & 75\% & 50\% & 60\%\\ \hline
+		12 & 2 &  52\% & 50\% & 75\% & 50\% & 60\%\\ \hline
+		13 & 23 & 52\% & 75\% & 75\% & 50\% & 60\%\\ \hline
+		14 & 18 & 52\% & 75\% & 75\% & 100\% & 60\%\\ \hline
+		15 & 4 &  58\% & 75\% & 75\% & 100\% & 60\%\\ \hline
+		16 & 6 &  64\% & 75\% & 75\% & 100\% & 60\%\\ \hline
+		17 & 3 &  64\% & 75\% & 75\% & 100\% & 80\% \\ \hline
+		18 & 9 &  70\% & 75\% & 75\% & 100\% & 80\%\\ \hline
+		19 & 11 & 76\% & 75\% & 75\% & 100\% & 80\%\\ \hline
+		20 & 15 & 76\% & 100\% & 75\% & 100\% & 80\%\\ \hline
+		21 & 27 & 76\% & 100\% & 100\% & 100\% & 80\%\\ \hline
+		22 & 10 & 82\% & 100\% & 100\% & 100\% & 80\% \\ \hline
+		23 & 7 &  82\% & 100\% & 100\% & 100\% & 100\% \\ \hline
+		24 & 12 & 88\% & 100\% & 100\% & 100\% & 100\%\\ \hline
+		25 & 19 & 94\% & 100\% & 100\% & 100\% & 100\% \\ \hline
+		26 & 30 & 100\% & 100\% & 100\% & 100\% & 100\% \\ \hline
+	\end{tabular}
+	\caption{}
+	\label{}
+\end{table}
+}
 %\begin{figure}[h!]
 %    \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
     %\caption{Cantidad de frases por traza}

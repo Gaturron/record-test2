@@ -63,86 +63,86 @@ No podemos quedarnos con un solo fold, ya que podría encasillar el resultado pa
 
 Otro problema a tener en cuenta es que los grupos de test generados sean lo más distintos posibles. Este requerimiento no es tan sencillo si uno posee tan pocas instancias, ya que podría suceder que se repita mucha cantidad de instancias entre folds haciendo que no sea provechoso el test. Para solucionar esto, el test de cross-validation fue realizado de la siguiente forma: armamos conjuntos a partir de las instancias para train y test, pero con una salvedad. Para armar el conjunto de test utilizamos el 20\% de los elementos de las instancias ya utilizadas en los tests anteriores y el resto de instancias nuevas. De esta forma, regulamos la cantidad de instancias repetidas en los tests y nos aseguramos que sean todos distintos. Esto nos permitió utilizar instancias nuevas en los 5 folds. 
 
-A continuación el código generador del test cross-validation:
-\lstset{ %
-	language=C++,                % choose the language of the code
-	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
-	numbers=left,                   % where to put the line-numbers
-	numberstyle=\small,      % the size of the fonts that are used for the line-numbers
-	stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
-	numbersep=1pt,                  % how far the line-numbers are from the code
-	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
-	showspaces=false,               % show spaces adding particular underscores
-	showstringspaces=false,         % underline spaces within strings
-	showtabs=false,                 % show tabs within strings adding particular underscores
-	frame=lines,           % adds a frame around the code
-	tabsize=1,          % sets default tabsize to 2 spaces
-	captionpos=b,           % sets the caption-position to bottom
-	breaklines=true,        % sets automatic line breaking
-	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
-	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
-	escapeinside={\%*}{*)},          % if you want to add a comment within your code
-	morekeywords={GeneradorDeTest, porcentajeMaximoDeSimilitud, checkBalance, Input, Output, Repetir, veces, Si, Agregar, Recorrer, Devolver, y, no, esta, en},
-	literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&&} {$\cap$}{2} {||} {$\cup$}{2} }
-\begin{lstlisting}
-GeneradorDeTest:
-      Input: conjunto audios
-      Output: conjunto de <train, test>
-      resultado <-{}
-      train <- {}
-      test <- {}
-      hablantesEnTest <- {}
-      hablantes <- ObtenerHablantes(audios)
-      tamTest <- tam(hablantes) * 0.3 
-      #Esta cte nos define el tamano del fold
-      
-      Repetir 5 veces:
-      {
-      hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
-      #Esta cte nos define porcentaje de hablantes usados
-
-      hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
-
-      hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
-
-      test <- ObtenerAudios(hablantesTest, audios)
-      train <- ObtenerAudios(hablantes - hablantesTest, audios)
-
-      Si <train, test> no est'a en resultado #No es un fold ya creado
-      y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
-      #El test creado solo puede ser 20 % parecido a uno anterior
-      y checkBalance(train) y checkBalance(test) 
-      #Chequeo del balance entre audios de BsAs y Cba
-            {
-                  Agregar <train, test> a resultado
-                  Agregar hablantesTest a hablantesEnTests
-            }
-      }
-      Devolver resultado
-
-porcentajeMaximoDeSimilitud:
-      Input: conj, conjunto de fold, pctMax
-      Output: booleano
-      Recorrer test de conjunto de fold:
-      {
-            pct <- Maximo(pct, porcentajeSimilitud(conj, test))
-      }
-      Devolver pct < pctMax
-
-checkBalance:
-      Input: conj
-      Output: booleano
-      ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
-      ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
-      ck_both <- #cba(conj) < #bsas(conj)
-      Devolver ck_bsas y ck_cba y ck_both
-\end{lstlisting}
-
-El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las líneas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que las cantidades de audios de Córdoba y de Buenos Aires están balanceadas.
-
-La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene a lo sumo 20\% de audios en común con las demás instancias.
-
-La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
+%A continuación el código generador del test cross-validation:
+%\lstset{ %
+%	language=C++,                % choose the language of the code
+%	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+%	numbers=left,                   % where to put the line-numbers
+%	numberstyle=\small,      % the size of the fonts that are used for the line-numbers
+%	stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+%	numbersep=1pt,                  % how far the line-numbers are from the code
+%	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+%	showspaces=false,               % show spaces adding particular underscores
+%	showstringspaces=false,         % underline spaces within strings
+%	showtabs=false,                 % show tabs within strings adding particular underscores
+%	frame=lines,           % adds a frame around the code
+%	tabsize=1,          % sets default tabsize to 2 spaces
+%	captionpos=b,           % sets the caption-position to bottom
+%	breaklines=true,        % sets automatic line breaking
+%	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+%	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+%	escapeinside={\%*}{*)},          % if you want to add a comment within your code
+%	morekeywords={GeneradorDeTest, porcentajeMaximoDeSimilitud, checkBalance, Input, Output, Repetir, veces, Si, Agregar, Recorrer, Devolver, y, no, esta, en},
+%	literate= {<-} {$\le$}{2} {!=} {$\neq$}{2} {<-} {$\leftarrow$}{2} {==} {=}{2} {&&} {$\cap$}{2} {||} {$\cup$}{2} }
+%\begin{lstlisting}
+%GeneradorDeTest:
+%      Input: conjunto audios
+%      Output: conjunto de <train, test>
+%      resultado <-{}
+%      train <- {}
+%      test <- {}
+%      hablantesEnTest <- {}
+%      hablantes <- ObtenerHablantes(audios)
+%      tamTest <- tam(hablantes) * 0.3 
+%      #Esta cte nos define el tamano del fold
+%      
+%      Repetir 5 veces:
+%      {
+%      hablantesUsadosEnTest <- ElegirRandom(hablantesEnTest, tamTest * 0.2) 
+%      #Esta cte nos define porcentaje de hablantes usados
+%
+%      hablantesNoUsadosEnTest <- ElergirRandom(hablantes - hablantesEnTest, tamTest * 0.8) #Idem hablantes nuevos
+%
+%      hablantesTest <- hablantesEnTest + hablantesNoUsadosEnTest
+%
+%      test <- ObtenerAudios(hablantesTest, audios)
+%      train <- ObtenerAudios(hablantes - hablantesTest, audios)
+%
+%      Si <train, test> no est'a en resultado #No es un fold ya creado
+%      y porcentajeMaximoDeSimilitud(test, resultado, 0.2) 
+%      #El test creado solo puede ser 20 % parecido a uno anterior
+%      y checkBalance(train) y checkBalance(test) 
+%      #Chequeo del balance entre audios de BsAs y Cba
+%            {
+%                  Agregar <train, test> a resultado
+%                  Agregar hablantesTest a hablantesEnTests
+%            }
+%      }
+%      Devolver resultado
+%
+%porcentajeMaximoDeSimilitud:
+%      Input: conj, conjunto de fold, pctMax
+%      Output: booleano
+%      Recorrer test de conjunto de fold:
+%      {
+%            pct <- Maximo(pct, porcentajeSimilitud(conj, test))
+%      }
+%      Devolver pct < pctMax
+%
+%checkBalance:
+%      Input: conj
+%      Output: booleano
+%      ck_bsas <- #(conj) * 0.50 < #bsas(conj) < #(conj) * 0.70
+%      ck_cba <- #(conj) * 0.25 < #cba(conj) < #(conj) * 0.45
+%      ck_both <- #cba(conj) < #bsas(conj)
+%      Devolver ck_bsas y ck_cba y ck_both
+%\end{lstlisting}
+%
+%El algoritmo principal itera 5 veces para crear cada fold. En cada iteración, elige el 80\% de hablantes anteriormente no usados en ningún test y el 20\% restante de hablantes anteriormente ya usados. La elección de cada uno se realiza de forma azarosa. Esto se puede ver en las líneas 13 y 16. Luego, se obtienen de cada uno de los hablantes sus respectivos audios (líneas 19 y 20). Finalmente se chequea que el fold generado cumpla con las restricciones que habíamos definido. Estas son: el fold generado no se creó anteriormente, el test sólo tiene como máximo 20\% de elementos repetidos de los demás tests (líneas 20 y 26) y que las cantidades de audios de Córdoba y de Buenos Aires están balanceadas.
+%
+%La función $porcentajeMaximoDeSimilitud$ nos permite chequear que el conjunto de test generado en una iteración en particular tiene a lo sumo 20\% de audios en común con las demás instancias.
+%
+%La función $checkBalance$ determina si un conjunto cumple con las restricciones de balance. La primer restricción corresponde a que el porcentaje de audios de Buenos Aires en este conjunto debe ser entre 50-70\%. La segunda restricción corresponde al porcentaje de Córdoba y debe ser entre 25-45\%. Estos porcentajes intentan balancear cada test evitando que un sólo test acapare todas las instancias posibles a testear. Finalmente, la última condición pide tener más audios de Buenos Aires que de Córdoba para no agotar las instancias cordobesas.
 
 \subsubsection{Resultados}
 
