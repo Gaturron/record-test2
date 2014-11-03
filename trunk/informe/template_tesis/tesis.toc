@@ -5,60 +5,60 @@
 \contentsline {subsection}{\numberline {2.1.1}Frases utilizando esquema AMPER}{6}
 \contentsline {subsection}{\numberline {2.1.2}Frases comunes}{7}
 \contentsline {subsubsection}{Orden de las frases}{9}
-\contentsline {subsection}{\numberline {2.1.3}Combinando los dos tipos de frases utilizando trazas}{11}
-\contentsline {chapter}{\numberline {3}Sistema de grabaci\IeC {\'o}n online}{12}
-\contentsline {section}{\numberline {3.1}Recolecci\IeC {\'o}n de datos}{12}
-\contentsline {section}{\numberline {3.2}Grabaci\IeC {\'o}n a trav\IeC {\'e}s del browser}{14}
-\contentsline {subsection}{\numberline {3.2.1}Requerimientos}{15}
-\contentsline {section}{\numberline {3.3}Varias grabaciones por frase}{15}
-\contentsline {section}{\numberline {3.4}Sistema de administraci\IeC {\'o}n}{16}
-\contentsline {subsection}{\numberline {3.4.1}Etiquetado de audio}{16}
-\contentsline {section}{\numberline {3.5}Backups autom\IeC {\'a}ticos}{17}
-\contentsline {section}{\numberline {3.6}An\IeC {\'a}lisis del volumen}{17}
-\contentsline {chapter}{\numberline {4}Extracci\IeC {\'o}n de informaci\IeC {\'o}n}{18}
-\contentsline {section}{\numberline {4.1}Alineaci\IeC {\'o}n forzada}{18}
-\contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{18}
-\contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{21}
-\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{21}
-\contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{23}
-\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{24}
-\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{25}
-\contentsline {subsection}{\numberline {4.2.3}Atributos desconocidos}{27}
-\contentsline {subsection}{\numberline {4.2.4}Nomenclatura utilizada}{27}
-\contentsline {chapter}{\numberline {5}Datos obtenidos}{28}
-\contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{28}
-\contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{29}
-\contentsline {section}{\numberline {5.3}Correcci\IeC {\'o}n de errores}{30}
-\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{32}
-\contentsline {section}{\numberline {6.1}Baseline}{32}
-\contentsline {section}{\numberline {6.2}Clasificadores}{33}
-\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{33}
-\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{33}
-\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{33}
-\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{33}
-\contentsline {section}{\numberline {6.3}Tests estad\IeC {\'\i }sticos}{34}
-\contentsline {subsection}{\numberline {6.3.1}Test de Wilcoxon}{34}
-\contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{34}
-\contentsline {subsection}{\numberline {6.3.3}Student t Test}{35}
-\contentsline {section}{\numberline {6.4}Modelos de tests}{35}
-\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{36}
+\contentsline {subsection}{\numberline {2.1.3}Combinando los dos tipos de frases utilizando trazas}{12}
+\contentsline {chapter}{\numberline {3}Sistema de grabaci\IeC {\'o}n online}{14}
+\contentsline {section}{\numberline {3.1}Recolecci\IeC {\'o}n de datos}{14}
+\contentsline {section}{\numberline {3.2}Grabaci\IeC {\'o}n a trav\IeC {\'e}s del browser}{16}
+\contentsline {subsection}{\numberline {3.2.1}Requerimientos}{17}
+\contentsline {section}{\numberline {3.3}Varias grabaciones por frase}{17}
+\contentsline {section}{\numberline {3.4}Sistema de administraci\IeC {\'o}n}{18}
+\contentsline {subsection}{\numberline {3.4.1}Etiquetado de audio}{18}
+\contentsline {section}{\numberline {3.5}Backups autom\IeC {\'a}ticos}{19}
+\contentsline {section}{\numberline {3.6}An\IeC {\'a}lisis del volumen}{19}
+\contentsline {chapter}{\numberline {4}Extracci\IeC {\'o}n de informaci\IeC {\'o}n}{20}
+\contentsline {section}{\numberline {4.1}Alineaci\IeC {\'o}n forzada}{20}
+\contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{20}
+\contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{23}
+\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{23}
+\contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{25}
+\contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{26}
+\contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{27}
+\contentsline {subsection}{\numberline {4.2.3}Atributos desconocidos}{29}
+\contentsline {subsection}{\numberline {4.2.4}Nomenclatura utilizada}{29}
+\contentsline {chapter}{\numberline {5}Datos obtenidos}{30}
+\contentsline {section}{\numberline {5.1}Evaluaci\IeC {\'o}n manual de las grabaciones}{30}
+\contentsline {section}{\numberline {5.2}Alineaci\IeC {\'o}n forzada}{31}
+\contentsline {section}{\numberline {5.3}Correcci\IeC {\'o}n de errores}{32}
+\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{34}
+\contentsline {section}{\numberline {6.1}Baseline}{34}
+\contentsline {section}{\numberline {6.2}Clasificadores}{35}
+\contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{35}
+\contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{35}
+\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{35}
+\contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{35}
+\contentsline {section}{\numberline {6.3}Tests estad\IeC {\'\i }sticos}{36}
+\contentsline {subsection}{\numberline {6.3.1}Test de Wilcoxon}{36}
+\contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{36}
+\contentsline {subsection}{\numberline {6.3.3}Student t Test}{37}
+\contentsline {section}{\numberline {6.4}Modelos de tests}{37}
+\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{38}
 \contentsline {subsubsection}{Resultados}{39}
-\contentsline {subsubsection}{Clasificadores encontrados}{43}
+\contentsline {subsubsection}{Clasificadores encontrados}{44}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{44}
-\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{44}
+\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{45}
 \contentsline {subsubsection}{Resultados}{45}
-\contentsline {subsubsection}{Clasificadores encontrados}{45}
+\contentsline {subsubsection}{Clasificadores encontrados}{46}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{46}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{46}
 \contentsline {subsection}{\numberline {6.4.3}Promediando los atributos de cada hablante}{47}
-\contentsline {subsubsection}{Resultados}{48}
+\contentsline {subsubsection}{Resultados}{49}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{49}
-\contentsline {subsubsection}{Clasificadores encontrados}{49}
+\contentsline {subsubsection}{Clasificadores encontrados}{50}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{50}
-\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{50}
+\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{51}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{51}
-\contentsline {subsubsection}{Clasificadores encontrados}{51}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{51}
+\contentsline {subsubsection}{Clasificadores encontrados}{52}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{52}
 \contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{52}
-\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{53}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{55}
+\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{54}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{56}
