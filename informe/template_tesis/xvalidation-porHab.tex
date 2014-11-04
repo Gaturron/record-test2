@@ -37,24 +37,26 @@ En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Có
 		
 \subsubsection{Resultados}
 
-Expresamos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. 
+En la tabla \ref{clas_xval_porHab} podemos observar los resultados de clasificación. Expresamos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. 
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 		%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
 		%\hline \hline
 		\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{}
+	\label{clas_xval_porHab}
 \end{table}
+
+Llama la atención que todos los clasificadores tuvieron porcentajes muy cercanos. Esto lo analizaremos más adelante. 
 
 \subsubsection{Clasificadores encontrados}
 
-Analizamos los clasificadores armados para cada fold. En este modelo de test también los clasificadores Support vector machines y NaiveBayes utilizaron todos los atributos ponderando cada uno de diferente forma. El clasificador C4.5 tuvo también una performance pobre por tener un árbol de un nivel solo. 
+Analizamos los clasificadores armados para cada fold. En este modelo de test también los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos ponderando cada uno por valores escalares. El clasificador C4.5 tuvo también una performance pobre por tener un árbol de un nivel solo. 
 
 Veamos el clasificador Ripper para el fold 4. Este es el conjunto de reglas que generó:
 \paragraph*{Clasificador Ripper:}
@@ -68,7 +70,6 @@ Veamos el clasificador Ripper para el fold 4. Este es el conjunto de reglas que 
 
 Notamos que sigue utilizando los atributos temporales y en menor medida los atributos acústicos.
 
-
 \subsubsection{Wilcoxon y Test t de Student}
 
 Vamos a correr los test estadísticos. Estos resultados se pueden observar en la tabla  \ref{res_tests_wilcoxon_student}.
@@ -78,10 +79,10 @@ Vamos a correr los test estadísticos. Estos resultados se pueden observar en la
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
 		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y JRip}  & 0.5816 & 0.6234 \\ \hline
-		\textbf{ZeroR y J48}  & 1 & 1 \\ \hline
+		\textbf{ZeroR y Ripper}  & 0.5816 & 0.6234 \\ \hline
+		\textbf{ZeroR y C4.5}  & 1 & 1 \\ \hline
 		\textbf{ZeroR y NaiveBayes}  & 0.4383 & 0.4042 \\ \hline
-		\textbf{ZeroR y Function SMO}  & 0.4302 & 0.2646 \\ \hline
+		\textbf{ZeroR y SVM}  & 0.4302 & 0.2646 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
@@ -95,14 +96,14 @@ Vamos a correr los test estadísticos. Estos resultados se pueden observar en la
 
 Si bien este modelo de test simplificó mucho la forma de modelar, nos sigue mostrando resultados llamativos. 
 
-El clasificador ZeroR sigue teniendo muy buen rendimiento solamente por tener un conjunto de datos desequilibrado. También el clasificador C4.5 posee muy bajo performance y su árbol de clasificación sigue siendo muy pobre.  
+El clasificador Zero Rule sigue teniendo muy buen rendimiento solamente por tener un conjunto de datos desequilibrado. También el clasificador C4.5 posee muy bajo performance y su árbol de clasificación sigue siendo muy pobre.  
 
 %Ver bien el mail de Miguel
 Analizando el algoritmo del clasificador C4.5 notamos que el árbol generado puede ser muy pobre si en sus datos de entrenamiento hay muchos valores desconocidos. 
 
 Recordemos que el algoritmo C4.5 para armar el árbol de clasificación va tomando el atributo con mayor ganancia de información y agregándolo como un nuevo nodo al árbol. Luego descarta el atributo ya elegido y se llama recursivamente en cada rama. 
 
-Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Recordemos que para un hablante, cada uno de sus audios sólo define atributos para la frase grabada. Si en la grabación no se extrae ese atributo, quedará con valor desconocido. 
+Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Recordemos que, para un hablante, cada uno de sus audios sólo define atributos para la frase grabada. Si en la grabación no se extrae ese atributo, quedará con valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -119,6 +120,6 @@ Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrá
 	\label{hablante_ej}
 \end{table}
 
-Veamos un ejemplo: en la tabla \ref{hablante_ej} podemos ver los atributos extraídos de un hablante  ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
+Veamos un ejemplo: en la tabla \ref{hablante_ej} podemos ver los atributos extraídos de un hablante ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
 
-Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools}. En la página 194 está la explicación que nos ayudó a razonar esta idea. Vamos a probar otro modelo de test que intente evitar tener tantos valores desconocidos. 
+Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools} \footnote{En la página 194 está la explicación que nos ayudó a razonar esta idea.}. Vamos a probar otro modelo de test que intente evitar tener tantos valores desconocidos. 

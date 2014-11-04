@@ -7,7 +7,7 @@
 
 La complejidad del problema y la forma en que fue realizado el experimento nos llevó a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que podría suceder que estaríamos entrenando con audios de un hablante que luego sería testeado en otro audio.
 
-Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: viendo el conjunto de datos, el hablante que aportó más grabaciones realizó 30 de las mismas, mientras que el hablante que menos aportó realizó 1 solamente. Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de audios en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
+Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: viendo el conjunto de datos, el hablante que aportó más grabaciones realizó 30 de las mismas, mientras que el hablante que aportó menos realizó 1 solamente. Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de audios en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}.
 
 No podemos quedarnos con un solo fold, ya que podría encasillar el resultado para \textit{ese} conjunto en particular. Es por esto que creamos 5 folds de la forma $<$train, test$>$ con las características antes descriptas. Este modelo de testing se denomina \textbf{cross-validation test de 5-folds}. El promedio de los porcentajes de instancias correctas de cada fold va a darnos la performance total. De esta forma, el resultado se garantiza independiente de la partición de los datos de entrenamiento y prueba. En la Figura \ref{graficoFold} se diagrama este modelo de testing.
 
@@ -197,7 +197,7 @@ La tabla \ref{class_corr_en_pct} resume los resultados de clasificación correct
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
+		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 		\textbf{Fold 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
 		\textbf{Fold 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
 		\textbf{Fold 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
@@ -210,7 +210,7 @@ La tabla \ref{class_corr_en_pct} resume los resultados de clasificación correct
 	\label{class_corr_en_pct}
 \end{table}
 
-En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la Figura \ref{porcentajexClasificador} se puede ver gráficamente los resultados de clasificación correcta de dicha tabla. Excluimos a JRip y J48 por dar muy parecido a ZeroR.
+En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la Figura \ref{porcentajexClasificador} se puede ver gráficamente los resultados de clasificación correcta de dicha tabla. Excluimos a Ripper y C4.5 por dar muy parecido a Zero Rule.
 
 \begin{figure}[H]
 	\centering
@@ -230,22 +230,22 @@ En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al seg
 	grid style=dashed
 	] 
 	\addplot [mark=otimes*, width=1pt] coordinates {
-		(1,64)(2,71)(3,67)(4,55)(5,66) };\addlegendentry{ZeroR};
+		(1,64)(2,71)(3,67)(4,55)(5,66) };\addlegendentry{Zero Rule};
 	%\addplot[mark=diamond*,dash pattern=on 10pt off 2pt on 3pt off 2pt]coordinates {
 	%    (1,61)(2,68)(3,54)(4,52)(5,70) };\addlegendentry{JRip};
 	\addplot [mark=diamond*,dash pattern=on 3pt off 2pt on 3pt off 2pt]coordinates {
-		(1,73)(2,76)(3,75)(4,67)(5,70) };\addlegendentry{Function SMO};
+		(1,73)(2,76)(3,75)(4,67)(5,70) };\addlegendentry{SVM};
 	\addplot [mark=square*,dash pattern=on 10pt off 8pt on 10pt off 2pt]coordinates {
 		(1,63)(2,71)(3,67)(4,80)(5,70) };\addlegendentry{NaiveBayes};
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Porcentaje de ZeroR, Function SMO y NaiveBayes}
+	\caption{Porcentaje de Zero Rule, SVM y NaiveBayes}
 	\label{porcentajexClasificador}
 \end{figure}
 
-Recordemos que el clasificador ZeroR elige siempre la clase mayoritaria en su grupo de test. Viendo la Figura \ref{porcentajexClasificador} podemos notar que ZeroR mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Function SMO siempre se mantiene por arriba de este Baseline.
+Recordemos que el clasificador Zero Rule elige siempre la clase mayoritaria en su grupo de test. Viendo la Figura \ref{porcentajexClasificador} podemos notar que Zero Rule mantiene un porcentaje en los diferentes tests entre un 55\% y casi 70\%. El clasificador Support vector machine (SVM) siempre se mantiene por arriba de este Baseline.
 
-Algo interesante sucede con el clasificador NaiveBayes: muestra resultados muy similares a ZeroR pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la Figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como ZeroR elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
+Algo interesante sucede con el clasificador NaiveBayes: muestra resultados muy similares a Zero Rule pero en el test 4 posee mucha mejor performance. Viendo los grupos generados en la Figura \ref{TestsInstances}, el fold 4 es el que tiene menos diferencia entre cantidad de hablantes de Buenos Aires y Córdoba. Al tener mitad instancias de cada grupo y como Zero Rule elige entre uno de esos dos, va a poseer un porcentaje de acierto cercano al 50\%, como sucede.  
 
 El porcentaje de exactitud en la clasificación se puede apreciar con las métricas \textit{Precision} y \textit{Recall}. \textit{Precision} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos y falsos positivos. \textit{Recall} se define como la cantidad de verdaderos positivos sobre la cantidad de verdaderos positivos y falsos negativos. Tomamos como verdaderos positivos a la condición de que fue clasificado como Buenos Aires y efectivamente es de ahí. Falsos negativos si el hablante es de Buenos Aires pero es clasificado como Córdoba. Y falso positivo si el hablante es de Córdoba pero es clasificado como Buenos Aires. 
 
@@ -265,7 +265,7 @@ Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matr
 
 \begin{figure}[H]
 	\centering
-	\paragraph*{ZeroR:}\mbox{}\\
+	\paragraph*{Zero Rule:}\mbox{}\\
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{|c|c|l|c|c|c|c|}
@@ -279,13 +279,13 @@ Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matr
 		\textbf{Precision = 22/40 = 0.55;} \textbf{Recall = 1}\\
 		\textbf{Instancias correctas = 55\%}
 	\end{center}
-	\caption{Matriz de confusión para ZeroR en el test 4}
+	\caption{Matriz de confusión para Zero Rule en el test 4}
 	\label{ZeroR_matrizconf}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\paragraph*{Function SMO:}\mbox{}\\
+	\paragraph*{Support vector machine:}\mbox{}\\
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{|c|c|l|c|c|c|c|}
@@ -299,7 +299,7 @@ Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matr
 		\textbf{Precision = 22/35 = 0.63;} \textbf{Recall = 1}\\
 		\textbf{Instancias correctas = 67\%}
 	\end{center}
-	\caption{Matriz de confusión para Func. SMO en el test 4}
+	\caption{Matriz de confusión para SVM en el test 4}
 	\label{FSMO_matrizconf}
 \end{figure}
 
@@ -323,11 +323,11 @@ Las Figuras \ref{ZeroR_matrizconf}, \ref{FSMO_matrizconf} y \ref{NaiveBayes_matr
 	\label{NaiveBayes_matrizconf}
 \end{figure}
 
-Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que ZeroR produce mucho \textit{Error de tipo I} (clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige sólo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están más distribuidos.
+Viendo estas matrices de confusión y sus métricas podemos observar cuál es el error que se produce en cada uno de los clasificadores. Notamos que Zero Rule produce mucho \textit{Error de tipo I} (clasificador afirma que es de Buenos Aires y en realidad es de Córdoba). Esto sucede ya que elige sólo una categoría siempre. En los demás clasificadores se intenta realmente predecir y por eso los Errores de tipo I y II están más distribuidos.
 
-Otro dato a tener en cuenta es que, si bien el clasificador ZeroR tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
+Otro dato a tener en cuenta es que, si bien el clasificador Zero Rule tuvo un valor alto en la métrica \textit{Recall}, no fue lo mismo para \textit{Precision} y por eso el valor de instancias correctas dio bastante malo. Ambos valores deben estar cercanos al 1 para tener una buena performance. Por eso en el caso de NaiveBayes; si bien ningún valor dio 1, ambos están cerca y posee en mayor porcentaje de instancias correctas.
 
-Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Las tablas de las Figuras \ref{ZeroR_matrizconf_2}, \ref{NaiveBayes_matrizconf_2} muestran este caso para los clasificadores ZeroR y NaiveBayes.
+Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Errores de tipo I y II sean más balanceados. Esto es el caso del conjunto de test 1. Las tablas de las Figuras \ref{ZeroR_matrizconf_2}, \ref{NaiveBayes_matrizconf_2} muestran este caso para los clasificadores Zero Rule y NaiveBayes.
 
 %\begin{center}
 %\Large Matrices de confusión para test 1
@@ -335,7 +335,7 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 
 \begin{figure}[H]
 	\centering
-	\paragraph*{ZeroR:}\mbox{}\\
+	\paragraph*{Zero Rule:}\mbox{}\\
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{|c|c|l|c|c|c|c|}
@@ -349,7 +349,7 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 		\textbf{Precision = 47/73 = 0.64;} \textbf{Recall = 47/47 = 1}\\
 		\textbf{Instancias correctas = 64\%}
 	\end{center}
-	\caption{Matriz de confusión para ZeroR en el test 1}
+	\caption{Matriz de confusión para Zero Rule en el test 1}
 	\label{ZeroR_matrizconf_2}
 \end{figure}
 
@@ -373,9 +373,9 @@ Puede suceder que el porcentaje de instancias correctas sea el mismo pero los Er
 	\label{NaiveBayes_matrizconf_2}
 \end{figure}
 
-En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, ZeroR concentra gran parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
+En este caso notamos que, a pesar de que el porcentaje de instancias correctas den valores cercanos, Zero Rule concentra gran parte del error en un tipo sólo, mientras que NaiveBayes lo distribuye entre los dos tipos.
 
-No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para este modelo de test. La razón es que los conjuntos de test de cada fold no son independientes. Recordemos que tienen 20 \% de instancias repetidas, entonces cada fold por separado no sería estadísticamente independiente. Es por ello que dejamos de lado los tests estadísticos.
+No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para este modelo de test. La razón es que los conjuntos de test de cada fold no son independientes. Recordemos que tienen 20 \% de instancias repetidas, entonces cada fold por separado no es estadísticamente independiente. Es por ello que dejamos de lado los tests estadísticos.
 
 %\subsection{Wilcoxon y Test t de Student}
 %
@@ -399,9 +399,9 @@ No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para est
 
 \subsubsection{Clasificadores encontrados}
 
-Analizamos los clasificadores armados para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machines y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
+Analizamos los clasificadores armados para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
 
-Para analizar mas en profundidad, veamos la salida del clasificador JRip ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos.
+Para analizar mas en profundidad, veamos la salida del clasificador Ripper ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos.
 
 Cada uno de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
 
@@ -424,12 +424,12 @@ En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la
 En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
 
 \begin{itemize}
-	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de este cross-validation sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos CVs.
+	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de este cross-validation sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos modelos de test.
 	
-	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que ZeroR:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con ZeroR vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
+	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que Zero Rule:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con Zero Rule vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
 	
-	\item \textbf{ZeroR tiene un rendimiento mejor al 50 \%: } Este clasificador elige siempre la clase mayoritaria. Si su rendimiento es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra. Particularmente, hay más instancias de Buenos Aires que de Córdoba.
+	\item \textbf{Zero Rule tiene un rendimiento mejor al 50 \%: } Este clasificador elige siempre la clase mayoritaria. Si su rendimiento es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra. Particularmente, hay más instancias de Buenos Aires que de Córdoba.
 \end{itemize}
 
-En los próximos cross-validations intentaremos mejorar estos problemas.
+En los siguiente modelos de test intentamos mejorar estos problemas.
 

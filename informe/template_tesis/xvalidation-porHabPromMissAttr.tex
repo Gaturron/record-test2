@@ -45,14 +45,14 @@ Por ejemplo: para el Hablante 1, el Audio1 no tiene definido el atributo A1. Ent
 	\label{attr_mod}
 \end{table}
 
-Podemos observar los resultados del promedio de los folds para cada clasificador en la tabla \ref{class_corr_en_pct}. En este caso Zero rule dió el porcentaje esperado y los demás por arriba de su valor. Esto nos muestra que utilizando estos atributos se puede superar el baseline.
+Podemos observar los resultados del promedio de los folds para cada clasificador en la tabla \ref{class_corr_en_pct}. En este caso, el clasificador Zero Rule tuvo el porcentaje esperado y los demás por arriba de su valor. Esto nos muestra que utilizando estos atributos se puede superar el baseline. El clasificador que mejor performance tuvo fue Support vector machine.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
+		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+		\textbf{Promedio} & 50 & 72.44 & 73.48 & \textbf{77.19} & 74.62 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
 	\label{class_corr_en_pct}
@@ -60,7 +60,9 @@ Podemos observar los resultados del promedio de los folds para cada clasificador
 
 \subsubsection{Wilcoxon y Test t de Student}
 
-Corrimos los test estadísticos y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machines tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
+Los clasificadores pasaron el test Shapiro-Wilk. Gracias a esto podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y podemos realizar el test de Student para todos ellos.
+
+Corrimos los test estadísticos y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machine tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
 
 \begin{table}[H]
 	\centering
