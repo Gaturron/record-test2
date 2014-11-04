@@ -14,10 +14,14 @@ Podemos realizar análisis más precisos sobre la calidad del audio cuando llega
 
 \paragraph*{Puntaje en alineaciones:} En el informe analizamos manualmente si cada audio fue alineado correctamente. Esto se pudo lograr gracias a que eran pocos audios. En un sistema automático que recolecte los audios y además extraiga cada atributo para luego entrenar los clasificadores, esta tarea no se podría realizar.     
 
-Una vez terminada una alineación, ProsodyLab-Aligner genera un archivo donde muestra cómo fueron esas alineaciones. Este archivo se llama \textit{`.SCORES’} y en él se encuentra una lista de todos los audios seguidos de un puntaje, corresponde a la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores distintos. Este puede ser un buen filtro para saber si se pudo alinear bien.
+Una vez terminada una alineación, ProsodyLab-Aligner genera un archivo donde muestra cómo fueron esas alineaciones. Este archivo se llama \textit{`.SCORES’} y en él se encuentra una lista de todos los audios seguidos de un puntaje. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores distintos. Este puede ser un buen filtro para saber si se pudo alinear bien.
 
 Se podría definir un umbral para filtrar cuándo se realizó una alineación correcta. Si esta alineación no supera ese umbral, se debería descartar ese audio. Una cuestión importante a tener en cuenta es la cantidad de falsos positivos que pueden surgir. O sea, la cantidad de audios que no pasan el umbral pero están bien alineados.   
 
 \paragraph*{Clasificación en vivo:} Se podría realizar una prueba online de clasificación de hablantes. La misma consiste en realizar el mismo experimento para un hablante y que al final le devuelva el resultado si pertenece a Buenos Aires o Córdoba.
 
-Esta clasificación en vivo necesitaría de los trabajos futuros relacionados con automatización del sistema. Cada vez que se realice el experimento para un hablante nuevo, se deberá recalcular el clasificador. De esta forma, se puede darle una respuesta a que grupo pertenece.
+Esta clasificación en vivo necesitaría de los trabajos futuros relacionados con automatización del sistema. Cada vez que se realice el experimento para un hablante nuevo, se deberá recalcular el clasificador. De esta forma, se le puede dar una respuesta sobre qué grupo pertenece.
+
+\paragraph*{Mejores modelos y atributos:} Se podría analizar si existen más atributos y mejores que distingan estos dos grupos. Por ejemplo: se podría analizar si la sílaba anterior a la sílaba acentuada se sigue estirando cuando éstas están en palabras distintas.
+
+También se pueden mejorar los modelos de test incluyendo variantes que analicen de distinta forma los atributos desconocidos. Otro análisis interesante sería cómo mejorar el rendimiento de cada clasificador variando sus parámetros.

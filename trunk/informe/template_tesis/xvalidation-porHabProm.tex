@@ -1,7 +1,7 @@
 % Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
 \subsection{Promediando los atributos de cada hablante}
 
-Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que la del baseline.
+Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline.
 
 Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, vamos a tener un fold por cada hablante. En la Tabla \ref{cv-porHabProm} vemos este esquema.
 
@@ -30,7 +30,7 @@ Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunt
 	\label{cv-porHabProm}
 \end{table}
 
-Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
+Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Pensamos que esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
 
 Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada hablante calculando su promedio para cada atributo. Veamos en la tabla \ref{datos_orig} un ejemplo de datos extraídos para entender la idea. 
 
@@ -69,7 +69,7 @@ Para cada hablante vamos a juntar sus audios realizando el promedio de cada atri
 	\label{datos_comb}
 \end{table}
 
-Resumiendo por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
+Resumiendo, por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
 
 Esta variante la realizamos solamente utilizando los atributos temporales. Descartamos los atributos acústicos porque corresponden a grabaciones que en muchas oportunidades sufren de ruido y pensamos que también podía ser una causa por la cual los clasificadores tienen mal rendimiento.
 
@@ -81,8 +81,8 @@ Los resultados de este cross-validaton podemos observarlo en la página \ref{cla
 	\centering
 	\begin{tabular}{|l|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{ZeroR} & \textbf{JRip} & \textbf{J48} & \textbf{Function SMO} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ \hline
+		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+		\textbf{Promedio} & 53.33 & 60 & 60 & \textbf{93.33} & 80  \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
 	\label{class_corr_en_pct}
@@ -107,6 +107,8 @@ Los resultados sobre el p-valor de cada test estadístico se puede ver en la tab
 	\caption{Resultados de cada test representado en p-valor}
 	\label{res_tests_wilcoxon_student}
 \end{table}
+
+Los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y realizar el test T de Student.
 
 Podemos observar que para el clasificador Support vector machines posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Support vector machines hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
 
