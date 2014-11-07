@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  4 NOV 2014 02:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 NOV 2014 08:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1489,8 +1489,8 @@ LaTeX Info: Redefining \% on input line 142.
  [24]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 169.
-LaTeX Info: Redefining \. on input line 189.
-LaTeX Info: Redefining \% on input line 189.
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
  [25]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1506,13 +1506,9 @@ Missing character: There is no ; in font nullfont!
 LaTeX Info: Redefining \. on input line 341.
 LaTeX Info: Redefining \% on input line 341.
  [26]
-
-LaTeX Warning: Reference `ej_mfcc' on page 27 undefined on input line 357.
-
-
-Underfull \hbox (badness 1616) in paragraph at lines 359--359
+Underfull \hbox (badness 2326) in paragraph at lines 359--359
 [][]\OT1/lmr/m/n/10 El crea-dor del script es Ka-mil Woj-cic-ki y se pue-de des
--car-gar de l a p^^Sagi-na web
+-car-gar de la p^^Sagi-na web
  []
 
 LaTeX Info: Redefining \. on input line 360.
@@ -1752,17 +1748,14 @@ LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23851 strings out of 493307
- 528063 string characters out of 6139905
- 778145 words of memory out of 5000000
- 26687 multiletter control sequences out of 15000+600000
+ 23850 strings out of 493307
+ 528054 string characters out of 6139905
+ 778340 words of memory out of 5000000
+ 26686 multiletter control sequences out of 15000+600000
  88136 words of font info for 72 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1783,7 +1776,7 @@ xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
 ts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtt12.pfb>
-Output written on tesis.pdf (68 pages, 2066047 bytes).
+Output written on tesis.pdf (68 pages, 2066150 bytes).
 PDF statistics:
  350 PDF objects out of 1000 (max. 8388607)
  226 compressed objects within 3 object streams
