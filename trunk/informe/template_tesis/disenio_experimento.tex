@@ -6,7 +6,7 @@ Utilizando los estudios de \cite{Fontanella2000} y \\ \cite{Vidal1964} pudimos o
 
 El acento se potencia cuando se realiza habla espontánea. Utilizando este concepto intentamos que el hablante diga las frases de la forma más natural posible. Es por ello que elegimos como actividad pronunciar frases popularmente conocidas. Si el hablante conoce la frase y la utiliza con frecuencia entonces es más fácil que su pronunciación sea espontánea. Con esta idea vamos a cubrir las reglas 2 al 6. 
 
-Recordemos que en el capítulo anterior la regla 1 nos decía que había una diferencia en la duración de la sílaba previa a la acentuada: para hablantes de Córdoba esta duración es más larga que para hablantes de Buenos Aires. La sílaba acentuada varía según que tipo de palabra se refiere. No es lo mismo utilizar una palabra aguda que una esdrújula en esta regla. Para cubrir esta regla utilizamos un esquema de frases con una estructura fija pero que varía sus palabras según su entonación. Este esquema se llama AMPER \cite{amper} y lo veremos más en detalle en la sección \ref{cap:amper}.
+Recordemos que en el capítulo anterior la regla 1 nos decía que había una diferencia en la duración de la sílaba previa a la acentuada: para hablantes de Córdoba esta duración es más larga que para hablantes de Buenos Aires. La sílaba acentuada varía según que tipo de palabra se refiere. No es lo mismo utilizar una palabra aguda que una esdrújula en esta regla. Para cubrir esta regla utilizamos un esquema de frases con una estructura fija pero que varía sus palabras según su entonación. Este esquema se llama AMPER \cite{amper2004,amper} y lo veremos más en detalle en la sección \ref{cap:amper}.
 
 Entonces los esquemas van a ser: 
 
@@ -167,10 +167,10 @@ morekeywords={GeneradorDeTest, GenradorDeTrazas, checkBalance, Input, Output, Re
     listaFrases = {}
     DicPct <- Diccionario de porcentajes de cada regla
     Mientras Frases != {}:
-    	regla <- ObtenerReglaConMenorPorcentaje(DicPct)
-    	frase <- Frases.SacarLaMasPonderada(regla)
+    	regla <- DicPct.ObtenerReglaConMenorPorcentaje()
+    	frase <- Frases.SacarLaFraseMasPonderada(regla)
     	listaFrases.agregar(frase)
-    	RecalcularPorcentajes(DicPct)
+    	DicPct.RecalcularPorcentajes()
     Devolver listaFrases
 \end{lstlisting}
 
@@ -185,9 +185,8 @@ Tenemos definida la próxima regla a cubrir. Debemos elegir la frase que cubra e
 
 Esta idea es importante ya que llevamos al máximo la cantidad de información en cada frase y al hablante le hacemos perder menos tiempo realizando el experimento.
 
-Podemos ver un ejemplo de este algoritmo en la tabla \ref{pasos_algo}. Este muestra los primeros 15 pasos que realiza el algoritmo en un ejemplo. Descartamos los demás pasos ya que no era necesario para captar la idea. La columna ``Tarea'' nos muestra el número de orden de la frase a grabar, ``Número de Frase'' nos indica qué frase fue la elegida para esa tarea y las columnas ``Regla X'' vemos el porcentaje de apariciones ya grabadas de esa regla. El primer paso todas las reglas están en 0\%, esto sucede porque al comienzo no se grabó ninguna frase aún.  Elegimos una frase que cumpla con la regla que tiene menor porcentaje de cubrimiento. Como todas las reglas tienen 0\% elegimos una al azar. Se elige azarosamente la frase 15: Esta cubre la regla 2 y 6. Entonces el porcentaje de cubrimiento de esas reglas se incrementa. 
-
-La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, como dijimos, cubre la regla 2 y 6. Para la regla 2 hay 26 posibles muestras en todas las frases. La frase 15 sólo aporta 1 de ellas, entonces $1/26$ nos aporta el 3 por ciento de cubrimiento. Para la regla 6, tenemos solamente 6 posibles muestras mientras que esta frase nos provee sólo 1 de ellas. Su porcentaje entonces es $1/6 = 16\%$. 
+Podemos ver un ejemplo de este algoritmo en la tabla \ref{pasos_algo}. Este muestra los primeros 15 pasos que realiza el algoritmo en un ejemplo. Descartamos los demás pasos por simplicidad. La columna ``Tarea'' nos muestra el número de orden de la frase a grabar, ``Número de Frase'' nos indica qué frase fue la elegida para esa tarea, y las columnas ``Regla X'' muestran el porcentaje de apariciones ya grabadas de esa regla. En el primer paso todas las reglas están en 0\%, lo cual sucede porque al comienzo no se grabó ninguna frase aún.  Elegimos una frase que cumpla con la regla que tiene menor porcentaje de cubrimiento. Como todas las reglas tienen 0\% elegimos una al azar, en este ejemplo la frase 15, que cubre las reglas 2 y 6 (ver \ref{fig22tabla}). Entonces el porcentaje de cubrimiento de esas reglas se incrementa. 
+La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, como dijimos, cubre la regla 2 y 6. Para la regla 2 hay 26 posibles muestras en todas las frases. La frase 15 sólo aporta 1 de ellas, entonces $1/26$ nos aporta el 3\% de cubrimiento. Para la regla 6, tenemos 6 posibles muestras y esta frase nos provee sólo 1 de ellas. Su porcentaje entonces es $1/6 = 16\%$. 
 
 \scriptsize
 \begin{longtable}{| p{0.1\textwidth} | p{0.08\textwidth} || p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} |
@@ -219,9 +218,9 @@ La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, co
 
 \normalsize
 
-Podemos notar cómo el algoritmo, en cada paso, elige una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 5, la regla 5 sólo tiene el 14\% de porcentaje grabado. Este cubrimiento es el menor de todos. En el próximo paso, el algoritmo elige una frase que cubra esa regla y si es posible que cubra otra regla más. La elegida es la frase 23. Como hay pocas frases de la regla 5, al agregar esta frase ya cubrimos el 28\% de las frases de esa regla. Y además se incrementa la regla 2 al 23 \% que también la cubre. Con esto podemos observar que las grabaciones intentan de ser parejas para grabar de forma pareja cada regla.
+El ejemplo de  la tabla \ref{pasos_algo} ilustra cómo el algoritmo, en cada paso, elige una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 5, la regla 5 sólo tiene el 14\% de porcentaje grabado. Este cubrimiento es el menor de todos. En el próximo paso, el algoritmo elige una frase que cubra esa regla y, si es posible, que cubra otra regla más. La elegida es la frase 23 (ver \ref{fig22tabla}). Como hay pocas frases de la regla 5, al agregar esta frase ya cubrimos el 28\% de las frases de esa regla. Y además se incrementa la regla 2 al 23\%. De este modo, intentamos ir cubriendo paso a paso en forma pareja las distintas reglas.
 
-Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa otro ejemplo del porcentaje de frases completadas. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus muestras ya grabadas. La regla 5 el 50\% de sus muestras ya grabadas. En este ejemplo, ya en la grabación número 10 se grabó alrededor del 35\% de la cantidad total de muestras para cada regla.
+Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa otro ejemplo del porcentaje de frases completadas. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus muestras grabadas. La regla 5 el 50\% de sus muestras ya grabadas. En este ejemplo, en la grabación número 10 ya se grabó alrededor del 35\% de la cantidad total de muestras para cada regla.
 
 %\begin{figure}[h!]
 %    \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
@@ -311,10 +310,10 @@ Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa
 
 \subsection{Combinando los dos tipos de frases utilizando trazas}
 
-Definimos frases comunes y AMPER para grabar. Ahora debemos definir cómo vamos a ir intercalando cada tipo en el experimento. Para ello definimos traza. Una traza es una lista de las frases que va a grabar un hablante en el experimento. Esta va a estar compuesta entre 1 a 3 frases comunes extraídas del orden definido en \textit{OrdenDeFrasesConocidas}, y luego una frase del esquema de AMPER. Tanto la cantidad de frases comunes como la elección de la frase AMPER se realiza al azar. Este patrón se repite sucesivamente hasta completar todas las frases. La idea es no cansar al hablante con frases repetitivas y evitar que sepa de antemano qué frase va a tener que grabar ya que si fuera el caso, podría exagerar la entonación.
+Definimos frases comunes y AMPER para grabar. Ahora debemos definir cómo vamos a ir intercalando cada tipo en el experimento. Para ello definimos traza. Una traza es una lista de las frases que va a grabar un hablante en el experimento. Esta va a estar compuesta por entre 1 y 3 frases comunes extraídas del orden definido en \textit{OrdenDeFrasesConocidas}, y luego una frase del esquema de AMPER. Tanto la cantidad de frases comunes como la elección de la frase AMPER se realiza al azar. Este patrón se repite sucesivamente hasta completar todas las frases. La idea es no cansar al hablante con frases repetitivas y evitar que sepa de antemano qué frase va a tener que grabar ya que si fuera el caso, podría exagerar la entonación.
 
 Al empezar el experimento, al hablante se le dará una traza que grabará sucesivamente en ese orden. Elegimos tener precalculadas las trazas para evitar cálculos costosos a la hora de empezar el experimento. Si no se precalcularan las trazas, deberíamos realizar los cálculos cada vez que empieza el experimento y podríamos retrasar la grabación del hablante. Es por eso que guardamos 10.000 trazas generadas. 
 
-La mínima cantidad de grabaciones que puede realizar un hablante son 5 grabaciones. Luego se le pregunta si quiere continuar grabando. Si acepta, se le agregan otras 5 grabaciones así sucesivamente hasta llegar al total de frases a grabar. Elegimos grabar cada 5 grabaciones para que el hablante aporte el tiempo que tenga disponible y no obligarlo a grabar todas las frases. Aunque no grabe la totalidad de frases, las muestras van a servir en el experimento.
+La mínima cantidad de grabaciones que puede realizar un hablante son 5 grabaciones. Luego se le pregunta si quiere continuar grabando. Si acepta, se le agregan otras 5 grabaciones, siguiendo así sucesivamente hasta completar el número total de frases a grabar. Elegimos grabar cada 5 grabaciones para que el hablante aporte el tiempo que tenga disponible y no obligarlo a grabar todas las frases. Aunque no grabe la totalidad de frases, las muestras van a servir en el experimento.
 
 A continuación veremos cómo implementamos el sistema de grabación para soportar este experimento.
