@@ -14,14 +14,17 @@ Un dato muy importante es que este etiquetado no debe tener que ser realizado co
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
 Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Usamos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. Analiza uno por uno cada audio y mediante un diccionario determina en qué momento se dijo cada fonema y palabra. 
-%(TODO CORRECCIÓN DE AGUSTÍN: no se entiende si tengo que borrar todo el párrafo o no)
 
-%Como dijimos, el formato de archivo utilizado para devolver estas marcas es TextGrid. El problema de la alineación automática es un caso particular de la alineación de audios.
+%parrafo agregado de correcciones de Luciana
+Esta actividad se la conoce como alineación forzada. Básicamente consiste en marcar el tiempo desde que comienza y hasta que termina de cada fonema, para todas las grabaciones. Esta se realiza de la siguiente forma: para cada grabación se agrega un archivo que enumera los fonemas que se escuchan en ella. La herramienta analiza las grabaciones y observa cada uno de los fonemas. Si un mismo fonema se utiliza en dos grabaciones, quiere decir que tiene haber características similares en la grabación en ese lapso de tiempo. Utilizando esta idea va prediciendo el lugar de cada fonema. Esta alineación no es perfecta, se puede equivocar en determinar dónde se escucha un fonema, pero es un buen comienzo.  
 
-Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una librería para crear y manipular Modelos Ocultos de Markov fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
+Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una biblioteca para crear y manipular Modelos Ocultos de Markov (ver sección \ref{sec:hmm}) fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
+
+Los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con sus transcripciones fonéticas (no necesariamente alineadas a nivel fonético) y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicada, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 %explicación teórica con ejemplo
-\subsubsection*{Modelos Ocultos de Markov}
+\subsection{Modelos Ocultos de Markov}
+\label{sec:hmm}
 Los Modelos Ocultos de Markov \cite{rabiner} (en inglés Hidden Markov Model) son modelos estadísticos por los cuales tratan de predecir estados ocultos a partir de observaciones. Se llaman ``ocultos'' ya que el estado a predecir no se puede observar directamente. Sólo se puede predecir en qué estado oculto está el modelo a través de observaciones. 
 
 Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la Figura \ref{ex_hmm} se puede apreciar este ejemplo. Para computar la secuencia más probable de estados ocultos dada una secuencia de observaciones, se utiliza el algoritmo de Viterbi.
@@ -53,27 +56,19 @@ Un ejemplo de este modelo podría ser predecir la presión atmosférica observan
 Llevado esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando la lista de fonemas pronunciada en cada grabación. Mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de las grabaciones. Los estados ocultos a predecir son los fonemas de cada frase, en cambio las observaciones provienen del análisis de cada audio. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
 A continuación se presenta un ejemplo de cómo funcionan estos modelos en nuestro trabajo. 
-
+%
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{espectrograma_u3_t33_a1_ver1} 
-	\caption{Características audio 1}
+	\includegraphics[width=0.8\textwidth]{espectrograma_u3_t33_a1_ver1} \\
+	\smallskip
+	\includegraphics[width=0.8\textwidth]{espectrograma_u27_t33_a1_ver1} 
+	\caption{Espectrograma y transcripciones fonética y ortográfica de dos grabaciones producidas por hablantes distintos.}
 	\label{car_a1}
 \end{figure}
+%
+La figura \ref{car_a1} muestra las características de grabaciones de la misma frase producidas por dos hablantes distintos. Cada imagen tiene tres capas: el espectrograma de la grabación, su transcripción fonética (comienzo y fin de cada fonema en la grabación) y su transcripción ortográfica (comienzo y fin de cada palabra en la grabación).
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{espectrograma_u27_t33_a1_ver1} 
-	\caption{Características audio 2}
-	\label{car_a2}
-\end{figure}
-
-Las imágenes \ref{car_a1} y \ref{car_a2} muestran las características de dos grabaciones, de dos hablantes distintos, que pronuncian la misma frase. Estas características están representadas por dos gráficos. El primero nos muestra el espectrograma cd cada uno y el segundo corresponde al comienzo y fin de cada fonema en la grabación. 
-
-Podemos observar que el espectrograma de ambas grabaciones es muy distinto. Si comparamos la zona del espectrograma que se encuentra el enésimo fonema con respecto al mismo fonema del otro espectrograma, vemos que ambas son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de MFCC\footnote{Mel Frequency Cepstral Coefficients se verán cómo se calcular más adelante} para esa región. Los Modelos Ocultos de Markov analizan los coeficientes MFCC y teniendo en cuenta la sucesión de fonemas de la frase, que es similar para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema. De esta forma, puede predecir desde y hasta qué tiempo se encuentra cada fonema.
-\\
-
-Volviendo a nuestro sistema, los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con alineamientos y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicado, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
+Podemos observar que el espectrograma de ambas grabaciones es muy distinto. Si comparamos el mismo fonema en ambos espectrogramas, vemos que son muy diferentes. Aún así la alineación de los fonemas es similar. Si bien no son zonas iguales, poseen similares valores de atributos acústicos para esa región.\footnote{Los atributos acústicos que se emplean son los MFCC, Mel Frequency Cepstral Coefficients, que serán descriptos más adelante, en la sección \ref{sec:atributosacusticos}.} Los Modelos Ocultos de Markov analizan los atributos acústicos y teniendo en cuenta la secuencia de fonemas de la frase, que es idéntica para ambas grabaciones, puede predecir los tiempos de inicio y fin de cada fonema.
 
 %TODO: arreglar sin poner SCORES
 %Una vez terminada la alineación, ProsodyLab Aligner genera un archivo donde muestra cómo fueron esas alineaciones utilizando un puntaje. Este archivo se llama \textit{`.SCORES’} y en él se encuentra una lista de todos los audios seguidos de un valor, corresponde a la verosimilitud de las alineaciones. Si una alineación fue similar a otra va a tener aproximadamente un valor similar. En cambio, si posee una alineación muy distinta va a tener valores muy distintos. Este puede ser el primer filtro para el extractor. 
@@ -83,23 +78,23 @@ Volviendo a nuestro sistema, los requisitos para utilizar ProsodyLab Aligner son
 
 \section{Extracción de atributos}
 
-La extracción de atributos fue realizada utilizando el lenguaje Python, que elegimos ya que es fácil de programar y tiene muchas librerías útiles para este tipo de casos. Utilizamos una librería muy conocida llamada Numpy (versión 1.6.1). Esta se utiliza para realizar cálculos matemáticos. Nosotros la utilizamos para tener buena precisión en el cálculo de los atributos.
+La extracción de atributos fue realizada utilizando el lenguaje Python, que elegimos ya que es fácil de programar y tiene muchas bibliotecas útiles para este tipo de casos. Utilizamos una biblioteca muy conocida llamada Numpy (versión 1.6.1). Esta se utiliza para realizar cálculos matemáticos. Nosotros la utilizamos para tener buena precisión en el cálculo de los atributos.
 
-Después de la alineación realizada, se ejecuta el extractor de atributos. Este posee como input los archivos Wav y TextGrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El workflow del extractor se puede ver en la Figura \ref{workflow}. 
+Después de la alineación realizada, se ejecuta el extractor de atributos. Este posee como input los archivos Wav y TextGrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El diagrama de flujo del extractor se puede ver en la Figura \ref{workflow}. 
 
-La rutina principal del programa toma una por una las grabaciones y su etiquetado asociado. Esta se representa en el componente ``Extractor''. Este llama a distintos componentes que van a calcular cada atributo. Para calcular estos atributos vamos a dividir en dos componentes: ``Acoustic Extractor'' que se encarga de extraer \textit{atributos acústicos} y ``TextGrid Extractor'' que se encarga de extraer \textit{atributos temporales}. Los atributos temporales son calculados solamente utilizando el TextGrid mientras que los atributos acústicos son calculados no sólo el TextGrid sino también el cálculo de MFCC, que veremos en la sección 4.2.2. Si el atributo está presente en la grabación tendremos ese dato en la extracción, si no se dejará como desconocido. Luego de calculado todos sus atributos paa cada grabación, juntamos todos los resultados y generamos el archivo Arff utilizando el componente ``Arff File Maker''.
+La rutina principal del programa toma una por una las grabaciones y su etiquetado asociado. Esta se representa en el componente ``Extractor''. Este llama a distintos componentes que van a calcular cada atributo. Para calcular estos atributos vamos a dividir en dos componentes: ``Acoustic Extractor'' que se encarga de extraer \textit{atributos acústicos} y ``TextGrid Extractor'' que se encarga de extraer \textit{atributos temporales}. Los atributos temporales son calculados solamente utilizando el TextGrid, mientras que los atributos acústicos son calculados usando tanto el TextGrid como el archivo de audio. Si el atributo está presente en la grabación, tendremos ese dato en la extracción; si no, se dejará como desconocido. Luego de calculado todos sus atributos paa cada grabación, juntamos todos los resultados y generamos el archivo Arff utilizando el componente ``Arff File Maker''.
 
-El archivo Arff tiene por cada línea una grabación y seguido todos los resultados del cálculo de los atributos separado por comas. Cada uno de estos atributos corresponde al cálculo de una regla correspondiente. Necesitamos utilizar este formato ya que es necesario para ingresar datos en Weka, la plataforma que elegimos para correr algoritmos de \textit{machine learning}. Veamos cada uno de los dos tipos de atributos:
+En el archivo Arff cada línea representa una grabación.  Cada una de estas lineas posee todos los resultados del cálculo de los atributos separado por comas. Cada uno de estos atributos corresponde al cálculo de una regla correspondiente. Necesitamos utilizar este formato ya que es necesario para ingresar datos en Weka, la plataforma que elegimos para correr algoritmos de \textit{machine learning}. Veamos cada uno de los dos tipos de atributos:
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{diagrama_workflow} }
-    \caption{Diagrama workflow}
+    \caption{Diagrama de flujo}
     \label{workflow}
 \end{figure}
 
 \subsection{Atributos temporales}
 
-Los atributos temporales corresponden a atributos sobre la duración de los fonemas y las sílabas de cada frase. Para calcularlos utilizamos como input el TextGrid generado en la alineación. Básicamente estas funciones recorren el TextGrid buscando un patrón en particular y miden su duración. Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. 
+Los atributos temporales corresponden a atributos sobre la duración de los fonemas y las sílabas de cada grabación. Para calcularlos utilizamos como input el TextGrid generado en la alineación. Básicamente estas funciones recorren el TextGrid buscando un patrón en particular y miden su duración. Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. 
 
 Luego, las mediciones son normalizadas. Se realizan dos normalizaciones. La primera, conocida como z-score, será utilizando la forma:
 
@@ -113,7 +108,7 @@ Luego, las mediciones son normalizadas. Se realizan dos normalizaciones. La prim
 	\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
 \end{itemize}
 
-\noindent Y luego la segunda suponiendo que $\mu = 0$:
+\noindent Y luego la segunda suponiendo que $\mu = 0$ (o bien, que la media no afecta negativamente los cómputos posteriores):
 
 \hspace{2cm} \[\frac{ X }{ \sigma }\]
 
@@ -133,9 +128,9 @@ Los atributos que contabilizan fonemas son:
     \item \textbf{Duración de la `ll’:} buscamos el patrón /ll/ y medimos su duración. Este atributo hace referencia a la regla 5 que mide dicho fonema.
     \item \textbf{Duración de `rr’:} ídem para /r/ fuerte. Referencia a la regla 6 que hace hincapié en este fonema.
     \item \textbf{Duración de `s’ final:} ídem para las /s/ de final de palabra. Corresponde a la regla 2 que hace referencia a la aspiración de la /s/ de final de las palabras.  
-    \item \textbf{Duración de cada fonema:} este atributo mide la duración y la cantidad de todos los fonemas y luego realiza un promedio. Este no se realiza normalización ya que no se está tratando de analizar si un atributo es destacado en comparación de los demás si no que se trata de ver la duración en promedio de un fonema.
-    \item \textbf{Duración de cada vocal:} medimos la duración media de las vocales y luego realizamos su normalización utilizando la duración de cada fonema.
-    \item \textbf{Duración de cada consonante:} ídem anterior para consonantes. 
+    \item \textbf{Duración de cada fonema:} este atributo mide la duración y la cantidad de todos los fonemas de una grabación y luego realiza un promedio. En este caso no se realiza normalización, ya que no se está tratando de analizar si un atributo es destacado en comparación con los demás, sino que se trata de ver la duración en promedio de las realizaciones de un fonema en una grabación dada.
+    \item \textbf{Duración de todas las vocales:} medimos la duración media de todas las vocales (juntas). Luego normalizamos para conocer la relación entre la duración de las vocales respecto de la duración de todos los fonemas.
+    \item \textbf{Duración de todas las consonantes:} ídem anterior para todas las consonantes (juntas). 
 \end{itemize}
 
 El cálculo de un atributo fonético se realiza de la siguiente manera: supongamos por ejemplo que queremos calcular la duración de `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado solo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué instante se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la Figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempos para cada fonema\footnote{Aclaración: la duración de los fonemas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para hacer más simple la figura.}. Se marca en negro el segmento donde aparece la `k’.
@@ -220,7 +215,7 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
  Para saber cuál es la sílaba acentuada se realizó un script que describe para cada frase cuáles son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe. Estos atributos los usamos para poder medir la regla 1, la más prominente de la tonada cordobesa.
 
 \subsection{Atributos acústicos}
-
+\label{sec:atributosacusticos}
 Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de coeficientes cepstrales en escala de mel (en inglés MFCC: Mel Frequency Cepstral Coefficient) ya que tiene relación directa con la percepción auditiva humana. Veamos el cálculo de estos coeficientes.
 
 La forma en que hablamos se produce por varias articulaciones en nuestra boca. Estas conectan a dientes, lengua, tráquea, etc. Estas articulaciones trabajan en conjunto para darle forma al sonido producido. 

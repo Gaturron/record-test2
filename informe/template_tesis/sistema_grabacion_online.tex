@@ -8,7 +8,7 @@ En la base de datos se guarda la información de cada hablante, las frases a gra
 
 \section{Recolección de datos}
 
-Cuando un usuario visita nuestra página, primero debe llenar un formulario. Este le pregunta: género, fecha de nacimiento, lugar donde se crió y donde reside actualmente. Al confirmar el formulario, estos son grabados en la base de datos de la aplicación en el servidor. Esto se puede apreciar en la Figura \ref{figEncuesta}. Luego se procede a realizar las grabaciones. 
+Cuando un usuario visita nuestra página, primero debe llenar un formulario. Este le pregunta: género, fecha de nacimiento, lugar donde se crió y donde reside actualmente. Al confirmar el formulario, los datos son grabados en la base de datos de la aplicación en el servidor. Esto se puede apreciar en la Figura \ref{figEncuesta}. Luego se procede a realizar las grabaciones. 
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{pag-inicio2} }
@@ -38,13 +38,13 @@ En la pantalla de grabación el usuario debe confirmar el acceso al micrófono q
 
 Cada nuevo experimento utiliza una nueva traza del conjunto de trazas descriptas en la capítulo anterior. La interfaz que ve el usuario al grabar cada frase se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas por el usuario. Si el usuario al escucharla nota que no es una buena grabación, tiene la posibilidad de grabarla otra vez. Lo importante es que la última grabación se escuche lo mejor posible. Para que el usuario reproduzca su grabación se aprieta el botón \textit{Reproducir} como se ve en la figura \ref{reproduciendo}. 
 
-Una vez que el hablante cree que su grabación se escucha bien, la confirma. Cada vez que se graba un audio, este se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
+Una vez que el hablante cree que su grabación se escuche bien, la confirma. Cada vez que se graba un audio, este se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
 
-Recordemos que los hablantes graban en series de 5 frases. Una vez terminado estas 5 frases se le pregunta si quiere seguir grabando o terminar el experimento. De esta forma, el hablante aporta el tiempo que puede disponer.
+Recordemos que los hablantes graban en series de 5 frases. Una vez terminadas estas 5 frases se le pregunta si querría seguir grabando o terminar el experimento. De esta forma, el hablante aporta el tiempo que puede disponer.
 
 \section{Grabación a través del browser}
 
-Los navegadores actuales no permiten acceder al micrófono directamente. Actualmente se desarrolla HTML5 que permitirá acceder al micrófono y a recursos similares de forma más fácil. No se eligió basarse en éste porque sólo los browsers más nuevos lo soportan. Al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y utilizarlo hubiera excluido mucha gente. Teniendo en cuenta esto debimos utilizar una tecnología alternativa. 
+Los navegadores actuales no permiten acceder al micrófono directamente. Actualmente está en desarrollo HTML5, tecnología que permitirá acceder al micrófono y a recursos similares de forma más fácil. No se eligió basarse en éste porque sólo los browsers más nuevos lo soportan. Al ser un estándar muy nuevo necesita que el usuario tenga instalada últimas versiones de software y utilizarlo hubiera excluido mucha gente. Teniendo en cuenta esto debimos utilizar una tecnología alternativa. 
 
 Encontramos un proyecto llamado Web Accessible Multimodal Interfaces \footnote{Página web: https://code.google.com/p/wami/} (WAMI). WAMI es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. El proyecto WAMI es muy utilizado en proyectos similares de procesamiento de habla. Esta herramienta nos permite definir dos URLs importantes: una que se utilizará para enviar el audio grabado y otra para escucharlo.  
 
@@ -52,7 +52,7 @@ Cuando termina de grabar, se envía un mensaje POST al servidor a la URL configu
 
 \subsection{Requerimientos}
 
-Los requerimientos para participar del experimento son básicos: se debe disponer de micrófono y conexión a Internet. Tuvimos problemas sobre el browser que se utilizaba: WAMI necesita Flash versión 11.04 que no se encuentra en los repositorios tradicionales de Ubuntu. De esta manera, los navegadores que utilicen Flash instalado por el sistema operativo Ubuntu no podrán correr. Otros sistemas operativos como Windows o MacOs no tienen problemas con la versión de Flash instalada. De todas formas el navegador Chrome posee preinstalado la última versión de Flash, con lo cual este navegador puede correr perfectamente la aplicación sin importar el sistema operativo que se utilice.
+Los requerimientos para participar del experimento son básicos: se debe disponer de micrófono y conexión a Internet. Tuvimos problemas con el browser que se utilizaba: WAMI necesita Flash versión 11.04 que no se encuentra en los repositorios tradicionales de Ubuntu. De esta manera, los navegadores que utilicen Flash instalado por el sistema operativo Ubuntu no podrán correr. Otros sistemas operativos como Windows o MacOS no tienen problemas con la versión de Flash instalada. De todas formas el navegador Chrome posee preinstalado la última versión de Flash, con lo cual este navegador puede correr perfectamente la aplicación sin importar el sistema operativo que se utilice.
 
 \section{Varias grabaciones por frase}
 
@@ -76,7 +76,7 @@ Cuando varias personas terminan el experimento, los administradores pueden acced
     \label{cat}
 \end{figure}
 
-Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una url y bajarnos sin necesidad de entrar al servidor. Se necesita ser usuario del sistema para poder acceder a este sistema.
+Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una URL y bajarnos sin necesidad de entrar al servidor. Se necesita ser usuario del sistema para poder acceder a este sistema.
 
 \section{Backups automáticos}
 
