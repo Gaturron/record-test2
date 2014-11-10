@@ -4,27 +4,27 @@ En este capítulo vamos a describir los datos obtenidos a través del framework 
 
 \section{Evaluación manual de las grabaciones}
 
-Como primer paso, se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. La cantidad de cada clase se puede ver en la tabla \ref{eva_table}.
+Como primer paso, se realizó una clasificación manual de las grabaciones para determinar si las mismas se realizaron correctamente. Para la misma se utilizó la herramienta de administración que vimos en el capítulo 3. Las clases que utilizamos fueron: ``Conservar’’, ``Sonido saturado’’, ``Mucho ruido de fondo’’, ``Problema en el habla’’. La cantidad de grabaciones de cada clase se puede ver en la tabla \ref{eva_table}. Entre paréntesis se puede observar la cantidad de hablantes que produjeron esas grabaciones.
 
 %Esta tabla corresponde a los archivos en la carpeta ~/Tesis/Prosodylab-Aligner-master/Datos crudo
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
+\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total grabaciones} \\ \hline
 %\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
-\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
-\textbf{Problemas en el habla}  & 33 & 15 & 48 \\ \hline
-\textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
-\textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
+\textbf{Conservar}  & 220 (19 hab.) & 90 (8 hab.) & 310 \\ \hline
+\textbf{Problemas en el habla}  & 33 (11 hab.) & 15 (5 hab.) & 48 \\ \hline
+\textbf{Mucho ruido de fondo}  & 2 (2 hab.) & 12 (2 hab.) & 14 \\ \hline
+\textbf{Sonido saturado}  & 2 (2 hab.) & 0 & 2 \\ \hline
 \end{tabular}
-\caption{Evaluación manual de las grabaciones}
+\caption{Evaluación manual de las grabaciones. Repreenta cantidad de grabaciones para cada clase y cantidad de hablantes entre paréntesis}
 \label{eva_table}
 \end{table}
 
 Como puede observarse, los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
 
-Las categorías establecidas anteriormente describen los errores comunes más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvieron algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado. La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
+Las categorías establecidas anteriormente describen los errores más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvieron algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado. La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
 
 El análisis que se presenta a continuación está basado solamente en los audios clasificados como ``Conservar’’.
 

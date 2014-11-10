@@ -1,6 +1,6 @@
 \chapter{Diseño del experimento}
 
-Utilizando los estudios de \cite{Fontanella2000} y \\ \cite{Vidal1964} pudimos obtener las reglas definidas en el capítulo anterior. Recordemos que éstas describen la diferencia entre los dos grupos. En este capítulo proponemos realizar un experimento para extraer la información fonética de los mismos. La idea será realizar una serie de actividades donde el hablante sea grabado y que esas actividades hagan hincapié en estas diferencias descriptas. A continuación vamos a describir el experimento en más detalle.
+Utilizando los estudios de \cite{Fontanella2000} y  \cite{Vidal1964} pudimos obtener las reglas definidas en el capítulo anterior. Recordemos que éstas describen la diferencia entre los dos grupos. En este capítulo proponemos realizar un experimento para extraer la información fonética de los mismos. La idea será realizar una serie de actividades donde el hablante sea grabado y que esas actividades hagan hincapié en estas diferencias descriptas. A continuación vamos a describir el experimento en más detalle.
 
 \section{Elección de las frases}
 
@@ -73,6 +73,51 @@ Por ejemplo: \textit{``El canapé salió delicioso’’}. Canapé tiene acento 
 
 Como afirmamos antes, se utilizaron frases comunes para poder obtener los acentos de cada grupo de forma natural. Se pensó que si se graba una frase popular, el hablante al estar acostumbrado a decirla no iba a poder evitar impregnarle su acento. Todas las frases utilizadas se pueden ver en la tabla \ref{fig22tabla}.
 
+Algo interesante es que una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{`En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero’} extrae atributos para las reglas 4 y 5. La palabra \textit{`victoria’} cubre la regla 4 que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. Sucede igual con la palabra \textit{`caballero’} para la regla 5: el fonema \textit{/ll/} se pasa a \textit{/i/} cambiando su duración y sonido. En la Tabla \ref{fig22tabla} podemos ver que la cantidad de frases utilizadas con respecto a sus reglas es despareja. Hay más frases para la regla 2 que para las demás. Más adelante veremos como impacta esto en las frases que vamos a pedir grabar.
+
+
+\subsubsection{Orden de las frases}
+
+Ya definimos cuáles van a ser las frases, ahora debemos definir qué frases y en qué orden se deben decir durante el experimento. Diremos que una frase cubre una determinada regla si esta la satisface. Sucede que el orden que utilicemos va a ser crucial para obtener muestras: no es lo mismo empezar por una frase que sólo cubre una sola regla que varias. Si elegimos primero las frases que cubren varias reglas a la vez, en un sólo audio podremos obtener más cubrimiento de reglas. 
+
+¿Por qué quisiéramos cubrir más reglas en una misma frase? Más adelante veremos que una frase grabada que cubre una regla aportará información sobre el hablante de esa regla en particular. Si una frase cubre varias reglas estaríamos obteniendo más información sólo utilizando una grabación. Por eso es importante maximizar el cubrimiento de las frases.  
+
+El orden de las frases sigue el siguiente algoritmo:
+
+\lstset{ %
+	language=C++,                % choose the language of the code
+	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+	stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,           % adds a frame around the code
+	tabsize=2,          % sets default tabsize to 2 spaces
+	captionpos=b,           % sets the caption-position to bottom
+	breaklines=true,        % sets automatic line breaking
+	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+	escapeinside={\%*}{*)},          % if you want to add a comment within your code
+	morekeywords={GeneradorDeTest, GenradorDeTrazas, checkBalance, Input, Output, Repetir, veces, Si, agregar, Recorrer, Devolver, y, no, esta, en, Mientras},
+}
+\begin{lstlisting}
+OrdenDeFrasesConocidas:
+Input: Frases (conj. String)
+Output: listaFrases (lista de String)
+listaFrases = {}
+DicPct <- Diccionario de porcentajes de cada regla
+Mientras Frases != {}:
+regla <- DicPct.ObtenerReglaConMenorPorcentaje()
+frase <- Frases.SacarLaFraseMasPonderada(regla)
+listaFrases.agregar(frase)
+DicPct.RecalcularPorcentajes()
+Devolver listaFrases
+\end{lstlisting}
+
+
 %\begin{figure}[h!]
 %    \centerline{\includegraphics[width=1\textwidth]{frases_inf} }
 %    \caption{Frases conocidas}
@@ -131,49 +176,6 @@ Como afirmamos antes, se utilizaron frases comunes para poder obtener los acento
 
 \normalsize
 
-Algo interesante es que una misma frase puede extraer atributos para varias reglas. Por ejemplo: la frase \textit{`En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero’} extrae atributos para las reglas 4 y 5. La palabra \textit{`victoria’} cubre la regla 4 que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. Sucede igual con la palabra \textit{`caballero’} para la regla 5: el fonema \textit{/ll/} se pasa a \textit{/i/} cambiando su duración y sonido. En la Tabla \ref{fig22tabla} podemos ver que la cantidad de frases utilizadas con respecto a sus reglas es despareja. Hay más frases para la regla 2 que para las demás. Más adelante veremos como impacta esto en las frases que vamos a pedir grabar.
-
-\subsubsection{Orden de las frases}
-
-Ya definimos cuáles van a ser las frases, ahora debemos definir qué frases y en qué orden se deben decir durante el experimento. Diremos que una frase cubre una determinada regla si esta la satisface. Sucede que el orden que utilicemos va a ser crucial para obtener muestras: no es lo mismo empezar por una frase que sólo cubre una sola regla que varias. Si elegimos primero las frases que cubren varias reglas a la vez, en un sólo audio podremos obtener más cubrimiento de reglas. 
-
-¿Por qué quisiéramos cubrir más reglas en una misma frase? Más adelante veremos que una frase grabada que cubre una regla aportará información sobre el hablante de esa regla en particular. Si una frase cubre varias reglas estaríamos obteniendo más información sólo utilizando una grabación. Por eso es importante maximizar el cubrimiento de las frases.  
-
-El orden de las frases sigue el siguiente algoritmo:
-
-\lstset{ %
-language=C++,                % choose the language of the code
-basicstyle=\footnotesize,       % the size of the fonts that are used for the code
-numbers=left,                   % where to put the line-numbers
-numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
-stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
-numbersep=5pt,                  % how far the line-numbers are from the code
-backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
-showspaces=false,               % show spaces adding particular underscores
-showstringspaces=false,         % underline spaces within strings
-showtabs=false,                 % show tabs within strings adding particular underscores
-frame=single,           % adds a frame around the code
-tabsize=2,          % sets default tabsize to 2 spaces
-captionpos=b,           % sets the caption-position to bottom
-breaklines=true,        % sets automatic line breaking
-breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
-escapeinside={\%*}{*)},          % if you want to add a comment within your code
-morekeywords={GeneradorDeTest, GenradorDeTrazas, checkBalance, Input, Output, Repetir, veces, Si, agregar, Recorrer, Devolver, y, no, esta, en, Mientras},
-}
-\begin{lstlisting}
-    OrdenDeFrasesConocidas:
-    Input: Frases (conj. String)
-    Output: listaFrases (lista de String)
-    listaFrases = {}
-    DicPct <- Diccionario de porcentajes de cada regla
-    Mientras Frases != {}:
-    	regla <- DicPct.ObtenerReglaConMenorPorcentaje()
-    	frase <- Frases.SacarLaFraseMasPonderada(regla)
-    	listaFrases.agregar(frase)
-    	DicPct.RecalcularPorcentajes()
-    Devolver listaFrases
-\end{lstlisting}
-
 %Texto viejo primera entrega
 %La idea del algoritmo es la siguiente: vamos a utilizar un contador que nos va a decir cuántas muestras tenemos por cada regla. En cada paso vamos a ver ese contador y vamos a elegir la próxima frase teniéndolo en cuenta. Esta elección la lleva a cabo la función \textit{ObtenerLaMasPonderada}. Esta se encarga de elegir la frase que haga referencia a la regla menos grabada y además que represente a más de una regla. De esa forma intentamos obtener la mayor cantidad de información posible con pocas grabaciones y ponderamos las frases que referencien a más reglas. 
 
@@ -220,7 +222,7 @@ La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, co
 
 El ejemplo de  la tabla \ref{pasos_algo} ilustra cómo el algoritmo, en cada paso, elige una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 5, la regla 5 sólo tiene el 14\% de porcentaje grabado. Este cubrimiento es el menor de todos. En el próximo paso, el algoritmo elige una frase que cubra esa regla y, si es posible, que cubra otra regla más. La elegida es la frase 23 (ver \ref{fig22tabla}). Como hay pocas frases de la regla 5, al agregar esta frase ya cubrimos el 28\% de las frases de esa regla. Y además se incrementa la regla 2 al 23\%. De este modo, intentamos ir cubriendo paso a paso en forma pareja las distintas reglas.
 
-Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa otro ejemplo del porcentaje de frases completadas. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus muestras grabadas. La regla 5 el 50\% de sus muestras ya grabadas. En este ejemplo, en la grabación número 10 ya se grabó alrededor del 35\% de la cantidad total de muestras para cada regla.
+Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa otro ejemplo del porcentaje de frases completadas. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus muestras grabadas. La regla 5 el 50\% de sus muestras ya grabadas. En este ejemplo, en la grabación número 10 ya se grabó alrededor del 40\% de la cantidad total de muestras para cada regla.
 
 %\begin{figure}[h!]
 %    \centerline{\includegraphics[width=0.9\textwidth]{cant_frases_traza_inf} }
