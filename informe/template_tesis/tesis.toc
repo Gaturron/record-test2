@@ -1,10 +1,10 @@
-\select@language {spanish}
+\select@language {USenglish}
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
 \contentsline {chapter}{\numberline {2}Dise\IeC {\~n}o del experimento}{5}
 \contentsline {section}{\numberline {2.1}Elecci\IeC {\'o}n de las frases}{5}
 \contentsline {subsection}{\numberline {2.1.1}Frases utilizando esquema AMPER}{6}
 \contentsline {subsection}{\numberline {2.1.2}Frases comunes}{7}
-\contentsline {subsubsection}{Orden de las frases}{9}
+\contentsline {subsubsection}{Orden de las frases}{7}
 \contentsline {subsection}{\numberline {2.1.3}Combinando los dos tipos de frases utilizando trazas}{11}
 \contentsline {chapter}{\numberline {3}Sistema de grabaci\IeC {\'o}n online}{13}
 \contentsline {section}{\numberline {3.1}Recolecci\IeC {\'o}n de datos}{13}
@@ -20,7 +20,7 @@
 \contentsline {subsection}{\numberline {4.1.1}Prosodylab Aligner}{19}
 \contentsline {subsection}{\numberline {4.1.2}Modelos Ocultos de Markov}{20}
 \contentsline {section}{\numberline {4.2}Extracci\IeC {\'o}n de atributos}{22}
-\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{22}
+\contentsline {subsection}{\numberline {4.2.1}Atributos temporales}{23}
 \contentsline {subsubsection}{Atributos fon\IeC {\'e}ticos}{24}
 \contentsline {subsubsection}{Atributos sil\IeC {\'a}bicos}{25}
 \contentsline {subsection}{\numberline {4.2.2}Atributos ac\IeC {\'u}sticos}{26}
@@ -57,9 +57,9 @@
 \contentsline {subsubsection}{Clasificadores encontrados}{49}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{49}
 \contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{50}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{50}
+\contentsline {subsubsection}{Wilcoxon y Test t de Student}{51}
 \contentsline {subsubsection}{Clasificadores encontrados}{51}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{51}
-\contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{51}
+\contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{52}
 \contentsline {section}{\numberline {6.6}Combinando clases de atributos}{53}
 \contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{55}
