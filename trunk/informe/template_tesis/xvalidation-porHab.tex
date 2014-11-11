@@ -6,7 +6,7 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-Vamos a definir un modelo de test distinto. Este va a enfatizar más la idea del hablante y de cómo distinguirlo. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos audios repetidos en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en ingles: Leave-one-out cross-validation)
+Vamos a definir un modelo de test distinto. Este va a enfatizar más la idea del hablante y de cómo distinguirlo. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos grabaciones repetidas en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en inglés: Leave-one-out cross-validation)
 
 En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Córdoba. Vamos a tener 27 folds distintos para cada uno de ellos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
