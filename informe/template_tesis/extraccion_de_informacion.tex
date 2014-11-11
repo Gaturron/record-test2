@@ -20,7 +20,7 @@ Esta actividad se la conoce como alineación forzada. Básicamente consiste en m
 
 Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una biblioteca para crear y manipular Modelos Ocultos de Markov (ver sección \ref{sec:hmm}) fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
 
-Los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con sus transcripciones fonéticas (no necesariamente alineadas a nivel fonético) y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicada, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
+Los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con sus transcripciones fonéticas (no necesariamente alineadas a nivel fonético) y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicada, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Este laboratorio depende de CONICET y UBA - Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 %explicación teórica con ejemplo
 \subsection{Modelos Ocultos de Markov}
@@ -57,7 +57,7 @@ Llevado esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de pre
 
 A continuación se presenta un ejemplo de cómo funcionan estos modelos en nuestro trabajo. 
 %
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{espectrograma_u3_t33_a1_ver1} \\
 	\smallskip
@@ -176,13 +176,13 @@ En definitiva, se busca el patrón definido por el atributo, se mide la cantidad
 Los atributos que contabilizan sílabas usados son:
 
 \begin{itemize}
-    \item \textbf{Duración de la sílaba acentuada:} en cada una de las frases buscamos la sílaba acentuada de cada palabra, medimos su duración y normalizamos con las demás sílabas de la frase.
+    \item \textbf{Duración de la sílaba acentuada:} en cada una de las grabaciones buscamos la sílaba acentuada de cada palabra, medimos su duración y normalizamos con las demás sílabas de la frase. Ésto lo realizamos recorriendo su TextGrid asociado.
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
 Veamos cómo se realiza el cálculo de un atributo silábico: supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $X$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calculan los dos tipos de normalización. En la Figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente\footnote{Aclaración: al igual al caso anterior, la duración de las sílabas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. No pudimos escribir toda la frase y todos sus acentos por cuestiones de espacio. 
 
-En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para distinguirlas. El analizador cuando calcule este atributo, va a identificar las sílabas acentuadas y tomará su antecesora. 
+En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para distinguirlas. El analizador, cuando calcule este atributo, va a identificar las sílabas acentuadas y tomará su antecesora. 
 
 \begin{figure}[H]
 	\centering
@@ -220,7 +220,7 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 \label{sec:atributosacusticos}
 Los atributos acústicos utilizan las propiedades de las grabaciones realizadas. Para ello debimos extraer información con algún método que permita medirlos. Elegimos el calculo de coeficientes cepstrales en escala de mel (en inglés MFCC: Mel Frequency Cepstral Coefficient) ya que tiene relación directa con la percepción auditiva humana. Veamos el cálculo de estos coeficientes.
 
-La forma en que hablamos se produce por varias articulaciones en nuestra boca. Estas conectan a dientes, lengua, tráquea, etc. Estas articulaciones trabajan en conjunto para darle forma al sonido producido. 
+La forma en que hablamos se produce por el movimiento de varias articulaciones en nuestra boca. Estas conectan a dientes, lengua, tráquea, etc. Estas articulaciones trabajan en conjunto para darle forma al sonido producido. 
 
 El tracto vocal suele modificarse de manera bastante lenta y se la puede considerar constante en intervalos de alrededor de 10 a 20 ms. Por otro lado, la señal de audio poseen muchas variaciones continuamente. Para minimizar las discontinuidades de la señal se aplica un ventaneo sobre la señal del habla. 
 
