@@ -1,6 +1,6 @@
 \chapter{Datos obtenidos}
 
-En este capítulo vamos a describir los datos obtenidos a través del framework desarrollado. Tuvimos algunos problemas al recolectar los audios. El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para realizar buenas grabaciones. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono y saturación. 
+En este capítulo vamos a describir los datos obtenidos a través del framework desarrollado. Tuvimos algunos problemas al recolectar las grabaciones. El principal problema fue que el ambiente utilizado por cada hablante no estaba completamente en silencio como para realizar buenas grabaciones. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono y saturación. 
 
 \section{Evaluación manual de las grabaciones}
 
@@ -22,18 +22,18 @@ Como primer paso, se realizó una clasificación manual de las grabaciones para 
 \label{eva_table}
 \end{table}
 
-Como puede observarse, los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de audios para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
+Como puede observarse, los datos obtenidos están desbalanceados. No fue posible obtener la misma cantidad de grabaciones para los dos grupos. Esto se va a reflejar en la clasificación y en el análisis posterior.
 
-Las categorías establecidas anteriormente describen los errores más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvieron algún problema. Esto representa alrededor del 17\% de los audios grabados. Es un número alto para ser un experimento guiado. La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
+Las categorías establecidas anteriormente describen los errores más frecuentes. Podemos observar que, del total de 374 grabaciones, 64 tuvieron algún problema. Esto representa alrededor del 17\% de las grabaciones. Es un número alto para ser un experimento guiado. La gran causa de este número es la falta de chequeo al aceptar un audio nuevo. La detección automática de errores en el momento de grabación es un tema que excede los objetivos de esta tesis y se propone como trabajo futuro.
 
-El análisis que se presenta a continuación está basado solamente en los audios clasificados como ``Conservar’’.
+El análisis que se presenta a continuación está basado solamente en las grabaciones clasificadas como ``Conservar’’.
 
 \section{Alineación forzada}
 
-El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar los audios mal alineados, ya que si no lo hacemos, cuando los procese el extractor de atributos nos darían información errónea. Chequeamos cada audio etiquetado como ``Conservar’’, y analizamos con la aplicación Praat \cite{praat} si la alineación fue correcta. Los errores de alineamiento más comunes se debieron a:
+El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar las grabaciones mal alineadas, ya que si no lo hacemos, cuando los procese el extractor de atributos nos darían información errónea. Chequeamos cada grabación etiquetado como ``Conservar’’, y analizamos con la aplicación Praat \cite{praat} si la alineación fue correcta. Los errores de alineamiento más comunes se debieron a:
 
 \begin{itemize}
-    \item \textbf{Ruido de fondo:} los audios donde el alineador se comporta de peor manera son aquéllos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Figura \ref{alinMala} se puede ver un ejemplo utilizando Praat.
+    \item \textbf{Ruido de fondo:} las grabaciones donde el alineador se comporta de peor manera son aquéllos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Figura \ref{alinMala} se puede ver un ejemplo utilizando Praat.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{alineacion_mala_inf} }
@@ -51,7 +51,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
 
     \item \textbf{Saturación del micrófono:} el volumen del micrófono es configurado por el hablante. Es por ello que debemos confiar en su buena voluntad. Muchas veces la grabación fue buena pero en algunas partes la entonación tuvo mayor volumen que en otras; haciendo que, posteriormente, la alineación no sea precisa.
     
-    \item \textbf{Entonación exagerada:} en algunas grabaciones se quiso exagerar la entonación. Por ejemplo, las palabras finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado. En la mayoría de los audios no sucedió, por lo que no afectó el análisis del experimento. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma más natural posible. 
+    \item \textbf{Entonación exagerada:} en algunas grabaciones se quiso exagerar la entonación. Por ejemplo, las palabras finalizadas en /s/ fueron grabadas en muchos casos sosteniendo ese fonema por tiempo prolongado. En la mayoría de las grabaciones no sucedió, por lo que no afectó el análisis del experimento. El problema que surgió en estos casos fue que el hablante no supo pronunciar la frase de la forma más natural posible. 
     
 \end{itemize}
 
@@ -77,7 +77,7 @@ Para corregir los errores descriptos debimos chequear manualmente cada uno de lo
 
 Entonces las grabaciones que utilizamos salieron de estas 310 alineaciones. 
 
-Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación fuera la mejor grabada. Debemos quitar estos casos para no analizar frases que están mal grabadas. Contabilizamos los audios repetidos y los mostramos en la tabla \ref{eva_table_rep}.
+Recordemos que cada hablante tenía la posibilidad de grabar varias veces la misma frase con la idea de que la última grabación fuera la mejor grabada. Debemos quitar estos casos para no analizar frases que están mal grabadas. Contabilizamos las grabaciones repetidas y los mostramos en la tabla \ref{eva_table_rep}.
 
 \begin{table}[H]
 \centering
@@ -91,5 +91,5 @@ Recordemos que cada hablante tenía la posibilidad de grabar varias veces la mis
 \label{eva_table_rep}
 \end{table}
 
-Entonces los audios extraídos con la herramienta que vamos a utilizar para clasificar cada uno de los hablantes son: 181 audios para Buenos Aires y 79 audios para Córdoba. Estos audios corresponden a 8 hablantes de Córdoba y 19 de Buenos Aires.
+Entonces las grabaciones extraídos con la herramienta que vamos a utilizar para clasificar cada uno de los hablantes son: 181 grabaciones para Buenos Aires y 79 para Córdoba. Estos audios corresponden a 8 hablantes de Córdoba y 19 de Buenos Aires.
 En la próxima sección veremos el análisis que realizamos con estas grabaciones. 

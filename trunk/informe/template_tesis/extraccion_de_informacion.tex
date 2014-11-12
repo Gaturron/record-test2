@@ -6,14 +6,14 @@ Utilizando nuestra página web podemos obtener distintas muestras de Córdoba y 
 
 Una grabación a partir de una frase posee muchísima información. Debemos seleccionar qué parte de esta grabación nos interesa y qué parte puede ser descartada. Para ello etiquetamos en qué partes del audio se pronunció cada fonema y también, uniendo cada uno de estos fonemas, etiquetamos cada palabra. Por ejemplo: si tenemos la grabación de la frase \textit{`El canapé salió espectacular’}, utilizamos un archivo aparte que nos dice \textit{`<<espectacular>> se escucha entre el segundo 0.90 y 1.18’}. Lo mismo sucede para cada palabra y fonema de la grabación. Para marcar estas anotaciones utilizamos el formato de archivos TextGrid del programa Praat  \cite{praat}.
 
-Un dato muy importante es que este etiquetado no debe tener que ser realizado con intervención de un humano. Si fuera el caso, tendríamos que hacerlo uno por uno, y al tener muchos audios sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de los audios son donde se encuentran la diferencias de cada regla descripta anteriormente. 
+Un dato muy importante es que este etiquetado no debe tener que ser realizado con intervención de un humano. Si fuera el caso, tendríamos que hacerlo uno por uno, y al tener muchas grabaciones sería un trabajo muy arduo. De esto se encarga la alineación forzada. Las partes que debemos extraer de las grabaciones se encuentran en las diferencias de cada regla descripta anteriormente. 
 
 \subsection{Prosodylab Aligner}
 
 %If you use this tool, we would appreciate it if you cite the following paper:
 %Gorman, Kyle, Jonathan Howell & Michael Wagner (2011). Prosodylab-Aligner: A tool for forced alignment of laboratory speech. Proceedings of Acoustics Week in Canada, Quebec City.
 
-Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Usamos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada uno de los audios de forma fácil. Analiza uno por uno cada audio y mediante un diccionario determina en qué momento se dijo cada fonema y palabra. 
+Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Usamos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada una de las grabaciones de forma fácil. Analiza uno por uno cada grabación y mediante un diccionario determina en qué momento se dijo cada fonema y palabra. 
 
 %parrafo agregado de correcciones de Luciana
 Esta actividad se la conoce como alineación forzada. Básicamente consiste en marcar el tiempo desde que comienza y hasta que termina de cada fonema, para todas las grabaciones. Esta se realiza de la siguiente forma: para cada grabación se agrega un archivo que enumera los fonemas que se escuchan en ella. La herramienta analiza las grabaciones y observa cada uno de los fonemas. Si un mismo fonema se utiliza en dos grabaciones, quiere decir que tiene haber características similares en la grabación en ese lapso de tiempo. Utilizando esta idea va prediciendo el lugar de cada fonema. Esta alineación no es perfecta, se puede equivocar en determinar dónde se escucha un fonema, pero es un buen comienzo.  
@@ -349,7 +349,7 @@ Luego de tener separada la señal en pequeñas tramas, para cada una de ellas se
 %   6) Los MFCC son las amplitudes del espectro resultante.
 %\end{lstlisting}
 
-Terminado el algoritmo obtenemos 13 atributos acústicos de ese segmento. Agregamos también la derivada de estos atributos y la segunda derivada que representan las variaciones temporales. En total derivando dos veces llegan a 39 atributos acústicos. Debemos extraer estas métricas para cada una de las grabaciones.
+Terminado el algoritmo obtenemos 13 atributos acústicos de ese segmento. Agregamos también los coeficientes delta y delta-delta de estos atributos que representan las variaciones temporales. En total llegan a 39 atributos acústicos. Estos atributos se obtienen en una Trama.
 
 Este cálculo de vectores de MFCC lo realizamos entre el principio y fin de cada atributo que represente una regla. Por ejemplo como observamos en la Figura \ref{ej_mfcc_graf}: si encontramos el atributo fonético /r/, calculamos los vectores MFCC en el intervalo donde suena este fonema. Con éstos vectores, calculamos el valor máximo, mínimo y promedio para cada enésima posición y armamos tres vectores con estos valores. O sea, el vector de valores máximos tendrá en su primer elemento el valor máximo de los primeros elementos de todos los vectores, así sucesivamente. Ídem para el vector mínimo y promedio. 
 
@@ -427,4 +427,4 @@ Para referenciar cada uno de los atributos debimos definir una nomenclatura. La 
  
 Por ejemplo: definimos \textit{SIL\_prevSyllableAccent\_normhd} como la duración de la silaba anterior a la acentuada aplicando normalización con $mu=0$. Todos los nombres y a qué atributo se refieren se pueden ver en el apéndice de atributos.
 
-En la próxima sección veremos los audios obtenidos en este experimento para luego analizar los atributos de cada uno.
+En la próxima sección veremos las grabaciones obtenidas en este experimento para luego analizar sus atributos.

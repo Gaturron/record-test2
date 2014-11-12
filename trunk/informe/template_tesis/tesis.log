@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 NOV 2014 01:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  12 NOV 2014 00:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1253,16 +1253,36 @@ Cap\'{\i }tulo 2.
 [5
 
 ]
-Overfull \hbox (9.71165pt too wide) in alignment at lines 53--69
- [] [] [] [] [] [] 
+Overfull \hbox (2.91093pt too wide) in paragraph at lines 57--57
+[]|\OT1/lmr/m/it/8 espectacular| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+[]|\OT1/lmr/m/n/8 espectacular,
+ []
+
+
+Overfull \hbox (2.91093pt too wide) in paragraph at lines 60--60
+[]|\OT1/lmr/m/it/8 espectacular| 
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 61--61
+[]|\OT1/lmr/m/n/8 repollo, de-li-
+ []
+
+
+Overfull \hbox (2.91093pt too wide) in paragraph at lines 63--63
+[]|\OT1/lmr/m/it/8 espectacular| 
  []
 
 
 Underfull \vbox (badness 10000) detected at line 69
  []
 
-LaTeX Info: Redefining \. on input line 75.
-LaTeX Info: Redefining \% on input line 75.
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
 [6] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/06/27 1.5pre1 listings language file
 )
@@ -1339,16 +1359,16 @@ LaTeX Info: Redefining \% on input line 174.
 
 
 ]
-Underfull \hbox (badness 1888) in paragraph at lines 198--198
+Underfull \hbox (badness 1888) in paragraph at lines 200--200
 []|\OT1/lmr/bx/n/8 Nro de
  []
 
 
-Underfull \vbox (badness 10000) detected at line 219
+Underfull \vbox (badness 10000) detected at line 221
  []
 
-LaTeX Info: Redefining \. on input line 219.
-LaTeX Info: Redefining \% on input line 219.
+LaTeX Info: Redefining \. on input line 221.
+LaTeX Info: Redefining \% on input line 221.
 [9
 
 
@@ -1414,8 +1434,8 @@ LaTeX Info: Redefining \% on input line 44.
 LaTeX Info: Redefining \. on input line 50.
 LaTeX Info: Redefining \% on input line 50.
  [14 <./Images/pag-grabar1.png> <./Images/pag-play1.png>]
-LaTeX Info: Redefining \. on input line 65.
-LaTeX Info: Redefining \% on input line 65.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
  [15]
 <Images/categorizando_audios.png, id=114, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
@@ -1551,49 +1571,49 @@ LaTeX Info: Redefining \% on input line 104.
 LaTeX Info: Redefining \. on input line 9.
 LaTeX Info: Redefining \% on input line 9.
  [35]
-Overfull \hbox (3.83556pt too wide) in paragraph at lines 59--60
+Overfull \hbox (3.83556pt too wide) in paragraph at lines 57--58
 [][] 
  []
 
-LaTeX Info: Redefining \. on input line 63.
-LaTeX Info: Redefining \% on input line 63.
+LaTeX Info: Redefining \. on input line 64.
+LaTeX Info: Redefining \% on input line 64.
 [36]
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
+LaTeX Info: Redefining \. on input line 214.
+LaTeX Info: Redefining \% on input line 214.
  [37]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
  [38]
-LaTeX Info: Redefining \. on input line 284.
-LaTeX Info: Redefining \% on input line 284.
+LaTeX Info: Redefining \. on input line 327.
+LaTeX Info: Redefining \% on input line 327.
  [39]
-LaTeX Info: Redefining \. on input line 329.
-LaTeX Info: Redefining \% on input line 329.
+LaTeX Info: Redefining \. on input line 377.
+LaTeX Info: Redefining \% on input line 377.
  [40]
-LaTeX Info: Redefining \. on input line 403.
-LaTeX Info: Redefining \% on input line 403.
- [41]
-LaTeX Info: Redefining \. on input line 431.
-LaTeX Info: Redefining \% on input line 431.
- [42]) (./xvalidation-porHab.tex
-LaTeX Info: Redefining \. on input line 54.
-LaTeX Info: Redefining \% on input line 54.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+ [41]) (./xvalidation-porHab.tex
+LaTeX Info: Redefining \. on input line 37.
+LaTeX Info: Redefining \% on input line 37.
+ [42]
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
  [43]
-LaTeX Info: Redefining \. on input line 92.
-LaTeX Info: Redefining \% on input line 92.
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
  [44])
 (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 5.
-LaTeX Info: Redefining \% on input line 5.
+LaTeX Info: Redefining \. on input line 32.
+LaTeX Info: Redefining \% on input line 32.
  [45]
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
+LaTeX Info: Redefining \. on input line 75.
+LaTeX Info: Redefining \% on input line 75.
  [46]
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
  [47]
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 129
 .
@@ -1607,23 +1627,23 @@ i-zan mu-cho atri-bu-tos co-mo $\OML/lmm/m/it/12 FON[]ll[]norm$
  []
 
 ) (./xvalidation-porHabPromMissAttr.tex
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
  [48]
-LaTeX Info: Redefining \. on input line 65.
-LaTeX Info: Redefining \% on input line 65.
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
  [49])
 (./seleccion_de_atributos.tex
-LaTeX Info: Redefining \. on input line 12.
-LaTeX Info: Redefining \% on input line 12.
- [50]
-LaTeX Info: Redefining \. on input line 40.
-LaTeX Info: Redefining \% on input line 40.
- [51]) (./combinando_clases_de_atributos.tex
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+ [50]) (./combinando_clases_de_atributos.tex
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
 
-[52])) (./conclusiones.tex
+[51]
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+ [52])) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [53]
@@ -1631,8 +1651,8 @@ Cap\'{\i }tulo 7.
 (./trabajos_futuros.tex [54
 
 ]
-LaTeX Info: Redefining \. on input line 20.
-LaTeX Info: Redefining \% on input line 20.
+LaTeX Info: Redefining \. on input line 19.
+LaTeX Info: Redefining \% on input line 19.
  [55])) (./marcas_prosodicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1745,10 +1765,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23796 strings out of 493307
- 527279 string characters out of 6139905
- 779164 words of memory out of 5000000
- 26632 multiletter control sequences out of 15000+600000
+ 23794 strings out of 493307
+ 527254 string characters out of 6139905
+ 780385 words of memory out of 5000000
+ 26630 multiletter control sequences out of 15000+600000
  88136 words of font info for 72 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1769,7 +1789,7 @@ xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
 ts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtt12.pfb>
-Output written on tesis.pdf (67 pages, 2067074 bytes).
+Output written on tesis.pdf (67 pages, 2067684 bytes).
 PDF statistics:
  347 PDF objects out of 1000 (max. 8388607)
  224 compressed objects within 3 object streams
