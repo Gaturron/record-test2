@@ -50,7 +50,7 @@ Por ejemplo: \textit{``El canapé salió delicioso’’}. Canapé tiene acento 
 %\end{figure}
 
 \scriptsize
-\begin{longtable}{| p{0.15\textwidth} | p{0.08\textwidth} | p{0.15\textwidth} || p{0.15\textwidth} | p{0.15\textwidth} | p{0.15\textwidth} |} 
+\begin{longtable}{| p{0.15\textwidth} | p{0.08\textwidth} | p{0.10\textwidth} || p{0.12\textwidth} | p{0.12\textwidth} | p{0.12\textwidth} |} 
 	\hline
 	%\multicolumn{6}{| p{0.9\textwidth} |} {\textbf{1 - Localice la sílaba acentuada en la palabra y estirar la sílaba anterior}} \\ \hline
 	\multicolumn{3}{| p{0.45\textwidth} ||}{Frase} & \textbf{Aguda} & \textbf{Grave} & \textbf{Esdrújula} \\ \hline 
@@ -78,7 +78,7 @@ Algo interesante es que una misma frase puede extraer atributos para varias regl
 
 \subsubsection{Orden de las frases}
 
-Ya definimos cuáles van a ser las frases, ahora debemos definir qué frases y en qué orden se deben decir durante el experimento. Diremos que una frase cubre una determinada regla si esta la satisface. Sucede que el orden que utilicemos va a ser crucial para obtener muestras: no es lo mismo empezar por una frase que sólo cubre una sola regla que varias reglas al mismo tiempo. Si elegimos primero las frases que cubren varias reglas a la vez, en un sólo audio podremos obtener más cubrimiento de reglas. Entonces, en caso de poder, elegimos frases que cubran más de una regla. 
+Ya definimos cuáles van a ser las frases, ahora debemos definir qué frases y en qué orden se deben decir durante el experimento. Diremos que una frase cubre una determinada regla si esta la satisface. Sucede que el orden que utilicemos va a ser crucial para obtener muestras: no es lo mismo empezar por una frase que sólo cubre una sola regla que varias reglas al mismo tiempo. Si elegimos primero las frases que cubren varias reglas a la vez, en una sola grabación podremos obtener más cubrimiento de reglas. Entonces, en caso de poder, elegimos frases que cubran más de una regla. 
 
 ¿Por qué quisiéramos cubrir más reglas en una misma frase? Más adelante veremos que una frase grabada que cubre una regla aportará información sobre el hablante de esa regla en particular. Si una frase cubre varias reglas estaríamos obteniendo más información que si esa frase cubre una sola regla, en ambas opciones utilizamos sólo una grabación. Por eso es importante maximizar el cubrimiento de las frases por cada grabación.  
 
@@ -190,6 +190,8 @@ Esta idea es importante ya que llevamos al máximo la cantidad de información e
 Podemos ver un ejemplo de este algoritmo en la tabla \ref{pasos_algo}. Este muestra los primeros 15 pasos que realiza el algoritmo en un ejemplo. Descartamos los demás pasos por simplicidad. La columna ``Tarea'' nos muestra el número de orden de la frase a grabar, ``Número de Frase'' nos indica qué frase fue la elegida para esa tarea, y las columnas ``Regla X'' muestran el porcentaje de apariciones ya grabadas de esa regla. En el primer paso todas las reglas están en 0\%, lo cual sucede porque al comienzo no se grabó ninguna frase aún.  Elegimos una frase que cumpla con la regla que tiene menor porcentaje de cubrimiento. Como todas las reglas tienen 0\% elegimos una al azar, en este ejemplo la frase 15, que cubre las reglas 2 y 6 (ver Figura \ref{fig22tabla}). Entonces el porcentaje de cubrimiento de esas reglas se incrementa. 
 La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, como dijimos, cubre la regla 2 y 6. Para la regla 2 hay 26 posibles muestras en todas las frases. La frase 15 sólo aporta 1 de ellas, entonces $1/26$ nos aporta el 3\% de cubrimiento. Para la regla 6, tenemos 6 posibles muestras y esta frase nos provee sólo 1 de ellas. Su porcentaje entonces es $1/6 = 16\%$. 
 
+El ejemplo de  la tabla \ref{pasos_algo} ilustra cómo el algoritmo, en cada paso, elige una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 5, la regla 5 sólo tiene el 14\% de porcentaje grabado. Este cubrimiento es el menor de todos. En el próximo paso, el algoritmo elige una frase que cubra esa regla y, si es posible, que cubra otra regla más. La elegida es la frase 23 (ver \ref{fig22tabla}). Como hay pocas frases de la regla 5, al agregar esta frase ya cubrimos el 28\% de las frases de esa regla. Y además se incrementa la regla 2 al 23\%. De este modo, intentamos ir cubriendo paso a paso en forma pareja las distintas reglas.
+
 \scriptsize
 \begin{longtable}{| p{0.1\textwidth} | p{0.08\textwidth} || p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} |
 		p{0.1\textwidth} |} 
@@ -219,8 +221,6 @@ La frase 15 nos dice \textit{``Quien siembra vientos recoge tempestades''} y, co
 \end{longtable}
 
 \normalsize
-
-El ejemplo de  la tabla \ref{pasos_algo} ilustra cómo el algoritmo, en cada paso, elige una frase que cubra la regla con menor porcentaje de cubrimiento. Por ejemplo: en la tarea 5, la regla 5 sólo tiene el 14\% de porcentaje grabado. Este cubrimiento es el menor de todos. En el próximo paso, el algoritmo elige una frase que cubra esa regla y, si es posible, que cubra otra regla más. La elegida es la frase 23 (ver \ref{fig22tabla}). Como hay pocas frases de la regla 5, al agregar esta frase ya cubrimos el 28\% de las frases de esa regla. Y además se incrementa la regla 2 al 23\%. De este modo, intentamos ir cubriendo paso a paso en forma pareja las distintas reglas.
 
 Esta idea también se puede ver en la Figura \ref{figFracesTraza} que representa otro ejemplo del porcentaje de frases completadas. Teniendo en cuenta este algoritmo podemos notar que aproximadamente a partir de 10 grabaciones ya tenemos un buen porcentaje de cubrimiento. Por ejemplo, en la décima grabación la regla 4 ya tiene el 75\% de sus muestras grabadas. La regla 5 el 50\% de sus muestras ya grabadas. En este ejemplo, en la grabación número 10 ya se grabó alrededor del 40\% de la cantidad total de muestras para cada regla.
 

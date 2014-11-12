@@ -1,6 +1,6 @@
 \chapter{Sistema de grabación online}
 
-Para poder obtener audios de distintas personas se desarrolló una página web. Esto es muy conveniente ya que nos permite grabar fácilmente desde cualquier lugar. En esta sección explicaremos la arquitectura del sistema y sus detalles técnicos.
+Para poder obtener grabaciones de distintas personas se desarrolló una página web. Esto es muy conveniente ya que nos permite grabar fácilmente desde cualquier lugar. En esta sección explicaremos la arquitectura del sistema y sus detalles técnicos.
 
 La página web está desarrollada en Django, versión 1.4.2. Se eligió este framework por su facilidad a la hora de guardar objetos a la base de datos y también por la cantidad importante de bibliotecas que posee Python. La versión de Python que se utilizó es 2.7.3. 
 
@@ -60,11 +60,11 @@ Recordemos que para tener la mejor grabación de cada frase, le dimos la opción
 
 Al grabar el cliente manda un mensaje al servidor con el audio de la grabación en crudo. La longitud de este paquete tiene un tamaño pequeño ya que las frases son de corta longitud. Cuando el cliente quiere escucharlo envía un mensaje pidiendo ese mismo audio anteriormente grabado. El servidor envía el audio y es reproducido en el cliente. Este ida y vuelta de la grabación podría ser optimizada para que la grabación pueda ser escuchada sin tener interacción con el servidor. En nuestro experimento, no tuvimos problemas graves en lo que respecta a latencias pero es un punto débil del sistema que hay que tener en cuenta.
 
-Puede resultar interesante analizar los anteriores audios grabados para ver por qué el hablante elige el último. Esta idea también puede motivar a algún trabajo futuro.
+Puede resultar interesante analizar las anteriores grabaciones para ver por qué el hablante elige el último. Esta idea también puede motivar a algún trabajo futuro.
 
 \section{Sistema de administración}
 
-Además de la interfaz pública para grabar audios, implementamos un sistema privado para administrar las grabaciones. Éste nos permite ver las grabaciones que fueron grabadas, la cantidad de grabaciones por cada frase que tenemos recolectada, la cantidad de trazas que todavía no se utilizaron, entre otras cosas. También nos permite escuchar y marcar las grabaciones para utilizarlas como primer filtro de las grabaciones. Explicaremos esto en más detalle a continuación.
+Además de la interfaz pública para grabar, implementamos un sistema privado para administrar las grabaciones. Éste nos permite ver las grabaciones que fueron grabadas, la cantidad de grabaciones por cada frase que tenemos recolectada, la cantidad de trazas que todavía no se utilizaron, entre otras cosas. También nos permite escuchar y marcar las grabaciones para utilizarlas como primer filtro de las grabaciones. Explicaremos esto en más detalle a continuación.
 
 \subsection{Etiquetado de audio}
 
@@ -86,6 +86,6 @@ El sistema posee backups que se generan a la noche automáticamente. Los backups
 
 Un requerimiento primordial de este experimento es evitar grabaciones saturadas. Para ello medimos el volumen de la grabación mientras ésta se produce. El resultado es una serie de valores entre 0 a 100. Sobre estos valores calculamos el máximo y el mínimo. Si el primero es mayor a un cierto umbral arbitrario (o sea mayor a 80 por ejemplo) significa que la grabación saturó en algún momento. Si el mínimo es menor a un cierto umbral (o sea menor a 20 por ejemplo) quiere decir que hay mucho ruido ambiente. En cualquiera de los dos casos podemos pedirle al usuario que grabe nuevamente el experimento. De esta forma podemos filtrar grabaciones que no nos servirán para reconocer el acento.
 
-Si bien la característica de filtrar por volumen fue programada, no fue utilizada en este experimento. El motivo fue que queríamos chequear cuán bien funcionaba la herramienta sin filtros y con completa participación de los usuarios. Otro motivo fue la paciencia de los hablantes: puede suceder que no se logre un ambiente beneficioso para grabar y el filtro rechace todos sus audios, perdiendo un posible hablante. También notamos que había grabaciones que fueron rechazadas por el filtrado de volumen pero en realidad eran de buena calidad. Esto no lo queremos como primer experimento del framework. Por eso elegimos aceptar todas las grabaciones.
+Si bien la característica de filtrar por volumen fue programada, no fue utilizada en este experimento. El motivo fue que queríamos chequear cuán bien funcionaba la herramienta sin filtros y con completa participación de los usuarios. Otro motivo fue la paciencia de los hablantes: puede suceder que no se logre un ambiente beneficioso para grabar y el filtro rechace todas sus grabaciones, perdiendo un posible hablante. También notamos que había grabaciones que fueron rechazadas por el filtrado de volumen pero en realidad eran de buena calidad. Esto no lo queremos como primer experimento del framework. Por eso elegimos aceptar todas las grabaciones.
 
 A continuación veremos cómo utilizamos esta información recolectada para el objetivo del experimento.

@@ -6,9 +6,9 @@
 
 %leer http://en.wikipedia.org/wiki/Information_gain_ratio
 
-En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. Para este análisis, utilizamos todo el conjunto de datos sin descartar los atributos desconocidos. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo y utilizamos Ranker para el puntaje de los atributos. 
+En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. Para este análisis, utilizamos todo el conjunto de datos sin descartar los atributos desconocidos. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo. Utilizamos la opción Ranker que nos ordena los atributos de mayor a menor ganancia.
 
-Estos algoritmos trabajan de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
+Estos algoritmos trabajan de la siguiente forma: para cada atributo calculan la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
 
 $H(Class)$ representa el valor de la entropía de la clase a predecir. En otras palabras, mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular. Recordemos que cuando decimos clase nos referimos a Buenos Aires o Córdoba. $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$. A esta se le llama \textit{entropía condicional}. Si este atributo tiene información que ayude a predecir la clase, entonces la entropía condicional será menor a la entropía de la clase. O sea, $H(Class | Attribute) < H(Class)$.  
 
