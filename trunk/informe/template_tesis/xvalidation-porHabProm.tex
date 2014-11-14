@@ -1,5 +1,6 @@
 % Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
 \subsection{Promediando los atributos de cada hablante}
+\label{prom_los_atributos_de_cada_hablante}
 
 Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline.
 
@@ -26,11 +27,11 @@ Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunt
 		Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
 		
 	\end{tabular}
-	\caption{Esquema de cross-validation}
+	\caption{Esquema de validación cruzada}
 	\label{cv-porHabProm}
 \end{table}
 
-Otro problema que surgió del anterior cross-validation es la masiva cantidad de valores desconocidos. Pensamos que esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
+Otro problema que surgió de la validación cruzada anterior es la masiva cantidad de valores desconocidos. Pensamos que esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
 
 Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada hablante calculando su promedio para cada atributo. Veamos en la tabla \ref{datos_orig} un ejemplo de datos extraídos para entender la idea. 
 

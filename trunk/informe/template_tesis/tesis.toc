@@ -42,21 +42,20 @@
 \contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{34}
 \contentsline {subsection}{\numberline {6.3.3}Student t Test}{35}
 \contentsline {section}{\numberline {6.4}Modelos de tests}{35}
-\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{35}
+\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{36}
 \contentsline {subsubsection}{Resultados}{37}
-\contentsline {subsubsection}{Clasificadores encontrados}{41}
+\contentsline {subsubsection}{Clasificadores encontrados}{42}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{42}
-\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{42}
+\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{43}
 \contentsline {subsubsection}{Resultados}{43}
-\contentsline {subsubsection}{Clasificadores encontrados}{43}
-\contentsline {subsubsection}{Wilcoxon y Test t de Student}{44}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{44}
-\contentsline {subsection}{\numberline {6.4.3}Promediando los atributos de cada hablante}{45}
+\contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{44}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{45}
+\contentsline {subsection}{\numberline {6.4.3}Promediando los atributos de cada hablante}{46}
 \contentsline {subsubsection}{Resultados}{47}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{47}
-\contentsline {subsubsection}{Clasificadores encontrados}{47}
+\contentsline {subsubsection}{Clasificadores encontrados}{48}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{48}
-\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{48}
+\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante s\IeC {\'o}lo si es desconocido}{49}
 \contentsline {subsubsection}{Wilcoxon y Test t de Student}{49}
 \contentsline {subsubsection}{Clasificadores encontrados}{50}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{50}
