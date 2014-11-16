@@ -51,7 +51,7 @@ Un clasificador de tipo Naive Bayes asume que cada atributo describe una caracte
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Para realizar estos tests utilizamos los porcentajes de instancias correctas para los folds generados. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Para realizar estos tests utilizamos para cada clasificador un vector con los porcentajes de instancias correctas para cada fold generado. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
 
 \subsection{Test de Wilcoxon}
 
@@ -108,7 +108,8 @@ Este test se realiza individualmente para cada vector resultado de porcentaje de
 
 %A t-test is any statistical hypothesis test in which the test statistic follows a Student's t distribution if the null hypothesis is supported. It can be used to determine if two sets of data are significantly different from each other, and is most commonly applied when the test statistic would follow a normal distribution if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data, the test statistic (under certain conditions) follows a Student's t distribution.
 
-Para los vectores resultado provenientes de una distribución Normal se les aplica este test. Éste nos provee una forma de determinar si dos conjuntos de test son significativamente distintos, suponiendo que surgen de una distribución Normal. Para realizar este test utilizamos, como en el Test de Wilcoxon, dos vectores: uno para los resultados de Zero Rule y otro para un clasificador alternativo. 
+Para los vectores resultado provenientes de una distribución Normal se les aplica este test. Éste nos provee una forma de determinar si dos conjuntos de test son significativamente distintos, suponiendo que surgen de una distribución Normal.
+Para aplicar este test, los conjuntos de test deben tener muestras independientes entre sí. Para realizar este test utilizamos, como en el Test de Wilcoxon, dos vectores: uno para los resultados de Zero Rule y otro para un clasificador alternativo. 
 También de la misma forma que planteamos la hipótesis del test de Wilcoxon, este va a tener las siguientes hipótesis. 
 
 \vspace{0.5cm}
@@ -126,7 +127,7 @@ En esta sección explicamos en detalle varios modelos de tests así como tambié
 
 Los siguientes modelos de tests son los que probamos:
 \begin{itemize}
-	\item Validación cruzada estándar modificada para evitar grabaciones del mismo hablante en el mismo conjunto (sección \ref{grupo_de_hablantes})
+	\item Validación cruzada por grupos de hablantes modificada para evitar grabaciones del mismo hablante en el mismo conjunto (sección \ref{grupo_de_hablantes})
 	\item Validación cruzada por hablante dejando un hablante afuera (sección \ref{un_hablante_para_test_los_demas_train})
 	\item Validación cruzada por hablante dejando uno afuera promediando los atributos de cada hablante y balanceando la cantidad de hablantes (sección \ref{prom_los_atributos_de_cada_hablante})
 	\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}) 

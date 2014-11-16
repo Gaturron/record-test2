@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  16 NOV 2014 12:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  16 NOV 2014 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1555,8 +1555,8 @@ LaTeX Info: Redefining \% on input line 51.
 LaTeX Info: Redefining \. on input line 102.
 LaTeX Info: Redefining \% on input line 102.
  [34]
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
  [35] (./xvalidation-porGrupoViejo.tex
 Overfull \hbox (3.83556pt too wide) in paragraph at lines 58--59
 [][] 
@@ -1624,26 +1624,23 @@ LaTeX Info: Redefining \% on input line 81.
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
  [50]) (./combinando_clases_de_atributos.tex
-LaTeX Info: Redefining \. on input line 25.
-LaTeX Info: Redefining \% on input line 25.
+LaTeX Info: Redefining \. on input line 26.
+LaTeX Info: Redefining \% on input line 26.
 
 [51])) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [52]
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
- [53]
 Cap\'{\i }tulo 7.
-(./trabajos_futuros.tex [54
+(./trabajos_futuros.tex [53
 
 ]
 LaTeX Info: Redefining \. on input line 19.
 LaTeX Info: Redefining \% on input line 19.
- [55])) (./marcas_prosodicas.tex
+ [54])) (./marcas_prosodicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [56]
+ [55]
 Underfull \vbox (badness 10000) detected at line 31
  []
 
@@ -1658,12 +1655,12 @@ Underfull \hbox (badness 1360) in paragraph at lines 35--35
 \OT1/lmr/m/n/10 go to-dos los d^^S^^Pas con-mi-go
  []
 
-[57
+[56
 
 ]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [58]
+ [57]
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []|\OT1/lmr/m/n/10 ACU[]AverageKT[]0 al
  []
@@ -1731,7 +1728,7 @@ Underfull \vbox (badness 10000) detected at line 29
 Underfull \vbox (badness 10000) detected at line 50
  []
 
-[59
+[58
 
 ]
 Underfull \vbox (badness 10000) detected at line 71
@@ -1740,7 +1737,7 @@ Underfull \vbox (badness 10000) detected at line 71
 )
 LaTeX Info: Redefining \. on input line 132.
 LaTeX Info: Redefining \% on input line 132.
- [60] (./tesis.bbl
+ [59] (./tesis.bbl
 Underfull \hbox (badness 2050) in paragraph at lines 8--11
 []\OT1/lmr/m/n/10 Boersma, P. and Wee-nink, D. (2013).  Praat: doing pho-
  []
@@ -1751,7 +1748,7 @@ Underfull \hbox (badness 2111) in paragraph at lines 8--11
 -trie-ved 2 Ju-ne 2013 from
  []
 
-) [61
+) [60
 
 
 ] (./tesis.aux
@@ -1761,7 +1758,7 @@ LaTeX Info: Redefining \% on input line 6.
 Here is how much of TeX's memory you used:
  23796 strings out of 493307
  527489 string characters out of 6139905
- 780616 words of memory out of 5000000
+ 780331 words of memory out of 5000000
  26632 multiletter control sequences out of 15000+600000
  88136 words of font info for 72 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1783,10 +1780,10 @@ i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmtt12.pfb>
-Output written on tesis.pdf (67 pages, 2067286 bytes).
+Output written on tesis.pdf (66 pages, 2066871 bytes).
 PDF statistics:
- 347 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
+ 343 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

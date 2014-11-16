@@ -11,7 +11,7 @@ Combinando los tipos de atributos definidos pudimos apreciar cuánto aporta cada
 \centering
 \begin{tabular}{|l|c|c|}
 \hline
-\textbf{} & \textbf{NaiveBayes} & \textbf{Functions SMO}   \\ \hline
+\textbf{} & \textbf{NaiveBayes} & \textbf{SVM}   \\ \hline
 SIL + FON + ACU & 70 \% & 73 \% \\ \hline
 SIL + FON & 69 \% & 66 \% \\ \hline
 FON + ACU & 71 \% & 71 \% \\ \hline
@@ -46,7 +46,7 @@ FON & 69 \% & 65 \% \\ \hline
     (1,65)(2,66)(3,69)(4,70)(5,71)(6,66)(7,73) };
 
 \node [left] at (axis cs: 1, 69) {NaiveBayes};
-\node [left] at (axis cs: 1, 65) {Function SMO};
+\node [left] at (axis cs: 1, 65) {SVM};
 
 \end{axis}
 \end{tikzpicture}
@@ -54,6 +54,6 @@ FON & 69 \% & 65 \% \\ \hline
 \label{comb_atrib_graf}
 \end{figure}
 
-Lo esperable es que aumentando la cantidad de atributos se aumente el porcentaje de instancias  clasificadas correctamente. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Function SMO. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Function SMO. 
+Lo esperable es que aumentando la cantidad de atributos se aumente el porcentaje de instancias  clasificadas correctamente. Esta idea se comprueba ya que la combinación que obtuvo mejor porcentaje fue $SIL+FON+ACU$ para el clasificador Support vector machine. En segundo lugar salió la combinación de $FON+ACU$ para ambos clasificadores y en tercero $SIL+ACU$ sólo para Support vector machine. 
 
 Podemos notar que el tipo de atributo que posee mayor presencia es el que corresponde a los atributos acústicos ($ACU$), ya que se encuentran en los tres primeros grupos de atributos que obtuvieron mejor porcentaje (estos son: $SIL+FON+ACU$, $FON+ACU$ y $SIL+ACU$). Quizás entre los atributos acústicos no haya uno con información predominante, pero la combinación de todos los atributos de esa clase hace que los clasificadores tengan buenas métricas.

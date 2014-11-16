@@ -60,7 +60,7 @@ Recordemos que para tener la mejor grabación de cada frase, le dimos la opción
 
 Al grabar el cliente manda un mensaje al servidor con el audio de la grabación en crudo. La longitud de este paquete tiene un tamaño pequeño ya que las frases son de corta duración. Cuando el cliente quiere escucharlo envía un mensaje pidiendo ese mismo audio anteriormente grabado. El servidor envía el audio y es reproducido en el cliente. Este ida y vuelta de la grabación podría ser optimizada para que la grabación pueda ser escuchada sin tener interacción con el servidor. En nuestro experimento, no tuvimos problemas graves en lo que respecta al tiempo de retardo pero podría ser un punto débil del sistema que hay que tener en cuenta.
 
-Puede resultar interesante analizar las anteriores grabaciones para ver por qué el hablante elige el último. Esta idea también puede motivar a algún trabajo futuro.
+Puede resultar interesante analizar las anteriores grabaciones para ver por qué el hablante elige el último. Esta idea puede motivar algún trabajo futuro.
 
 \section{Sistema de administración}
 
@@ -76,11 +76,11 @@ Cuando varias personas terminan el experimento, los administradores pueden acced
     \label{cat}
 \end{figure}
 
-Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una URL y bajarnos sin necesidad de conectarse al servidor. Se necesita ser usuario del sistema para poder acceder a estas opciones.
+Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una URL y bajarlo sin necesidad de conectarse al servidor. Se necesita ser usuario del sistema para poder acceder a estas opciones.
 
 \section{Backups automáticos}
 
-El sistema posee backups que se generan a la noche automáticamente. Los backups consisten en un volcado de información de toda la base de datos y en la sincronización de las grabaciones con una carpeta externa de backup.
+El sistema posee backups que se generan a la noche, automáticamente. Los backups consisten en un volcado de información de toda la base de datos y en la sincronización de las grabaciones con una carpeta externa de backup.
 
 \section{Análisis del volumen}
 
