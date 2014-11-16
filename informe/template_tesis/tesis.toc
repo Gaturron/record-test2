@@ -54,10 +54,10 @@
 \contentsline {subsubsection}{Resultados}{47}
 \contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{48}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{48}
-\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante para valores desconocidos}{49}
+\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante para valores desconocidos}{48}
 \contentsline {subsubsection}{Resultados}{49}
 \contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{50}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{50}
 \contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{50}
-\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{52}
+\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{51}
 \contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{54}
