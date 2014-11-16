@@ -35,7 +35,7 @@
 \contentsline {section}{\numberline {6.2}Clasificadores}{33}
 \contentsline {paragraph}{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite {Cohen1995} - Implementaci\IeC {\'o}n JRip:}{33}
 \contentsline {paragraph}{C4.5 \cite {Quinlan1993} - Implementaci\IeC {\'o}n J48:}{33}
-\contentsline {paragraph}{Support Vector Machines \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{33}
+\contentsline {paragraph}{Support Vector Machine \cite {Platt98sequentialminimal} - Implementaci\IeC {\'o}n Function SMO:}{33}
 \contentsline {paragraph}{Naive Bayes \cite {DBLP:conf/flairs/Zhang04} - Implementaci\IeC {\'o}n hom\IeC {\'o}nima:}{33}
 \contentsline {section}{\numberline {6.3}Tests estad\IeC {\'\i }sticos}{34}
 \contentsline {subsection}{\numberline {6.3.1}Test de Wilcoxon}{34}
@@ -60,4 +60,4 @@
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{50}
 \contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{50}
 \contentsline {section}{\numberline {6.6}Combinando clases de atributos}{51}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{54}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{53}
