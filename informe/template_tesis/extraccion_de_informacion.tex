@@ -83,7 +83,7 @@ La extracción de atributos fue realizada utilizando el lenguaje Python, que ele
 
 Después de la alineación realizada, se ejecuta el extractor de atributos. Este posee como input los archivos Wav y TextGrid que corresponden a las alineaciones temporales de cada fonema en cada audio. El diagrama de flujo del extractor se puede ver en la Figura \ref{workflow}. 
 
-La rutina principal del programa toma una por una las grabaciones y su etiquetado asociado. Esta se representa en el componente ``Extractor''. Este llama a distintos componentes que van a calcular cada atributo. Para calcular estos atributos vamos a dividir en dos componentes: ``Extractor temporal'' que se encarga de extraer \textit{atributos temporales} y ``Extractor acústico'' que se encarga de extraer \textit{atributos acústicos}. Los atributos temporales son calculados solamente utilizando el TextGrid, mientras que los atributos acústicos son calculados usando tanto el TextGrid como el archivo de audio. Si el atributo está presente en la grabación, tendremos ese dato en la extracción; si no, se dejará como desconocido. Luego de calculado todos sus atributos para cada grabación, juntamos todos los resultados y generamos el archivo Arff utilizando el componente ``Generador de archivo Arff''.
+La rutina principal del programa toma una por una las grabaciones y su etiquetado asociado. Esta se representa en el componente ``Extractor''. Este llama a distintos componentes que van a calcular cada atributo. Para calcular estos atributos dividimos en dos componentes: ``Extractor temporal'' que se encarga de extraer \textit{atributos temporales} y ``Extractor acústico'' que se encarga de extraer \textit{atributos acústicos}. Los atributos temporales son calculados solamente utilizando el TextGrid, mientras que los atributos acústicos son calculados usando tanto el TextGrid como el archivo de audio. Si el atributo está presente en la grabación, tendremos ese dato en la extracción; si no, se dejará como desconocido. Luego de calculado todos sus atributos para cada grabación, juntamos todos los resultados y generamos el archivo Arff utilizando el componente ``Generador de archivo Arff''.
 
 En el archivo Arff cada línea representa una grabación.  Cada una de estas lineas posee todos los resultados del cálculo de los atributos separado por comas. Cada uno de estos atributos corresponde al cálculo de una regla correspondiente. Necesitamos utilizar este formato ya que es necesario para ingresar datos en Weka, la plataforma que elegimos para correr algoritmos de \textit{machine learning}. Veamos cada uno de los dos tipos de atributos.
 
@@ -119,7 +119,7 @@ La primera normalización, conocida como z-score, será utilizando la forma:
 
 El valor a normalizar puede variar: mientras uno va a tener en cuenta fonemas, el otro tiene en cuenta sílabas. Debemos utilizar los datos normalizados ya que necesitamos atributos que nos muestren, para un hablante en particular, si el fonema en cuestión es relevante con respecto a los demás de la grabación. Al normalizar un atributo vemos cuán fuera de lo común resulta en el marco de \textit{ese} hablante en particular en \textit{esa} grabación. No importa si habla lento o rápido. Lo importante es la relación del fonema a medir con respecto a los demás. Lo mismo sucede para las sílabas. Si utilizáramos valores absolutos, se perdería esta relación ya que variaría con respecto a la velocidad del habla de cada hablante y cada grabación.
  
-A continuación veamos los atributos en particular para cada uno de los grupos y cómo se realiza su cálculo. Para la regla 1 vamos a definir atributos silábicos, ya que corresponde a reglas que están definidas para sílabas, mientras que para las demás reglas (2 al 6) vamos a definir atributos fonéticos.
+A continuación veamos los atributos en particular para cada uno de los grupos y cómo se realiza su cálculo. Para la regla 1 definimos atributos silábicos, ya que corresponde a reglas que están definidas para sílabas, mientras que para las demás reglas (2 al 6) definimos atributos fonéticos.
 
 \subsubsection{Atributos fonéticos}
 
@@ -412,7 +412,7 @@ Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab\
 
 Una grabación no puede definir todos los atributos que declaramos. Cada frase define sólo algunos atributos y los demás no sabe cuál es su posible valor. Es por eso que debemos tomar una decisión sobre qué hacer con los atributos que no conocemos. 
 
-Determinamos que a los atributos que no pudieron ser extraídos en la grabación los marcaremos como desconocidos. Si para una grabación un atributo es desconocido, no vamos a poder saber ese valor para ese hablante. Debemos analizar otra grabación del mismo hablante que defina ese atributo.
+Determinamos que a los atributos que no pudieron ser extraídos en la grabación los marcaremos como desconocidos. Si para una grabación un atributo es desconocido, no sabremos ese valor para ese hablante. Debemos analizar otra grabación del mismo hablante que defina ese atributo.
 
 \subsection{Nomenclatura utilizada}
 Para referenciar cada uno de los atributos debimos definir una nomenclatura. La definición que tomamos es la siguiente:

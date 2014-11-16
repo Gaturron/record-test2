@@ -4,7 +4,7 @@
 
 Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline.
 
-Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, vamos a tener un fold por cada hablante. En la Tabla \ref{cv-porHabProm} vemos este esquema.
+Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. En la Tabla \ref{PAH_esq_cv} vemos este esquema.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -28,7 +28,7 @@ Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunt
 		
 	\end{tabular}
 	\caption{Esquema de validación cruzada}
-	\label{cv-porHabProm}
+	\label{PAH_esq_cv}
 \end{table}
 
 Otro problema que surgió de la validación cruzada anterior es la masiva cantidad de valores desconocidos. Pensamos que esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
@@ -53,7 +53,7 @@ Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada habla
 	\label{datos_orig}
 \end{table}
 
-Para cada hablante vamos a juntar sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no vamos a poder definir ningún valor y va a quedar como valor desconocido. 
+Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -67,7 +67,7 @@ Para cada hablante vamos a juntar sus audios realizando el promedio de cada atri
 		\hline
 	\end{tabular}
 	\caption{Atributos modificados}
-	\label{datos_comb}
+	\label{PAH_datos_comb}
 \end{table}
 
 Resumiendo, por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
@@ -76,7 +76,7 @@ Esta variante la realizamos solamente utilizando los atributos temporales. Desca
 
 \subsubsection{Resultados}
 
-Los resultados de este cross-validaton podemos observarlo en la página \ref{class_corr_en_pct}.
+Los resultados de este cross-validaton podemos observarlo en la página \ref{PAH_class_corr_en_pct}.
 
 \begin{table}[H]
 	\centering
@@ -86,14 +86,12 @@ Los resultados de este cross-validaton podemos observarlo en la página \ref{cla
 		\textbf{Promedio} & 53.33 & 60 & 60 & \textbf{93.33} & 80  \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{class_corr_en_pct}
+	\label{PAH_class_corr_en_pct}
 \end{table}
 
 Podemos observar que el clasificador Zero Rule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados.
 
-\subsubsection{Wilcoxon y Test t de Student}
-
-Los resultados sobre el p-valor de cada test estadístico se puede ver en la tabla \ref{res_tests_wilcoxon_student}.
+Los resultados sobre el p-valor de cada test estadístico de Wilcoxon y Test t de Student se puede ver en la tabla \ref{PAH_res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
@@ -106,20 +104,18 @@ Los resultados sobre el p-valor de cada test estadístico se puede ver en la tab
 			\textbf{ZeroR y SVM}  &  \textbf{0.004282} & \textbf{0.009828} \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
-	\label{res_tests_wilcoxon_student}
+	\label{PAH_res_tests_wilcoxon_student}
 \end{table}
 
 Los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y realizar el test T de Student.
 
 Podemos observar que para el clasificador Support vector machines posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Support vector machines hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
 
-\subsubsection{Clasificadores encontrados}
+\subsubsection{Análisis de los clasificadores construidos}
 
 Analizando los clasificadores notamos que el clasificador C4.5 armó árboles de decisión más elaborados. Notamos eso también viendo que su performance superó a Zero Rules. 
 
 Veamos un árbol de decisión generado por C4.5. Este corresponde al fold 7. 
-
-\subsubsection*{Clasificador C4.5}
 
 \dirtree{%
 	.1 root.
@@ -132,11 +128,11 @@ Los árboles de decisión generados esta vez utilizan mucho  atributos como $FON
 
 \subsubsection{Características del modelo de test}
 
-Este modelo de test dió muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C 4.5 pudo armar árboles mejores. 
+Este modelo de test dio muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C4.5 pudo armar árboles mejores. 
 
 Sin embargo, la forma que evitamos los valores desconocidos no es la mejor. El resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa. 
 
-Esto también se ve reflejado en las matrices de confusión de cada fold. Cada una de ellas son de la forma: 
+Esto también se ve reflejado en las matrices de confusión de cada fold. Podemos ver en la tabla \ref{PAH_mat_conf_f1_solo0o1} la matriz de confusión del clasificador Ripper para el fold 1. En cada una de ellas, para cualquier clasificador, siempre se encuentra una sola instancia. 
 
 \begin{table}[H]
 	\centering
@@ -146,7 +142,6 @@ Esto también se ve reflejado en las matrices de confusión de cada fold. Cada u
 		1 & 0 & Buenos Aires\\ \hline
 		0 & 0 & Córdoba\\ \hline
 	\end{tabular}
+	\caption{Matriz de confusión fold 1}
+	\label{PAH_mat_conf_f1_solo0o1}
 \end{table}
-
-Donde siempre se encuentra sólo una instancia.
-

@@ -7,7 +7,7 @@
 \tikzset{myshade/.style={minimum size=.4cm,shading=radial,inner color=white,outer color={#1!90!gray}}}
 \newcommand\mycirc[1][]{\tikz\node[circle,myshade=#1]{};}
 
-Vamos a definir un modelo de test distinto. Este va a enfatizar más la idea del hablante y de cómo distinguirlo. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos grabaciones repetidas en los grupos de tests. Podemos ver este esquema en la Tabla \ref{esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en inglés: Leave-one-out cross-validation)
+Vamos a definir un modelo de test distinto. Este va a enfatizar más la idea del hablante y de cómo distinguirlo. Para cada fold generado, excluiremos un hablante y entrenaremos con todos los demás. Luego testeamos contra ese hablante excluido. Este nuevo esquema evita que tengamos grabaciones repetidas en los grupos de tests. Podemos ver este esquema en la Tabla \ref{HPTDT_esq_cv}. Este esquema también es conocido como \textbf{validación cruzada dejando uno fuera} (en inglés: Leave-one-out cross-validation)
 
 En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Córdoba. Vamos a tener 27 folds distintos para cada uno de ellos. Cada uno de estos folds va a excluir todos los audios de este hablante, por eso cuando nos referimos a un hablante nos referimos a todos los audios grabados por él.
 
@@ -33,12 +33,12 @@ En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Có
 	
 	\end{tabular}
 	\caption{Esquema de cross-validation}
-	\label{esq_cv}
+	\label{HPTDT_esq_cv}
 \end{table}
 		
 \subsubsection{Resultados}
 
-En la tabla \ref{clas_xval_porHab} podemos observar los resultados de clasificación. Expresamos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. 
+En la tabla \ref{HPTDT_clas_xval_porHab} podemos observar los resultados de clasificación. Expresamos solamente el promedio de clasificación correcta de los folds para cada clasificador. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. 
 
 \begin{table}[H]
 	\centering
@@ -50,12 +50,12 @@ En la tabla \ref{clas_xval_porHab} podemos observar los resultados de clasificac
 		\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{clas_xval_porHab}
+	\label{HPTDT_clas_xval_porHab}
 \end{table}
 
 Llama la atención que todos los clasificadores tuvieron porcentajes muy cercanos. Esto lo analizaremos más adelante. 
 
-Realizamos los test estadísticos de Wilcoxon y Test t de Student para este modelo de test. Estos resultados se pueden observar en la tabla  \ref{res_tests_wilcoxon_student}.
+Realizamos los test estadísticos de Wilcoxon y Test t de Student para este modelo de test. Estos resultados se pueden observar en la tabla  \ref{HPTDT_res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
@@ -68,7 +68,7 @@ Realizamos los test estadísticos de Wilcoxon y Test t de Student para este mode
 		\textbf{ZeroR y SVM}  & 0.4302 & 0.2646 \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
-	\label{res_tests_wilcoxon_student}
+	\label{HPTDT_res_tests_wilcoxon_student}
 \end{table}
 
 Los valores expresados corresponden al p-valor. Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. A pesar de esto, realizamos ambos tests estadísticos para cada uno. Estos test mostraron que las diferencias entre cada clasificador y el baseline no son estadísticamente significativos.
@@ -102,7 +102,7 @@ Analizando el algoritmo del clasificador C4.5 notamos que el árbol generado pue
 
 Recordemos que el algoritmo C4.5 para armar el árbol de clasificación va tomando el atributo con mayor ganancia de información y agregándolo como un nuevo nodo al árbol. Luego descarta el atributo ya elegido y se llama recursivamente en cada rama. 
 
-Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Recordemos que, para un hablante, cada uno de sus audios sólo define atributos para la frase grabada. Si en la grabación no se extrae ese atributo, quedará con valor desconocido. 
+Si hay muchas instancias con atributos desconocidos, pocos atributos tendrán buena ganancia de información y no podrá armar un árbol extenso. Recordemos que, para un hablante, cada uno de sus audios sólo define atributos para la frase grabada. Si en la grabación no se extrae ese atributo, quedará con valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -116,9 +116,9 @@ Si hay muchas instancias con atributos desconocidos, no muchos atributos tendrá
 		\hline
 	\end{tabular}
 	\caption{Ejemplo de atributos para un hablante}
-	\label{hablante_ej}
+	\label{HPTDT_hablante_ej}
 \end{table}
 
-Veamos un ejemplo: en la tabla \ref{hablante_ej} podemos ver los atributos extraídos de un hablante ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
+Veamos un ejemplo: en la tabla \ref{HPTDT_hablante_ej} podemos ver los atributos extraídos de un hablante ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
 
-Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools} \footnote{En la página 194 está la explicación que nos ayudó a razonar esta idea.}. Vamos a probar otro modelo de test que intente evitar tener tantos valores desconocidos. 
+Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools} \footnote{En la página 194 está la explicación que nos ayudó a razonar esta idea.}. En la sección \ref{prom_los_atributos_de_cada_hablante} probaremos otro modelo de test que intente evitar tener tantos valores desconocidos. 

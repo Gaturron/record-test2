@@ -1,6 +1,6 @@
 % Cada hablante que tenga un atributo '?' cambiarlo por el promedio de ese atributo en las demás audios
-\subsection{Promediando los atributos de cada hablante sólo si es desconocido}
-\label{prom_los_atributos_de_cada_hablante_solo_si_es_desconocido}
+\subsection{Promediando los atributos de cada hablante para valores desconocidos}
+\label{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}
 
 En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Sí bien esto es cierto, no es necesario promediar en todos los casos. 
 
@@ -24,9 +24,9 @@ Supongamos que tenemos el mismo conjunto de datos a la Tabla \ref{datos_orig}. S
 %	\label{attr_orig}
 %\end{table}
 
-Es por ello que proponemos esta variante. Cuando haya un atributo desconocido en un audio, vamos a promediarlo con los atributos de los demás audios del mismo hablante. En la tabla \ref{attr_mod} se puede ver el resultado de esta variante marcado con negrita los nuevos valores. 
+Es por ello que proponemos esta variante. Cuando haya un atributo desconocido en un audio, definiremos su valor promediando con los atributos de los demás audios del mismo hablante. En la tabla \ref{PAHD_attr_mod} se puede ver el resultado de esta variante marcado con negrita los nuevos valores. 
 
-Por ejemplo: para el Hablante 1, el Audio1 no tiene definido el atributo A1. Entonces vamos a promediarlo con los demás audios. El Audio1 y Audio3 sí tienen este atributo definido y sus valores son 2 y 1 respectivamente. Realizamos el promedio nuevamente: $ 2 + 1 / 2 = 1,5$ entonces el valor del atributo 1 para el Audio2 es 1,5. De esta forma, no perdemos información con respecto al audio extraído.
+Por ejemplo: para el Hablante 1, el Audio1 no tiene definido el atributo A1. Entonces definimos su valor promediando ese atributo utilizando los demás audios. El Audio1 y Audio3 sí tienen este atributo definido y sus valores son 2 y 1 respectivamente. Realizamos el promedio nuevamente: $ 2 + 1 / 2 = 1,5$ entonces el valor del atributo 1 para el Audio2 es 1,5. De esta forma, no perdemos información con respecto al audio extraído.
 
 \begin{table}[H]
 	\centering
@@ -43,10 +43,12 @@ Por ejemplo: para el Hablante 1, el Audio1 no tiene definido el atributo A1. Ent
 		\hline
 	\end{tabular}
 	\caption{Atributos modificados 2}
-	\label{attr_mod}
+	\label{PAHD_attr_mod}
 \end{table}
 
-Podemos observar los resultados del promedio de los folds para cada clasificador en la tabla \ref{class_corr_en_pct}. En este caso, el clasificador Zero Rule tuvo el porcentaje esperado y los demás por arriba de su valor. Esto nos muestra que utilizando estos atributos se puede superar el baseline. El clasificador que mejor performance tuvo fue Support vector machine.
+\subsubsection{Resultados}
+
+Podemos observar los resultados del promedio de los folds para cada clasificador en la tabla \ref{PAHD_class_corr_en_pct}. En este caso, el clasificador Zero Rule tuvo el porcentaje esperado y los demás por arriba de su valor. Esto nos muestra que utilizando estos atributos se puede superar el baseline. El clasificador que mejor performance tuvo fue Support vector machine.
 
 \begin{table}[H]
 	\centering
@@ -56,14 +58,12 @@ Podemos observar los resultados del promedio de los folds para cada clasificador
 		\textbf{Promedio} & 50 & 72.44 & 73.48 & \textbf{77.19} & 74.62 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{class_corr_en_pct}
+	\label{PAHD_class_corr_en_pct}
 \end{table}
-
-\subsubsection{Wilcoxon y Test t de Student}
 
 Los clasificadores pasaron el test Shapiro-Wilk. Gracias a esto podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y podemos realizar el test de Student para todos ellos.
 
-Corrimos los test estadísticos y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machine tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
+Corrimos los test estadísticos Wilcoxon y Test t de Student y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machine tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{PAHD_res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
 
 \begin{table}[H]
 	\centering
@@ -76,16 +76,16 @@ Corrimos los test estadísticos y obtuvimos que los resultados cada fold de Naiv
 		\textbf{ZeroR y SVM}  &  \textbf{0.02936} & \textbf{0.03522} \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
-	\label{res_tests_wilcoxon_student}
+	\label{PAHD_res_tests_wilcoxon_student}
 \end{table}
 
-\subsubsection{Clasificadores encontrados}
+\subsubsection{Análisis de los clasificadores construidos}
 
 Analizando los clasificadores para cada fold notamos que todos armaron clasificadores utilizando los atributos definidos. Como el modelo de test anterior, Support vector machine y NaiveBayes utilizaron todos los atributos mientras C4.5 y Ripper utilizaron reglas más simples.
 
 \subsubsection{Características del modelo de test}
 
-Con esta esquema mejoramos las matrices de confusión. La tabla \ref{mat_conf_f1} corresponde al primer fold. Notamos que ahora sí se analiza cada audio y se intenta clasificarlo. 
+Con esta esquema mejoramos las matrices de confusión. La tabla \ref{PAHD_mat_conf_f1} corresponde al primer fold. Notamos que ahora sí se analiza cada audio y se intenta clasificarlo. 
 
 \begin{table}[H]
 	\centering
@@ -96,7 +96,5 @@ Con esta esquema mejoramos las matrices de confusión. La tabla \ref{mat_conf_f1
 		0 & 0 & Córdoba\\ \hline
 	\end{tabular}
 	\caption{Matriz de confusión fold 1}
-	\label{mat_conf_f1}
+	\label{PAHD_mat_conf_f1}
 \end{table}
-
-% hablar de los problemas encontrados y cómo mejorarlos con el próximo cross-validation 
