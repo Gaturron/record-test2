@@ -400,15 +400,13 @@ No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para est
 %
 %Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. Analizando los resultados resumidos en la Figura \ref{res_tests_wilcoxon_student} notamos que para el clasificador Function SMO posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Function SMO hay evidencia suficiente de ser mejor que ZeroR}. Por otro lado, los demás no pudieron lograr este cometido. 
 
-\subsubsection{Clasificadores encontrados}
+\subsubsection{Análisis de los clasificadores construidos}
 
-Analizamos los clasificadores armados para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
+Analizamos los clasificadores construidos para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
 
 Para analizar mas en profundidad, veamos la salida del clasificador Ripper ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos que podemos analizar en este trabajo.
 
 Cada uno de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
-
-\paragraph*{Clasificador Ripper:}
 
 \begin{flushleft}
 	\begin{itemize}
@@ -424,10 +422,11 @@ En esta regla; la duración sobre /ll/, el estiramiento de la /s/ al final de la
 
 \subsubsection{Características del modelo de test}
 
-En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
+Analizando los resultados de la tabla \ref{class_corr_en_pct} y las características de cada fold encontramos los siguientes problemas.
+%En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
 
 \begin{itemize}
-	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de este cross-validation sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos modelos de test.
+	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de esta validación cruzada sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos modelos de test.
 	
 	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que Zero Rule:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con Zero Rule vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
 	

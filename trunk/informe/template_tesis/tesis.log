@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  13 NOV 2014 16:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  15 NOV 2014 12:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1002,19 +1002,6 @@ File: pgflibraryfadings.code.tex 2008/02/07 v2.10 (rcs-revision 1.3)
 (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-
-
-LaTeX Warning: Label `class_corr_en_pct' multiply defined.
-
-
-LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
-
-
-LaTeX Warning: Label `class_corr_en_pct' multiply defined.
-
-
-LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
-
 )
 \openout1 = `tesis.aux'.
 
@@ -1599,29 +1586,29 @@ LaTeX Info: Redefining \% on input line 406.
 LaTeX Info: Redefining \. on input line 434.
 LaTeX Info: Redefining \% on input line 434.
  [42]) (./xvalidation-porHab.tex
-LaTeX Info: Redefining \. on input line 55.
-LaTeX Info: Redefining \% on input line 55.
- [43]
-LaTeX Info: Redefining \. on input line 98.
-LaTeX Info: Redefining \% on input line 98.
- [44])
-(./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
- [45]
 LaTeX Info: Redefining \. on input line 57.
 LaTeX Info: Redefining \% on input line 57.
+ [43]
+LaTeX Info: Redefining \. on input line 101.
+LaTeX Info: Redefining \% on input line 101.
+ [44])
+(./xvalidation-porHabProm.tex
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
+ [45]
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
  [46]
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
  [47]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 130
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 126
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (25.80093pt too wide) in paragraph at lines 131--132
+Overfull \hbox (25.80093pt too wide) in paragraph at lines 127--128
 []\OT1/lmr/m/n/12 Los ^^Sarbo-les de de-ci-si^^Son ge-ne-ra-dos es-ta vez uti-l
 i-zan mu-cho atri-bu-tos co-mo $\OML/lmm/m/it/12 FON[]ll[]norm$
  []
@@ -1753,43 +1740,50 @@ Underfull \vbox (badness 10000) detected at line 71
 )
 LaTeX Info: Redefining \. on input line 132.
 LaTeX Info: Redefining \% on input line 132.
- [60] (./tesis.bbl) [61
+ [60] (./tesis.bbl
+Underfull \hbox (badness 2050) in paragraph at lines 8--11
+[]\OT1/lmr/m/n/10 Boersma, P. and Wee-nink, D. (2013).  Praat: doing pho-
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 8--11
+\OT1/lmr/m/n/10 ne-tics by com-pu-ter [Com-pu-ter pro-gram] Ver-sion 5.3.51, re
+-trie-ved 2 Ju-ne 2013 from
+ []
+
+) [61
 
 
 ] (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+) ) 
 Here is how much of TeX's memory you used:
- 23799 strings out of 493307
- 527422 string characters out of 6139905
- 780332 words of memory out of 5000000
- 26635 multiletter control sequences out of 15000+600000
+ 23796 strings out of 493307
+ 527489 string characters out of 6139905
+ 780486 words of memory out of 5000000
+ 26632 multiletter control sequences out of 15000+600000
  88136 words of font info for 72 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,82p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-rmsc.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont
-/lasy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
-8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmtt12.pfb>
-Output written on tesis.pdf (67 pages, 2067121 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-rmsc.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfon
+t/lasy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
+x8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmtt12.pfb>
+Output written on tesis.pdf (67 pages, 2067252 bytes).
 PDF statistics:
  347 PDF objects out of 1000 (max. 8388607)
  224 compressed objects within 3 object streams

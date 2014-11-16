@@ -10,7 +10,7 @@ Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página 
 
 \section{Baseline}
 
-El baseline define el clasificador más simple, que posteriormente tratamos de vencer. No encontramos ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria. Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias vamos a elegir siempre Córdoba. La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
+El baseline define el clasificador más simple, que posteriormente tratamos de vencer. No encontramos ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria. Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias elegimos siempre Córdoba. La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
 Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Utilizando nuestros datos, este baseline tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad como la probabilidad de clasificar correctamente un hablante. Éste fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtengan mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante. Esto se verá en detalle más adelante.
 
@@ -118,18 +118,18 @@ También de la misma forma que planteamos la hipótesis del test de Wilcoxon, es
 \hspace{2cm}$H_1$: Hay diferencias entre Zero Rule y clasificador
 \vspace{0.5cm}
 
-La ventaja de usarlo es que, al saber qué distribución representa, vamos a tener resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$. De lo contrario, sí hay evidencia y rechazamos $H_0$.
+La ventaja de usarlo es que, al saber qué distribución representa, obtenemos resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$. De lo contrario, sí hay evidencia y rechazamos $H_0$.
 
 \section{Modelos de tests}
 
-En esta sección vamos a explicar en detalle varios modelos de tests así como también qué resultados obtuvimos en cada uno de ellos. Éstos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. 
+En esta sección explicamos en detalle varios modelos de tests así como también qué resultados obtuvimos en cada uno de ellos. Éstos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. 
 
 Los siguientes modelos de tests son los que probamos:
 \begin{itemize}
 	\item Validación cruzada estándar modificada para evitar grabaciones del mismo hablante en el mismo conjunto (sección \ref{grupo_de_hablantes})
 	\item Validación cruzada por hablante dejando un hablante afuera (sección \ref{un_hablante_para_test_los_demas_train})
 	\item Validación cruzada por hablante dejando uno afuera promediando los atributos de cada hablante y balanceando la cantidad de hablantes (sección \ref{prom_los_atributos_de_cada_hablante})
-	\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_solo_si_es_desconocido}) 
+	\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}) 
 \end{itemize}
 
 La extracción de atributos, su normalización y el tratamiento de los valores desconocidos fueron explicados en el Capítulo \ref{extraccion}.
@@ -141,8 +141,6 @@ La extracción de atributos, su normalización y el tratamiento de los valores d
 \input{xvalidation-porHab.tex}
 \input{xvalidation-porHabProm.tex}
 \input{xvalidation-porHabPromMissAttr.tex}
-
-Analizamos a continuación cuáles atributos aportan mayor información.
 
 \input{seleccion_de_atributos.tex}
 \input{combinando_clases_de_atributos.tex}
