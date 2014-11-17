@@ -1,6 +1,7 @@
 \chapter{Datos obtenidos}
 
 En este capítulo describimos los datos obtenidos a través del framework desarrollado. 
+
 Tuvimos algunos problemas al recolectar las grabaciones. El principal problema fue que el ambiente utilizado por muchos hablantes no estaba completamente en silencio como para realizar buenas grabaciones. Muchos errores surgieron en esa dirección. Otros errores comunes pero no tan frecuentes fueron: interpretaciones erróneas de la consigna, errores de volumen del micrófono y saturación. 
 
 \section{Evaluación manual de las grabaciones}
@@ -34,7 +35,7 @@ El análisis que se presenta a continuación está basado solamente en las graba
 El alineador automático no realiza su función de forma perfecta. En ocasiones, el proceso de alineamiento forzado introduce errores. Es muy importante descartar las grabaciones mal alineadas, ya que si no lo hacemos, cuando los procese el extractor de atributos nos darían información errónea. Chequeamos cada grabación etiquetado como ``Conservar’’, y analizamos con la aplicación Praat \cite{praat} si la alineación fue correcta. Los errores de alineamiento más comunes se debieron a:
 
 \begin{itemize}
-    \item \textbf{Ruido de fondo:} las grabaciones donde el alineador se comporta de peor manera son aquéllos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la Figura \ref{alinMala} se puede ver un ejemplo utilizando Praat.
+    \item \textbf{Ruido de fondo:} las grabaciones donde el alineador se comporta de peor manera son aquéllos en los que se escucha ruido de fondo. En esos casos, las alineaciones resultan muy malas. Lamentablemente en nuestro caso esto es bastante común. En la figura \ref{alinMala} se puede ver un ejemplo utilizando Praat.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{alineacion_mala_inf} }
@@ -42,7 +43,7 @@ El alineador automático no realiza su función de forma perfecta. En ocasiones,
     \label{alinMala}
 \end{figure}
 
-    \item \textbf{``Mouse clic’’ al finalizar:} las grabaciones recibieron ruido del movimiento propio del hablante. Pasó en muchas oportunidades que el clic de finalizar del mouse se grabó como parte final en el audio (Ver Figura \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que el alineador lo confunde con habla.
+    \item \textbf{``Mouse clic’’ al finalizar:} las grabaciones recibieron ruido del movimiento propio del hablante. Pasó en muchas oportunidades que el clic de finalizar del mouse se grabó como parte final en el audio (Ver figura \ref{clickFinal}). Ese sonido se grabó y afectó la alineación de forma tal que el alineador lo confunde con habla.
     
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{click_al_final_inf} }
