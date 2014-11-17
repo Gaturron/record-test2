@@ -8,7 +8,7 @@ En la base de datos se guarda la información de cada hablante, las frases a gra
 
 \section{Recolección de datos}
 
-Cuando un usuario visita nuestra página, primero debe llenar un formulario. Este le pregunta: género, fecha de nacimiento, lugar donde se crió y donde reside actualmente. Al confirmar el formulario, los datos son grabados en la base de datos en el servidor. Esto se puede apreciar en la Figura \ref{figEncuesta}. Luego se procede a realizar las grabaciones. 
+Cuando un usuario visita nuestra página, primero debe llenar un formulario. Este le pregunta: género, fecha de nacimiento, lugar donde se crió y donde reside actualmente. Al confirmar el formulario, los datos son grabados en la base de datos en el servidor. Esto se puede apreciar en la figura \ref{figEncuesta}. Luego se procede a realizar las grabaciones. 
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.8\textwidth]{pag-inicio2} }
@@ -34,13 +34,13 @@ Cuando un usuario visita nuestra página, primero debe llenar un formulario. Est
     \label{reproduciendo}
 \end{figure}
 
-En la pantalla de grabación el usuario debe confirmar el acceso al micrófono que posee en su computadora, como se puede apreciar en la Figura \ref{allowmic}. Una vez hecho esto, se le explica las instrucciones del experimento y luego puede empezar a grabar. 
+En la pantalla de grabación el usuario debe confirmar el acceso al micrófono que posee en su computadora, como se puede apreciar en la figura \ref{allowmic}. Una vez hecho esto, se le explica las instrucciones del experimento y luego puede empezar a grabar. 
 
-Cada nuevo experimento utiliza una nueva traza del conjunto de trazas descriptas en el capítulo anterior. La interfaz que ve el usuario al grabar cada frase se puede ver en la Figura \ref{grabando}. Las grabaciones pueden ser escuchadas por el usuario. Si el usuario al escucharla nota que no es una buena grabación, tiene la posibilidad de grabarla otra vez. Lo importante es que la última grabación se escuche lo mejor posible. Para que el usuario reproduzca su grabación se aprieta el botón \textit{Reproducir} como se ve en la figura \ref{reproduciendo}. 
+Cada nuevo experimento utiliza una nueva traza del conjunto de trazas descriptas en el capítulo anterior. La interfaz que ve el usuario al grabar cada frase se puede ver en la figura \ref{grabando}. Las grabaciones pueden ser escuchadas por el usuario. Si el usuario al escucharla nota que no es una buena grabación, tiene la posibilidad de grabarla otra vez. Lo importante es que la última grabación se escuche lo mejor posible. Para que el usuario reproduzca su grabación se aprieta el botón \textit{Reproducir} como se ve en la figura \ref{reproduciendo}. 
 
 Una vez que el hablante cree que su grabación se escuche bien, la confirma. Cada vez que se graba un audio, este se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz\footnote{Necesitamos una frecuencia de muestreo que permita analizar las diferencias de los dos grupos sin ocupar excesivo espacio por cada grabación. Elegimos 22,05 KHz ya que nos permite realizar el experimento. Esta frecuencia de muestreo equivale a la mitad de frecuencia de un CD de audio. }, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
 
-Recordemos que los hablantes graban en series de 5 frases. Una vez terminadas estas 5 frases se le pregunta si querría seguir grabando o terminar el experimento. De esta forma, el hablante aporta el tiempo que puede disponer.
+Recordemos que los hablantes graban en series de 5 frases. Una vez terminadas estas 5 frases se le pregunta si querría seguir grabando o terminar el experimento. De esta forma, el hablante aporta grabaciones el tiempo que puede disponer.
 
 \section{Grabación a través del browser}
 
@@ -68,7 +68,7 @@ Además de la interfaz pública para grabar, implementamos un sistema privado pa
 
 \subsection{Etiquetado de audio}
 
-Cuando varias personas terminan el experimento, los administradores pueden acceder a una página donde se puede escuchar cada audio que se va grabando. Los administradores escuchan las grabaciones y según su calidad los etiquetan con alguna de las etiquetas definidas. Las etiquetadas utilizadas esta vez son: `Conservar’,  `Sonido saturado’, `Mucho ruido de fondo’, `Problemas en el habla’. Esto se puede ver en Figura \ref{cat}.
+Cuando varias personas terminan el experimento, los administradores pueden acceder a una página donde se puede escuchar cada audio que se va grabando. Los administradores escuchan las grabaciones y según su calidad los etiquetan con alguna de las etiquetas definidas. Las etiquetadas utilizadas esta vez son: `Conservar’,  `Sonido saturado’, `Mucho ruido de fondo’, `Problemas en el habla’. Esto se puede ver en figura \ref{cat}.
 
 \begin{figure}[h!]
     \centerline{\includegraphics[width=0.5\textwidth]{categorizando_audios} }
@@ -76,7 +76,7 @@ Cuando varias personas terminan el experimento, los administradores pueden acced
     \label{cat}
 \end{figure}
 
-Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una URL y bajarlo sin necesidad de conectarse al servidor. Se necesita ser usuario del sistema para poder acceder a estas opciones.
+Para acceder a los audios que fueron etiquetados de una determinada manera, el sistema tiene distintas URLs que nos permiten bajar todos esos audios en un archivo comprimido. Entonces si quisiéramos bajar todo el audio etiquetado con la categoría `Conservar’ podemos acceder a una URL y bajarlo sin necesidad de conectarse al servidor. Se necesita ser administrador del sistema para poder acceder a estas opciones.
 
 \section{Backups automáticos}
 
