@@ -6,9 +6,9 @@
 
 %Para medir el rendimiento de los distintos clasificadores definimos un modelo de testing. Este separa una parte de los datos obtenidos para entrenar el clasificador y otro para testearlo.
 
-La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir los audios en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga audios en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que podría suceder que estaríamos entrenando con audios de un hablante que luego sería testeado en otro audio.
+La complejidad del problema y la forma en que fue realizado el experimento nos lleva a tener que descartar un modelo de testing común. Si utilizamos un modelo estándar deberíamos dividir las grabaciones en dos grupos, uno lo usaríamos para entrenar y otro para testear. En este contexto, podría surgir el problema de que un hablante tenga grabaciones en el conjunto de train y también en el de test. En ese caso el test sería erróneo ya que podría suceder que estaríamos entrenando con grabaciones de un hablante que luego sería testeado en otro audio.
 
-Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de audios aportados por cada hablante fue muy variable: viendo el conjunto de datos, el hablante que más aportó grabaciones realizó 30 de las mismas, mientras que el hablante que menos aportó realizó 1 solamente. Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de audios en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}. Asegurándonos que tenemos más instancias en train que en test, evitamos tener folds con pocas instancias para entrenar.
+Para evitar este inconveniente debimos tomar en cuenta los hablantes a la hora de dividir los grupos. Dividimos \textbf{a los hablantes} en dos conjuntos: uno llamado train que se utiliza para entrenar, y otro test que testea el clasificador entrenado. Si bien esto evita el problema anterior, la cantidad de grabaciones aportados por cada hablante fue muy variable: viendo el conjunto de datos, el hablante que más aportó grabaciones realizó 30 de las mismas, mientras que el hablante que menos aportó realizó 1 solamente. Tomando en cuenta esto, la cantidad de audios de un conjunto puede quedar muy desbalanceada con respecto al otro. Por ejemplo, puede pasar que la cantidad de grabaciones en test sea mayor a la de train. Este caso lo queremos descartar ya que estaríamos intentando clasificar sin haber entrenado lo suficiente. Para mitigar este problema, hicimos que el conjunto de train tenga el 70\% de las instancias mientras que el restante 30\% sea destinado para test. Estos dos grupos conformaron un par que lo llamaremos \textit{fold}. Asegurándonos que tenemos más instancias en train que en test, evitamos tener folds con pocas instancias para entrenar.
 
 \begin{figure}[H]
 	\begin{tikzpicture}[node distance=1cm]
@@ -213,7 +213,7 @@ La tabla \ref{class_corr_en_pct} resume los resultados de clasificación correct
 	\label{class_corr_en_pct}
 \end{table}
 
-En esta tabla, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver gráficamente los resultados de clasificación correcta de dicha tabla. Excluimos a Ripper y C4.5 por dar muy parecido a Zero Rule.
+En la tabla \ref{class_corr_en_pct}, Fold 1 corresponde al primer par $<$train, test$>$, Fold 2 al segundo par y así sucesivamente. En la figura \ref{porcentajexClasificador} se puede ver gráficamente los resultados de clasificación correcta de dicha tabla. Excluimos a los clasificadores Ripper y C4.5 por dar muy parecido a Zero Rule.
 
 \begin{figure}[H]
 	\centering
@@ -404,9 +404,7 @@ No realizaremos los tests estadísticos de Wilcoxon y Test t de Student para est
 
 Analizamos los clasificadores construidos para cada fold. Estos nos dan más información para entender los resultados. Notamos que los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos para su clasificación. Fueron los que más provecho sacaron a los atributos. Por otro lado, el clasificador C4.5 armó un árbol de decisión sólo de un nivel. Es por esto que tuvo una mala performance y no aprovechó los atributos.
 
-Para analizar mas en profundidad, veamos la salida del clasificador Ripper ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos que podemos analizar en este trabajo.
-
-Cada uno de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
+Para analizar mas en profundidad, veamos la salida del clasificador Ripper ya que, de los clasificadores elegidos, es el que nos provee reglas utilizando una cantidad pequeña de atributos que podemos analizar en este trabajo. Cada uno de los folds devolvió un conjunto de reglas y no fueron necesariamente iguales entre sí. Estos datos corresponden a la clasificación para fold 1.
 
 \begin{flushleft}
 	\begin{itemize}
@@ -426,11 +424,11 @@ Analizando los resultados de la tabla \ref{class_corr_en_pct} y las característ
 %En esta sección vamos a analizar los datos que obtuvimos en este cross-validation. Para ello analizamos los valores de la Tabla \ref{class_corr_en_pct} y las características del armado de cada fold. Las características son:
 
 \begin{itemize}
-	\item \textbf{Los grupos de tests no son independientes:} Si tomamos dos tests al azar de esta validación cruzada sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos modelos de test.
+	\item \textbf{Los grupos de tests no son independientes:} si tomamos dos tests al azar de esta validación cruzada sucede que tiene instancias de audios repetidas. Esto es una característica que intentaremos evitar en los próximos modelos de test.
 	
-	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que Zero Rule:} Si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con Zero Rule vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
+	\item \textbf{El clasificador C4.5 tiene el mismo rendimiento que Zero Rule:} si vemos el promedio de porcentajes clasificados correctamente y lo comparamos con Zero Rule vemos que inclusive es menor. Viendo el clasificador creado por C4.5 notamos que, en todos los folds, armaba árboles de sólo un nodo de altura. 
 	
-	\item \textbf{Zero Rule tiene un rendimiento mejor al 50 \%: } Este clasificador elige siempre la clase mayoritaria. Si su rendimiento es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra. Particularmente, hay más instancias de Buenos Aires que de Córdoba.
+	\item \textbf{Zero Rule tiene un rendimiento mejor al 50 \%: } este clasificador elige siempre la clase mayoritaria. Si su rendimiento es mayor al 50 \% quiere decir que hay más instancias de una clase que de otra. Particularmente, hay más instancias de Buenos Aires que de Córdoba.
 \end{itemize}
 
 En los siguiente modelos de test intentamos mejorar estos problemas.

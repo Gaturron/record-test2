@@ -2,9 +2,7 @@
 \subsection{Promediando los atributos de cada hablante}
 \label{prom_los_atributos_de_cada_hablante}
 
-Vamos a armarnos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline.
-
-Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. En la tabla \ref{PAH_esq_cv} vemos este esquema.
+Armamos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. En la tabla \ref{PAH_esq_cv} vemos este esquema.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -70,7 +68,7 @@ Para cada hablante juntamos sus audios realizando el promedio de cada atributo. 
 	\label{PAH_datos_comb}
 \end{table}
 
-Resumiendo, por cada hablante se define una fila de atributos. Esto minimizaría la cantidad de valores desconocidos por cada grabación.
+Resumiendo, por cada hablante se define una fila de atributos. Esto minimiza la cantidad de valores desconocidos por cada grabación.
 
 Esta variante la realizamos solamente utilizando los atributos temporales. Descartamos los atributos acústicos porque corresponden a grabaciones que en muchas oportunidades sufren de ruido y pensamos que también podía ser una causa por la cual los clasificadores tienen mal rendimiento.
 
@@ -89,7 +87,7 @@ Los resultados de este cross-validaton podemos observarlo en la página \ref{PAH
 	\label{PAH_class_corr_en_pct}
 \end{table}
 
-Podemos observar que el clasificador Zero Rule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados.
+Podemos observar que el clasificador Zero Rule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados: Support vector machine y NaiveBayes.
 
 Los resultados sobre el p-valor de cada test estadístico de Wilcoxon y Test t de Student se puede ver en la tabla \ref{PAH_res_tests_wilcoxon_student}.
 

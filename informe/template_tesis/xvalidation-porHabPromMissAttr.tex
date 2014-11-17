@@ -2,7 +2,7 @@
 \subsection{Promediando los atributos de cada hablante para valores desconocidos}
 \label{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}
 
-En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Sí bien esto es cierto, no es necesario promediar en todos los casos. 
+En el anterior esquema vimos que promediando los atributo evitamos tener valores desconocidos. Si bien esto es cierto, no es necesario promediar en todos los casos. 
 
 Supongamos que tenemos el mismo conjunto de datos a la tabla \ref{datos_orig}. Si para cada hablante promediamos sus atributos estaríamos perdiendo información. El hablante 1 tiene en el Audio1 el atributo A1 definido como 1, mientras que en el Audio3 como 2. Si realizáramos el promedio, estos valores específicos para estos audios los perderíamos.
 
@@ -61,9 +61,7 @@ Podemos observar los resultados del promedio de los folds para cada clasificador
 	\label{PAHD_class_corr_en_pct}
 \end{table}
 
-Los clasificadores pasaron el test Shapiro-Wilk. Gracias a esto podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y podemos realizar el test de Student para todos ellos.
-
-Corrimos los test estadísticos Wilcoxon y Test t de Student y obtuvimos que los resultados cada fold de NaiveBayes y Support vector machine tienen evidencia estadística para ser mejor que Zero rules. Podemos ver los p-valores en la tabla \ref{PAHD_res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
+Los clasificadores pasaron el test Shapiro-Wilk. Gracias a esto podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y podemos realizar el test de Student para todos ellos. Corrimos los test estadísticos Wilcoxon y Test t de Student y obtuvimos que los resultados de \textbf{NaiveBayes y Support vector machine tienen evidencia estadística para ser mejor que Zero rules}. Podemos ver los p-valores en la tabla \ref{PAHD_res_tests_wilcoxon_student}. Recordemos que para que tenga evidencia suficiente su p-valor debe ser menor a 0,05.
 
 \begin{table}[H]
 	\centering
