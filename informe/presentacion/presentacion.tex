@@ -23,6 +23,12 @@
 \usepackage{colortbl, xcolor}
 \usepackage{longtable}
 \usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{multicol}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=15cm, height=8cm}
 
 %definicion para grafico en analisis de fold
 \usetikzlibrary{shapes.geometric, arrows}
@@ -502,8 +508,8 @@
 	\frametitle{Sistema de grabación online}
 	
 	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.8\textwidth]{pag-info2} }
-		\caption{Explicación del experimento}
+		\centerline{\includegraphics[width=0.8\textwidth]{pag-grabar1} }
+		\caption{Grabando}
 		\label{figEncuesta}
 	\end{figure}
 \end{frame}
@@ -512,8 +518,8 @@
 	\frametitle{Sistema de grabación online}
 	
 	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.8\textwidth]{pag-grabar1} }
-		\caption{Grabando}
+		\centerline{\includegraphics[width=0.8\textwidth]{pag-play1} }
+		\caption{Reproduciendo}
 		\label{figEncuesta}
 	\end{figure}
 \end{frame}
@@ -578,24 +584,172 @@
 	\frametitle{Extracción de información}
 	
 	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.9\textwidth]{espectograma_u3_t33_a1} }
+		\centerline{\includegraphics[width=0.9\textwidth]{espectrograma_u3_t33_a1} }
 	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Extracción de información}
+	\begin{multicols}{2}
+		Definimos tipos de atributos:
+		\begin{itemize}
+			\item Atributo acústico
+			\pause
+			\item Atributo fonético
+			\pause
+			\item Atributo silábico
+			\pause
+		\end{itemize}
+		{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
+		
+		\begin{figure}[rh!]
+			\centerline{\includegraphics[width=0.25\textwidth]{diagrama_workflow} }
+		\end{figure}
+	\end{multicols}
 	
-	Definimos tipos de atributos:
-	\begin{itemize}
-		\item Atributo acústico
-		\item Atributo fonético
-		\item Atributo silábico
-	\end{itemize}
-	{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
+\end{frame}
+
+% Definicion para el timeline
+\definecolor{mygreen}{RGB}{117,167,117}
+\definecolor{myred}{RGB}{255,1,1}
+
+\newcommand\myent[3]{%
+	\footnotesize%
+	$\begin{array}{@{}r@{}} 
+	#1 \\ #2 \\#3
+	\end{array}$%
+}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+%fin timeline
+
+\newcommand{\mfccvec}[3]% x, y
+{  
+	\node[fill={rgb:black,1;white,2;white,3}, rounded corners, draw, inner sep=+0pt] at (#1,#2) {\tiny \begin{tabular}{c}
+			Coef 1\\\hline
+			Coef 2\\\hline
+			Coef 3\\\hline
+			...\\\hline
+			Coef N\\
+		\end{tabular}};
+		\node at (#1, #2-1) {{\tiny #3}};
+	}
+
+\newcommand{\mfccvecmax}[3]% x, y
+{  
+	\node[fill={rgb:red,1;white,2;white,3}, rounded corners, draw, inner sep=+0pt] at (#1,#2) {\tiny \begin{tabular}{c}
+			Max(T1.coef1, T2.coef1, ... , TM.coef1)\\\hline
+			Max(T1.coef2, T2.coef2, ... , TM.coef2)\\\hline
+			Max(T1.coef3, T2.coef3, ... , TM.coef3)\\\hline
+			...\\\hline
+			Max(T1.coefN, T2.coefN, ... , TM.coefN)\\
+		\end{tabular}};
+		\node at (#1, #2-1) {{\tiny #3}};
+	}
 	
-	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.4\textwidth]{diagrama_workflow} }
-	\end{figure}
+\newcommand{\intervalo}[2]% x, y
+{  
+	\draw (#1,#2) -- (#1+0.8,#2);
+	\draw (#1,#2-.1) -- (#1, #2+.1);
+	\draw (#1+0.8,#2-.1) -- (#1+0.8, #2+.1);
+	
+	\draw (#1,#2) -- (#1+.1,#2+.05);
+	\draw (#1,#2) -- (#1+.1,#2-.05);
+	
+	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2+.05);
+	\draw (#1+0.8,#2) -- (#1+0.8-.1,#2-.05);
+}
+	
+	\begin{frame}
+		\frametitle{Extracción de información}
+		\Large {Atributos acústicos}
+		
+		\begin{figure}[H]	
+				\begin{tikzpicture}[samples=200, domain=0:5*360,yscale=0.9]
+				
+				\begin{axis}[
+				width=12cm, height=4cm,
+				enlarge x limits=false,
+				xtick=\empty,
+				axis lines*=middle,
+				hide y axis
+				]
+				\addplot [no markers, smooth] {sin(x)+rand*2};
+				\end{axis}
+				
+				\def \posy {-1};
+				
+				%flecha tiempo
+				\draw [->] (8.5,-0.5+\posy) -- (9.5,-0.5+\posy);
+				\node [align=center,below] at (9,-0.5+\posy) {tiempo};
+				
+				%grilla fonetica
+				\draw [->] (0,0.5+\posy) -- (10.5,0.5+\posy);
+				\draw (1.2,-.1+0.5+\posy) -- (1.2, .1+0.5+\posy);
+				\node [align=center,below] at (0.5,1.2+\posy) {/a/};
+				\draw (4,-.1+0.5+\posy) -- (4, .1+0.5+\posy);
+				\node [align=center,below] at (2.8,1.2+\posy) {/r/};
+				\draw (6.8,-.1+0.5+\posy) -- (6.8, .1+0.5+\posy);
+				\node [align=center,below] at (5.5,1.2+\posy) {/a/};	
+				\draw (9.6,-.1+0.5+\posy) -- (9.6, .1+0.5+\posy);
+				\node [align=center,below] at (8.3,1.2+\posy) {/g/};
+				
+				\pause
+				
+				%linea vertical
+				\draw[dotted] (1.2,0.5+\posy) -- (1.2,-0.4+\posy);
+				\draw[dotted] (4,0.5+\posy) -- (4,-1.4+\posy);
+				
+				%grilla
+				\draw [->] (0,0+\posy) -- (10.5,0+\posy);	
+				\foreach \r in {0,0.4,0.8,...,10.5}
+				\draw (\r,-.1+\posy) -- (\r, .1+\posy);
+				
+				%ventanas
+				\intervalo{1.2}{-0.4+\posy};
+				\intervalo{1.6}{-0.6+\posy};
+				\intervalo{2}{-0.8+\posy};
+				\intervalo{2.4}{-1+\posy};
+				\node at (3,-1.2+\posy) {...};
+				\intervalo{3.2}{-1.4+\posy};
+				
+				\pause
+				
+				\mfccvec{-0.5}{-2.5+\posy}{Trama T1};
+				\draw[blue, thick,->] (1.2,-0.55+\posy) -- (-0.5,-1.8+\posy);
+				
+				\pause
+				
+				\mfccvec{0.8}{-2.5+\posy}{Trama T2};
+				\draw[blue, thick,->] (1.6,-0.75+\posy) -- (0.8,-1.8+\posy);
+				
+				\pause
+				
+				\mfccvec{2.1}{-2.5+\posy}{Trama T3};
+				\draw[blue, thick,->] (2,-0.95+\posy) -- (2,-1.8+\posy);
+				
+				\pause
+				
+				\mfccvec{3.4}{-2.5+\posy}{Trama T4};
+				\draw[blue, thick,->] (2.4,-1.15+\posy) -- (3.4,-1.8+\posy);
+				
+				\pause
+				
+				\node at (4.2, -2.5+\posy) {...};
+				\mfccvec{5}{-2.5+\posy}{Trama TM};
+				\draw[blue, thick,->] (4,-1.55+\posy) -- (5,-1.8+\posy);
+				
+				\pause
+				%resultado
+				\mfccvecmax{9.2}{-2.5+\posy}{Resultado vector máximos}
+				\draw[decorate,decoration={brace,amplitude=7pt}] (6,-1.8+\posy) -- (6,-3.5+\posy);
+				
+				\end{tikzpicture}
+		\end{figure}
 \end{frame}
 
 \begin{frame}
