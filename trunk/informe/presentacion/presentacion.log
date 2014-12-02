@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  27 OCT 2014 22:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  1 DEC 2014 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1190,6 +1190,62 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count180
 \LT@p@ftn=\toks55
 )
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen218
+\WF@size=\dimen219
+\c@WF@wrappedlines=\count181
+\WF@box=\box67
+\WF@everypar=\toks56
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
+\c@tracingmulticols=\count182
+\mult@box=\box68
+\multicol@leftmargin=\dimen220
+\c@unbalance=\count183
+\c@collectmore=\count184
+\doublecol@number=\count185
+\multicoltolerance=\count186
+\multicolpretolerance=\count187
+\full@width=\dimen221
+\page@free=\dimen222
+\premulticols=\dimen223
+\postmulticols=\dimen224
+\multicolsep=\skip65
+\multicolbaselineskip=\skip66
+\partial@page=\box69
+\last@line=\box70
+\mult@rightbox=\box71
+\mult@grightbox=\box72
+\mult@gfirstbox=\box73
+\mult@firstbox=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\c@columnbadness=\count188
+\c@finalcolumnbadness=\count189
+\last@try=\dimen225
+\multicolovershoot=\dimen226
+\multicolundershoot=\dimen227
+\mult@nat@firstbox=\box92
+\colbreak@box=\box93
+\multicol@sort@counter=\count190
+)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
 s.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
@@ -1204,7 +1260,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen218
+\arrowsize=\dimen228
 ))
 (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
@@ -1246,20 +1302,20 @@ LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
 )
 \openout1 = `presentacion.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1297,17 +1353,17 @@ LaTeX Font Info:    ... okay on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count181
-\scratchdimen=\dimen219
-\scratchbox=\box67
-\nofMPsegments=\count182
-\nofMParguments=\count183
-\everyMPshowfont=\toks56
-\MPscratchCnt=\count184
-\MPscratchDim=\dimen220
-\MPnumerator=\count185
-\makeMPintoPDFobject=\count186
-\everyMPtoPDFconversion=\toks57
+\scratchcounter=\count191
+\scratchdimen=\dimen229
+\scratchbox=\box94
+\nofMPsegments=\count192
+\nofMParguments=\count193
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count194
+\MPscratchDim=\dimen230
+\MPnumerator=\count195
+\makeMPintoPDFobject=\count196
+\everyMPtoPDFconversion=\toks58
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1324,8 +1380,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 86.
+\AtBeginShipoutBox=\box95
+Package hyperref Info: Link coloring OFF on input line 92.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1333,11 +1389,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count187
+\c@section@level=\count197
 )
-LaTeX Info: Redefining \ref on input line 86.
-LaTeX Info: Redefining \pageref on input line 86.
-LaTeX Info: Redefining \nameref on input line 86.
+LaTeX Info: Redefining \ref on input line 92.
+LaTeX Info: Redefining \pageref on input line 92.
+LaTeX Info: Redefining \nameref on input line 92.
 
 (./presentacion.out) (./presentacion.out)
 \@outlinefile=\write5
@@ -1368,37 +1424,37 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 86.
-LaTeX Info: Redefining \. on input line 86.
-LaTeX Info: Redefining \% on input line 86.
+LaTeX Info: Redefining \includegraphics on input line 92.
+LaTeX Info: Redefining \. on input line 92.
+LaTeX Info: Redefining \% on input line 92.
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 86.
+ on input line 92.
 
 (./presentacion.nav)
-Overfull \hbox (62.39598pt too wide) in paragraph at lines 86--86
+Overfull \hbox (62.39598pt too wide) in paragraph at lines 92--92
  [][]  \OT1/cmss/bx/n/6 ([])  
  []
 
 
-Overfull \hbox (121.75954pt too wide) in paragraph at lines 86--86
+Overfull \hbox (121.75954pt too wide) in paragraph at lines 92--92
  [][][][]  
  []
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 89.
+(hyperref)                setting the option has no effect on input line 95.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
-(Font)              size <5> substituted on input line 93.
+(Font)              size <5> substituted on input line 99.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 93.
+(Font)              size <5> substituted on input line 99.
 
 [1
 
@@ -1410,7 +1466,7 @@ aphic file (type png)
 
 <use ../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>
 Package pdftex.def Info: ../template_tesis/Images/Dialectos_del_idioma_espanol_
-en_Argentina.png used on input line 103.
+en_Argentina.png used on input line 109.
 (pdftex.def)             Requested size: 123.34175pt x 214.64355pt.
 
 [2
@@ -1418,7 +1474,7 @@ en_Argentina.png used on input line 103.
  <../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 118.
+(Font)              using `OT1/cmss/bx/n' instead on input line 124.
 
 [3
 
@@ -1439,11 +1495,11 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 ] [11
 
 ]
-Underfull \vbox (badness 10000) detected at line 280
+Underfull \vbox (badness 10000) detected at line 286
  []
 
 
-Overfull \vbox (1.09608pt too high) detected at line 280
+Overfull \vbox (1.09608pt too high) detected at line 286
  []
 
 [12
@@ -1454,16 +1510,16 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Font Info:    Try loading font information for U+msa on input line 364.
+LaTeX Font Info:    Try loading font information for U+msa on input line 370.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 364.
+LaTeX Font Info:    Try loading font information for U+msb on input line 370.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 364.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 370.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -1480,53 +1536,53 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 489.
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 495.
 (pdftex.def)             Requested size: 273.83728pt x 159.6266pt.
  [17
 
  <./Images/pag-inicio2.png>]
-<Images/pag-info2.png, id=167, 1371.1225pt x 770.88pt>
-File: Images/pag-info2.png Graphic file (type png)
-
-<use Images/pag-info2.png>
-Package pdftex.def Info: Images/pag-info2.png used on input line 509.
-(pdftex.def)             Requested size: 273.83728pt x 153.94977pt.
-pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
- has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.509 \end{frame}
-                  [18
-
- <./Images/pag-info2.png>]
-<Images/pag-grabar1.png, id=175, 1371.1225pt x 770.88pt>
+<Images/pag-grabar1.png, id=167, 1317.92375pt x 683.55376pt>
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
-Package pdftex.def Info: Images/pag-grabar1.png used on input line 519.
-(pdftex.def)             Requested size: 273.83728pt x 153.94977pt.
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 515.
+(pdftex.def)             Requested size: 273.83728pt x 142.02771pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.519 \end{frame}
-                  [19
+l.515 \end{frame}
+                  [18
 
  <./Images/pag-grabar1.png>]
+<Images/pag-play1.png, id=175, 1318.9275pt x 683.55376pt>
+File: Images/pag-play1.png Graphic file (type png)
+
+<use Images/pag-play1.png>
+Package pdftex.def Info: Images/pag-play1.png used on input line 525.
+(pdftex.def)             Requested size: 273.83728pt x 141.91298pt.
+pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
+ has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.525 \end{frame}
+                  [19
+
+ <./Images/pag-play1.png>]
 <Images/categorizando_audios.png, id=184, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 529
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 535
 .
 (pdftex.def)             Requested size: 205.37926pt x 204.79237pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.529 \end{frame}
+l.535 \end{frame}
                  
-Overfull \vbox (35.27763pt too high) detected at line 529
+Overfull \vbox (35.27763pt too high) detected at line 535
  []
 
 [20
@@ -1536,126 +1592,324 @@ Overfull \vbox (35.27763pt too high) detected at line 529
 ] [22
 
 ]
-<Images/espectograma_u3_t33_a1.png, id=208, 817.0525pt x 549.05125pt>
-File: Images/espectograma_u3_t33_a1.png Graphic file (type png)
+<Images/espectrograma_u3_t33_a1.png, id=208, 1108.14pt x 359.3425pt>
+File: Images/espectrograma_u3_t33_a1.png Graphic file (type png)
 
-<use Images/espectograma_u3_t33_a1.png>
-Package pdftex.def Info: Images/espectograma_u3_t33_a1.png used on input line 5
-83.
-(pdftex.def)             Requested size: 308.06367pt x 207.01634pt.
+<use Images/espectrograma_u3_t33_a1.png>
+Package pdftex.def Info: Images/espectrograma_u3_t33_a1.png used on input line 
+589.
+(pdftex.def)             Requested size: 308.06367pt x 99.89691pt.
+ [23
 
-Overfull \vbox (7.95715pt too high) detected at line 583
- []
-
-[23
-
- <./Images/espectograma_u3_t33_a1.png>]
-<Images/diagrama_workflow.jpg, id=216, 300.12125pt x 316.18124pt>
+ <./Images/espectrograma_u3_t33_a1.png>] <Images/diagrama_workflow.jpg, id=216,
+ 182.6825pt x 402.50375pt>
 File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
 <use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 599.
-(pdftex.def)             Requested size: 136.91603pt x 144.24382pt.
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 610.
+(pdftex.def)             Requested size: 85.57382pt x 188.54419pt.
+ [24
 
-Overfull \vbox (29.95128pt too high) detected at line 599
- []
+ <./Images/diagrama_workflow.jpg>]
+File: Images/diagrama_workflow.jpg Graphic file (type jpg)
 
-[24
-
- <./Images/diagrama_workflow.jpg>] [25
-
-] [26
-
-] [27
-
-] [28
-
-] [29
-
-] [30
-
-] [31
+<use Images/diagrama_workflow.jpg>
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 610.
+(pdftex.def)             Requested size: 85.57382pt x 188.54419pt.
+ [25
 
 ]
+File: Images/diagrama_workflow.jpg Graphic file (type jpg)
+ <use Images/diagrama_workflow.jpg>
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 610.
+(pdftex.def)             Requested size: 85.57382pt x 188.54419pt.
+
+[26
+
+]
+File: Images/diagrama_workflow.jpg Graphic file (type jpg)
+ <use Images/diagrama_workflow.jpg>
+Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 610.
+(pdftex.def)             Requested size: 85.57382pt x 188.54419pt.
+ [27
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.15244pt too high) detected at line 753
+ []
+
+[28
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.1516pt too high) detected at line 753
+ []
+
+[29
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.14941pt too high) detected at line 753
+ []
+
+[30
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.14993pt too high) detected at line 753
+ []
+
+[31
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.1571pt too high) detected at line 753
+ []
+
 [32
 
 ]
-Overfull \vbox (7.83974pt too high) detected at line 866
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.16368pt too high) detected at line 753
  []
 
 [33
 
-] [34
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 
-] [35
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.157pt too high) detected at line 753
+ []
+
+[34
+
+]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 753--753
+ [] 
+ []
+
+
+Overfull \vbox (12.1517pt too high) detected at line 753
+ []
+
+[35
 
 ] [36
 
-]
+] [37
 
-Package hyperref Warning: Ignoring empty anchor on input line 953.
+] [38
 
-
-Overfull \vbox (18.93507pt too high) detected at line 953
- []
-
-[37
-
-]
-
-Package hyperref Warning: Ignoring empty anchor on input line 998.
-
-
-Package hyperref Warning: Ignoring empty anchor on input line 998.
-
-[38
-
-]pdfTeX warning (ext4): destination with the same identifier (name{class_corr_e
-n_pct}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1028 \end{frame}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{res_tests_wilcoxon_student}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1028 \end{frame}
-                   [39
+] [39
 
 ] [40
 
-]
+] [41
 
-Package hyperref Warning: Ignoring empty anchor on input line 1096.
-
-
-Package hyperref Warning: Ignoring empty anchor on input line 1096.
-
-
-Overfull \vbox (21.57233pt too high) detected at line 1096
- []
-
-[41
-
-]pdfTeX warning (ext4): destination with the same identifier (name{class_corr_e
-n_pct}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1126 \end{frame}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{res_tests_wilcoxon_student}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1126 \end{frame}
-                   [42
+] [42
 
 ] [43
 
-] [44
+]
+Overfull \vbox (7.83974pt too high) detected at line 1020
+ []
+
+[44
 
 ] [45
 
 ] [46
+
+] [47
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 1107.
+
+
+Overfull \vbox (18.93507pt too high) detected at line 1107
+ []
+
+[48
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 1152.
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 1152.
+
+[49
+
+]pdfTeX warning (ext4): destination with the same identifier (name{class_corr_e
+n_pct}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1182 \end{frame}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{res_tests_wilcoxon_student}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1182 \end{frame}
+                   [50
+
+] [51
+
+]
+
+Package hyperref Warning: Ignoring empty anchor on input line 1250.
+
+
+Package hyperref Warning: Ignoring empty anchor on input line 1250.
+
+
+Overfull \vbox (21.57233pt too high) detected at line 1250
+ []
+
+[52
+
+]pdfTeX warning (ext4): destination with the same identifier (name{class_corr_e
+n_pct}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1280 \end{frame}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{res_tests_wilcoxon_student}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1280 \end{frame}
+                   [53
+
+] [54
+
+] [55
+
+] [56
+
+] [57
 
 ]
 \tf@nav=\write6
@@ -1667,14 +1921,14 @@ l.1126 \end{frame}
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1189.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1189.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1343.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1343.
  (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1189.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1189.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1343.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1343.
 
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: C0B912B31B3B566FE4617E0ED878D498;50.
@@ -1689,16 +1943,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1189.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1343.
  ) 
 Here is how much of TeX's memory you used:
- 28052 strings out of 493307
- 626662 string characters out of 6139905
- 840742 words of memory out of 5000000
- 30734 multiletter control sequences out of 15000+600000
+ 28437 strings out of 493307
+ 633295 string characters out of 6139905
+ 932201 words of memory out of 5000000
+ 31090 multiletter control sequences out of 15000+600000
  18590 words of font info for 75 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 52i,18n,84p,737b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,18n,84p,737b,2063s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
@@ -1710,10 +1964,10 @@ type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type
 lic/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsy10.pfb>
-Output written on presentacion.pdf (46 pages, 894438 bytes).
+Output written on presentacion.pdf (57 pages, 788911 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 371 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
+ 541 PDF objects out of 1000 (max. 8388607)
+ 443 compressed objects within 5 object streams
+ 125 named destinations out of 1000 (max. 500000)
  134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
