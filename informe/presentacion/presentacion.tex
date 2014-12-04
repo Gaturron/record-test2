@@ -101,6 +101,61 @@
 % % % % Introducción
 
 \section{Introducción}
+
+\newcommand{\man}[2]{
+	\node[inner sep=0, scale=0.08] at (#1,#2){\includegraphics[width=\textwidth]{man-profile.png}};
+	\node[inner sep=0, scale=0.03] at (#1+0.5,#2+0.3){\includegraphics[width=\textwidth]{wave.png}};
+}
+\newcommand{\woman}[2]{
+	\node[inner sep=0, scale=0.08] at (#1,#2){\includegraphics[width=\textwidth]{woman-profile.png}};
+	\node[inner sep=0, scale=0.03] at (#1+0.5,#2+0.3){\includegraphics[width=\textwidth]{wave.png}};
+}
+	
+\begin{frame}
+	\frametitle{Recolectar grabaciones}
+	
+	\begin{tikzpicture}
+		\man{2}{0};
+		\man{5}{3};
+		\man{2}{6};
+		\man{4}{6};
+		
+		\woman{1}{2};
+		\woman{5}{0.5};
+		\woman{3}{4};
+		
+		\node[inner sep=0, scale=0.1] at (11,4){\includegraphics[width=\textwidth]{mic.jpg}};
+		
+	\end{tikzpicture}
+\end{frame}
+
+\def \serverpos {(11,3.5)}
+
+\begin{frame}
+	\frametitle{Recolectar grabaciones}
+	
+	\begin{tikzpicture}
+	\man{2}{0};
+	\draw[dotted,thick] (2,0) -- \serverpos;
+	\man{5}{3};
+	\draw[dotted,thick] (5,3) -- \serverpos;
+	\man{2}{6};
+	\draw[dotted,thick] (2,6) -- \serverpos;
+	\man{4}{6}
+	\draw[dotted,thick] (4,6) -- \serverpos;
+	
+	\woman{1}{2};
+	\draw[dotted,thick] (1,2) -- \serverpos;
+	\woman{5}{0.5};
+	\draw[dotted,thick] (5,0.5) -- \serverpos;
+	\woman{3}{4};
+	\draw[dotted,thick] (3,4) -- \serverpos;
+	
+	\node[inner sep=0, scale=0.2] at  \serverpos{\includegraphics[width=\textwidth]{server.png}};
+	
+	\end{tikzpicture}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Variantes del español en Argentina}
 	\begin{figure}
