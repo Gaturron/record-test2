@@ -104,15 +104,15 @@
 
 \newcommand{\man}[2]{
 	\node[inner sep=0, scale=0.08] at (#1,#2){\includegraphics[width=\textwidth]{man-profile.png}};
-	\node[inner sep=0, scale=0.03] at (#1+0.5,#2+0.3){\includegraphics[width=\textwidth]{wave.png}};
+	\node[inner sep=0, scale=0.03] at (#1+0.45,#2+0.2){\includegraphics[width=\textwidth]{wave.png}};
 }
 \newcommand{\woman}[2]{
 	\node[inner sep=0, scale=0.08] at (#1,#2){\includegraphics[width=\textwidth]{woman-profile.png}};
-	\node[inner sep=0, scale=0.03] at (#1+0.5,#2+0.3){\includegraphics[width=\textwidth]{wave.png}};
+	\node[inner sep=0, scale=0.03] at (#1+0.5,#2+0.1){\includegraphics[width=\textwidth]{wave.png}};
 }
 	
 \begin{frame}
-	\frametitle{Recolectar grabaciones}
+	\frametitle{Recolectar grabaciones para estudios del habla}
 	
 	\begin{tikzpicture}
 		\man{2}{0};
@@ -132,7 +132,7 @@
 \def \serverpos {(11,3.5)}
 
 \begin{frame}
-	\frametitle{Recolectar grabaciones}
+	\frametitle{Recolectar grabaciones para estudios del habla}
 	
 	\begin{tikzpicture}
 	\man{2}{0};
@@ -158,112 +158,54 @@
 
 \begin{frame}
 	\frametitle{Variantes del español en Argentina}
-	\begin{figure}
-		\includegraphics[scale=0.3]{../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png}\\
-	\end{figure}
+	\begin{center}
+		\begin{tikzpicture}
+		\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale=0.3]{../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png}};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Caso de estudio: Buenos Aires y Córdoba}
+	\begin{center}
+		\begin{tikzpicture}
+			\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale=0.3]{../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png}};
+			\draw[red,ultra thick,rounded corners] (4,2.4) rectangle (2,2.7);
+			\draw[red,ultra thick,rounded corners] (4,1.6) rectangle (2.3,1.9);
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
 		
-	\begin{itemize}\itemsep=3ex
-		\item \textbf{Regla 1: Los hablantes de Córdoba estiran la sílaba anterior a la acentuada mientras los de Buenos Aires no lo hacen} \\ 
-	\end{itemize}	
-	
-	\begin{center}
-		\textit{`Especta\textcolor{red}{\textbf{\textit{cu}}}\textcolor{blue}{lar}'}
-	\end{center} 
-	
-	\tab{Sílaba acentuada en \textcolor{blue}{\textit{`-lar'}}} \\ 
-	\tab{La sílaba anterior \textcolor{red}{\textit{`-cu-'}} se alarga para hablantes de Córdoba}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Diferencias entre Córdoba y Buenos Aires}
-	\begin{itemize}\itemsep=3ex
-		\item \textbf{Regla 2: Los hablantes de Córdoba aspiran y elisionan la /s/ al finalizar una palabra. Esto no sucede en Buenos Aires} \\ 
-	\end{itemize}	
-	
-	\begin{center}
-		\textit{`Pájaro\textcolor{red}{\textbf{\textit{s}}}'}
-	\end{center} 
-	
-	\begin{center}
-		/\textcolor{red}{\textbf{\textit{s}}}/ se acorta su duración en el hablante de Córdoba
-	\end{center}
-\end{frame}
-
-\begin{frame}
- 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
- 	\begin{itemize}\itemsep=3ex
- 		\item \textbf{Regla 3: Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan más suaves que para hablantes de Buenos Aires} \\ 
- 	\end{itemize}
- 	
- 	\begin{center}
- 		\textit{`Mo\textcolor{red}{s}ca'}
- 	\end{center} 
- 	
- 	\begin{center}
- 		/\textcolor{red}{s}/ suena más suave para Córdoba que para Buenos Aires
- 	\end{center}
-\end{frame}
- 
-\begin{frame}
- 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
- 	\begin{itemize}\itemsep=3ex
- 		\item \textbf{Regla 4: La `c' antes de la `t' se pronuncia con menor frecuencia para hablantes de Córdoba que para hablantes de Buenos Aires} \\ 
- 	\end{itemize}
- 	
- 	\begin{center}
- 		\textit{`Do\textcolor{red}{c}tor'}
- 	\end{center} 
- 	
- 	\begin{center}
- 		No debe sonar el fonema /\textcolor{red}{c}/
- 	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Diferencias entre Córdoba y Buenos Aires}
-	\begin{itemize}\itemsep=3ex
-		\item \textbf{Regla 5: Para hablantes cordobeces la `y’ y `ll’ se pasa a `i’. No sucede esto para Buenos Aires} \\ 
-	\end{itemize}
-	
-	\begin{center}
-		\textit{`\textcolor{red}{ll}uvia'}
-	\end{center} 
-	
-	\begin{center}
-		Palabras con el fonema /\textcolor{red}{y}/ o /\textcolor{red}{ll}/ se pronuncian /\textcolor{red}{j}/
-	\end{center}
-\end{frame}
- 
-\begin{frame}
-	\frametitle{Diferencias entre Córdoba y Buenos Aires}
-	\begin{itemize}\itemsep=3ex
-		\item \textbf{Regla 6: En hablantes cordobeces la /r/ no vibra mientras que en Buenos Aires pasa lo contrario} \\ 
-	\end{itemize}	
-	
-	\begin{center}
-		\textit{`Espá\textcolor{red}{rr}ago'}
-	\end{center} 
-	
-	\begin{center}
-		Para Córdoba /\textcolor{red}{r}/ debe ser suave en comparación de Buenos Aires
-	\end{center}
+	\begin{enumerate}[(1)]\itemsep=1ex
+		\item Los hablantes de Córdoba estiran la sílaba anterior a la acentuada mientras los de Buenos Aires no lo hacen. Ejemplo: \textit{`Especta\textcolor{red}{\textbf{\textit{cu}}}\textcolor{blue}{lar}'} \\ 
+		
+		\item Los hablantes de Córdoba aspiran y elisionan la /s/ al finalizar una palabra. Esto no sucede en Buenos Aires. Ejemplo: \textit{`Pájaro\textcolor{red}{\textbf{\textit{s}}}'}\\ 
+		
+		\item Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan más suaves que para hablantes de Buenos Aires. Ejemplo: \textit{`Mo\textcolor{red}{s}ca'} \\ 
+		
+		\item La `c' antes de la `t' se pronuncia con menor frecuencia para hablantes de Córdoba que para hablantes de Buenos Aires. Ejemplo: \textit{`Do\textcolor{red}{c}tor'} \\ 
+		
+		\item Para hablantes cordobeces la `y’ y `ll’ se pasa a `i’. No sucede esto para Buenos Aires. Ejemplo: \textit{`\textcolor{red}{ll}uvia'} \\
+		
+		\item En hablantes cordobeces la /r/ no vibra mientras que en Buenos Aires pasa lo contrario. Ejemplo: \textit{`Espá\textcolor{red}{rr}ago'} \\ 
+	\end{enumerate}	
 	
 	{\tiny Bibliografía:
 		\begin{itemize}
 			\item El español en la Argentina y sus variedades regionales - María Beatriz Fontanella de Weinberg
 			\item Español en la Argentina - Elena Vidal de Battini
-		\end{itemize}}		
-\end{frame} 
+		\end{itemize}}	
+
+\end{frame}
 
 % % % % Diseño del experimento
 \begin{frame}
 	\frametitle{Diseño del experimento}
 	\begin{itemize}\itemsep=10ex
-		\item \textbf{Frases Comúnes}: habla espontánea
+		\item \textbf{Frases Comunes}: habla espontánea
 		\item \textbf{Frases Amper}: reconocer palabra acentuada
 	\end{itemize}	
 \end{frame} 
@@ -277,10 +219,7 @@
 		\item Objetivo: pronunciación espontánea
 		\item Reglas a cubrir: 2 a 6
 	\end{itemize}
-\end{frame} 
 
-\begin{frame}
-	\frametitle{Diseño del experimento}
 	\begin{center}
 		\textbf{`En la pelea se conoce al soldado,} \\ 
 		\textbf{sólo en la \textcolor{red}{victoria} se conoce al \textcolor{red}{caballero}’}
@@ -340,90 +279,6 @@
 		\textbf{Agrega 31 Frases populares para grabar}
 \end{frame}
 
-
-\begin{frame}
-	\frametitle{Diseño del experimento}
-	
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}
-		\begin{axis}[
-		width=8cm,
-		height=6cm,
-		title={Porcentaje del total de frases por regla},
-		xlabel={Cantidad de grabaciones},
-		ylabel={Porcentaje del total de frases},
-		xmin=0, xmax=25,
-		ymin=0, ymax=100,
-		xtick={0,5,10,15,20,25,30},
-		ytick={0, 25, 50, 75, 100},
-		legend pos=south east,
-		ymajorgrids=true,
-		xmajorgrids=true,
-		grid style=dashed
-		] 
-		
-		\addplot [mark=times*, line width=0.5pt]
-		coordinates {
-			(0,0)(1, 0)(2, 5)(3, 11)(4, 17)(5, 17)(6, 23)(7, 29)(8, 35)(9, 41)(10, 41)(11, 47)(12, 52)(13, 52)(14, 52)(15,58)(16, 64)(17, 64)(18, 70)(19, 76)(20, 76)(21, 76)(22, 82)(23, 82)(24, 88)(25, 94)(26, 100)
-		};\addlegendentry{Regla 2};
-		
-		\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=0.5pt]
-		coordinates {
-			(0,0)(1,0)(2,0)(3,25)(4,25)(5,25)(6,25)(7,25)(8,50)(9,50)(10,50)(11,50)(12,50)(13,75)(14,75)(15,75)(16,75)(17,75)(18,75)(19,75)(20,100)(21,100)(22,100)(23,100)(24,100)(25,100)(26,100)
-		};\addlegendentry{Regla 3};
-		
-		\addplot [mark=times*, line width=2pt] 
-		coordinates {
-			(0,0)(1, 0)(2, 0)(3, 0)(4, 25)(5, 25)(6, 50)(7, 50)(8, 50)(9, 75)(10, 75)(11, 75)(12, 75)(13, 75)(14, 75)(15,75)(16, 75)(17, 75)(18, 75)(19, 75)(20, 75)(21, 100)(22, 100)(23, 100)(24,100)(25,100)(26, 100)
-		};\addlegendentry{Regla 4};
-		
-		\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=2pt]
-		coordinates {
-			(0,0)(4,0)(5,50)(13,50)(14,100)(26,100) 
-		};\addlegendentry{Regla 5};
-		
-		\addplot [mark=times*, dotted, line width=2pt] 
-		coordinates {
-			(0,0)(2,20)(6,20)(7,40)(9,40)(10,60)(16,60)(17,80)(22,80)(23,100) 
-		};\addlegendentry{Regla 6};
-		
-		
-		%%		Tarea	rule 2:	rule 3:	rule 4:	rule 5:	rule 6:
-		%		1	0	0	0	0	0
-		%		2	5	0	0	0	20
-		%		3	11	25	0	0	20
-		%		4	17	25	25	0	20
-		%		5	17	25	25	50	20
-		%		6	23	25	50	50	20
-		%		7	29	25	50	50	40
-		%		8	35	50	50	50	40
-		%		9	41	50	75	50	40
-		%		10	41	50	75	50	60
-		%		11	47	50	75	50	60
-		%		12	52	50	75	50	60
-		%		13	52	75	75	50	60
-		%		14	52	75	75	100	60
-		%		15	58	75	75	100	60
-		%		16	64	75	75	100	60
-		%		17	64	75	75	100	80
-		%		18	70	75	75	100	80
-		%		19	76	75	75	100	80
-		%		20	76	100	75	100	80
-		%		21	76	100	100	100	80
-		%		22	82	100	100	100	80
-		%		23	82	100	100	100	100
-		%		24	88	100	100	100	100
-		%		25	94	100	100	100	100
-		%		26	100	100	100	100	100
-		
-		\end{axis}
-		\end{tikzpicture}
-		\caption{Porcentaje del total de frases grabadas por cada regla}
-		\label{figFracesTraza}
-	\end{figure}
-\end{frame}
-
 \begin{frame}
 \frametitle{Diseño del experimento}
 	{\Large Frases Amper} \\
@@ -436,33 +291,22 @@
 	
 {\footnotesize 	
 	\begin{center}
-		\textit{Sujeto+`` salió ’’+Adjetivo} 
-	
-		\begin{itemize}
-			\item Sujeto: \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
-			\item Adjetivo: \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
-		\end{itemize}
+		\textit{\textbf{Sujeto}+`` salió ’’+\textbf{Adjetivo}} 
 		
+		\begin{itemize}
+			\item \textbf{Sujeto:} \textit{``El canapé’’, ``El repollo’’, ``El espárrago’’}.
+			\item \textbf{Adjetivo:} \textit{``espectacular’’, ``delicioso’’, ``riquísimo’’}.
+		\end{itemize}
+				
+		\begin{center}
+			\textbf{``$\underbrace{\text{\textcolor{red}{El canapé}}}_{\text{palabra aguda}}$ salió $\underbrace{\text{\textcolor{red}{delicioso}}}_{\text{palabra grave}}$’’}
+		\end{center}
+		
+		\textbf{Agrega 9 frases Amper}	
 	\end{center}
 }
 
 {\tiny Bibliografía: AMPER-ARGENTINA: VARIABILIDAD RÍTMICA EN DOS CORPUS - Jorge A. Gurlekian, Reina Yanagida, Mónica Noemí Trípodi y Guillermo Toledo}
-\end{frame} 
-
-\begin{frame}
-	\frametitle{Diseño del experimento}
-
-	\begin{center}
-		\textbf{``El \textcolor{red}{canapé} salió \textcolor{red}{delicioso}’’}
-	\end{center}
-	
-	\begin{itemize}
-		\item Canapé: palabra aguda
-		\item Delicioso: palabra grave
-	\end{itemize}
-	
-	
-	\textbf{Agrega 9 frases amper}
 \end{frame} 
 
 %\begin{frame}
@@ -580,16 +424,6 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sistema de grabación online}
-	
-	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.6\textwidth]{categorizando_audios} }
-		\caption{Administrador}
-		\label{figEncuesta}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Datos obtenidos}
 	
 	\begin{table}[h]
@@ -599,7 +433,7 @@
 			\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 			%\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
 			\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
-			\textbf{Problemas en el habla}  & 33 & 15 & 48 \\ \hline
+			\textbf{Problemas en el habla\footnote{definir problemas en el habla}}  & 33 & 15 & 48 \\ \hline
 			\textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 			\textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
 		\end{tabular}
@@ -623,20 +457,13 @@
 \begin{frame}
 	\frametitle{Extracción de información}
 	
-	¿Cómo estraer atributos (features) de un audio?
+	¿Cómo extraer atributos (features) de un audio?
 	
-	Etiquetamos en qué momento se escuchó cada fonema.
+	Etiquetamos el principio y el final de cada fonema.
 	
 	\begin{center}
-			\textbf{ProsodyLab-Aligner}
+			\textbf{ProsodyLab-Aligner: alineación forzada}
 	\end{center}
-	
-	Utilizando \textbf{Hidden markov models} alinea cada audio
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Extracción de información}
 	
 	\begin{figure}[h!]
 		\centerline{\includegraphics[width=0.9\textwidth]{espectrograma_u3_t33_a1} }
@@ -649,11 +476,8 @@
 		Definimos tipos de atributos:
 		\begin{itemize}
 			\item Atributo acústico
-			\pause
 			\item Atributo fonético
-			\pause
 			\item Atributo silábico
-			\pause
 		\end{itemize}
 		{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
 		
@@ -721,7 +545,7 @@
 	
 	\begin{frame}
 		\frametitle{Extracción de información}
-		\Large {Atributos acústicos}
+		\Large {Atributos acústicos: MFCC}
 		
 		\begin{figure}[H]	
 				\begin{tikzpicture}[samples=200, domain=0:5*360,yscale=0.9]
@@ -809,26 +633,6 @@
 
 \begin{frame}
 	\frametitle{Extracción de información}
-	\Large {Atributos acústicos}
-	
-	{\normalsize \textbf{Escala Mel:} escala sobre la precepción auditiva humana
-	
-	\begin{itemize}
-		\item 1 - Frame the signal into short frames.
-		\item 2 - For each frame estimate the power spectrum (Fast Fourier Transform).
-		\item 3 - Apply the mel filterbank to the power spectra, sum the energy in each filter.
-		\item 4 - Take the logarithm of all filterbank energies.
-		\item 5 - Take the DCT of the log filterbank energies. (DCT=discrete cosine transform)
-		\item 6 - Keep DCT coefficients 2-13, discard the rest.
-	\end{itemize}
-	
-	Script en Matlab llamado por Pymatlab
-	
-	}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Extracción de información}
 	\Large {Atributos fonéticos}
 	
 	\begin{itemize}
@@ -844,53 +648,6 @@
 \end{frame}
 
 
-\begin{frame}
-	\frametitle{Extracción de información}
-	\Large {Atributos fonético: cálculo duración de `kt’}
-	
-	\begin{center}
-		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
-	\end{center}
-	
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[xscale=0.5]
-		\draw[x=2cm,step=0.05pt,thick,>=latex](0,0) -- (7.5,0);
-		\foreach \Xc in {0,...,15}
-		{
-			\draw[thick] 
-			(\Xc,0) -- ++(0,05pt);
-		}
-		\draw[dotted,thick] (-0.5,0) -- (0,0);
-		\draw[dotted,thick] (15,0) -- (15.5,0);
-		% la victoria se conoce
-		\foreach \Xc/\Texto in 
-		{5/k}
-		{
-			\fill[black] 
-			([xshift=2pt]\Xc,0.05)  
-			rectangle node[above] {\strut\small\Texto} 
-			([xshift=-2pt]\Xc+1,0.15);  
-		}
-		\foreach \Xc/\Texto in 
-		{0/l,1/a,2/$sil$,3/b,4/i,6/t,7/o,8/r,9/j,10/a,11/$sil$,12/s, 13/e, 14/$sil$}
-		{
-			\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
-		}
-		\end{tikzpicture}
-	\end{figure}
-	
-	\normalsize 
-	\hspace{1cm} \[\frac{ X - \mu }{ \sigma }\]
-	
-	\begin{itemize}
-		\item $X$ es el valor a normalizar (por ej.: la duración de un fonema dado).
-		\item $\mu$ es el promedio de duración de la unidad utilizada en la grabación.
-		\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
-	\end{itemize}
-	
-\end{frame}
-
 
 \begin{frame}
 	\frametitle{Extracción de información}
@@ -902,53 +659,6 @@
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}
-	\frametitle{Extracción de información}
-	\Large {Atributos silábico: sílaba anterior a la acentuada}
-
-	\begin{center}
-		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
-	\end{center}
-
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[xscale=0.7]
-		\draw[x=2cm,step=0.05cm,thick,>=latex](0,0) -- (7.5,0);
-		\foreach \Xc in {0,...,15}
-		{
-			\draw[thick] 
-			(\Xc,0) -- ++(0,05pt);
-		}
-		\draw[dotted,thick] (-0.5,0) -- (0,0);
-		\draw[dotted,thick] (15,0) -- (15.5,0);
-		% la victoria se conoce
-		\foreach \Xc/\Texto in 
-		{2/bik,8/ko}
-		{
-			\fill[black] 
-			([xshift=2pt]\Xc,0.05)  
-			rectangle node[above] {\strut\small\Texto} 
-			([xshift=-2pt]\Xc+1,0.15);  
-		}
-		\foreach \Xc/\Texto in 
-		{0/la,1/$sil$,3/to*,4/rja,5/$sil$,6/se,7/$sil$,9/no*,10/se,11/$sil$,12/al, 13/$sil$, 14/ka}
-		{
-			\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
-		}
-		\end{tikzpicture}
-	\end{figure}
-	
-	\normalsize 
-	\hspace{1cm} \[\frac{ X - \mu }{ \sigma }\]
-	
-	\begin{itemize}
-		\item $X$ es el valor a normalizar (por ej.: la duración de un fonema dado).
-		\item $\mu$ es el promedio de duración de la unidad utilizada en la grabación.
-		\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
-	\end{itemize}
-	
-\end{frame}
 
 \begin{frame}
 	\frametitle{Análisis}
@@ -966,167 +676,8 @@
 	\frametitle{Análisis}
 	\Large {Cross-validations}
 	\begin{itemize}
-		\item Grupos de hablantes
+		\item Dejando un hablante fuera 
 		\item Dejando un hablante fuera promediando los atributos
-		\item Dejando un hablante fuera promediando los atributos desconocidos
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle {Grupo de hablantes}
-	
-	\begin{figure}
-		\begin{tikzpicture}[node distance=1cm, scale=0.6, every node/.style={scale=0.6}]
-		
-		\node (train1) [train] {Train};
-		\node (train2) [train, xshift=-3.0cm] {Train};
-		\node (train3) [train, xshift=-6.0cm] {Train};
-		\node (train4) [train, xshift=-9.0cm] {Train};
-		\node (train5) [train, xshift=-12.0cm] {Train};
-		
-		\node (data) [datos, below of=train5, yshift=4.0cm,  xshift=6.0cm] {Datos};
-		
-		\node (fold1) [fold, above of=train5] {\textit{Fold 1}};
-		\node (fold2) [fold, above of=train4] {\textit{Fold 2}};
-		\node (fold3) [fold, above of=train3] {\textit{Fold 3}};
-		\node (fold4) [fold, above of=train2] {\textit{Fold 4}};
-		\node (fold5) [fold, above of=train1] {\textit{Fold 5}};
-		
-		\node (test1) [test, below of=train1] {Test};
-		\node (test2) [test, below of=train2] {Test};
-		\node (test3) [test, below of=train3] {Test};
-		\node (test4) [test, below of=train4] {Test};
-		\node (test5) [test, below of=train5] {Test};
-		
-		\node (proc1) [proc, below of=test1, yshift=-1.2cm] {Entrenar y testear};
-		\node (proc2) [proc, below of=test2, yshift=-1.2cm] {Entrenar y testear};
-		\node (proc3) [proc, below of=test3, yshift=-1.2cm] {Entrenar y testear};
-		\node (proc4) [proc, below of=test4, yshift=-1.2cm] {Entrenar y testear};
-		\node (proc5) [proc, below of=test5, yshift=-1.2cm] {Entrenar y testear};
-		
-		\node (prom) [prom, below of=test3, yshift=-3.0cm] {Promedio};
-		
-		\draw [arrowBig] (data) -- (fold3);
-		
-		\draw [arrow] (test1) -- (proc1);
-		\draw [arrow] (test2) -- (proc2);
-		\draw [arrow] (test3) -- (proc3);
-		\draw [arrow] (test4) -- (proc4);
-		\draw [arrow] (test5) -- (proc5);
-		
-		\draw [arrow] (proc1) -- (prom);
-		\draw [arrow] (proc2) -- (prom);
-		\draw [arrow] (proc3) -- (prom);
-		\draw [arrow] (proc4) -- (prom);
-		\draw [arrow] (proc5) -- (prom);
-		
-		\end{tikzpicture}
-		\caption{Esquema de test 5-folds}
-		\label{graficoFold}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Grupo de hablantes}
-	
-	\begin{figure}[H]
-		\centering
-		\pgfplotsset{width=10cm, height=6cm}
-		\begin{tikzpicture}[trim axis left, trim axis right, scale=0.7]
-		\begin{axis}[
-		ybar,
-		area legend,
-		tick label style={font=\small},
-		tickpos=left,
-		xticklabels={Train1, Train2, Train3, Train4, Train5}, 
-		xtick={1,2,3,4,5},
-		ymin=0,
-		legend entries={BsAs,Cba},
-		legend style={at={(1.04,1.002)}, anchor=north west,draw=black}, 
-		]
-		\addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,134) (2,154) (3,135) (4,159) (5,161)};
-		
-		\addplot  +[bar shift=.2cm, area legend]coordinates {(1,53) (2,68) (3,57) (4,61) (5,69)};
-		\end{axis}
-		\end{tikzpicture}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\pgfplotsset{width=10cm, height=4cm}
-		\begin{tikzpicture}[trim axis left, trim axis right, scale=0.7]
-		\begin{axis}[
-		ybar,
-		tick label style={font=\small},
-		tickpos=left,
-		xticklabels={Test1, Test2, Test3, Test4, Test5}, 
-		xtick={1,2,3,4,5},
-		ymin=0,
-		]
-		\addplot +[bar shift=-.2cm, area legend, fill={rgb:red,1;green,2;blue,5}] coordinates {(1,47) (2,27) (3,46) (4,22) (5,20)};
-		
-		\addplot  +[bar shift=.2cm, area legend]coordinates {(1,26) (2,11) (3,22) (4,18) (5,10)};
-		\end{axis}
-		\end{tikzpicture}
-		\caption{Cantidad de audios de Buenos Aires y Córdoba según cada grupo de Train y Tests}
-		\label{TestsInstances}
-	\end{figure}
-		
-\end{frame}
-
-\begin{frame}
-	\frametitle{Grupo de hablantes}
-	
-	\begin{table}[H]
-		\centering
-		\resizebox{9cm}{!} {
-		\begin{tabular}{|l|c|c|c|c|c|c|}
-			\hline
-			\textbf{}  & \textbf{Zero Rules} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-			\textbf{Fold 1}  & 64 & 61 & 64 & 73 & 63 \\ \hline
-			\textbf{Fold 2}  & 71 & 68 & 71 & 76 & 71 \\ \hline
-			\textbf{Fold 3}  & 67 & 54 & 45 & 75 & 67 \\ \hline
-			\textbf{Fold 4}  & 55 & 52 & 55 & 67 & 80 \\ \hline
-			\textbf{Fold 5}  & 66 & 70 & 66 & 70 & 70 \\ \hline
-			\hline \hline
-			\textbf{Promedio} & 64 & 61 & 60 & 72 & 70 \\ \hline
-		\end{tabular}
-		}
-		\caption{Clasificación correcta en porcentaje}
-		\label{class_corr_en_pct}
-	\end{table}
-	
-	\begin{table}[H]
-		\centering
-		\resizebox{9cm}{!} {
-		\begin{tabular}{|l|c|c|c|c|c|c|}
-			\hline
-			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-			\textbf{ZeroR y Ripper}  & 0.8438 & 0.87 \\ \hline
-			\textbf{ZeroR y C4.5}  & 0.9772 & 0.813 \\ \hline
-			\textbf{ZeroR y NaiveBayes}  & 0.2113 & 0.1692 \\ \hline
-			\textbf{ZeroR y SVM}  & 0.03125 & 0.004545 \\ \hline
-		\end{tabular}
-		}
-		\caption{Resultados de cada test representado en p-valor}
-		\label{res_tests_wilcoxon_student}
-	\end{table}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Grupo de hablantes}
-	
-	Detalles:
-	\begin{itemize}
-		\item Tenemos en cada fold más hablantes de Buenos Aires que de Córdoba. \\
-		Esto se ve reflejado en el clasificador Zero Rules con un porcentaje de aciertos mayor al 50 \% \\
-		Necesitamos \textbf{equilibrar los hablantes} para analizar si se esta sacando provecho a los clasificadores.
-
-		\pause
-
-		\item Analizando la salida de cada clasificador, observamos que C4.5 nos da un árbol sólo de 1 hoja. \\
-		Inclusive vemos que tiene igual porcentaje que Zero Rules. \\
-		Analizando C4.5 vemos que su algoritmo puede generar árboles de pocos atributos si en los datos hay muchos \textbf{missing values}.
 	\end{itemize}
 \end{frame}
 
@@ -1303,67 +854,52 @@
 			\label{}
 		\end{table}
 \end{frame}
-	
-\begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
-	
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{|l|c|c|c|c|c|c|}
-			\hline
-			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-			\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
-		\end{tabular}
-		\caption{Clasificación correcta en porcentaje}
-		\label{class_corr_en_pct}
-	\end{table}	
-	
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{|l|c|c|c|c|c|c|}
-			\hline
-			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-			\textbf{ZeroR y Ripper}  & 0.06537 & 0.1284 \\ \hline
-			\textbf{ZeroR y C4.5}  & 0.06156 &  0.1111 \\ \hline
-			\textbf{ZeroR y NaiveBayes}  & 0.03916 & 0.06111 \\ \hline
-			\textbf{ZeroR y SVM}  &  0.02936 & 0.03522 \\ \hline
-		\end{tabular}
-		\caption{Resultados de cada test representado en p-valor}
-		\label{res_tests_wilcoxon_student}
-	\end{table}
-		
-\end{frame}
-
-\begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
-	
-	Matríz de confusión mejores
-	
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{|c|c|c|}
-			\hline
-			Buenos Aires & Córdoba & \\ \hline
-			33 & 1 & Buenos Aires\\ \hline
-			0 & 0 & Córdoba\\ \hline
-		\end{tabular}
-	\end{table}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Selección de atributos de forma automática}
-	
-	Para cada atributo calcula la entropía de la clase y luego calcula la entropía\footnote{Cuán frecuente es una clase en una serie de muestras} de la misma sabiendo el valor de este atributo
-	
-	\begin{center}
-		$InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$
-	\end{center}
-	
-	\begin{itemize}
-		\item $H(Class)$ representa el valor de la entropía de la clase a predecir. Mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular.
-		\item $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$
-	\end{itemize}
-\end{frame}
+%	
+%\begin{frame}
+%	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+%	
+%	\begin{table}[H]
+%		\centering
+%		\begin{tabular}{|l|c|c|c|c|c|c|}
+%			\hline
+%			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+%			\textbf{Promedio} & 50 & 72.44 & 73.48 & 77.19 & 74.62 \\ \hline
+%		\end{tabular}
+%		\caption{Clasificación correcta en porcentaje}
+%		\label{class_corr_en_pct}
+%	\end{table}	
+%	
+%	\begin{table}[H]
+%		\centering
+%		\begin{tabular}{|l|c|c|c|c|c|c|}
+%			\hline
+%			\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
+%			\textbf{ZeroR y Ripper}  & 0.06537 & 0.1284 \\ \hline
+%			\textbf{ZeroR y C4.5}  & 0.06156 &  0.1111 \\ \hline
+%			\textbf{ZeroR y NaiveBayes}  & 0.03916 & 0.06111 \\ \hline
+%			\textbf{ZeroR y SVM}  &  0.02936 & 0.03522 \\ \hline
+%		\end{tabular}
+%		\caption{Resultados de cada test representado en p-valor}
+%		\label{res_tests_wilcoxon_student}
+%	\end{table}
+%		
+%\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+%	
+%	Matríz de confusión mejores
+%	
+%	\begin{table}[H]
+%		\centering
+%		\begin{tabular}{|c|c|c|}
+%			\hline
+%			Buenos Aires & Córdoba & \\ \hline
+%			33 & 1 & Buenos Aires\\ \hline
+%			0 & 0 & Córdoba\\ \hline
+%		\end{tabular}
+%	\end{table}
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Selección de atributos de forma automática}
@@ -1393,6 +929,333 @@
 	\end{center}
 \end{frame}
 
-% % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Más detalles
+
+\begin{frame}
+	\begin{center}
+		\textbf{Más detalles...}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+ 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+ 	
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Regla 1: Los hablantes de Córdoba estiran la sílaba anterior a la acentuada mientras los de Buenos Aires no lo hacen} \\ 
+	\end{itemize}
+		
+	\begin{center}
+		\textit{`Especta\textcolor{red}{\textbf{\textit{cu}}}\textcolor{blue}{lar}'}
+	\end{center} 
+	
+	\tab{Sílaba acentuada en \textcolor{blue}{\textit{`-lar'}}} \\ 
+	\tab{La sílaba anterior \textcolor{red}{\textit{`-cu-'}} se alarga para hablantes de Córdoba}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Regla 2: Los hablantes de Córdoba aspiran y elisionan la /s/ al finalizar una palabra. Esto no sucede en Buenos Aires} \\ 
+	\end{itemize}	
+		
+	\begin{center}
+		\textit{`Pájaro\textcolor{red}{\textbf{\textit{s}}}'}
+	\end{center} 
+	
+	\begin{center}
+		/\textcolor{red}{\textbf{\textit{s}}}/ se acorta su duración en el hablante de Córdoba
+	\end{center}
+\end{frame}
+
+\begin{frame}
+ 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+ 	\begin{itemize}\itemsep=3ex
+		\item \textbf{Regla 3: Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan más suaves que para hablantes de Buenos Aires} \\ 
+	\end{itemize}
+	 	
+	\begin{center}
+		\textit{`Mo\textcolor{red}{s}ca'}
+	\end{center} 
+	 	
+	\begin{center}
+			/\textcolor{red}{s}/ suena más suave para Córdoba que para Buenos Aires
+	\end{center}
+	\end{frame}
+
+\begin{frame}
+ 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+ 	\begin{itemize}\itemsep=3ex
+ 		\item \textbf{Regla 4: La `c' antes de la `t' se pronuncia con menor frecuencia para hablantes de Córdoba que para hablantes de Buenos Aires} \\ 
+	\end{itemize}
+ 	
+ 	\begin{center}
+ 		\textit{`Do\textcolor{red}{c}tor'}
+ 	\end{center} 
+ 	
+ 	\begin{center}
+ 		No debe sonar el fonema /\textcolor{red}{c}/
+ 	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Regla 5: Para hablantes cordobeces la `y’ y `ll’ se pasa a `i’. No sucede esto para Buenos Aires} \\ 
+	\end{itemize}
+		
+	\begin{center}
+		\textit{`\textcolor{red}{ll}uvia'}
+	\end{center} 
+		
+	\begin{center}
+		Palabras con el fonema /\textcolor{red}{y}/ o /\textcolor{red}{ll}/ se pronuncian /\textcolor{red}{j}/
+	\end{center}
+\end{frame}
+ 
+\begin{frame}
+	\frametitle{Diferencias entre Córdoba y Buenos Aires}
+	\begin{itemize}\itemsep=3ex
+		\item \textbf{Regla 6: En hablantes cordobeces la /r/ no vibra mientras que en Buenos Aires pasa lo contrario} \\ 
+	\end{itemize}	
+	
+	\begin{center}
+		\textit{`Espá\textcolor{red}{rr}ago'}
+	\end{center} 
+		
+	\begin{center}
+		Para Córdoba /\textcolor{red}{r}/ debe ser suave en comparación de Buenos Aires
+	\end{center}
+	
+	{\tiny Bibliografía:
+		\begin{itemize}
+			\item El español en la Argentina y sus variedades regionales - María Beatriz Fontanella de Weinberg
+			\item Español en la Argentina - Elena Vidal de Battini
+		\end{itemize}}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diseño del experimento}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=8cm,
+		height=6cm,
+		title={Porcentaje del total de frases por regla},
+		xlabel={Cantidad de grabaciones},
+		ylabel={Porcentaje del total de frases},
+		xmin=0, xmax=25,
+		ymin=0, ymax=100,
+		xtick={0,5,10,15,20,25,30},
+		ytick={0, 25, 50, 75, 100},
+		legend pos=south east,
+		ymajorgrids=true,
+		xmajorgrids=true,
+		grid style=dashed
+		] 
+		
+		\addplot [mark=times*, line width=0.5pt]
+		coordinates {
+			(0,0)(1, 0)(2, 5)(3, 11)(4, 17)(5, 17)(6, 23)(7, 29)(8, 35)(9, 41)(10, 41)(11, 47)(12, 52)(13, 52)(14, 52)(15,58)(16, 64)(17, 64)(18, 70)(19, 76)(20, 76)(21, 76)(22, 82)(23, 82)(24, 88)(25, 94)(26, 100)
+		};\addlegendentry{Regla 2};
+		
+		\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=0.5pt]
+		coordinates {
+			(0,0)(1,0)(2,0)(3,25)(4,25)(5,25)(6,25)(7,25)(8,50)(9,50)(10,50)(11,50)(12,50)(13,75)(14,75)(15,75)(16,75)(17,75)(18,75)(19,75)(20,100)(21,100)(22,100)(23,100)(24,100)(25,100)(26,100)
+		};\addlegendentry{Regla 3};
+		
+		\addplot [mark=times*, line width=2pt] 
+		coordinates {
+			(0,0)(1, 0)(2, 0)(3, 0)(4, 25)(5, 25)(6, 50)(7, 50)(8, 50)(9, 75)(10, 75)(11, 75)(12, 75)(13, 75)(14, 75)(15,75)(16, 75)(17, 75)(18, 75)(19, 75)(20, 75)(21, 100)(22, 100)(23, 100)(24,100)(25,100)(26, 100)
+		};\addlegendentry{Regla 4};
+		
+		\addplot [mark=times*, dash pattern=on 10pt off 5pt, line width=2pt]
+		coordinates {
+			(0,0)(4,0)(5,50)(13,50)(14,100)(26,100) 
+		};\addlegendentry{Regla 5};
+		
+		\addplot [mark=times*, dotted, line width=2pt] 
+		coordinates {
+			(0,0)(2,20)(6,20)(7,40)(9,40)(10,60)(16,60)(17,80)(22,80)(23,100) 
+		};\addlegendentry{Regla 6};
+		
+		
+		%%		Tarea	rule 2:	rule 3:	rule 4:	rule 5:	rule 6:
+		%		1	0	0	0	0	0
+		%		2	5	0	0	0	20
+		%		3	11	25	0	0	20
+		%		4	17	25	25	0	20
+		%		5	17	25	25	50	20
+		%		6	23	25	50	50	20
+		%		7	29	25	50	50	40
+		%		8	35	50	50	50	40
+		%		9	41	50	75	50	40
+		%		10	41	50	75	50	60
+		%		11	47	50	75	50	60
+		%		12	52	50	75	50	60
+		%		13	52	75	75	50	60
+		%		14	52	75	75	100	60
+		%		15	58	75	75	100	60
+		%		16	64	75	75	100	60
+		%		17	64	75	75	100	80
+		%		18	70	75	75	100	80
+		%		19	76	75	75	100	80
+		%		20	76	100	75	100	80
+		%		21	76	100	100	100	80
+		%		22	82	100	100	100	80
+		%		23	82	100	100	100	100
+		%		24	88	100	100	100	100
+		%		25	94	100	100	100	100
+		%		26	100	100	100	100	100
+		
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Porcentaje del total de frases grabadas por cada regla}
+		\label{figFracesTraza}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sistema de grabación online}
+	
+	\begin{figure}[h!]
+		\centerline{\includegraphics[width=0.6\textwidth]{categorizando_audios} }
+		\caption{Administrador}
+		\label{figEncuesta}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Extracción de información}
+	\Large {Atributos acústicos: MFCC}
+	
+	{\normalsize \textbf{Escala Mel:} escala sobre la precepción auditiva humana
+		
+		\begin{itemize}
+			\item 1 - Frame the signal into short frames.
+			\item 2 - For each frame estimate the power spectrum (Fast Fourier Transform).
+			\item 3 - Apply the mel filterbank to the power spectra, sum the energy in each filter.
+			\item 4 - Take the logarithm of all filterbank energies.
+			\item 5 - Take the DCT of the log filterbank energies. (DCT=discrete cosine transform)
+			\item 6 - Keep DCT coefficients 2-13, discard the rest.
+		\end{itemize}
+		
+		Script en Matlab llamado por Pymatlab
+		
+	}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Extracción de información}
+	\Large {Atributos fonético: cálculo duración de `kt’}
+	
+	\begin{center}
+		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
+	\end{center}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[xscale=0.5]
+		\draw[x=2cm,step=0.05pt,thick,>=latex](0,0) -- (7.5,0);
+		\foreach \Xc in {0,...,15}
+		{
+			\draw[thick] 
+			(\Xc,0) -- ++(0,05pt);
+		}
+		\draw[dotted,thick] (-0.5,0) -- (0,0);
+		\draw[dotted,thick] (15,0) -- (15.5,0);
+		% la victoria se conoce
+		\foreach \Xc/\Texto in 
+		{5/k}
+		{
+			\fill[black] 
+			([xshift=2pt]\Xc,0.05)  
+			rectangle node[above] {\strut\small\Texto} 
+			([xshift=-2pt]\Xc+1,0.15);  
+		}
+		\foreach \Xc/\Texto in 
+		{0/l,1/a,2/$sil$,3/b,4/i,6/t,7/o,8/r,9/j,10/a,11/$sil$,12/s, 13/e, 14/$sil$}
+		{
+			\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
+		}
+		\end{tikzpicture}
+	\end{figure}
+	
+	\normalsize 
+	\hspace{1cm} \[\frac{ X - \mu }{ \sigma }\]
+	
+	\begin{itemize}
+		\item $X$ es el valor a normalizar (por ej.: la duración de un fonema dado).
+		\item $\mu$ es el promedio de duración de la unidad utilizada en la grabación.
+		\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Extracción de información}
+	\Large {Atributos silábico: sílaba anterior a la acentuada}
+	
+	\begin{center}
+		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
+	\end{center}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[xscale=0.7]
+		\draw[x=2cm,step=0.05cm,thick,>=latex](0,0) -- (7.5,0);
+		\foreach \Xc in {0,...,15}
+		{
+			\draw[thick] 
+			(\Xc,0) -- ++(0,05pt);
+		}
+		\draw[dotted,thick] (-0.5,0) -- (0,0);
+		\draw[dotted,thick] (15,0) -- (15.5,0);
+		% la victoria se conoce
+		\foreach \Xc/\Texto in 
+		{2/bik,8/ko}
+		{
+			\fill[black] 
+			([xshift=2pt]\Xc,0.05)  
+			rectangle node[above] {\strut\small\Texto} 
+			([xshift=-2pt]\Xc+1,0.15);  
+		}
+		\foreach \Xc/\Texto in 
+		{0/la,1/$sil$,3/to*,4/rja,5/$sil$,6/se,7/$sil$,9/no*,10/se,11/$sil$,12/al, 13/$sil$, 14/ka}
+		{
+			\node[above] at ([xshift=15pt]\Xc,0.05){\strut\small\Texto} ;
+		}
+		\end{tikzpicture}
+	\end{figure}
+	
+	\normalsize 
+	\hspace{1cm} \[\frac{ X - \mu }{ \sigma }\]
+	
+	\begin{itemize}
+		\item $X$ es el valor a normalizar (por ej.: la duración de un fonema dado).
+		\item $\mu$ es el promedio de duración de la unidad utilizada en la grabación.
+		\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Selección de atributos de forma automática}
+	
+	Para cada atributo calcula la entropía de la clase y luego calcula la entropía\footnote{Cuán frecuente es una clase en una serie de muestras} de la misma sabiendo el valor de este atributo
+	
+	\begin{center}
+		$InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$
+	\end{center}
+	
+	\begin{itemize}
+		\item $H(Class)$ representa el valor de la entropía de la clase a predecir. Mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular.
+		\item $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$
+	\end{itemize}
+\end{frame}
 
 \end{document}
