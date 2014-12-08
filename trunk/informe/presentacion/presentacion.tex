@@ -25,6 +25,7 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{multicol}
+%\usepackage{dirtree}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -245,12 +246,12 @@
 		'Se te escapó la tortuga' & Regla 3: 'escapó'   \\ \hline
 		'Todos los caminos conducen a Roma' & Regla2: 'todos', 'los', 'caminos' \\ \hline
 %		'No hay mal que dure cien anos' & años &&&& \\ \hline
-		'Siempre que llovió paro' & Regla 5: llovió  \\ \hline
+		'Siempre que llovió, paró' & Regla 5: llovió  \\ \hline
 %		'Cría cuervos que te sacaran los ojos' & cuervos, los, ojos &&&&  \\ \hline
 %		'La tercera es la vencida' & es &&&& \\ \hline
 %		'Calavera no chilla' &&&& chilla &  \\ \hline
 %		'La gota que rebalsó el vaso' &&&&& rebasó \\ \hline
-		'La suegra y el doctor cuanto más lejos mejor' & Regla 2: más, lejos , Regla 4: doctor \\ \hline
+		'La suegra y el doctor, cuanto más lejos, mejor' & Regla 2: más, lejos , Regla 4: doctor \\ \hline
 %		'A la mujer picaresca cualquiera la pesca' & Regla 3:  picaresca  \\ \hline
 %		'Quien siembra vientos recoge tempestades' & vientos &&&& recoge  \\ \hline
 %		%	'Un grano no hace granero pero ayuda a su compañero' & \\ \hline
@@ -260,8 +261,8 @@
 %		%	'El niño es realista; el muchacho, idealista; el hombre, escéptico, y el viejo místico' &  \\ \hline
 %		'Perro que ladra no muerde' &&&&& perro \\ \hline
 %		'La musica es sinónimo de libertad, de tocar lo que quieras y como quieras' & es, quieras &&&& \\ \hline
-		'La belleza que atrae rara vez coincide con la belleza que enamora' & Regla 5: belleza  \\ \hline
-		'No esta mal ser bella lo que esta mal es la obligación de serlo' & Regla 5: bella \\ \hline
+		'La belleza que atrae, rara vez coincide con la belleza que enamora' & Regla 5: belleza  \\ \hline
+		'No esta mal ser bella, lo que está mal es la obligación de serlo' & Regla 5: bella \\ \hline
 %		'La batalla más difícil la tengo todos los días conmigo mismo' & más &&& batalla & \\ \hline
 %		'El que no llora no mama' &&&& llora & \\ \hline
 %		'En la pelea se conoce al soldado solo en la victoria se conoce al caballero' &&& victoria & caballero &\\ \hline
@@ -270,7 +271,7 @@
 %		'En boca cerrada no entran moscas' & moscas & moscas &&& cerrada  \\ \hline
 %		'Más vale pájaro en mano que cien volando' & más &&&& \\ \hline
 %		%	'La curiosidad mató al gato' &  \\ \hline
-		'Río revuelto ganancia de pescadores' & Regla 3: pescadores, Regla 2: pescadores, Regla 6: río, revuelto  \\ \hline
+		'Río revuelto, ganancia de pescadores' & Regla 3: pescadores, Regla 2: pescadores, Regla 6: río, revuelto  \\ \hline
 %		'No hay que pedirle peras al olmo' & peras &&&& \\ \hline
 %		
 		... & \\ \hline
@@ -337,7 +338,8 @@
 \begin{frame}
 	\frametitle{Diseño del experimento}
 	
-	\Large{Trazas: combinación de frases}
+	{\Large Trazas: combinación de frases}\\
+	Combinamos cada tipo de frase de fórma aleatoria\\
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -360,6 +362,14 @@
 			\fill[blue!20!white](0.4*20,0) rectangle (0.4*22,0.4);
 			\fill[red!20](0.4*22,0) rectangle (0.4*24,0.4);			
 			\fill[blue!20!white](0.4*24,0) rectangle (0.4*25,0.4);
+			
+			\node at (0,0.6) {0};
+			\node at (2,0.6) {5};
+			\node at (4,0.6) {10};
+			\node at (6,0.6) {15};
+			\node at (8,0.6) {20};
+			\node at (10,0.6) {25};
+			\node at (10.2,0.2) {...};
 			
 			\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (10,0.4);
 			
@@ -433,7 +443,7 @@
 			\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 			%\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
 			\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
-			\textbf{Problemas en el habla\footnote{definir problemas en el habla}}  & 33 & 15 & 48 \\ \hline
+			\textbf{Problemas en el habla\footnote{Los problemas más comunes: entonación exagerada y error al pronunciar una frase}}  & 33 & 15 & 48 \\ \hline
 			\textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 			\textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
 		\end{tabular}
@@ -472,21 +482,33 @@
 
 \begin{frame}
 	\frametitle{Extracción de información}
-	\begin{multicols}{2}
-		Definimos tipos de atributos:
-		\begin{itemize}
-			\item Atributo acústico
-			\item Atributo fonético
-			\item Atributo silábico
-		\end{itemize}
-		{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
-		
-		\begin{figure}[rh!]
-			\centerline{\includegraphics[width=0.25\textwidth]{diagrama_workflow} }
-		\end{figure}
-	\end{multicols}
+	Definimos tipos de atributos:
+	\begin{itemize}\itemsep=2ex
+		\item Atributos acústicos
+		\item Atributos fonéticos
+		\item Atributos silábicos
+	\end{itemize}
+	{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
 	
 \end{frame}
+
+%\begin{frame}
+%	\frametitle{Extracción de información}
+%	\begin{multicols}{2}
+%		Definimos tipos de atributos:
+%		\begin{itemize}
+%			\item Atributo acústico
+%			\item Atributo fonético
+%			\item Atributo silábico
+%		\end{itemize}
+%		{\tiny ProsodyLab, Python 2.7, Numpy, Pymatlab}
+%		
+%		\begin{figure}[rh!]
+%			\centerline{\includegraphics[width=0.25\textwidth]{diagrama_workflow} }
+%		\end{figure}
+%	\end{multicols}
+%	
+%\end{frame}
 
 % Definicion para el timeline
 \definecolor{mygreen}{RGB}{117,167,117}
@@ -676,15 +698,72 @@
 	\frametitle{Análisis}
 	\Large {Cross-validations}
 	\begin{itemize}
-		\item Dejando un hablante fuera 
-		\item Dejando un hablante fuera promediando los atributos
+		\item Clasificación por muestra 
+		\item Clasificación por hablante
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos}
+	\frametitle{Clasificación por muestra}
 	
-	\Large{Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
+	\begin{center}
+		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
+	\end{center}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccccccccccc}
+			& \multicolumn{11}{c}{\textit{Número de hablante}} \\
+			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 25 & 26 & 27 \\
+			\hline \\
+			Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+			
+			\multicolumn{11}{c}{\textit{...}}	\\
+			
+			Fold 27 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+			
+		\end{tabular}
+		\caption{Esquema de validación cruzada}
+		\label{HPTDT_esq_cv}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación por muestra}
+	
+	Veamos el clasificador Ripper para el fold 4. Este es el conjunto de reglas que generó:
+	
+	\begin{flushleft}
+		\begin{itemize}
+			\item $(FON\_rr\_norm <= -6.901) and (ACU\_AverageRR\_7 <= 11.23) => place=cba (18.0/3.0)$ \\
+			\item $(FON\_ll\_norm <= -7.975) and (ACU\_AverageLL\_6 <= 4.308) => place=cba (15.0/0.0)$
+			\item $else => place=bsas (222.0/49.0)$
+		\end{itemize}
+	\end{flushleft}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+			%\hline \hline
+			\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación por hablante}
+	
+	{\Large Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
 	
 	\begin{center}
 		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -713,7 +792,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos}
+	\frametitle{Clasificación por hablante}
 	
 	Juntamos los atributos de cada hablante de la siguiente forma.
 	
@@ -733,7 +812,7 @@
 			\hline
 		\end{tabular}
 		}
-		\caption{Original}
+		\caption{Datos original}
 		\label{}
 	\end{table}
 	
@@ -746,19 +825,30 @@
 			\hline
 			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
 			\hline 
-			\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{1.667} & ... & \textbf{2}\\
+			\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{2} & ... & \textbf{2}\\
 			\hline
 			\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
 			\hline
 		\end{tabular}
 		}
-		\caption{Modificado}
+		\caption{Datos modificados}
 		\label{}
 	\end{table}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos}
+	\frametitle{Clasificación por hablante}
+%	
+%	Veamos un árbol de decisión generado por C4.5. Este corresponde al fold 7. 
+%	
+%	\dirtree{%
+%		.1 root.
+%		.2 $FON\_vowel\_norm <= 7.221824$.
+%		.3 $FON\_ll\_norm <= -24.007: cba (2.33/0.22)$.
+%		.3 $FON\_ll\_norm > -24.007: bsas (18.67/0.89)$.
+%		.2 $FON\_vowel\_norm > 7.221824: cba (5.0)$.
+%	}
+%	
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{|l|c|c|c|c|c|c|}
@@ -770,25 +860,10 @@
 		\label{class_corr_en_pct}
 	\end{table}
 	
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|c|c|c|c|c|c|}
-		\hline
-		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline
-		\textbf{ZeroR y Ripper}  & 0.3351 & 0.3828 \\ \hline
-		\textbf{ZeroR y C4.5}  & 0.2908 &  0.3864 \\ \hline
-		\textbf{ZeroR y NaiveBayes}  & 0.05191 & 0.06472 \\ \hline
-		\textbf{ZeroR y SVM}  &  0.004282 & 0.009828 \\ \hline
-	\end{tabular}
-	\caption{Resultados de cada test representado en p-valor}
-	\label{res_tests_wilcoxon_student}
-\end{table}
-	
 \end{frame}
 
 \begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos}
+	\frametitle{Clasificación por hablante}
 	
 	Detalles:
 	
@@ -807,53 +882,53 @@
 		\end{tabular}
 	\end{table}
 \end{frame}
-
-\begin{frame}
-	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
-	
-	\begin{table}[H]
-		\centering
-		\resizebox{7cm}{!} {
-		\begin{tabular}{|l|l|ccccc|}
-			\hline
-			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
-			\hline 
-			\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
-			& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
-			& \textbf{Audio3} & 2 & ? & 3 & & ? \\
-			\hline
-			\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
-			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
-			\hline
-			\end{tabular}
-		}
-		\caption{Original}
-		\label{}
-		\end{table}
-		
-			
-		Se cambia a ...
-		
-		\begin{table}[H]
-			\centering
-			\resizebox{7cm}{!} {
-			\begin{tabular}{|l|l|ccccc|}
-				\hline
-				\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
-				\hline 
-				\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
-				& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
-				& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
-				\hline
-				\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
-				& \textbf{Audio2} & 1 & 2 & ? & & ? \\
-				\hline
-			\end{tabular}
-			}
-			\caption{Modificado}
-			\label{}
-		\end{table}
-\end{frame}
+%
+%\begin{frame}
+%	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
+%	
+%	\begin{table}[H]
+%		\centering
+%		\resizebox{7cm}{!} {
+%		\begin{tabular}{|l|l|ccccc|}
+%			\hline
+%			\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+%			\hline 
+%			\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+%			& \textbf{Audio2} & ? & ? & 1 & ... & ? \\
+%			& \textbf{Audio3} & 2 & ? & 3 & & ? \\
+%			\hline
+%			\textbf{Hablante 2} & \textbf{Audio1} & 1 & ? & ? & ... & ? \\
+%			& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+%			\hline
+%			\end{tabular}
+%		}
+%		\caption{Original}
+%		\label{}
+%		\end{table}
+%		
+%			
+%		Se cambia a ...
+%		
+%		\begin{table}[H]
+%			\centering
+%			\resizebox{7cm}{!} {
+%			\begin{tabular}{|l|l|ccccc|}
+%				\hline
+%				\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
+%				\hline 
+%				\textbf{Hablante 1} & \textbf{Audio1} & 1 & ? & 2 & & 2\\
+%				& \textbf{Audio2} & \textbf{1.5} & ? & 1 & ... & \textbf{2} \\
+%				& \textbf{Audio3} & 2 & ? & 3 & & \textbf{2} \\
+%				\hline
+%				\textbf{Hablante 2} & \textbf{Audio1} & 1 & \textbf{2} & ? & ... & ? \\
+%				& \textbf{Audio2} & 1 & 2 & ? & & ? \\
+%				\hline
+%			\end{tabular}
+%			}
+%			\caption{Modificado}
+%			\label{}
+%		\end{table}
+%\end{frame}
 %	
 %\begin{frame}
 %	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
@@ -904,6 +979,8 @@
 \begin{frame}
 	\frametitle{Selección de atributos de forma automática}
 		
+	¿Cuál es la importancia relativa de cada atributo?	\\
+	Medimos cuanta información aporta cada atributo utilizando el algoritmo InfoGain.
 	\begin{table}[H]
 		\centering
 		\begin{tabular}{|c|l|c|c|c|c|c|}
@@ -924,21 +1001,41 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Conclusiones y trabajo futuro}
+	
+	\begin{itemize}
+		\item Armamos una plataforma para la recolección de grabaciones
+		\item Caso de estudio: diferencia entre habla de Cba. y BsAs.
+		\item Características del conjunto de datos y cómo repercute en sus resultados 
+	\end{itemize}
+	\begin{itemize}
+		\item Grabaciones chequeadas entre los hablantes
+		\item Desarrollo de varios filtros para evitar grabaciones con problemas
+		\item Realizar clasificación en vivo a través de una página web
+		\item Mejores modelos y atributos
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\begin{center}
 		{\Large ¿Preguntas?}
 	\end{center}
 \end{frame}
 
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % Más detalles
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\begin{center}
 		\textbf{Más detalles...}
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
  	\frametitle{Diferencias entre Córdoba y Buenos Aires}
  	
 	\begin{itemize}\itemsep=3ex
@@ -953,7 +1050,7 @@
 	\tab{La sílaba anterior \textcolor{red}{\textit{`-cu-'}} se alarga para hablantes de Córdoba}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
 	\begin{itemize}\itemsep=3ex
 		\item \textbf{Regla 2: Los hablantes de Córdoba aspiran y elisionan la /s/ al finalizar una palabra. Esto no sucede en Buenos Aires} \\ 
@@ -968,7 +1065,7 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
  	\frametitle{Diferencias entre Córdoba y Buenos Aires}
  	\begin{itemize}\itemsep=3ex
 		\item \textbf{Regla 3: Para hablantes de Córdoba, la /s/ antes de la /c/ o /t/ suenan más suaves que para hablantes de Buenos Aires} \\ 
@@ -983,7 +1080,7 @@
 	\end{center}
 	\end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
  	\frametitle{Diferencias entre Córdoba y Buenos Aires}
  	\begin{itemize}\itemsep=3ex
  		\item \textbf{Regla 4: La `c' antes de la `t' se pronuncia con menor frecuencia para hablantes de Córdoba que para hablantes de Buenos Aires} \\ 
@@ -998,7 +1095,7 @@
  	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
 	\begin{itemize}\itemsep=3ex
 		\item \textbf{Regla 5: Para hablantes cordobeces la `y’ y `ll’ se pasa a `i’. No sucede esto para Buenos Aires} \\ 
@@ -1013,7 +1110,7 @@
 	\end{center}
 \end{frame}
  
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Diferencias entre Córdoba y Buenos Aires}
 	\begin{itemize}\itemsep=3ex
 		\item \textbf{Regla 6: En hablantes cordobeces la /r/ no vibra mientras que en Buenos Aires pasa lo contrario} \\ 
@@ -1034,7 +1131,7 @@
 		\end{itemize}}	
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Diseño del experimento}
 	
 	\begin{figure}[H]
@@ -1117,7 +1214,7 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Sistema de grabación online}
 	
 	\begin{figure}[h!]
@@ -1127,7 +1224,7 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Extracción de información}
 	\Large {Atributos acústicos: MFCC}
 	
@@ -1148,9 +1245,9 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Extracción de información}
-	\Large {Atributos fonético: cálculo duración de `kt’}
+	\Large {Atributos fonéticos: cálculo duración de `kt’}
 	
 	\begin{center}
 		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
@@ -1196,9 +1293,9 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Extracción de información}
-	\Large {Atributos silábico: sílaba anterior a la acentuada}
+	\Large {Atributos silábicos: sílaba anterior a la acentuada}
 	
 	\begin{center}
 		{\textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}}
@@ -1243,7 +1340,7 @@
 	
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
 	\frametitle{Selección de atributos de forma automática}
 	
 	Para cada atributo calcula la entropía de la clase y luego calcula la entropía\footnote{Cuán frecuente es una clase en una serie de muestras} de la misma sabiendo el valor de este atributo
@@ -1257,5 +1354,7 @@
 		\item $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$
 	\end{itemize}
 \end{frame}
+
+\setcounter{framenumber}{\value{finalframe}}
 
 \end{document}
