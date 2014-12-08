@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 DEC 2014 03:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 DEC 2014 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1279,37 +1279,25 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `' multiply defined.
 
 
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `class_corr_en_pct' multiply defined.
-
-
-LaTeX Warning: Label `res_tests_wilcoxon_student' multiply defined.
-
-
 LaTeX Warning: Label `figEncuesta' multiply defined.
 
 )
 \openout1 = `presentacion.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 92.
-LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1375,7 +1363,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box95
-Package hyperref Info: Link coloring OFF on input line 92.
+Package hyperref Info: Link coloring OFF on input line 93.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1385,9 +1373,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count197
 )
-LaTeX Info: Redefining \ref on input line 92.
-LaTeX Info: Redefining \pageref on input line 92.
-LaTeX Info: Redefining \nameref on input line 92.
+LaTeX Info: Redefining \ref on input line 93.
+LaTeX Info: Redefining \pageref on input line 93.
+LaTeX Info: Redefining \nameref on input line 93.
 
 (./presentacion.out) (./presentacion.out)
 \@outlinefile=\write5
@@ -1418,37 +1406,37 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 92.
-LaTeX Info: Redefining \. on input line 92.
-LaTeX Info: Redefining \% on input line 92.
+LaTeX Info: Redefining \includegraphics on input line 93.
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 92.
+ on input line 93.
 
 (./presentacion.nav)
-Overfull \hbox (62.39598pt too wide) in paragraph at lines 92--92
+Overfull \hbox (62.39598pt too wide) in paragraph at lines 93--93
  [][]  \OT1/cmss/bx/n/6 ([])  
  []
 
 
-Overfull \hbox (121.75954pt too wide) in paragraph at lines 92--92
+Overfull \hbox (121.75954pt too wide) in paragraph at lines 93--93
  [][][][]  
  []
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 95.
+(hyperref)                setting the option has no effect on input line 96.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
-(Font)              size <5> substituted on input line 99.
+(Font)              size <5> substituted on input line 100.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 99.
+(Font)              size <5> substituted on input line 100.
 
 [1
 
@@ -1457,43 +1445,43 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 130.
+Package pdftex.def Info: Images/man-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 
 <Images/wave.png, id=38, 220.90076pt x 407.71188pt>
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 130.
+Package pdftex.def Info: Images/man-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 130.
+Package pdftex.def Info: Images/man-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 130.
+Package pdftex.def Info: Images/man-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 
@@ -1501,38 +1489,38 @@ Missing character: There is no ; in font nullfont!
 File: Images/woman-profile.png Graphic file (type png)
 
 <use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 130.
+Package pdftex.def Info: Images/woman-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/woman-profile.png Graphic file (type png)
 
 <use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 130.
+Package pdftex.def Info: Images/woman-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/woman-profile.png Graphic file (type png)
 
 <use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 130.
+Package pdftex.def Info: Images/woman-profile.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 130.
+Package pdftex.def Info: Images/wave.png used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 
 <Images/mic.jpg, id=40, 537.00626pt x 803.0pt>
 File: Images/mic.jpg Graphic file (type jpg)
  <use Images/mic.jpg>
-Package pdftex.def Info: Images/mic.jpg used on input line 130.
+Package pdftex.def Info: Images/mic.jpg used on input line 131.
 (pdftex.def)             Requested size: 342.2953pt x 511.84753pt.
  [2
 
@@ -1540,77 +1528,77 @@ Package pdftex.def Info: Images/mic.jpg used on input line 130.
 /Images/mic.jpg>]
 File: Images/man-profile.png Graphic file (type png)
  <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 157.
+Package pdftex.def Info: Images/man-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 157.
+Package pdftex.def Info: Images/man-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 157.
+Package pdftex.def Info: Images/man-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/man-profile.png Graphic file (type png)
 
 <use Images/man-profile.png>
-Package pdftex.def Info: Images/man-profile.png used on input line 157.
+Package pdftex.def Info: Images/man-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 324.05284pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 File: Images/woman-profile.png Graphic file (type png)
 
 <use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 157.
+Package pdftex.def Info: Images/woman-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
-(pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
-Missing character: There is no ; in font nullfont!
-File: Images/woman-profile.png Graphic file (type png)
-
-<use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 157.
-(pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
-File: Images/wave.png Graphic file (type png)
- <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 File: Images/woman-profile.png Graphic file (type png)
 
 <use Images/woman-profile.png>
-Package pdftex.def Info: Images/woman-profile.png used on input line 157.
+Package pdftex.def Info: Images/woman-profile.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
 File: Images/wave.png Graphic file (type png)
  <use Images/wave.png>
-Package pdftex.def Info: Images/wave.png used on input line 157.
+Package pdftex.def Info: Images/wave.png used on input line 158.
+(pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
+Missing character: There is no ; in font nullfont!
+File: Images/woman-profile.png Graphic file (type png)
+
+<use Images/woman-profile.png>
+Package pdftex.def Info: Images/woman-profile.png used on input line 158.
+(pdftex.def)             Requested size: 342.2953pt x 351.77654pt.
+File: Images/wave.png Graphic file (type png)
+ <use Images/wave.png>
+Package pdftex.def Info: Images/wave.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 631.8349pt.
 Missing character: There is no ; in font nullfont!
 
 <Images/server.png, id=55, 591.3pt x 591.3pt>
 File: Images/server.png Graphic file (type png)
  <use Images/server.png>
-Package pdftex.def Info: Images/server.png used on input line 157.
+Package pdftex.def Info: Images/server.png used on input line 158.
 (pdftex.def)             Requested size: 342.2953pt x 342.30461pt.
  [3
 
@@ -1622,10 +1610,10 @@ aphic file (type png)
 
 <use ../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>
 Package pdftex.def Info: ../template_tesis/Images/Dialectos_del_idioma_espanol_
-en_Argentina.png used on input line 166.
+en_Argentina.png used on input line 167.
 (pdftex.def)             Requested size: 123.34175pt x 214.64355pt.
 
-Overfull \vbox (1.98436pt too high) detected at line 166
+Overfull \vbox (1.98436pt too high) detected at line 167
  []
 
 [4
@@ -1636,10 +1624,10 @@ aphic file (type png)
 
 <use ../template_tesis/Images/Dialectos_del_idioma_espanol_en_Argentina.png>
 Package pdftex.def Info: ../template_tesis/Images/Dialectos_del_idioma_espanol_
-en_Argentina.png used on input line 177.
+en_Argentina.png used on input line 178.
 (pdftex.def)             Requested size: 123.34175pt x 214.64355pt.
 
-Overfull \vbox (1.98436pt too high) detected at line 177
+Overfull \vbox (1.98436pt too high) detected at line 178
  []
 
 [5
@@ -1647,7 +1635,7 @@ Overfull \vbox (1.98436pt too high) detected at line 177
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 202.
+(Font)              using `OT1/cmss/bx/n' instead on input line 203.
 
 [6
 
@@ -1656,26 +1644,26 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 ] [8
 
 ]
-Underfull \vbox (badness 10000) detected at line 280
+Underfull \vbox (badness 10000) detected at line 281
  []
 
 
-Overfull \vbox (1.09608pt too high) detected at line 280
+Overfull \vbox (1.09608pt too high) detected at line 281
  []
 
 [9
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 310.
+LaTeX Font Info:    Try loading font information for U+msa on input line 311.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 310.
+LaTeX Font Info:    Try loading font information for U+msb on input line 311.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 310.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 311.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -1688,7 +1676,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 File: Images/pag-inicio2.png Graphic file (type png)
 
 <use Images/pag-inicio2.png>
-Package pdftex.def Info: Images/pag-inicio2.png used on input line 394.
+Package pdftex.def Info: Images/pag-inicio2.png used on input line 404.
 (pdftex.def)             Requested size: 273.83728pt x 159.6266pt.
  [12
 
@@ -1697,13 +1685,13 @@ Package pdftex.def Info: Images/pag-inicio2.png used on input line 394.
 File: Images/pag-grabar1.png Graphic file (type png)
 
 <use Images/pag-grabar1.png>
-Package pdftex.def Info: Images/pag-grabar1.png used on input line 414.
+Package pdftex.def Info: Images/pag-grabar1.png used on input line 424.
 (pdftex.def)             Requested size: 273.83728pt x 142.02771pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.414 \end{frame}
+l.424 \end{frame}
                   [13
 
  <./Images/pag-grabar1.png>]
@@ -1711,13 +1699,13 @@ l.414 \end{frame}
 File: Images/pag-play1.png Graphic file (type png)
 
 <use Images/pag-play1.png>
-Package pdftex.def Info: Images/pag-play1.png used on input line 424.
+Package pdftex.def Info: Images/pag-play1.png used on input line 434.
 (pdftex.def)             Requested size: 273.83728pt x 141.91298pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.424 \end{frame}
+l.434 \end{frame}
                   [14
 
  <./Images/pag-play1.png>] [15
@@ -1728,20 +1716,13 @@ File: Images/espectrograma_u3_t33_a1.png Graphic file (type png)
 
 <use Images/espectrograma_u3_t33_a1.png>
 Package pdftex.def Info: Images/espectrograma_u3_t33_a1.png used on input line 
-471.
+481.
 (pdftex.def)             Requested size: 308.06367pt x 99.89691pt.
  [16
 
- <./Images/espectrograma_u3_t33_a1.png>] <Images/diagrama_workflow.jpg, id=173,
- 182.6825pt x 402.50375pt>
-File: Images/diagrama_workflow.jpg Graphic file (type jpg)
+ <./Images/espectrograma_u3_t33_a1.png>] [17
 
-<use Images/diagrama_workflow.jpg>
-Package pdftex.def Info: Images/diagrama_workflow.jpg used on input line 489.
-(pdftex.def)             Requested size: 85.57382pt x 188.54419pt.
- [17
-
- <./Images/diagrama_workflow.jpg>]
+]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1754,12 +1735,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.15488pt too high) detected at line 632
+Overfull \vbox (12.15619pt too high) detected at line 654
  []
 
 [18
@@ -1777,12 +1758,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.15228pt too high) detected at line 632
+Overfull \vbox (12.1566pt too high) detected at line 654
  []
 
 [19
@@ -1800,12 +1781,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.14825pt too high) detected at line 632
+Overfull \vbox (12.15279pt too high) detected at line 654
  []
 
 [20
@@ -1823,12 +1804,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.14996pt too high) detected at line 632
+Overfull \vbox (12.15536pt too high) detected at line 654
  []
 
 [21
@@ -1846,12 +1827,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.15437pt too high) detected at line 632
+Overfull \vbox (12.15295pt too high) detected at line 654
  []
 
 [22
@@ -1869,12 +1850,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.15218pt too high) detected at line 632
+Overfull \vbox (12.15247pt too high) detected at line 654
  []
 
 [23
@@ -1892,12 +1873,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.15247pt too high) detected at line 632
+Overfull \vbox (12.15016pt too high) detected at line 654
  []
 
 [24
@@ -1915,12 +1896,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 632--632
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 654--654
  [] 
  []
 
 
-Overfull \vbox (12.14827pt too high) detected at line 632
+Overfull \vbox (12.151pt too high) detected at line 654
  []
 
 [25
@@ -1933,41 +1914,26 @@ Overfull \vbox (12.14827pt too high) detected at line 632
 
 ] [29
 
-]
+] [30
 
-Package hyperref Warning: Ignoring empty anchor on input line 713.
-
-
-Overfull \vbox (18.93507pt too high) detected at line 713
- []
-
-[30
+] [31
 
 ]
 
-Package hyperref Warning: Ignoring empty anchor on input line 758.
+Package hyperref Warning: Ignoring empty anchor on input line 792.
 
-
-Package hyperref Warning: Ignoring empty anchor on input line 758.
-
-[31
-
-] [32
-
-] [33
+[32
 
 ]
 
-Package hyperref Warning: Ignoring empty anchor on input line 856.
+Package hyperref Warning: Ignoring empty anchor on input line 837.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 856.
+Package hyperref Warning: Ignoring empty anchor on input line 837.
 
+[33
 
-Overfull \vbox (21.57233pt too high) detected at line 856
- []
-
-[34
+] [34
 
 ] [35
 
@@ -1977,7 +1943,9 @@ Overfull \vbox (21.57233pt too high) detected at line 856
 
 ] [38
 
-] [39
+]
+\c@finalframe=\count198
+ [39
 
 ] [40
 
@@ -1987,40 +1955,44 @@ Overfull \vbox (21.57233pt too high) detected at line 856
 
 ] [43
 
-]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [44
+] [44
+
+] [45
 
 ]
-<Images/categorizando_audios.png, id=386, 347.2975pt x 346.29375pt>
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [46
+
+]
+<Images/categorizando_audios.png, id=401, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 112
-8.
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 122
+5.
 (pdftex.def)             Requested size: 205.37926pt x 204.79237pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1128 \end{frame}
+l.1225 \end{frame}
                   
-Overfull \vbox (35.27763pt too high) detected at line 1128
+Overfull \vbox (35.27763pt too high) detected at line 1225
  []
 
-[45
+[47
 
- <./Images/categorizando_audios.png>] [46
-
-] [47
-
-] [48
+ <./Images/categorizando_audios.png>] [48
 
 ] [49
+
+] [50
+
+] [51
 
 ]
 \tf@nav=\write6
@@ -2032,15 +2004,15 @@ Overfull \vbox (35.27763pt too high) detected at line 1128
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1261.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1261.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1360.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1360.
 
 (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1261.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1261.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1360.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1360.
 
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: C0B912B31B3B566FE4617E0ED878D498;50.
@@ -2055,35 +2027,31 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1261.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1360.
  ) 
 Here is how much of TeX's memory you used:
- 28256 strings out of 493307
- 630324 string characters out of 6139905
- 930615 words of memory out of 5000000
- 30921 multiletter control sequences out of 15000+600000
- 18884 words of font info for 76 fonts, out of 8000000 for 9000
+ 28254 strings out of 493307
+ 630191 string characters out of 6139905
+ 932226 words of memory out of 5000000
+ 30919 multiletter control sequences out of 15000+600000
+ 16874 words of font info for 68 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  52i,18n,74p,737b,2056s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation51} has been referenced but does not ex
-ist, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb>
-Output written on presentacion.pdf (49 pages, 1008659 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb>
+Output written on presentacion.pdf (51 pages, 995631 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
- 392 compressed objects within 4 object streams
- 108 named destinations out of 1000 (max. 500000)
- 159 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 503 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -86,8 +86,12 @@
 \headcommand {\beamer@framepages {48}{48}}
 \headcommand {\slideentry {1}{0}{42}{49/49}{}{0}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\beamer@partpages {1}{49}}
-\headcommand {\beamer@subsectionpages {2}{49}}
-\headcommand {\beamer@sectionpages {2}{49}}
-\headcommand {\beamer@documentpages {49}}
-\headcommand {\def \inserttotalframenumber {42}}
+\headcommand {\slideentry {1}{0}{43}{50/50}{}{0}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\slideentry {1}{0}{44}{51/51}{}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\beamer@partpages {1}{51}}
+\headcommand {\beamer@subsectionpages {2}{51}}
+\headcommand {\beamer@sectionpages {2}{51}}
+\headcommand {\beamer@documentpages {51}}
+\headcommand {\def \inserttotalframenumber {31}}
