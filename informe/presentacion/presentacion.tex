@@ -213,7 +213,7 @@
 
 \begin{frame}
 	\frametitle{Diseño del experimento}
-	{\Large Frases Comúnes} \\
+	{\Large Frases Comunes} \\
 	Pronunciar frases popularmente conocidas
 	
 	\begin{itemize}
@@ -227,8 +227,8 @@
 	\end{center}
 	
 	\begin{itemize}
-		\item \textcolor{red}{\textbf{`victoria’}} cubre la regla 4 que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. 
-		\item \textcolor{red}{\textbf{`caballero’}} para la regla 5: el fonema \textit{/ll/} se pasa a \textit{/i/} 
+		\item \textcolor{red}{\textbf{`victoria’}} cubre la \textbf{regla 4} que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. 
+		\item \textcolor{red}{\textbf{`caballero’}} para la \textbf{regla 5}: el fonema \textit{/ll/} se pasa a \textit{/i/} 
 	\end{itemize}	
 \end{frame} 
 
@@ -379,7 +379,7 @@
 			\item[] 
 				\begin{tikzpicture}
 					\draw[step=0.4cm,very thin,fill=blue!20!white] (0,0) grid (0.4,0.4) rectangle (0,0);
-				\end{tikzpicture} Frases comúnes
+				\end{tikzpicture} Frases comunes
 			\item[] 
 			\begin{tikzpicture}
 			\draw[step=0.4cm,very thin,fill=red!20] (0,0) grid (0.4,0.4) rectangle (0,0);
@@ -387,7 +387,7 @@
 		\end{itemize}
 		
 		\begin{center}
-			Intercalado: 1 ó 3 Frases comúnes cada una Amper
+			Intercalado: 1 ó 3 Frases comunes cada una Amper
 		\end{center}
 	\end{center}
 	
@@ -403,15 +403,15 @@
 	\end{figure}
 \end{frame}
 
-%\begin{frame}
-%	\frametitle{Sistema de grabación online}
-%	
-%	\begin{figure}[h!]
-%		\centerline{\includegraphics[width=0.8\textwidth]{pag-allow1} }
-%		\caption{Habilitar micrófono}
-%		\label{figEncuesta}
-%	\end{figure}
-%\end{frame}
+\begin{frame}
+	\frametitle{Sistema de grabación online}
+	
+	\begin{figure}[h!]
+		\centerline{\includegraphics[width=0.8\textwidth]{pag-info2} }
+		\caption{Instrucciones del experimento}
+		\label{figInstrucciones}
+	\end{figure}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Sistema de grabación online}
@@ -443,7 +443,7 @@
 			\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 			%\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
 			\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
-			\textbf{Problemas en el habla\footnote{Los problemas más comunes: entonación exagerada y error al pronunciar una frase}}  & 33 & 15 & 48 \\ \hline
+			\textbf{Problemas en el habla\footnote{Problemas más comunes: entonación exagerada y error al pronunciar una frase}}  & 33 & 15 & 48 \\ \hline
 			\textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 			\textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
 		\end{tabular}
@@ -681,6 +681,22 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Análisis}
+	
+	\begin{center}
+		\Large {¿Cómo podemos saber si teniendo en cuenta estos atributos podemos clasificar mejor a un cordobés?}
+		
+	\end{center}
+	
+	\pause
+	
+	\Large {Cross-validations}
+	\begin{itemize}
+		\item Clasificación por muestra 
+		\item Clasificación por hablante
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Análisis}
@@ -691,15 +707,6 @@
 		\item C4.5
 		\item Support vectors machines
 		\item Naive Bayes
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Análisis}
-	\Large {Cross-validations}
-	\begin{itemize}
-		\item Clasificación por muestra 
-		\item Clasificación por hablante
 	\end{itemize}
 \end{frame}
 
@@ -731,7 +738,7 @@
 		\label{HPTDT_esq_cv}
 	\end{table}
 \end{frame}
-
+	
 \begin{frame}
 	\frametitle{Clasificación por muestra}
 	
@@ -757,6 +764,24 @@
 		\caption{Clasificación correcta en porcentaje}
 		\label{HPTDT_clas_xval_porHab}
 	\end{table}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación por muestra}
+	
+	Detalles:
+	
+	\begin{itemize}
+		\item C4.5 obtuvo la misma performance que Zero Rule y su árbol de decisión fue muy pobre  
+		\item Zero Rule obtuvo una buena performance y algunos clasificadores no pudieron obtener provecho de los atributos
+	\end{itemize}
+	
+	\pause
+	
+	\begin{center}
+		¿Qué sucedería si colapsáramos los atributos por hablante \\ y equilibramos nuestros datos?
+	\end{center}
 	
 \end{frame}
 
@@ -1008,11 +1033,12 @@
 		\item Caso de estudio: diferencia entre habla de Cba. y BsAs.
 		\item Características del conjunto de datos y cómo repercute en sus resultados 
 	\end{itemize}
+	
 	\begin{itemize}
 		\item Grabaciones chequeadas entre los hablantes
 		\item Desarrollo de varios filtros para evitar grabaciones con problemas
 		\item Realizar clasificación en vivo a través de una página web
-		\item Mejores modelos y atributos
+		\item Mejores modelos variando sus parámetros y nuevos atributos 
 		
 	\end{itemize}
 \end{frame}
@@ -1230,14 +1256,14 @@
 	
 	{\normalsize \textbf{Escala Mel:} escala sobre la precepción auditiva humana
 		
-		\begin{itemize}
-			\item 1 - Frame the signal into short frames.
-			\item 2 - For each frame estimate the power spectrum (Fast Fourier Transform).
-			\item 3 - Apply the mel filterbank to the power spectra, sum the energy in each filter.
-			\item 4 - Take the logarithm of all filterbank energies.
-			\item 5 - Take the DCT of the log filterbank energies. (DCT=discrete cosine transform)
-			\item 6 - Keep DCT coefficients 2-13, discard the rest.
-		\end{itemize}
+		\begin{enumerate}[(1)]
+			\item Frame the signal into short frames.
+			\item For each frame estimate the power spectrum (Fast Fourier Transform).
+			\item Apply the mel filterbank to the power spectra, sum the energy in each filter.
+			\item Take the logarithm of all filterbank energies.
+			\item Take the DCT of the log filterbank energies. (DCT=discrete cosine transform)
+			\item Keep DCT coefficients 2-13, discard the rest.
+		\end{enumerate}
 		
 		Script en Matlab llamado por Pymatlab
 		
