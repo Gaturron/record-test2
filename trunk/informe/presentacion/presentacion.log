@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  10 DEC 2014 19:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 DEC 2014 11:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1735,6 +1735,13 @@ Package pdftex.def Info: Images/espectrograma_u3_t33_a1.png used on input line
  <./Images/espectrograma_u3_t33_a1.png>] [18
 
 ]
+<Images/perro-espectograma-cortado.png, id=209, 856.19875pt x 155.58125pt>
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+
+<use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1747,17 +1754,23 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15117pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [19
 
-]
+ <./Images/perro-espectograma-cortado.png>]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+
+<use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1770,17 +1783,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15671pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [20
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1793,17 +1811,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15303pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [21
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1816,17 +1839,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15521pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [22
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1839,17 +1867,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15277pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [23
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1862,17 +1895,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15654pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [24
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1885,17 +1923,22 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.1559pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [25
 
 ]
+File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
+ne 667.
+(pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1908,12 +1951,12 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (14.22153pt too wide) in paragraph at lines 663--663
+Overfull \hbox (14.22153pt too wide) in paragraph at lines 667--667
  [] 
  []
 
 
-Overfull \vbox (12.15654pt too high) detected at line 663
+Overfull \vbox (6.40135pt too high) detected at line 667
  []
 
 [26
@@ -1938,16 +1981,16 @@ Overfull \vbox (12.15654pt too high) detected at line 663
 
 ]
 
-Package hyperref Warning: Ignoring empty anchor on input line 848.
+Package hyperref Warning: Ignoring empty anchor on input line 852.
 
 [36
 
 ]
 
-Package hyperref Warning: Ignoring empty anchor on input line 893.
+Package hyperref Warning: Ignoring empty anchor on input line 897.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 893.
+Package hyperref Warning: Ignoring empty anchor on input line 897.
 
 [37
 
@@ -1986,20 +2029,20 @@ Missing character: There is no ; in font nullfont!
  [50
 
 ]
-<Images/categorizando_audios.png, id=455, 347.2975pt x 346.29375pt>
+<Images/categorizando_audios.png, id=456, 347.2975pt x 346.29375pt>
 File: Images/categorizando_audios.png Graphic file (type png)
 
 <use Images/categorizando_audios.png>
-Package pdftex.def Info: Images/categorizando_audios.png used on input line 128
-7.
+Package pdftex.def Info: Images/categorizando_audios.png used on input line 129
+1.
 (pdftex.def)             Requested size: 205.37926pt x 204.79237pt.
 pdfTeX warning (ext4): destination with the same identifier (name{figEncuesta})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1287 \end{frame}
+l.1291 \end{frame}
                   
-Overfull \vbox (35.27763pt too high) detected at line 1287
+Overfull \vbox (35.27763pt too high) detected at line 1291
  []
 
 [51
@@ -2022,15 +2065,15 @@ Overfull \vbox (35.27763pt too high) detected at line 1287
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1422.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1422.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1426.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1426.
 
 (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1422.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1422.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1426.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1426.
 
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: D0E1D996EF4E8031E6E3C28FC4413933;291.
@@ -2045,16 +2088,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1422.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1426.
  ) 
 Here is how much of TeX's memory you used:
- 28311 strings out of 493307
- 630978 string characters out of 6139905
- 931989 words of memory out of 5000000
- 30957 multiletter control sequences out of 15000+600000
+ 28249 strings out of 493307
+ 629711 string characters out of 6139905
+ 851222 words of memory out of 5000000
+ 30894 multiletter control sequences out of 15000+600000
  16874 words of font info for 68 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 52i,18n,74p,737b,2056s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,18n,74p,737b,2073s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/t
@@ -2068,10 +2111,10 @@ onts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb>
-Output written on presentacion.pdf (55 pages, 1099107 bytes).
+Output written on presentacion.pdf (55 pages, 1191493 bytes).
 PDF statistics:
- 564 PDF objects out of 1000 (max. 8388607)
+ 565 PDF objects out of 1000 (max. 8388607)
  457 compressed objects within 5 object streams
  126 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
