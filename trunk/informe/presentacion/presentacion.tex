@@ -25,6 +25,7 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{multicol}
+\usepackage{multirow}
 %\usepackage{dirtree}
 
 \usepackage{tikz}
@@ -203,6 +204,9 @@
 \end{frame}
 
 % % % % Diseño del experimento
+
+\section{Diseño del experimento}
+
 \begin{frame}
 	\frametitle{Diseño del experimento}
 	\begin{itemize}\itemsep=10ex
@@ -228,7 +232,7 @@
 	
 	\begin{itemize}
 		\item \textcolor{red}{\textbf{`victoria’}} cubre la \textbf{regla 4} que nos propone medir la duración de la \textit{/c/} antes de la \textit{/t/}. 
-		\item \textcolor{red}{\textbf{`caballero’}} para la \textbf{regla 5}: el fonema \textit{/ll/} se pasa a \textit{/i/} 
+		\item \textcolor{red}{\textbf{`caballero’}} para la \textbf{regla 5} el fonema \textit{/ll/} se pasa a \textit{/i/} 
 	\end{itemize}	
 \end{frame} 
 
@@ -348,10 +352,10 @@
 			%\fill[red!20](0,0) rectangle (0.4,0.4); 
 			%\fill[blue!20!white](0.4,0) rectangle (0.8,0.4); 
 			\fill[blue!20!white](0,0) rectangle (0.4*3,0.4);
-			\fill[red!20](0.4*3,0) rectangle (0.4*5,0.4); 
-			\fill[blue!20!white](0.4*5,0) rectangle (0.4*7,0.4);
-			\fill[red!20](0.4*7,0) rectangle (0.4*8,0.4); 
-			\fill[blue!20!white](0.4*8,0) rectangle (0.4*10,0.4);
+			\fill[red!20](0.4*3,0) rectangle (0.4*4,0.4); 
+			\fill[blue!20!white](0.4*4,0) rectangle (0.4*6,0.4);
+			\fill[red!20](0.4*6,0) rectangle (0.4*7,0.4); 
+			\fill[blue!20!white](0.4*7,0) rectangle (0.4*10,0.4);
 			\fill[red!20](0.4*10,0) rectangle (0.4*11,0.4);
 			\fill[blue!20!white](0.4*11,0) rectangle (0.4*13,0.4);
 			\fill[red!20](0.4*13,0) rectangle (0.4*14,0.4);
@@ -360,8 +364,9 @@
 			\fill[blue!20!white](0.4*17,0) rectangle (0.4*19,0.4);
 			\fill[red!20](0.4*19,0) rectangle (0.4*20,0.4);			
 			\fill[blue!20!white](0.4*20,0) rectangle (0.4*22,0.4);
-			\fill[red!20](0.4*22,0) rectangle (0.4*24,0.4);			
-			\fill[blue!20!white](0.4*24,0) rectangle (0.4*25,0.4);
+			\fill[red!20](0.4*22,0) rectangle (0.4*23,0.4);			
+			\fill[blue!20!white](0.4*23,0) rectangle (0.4*24,0.4);
+			\fill[red!20](0.4*24,0) rectangle (0.4*25,0.4);			
 			
 			\node at (0,0.6) {0};
 			\node at (2,0.6) {5};
@@ -433,6 +438,8 @@
 	\end{figure}
 \end{frame}
 
+\section{Datos}
+
 \begin{frame}
 	\frametitle{Datos obtenidos}
 	
@@ -463,6 +470,8 @@
 		\label{eva_table_rep}
 	\end{table}
 \end{frame}
+
+\section{Extracción}
 
 \begin{frame}
 	\frametitle{Extracción de información}
@@ -681,6 +690,8 @@
 	\end{itemize}
 \end{frame}
 
+\section{Análisis}
+
 \begin{frame}
 	\frametitle{Análisis}
 	
@@ -691,27 +702,43 @@
 	
 	\pause
 	
+	Dividimos nuestros datos en dos conjuntos: \textcolor{red}{\textbf{Entrenamiento}} y \textcolor{blue}{\textbf{Testeo}}.
+	
+	\begin{itemize}
+		\item Un \textit{clasificador} se entrenará con los datos del conjunto de \textcolor{red}{\textbf{Entrenamiento}}
+		\item Luego, intentará clasificar correctamente el conjunto de \textcolor{blue}{\textbf{Testeo}}
+	\end{itemize}
+	
+	Realizamos varias configuraciones similares a ésta, variando los elementos de Testeo \textit{(folds)}
+	
+	Ésta configuración se llama \textit{Cross-validation}.
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Análisis}
+
+	\Large {Clasificadores}
+	\begin{itemize}
+		\item Zero Rules
+		\item RIPPER
+		\item C4.5
+		\item Support vector machine
+		\item Naive Bayes
+	\end{itemize}
+	
 	\Large {Cross-validations}
 	\begin{itemize}
 		\item Clasificación por muestra 
 		\item Clasificación por hablante
 	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Análisis}
-	\Large {Clasificadores}
-	\begin{itemize}
-		\item Zero rules
-		\item RIPPER
-		\item C4.5
-		\item Support vectors machines
-		\item Naive Bayes
-	\end{itemize}
+	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Clasificación por muestra}
+	
+	{\Large Hablantes: 19 Buenos Aires, 8 Córdoba}
 	
 	\begin{center}
 		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -759,7 +786,7 @@
 			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
 			%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
 			%\hline \hline
-			\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
+			\textbf{Promedio} & 70  & 69 & 70 & 71 & 71 \\ \hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje}
 		\label{HPTDT_clas_xval_porHab}
@@ -788,7 +815,8 @@
 \begin{frame}
 	\frametitle{Clasificación por hablante}
 	
-	{\Large Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
+	%{\Large Hablantes equilibrados: 8 Buenos Aires, 8 Córdoba}
+	{\Large Hablantes equilibrados: 9 Buenos Aires, 8 Córdoba}
 	
 	\begin{center}
 		\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -798,7 +826,8 @@
 		\centering
 		\begin{tabular}{cccccccccccc}
 			& \multicolumn{11}{c}{\textit{Número de hablante}} \\
-			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 14 & 15 & 16 \\
+			%& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 14 & 15 & 16 \\
+			& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 15 & 16 & 17 \\
 			\hline \\
 			Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
 			
@@ -808,7 +837,9 @@
 			
 			\multicolumn{11}{c}{\textit{...}}	\\
 			
-			Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+			%Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+			
+			Fold 17 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
 			
 		\end{tabular}
 		\caption{Esquema de cross-validation}
@@ -878,8 +909,10 @@
 		\centering
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
-			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-			\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ \hline
+			\textbf{}  & \textbf{ZeroR} & \textbf{RIPPER} & \textbf{C4.5} & \textbf{SVM}\footnote{Corriendo T-test obtenemos $p < 0.05$} & \textbf{NaiveBayes} \\ \hline
+			%\textbf{Promedio} & 53.33 & 60 & 60 & 93.33 & 80  \\ 
+			\textbf{Promedio} & 53 & 53 & 76 & 94 & 76  \\ 
+			\hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje}
 		\label{class_corr_en_pct}
@@ -901,7 +934,8 @@
 		\centering
 		\begin{tabular}{|c|c|c|}
 		\hline
-		Buenos Aires & Córdoba & \\ \hline
+		\multicolumn{2}{ |c| }{\textbf{Clasificadas como}} & \multirow{2}{*}{\textbf{Instancias de}}  \\ \cline{1-2}
+		Buenos Aires & Córdoba &  \\ \hline
 		1 & 0 & Buenos Aires\\ \hline
 		0 & 0 & Córdoba\\ \hline
 		\end{tabular}
@@ -1024,6 +1058,8 @@
 		\label{infogain-table}
 	\end{table}
 \end{frame}
+
+\section{Conclusiones}
 
 \begin{frame}
 	\frametitle{Conclusiones y trabajo futuro}
