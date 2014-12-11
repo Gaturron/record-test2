@@ -31,7 +31,7 @@ H1:  audio1   1.5   ?     1.667                2
 H2:  audio1   1     2     ?                    ?
 """
 
-path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl_avgAttr'
+path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl_avgAttr_corregido2'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 mfcc_len = 33
@@ -199,7 +199,7 @@ if __name__ == '__main__':
     dicc = juntandoGrabaciones(dicc)
 
     # obtengo los usuarios
-    cantTotal = 8
+    cantTotal = 9
     cantCba = 0
     cantBsAs = 0
     
@@ -225,8 +225,8 @@ if __name__ == '__main__':
     print str(users)
 
     for u in users:
-        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u)
-        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u)
+        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u and v["userId"] in users)
+        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u and v["userId"] in users)
 
         print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v["userId"] for k, v in test.items()])
         print "train "+str(len([k for k, v in train.items()]))
