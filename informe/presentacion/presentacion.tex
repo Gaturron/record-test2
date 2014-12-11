@@ -579,44 +579,48 @@
 		\Large {Atributos acústicos: MFCC}
 		
 		\begin{figure}[H]	
-				\begin{tikzpicture}[samples=200, domain=0:5*360,yscale=0.9]
+				\begin{tikzpicture} [samples=200, domain=0:5*360,yscale=0.9]
 				
-				\begin{axis}[
-				width=12cm, height=4cm,
-				enlarge x limits=false,
-				xtick=\empty,
-				axis lines*=middle,
-				hide y axis
-				]
-				\addplot [no markers, smooth] {sin(x)+rand*2};
-				\end{axis}
+				\node[anchor=south west,inner sep=0] (image) at (-0.6,1) {\includegraphics[width=0.9\textwidth]{perro-espectograma-cortado.png}};
 				
-				\def \posy {-1};
+%				\begin{axis}[
+%				width=12cm, height=4cm,
+%				enlarge x limits=false,
+%				xtick=\empty,
+%				axis lines*=middle,
+%				hide y axis
+%				]
+%				\addplot [no markers, smooth] {sin(x)+rand*2};
+%				\end{axis}
+				
+				\def \posy {0};
 				
 				%flecha tiempo
 				\draw [->] (8.5,-0.5+\posy) -- (9.5,-0.5+\posy);
 				\node [align=center,below] at (9,-0.5+\posy) {tiempo};
 				
 				%grilla fonetica
-				\draw [->] (0,0.5+\posy) -- (10.5,0.5+\posy);
+				\draw [->] (-0.6,0.5+\posy) -- (10.3,0.5+\posy);
 				\draw (1.2,-.1+0.5+\posy) -- (1.2, .1+0.5+\posy);
-				\node [align=center,below] at (0.5,1.2+\posy) {/a/};
-				\draw (4,-.1+0.5+\posy) -- (4, .1+0.5+\posy);
-				\node [align=center,below] at (2.8,1.2+\posy) {/r/};
+				\node [align=center,below] at (0,1.2+\posy) {/e/};
+				\draw (5.2,-.1+0.5+\posy) -- (5.2, .1+0.5+\posy);
+				\node [align=center,below] at (3.2,1.2+\posy) {/r/};
 				\draw (6.8,-.1+0.5+\posy) -- (6.8, .1+0.5+\posy);
-				\node [align=center,below] at (5.5,1.2+\posy) {/a/};	
+				\node [align=center,below] at (6,1.2+\posy) {/o/};	
 				\draw (9.6,-.1+0.5+\posy) -- (9.6, .1+0.5+\posy);
-				\node [align=center,below] at (8.3,1.2+\posy) {/g/};
+				\node [align=center,below] at (8.3,1.2+\posy) { };
+				%\node [align=center,below] at (9.5,1.2+\posy) {/k/};
+				\draw (9.2,-.1+0.5+\posy) -- (9.2, .1+0.5+\posy);
 				
 				\pause
 				
 				%linea vertical
 				\draw[dotted] (1.2,0.5+\posy) -- (1.2,-0.4+\posy);
-				\draw[dotted] (4,0.5+\posy) -- (4,-1.4+\posy);
+				\draw[dotted] (5.2,0.5+\posy) -- (5.2,-1.2+\posy);
 				
 				%grilla
-				\draw [->] (0,0+\posy) -- (10.5,0+\posy);	
-				\foreach \r in {0,0.4,0.8,...,10.5}
+				\draw [->] (-0.6,0+\posy) -- (10.3,0+\posy);	
+				\foreach \r in {-0.4,0,0.4,0.8,...,10.3}
 				\draw (\r,-.1+\posy) -- (\r, .1+\posy);
 				
 				%ventanas
@@ -624,8 +628,8 @@
 				\intervalo{1.6}{-0.6+\posy};
 				\intervalo{2}{-0.8+\posy};
 				\intervalo{2.4}{-1+\posy};
-				\node at (3,-1.2+\posy) {...};
-				\intervalo{3.2}{-1.4+\posy};
+				\node at (3.8,-1.2+\posy) {.......};
+				\intervalo{4.4}{-1.2+\posy};
 				
 				\pause
 				
@@ -645,13 +649,13 @@
 				\pause
 				
 				\mfccvec{3.4}{-2.5+\posy}{Trama T4};
-				\draw[blue, thick,->] (2.4,-1.15+\posy) -- (3.4,-1.8+\posy);
+				\draw[blue, thick,->] (2.8,-1.15+\posy) -- (3.4,-1.8+\posy);
 				
 				\pause
 				
 				\node at (4.2, -2.5+\posy) {...};
 				\mfccvec{5}{-2.5+\posy}{Trama TM};
-				\draw[blue, thick,->] (4,-1.55+\posy) -- (5,-1.8+\posy);
+				\draw[blue, thick,->] (4.8,-1.35+\posy) -- (5,-1.8+\posy);
 				
 				\pause
 				%resultado
