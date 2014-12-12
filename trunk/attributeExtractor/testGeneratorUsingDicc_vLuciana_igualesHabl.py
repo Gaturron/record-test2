@@ -14,7 +14,7 @@ import time
 import random
 import sys
 
-path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl'
+path = os.path.abspath(os.getcwd())+'/tests/test_xHablante_igualesHabl_corregido'
 dicc = pickle.load(open(path+"/extractionTotalDicc.p", "rb"))
 
 mfcc_len = 33
@@ -60,7 +60,7 @@ attributesFilter = {
 def resPairedToArff(resultsPaired, attributesFilter, folder):
 
     """
-    La idea es tener 8 hablantes de Córdoba y 8 de Buenos Aires
+    La idea es tener 8 hablantes de Córdoba y 9 de Buenos Aires
     y hacer los fold dejando 1 hab para test y los demás para train
     """
 
@@ -76,7 +76,7 @@ def resPairedToArff(resultsPaired, attributesFilter, folder):
 if __name__ == '__main__':
 
     # obtengo los usuarios
-    cantTotal = 8
+    cantTotal = 9
     cantCba = 0
     cantBsAs = 0
     
@@ -102,8 +102,8 @@ if __name__ == '__main__':
     print str(users)
 
     for u in users:
-        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u)
-        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u)
+        test = dict((k,v) for k, v in dicc.items() if v["userId"] == u and v["userId"] in users)
+        train = dict((k,v) for k, v in dicc.items() if v["userId"] != u and v["userId"] in users)
 
         print "test "+str(len([k for k, v in test.items()]))+" userId"+str([v["userId"] for k, v in test.items()])
         print "train "+str(len([k for k, v in train.items()]))
