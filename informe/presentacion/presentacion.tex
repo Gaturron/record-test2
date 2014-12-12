@@ -1455,6 +1455,42 @@
 \end{frame}
 
 \begin{frame}[noframenumbering]
+	\frametitle{Clasificación por hablante}
+	
+	Promediando los atributos por hablante sin descartar datos (utilizando los 27 hablantes)
+	
+	{\small 	
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+				\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
+			\end{tabular}
+			\caption{Clasificación correcta en porcentaje}
+			\label{HPTDT_clas_xval_porHab}
+		\end{table}
+	}
+	
+	Promediando los atributos por hablante de los 17 hablantes
+	(utilizando 9 de Buenos Aires, 8 Córdoba)
+	
+	{\small 	
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+				\textbf{Promedio} & 53  & 53 & 76 & 94 & 76 \\ \hline
+			\end{tabular}
+			\caption{Clasificación correcta en porcentaje}
+			\label{HPTDT_clas_xval_porHab}
+		\end{table}
+	}
+	
+\end{frame}
+
+\begin{frame}[noframenumbering]
 	\frametitle{Selección de atributos de forma automática}
 	
 	Para cada atributo calcula la entropía de la clase y luego calcula la entropía\footnote{Cuán frecuente es una clase en una serie de muestras} de la misma sabiendo el valor de este atributo

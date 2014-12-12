@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 DEC 2014 19:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  12 DEC 2014 10:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2081,7 +2081,19 @@ Overfull \vbox (14.5586pt too high) detected at line 1455
 
 [55
 
-] [56
+]pdfTeX warning (ext4): destination with the same identifier (name{HPTDT_clas_x
+val_porHab}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1491 \end{frame}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{HPTDT_clas_xval_porHab}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1491 \end{frame}
+                   [56
+
+] [57
 
 ]
 \tf@nav=\write6
@@ -2093,14 +2105,14 @@ Overfull \vbox (14.5586pt too high) detected at line 1455
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1474.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1474.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1510.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1510.
  (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1474.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1474.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1510.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1510.
 
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: D0E1D996EF4E8031E6E3C28FC4413933;291.
@@ -2115,13 +2127,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1474.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1510.
  ) 
 Here is how much of TeX's memory you used:
- 28261 strings out of 493307
- 629890 string characters out of 6139905
- 851264 words of memory out of 5000000
- 30903 multiletter control sequences out of 15000+600000
+ 28265 strings out of 493307
+ 629927 string characters out of 6139905
+ 851300 words of memory out of 5000000
+ 30905 multiletter control sequences out of 15000+600000
  19228 words of font info for 75 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  52i,18n,74p,737b,2073s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2142,10 +2154,10 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on presentacion.pdf (56 pages, 1237890 bytes).
+Output written on presentacion.pdf (57 pages, 1239111 bytes).
 PDF statistics:
- 593 PDF objects out of 1000 (max. 8388607)
- 479 compressed objects within 5 object streams
- 128 named destinations out of 1000 (max. 500000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 485 compressed objects within 5 object streams
+ 130 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
