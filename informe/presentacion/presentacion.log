@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 DEC 2014 11:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 DEC 2014 19:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1284,6 +1284,12 @@ LaTeX Warning: Label `' multiply defined.
 
 LaTeX Warning: Label `figEncuesta' multiply defined.
 
+
+LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
+
+
+LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
+
 )
 \openout1 = `presentacion.aux'.
 
@@ -1723,24 +1729,24 @@ l.439 \end{frame}
  <./Images/pag-play1.png>] [16
 
 ]
-<Images/espectrograma_u3_t33_a1.png, id=194, 1108.14pt x 359.3425pt>
-File: Images/espectrograma_u3_t33_a1.png Graphic file (type png)
+<Images/frase-espectrograma-cortado2.png, id=194, 1042.89626pt x 333.245pt>
+File: Images/frase-espectrograma-cortado2.png Graphic file (type png)
 
-<use Images/espectrograma_u3_t33_a1.png>
-Package pdftex.def Info: Images/espectrograma_u3_t33_a1.png used on input line 
-490.
-(pdftex.def)             Requested size: 308.06367pt x 99.89691pt.
+<use Images/frase-espectrograma-cortado2.png>
+Package pdftex.def Info: Images/frase-espectrograma-cortado2.png used on input 
+line 490.
+(pdftex.def)             Requested size: 308.06367pt x 98.43861pt.
  [17
 
- <./Images/espectrograma_u3_t33_a1.png>] [18
+ <./Images/frase-espectrograma-cortado2.png>] [18
 
 ]
-<Images/perro-espectograma-cortado.png, id=209, 856.19875pt x 155.58125pt>
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
+<Images/perro-espectrograma-cortado.png, id=209, 856.19875pt x 155.58125pt>
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
 
-<use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+<use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1764,12 +1770,12 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 
 [19
 
- <./Images/perro-espectograma-cortado.png>]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
+ <./Images/perro-espectrograma-cortado.png>]
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
 
-<use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+<use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1794,10 +1800,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [20
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1822,10 +1828,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [21
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1850,10 +1856,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [22
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1878,10 +1884,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [23
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1906,10 +1912,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [24
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1934,10 +1940,10 @@ Overfull \vbox (6.40135pt too high) detected at line 667
 [25
 
 ]
-File: Images/perro-espectograma-cortado.png Graphic file (type png)
- <use Images/perro-espectograma-cortado.png>
-Package pdftex.def Info: Images/perro-espectograma-cortado.png used on input li
-ne 667.
+File: Images/perro-espectrograma-cortado.png Graphic file (type png)
+ <use Images/perro-espectrograma-cortado.png>
+Package pdftex.def Info: Images/perro-espectrograma-cortado.png used on input l
+ine 667.
 (pdftex.def)             Requested size: 308.06367pt x 55.97833pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2053,7 +2059,29 @@ Overfull \vbox (35.27763pt too high) detected at line 1291
 
 ] [54
 
-] [55
+]
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 1455.
+
+pdfTeX warning (ext4): destination with the same identifier (name{HPTDT_clas_xv
+al_porHab}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1455 \end{frame}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{HPTDT_clas_xval_porHab}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1455 \end{frame}
+                  
+Overfull \vbox (14.5586pt too high) detected at line 1455
+ []
+
+[55
+
+] [56
 
 ]
 \tf@nav=\write6
@@ -2065,15 +2093,14 @@ Overfull \vbox (35.27763pt too high) detected at line 1291
 \tf@snm=\write8
 \openout8 = `presentacion.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1426.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1426.
-
-(./presentacion.aux
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1474.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1474.
+ (./presentacion.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1426.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1426.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1474.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1474.
 
 Package rerunfilecheck Info: File `presentacion.out' has not changed.
 (rerunfilecheck)             Checksum: D0E1D996EF4E8031E6E3C28FC4413933;291.
@@ -2088,33 +2115,37 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1426.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1474.
  ) 
 Here is how much of TeX's memory you used:
- 28249 strings out of 493307
- 629711 string characters out of 6139905
- 851222 words of memory out of 5000000
- 30894 multiletter control sequences out of 15000+600000
- 16874 words of font info for 68 fonts, out of 8000000 for 9000
+ 28261 strings out of 493307
+ 629890 string characters out of 6139905
+ 851264 words of memory out of 5000000
+ 30903 multiletter control sequences out of 15000+600000
+ 19228 words of font info for 75 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  52i,18n,74p,737b,2073s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on presentacion.pdf (55 pages, 1191493 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on presentacion.pdf (56 pages, 1237890 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 457 compressed objects within 5 object streams
- 126 named destinations out of 1000 (max. 500000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 479 compressed objects within 5 object streams
+ 128 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
