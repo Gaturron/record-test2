@@ -449,7 +449,7 @@
 			\hline
 			\textbf{}  & \textbf{Bs.As. } & \textbf{Cba.} & \textbf{Total} \\ \hline
 			%\textbf{Conservar}  & 222 & 105 & 327 \\ \hline
-			\textbf{Conservar}  & 220 & 90 & 310 \\ \hline
+			\textbf{Conservado}  & 220 & 90 & 310 \\ \hline
 			\textbf{Problemas en el habla\footnote{Problemas más comunes: entonación exagerada y error al pronunciar una frase}}  & 33 & 15 & 48 \\ \hline
 			\textbf{Mucho ruido de fondo}  & 2 & 12 & 14 \\ \hline
 			\textbf{Sonido saturado}  & 2 & 0 & 2 \\ \hline
@@ -485,7 +485,7 @@
 	\end{center}
 	
 	\begin{figure}[h!]
-		\centerline{\includegraphics[width=0.9\textwidth]{espectrograma_u3_t33_a1} }
+		\centerline{\includegraphics[width=0.9\textwidth]{frase-espectrograma-cortado2} }
 	\end{figure}
 \end{frame}
 
@@ -581,7 +581,7 @@
 		\begin{figure}[H]	
 				\begin{tikzpicture} [samples=200, domain=0:5*360,yscale=0.9]
 				
-				\node[anchor=south west,inner sep=0] (image) at (-0.6,1) {\includegraphics[width=0.9\textwidth]{perro-espectograma-cortado.png}};
+				\node[anchor=south west,inner sep=0] (image) at (-0.6,1) {\includegraphics[width=0.9\textwidth]{perro-espectrograma-cortado.png}};
 				
 %				\begin{axis}[
 %				width=12cm, height=4cm,
@@ -609,7 +609,7 @@
 				\node [align=center,below] at (6,1.2+\posy) {/o/};	
 				\draw (9.6,-.1+0.5+\posy) -- (9.6, .1+0.5+\posy);
 				\node [align=center,below] at (8.3,1.2+\posy) { };
-				%\node [align=center,below] at (9.5,1.2+\posy) {/k/};
+				\node [align=center,below] at (9.5,1.2+\posy) {{\footnotesize /k/}};
 				\draw (9.2,-.1+0.5+\posy) -- (9.2, .1+0.5+\posy);
 				
 				\pause
@@ -709,13 +709,13 @@
 	Dividimos nuestros datos en dos conjuntos: \textcolor{red}{\textbf{Entrenamiento}} y \textcolor{blue}{\textbf{Testeo}}.
 	
 	\begin{itemize}
-		\item Un \textit{clasificador} se entrenará con los datos del conjunto de \textcolor{red}{\textbf{Entrenamiento}}
+		\item Un \textbf{clasificador} se entrenará con los datos del conjunto de \textcolor{red}{\textbf{Entrenamiento}}
 		\item Luego, intentará clasificar correctamente el conjunto de \textcolor{blue}{\textbf{Testeo}}
 	\end{itemize}
 	
 	Realizamos varias configuraciones similares a ésta, variando los elementos de Testeo \textit{(folds)}
 	
-	Ésta configuración se llama \textit{Cross-validation}.
+	Ésta configuración se llama \textbf{Cross-validation}.
 
 \end{frame}
 
@@ -1403,6 +1403,54 @@
 		\item $\mu$ es el promedio de duración de la unidad utilizada en la grabación.
 		\item $\sigma$ es el desvío estándar de la unidad utilizada en la grabación.
 	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[noframenumbering]
+	\frametitle{Clasificación por muestra}
+	
+	\textbf{Promedio de porcentaje correcto en cada fold:}
+	\[
+	{ \sum_{i=1}^{\text{\# de folds}} \text{Porcentaje instancias correctas en fold \textit{i}}
+	\over
+	\text{\# de folds}
+	}
+	\]
+	
+{\small 	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+			%\hline \hline
+			\textbf{Promedio} & 70  & 69 & 70 & 71 & 71 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}}
+	
+	\textbf{Promedio de instancias correctas sobre instancias totales:}
+	\small
+	\[
+	{ \sum_{i=1}^{\text{\# de folds}} \text{Cantidad de instancias correctas en fold \textit{i}}
+		\over
+		\text{\# de instancias}
+	}
+	\]
+
+{\small 	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+			%\hline \hline
+			\textbf{Promedio} & 69  & 63 & 69 & 70 & 65 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en cantidad de instancias}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}}
 	
 \end{frame}
 
