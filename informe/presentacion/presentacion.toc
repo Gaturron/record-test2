@@ -5,4 +5,5 @@
 \beamer@sectionintoc {3}{Datos}{16}{0}{3}
 \beamer@sectionintoc {4}{Extracci\IeC {\'o}n}{17}{0}{4}
 \beamer@sectionintoc {5}{An\IeC {\'a}lisis}{29}{0}{5}
-\beamer@sectionintoc {6}{Conclusiones}{41}{0}{6}
+\beamer@sectionintoc {6}{Conclusiones}{40}{0}{6}
+\beamer@sectionintoc {7}{M\IeC {\'a}s detalles}{46}{0}{7}
