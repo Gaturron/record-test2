@@ -26,7 +26,9 @@
 \usepackage{wrapfig}
 \usepackage{multicol}
 \usepackage{multirow}
-%\usepackage{dirtree}
+
+\usepackage{etex}
+\usepackage{dirtree}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -924,27 +926,6 @@
 	
 \end{frame}
 
-\begin{frame}
-	\frametitle{Clasificación por hablante}
-	
-	Detalles:
-	
-	\begin{itemize}
-		\item Cada clasificación tiene 1 instancia para analizar \\
-		Matrices de confusión muy pobres.
-	\end{itemize}
-	
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{|c|c|c|}
-		\hline
-		\multicolumn{2}{ |c| }{\textbf{Clasificadas como}} & \multirow{2}{*}{\textbf{Instancias de}}  \\ \cline{1-2}
-		Buenos Aires & Córdoba &  \\ \hline
-		1 & 0 & Buenos Aires\\ \hline
-		0 & 0 & Córdoba\\ \hline
-		\end{tabular}
-	\end{table}
-\end{frame}
 %
 %\begin{frame}
 %	\frametitle{Dejando un hablante fuera promediando los atributos desconocidos}
@@ -1068,16 +1049,31 @@
 \begin{frame}
 	\frametitle{Conclusiones y trabajo futuro}
 	
+	{\Large Conclusiones}
+	
 	\begin{itemize}
 		\item Armamos una plataforma para la recolección de grabaciones
 		\item Caso de estudio: diferencia entre habla de Cba. y BsAs.
 		\item Características del conjunto de datos y cómo repercute en sus resultados 
 	\end{itemize}
 	
+	\pause
+	
+	{\Large Trabajo futuro}
+	
 	\begin{itemize}
 		\item Grabaciones chequeadas entre los hablantes
+		
+		\pause
+		
 		\item Desarrollo de varios filtros para evitar grabaciones con problemas
+		
+		\pause
+		
 		\item Realizar clasificación en vivo a través de una página web
+		
+		\pause
+		
 		\item Mejores modelos variando sus parámetros y nuevos atributos 
 		
 	\end{itemize}
@@ -1094,6 +1090,8 @@
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % Más detalles
+
+\section{Más detalles}
 
 \begin{frame}[noframenumbering]
 	\begin{center}
@@ -1408,6 +1406,38 @@
 
 \begin{frame}[noframenumbering]
 	\frametitle{Clasificación por muestra}
+		
+	\begin{center}
+		\begin{tikzpicture}
+		
+		\begin{axis}[
+		title={\textbf{Cantidad de grabaciones en cada grupo de Testeo}},
+		xlabel={Folds},
+		ylabel={Cantidad de grabaciones},
+		scale only axis,
+		width=4in,
+		height=2in,
+		xmin=0, xmax=28,
+		ymin=0, ymax=45,
+		axis on top]
+		\addplot[
+		ybar,
+		fill=blue!15,
+		bar width=0.102874in, 
+		bar shift=0in,
+		draw=black] 
+		plot coordinates{ 
+			(1, 10)(2, 5)(3, 11)(4, 1)(5, 11)(6, 5)(7, 5)(8, 5)(9, 10)(10,10)(11,2)(12,1)(13,1)(14,1)(15,10)(16,11)(17,2)(18,34)(19,18)(20,10)(21,40)(22,5)(23,15)(24,3)(25,11)(26,11)(27,11) 
+		};
+		
+		\end{axis}
+		\end{tikzpicture}	
+	\end{center}
+		
+\end{frame}
+
+\begin{frame}[noframenumbering]
+	\frametitle{Clasificación por muestra}
 	
 	\textbf{Promedio de porcentaje correcto en cada fold:}
 	\[
@@ -1455,9 +1485,36 @@
 \end{frame}
 
 \begin{frame}[noframenumbering]
+	\frametitle{Clasificación por muestra}
+	
+	Árbol de decisión generado por C4.5 para cualquier fold para clasificación por muestra.
+	
+	\dirtree{%
+		.1 root.
+		.2 $bsas (249.0/68.0)$.
+	}
+	
+\end{frame}
+
+\begin{frame}[noframenumbering]
 	\frametitle{Clasificación por hablante}
 	
-	Promediando los atributos por hablante sin descartar datos (utilizando los 27 hablantes)
+	Veamos un árbol de decisión generado por C4.5. Este corresponde al fold 7. 
+	
+	\dirtree{%
+		.1 root.
+		.2 $FON\_vowel\_norm <= 7.221824$.
+		.3 $FON\_ll\_norm <= -24.007: cba (2.33/0.22)$.
+		.3 $FON\_ll\_norm > -24.007: bsas (18.67/0.89)$.
+		.2 $FON\_vowel\_norm > 7.221824: cba (5.0)$.
+	}
+		
+\end{frame}
+
+\begin{frame}[noframenumbering]
+	\frametitle{Clasificación por hablante}
+	
+	Promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)
 	
 	{\small 	
 		\begin{table}[H]
@@ -1488,6 +1545,28 @@
 		\end{table}
 	}
 	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Clasificación por hablante}
+	
+	Detalles:
+	
+	\begin{itemize}
+		\item Cada clasificación tiene 1 instancia para analizar \\
+		Matrices de confusión muy pobres.
+	\end{itemize}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{2}{ |c| }{\textbf{Clasificadas como}} & \multirow{2}{*}{\textbf{Instancias de}}  \\ \cline{1-2}
+			Buenos Aires & Córdoba &  \\ \hline
+			1 & 0 & Buenos Aires\\ \hline
+			0 & 0 & Córdoba\\ \hline
+		\end{tabular}
+	\end{table}
 \end{frame}
 
 \begin{frame}[noframenumbering]
