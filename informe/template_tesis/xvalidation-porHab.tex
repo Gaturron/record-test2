@@ -1,5 +1,6 @@
 % Un hablante para test, lo demás para train
-\subsection{Un hablante para test y los demás para train}
+%\subsection{Un hablante para test y los demás para train}
+\subsection{Clasificación por muestra}
 \label{un_hablante_para_test_los_demas_train}
 
 \usetikzlibrary{shapes.geometric}
@@ -122,3 +123,89 @@ Si hay muchas instancias con atributos desconocidos, pocos atributos tendrán bu
 Veamos un ejemplo: en la tabla \ref{HPTDT_hablante_ej} podemos ver los atributos extraídos de un hablante ficticio. Supongamos que este hablante grabó sólo 3 audios. En el primer audio se define los atributos A1, A2 y AN. En el segundo audio se define A3, A4 y A5. En último audio se define los atributos A6 y A7. Todos los demás atributos poseen valores desconocidos, pero en realidad corresponden a un mismo hablante. Si bien, para ese audio en particular es un atributo desconocido, la realidad es que corresponde a un mismo hablante y podemos inferirlo de otro audio grabado por él. Deberíamos tener alguna forma de evitar tener valores desconocidos cuando pueden ser extraídos de otro audio.
 
 Suponemos que el mal rendimiento de C4.5 viene de la mano de los valores desconocidos. Creemos que si tenemos menor cantidad de valores desconocidos esta performance mejorará. Pensamos esta idea luego de leer cómo funciona los árboles de decisión del libro \cite{DataMining-PracticalMachineLearningTools} \footnote{En la página 194 está la explicación que nos ayudó a razonar esta idea.}. En la sección \ref{prom_los_atributos_de_cada_hablante} probaremos otro modelo de test que intente evitar tener tantos valores desconocidos. 
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Correcciones a agregar
+Correcciones a agregar
+
+
+\begin{center}
+	\begin{tikzpicture}
+	
+	\begin{axis}[
+	title={\textbf{Cantidad de grabaciones en cada grupo de Testeo}},
+	xlabel={Folds},
+	ylabel={Cantidad de grabaciones},
+	scale only axis,
+	width=4in,
+	height=2in,
+	xmin=0, xmax=28,
+	ymin=0, ymax=45,
+	axis on top]
+	\addplot[
+	ybar,
+	fill=blue!15,
+	bar width=0.102874in, 
+	bar shift=0in,
+	draw=black] 
+	plot coordinates{ 
+		(1, 10)(2, 5)(3, 11)(4, 1)(5, 11)(6, 5)(7, 5)(8, 5)(9, 10)(10,10)(11,2)(12,1)(13,1)(14,1)(15,10)(16,11)(17,2)(18,34)(19,18)(20,10)(21,40)(22,5)(23,15)(24,3)(25,11)(26,11)(27,11) 
+	};
+	
+	\end{axis}
+	\end{tikzpicture}	
+\end{center}
+
+
+\textbf{Promedio de porcentaje correcto en cada fold:}
+\[
+{ \sum_{i=1}^{\text{\# de folds}} \text{Porcentaje instancias correctas en fold \textit{i}}
+	\over
+	\text{\# de folds}
+}
+\]
+
+{\small 	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+			%\hline \hline
+			\textbf{Promedio} & 70  & 69 & 70 & 71 & 71 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}}
+	
+	\textbf{Promedio de instancias correctas sobre instancias totales:}
+	\small
+	\[
+	{ \sum_{i=1}^{\text{\# de folds}} \text{Cantidad de instancias correctas en fold \textit{i}}
+		\over
+		\text{\# de instancias}
+	}
+	\]
+	
+	{\small 	\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+				%\textbf{Fold 1}  &  &  &  &  &  \\ \hline
+				%\hline \hline
+				\textbf{Promedio} & 69  & 63 & 69 & 70 & 65 \\ \hline
+			\end{tabular}
+			\caption{Clasificación correcta en cantidad de instancias}
+			\label{HPTDT_clas_xval_porHab}
+		\end{table}}
+		
+		
+		Árbol de decisión generado por C4.5 para cualquier fold para clasificación por muestra.
+		
+		\dirtree{%
+			.1 root.
+			.2 $bsas (249.0/68.0)$.
+		}
+		

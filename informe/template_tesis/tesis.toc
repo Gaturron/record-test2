@@ -42,22 +42,13 @@
 \contentsline {subsection}{\numberline {6.3.2}An\IeC {\'a}lisis Shapiro-Wilk Test}{34}
 \contentsline {subsection}{\numberline {6.3.3}Student t Test}{35}
 \contentsline {section}{\numberline {6.4}Modelos de tests}{35}
-\contentsline {subsection}{\numberline {6.4.1}Grupos de hablantes}{36}
-\contentsline {subsubsection}{Resultados}{37}
+\contentsline {subsection}{\numberline {6.4.1}Clasificaci\IeC {\'o}n por muestra}{36}
+\contentsline {subsubsection}{Resultados}{36}
+\contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{37}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{37}
+\contentsline {subsection}{\numberline {6.4.2}Clasificaci\IeC {\'o}n por hablante}{39}
+\contentsline {subsubsection}{Resultados}{41}
 \contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{42}
 \contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{42}
-\contentsline {subsection}{\numberline {6.4.2}Un hablante para test y los dem\IeC {\'a}s para train}{43}
-\contentsline {subsubsection}{Resultados}{43}
-\contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{44}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{44}
-\contentsline {subsection}{\numberline {6.4.3}Promediando los atributos de cada hablante}{45}
-\contentsline {subsubsection}{Resultados}{47}
-\contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{48}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{48}
-\contentsline {subsection}{\numberline {6.4.4}Promediando los atributos de cada hablante para valores desconocidos}{48}
-\contentsline {subsubsection}{Resultados}{49}
-\contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{50}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{50}
-\contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{50}
-\contentsline {section}{\numberline {6.6}Combinando clases de atributos}{51}
-\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{53}
+\contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{43}
+\contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{45}
