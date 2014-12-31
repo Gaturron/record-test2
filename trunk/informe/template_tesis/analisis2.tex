@@ -127,21 +127,21 @@ En esta sección explicamos en detalle varios modelos de tests así como tambié
 
 Los siguientes modelos de tests son los que probamos:
 \begin{itemize}
-	\item Validación cruzada por grupos de hablantes modificada para evitar grabaciones del mismo hablante en el mismo conjunto (sección \ref{grupo_de_hablantes})
-	\item Validación cruzada por hablante dejando un hablante afuera (sección \ref{un_hablante_para_test_los_demas_train})
-	\item Validación cruzada por hablante dejando uno afuera promediando los atributos de cada hablante y balanceando la cantidad de hablantes (sección \ref{prom_los_atributos_de_cada_hablante})
-	\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}) 
+	%\item Validación cruzada por grupos de hablantes modificada para evitar grabaciones del mismo hablante en el mismo conjunto (sección \ref{grupo_de_hablantes})
+	\item Clasificación por muestra: validación cruzada por hablante dejando un hablante afuera (sección \ref{un_hablante_para_test_los_demas_train})
+	\item Clasificación por hablante: validación cruzada por hablante dejando uno afuera promediando los atributos de cada hablante y balanceando la cantidad de hablantes (sección \ref{prom_los_atributos_de_cada_hablante})
+	%\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}) 
 \end{itemize}
 
 La extracción de atributos, su normalización y el tratamiento de los valores desconocidos fueron explicados en el capítulo \ref{extraccion}.
 
 %viejo
-\input{xvalidation-porGrupoViejo.tex}
+%\input{xvalidation-porGrupoViejo.tex}
 
 %nuevos
 \input{xvalidation-porHab.tex}
 \input{xvalidation-porHabProm.tex}
-\input{xvalidation-porHabPromMissAttr.tex}
+%\input{xvalidation-porHabPromMissAttr.tex}
 
 \input{seleccion_de_atributos.tex}
-\input{combinando_clases_de_atributos.tex}
+%\input{combinando_clases_de_atributos.tex}

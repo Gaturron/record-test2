@@ -1,5 +1,6 @@
 % Juntar por cada hablante sus audios en una muestra sola promediando sus atributos
-\subsection{Promediando los atributos de cada hablante}
+%\subsection{Promediando los atributos de cada hablante}
+\subsection{Clasificación por hablante}
 \label{prom_los_atributos_de_cada_hablante}
 
 Armamos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. En la tabla \ref{PAH_esq_cv} vemos este esquema.
@@ -143,3 +144,40 @@ Esto también se ve reflejado en las matrices de confusión de cada fold. Podemo
 	\caption{Matriz de confusión fold 1}
 	\label{PAH_mat_conf_f1_solo0o1}
 \end{table}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Correcciones a agregar
+Correcciones a agregar
+
+	Promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)
+	
+	{\small 	
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+				\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
+			\end{tabular}
+			\caption{Clasificación correcta en porcentaje}
+			\label{HPTDT_clas_xval_porHab}
+		\end{table}
+	}
+	
+	Promediando los atributos por hablante de los 17 hablantes
+	(utilizando 9 de Buenos Aires, 8 Córdoba)
+	
+	{\small 	
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+				\textbf{Promedio} & 53  & 53 & 76 & 94 & 76 \\ \hline
+			\end{tabular}
+			\caption{Clasificación correcta en porcentaje}
+			\label{HPTDT_clas_xval_porHab}
+		\end{table}
+	}
+
