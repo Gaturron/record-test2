@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  29 DEC 2014 21:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 JAN 2015 18:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1012,9 +1012,6 @@ LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
 
 LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
 
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
 )
 \openout1 = `tesis.aux'.
 
@@ -1567,41 +1564,42 @@ LaTeX Info: Redefining \% on input line 51.
 LaTeX Info: Redefining \. on input line 102.
 LaTeX Info: Redefining \% on input line 102.
  [34]
-LaTeX Info: Redefining \. on input line 134.
-LaTeX Info: Redefining \% on input line 134.
+LaTeX Info: Redefining \. on input line 137.
+LaTeX Info: Redefining \% on input line 137.
  [35] (./xvalidation-porHab.tex
-LaTeX Info: Redefining \. on input line 59.
-LaTeX Info: Redefining \% on input line 59.
- [36]
-LaTeX Info: Redefining \. on input line 100.
-LaTeX Info: Redefining \% on input line 100.
- [37]
-LaTeX Info: Redefining \. on input line 158.
-LaTeX Info: Redefining \% on input line 158.
- [38]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 164.
+(amsmath)                 on input line 47.
 
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 210
+LaTeX Info: Redefining \. on input line 66.
+LaTeX Info: Redefining \% on input line 66.
+[36]
+LaTeX Info: Redefining \. on input line 118.
+LaTeX Info: Redefining \% on input line 118.
+ [37]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 168
 .
-(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+ (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 7.
-LaTeX Info: Redefining \% on input line 7.
-
-[39]
-LaTeX Info: Redefining \. on input line 71.
-LaTeX Info: Redefining \% on input line 71.
+)
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+ [38])
+(./xvalidation-porHabProm.tex
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
+ [39]
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
  [40]
-LaTeX Info: Redefining \. on input line 117.
-LaTeX Info: Redefining \% on input line 117.
- [41]
-LaTeX Info: Redefining \. on input line 183.
-LaTeX Info: Redefining \% on input line 183.
- [42]) (./seleccion_de_atributos.tex
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
+ [41]) (./seleccion_de_atributos.tex
+LaTeX Info: Redefining \. on input line 32.
+LaTeX Info: Redefining \% on input line 32.
+
+[42]
 Overfull \hbox (10.00539pt too wide) in paragraph at lines 33--34
 \OT1/lmr/m/n/10.95 nan-tes (uti-li-zan-do nues-tra no-men-cla-tu-ra FON[]conson
 ant[]norm), vo-ca-les (FON[]vowel[]norm),
@@ -1614,22 +1612,20 @@ ccent[]-normhd) y su s^^S^^Pla-ba an-te-rior (SIL[]prevSyllableAccent[]normhd).
 
  []
 
-LaTeX Info: Redefining \. on input line 35.
-LaTeX Info: Redefining \% on input line 35.
-[43])) (./conclusiones.tex
+)) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [44]
+ [43]
 Cap\'{\i }tulo 7.
-(./trabajos_futuros.tex [45
+(./trabajos_futuros.tex [44
 
 ]
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
- [46])) (./marcas_prosodicas.tex
+ [45])) (./marcas_prosodicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [47]
+ [46]
 Underfull \vbox (badness 10000) detected at line 31
  []
 
@@ -1644,12 +1640,12 @@ Underfull \hbox (badness 1360) in paragraph at lines 35--35
 \OT1/lmr/m/n/10 go to-dos los d^^S^^Pas con-mi-go
  []
 
-[48
+[47
 
 ]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [49]
+ [48]
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []|\OT1/lmr/m/n/10 ACU[]AverageKT[]0 al
  []
@@ -1717,7 +1713,7 @@ Underfull \vbox (badness 10000) detected at line 29
 Underfull \vbox (badness 10000) detected at line 50
  []
 
-[50
+[49
 
 ]
 Underfull \vbox (badness 10000) detected at line 71
@@ -1726,7 +1722,7 @@ Underfull \vbox (badness 10000) detected at line 71
 )
 LaTeX Info: Redefining \. on input line 132.
 LaTeX Info: Redefining \% on input line 132.
- [51] (./tesis.bbl
+ [50] (./tesis.bbl
 Underfull \hbox (badness 2050) in paragraph at lines 8--11
 []\OT1/lmr/m/n/10 Boersma, P. and Wee-nink, D. (2013).  Praat: doing pho-
  []
@@ -1737,7 +1733,7 @@ Underfull \hbox (badness 2111) in paragraph at lines 8--11
 -trie-ved 2 Ju-ne 2013 from
  []
 
-) [52
+) [51
 
 
 ] (./tesis.aux
@@ -1750,8 +1746,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  23546 strings out of 493307
- 522748 string characters out of 6139905
- 774231 words of memory out of 5000000
+ 522754 string characters out of 6139905
+ 774256 words of memory out of 5000000
  26390 multiletter control sequences out of 15000+600000
  96577 words of font info for 74 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1775,10 +1771,10 @@ nts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb
 e1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmtt10.pfb>
-Output written on tesis.pdf (58 pages, 2052660 bytes).
+Output written on tesis.pdf (57 pages, 2050234 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 211 compressed objects within 3 object streams
+ 324 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
