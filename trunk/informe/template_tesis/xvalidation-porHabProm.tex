@@ -3,36 +3,9 @@
 \subsection{Clasificación por hablante}
 \label{prom_los_atributos_de_cada_hablante}
 
-Armamos un modelo de test similar al anterior pero donde su conjunto de datos no sea desequilibrado con respecto a la cantidad de instancias de cada clase. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. Tomaremos 8 hablantes de Buenos Aires y de 8 Córdoba. De esta forma, el conjunto de datos está equilibrado en cantidad. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. En la tabla \ref{PAH_esq_cv} vemos este esquema.
+En este modelo de test variamos la instancia de clasificación. Para cada hablante juntamos sus grabaciones  calculando su promedio para cada atributo. La idea es juntar los atributos de un mismo hablante en una sola instancia. De esta forma, evitamos los atributos desconocidos en cada una de las grabaciones. 
 
-\begin{center}
-	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
-\end{center}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{cccccccccccc}
-		& \multicolumn{11}{c}{\textit{Número de hablante}} \\
-		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 14 & 15 & 16 \\
-		\hline \\
-		Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
-		
-		Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
-		
-		Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
-		
-		\multicolumn{11}{c}{\textit{...}}	\\
-		
-		Fold 16 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
-		
-	\end{tabular}
-	\caption{Esquema de validación cruzada}
-	\label{PAH_esq_cv}
-\end{table}
-
-Otro problema que surgió de la validación cruzada anterior es la masiva cantidad de valores desconocidos. Pensamos que esto hace que clasificadores como C4.5 devuelvan resultados muy pobre. 
-
-Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada hablante calculando su promedio para cada atributo. Veamos en la tabla \ref{datos_orig} un ejemplo de datos extraídos para entender la idea. 
+En la tabla \ref{datos_orig} vemos un ejemplo de datos extraídos originalmente para entender mejor la idea. 
 
 \begin{table}[H]
 	\centering
@@ -52,7 +25,9 @@ Para evitar esto realizamos lo siguiente: juntamos las grabaciones de cada habla
 	\label{datos_orig}
 \end{table}
 
-Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
+Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. 
+
+Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -69,9 +44,46 @@ Para cada hablante juntamos sus audios realizando el promedio de cada atributo. 
 	\label{PAH_datos_comb}
 \end{table}
 
-Resumiendo, por cada hablante se define una fila de atributos. Esto minimiza la cantidad de valores desconocidos por cada grabación.
+Resumiendo, por cada hablante se define una fila de atributos. Esto minimiza la cantidad de valores desconocidos por cada hablante.
 
 Esta variante la realizamos solamente utilizando los atributos temporales. Descartamos los atributos acústicos porque corresponden a grabaciones que en muchas oportunidades sufren de ruido y pensamos que también podía ser una causa por la cual los clasificadores tienen mal rendimiento.
+
+\subsection*{Variando la cantidad de hablantes}
+
+Además de esta modificación, realizaremos una variante más con respecto a la cantidad de hablantes de cada grupo. La primer variante será tener cantidad de hablantes aproximadamente pareja. La segunda variante será utilizando todo los hablantes.  
+
+Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. Tomaremos 9 hablantes de Buenos Aires y de 8 Córdoba. En la tabla \ref{PAH_esq_cv} vemos este esquema.
+
+\begin{center}
+	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
+\end{center}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{cccccccccccc}
+		& \multicolumn{11}{c}{\textit{Número de hablante}} \\
+		& 1 & 2 & 3 & 4 & 5 & 6 & 7 & ... & 15 & 16 & 17 \\
+		\hline \\
+		Fold 1 &\mycirc[red] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 2 &\mycirc[blue] & \mycirc[red] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		Fold 3 &\mycirc[blue] & \mycirc[blue] & \mycirc[red]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[blue]  \\
+		
+		\multicolumn{11}{c}{\textit{...}}	\\
+		
+		Fold 17 &\mycirc[blue] & \mycirc[blue] & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue]  & \mycirc[blue] & ... & \mycirc[blue] & \mycirc[blue] & \mycirc[red]   \\
+		
+	\end{tabular}
+	\caption{Esquema de validación cruzada}
+	\label{PAH_esq_cv}
+\end{table}
+
+Agregamos un hablante más de Buenos Aires ya que de esta manera cuando quitamos un hablante para testeo el algoritmo ZeroRule posee instancias equilibradas en el conjunto de entrenamiento. De esta forma es más correcto el análisis. 
+
+De esta forma, el conjunto de datos posee sólo una unidad de diferencia entre ambos grupos. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. 
+
+En la segunda variante no descartaremos datos. Realizaremos el mismo procedimiento teniendo en cuenta los 27 hablantes obtenidos.
 
 \subsubsection{Resultados}
 

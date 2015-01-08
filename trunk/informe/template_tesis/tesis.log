@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  7 JAN 2015 18:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  8 JAN 2015 03:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1587,17 +1587,17 @@ LaTeX Info: Redefining \. on input line 179.
 LaTeX Info: Redefining \% on input line 179.
  [38])
 (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 54.
-LaTeX Info: Redefining \% on input line 54.
+LaTeX Info: Redefining \. on input line 48.
+LaTeX Info: Redefining \% on input line 48.
  [39]
-LaTeX Info: Redefining \. on input line 108.
-LaTeX Info: Redefining \% on input line 108.
+LaTeX Info: Redefining \. on input line 102.
+LaTeX Info: Redefining \% on input line 102.
  [40]
-LaTeX Info: Redefining \. on input line 147.
-LaTeX Info: Redefining \% on input line 147.
+LaTeX Info: Redefining \. on input line 143.
+LaTeX Info: Redefining \% on input line 143.
  [41]) (./seleccion_de_atributos.tex
-LaTeX Info: Redefining \. on input line 32.
-LaTeX Info: Redefining \% on input line 32.
+LaTeX Info: Redefining \. on input line 13.
+LaTeX Info: Redefining \% on input line 13.
 
 [42]
 Overfull \hbox (10.00539pt too wide) in paragraph at lines 33--34
@@ -1745,10 +1745,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23546 strings out of 493307
- 522754 string characters out of 6139905
- 774256 words of memory out of 5000000
- 26390 multiletter control sequences out of 15000+600000
+ 23545 strings out of 493307
+ 522712 string characters out of 6139905
+ 774371 words of memory out of 5000000
+ 26389 multiletter control sequences out of 15000+600000
  96577 words of font info for 74 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,74p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1771,7 +1771,7 @@ nts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb
 e1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmtt10.pfb>
-Output written on tesis.pdf (57 pages, 2050234 bytes).
+Output written on tesis.pdf (57 pages, 2050608 bytes).
 PDF statistics:
  324 PDF objects out of 1000 (max. 8388607)
  209 compressed objects within 3 object streams

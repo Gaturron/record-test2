@@ -49,6 +49,6 @@
 \contentsline {subsection}{\numberline {6.4.2}Clasificaci\IeC {\'o}n por hablante}{39}
 \contentsline {subsubsection}{Resultados}{40}
 \contentsline {subsubsection}{An\IeC {\'a}lisis de los clasificadores construidos}{41}
-\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{41}
+\contentsline {subsubsection}{Caracter\IeC {\'\i }sticas del modelo de test}{42}
 \contentsline {section}{\numberline {6.5}Selecci\IeC {\'o}n de atributos de forma autom\IeC {\'a}tica}{42}
 \contentsline {chapter}{\numberline {7}Conclusiones y Trabajo Futuro}{44}
