@@ -44,15 +44,15 @@ Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonce
 	\label{PAH_datos_comb}
 \end{table}
 
-Resumiendo, por cada hablante se define una fila de atributos. Esto minimiza la cantidad de valores desconocidos por cada hablante.
-
 Esta variante la realizamos solamente utilizando los atributos temporales. Descartamos los atributos acústicos porque corresponden a grabaciones que en muchas oportunidades sufren de ruido y pensamos que también podía ser una causa por la cual los clasificadores tienen mal rendimiento.
 
-\subsection*{Variando la cantidad de hablantes}
+Resumiendo, por cada hablante se define una fila de atributos. Esto minimiza la cantidad de valores desconocidos por cada hablante.
+
+\subsubsection*{Variando la cantidad de hablantes}
 
 Además de esta modificación, realizaremos una variante más con respecto a la cantidad de hablantes de cada grupo. La primer variante será tener cantidad de hablantes aproximadamente pareja. La segunda variante será utilizando todo los hablantes.  
 
-Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. Tomaremos 9 hablantes de Buenos Aires y de 8 Córdoba. En la tabla \ref{PAH_esq_cv} vemos este esquema.
+En la primer variante tomaremos 9 hablantes de Buenos Aires y de 8 Córdoba. Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibrado para saber si utilizando los atributos que definidos podemos realizar una mejor clasificación que el baseline. En la tabla \ref{PAH_esq_cv} vemos este esquema.
 
 \begin{center}
 	\mycirc[blue] Hablante para train \mycirc[red] Hablante para test
@@ -79,40 +79,67 @@ Nunca es bueno descartar datos pero debemos tener un conjunto de datos equilibra
 	\label{PAH_esq_cv}
 \end{table}
 
-Agregamos un hablante más de Buenos Aires ya que de esta manera cuando quitamos un hablante para testeo el algoritmo ZeroRule posee instancias equilibradas en el conjunto de entrenamiento. De esta forma es más correcto el análisis. 
-
-De esta forma, el conjunto de datos posee sólo una unidad de diferencia entre ambos grupos. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. 
+Agregamos un hablante más de Buenos Aires ya que de esta manera cuando quitamos un hablante para testeo el algoritmo ZeroRule posee instancias equilibradas en el conjunto de entrenamiento. De esta forma es más correcto el análisis. De esta forma, el conjunto de datos posee sólo una unidad de diferencia entre ambos grupos. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. 
 
 En la segunda variante no descartaremos datos. Realizaremos el mismo procedimiento teniendo en cuenta los 27 hablantes obtenidos.
 
 \subsubsection{Resultados}
 
-Los resultados de este cross-validaton podemos observarlo en la tabla \ref{PAH_class_corr_en_pct}.
+Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTDT_clas_xval_porHab} para la variante utilizando hablantes equilibrados, y en la tabla \ref{HPTDT_clas_xval_porHab} para todos los hablantes.
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|c|c|c|c|c|c|}
-		\hline
-		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-		\textbf{Promedio} & 53.33 & 60 & 60 & \textbf{93.33} & 80  \\ \hline
-	\end{tabular}
-	\caption{Clasificación correcta en porcentaje}
-	\label{PAH_class_corr_en_pct}
-\end{table}
+{\small 	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			\textbf{Promedio} & 53  & 53 & 76 & 94 & 76 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje promediando los atributos por hablante de los 17 hablantes (utilizando 9 de Buenos Aires, 8 Córdoba)}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}
+}
 
-Podemos observar que el clasificador Zero Rule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados: Support vector machine y NaiveBayes.
+{\small 	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|c|c|}
+			\hline
+			\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+			\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
+		\end{tabular}
+		\caption{Clasificación correcta en porcentaje promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)}
+		\label{HPTDT_clas_xval_porHab}
+	\end{table}
+}
+
+%viejo y mal
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|c|c|c|c|c|c|}
+%		\hline
+%		\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+%		\textbf{Promedio} & 53.33 & 60 & 60 & \textbf{93.33} & 80  \\ \hline
+%	\end{tabular}
+%	\caption{Clasificación correcta en porcentaje}
+%	\label{PAH_class_corr_en_pct}
+%\end{table}
+
+Podemos observar que el clasificador ZeroRule estuvo más cerca de un valor esperable para el tipo de clasificador que es. Todos los demás dieron por arriba de este valor. Se destacaron los dos clasificadores que utilizan todos los atributos ponderados: Support vector machine y NaiveBayes.
 
 Los resultados sobre el p-valor de cada test estadístico de Wilcoxon y Test t de Student se puede ver en la tabla \ref{PAH_res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|l|c|c|c|c|c|c|}
+	\footnotesize 
+	\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
 		\hline
-		\textbf{}  & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline		
-			\textbf{ZeroR y Ripper}  & 0.3351 & 0.3828 \\ \hline
-			\textbf{ZeroR y C4.5}  & 0.2908 &  0.3864 \\ \hline
-			\textbf{ZeroR y NaiveBayes}  & 0.05191 & 0.06472 \\ \hline
-			\textbf{ZeroR y SVM}  &  \textbf{0.004282} & \textbf{0.009828} \\ \hline
+		\multirow{2}{*}{ }  & \multicolumn{2}{c|}{Hablantes equilibrados } & \multicolumn{2}{|c|}{Todos los hablantes} \\ \cline{2-5}
+		& \textbf{Student Test} & \textbf{Wilcoxon Test} & \textbf{Student Test} & \textbf{Wilcoxon Test} \\ \hline		
+			\textbf{ZeroR y Ripper} & 0.5 & 0.5229 & 0.2123 & 0.242 \\ \hline
+			\textbf{ZeroR y C4.5} & 0.08174 & 0.09083 & 0.5 & 0.5793 \\ \hline
+			\textbf{ZeroR y NaiveBayes} & 0.05186 & 0.06472 & 0.02855 & 0.0363 \\ \hline
+			\textbf{ZeroR y SVM} & \textbf{0.002048} & \textbf{0.005367} & \textbf{0.002826} & \textbf{0.005367} \\ \hline
 	\end{tabular}
 	\caption{Resultados de cada test representado en p-valor}
 	\label{PAH_res_tests_wilcoxon_student}
@@ -120,7 +147,7 @@ Los resultados sobre el p-valor de cada test estadístico de Wilcoxon y Test t d
 
 Los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y realizar el test T de Student.
 
-Podemos observar que para el clasificador Support vector machine posee p-valor menor a 0,05 en ambas columnas. Esto quiere decir que para \textbf{Support vector machine hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
+Podemos observar que para el clasificador Support vector machine posee p-valor menor a 0,05 en ambas variantes. Esto quiere decir que para \textbf{Support vector machine hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
 
 \subsubsection{Análisis de los clasificadores construidos}
 
