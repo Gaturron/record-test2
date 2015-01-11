@@ -6,11 +6,17 @@
 
 %leer http://en.wikipedia.org/wiki/Information_gain_ratio
 
-En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. Para este análisis, utilizamos todo el conjunto de datos sin descartar los atributos desconocidos. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo. Utilizamos la opción Ranker que nos ordena los atributos de mayor a menor ganancia.
+En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. Para este análisis, utilizamos todo el conjunto de datos sin descartar ningún atributo. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo. Utilizamos la opción Ranker que nos ordena los atributos de mayor a menor ganancia.
 
 Estos algoritmos trabajan de la siguiente forma: para cada atributo calculan la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
 
-$H(Class)$ representa el valor de la entropía de la clase a predecir. En otras palabras, mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular. Recordemos que cuando decimos clase nos referimos a Buenos Aires o Córdoba. $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$. A esta se le llama \textit{entropía condicional}. Si este atributo tiene información que ayude a predecir la clase, entonces la entropía condicional será menor a la entropía de la clase. O sea, $H(Class | Attribute) < H(Class)$. De esta forma; cuanto menor sea la entropía condicional con respecto a la entropía de la clase, mayor será la ganancia de información para ese atributo.
+\begin{itemize}
+	\item $H(Class)$ representa el valor de la entropía de la clase a predecir. En otras palabras, mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular. Recordemos que cuando decimos clase nos referimos a Buenos Aires o Córdoba.
+	
+	\item  $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$. A esta se le llama \textit{entropía condicional}. Si este atributo tiene información que ayude a predecir la clase, entonces la entropía condicional será menor a la entropía de la clase. O sea, $H(Class | Attribute) < H(Class)$. Cuanto menor sea la entropía condicional con respecto a la entropía de la clase, mayor será la ganancia de información para ese atributo.
+\end{itemize}
+
+La tabla \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior \\ (SIL\_prevSyllableAccent\_normhd). 
 
 \begin{table}[H]
 \centering
@@ -30,9 +36,65 @@ $H(Class)$ representa el valor de la entropía de la clase a predecir. En otras 
 \label{infogain-table}
 \end{table}
 
-La tabla \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior (SIL\_prevSyllableAccent\_normhd). El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
-Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas sobre consonantes y vocales. Esto quiere decir que todas las frases aportan a estos dos atributos.
+Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas sobre consonantes y vocales. Esto quiere decir que todas las frases aportan a estos dos atributos. Es por esto que posee mayor ganancia de información.
+
+En las tablas \ref{IG_fon}, \ref{IG_acu} y \ref{IG_sil} podemos observar el resultado de correr el algoritmo sólo para los tipos de atributos definidos. La ganancia de información no cambia ya que el cálculo es independiente del grupo de atributos que se le aplica. A pesar de esto, podemos notar cuáles atributos, según cada tipo, aportan mayor ganancia. 
+
+\begin{minipage}{.5\linewidth}
+  	\begin{table}[H]
+  	\centering
+  	\begin{tabular}{cl}
+  		\hline
+  		\textbf{GI} & \textbf{Atributo} \\ \hline
+		 0.07231 & FON\_consonant\_norm \\
+		 0.07217 & FON\_vowel\_norm \\
+		 0.02332 & FON\_ll\_norm \\
+		 0.02285 & FON\_Sfinal\_norm \\
+		 0.01851 & FON\_Sfinal\_normhd \\
+  		\hline
+  	\end{tabular}
+  	\caption{InfoGain para atributos fonéticos}
+  	\label{IG_fon}
+	\end{table}
+\end{minipage}
+\begin{minipage}{.5\linewidth}	
+  	\begin{table}[H]
+  		\centering
+  		\begin{tabular}{cl}
+  			\hline
+  			\textbf{GI} & \textbf{Atributo} \\ \hline
+			0.02226 & ACU\_MinLL\_1 \\
+			0.02144 & ACU\_AverageLL\_1 \\
+			0.01438 & ACU\_MaxLL\_5 \\
+			0.01232 & ACU\_MaxKT\_15 \\
+			0.01219 & ACU\_MaxLL\_6 \\
+  			\hline
+  		\end{tabular}
+  		\caption{InfoGain para atributos acústicos}
+  		\label{IG_acu}
+  	\end{table}
+\end{minipage}
+  	
+  	\begin{table}[H]
+  		\centering
+  		\begin{tabular}{cl}
+  			\hline
+  			\textbf{GI} & \textbf{Atributo} \\ \hline
+  			0.03963 & SIL\_syllableAccent\_normhd \\
+  			0.03963 & SIL\_prevSyllableAccent\_normhd \\
+  			0       & SIL\_prevSyllableAccent\_norm \\
+  			0       & SIL\_syllableAccent\_norm \\
+  			\hline
+  		\end{tabular}
+  		\caption{InfoGain para atributos silábicos} 
+  		\label{IG_sil}
+  	\end{table}
+  	
+La ganancia de información sobre los atributos fonéticos (tabla \ref{IG_fon}) nos muestra que el fonema \textit{'ll'} y \textit{'Sfinal'} aportan mayor cantidad de información. Sobre los atributos silábicos (tabla \ref{IG_sil}) notamos que los atributos calculados suponiendo $\mu = 0$ (o sea, con el prefijo \textit{'normhd'}) nos aportaron ganancia de información, mientras que los atributos sin utilizar esta característica no aportaron. Sobre los atributos acústicos (tabla \ref{IG_acu}) notamos que el fonema \textit{'ll'} aporta mayor ganancia de información utilizando varios componentes de MFCC. Le sigue el fonema \textit{'kt'}. 
+
+Realizado estos análisis podemos concluir que los atributos silábicos sobre la silaba acentuada, anterior a la acentuada, la duración del fonema 'll' y 's' para terminar una palabra y los atributos acústicos sobre el fonema 'll' fueron, para nuestro conjunto de datos, los que mayor información aportaron para la clasificación.
 
 %Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
