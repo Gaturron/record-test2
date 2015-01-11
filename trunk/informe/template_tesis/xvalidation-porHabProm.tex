@@ -79,13 +79,19 @@ En la primer variante tomaremos 9 hablantes de Buenos Aires y de 8 Córdoba. Nun
 	\label{PAH_esq_cv}
 \end{table}
 
-Agregamos un hablante más de Buenos Aires ya que de esta manera cuando quitamos un hablante para testeo el algoritmo ZeroRule posee instancias equilibradas en el conjunto de entrenamiento. De esta forma es más correcto el análisis. De esta forma, el conjunto de datos posee sólo una unidad de diferencia entre ambos grupos. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. 
+Agregamos un hablante más de Buenos Aires ya que, de esta manera, entrenamos ZeroRule con instancias equilibradas. 
+
+Con este esquema, cuando quitamos un hablante para testeo, el algoritmo ZeroRule entrenará la mitad de las veces con instancias equilibradas en el conjunto de entrenamiento. De esta forma, este clasificador clasificará correctamente la mitad de las veces.
+
+Si utilizáramos igual cantidad de hablantes en ambos grupos, sucedería lo siguiente: al principio  descartaríamos un hablante para testear. El clasificador ZeroRule entrenaría en el conjunto de hablantes y elegiría siempre la clase del hablante que no fue descartada para testeo, ya que es la clase mayoritaria. Cuando intente clasificar el hablante de testeo no dará correcto. Esto se repite en todos los folds haciendo que su performance sea $0\%$.
+
+Este cambio es menor y nos ayuda a que el análisis sea más correcto. Entonces el conjunto de datos posee sólo una unidad de diferencia entre ambos grupos. La elección de cada uno de estos hablantes fue al azar. Como el esquema anterior, tendremos un fold por cada hablante. 
 
 En la segunda variante no descartaremos datos. Realizaremos el mismo procedimiento teniendo en cuenta los 27 hablantes obtenidos.
 
 \subsubsection{Resultados}
 
-Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTDT_clas_xval_porHab} para la variante utilizando hablantes equilibrados, y en la tabla \ref{HPTDT_clas_xval_porHab} para todos los hablantes.
+Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTDT_clas_xval_porHab} para la variante utilizando hablantes equilibrados, y en la tabla \ref{HPTDT_clas_xval_porHab_sindescartar} para todos los hablantes.
 
 {\small 	
 	\begin{table}[H]
@@ -109,7 +115,7 @@ Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTD
 			\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
 		\end{tabular}
 		\caption{Clasificación correcta en porcentaje promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)}
-		\label{HPTDT_clas_xval_porHab}
+		\label{HPTDT_clas_xval_porHab_sindescartar}
 	\end{table}
 }
 
@@ -145,7 +151,7 @@ Los resultados sobre el p-valor de cada test estadístico de Wilcoxon y Test t d
 	\label{PAH_res_tests_wilcoxon_student}
 \end{table}
 
-Los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y realizar el test T de Student.
+Los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal y realizar el test t de Student.
 
 Podemos observar que para el clasificador Support vector machine posee p-valor menor a 0,05 en ambas variantes. Esto quiere decir que para \textbf{Support vector machine hay evidencia suficiente de ser mejor que el baseline}. Por otro lado, los demás no pudieron lograr este cometido. 
 
@@ -187,36 +193,36 @@ Esto también se ve reflejado en las matrices de confusión de cada fold. Podemo
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % Correcciones a agregar
-Correcciones a agregar
-
-	Promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)
-	
-	{\small 	
-		\begin{table}[H]
-			\centering
-			\begin{tabular}{|l|c|c|c|c|c|c|}
-				\hline
-				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-				\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
-			\end{tabular}
-			\caption{Clasificación correcta en porcentaje}
-			\label{HPTDT_clas_xval_porHab}
-		\end{table}
-	}
-	
-	Promediando los atributos por hablante de los 17 hablantes
-	(utilizando 9 de Buenos Aires, 8 Córdoba)
-	
-	{\small 	
-		\begin{table}[H]
-			\centering
-			\begin{tabular}{|l|c|c|c|c|c|c|}
-				\hline
-				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
-				\textbf{Promedio} & 53  & 53 & 76 & 94 & 76 \\ \hline
-			\end{tabular}
-			\caption{Clasificación correcta en porcentaje}
-			\label{HPTDT_clas_xval_porHab}
-		\end{table}
-	}
-
+%Correcciones a agregar
+%
+%	Promediando los atributos por hablante \textbf{sin descartar datos} (utilizando los 27 hablantes)
+%	
+%	{\small 	
+%		\begin{table}[H]
+%			\centering
+%			\begin{tabular}{|l|c|c|c|c|c|c|}
+%				\hline
+%				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+%				\textbf{Promedio} & 70  & 77 & 70 & 96 & 88 \\ \hline
+%			\end{tabular}
+%			\caption{Clasificación correcta en porcentaje}
+%			\label{HPTDT_clas_xval_porHab}
+%		\end{table}
+%	}
+%	
+%	Promediando los atributos por hablante de los 17 hablantes
+%	(utilizando 9 de Buenos Aires, 8 Córdoba)
+%	
+%	{\small 	
+%		\begin{table}[H]
+%			\centering
+%			\begin{tabular}{|l|c|c|c|c|c|c|}
+%				\hline
+%				\textbf{}  & \textbf{Zero Rule} & \textbf{Ripper} & \textbf{C4.5} & \textbf{SVM} & \textbf{NaiveBayes} \\ \hline
+%				\textbf{Promedio} & 53  & 53 & 76 & 94 & 76 \\ \hline
+%			\end{tabular}
+%			\caption{Clasificación correcta en porcentaje}
+%			\label{HPTDT_clas_xval_porHab}
+%		\end{table}
+%	}
+%

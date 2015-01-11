@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  9 JAN 2015 02:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  11 JAN 2015 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -976,6 +976,30 @@ Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
 )
 File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen211
+\captionmargin@=\dimen212
+\captionwidth=\dimen213
+\caption@tempdima=\dimen214
+\caption@indent=\dimen215
+\caption@parindent=\dimen216
+\caption@hangindent=\dimen217
+)
+\c@ContinuedFloat=\count164
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
+Package caption Info: sidecap package is loaded.
+)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
 s.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
@@ -990,7 +1014,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen211
+\arrowsize=\dimen218
 ))
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
 gs.code.tex
@@ -1002,53 +1026,37 @@ File: pgflibraryfadings.code.tex 2008/02/07 v2.10 (rcs-revision 1.3)
 (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
-
-LaTeX Warning: Label `HPTDT_clas_xval_porHab' multiply defined.
-
 )
 \openout1 = `tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 83.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 84.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count164
-\scratchdimen=\dimen212
+\scratchcounter=\count165
+\scratchdimen=\dimen219
 \scratchbox=\box76
-\nofMPsegments=\count165
-\nofMParguments=\count166
+\nofMPsegments=\count166
+\nofMParguments=\count167
 \everyMPshowfont=\toks52
-\MPscratchCnt=\count167
-\MPscratchDim=\dimen213
-\MPnumerator=\count168
-\makeMPintoPDFobject=\count169
+\MPscratchCnt=\count168
+\MPscratchDim=\dimen220
+\MPnumerator=\count169
+\makeMPintoPDFobject=\count170
 \everyMPtoPDFconversion=\toks53
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -1094,8 +1102,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
+LaTeX Info: Redefining \. on input line 84.
+LaTeX Info: Redefining \% on input line 84.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1155,15 +1163,17 @@ LaTeX Info: Redefining \selectfont on input line 126.
 \RaggedRightParindent=\skip70
 \JustifyingParindent=\skip71
 )
-\c@lstlisting=\count170
+\c@lstlisting=\count171
 
 ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.8} into y
 our preamble.
- on input line 83.
+ on input line 84.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 (./caratula.tex
 LaTeX Font Info:    Try loading font information for OML+lmm on input line 9.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
@@ -1584,57 +1594,57 @@ LaTeX Info: Redefining \% on input line 66.
 LaTeX Info: Redefining \. on input line 118.
 LaTeX Info: Redefining \% on input line 118.
  [37]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 168
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 166
 .
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \. on input line 179.
-LaTeX Info: Redefining \% on input line 179.
+LaTeX Info: Redefining \. on input line 177.
+LaTeX Info: Redefining \% on input line 177.
  [38])
 (./xvalidation-porHabProm.tex
-LaTeX Info: Redefining \. on input line 48.
-LaTeX Info: Redefining \% on input line 48.
+LaTeX Info: Redefining \. on input line 46.
+LaTeX Info: Redefining \% on input line 46.
  [39]
-LaTeX Info: Redefining \. on input line 102.
-LaTeX Info: Redefining \% on input line 102.
+LaTeX Info: Redefining \. on input line 88.
+LaTeX Info: Redefining \% on input line 88.
  [40]
-Overfull \hbox (12.14343pt too wide) in paragraph at lines 135--144
+Overfull \hbox (12.14343pt too wide) in paragraph at lines 141--150
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 166.
-LaTeX Info: Redefining \% on input line 166.
+LaTeX Info: Redefining \. on input line 157.
+LaTeX Info: Redefining \% on input line 157.
 [41]) (./seleccion_de_atributos.tex
-LaTeX Info: Redefining \. on input line 10.
-LaTeX Info: Redefining \% on input line 10.
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
  [42]
-Overfull \hbox (10.00539pt too wide) in paragraph at lines 33--34
+Overfull \hbox (10.00539pt too wide) in paragraph at lines 19--20
 \OT1/lmr/m/n/10.95 nan-tes (uti-li-zan-do nues-tra no-men-cla-tu-ra FON[]conson
 ant[]norm), vo-ca-les (FON[]vowel[]norm),
  []
 
-
-Overfull \hbox (118.34747pt too wide) in paragraph at lines 33--34
-\OT1/lmr/m/n/10.95 du-ra-ci^^Son de la s^^S^^Pla-ba acen-tua-da (SIL[]syllableA
-ccent[]-normhd) y su s^^S^^Pla-ba an-te-rior (SIL[]prevSyllableAccent[]normhd).
-
+LaTeX Info: Redefining \. on input line 44.
+LaTeX Info: Redefining \% on input line 44.
+[43]
+Overfull \hbox (14.18321pt too wide) in paragraph at lines 45--79
+[]$[]$ $[]$ 
  []
 
 )) (./conclusiones.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [43]
+ [44]
 Cap\'{\i }tulo 7.
-(./trabajos_futuros.tex [44
+(./trabajos_futuros.tex [45
 
 ]
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
- [45])) (./marcas_prosodicas.tex
+ [46])) (./marcas_prosodicas.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [46]
+ [47]
 Underfull \vbox (badness 10000) detected at line 31
  []
 
@@ -1649,12 +1659,12 @@ Underfull \hbox (badness 1360) in paragraph at lines 35--35
 \OT1/lmr/m/n/10 go to-dos los d^^S^^Pas con-mi-go
  []
 
-[47
+[48
 
 ]) (./nomenclatura_de_atributos.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [48]
+ [49]
 Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []|\OT1/lmr/m/n/10 ACU[]AverageKT[]0 al
  []
@@ -1722,16 +1732,16 @@ Underfull \vbox (badness 10000) detected at line 29
 Underfull \vbox (badness 10000) detected at line 50
  []
 
-[49
+[50
 
 ]
 Underfull \vbox (badness 10000) detected at line 71
  []
 
 )
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
- [50] (./tesis.bbl
+LaTeX Info: Redefining \. on input line 133.
+LaTeX Info: Redefining \% on input line 133.
+ [51] (./tesis.bbl
 Underfull \hbox (badness 2050) in paragraph at lines 8--11
 []\OT1/lmr/m/n/10 Boersma, P. and Wee-nink, D. (2013).  Praat: doing pho-
  []
@@ -1742,48 +1752,44 @@ Underfull \hbox (badness 2111) in paragraph at lines 8--11
 -trie-ved 2 Ju-ne 2013 from
  []
 
-) [51
+) [52
 
 
 ] (./tesis.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+) ) 
 Here is how much of TeX's memory you used:
- 23544 strings out of 493307
- 522689 string characters out of 6139905
- 774358 words of memory out of 5000000
- 26388 multiletter control sequences out of 15000+600000
+ 24588 strings out of 493307
+ 541943 string characters out of 6139905
+ 786267 words of memory out of 5000000
+ 27423 multiletter control sequences out of 15000+600000
  96577 words of font info for 74 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,19n,74p,1471b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/
-dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
-12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/font
-s/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmtt10.pfb>
-Output written on tesis.pdf (57 pages, 2053868 bytes).
+ 56i,19n,74p,1471b,2076s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc
+/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm
+/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
+x12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmtt10.pfb>
+Output written on tesis.pdf (58 pages, 2056687 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
+ 327 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -39,7 +39,7 @@ En nuestro conjunto de datos tenemos 27 hablantes: 19 de Buenos Aires y 8 de Có
 		
 \subsubsection{Resultados}
 
-En la tabla \ref{HPTDT_clas_xval_porHab} podemos observar los resultados de clasificación. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. Expresamos el promedio de clasificación correcta de cada fold para cada clasificador como se muestra en la siguiente fórmula.
+En la tabla \ref{ClasxMuestra_prom_procCorrect} podemos observar los resultados de clasificación. No resulta relevante mostrar el porcentaje de clasificación correcta para cada fold. Expresamos el promedio de clasificación correcta de cada fold para cada clasificador como se muestra en la siguiente fórmula.
 
 \textbf{Promedio de porcentaje correcto en cada fold:}
 \[
@@ -59,12 +59,12 @@ En la tabla \ref{HPTDT_clas_xval_porHab} podemos observar los resultados de clas
 		\textbf{Promedio} & 70.37  & 69.47 & 70.37 & 71.34 & 71.46 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en porcentaje}
-	\label{HPTDT_clas_xval_porHab}
+	\label{ClasxMuestra_prom_procCorrect}
 \end{table}
 
 Llama la atención que todos los clasificadores tuvieron porcentajes muy cercanos. Esto lo analizaremos más adelante. 
 
-Realizamos los test estadísticos de Wilcoxon y Test t de Student para este modelo de test. En este caso, las muestras de test son independientes entre sí. Estos resultados se pueden observar en la tabla  \ref{HPTDT_res_tests_wilcoxon_student}.
+Realizamos los test estadísticos de Wilcoxon y Test t de Student para este modelo de test. Estos resultados se pueden observar en la tabla  \ref{HPTDT_res_tests_wilcoxon_student}.
 
 \begin{table}[H]
 	\centering
@@ -82,7 +82,7 @@ Realizamos los test estadísticos de Wilcoxon y Test t de Student para este mode
 
 Los valores expresados corresponden al p-valor. Todos los clasificadores pasaron el test Shapiro-Wilk, entonces podemos afirmar que los resultados de cada clasificador corresponden a una distribución Normal. A pesar de esto, realizamos ambos tests estadísticos para cada uno. Estos test mostraron que las diferencias entre cada clasificador y el baseline no son estadísticamente significativos.
 
-Recordemos que no todos los hablantes aportaron igual cantidad de grabaciones. Ellos tenían la opción de seguir aportando grabaciones o salir de la aplicación. Es por esto que cada porcentaje de fold no aporta igual cantidad de instancias correctas. Por ejemplo: puede suceder que la cantidad de instancias para un fold es $1$ y si esa muestra fue correctamente clasificada el porcentaje de instancias correctas dará $100\%$. Mientras que otro fold puede tener $10$ instancias y clasificar correctamente $9$ concluyendo que su porcentaje de instancias correctas dará $90\%$. En la figura \ref{CantDeMuestrasXcadaTest} podemos ver la cantidad de grabaciones en cada grupo de testeo. 
+Recordemos que no todos los hablantes aportaron igual cantidad de grabaciones. Ellos tenían la opción de seguir aportando grabaciones o salir de la aplicación. Es por esto que cada porcentaje de fold no aporta igual cantidad de instancias correctas en cada grupo de testeo. Por ejemplo: puede suceder que la cantidad de instancias para un fold en su grupo de testeo sea de $1$ grabación y si esa muestra fue correctamente clasificada el porcentaje de instancias correctas dará $100\%$, mientras que, otro fold puede tener $10$ instancias y clasificar correctamente $9$ concluyendo que su porcentaje de instancias correctas dará $90\%$. En la figura \ref{CantDeMuestrasXcadaTest} podemos ver la cantidad de grabaciones en cada grupo de testeo. 
 
 \begin{figure}[H]
 	\centering
@@ -114,7 +114,7 @@ Recordemos que no todos los hablantes aportaron igual cantidad de grabaciones. E
 	\label{CantDeMuestrasXcadaTest}
 \end{figure}
 
-Debemos tener una mejor métrica para equiparar la cantidad de instancias correctas en cada fold. Para evitar promediar por porcentaje correcto en cada grupo de test, realizamos el promedio sumando la cantidad de instancias correctas. Los resultados de cada clasificador utilizando esta nueva métrica se pueden ver en la figura\ref{HPTDT_clas_xval_porHab}. La fórmula calculada para cada clasificador se puede ver a continuación:
+Debemos tener una mejor métrica para equiparar la cantidad de instancias correctas en cada fold. Para evitar promediar por porcentaje correcto en cada grupo de test, realizamos el promedio sumando la cantidad de instancias correctas. Los resultados de cada clasificador utilizando esta nueva métrica se pueden ver en la tabla \ref{HPTDT_clas_xval_porHab_total}. La fórmula calculada para cada clasificador se puede ver a continuación:
 
 \textbf{Promedio de instancias correctas sobre instancias totales:}
 \small
@@ -136,7 +136,7 @@ Debemos tener una mejor métrica para equiparar la cantidad de instancias correc
 		\textbf{Promedio} & 69  & 63 & 69 & 70 & 65 \\ \hline
 	\end{tabular}
 	\caption{Clasificación correcta en cantidad de instancias}
-	\label{HPTDT_clas_xval_porHab}
+	\label{HPTDT_clas_xval_porHab_total}
 \end{table}}
 
 Notamos que los resultados varían algunos puntos pero no a grandes rasgos. El clasificador que más varia es NaiveBayes con casi $5\%$ menos. A pesar de ello, no parece cambiar mucho el promedio de cada clasificador.
@@ -146,9 +146,7 @@ Notamos que los resultados varían algunos puntos pero no a grandes rasgos. El c
 
 \subsubsection{Análisis de los clasificadores construidos}
 
-Analizamos los clasificadores armados para cada fold. El clasificador Ripper generó reglas utilizando un conjunto acotado de atributos. En cambio, los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos ponderando cada uno por valores escalares. El clasificador C4.5 tuvo también una performance pobre por tener un árbol de un nivel solo.  
-
-Podemos ver el conjunto de reglas que generó el clasificador Ripper para el fold 4:
+Analizamos los clasificadores armados para cada fold. El clasificador Ripper generó reglas utilizando un conjunto acotado de atributos. En cambio, los clasificadores Support vector machine y NaiveBayes utilizaron todos los atributos ponderando cada uno por valores escalares. El clasificador C4.5 tuvo también una performance pobre por tener un árbol de un nivel solo. Podemos ver el conjunto de reglas que generó el clasificador Ripper para el fold 4:
 
 \begin{flushleft}
 	\begin{itemize}
@@ -158,9 +156,9 @@ Podemos ver el conjunto de reglas que generó el clasificador Ripper para el fol
 	\end{itemize}
 \end{flushleft}
 
-Notamos que sigue utilizando los atributos temporales y en menor medida los atributos acústicos.
+Notamos que utilizan los atributos temporales y en menor medida los atributos acústicos.
 
-A continuación, podemos ver el Árbol de decisión generado por C4.5 para cada fold. 
+A continuación, vemos el árbol de decisión generado por C4.5 para cada fold. 
 
 \dirtree{%
 	.1 root.
