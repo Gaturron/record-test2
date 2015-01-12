@@ -16,7 +16,7 @@ Estos algoritmos trabajan de la siguiente forma: para cada atributo calculan la 
 	\item  $H(Class | Attribute)$ representa el valor de la entropía de la clase sabiendo el valor del atributo $Attribute$. A esta se le llama \textit{entropía condicional}. Si este atributo tiene información que ayude a predecir la clase, entonces la entropía condicional será menor a la entropía de la clase. O sea, $H(Class | Attribute) < H(Class)$. Cuanto menor sea la entropía condicional con respecto a la entropía de la clase, mayor será la ganancia de información para ese atributo.
 \end{itemize}
 
-La tabla \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior \\ (SIL\_prevSyllableAccent\_normhd). 
+La tabla \ref{infogain-table} nos muestra que los más preponderantes se refieren a la duración de consonantes (utilizando nuestra nomenclatura FON\_consonant\_norm), vocales (FON\_vowel\_norm), duración de la sílaba acentuada (SIL\_syllableAccent\_\-normhd) y su sílaba anterior \\ (SIL\_prevSyllableAccent\_normhd). 	 
 
 \begin{table}[H]
 \centering
@@ -35,6 +35,12 @@ La tabla \ref{infogain-table} nos muestra que los más preponderantes se refiere
 \caption{Resultados de InfoGain}
 \label{infogain-table}
 \end{table}
+
+Veamos si los valores de ganancia de información fueron altos. El valor mínimo de ganancia de información es $0$, eso sucede cuando $H(Class) = H(Class | Attribute)$ ya que la entropía nunca puede ser menor a $0$.
+
+La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases son equiprobables. En este caso, $H(Class) <= \log_b (n)$ donde $b = 2$ ya que esta calculada en bits y $n$ cantidad de clases. Entonces $H(Class) <= \log_2 (2) = 1$. En nuestro caso, no todas las clases son equiprobables, así que $H(Class)$ puede ser menor a $1$.
+
+Viendo los valores de la tabla \ref{infogain-table} notamos que el atributo con mayor ganancia de información posee un valor bastante alejado de $1$ para nuestro conjunto de datos. Es por eso que notamos que un atributo sólo no es suficiente para una buena clasificación. En cambio, la conjunción de varios con buena ganancia de información realizan un buen trabajo.
 
 El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
