@@ -25,9 +25,7 @@ En la tabla \ref{datos_orig} vemos un ejemplo de datos extraídos originalmente 
 	\label{datos_orig}
 \end{table}
 
-Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. 
-
-Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
+Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -79,9 +77,7 @@ En la primer variante tomaremos 9 hablantes de Buenos Aires y de 8 Córdoba. Nun
 	\label{PAH_esq_cv}
 \end{table}
 
-Agregamos un hablante más de Buenos Aires ya que, de esta manera, entrenamos ZeroRule con instancias equilibradas. 
-
-Con este esquema, cuando quitamos un hablante para testeo, el algoritmo ZeroRule entrenará la mitad de las veces con instancias equilibradas en el conjunto de entrenamiento. De esta forma, este clasificador clasificará correctamente la mitad de las veces.
+Agregamos un hablante más de Buenos Aires ya que, de esta manera, entrenamos ZeroRule con instancias equilibradas. Con este esquema, cuando quitamos un hablante para testeo, el algoritmo ZeroRule entrenará la mitad de las veces con instancias equilibradas en el conjunto de entrenamiento. De esta forma, este clasificador clasificará correctamente la mitad de las veces.
 
 Si utilizáramos igual cantidad de hablantes en ambos grupos, sucedería lo siguiente: al principio  descartaríamos un hablante para testear. El clasificador ZeroRule entrenaría en el conjunto de hablantes y elegiría siempre la clase del hablante que no fue descartada para testeo, ya que es la clase mayoritaria. Cuando intente clasificar el hablante de testeo no dará correcto. Esto se repite en todos los folds haciendo que su performance sea $0\%$.
 

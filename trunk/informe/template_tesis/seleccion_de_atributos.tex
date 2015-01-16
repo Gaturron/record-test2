@@ -36,9 +36,9 @@ La tabla \ref{infogain-table} nos muestra que los más preponderantes se refiere
 \label{infogain-table}
 \end{table}
 
-Veamos si los valores de ganancia de información fueron altos. El valor mínimo de ganancia de información es $0$, eso sucede cuando $H(Class) = H(Class | Attribute)$ ya que la entropía nunca puede ser menor a $0$. La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases son equiprobables. 
+Veamos si los valores de ganancia de información fueron altos. El valor mínimo de ganancia de información es $0$, eso sucede cuando $H(Class) = H(Class | Attribute)$ ya que la entropía nunca puede ser menor a $0$. 
 
-En este caso, $H(Class) <= \log_b (n)$ donde $b = 2$ ya que esta calculada en bits y $n$ cantidad de clases. Entonces $H(Class) <= \log_2 (2) = 1$. En nuestro caso, no todas las clases son equiprobables, así que $H(Class)$ puede ser menor a $1$.
+La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases son equiprobables. En este caso, $H(Class) \leq \log_b (n)$ donde $b = 2$ ya que esta calculada en bits y $n$ cantidad de clases. Entonces $H(Class) \leq \log_2 (2) = 1$. En nuestro caso, no todas las clases son equiprobables, así que $H(Class)$ puede ser menor a $1$.
 
 Viendo los valores de la tabla \ref{infogain-table} notamos que el atributo con mayor ganancia de información posee un valor bastante alejado de $1$ para nuestro conjunto de datos. Es por eso que notamos que un atributo sólo no es suficiente para una buena clasificación. En cambio, la conjunción de varios con buena ganancia de información realizan un buen trabajo.
 
@@ -98,9 +98,9 @@ En las tablas \ref{IG_fon}, \ref{IG_acu} y \ref{IG_sil} podemos observar el resu
   		\label{IG_sil}
   	\end{table}
   	
-La ganancia de información sobre los atributos fonéticos (tabla \ref{IG_fon}) nos muestra que el fonema \textit{'ll'} y \textit{'Sfinal'} aportan mayor cantidad de información. Sobre los atributos silábicos (tabla \ref{IG_sil}) notamos que los atributos calculados suponiendo $\mu = 0$ (o sea, con el prefijo \textit{'normhd'}) nos aportaron ganancia de información, mientras que los atributos sin utilizar esta característica no aportaron. Sobre los atributos acústicos (tabla \ref{IG_acu}) notamos que el fonema \textit{'ll'} aporta mayor ganancia de información utilizando varios componentes de MFCC. Le sigue el fonema \textit{'kt'}. 
+La ganancia de información sobre los atributos fonéticos (tabla \ref{IG_fon}) nos muestra que el fonema \textit{'ll'} y \textit{'s'} para terminar una palabra aportan mayor cantidad de información. Sobre los atributos silábicos (tabla \ref{IG_sil}) notamos que los atributos calculados suponiendo $\mu = 0$ (o sea, con el prefijo \textit{'normhd'}) nos aportaron ganancia de información, mientras que los atributos sin utilizar esta característica no aportaron. Sobre los atributos acústicos (tabla \ref{IG_acu}) notamos que el fonema \textit{'ll'} aporta mayor ganancia de información utilizando varios componentes de MFCC. Le sigue el fonema \textit{'kt'}. 
 
-Realizado estos análisis podemos concluir que los atributos silábicos sobre la silaba acentuada, anterior a la acentuada, la duración del fonema 'll' y 's' para terminar una palabra y los atributos acústicos sobre el fonema 'll' fueron, para nuestro conjunto de datos, los que mayor información aportaron para la clasificación.
+Realizado estos análisis podemos concluir que los atributos silábicos sobre la silaba acentuada, anterior a la acentuada, la duración del fonema \textit{'ll'} y \textit{'s'} para terminar una palabra y los atributos acústicos sobre el fonema \textit{'ll'} fueron, para nuestro conjunto de datos, los que mayor información aportaron para la clasificación.
 
 %Esto quiere decir que, si se cumple que la duración es menor para un par de tipos de consonantes, luego para el total va a seguir respetándose. Son variables fuertemente correlacionadas.
 
