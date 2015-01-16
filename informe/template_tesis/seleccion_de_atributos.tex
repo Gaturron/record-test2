@@ -36,9 +36,9 @@ La tabla \ref{infogain-table} nos muestra que los más preponderantes se refiere
 \label{infogain-table}
 \end{table}
 
-Veamos si los valores de ganancia de información fueron altos. El valor mínimo de ganancia de información es $0$, eso sucede cuando $H(Class) = H(Class | Attribute)$ ya que la entropía nunca puede ser menor a $0$.
+Veamos si los valores de ganancia de información fueron altos. El valor mínimo de ganancia de información es $0$, eso sucede cuando $H(Class) = H(Class | Attribute)$ ya que la entropía nunca puede ser menor a $0$. La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases son equiprobables. 
 
-La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases son equiprobables. En este caso, $H(Class) <= \log_b (n)$ donde $b = 2$ ya que esta calculada en bits y $n$ cantidad de clases. Entonces $H(Class) <= \log_2 (2) = 1$. En nuestro caso, no todas las clases son equiprobables, así que $H(Class)$ puede ser menor a $1$.
+En este caso, $H(Class) <= \log_b (n)$ donde $b = 2$ ya que esta calculada en bits y $n$ cantidad de clases. Entonces $H(Class) <= \log_2 (2) = 1$. En nuestro caso, no todas las clases son equiprobables, así que $H(Class)$ puede ser menor a $1$.
 
 Viendo los valores de la tabla \ref{infogain-table} notamos que el atributo con mayor ganancia de información posee un valor bastante alejado de $1$ para nuestro conjunto de datos. Es por eso que notamos que un atributo sólo no es suficiente para una buena clasificación. En cambio, la conjunción de varios con buena ganancia de información realizan un buen trabajo.
 
