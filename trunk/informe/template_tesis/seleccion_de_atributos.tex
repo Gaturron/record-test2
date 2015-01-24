@@ -8,7 +8,7 @@
 
 En esta sección aplicaremos evaluadores a los distintos atributos para analizar cuáles poseen mayor importancia. Para este análisis, utilizamos todo el conjunto de datos sin descartar ningún atributo. El evaluador utilizado fue la ganancia de información (InfoGain en Weka) para analizar la importancia de cada atributo. Utilizamos la opción Ranker que nos ordena los atributos de mayor a menor ganancia.
 
-Estos algoritmos trabajan de la siguiente forma: para cada atributo calculan la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
+Este algoritmo trabaja de la siguiente forma: para cada atributo calcula la entropía de la clase y luego se calcula la entropía de la misma sabiendo el valor de este atributo. La ganancia de información de ese atributo es la resta de esos dos resultados. Esto se puede expresar como: $InfoGain(Class,Attribute) = H(Class) - H(Class | Attribute)$. Veamos cada uno de estos términos.
 
 \begin{itemize}
 	\item $H(Class)$ representa el valor de la entropía de la clase a predecir. En otras palabras, mide la incertidumbre asociada a la clase sin tener en cuenta el valor de ningún atributo en particular. Recordemos que cuando decimos clase nos referimos a Buenos Aires o Córdoba.
@@ -42,7 +42,7 @@ La entropía de la clase (o sea, $H(Class)$) es máxima cuando todas las clases 
 
 Viendo los valores de la tabla \ref{infogain-table} notamos que el atributo con mayor ganancia de información posee un valor bastante alejado de $1$ para nuestro conjunto de datos. Es por eso que notamos que un atributo sólo no es suficiente para una buena clasificación. En cambio, la conjunción de varios con buena ganancia de información realizan un buen trabajo.
 
-El atributo sobre la duración de la sílaba y su anterior es entendible que aporte la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
+El atributo sobre la duración de la sílaba y su anterior es entendible que aporten la mayor ganancia de información, ya que es la característica más conocida para distinguir los dos grupos. Son las primeras características que uno piensa al definir el habla de un cordobés. No es extraño encontrarlos entre los primeros lugares. 
 
 Los atributos sobre duración de consonantes y vocales sorprenden con sus valores pero luego de analizarlos son entendibles. Todas las reglas definidas, salvo la regla 1 sobre estirar la sílaba anterior a la acentuada, están definidas sobre consonantes y vocales. Esto quiere decir que todas las frases aportan a estos dos atributos. Es por esto que posee mayor ganancia de información.
 

@@ -40,7 +40,7 @@ Cada nuevo experimento utiliza una nueva traza del conjunto de trazas descriptas
 
 Una vez que el hablante cree que su grabación se escuche bien, la confirma. Cada vez que se graba un audio, este se guarda en un archivo wav en el servidor. El archivo que se genera tiene una frecuencia de muestreo de 22050 Hz\footnote{Necesitamos una frecuencia de muestreo que permita analizar las diferencias de los dos grupos sin ocupar excesivo espacio por cada grabación. Elegimos 22,05 KHz ya que nos permite realizar el experimento. Esta frecuencia de muestreo equivale a la mitad de frecuencia de un CD de audio. }, cada muestra se analiza con 16 bits y posee un solo canal. Con estas características pudimos obtener un audio de buena calidad para el experimento que realizamos.
 
-Recordemos que los hablantes graban en series de 5 frases. Una vez terminadas estas 5 frases se le pregunta si querría seguir grabando o terminar el experimento. De esta forma, el hablante aporta grabaciones el tiempo que puede disponer.
+Recordemos que los hablantes graban en series de 5 frases. Una vez terminadas estas 5 frases se le pregunta si querría seguir grabando o terminar el experimento. De esta forma, el hablante aporta grabaciones durante el tiempo que puede disponer.
 
 \section{Grabación a través del browser}
 
@@ -48,7 +48,7 @@ Los navegadores actuales no permiten acceder al micrófono directamente. Actualm
 
 Encontramos un proyecto llamado Web Accessible Multimodal Interfaces \footnote{Página web: https://code.google.com/p/wami/} (WAMI). WAMI es una aplicación Flash que nos permite acceder al micrófono a través de JavaScript. Éste es muy utilizado en proyectos similares de procesamiento de habla. Esta herramienta nos permite definir dos URLs importantes: una que se utilizará para enviar el audio grabado y otra para escucharlo.  
 
-Cuando termina de grabar, se envía un mensaje POST al servidor a la URL configurada. El servidor obtiene el paquete de información y lo guarda como archivo wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a la otra URL. El servidor lo responde con el audio requerido y se reproduce en el navegador. También con WAMI se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. La biblioteca posee funciones que permiten saber qué nivel de volumen se encuentra en un preciso instante.
+Cuando termina de grabar, se envía un mensaje POST al servidor a la URL configurada. El servidor obtiene el paquete de información y lo guarda como archivo wav. Cuando se quiere reproducir algún audio se envía un mensaje GET a la otra URL. El servidor lo responde con el audio requerido y se reproduce en el navegador. También con WAMI se puede configurar la calidad del audio grabado y analizar el nivel del volumen que posee. La biblioteca posee funciones que permiten saber qué nivel de volumen se encuentra en un instante preciso.
 
 \subsection{Requerimientos}
 
