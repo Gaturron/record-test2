@@ -17,18 +17,18 @@ Un dato muy importante es que este etiquetado no debe tener que ser realizado co
 Debemos tener una herramienta que nos permita obtener estos pequeños fragmentos de audio para analizar sus diferencias. Usamos una, llamada ProsodyLab Aligner \cite{prosodylab}. Su función es realizar alineaciones automáticas en cada una de las grabaciones de forma fácil. Analiza uno por uno cada grabación y mediante un diccionario fonético determina en qué momento se dijo cada fonema y palabra. 
 
 %parrafo agregado de correcciones de Luciana
-Esta actividad se la conoce como alineación forzada. Básicamente consiste en marcar el tiempo desde que comienza y hasta que termina de cada fonema, para todas las grabaciones. Esta se realiza de la siguiente forma: para cada grabación se agrega un archivo que enumera los fonemas que se escuchan en ella. La herramienta analiza las grabaciones y observa cada uno de los fonemas. Si un mismo fonema se utiliza en dos grabaciones, quiere decir que tiene haber características similares en la grabación en ese lapso de tiempo. Utilizando esta idea va prediciendo el lugar de cada fonema. Esta alineación no es perfecta, se puede equivocar en determinar dónde se escucha un fonema, pero es un buen comienzo.  
+Esta actividad se la conoce como alineación forzada. Básicamente consiste en marcar el tiempo desde que comienza y hasta que termina cada fonema, para todas las grabaciones. Esto se realiza de la siguiente forma: para cada grabación se agrega un archivo que enumera los fonemas que se escuchan en ella. La herramienta analiza las grabaciones y observa cada uno de los fonemas. Si un mismo fonema se utiliza en dos grabaciones, quiere decir que tiene haber características similares en la grabación en ese lapso de tiempo. Utilizando esta idea va prediciendo el lugar de cada fonema. Esta alineación no es perfecta, se puede equivocar en determinar dónde se escucha un fonema, pero es un buen comienzo.  
 
-Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una biblioteca para crear y manipular Modelos Ocultos de Markov (ver sección \ref{sec:hmm}) fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
+Una particularidad que se destaca de esta herramienta es que no necesita datos de entrenamiento. Sólo con una hora de grabación es suficiente para correrlo y obtener resultados. Otra característica es que puede utilizarse para cualquier idioma. Esta herramienta está hecha en lenguaje Python (versión 2.5) y sirve como $wrapper$ para utilizar HTK fácilmente. HTK es una biblioteca para trabajar con Modelos Ocultos de Markov (ver sección \ref{sec:hmm}) fácilmente, y SoX, que nos permite trabajar con audio a través de la consola. 
 
-Los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con sus transcripciones fonéticas (no necesariamente alineadas a nivel fonético) y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicada, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales} \footnote{Este laboratorio depende de CONICET y UBA - Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
+Los requisitos para utilizar ProsodyLab Aligner son: una hora de grabación con sus transcripciones fonéticas (no necesariamente alineadas a nivel fonético) y un diccionario fonético que nos provea para cada palabra los distintos fonemas que la componen. La hora de grabación la debíamos cumplir recolectando grabaciones de la página web. Esta meta era posible de realizar. La creación de un diccionario fonético era más complicada, ya que debía ser en español. Gracias al \textit{Laboratorio de Investigaciones Sensoriales}\footnote{Este laboratorio depende de CONICET y UBA - Página web: http://www.lis.secyt.gov.ar/} que nos prestó un diccionario, implementado por ellos, pudimos utilizar esta herramienta. Un diccionario fonético es básicamente un listado con las palabras que utilizamos y su transcripción en fonemas. Es importante esto ya que va a ser usado por el alineador para describir los fonemas de cada palabra en cada frase.
 
 %explicación teórica con ejemplo
 \subsection{Modelos Ocultos de Markov}
 \label{sec:hmm}
 Los Modelos Ocultos de Markov \cite{rabiner} (en inglés Hidden Markov Model) son modelos estadísticos por los cuales tratan de predecir estados ocultos a partir de observaciones. Se llaman ``ocultos'' ya que el estado a predecir no se puede observar directamente. Sólo se puede predecir en qué estado oculto está el modelo a través de observaciones. 
 
-Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la figura \ref{ex_hmm} se puede apreciar este ejemplo. Para computar la secuencia más probable de estados ocultos dada una secuencia de observaciones, se utiliza el algoritmo de Viterbi.
+Un ejemplo de este modelo podría ser predecir la presión atmosférica observando sólo si el tiempo está lluvioso o seco. Los estados ocultos serían ``Baja'' o ``Alta'' presión atmosférica, que corresponde a lo que queremos saber. Las observaciones para predecir estos estados serían ``Lluvia'' o ``Seco''. En la figura \ref{ex_hmm} se puede apreciar este ejemplo. Para computar la secuencia más probable de estados ocultos dada una secuencia de observaciones, se utiliza el algoritmo Viterbi.
 
 \begin{figure}[htbp]
 	\begin{center}
@@ -54,7 +54,7 @@ Un ejemplo de este modelo podría ser predecir la presión atmosférica observan
 \end{figure}
 
 %ejemplo de audio sobre el trabajo
-Llevado esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando la lista de fonemas pronunciada en cada grabación. Mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de las grabaciones. Los estados ocultos a predecir son los fonemas de cada frase, en cambio las observaciones provienen del análisis de cada audio. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
+Llevando esta idea a nuestro trabajo, los Modelos Ocultos de Markov tratan de predecir qué fonemas aparecen en cada parte de los audios utilizando la lista de fonemas pronunciada en cada grabación. Mediante este modelo matemático, el programa analiza en cuáles grabaciones, de la misma frase, se produce un mismo patrón de sonido. Si sucede esto en todas estas grabaciones, se lo marca como un fonema de la frase. Ese fonema va a ser marcado de igual forma en el TextGrid de cada una de las grabaciones. Los estados ocultos a predecir son los fonemas de cada frase, en cambio las observaciones provienen del análisis de cada audio. Entonces, a través de muestras va prediciendo los fonemas de las grabaciones.
 
 A continuación se presenta un ejemplo de cómo funcionan estos modelos en nuestro trabajo. 
 %
@@ -97,7 +97,7 @@ En el archivo Arff cada línea representa una grabación.  Cada una de estas lin
 
 Los atributos temporales corresponden a atributos sobre la duración de los fonemas y las sílabas de cada grabación. Para calcularlos utilizamos como input el TextGrid generado en la alineación. Los atributos temporales se dividen en dos grupos: fonéticos y silábicos. 
 
-Básicamente estas funciones recorren el TextGrid buscando un patrón en particular y miden su duración. Se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de dos formas posibles. 
+Básicamente para calcular un atributo se recorre el TextGrid buscando un patrón en particular y se mide su duración. También se mide la cantidad de ocurrencias que posee y luego se realiza su normalización de dos formas posibles. 
 
 La primera normalización, conocida como z-score, será utilizando la forma:
 
@@ -136,9 +136,9 @@ Los atributos que contabilizan fonemas son:
     \item \textbf{Duración de todas las consonantes:} ídem anterior para todas las consonantes (juntas). 
 \end{itemize}
 
-El cálculo de un atributo fonético se realiza de la siguiente manera: supongamos por ejemplo que queremos calcular la duración de `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado solo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué instante se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempos para cada fonema\footnote{Aclaración: la duración de los fonemas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para hacer más simple la figura.}. Se marca en negro el segmento donde aparece la `k’.
+El cálculo de un atributo fonético se realiza de la siguiente manera: supongamos por ejemplo que queremos calcular la duración de `kt’ en la frase \textbf{\textit{``En la pelea se conoce al soldado, sólo en la victoria se conoce al caballero’’}}. Analizamos el TextGrid asociado a la grabación que nos proveerá en qué instante se produjo cada fonema. Los fonemas en esta frase van a ser \textbf{\textit{``en la pelea se konose al soldaDo solo en la biktorja se konose al kaBaZero’’}}. En la figura \ref{ejemploAtribFon} se puede ver una representación gráfica del TextGrid marcando los tiempos para cada fonema\footnote{Aclaración: la duración de los fonemas varía muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para hacer más simple la figura.}. Se marca en negro el segmento donde aparece la `k’.
 
-Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Viendo la figura \ref{ejemploAtribFon} será el promedio de los tiempos marcados para todos los fonemas. $\sigma$ será el desvío estándar de la duración de todos los fonemas de la frase. Y $X$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/ correspondiente. La única aparición de este fonema es en la palabra ``biktorja’’ y en el gráfico está marcado en negro. La misma idea se aplica en el cálculo de los demás atributos.
+Los valores de la normalización serán: para $\mu$ se calculará como el promedio de duración de los fonemas en la frase en cuestión. Viendo la figura \ref{ejemploAtribFon},  será el promedio de los tiempos marcados para todos los fonemas. $\sigma$ será el desvío estándar de la duración de todos los fonemas de la frase. Y $X$ será el promedio de duración de los fonemas de la forma /k/ en el intervalo /kt/ correspondiente. La única aparición de este fonema es en la palabra ``biktorja’’ y en el gráfico está marcado en negro. La misma idea se aplica en el cálculo de los demás atributos.
 
 \begin{figure}[H]
 \centering
@@ -181,7 +181,7 @@ Los atributos que contabilizan sílabas usados son:
     \item \textbf{Duración de la sílaba anterior a la acentuada:} realizamos el mismo calculo anterior pero con la sílaba previa a la acentuada. 
 \end{itemize}
 
-Veamos cómo se realiza el cálculo de un atributo silábico: supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $X$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calculan los dos tipos de normalización. En la figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente\footnote{Aclaración: al igual al caso anterior, la duración de las sílabas varia muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para ser más simple la figura.}. No pudimos escribir toda la frase y todos sus acentos por cuestiones de espacio. 
+Veamos cómo se realiza el cálculo de un atributo silábico: supongamos que queremos calcular el atributo que corresponde a la duración de la sílaba anterior a la acentuada y lo realizamos para la misma frase que en el caso anterior. $\mu$ representará el promedio de duración de las sílabas en la frase. $\sigma$ será el desvío estándar de la duración de estas sílabas en la frase. Y finalmente $X$ será el promedio de duración de las sílabas anteriores a las acentuadas. Para cada uno de estos valores se calculan los dos tipos de normalización. En la figura \ref{ejemploAtribSil} podemos ver este ejemplo gráficamente\footnote{Aclaración: al igual al caso anterior, la duración de las sílabas varía muchísimo. En el ejemplo se simplificó marcando todos los tiempos con el mismo tamaño para hacer más simple la figura.}. No pudimos escribir toda la frase y todos sus acentos por cuestiones de espacio. 
 
 En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para distinguirlas. El analizador, cuando calcule este atributo, va a identificar las sílabas acentuadas y tomará su antecesora. 
 
@@ -215,7 +215,7 @@ En la frase del ejemplo marcamos las sílabas anteriores a la acentuada para dis
 	\label{ejemploAtribSil}
 \end{figure}
 
- Para saber cuál es la sílaba acentuada se realizó una tabla que describe para cada frase cuáles son sus sílabas acentuadas. Este se encuentra en el apéndice de este informe. Estos atributos los usamos para poder medir la regla 1, la más prominente de la tonada cordobesa.
+ Para saber cuál es la sílaba acentuada se realizó una tabla que describe para cada frase cuáles son sus sílabas acentuadas. Ésta se encuentra en el apéndice de este informe. Estos atributos los usamos para poder medir la regla 1, la más prominente de la tonada cordobesa.
 
 \subsection{Atributos acústicos}
 \label{sec:atributosacusticos}
@@ -410,7 +410,7 @@ Para realizar el cálculo de estos coeficientes se utilizó un script en Matlab\
 
 \subsection{Atributos desconocidos}
 
-Una grabación no puede definir todos los atributos que declaramos. Cada frase define sólo algunos atributos y los demás no sabe cuál es su posible valor. Es por eso que debemos tomar una decisión sobre qué hacer con los atributos que no conocemos. 
+Una grabación no puede definir todos los atributos que declaramos. Cada frase define sólo algunos atributos y los demás no provee información para sabe cuál es su posible valor. Es por eso que debemos tomar una decisión sobre qué hacer con los atributos que no conocemos. 
 
 Determinamos que a los atributos que no pudieron ser extraídos en la grabación los marcaremos como desconocidos. Si para una grabación un atributo es desconocido, no sabremos ese valor para ese hablante. Debemos analizar otra grabación del mismo hablante que defina ese atributo.
 

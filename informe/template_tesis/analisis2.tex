@@ -12,7 +12,7 @@ Para el análisis de los datos, utilizamos la herramienta Weka\footnote{Página 
 
 El baseline define el clasificador más simple, que posteriormente tratamos de vencer. No encontramos ningún trabajo que trate de distinguir entre porteños y cordobeses a partir de su habla. Es por eso que definimos el baseline utilizando el algoritmo \textbf{majority class}. Este algoritmo clasifica eligiendo siempre la categoría que en el conjunto es mayoritaria. Por ejemplo, si nuestro conjunto de datos de train tiene más muestras de Córdoba para la clasificación de nuevas instancias elegimos siempre Córdoba. La herramienta Weka provee un clasificador basado en majority class llamado \textbf{ZeroR}. Utilizaremos este para el cálculo del baseline. 
 
-Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Utilizando nuestros datos, este baseline tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad como la probabilidad de clasificar correctamente un hablante. Éste fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\%. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtengan mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante. Esto se verá en detalle más adelante.
+Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que obtuvimos posee más grabaciones de Buenos Aires que de Córdoba. Utilizando nuestros datos, este baseline tuvo una performance alrededor del 69\% de efectividad. Nos referimos a efectividad como la probabilidad de clasificar correctamente un hablante. Éste fue el porcentaje a superar. Si nuestro conjunto de datos estuviera debidamente balanceado este porcentaje sería exactamente del 50\% ya que, al elegir la clase mayoritaria, ninguna de las clases superaría a la otra. Lo ideal sería poder tener misma cantidad de los dos grupos. Al tener este desbalance, puede suceder que al clasificar a un hablante en un test se obtengan mejores resultados para Buenos Aires que para Córdoba, ya que tengo más muestras para identificar a un hablante. Esto se verá en detalle más adelante.
 
 \section{Clasificadores}
 
@@ -47,11 +47,11 @@ Support vector machine define uno o varios hiperplanos para intentar clasificar 
 %http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
 %http://en.wikipedia.org/wiki/Naive_Bayes_classifier
 
-Un clasificador de tipo Naive Bayes asume que cada atributo describe una característica de su clase y no está relacionado con otro atributo. Cada uno de estos atributos contribuye de manera independiente a la clasificación de su clase. Se define una regla de decisión utilizando un modelo probabilístico basado en el teorema de Bayes para la clasificación de cada grupo.
+Un clasificador de tipo Naive Bayes supone que cada atributo describe una característica de su clase y no está relacionado con otro atributo. Cada uno de estos atributos contribuye de manera independiente a la clasificación de su clase. Se define una regla de decisión utilizando un modelo probabilístico basado en el teorema de Bayes para la clasificación de cada grupo.
 
 \section{Tests estadísticos}
 
-Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Para realizar estos tests utilizamos para cada clasificador un vector con los porcentajes de instancias correctas para cada fold generado. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
+Utilizamos los resultados de cada clasificador para ver si son significativamente relevantes en la predicción de cada hablante en comparación con el baseline. Para realizar estos tests utilizamos para cada clasificador un vector con los porcentajes de instancias correctas para cada fold generado\footnote{Veremos cómo se componen los distintos folds más adelante en la sección \ref{modelos_tests}}. Los clasificadores utilizados son los descriptos en la sección anterior más el baseline. Para estos resultados realizamos dos tests principales: Prueba de rangos con signo de Wilcoxon y Test t de Student. 
 
 \subsection{Test de Wilcoxon}
 
@@ -122,6 +122,7 @@ También de la misma forma que planteamos la hipótesis del test de Wilcoxon, es
 La ventaja de usarlo es que, al saber qué distribución representa, obtenemos resultados más precisos. Aplicando el estadístico obtuvimos un p-valor. De la misma forma, si este es mayor a 0,05 no hay evidencia suficiente para rechazar $H_0$. De lo contrario, sí hay evidencia y rechazamos $H_0$.
 
 \section{Modelos de tests}
+\label{modelos_tests}
 
 En esta sección explicamos en detalle varios modelos de tests así como también qué resultados obtuvimos en cada uno de ellos. Éstos se basaron en la técnica de validación cruzada (en inglés cross-validation) por la cual utilizando el conjunto de los datos se arman varias iteraciones, donde en cada una de ellas se separa parte de los datos para entrenar y otra para testear. 
 
