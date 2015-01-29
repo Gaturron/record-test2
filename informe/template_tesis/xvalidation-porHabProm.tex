@@ -3,7 +3,7 @@
 \subsection{Clasificación por hablante}
 \label{prom_los_atributos_de_cada_hablante}
 
-En este modelo de test variamos la instancia de clasificación. Para cada hablante juntamos sus grabaciones  calculando su promedio para cada atributo. La idea es juntar los atributos de un mismo hablante en una sola instancia. De esta forma, evitamos los atributos desconocidos en cada una de las grabaciones. 
+En este modelo de test variamos la instancia de clasificación. Para cada hablante juntamos sus grabaciones calculando su promedio para cada atributo. La idea es juntar los atributos de un mismo hablante en una sola instancia. De esta forma, evitamos los atributos desconocidos en cada una de las grabaciones y además podemos afirmar que las muestras son independientes ya que hay una muestra por hablante.
 
 En la tabla \ref{datos_orig} vemos un ejemplo de datos extraídos originalmente para entender mejor la idea. 
 
@@ -25,7 +25,7 @@ En la tabla \ref{datos_orig} vemos un ejemplo de datos extraídos originalmente 
 	\label{datos_orig}
 \end{table}
 
-Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $1 + 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
+Para cada hablante juntamos sus audios realizando el promedio de cada atributo. Por ejemplo: el Hablante 1 grabó 3 audios donde cada uno posee distintos atributos. Juntamos todos esos audios en uno promediando sus atributos: El Audio1 y Audio3 poseen el atributo A1 con valor 1 y 2 respectivamente. Entonces en la tabla \ref{PAH_datos_comb} tendremos Audio1 con A1 definido como el promedio de estos valores: $(1 + 2) \div 2 = 1,5$. Ninguno de los audios grabados originalmente por Hablante 1 definió A2, entonces en este caso no definimos ningún valor y va a quedar como valor desconocido. 
 
 \begin{table}[H]
 	\centering
@@ -33,7 +33,7 @@ Para cada hablante juntamos sus audios realizando el promedio de cada atributo. 
 		\hline
 		\multicolumn{2}{|l|}{Atributos} & A1 & A2 & A3 & ... & AN \\
 		\hline 
-		\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{1.667} & ... & \textbf{2}\\
+		\textbf{Hablante 1} & \textbf{Audio1} & \textbf{1.5} & \textbf{?} & \textbf{2} & ... & \textbf{2}\\
 		\hline
 		\textbf{Hablante 2} & \textbf{Audio1} & \textbf{1} & \textbf{2} & \textbf{?} & ... & \textbf{?} \\
 		\hline
@@ -87,7 +87,7 @@ En la segunda variante no descartaremos datos. Realizaremos el mismo procedimien
 
 \subsubsection{Resultados}
 
-Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTDT_clas_xval_porHab} para la variante utilizando hablantes equilibrados, y en la tabla \ref{HPTDT_clas_xval_porHab_sindescartar} para todos los hablantes.
+Los resultados de este cross-validaton podemos observarlos en la tabla \ref{HPTDT_clas_xval_porHab} para la variante utilizando hablantes equilibrados, y en la tabla \ref{HPTDT_clas_xval_porHab_sindescartar} para todos los hablantes. Para realizar el cálculo del promedio se realizó la suma del porcentaje de instancias correctas de cada fold sobre el total de folds. Al haber una instancia en cada grupo de test, el cálculo del promedio teniendo en cuenta las instancias correctas devuelve el mismo resultado que éste.
 
 {\small 	
 	\begin{table}[H]
@@ -168,7 +168,7 @@ Los árboles de decisión generados esta vez utilizan mucho  atributos como $FON
 
 \subsubsection{Características del modelo de test}
 
-Este modelo de test dio muy buenos resultados. El clasificador ZeroR tuvo una performance esperada de alrededor del 50 \% mientras que el clasificador C4.5 pudo armar árboles mejores. 
+Este modelo de test dio muy buenos resultados. El clasificador ZeroR tuvo una performance de alrededor del 50 \% mientras que el clasificador C4.5 pudo armar árboles mejores. 
 
 Sin embargo, la forma que evitamos los valores desconocidos no es la mejor. El resultado de un fold para un determinado clasificador es 0\% o 100\%. Esto sucede porque es sólo una instancia la que representa. 
 
