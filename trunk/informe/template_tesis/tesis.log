@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  28 JAN 2015 23:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.13)  31 JAN 2015 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1327,8 +1327,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 111.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 111.
-LaTeX Info: Redefining \. on input line 127.
-LaTeX Info: Redefining \% on input line 127.
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
  [7]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
@@ -1363,26 +1363,26 @@ LaTeX Info: Redefining \% on input line 127.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \vbox (badness 10000) detected at line 156
+Underfull \vbox (badness 10000) detected at line 157
  []
 
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
 [8
 
 
 ]
-Underfull \hbox (badness 1888) in paragraph at lines 200--200
+Underfull \hbox (badness 1888) in paragraph at lines 201--201
 []|\OT1/lmr/bx/n/8 Nro de
  []
 
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
+LaTeX Info: Redefining \. on input line 222.
+LaTeX Info: Redefining \% on input line 222.
 [9
 
 
 ]
-Underfull \vbox (badness 10000) detected at line 221
+Underfull \vbox (badness 10000) detected at line 222
  []
 
 Missing character: There is no ; in font nullfont!
@@ -1390,8 +1390,8 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-LaTeX Info: Redefining \. on input line 318.
-LaTeX Info: Redefining \% on input line 318.
+LaTeX Info: Redefining \. on input line 319.
+LaTeX Info: Redefining \% on input line 319.
 [10]) (./sistema_grabacion_online.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1757,10 +1757,10 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 24589 strings out of 493307
- 541958 string characters out of 6139905
- 786525 words of memory out of 5000000
- 27424 multiletter control sequences out of 15000+600000
+ 24597 strings out of 493307
+ 542046 string characters out of 6139905
+ 786669 words of memory out of 5000000
+ 27432 multiletter control sequences out of 15000+600000
  96577 words of font info for 74 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,19n,74p,1470b,2076s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1783,7 +1783,7 @@ b></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/pu
 blic/lm/lmtt10.pfb>
-Output written on tesis.pdf (59 pages, 2059831 bytes).
+Output written on tesis.pdf (59 pages, 2059985 bytes).
 PDF statistics:
  330 PDF objects out of 1000 (max. 8388607)
  213 compressed objects within 3 object streams
