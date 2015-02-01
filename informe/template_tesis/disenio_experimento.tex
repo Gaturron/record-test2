@@ -80,7 +80,7 @@ Algo interesante es que una misma frase permite extraer atributos para varias re
 
 Ya definimos cuáles van a ser las frases, ahora debemos definir qué frases y en qué orden se deben decir durante el experimento. Diremos que una frase cubre una determinada regla si ésta la satisface. Sucede que el orden que utilicemos va a ser crucial para obtener muestras: no es lo mismo empezar por una frase que sólo cubre una sola regla que varias reglas al mismo tiempo. Si elegimos primero las frases que cubren varias reglas a la vez, en una sola grabación podremos obtener más cubrimiento de reglas. Entonces, en caso de poder, elegimos frases que cubran más de una regla. 
 
-¿Por qué querríamos cubrir más reglas en una misma frase? Más adelante veremos que una frase grabada, que cubre una regla, aportará información solamente de esa regla en particular. Si una frase cubre varias reglas a la vez estaríamos obteniendo más información ya que ésta aportaría para cada una de esas reglas. En ambas opciones utilizamos sólo una grabación. Por eso es importante que en cada elección de cada frase a grabar se maximice su cubrimiento. 
+¿Por qué querríamos cubrir más reglas en una misma frase? Más adelante veremos que una frase grabada, que cubre una regla, aportará información solamente a esa regla en particular. Si una frase cubre varias reglas a la vez estaríamos obteniendo más información ya que ésta aportaría para cada una de esas reglas. En ambas opciones utilizamos sólo una grabación. Por eso es importante que en cada elección de cada frase a grabar se maximice su cubrimiento de reglas. 
 
 El orden de las frases sigue el siguiente algoritmo:
 
@@ -108,12 +108,13 @@ OrdenDeFrasesConocidas:
 Input: Frases (conj. de String)
 Output: listaFrases (lista de String)
 listaFrases = {}
-DicPct <- Diccionario de porcentajes de cada regla
+DicPct <- Diccionario con porcentajes de cubrimiento para cada regla
 Mientras Frases != {}:
 	regla <- DicPct.ObtenerReglaConMenorPorcentaje()
 	frase <- Frases.ObtenerLaFraseMasPonderada(regla)
 	listaFrases.agregar(frase)
 	DicPct.RecalcularPorcentajes()
+	Frases.quitar(frase)
 Devolver listaFrases
 \end{lstlisting}
 
@@ -181,7 +182,7 @@ Devolver listaFrases
 
 La idea del algoritmo es la siguiente:  contabilizamos la cantidad de muestras por cada regla. Esto se realiza calculando, para cada regla, la cantidad de muestras que ya grabamos cubriendo esa regla; sobre la cantidad total de muestras que cubren esa regla. Entonces tendremos para cada regla su porcentaje de cubrimiento. Esto lo guardaremos en \textit{DicPct}.
 
-Mientras haya frases sin ser seleccionadas para grabar, elegimos una frase de la regla que menos está cubierta. O sea, elegiremos como próxima regla a cubrir la que tenga menor porcentaje de cubrimiento. Esto se realiza llamando al método \textit{ObtenerReglaConMenorPorcentaje} del objeto \textit{DicPct}. Si hay varias con el mismo mínimo porcentaje, se elige una al azar.
+Mientras haya frases sin ser seleccionadas para grabar, elegimos una frase que corresponda a la regla que menos está cubierta. O sea, elegiremos como próxima regla a cubrir la que tenga menor porcentaje de cubrimiento. Esto se realiza llamando al método \textit{ObtenerReglaConMenorPorcentaje} del objeto \textit{DicPct}. Si hay varias con el mismo mínimo porcentaje, se elige una al azar.
 
 Tenemos definida la próxima regla a cubrir. Debemos elegir la frase que cubra esa regla. Recordemos que hay muchas frases que cubren una determinada regla. Para definir cuál frase elegir optamos por la que cubra mayor cantidad de reglas, siempre que cubra a la regla seleccionada. Si hay varias frases en esta situación, elegimos una de estas al azar. Entonces no sólo aumentamos la cantidad de frases de la regla menos cubierta, sino que con esa frase cubrimos otras reglas. Esto se realiza en el método \textit{ObtenerLaFraseMásPonderada}. Para terminar, agregamos la frase elegida y recalculamos los porcentajes de cada regla en las lineas 9 y 10.
 
