@@ -16,24 +16,36 @@ Recordemos que, como vimos en el capítulo anterior, el conjunto de datos que ob
 
 \section{Clasificadores}
 
-Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y superar la performance del clasificador baseline. Los clasificadores propuestos son: 
+Entrenamos varios clasificadores para poder determinar la procedencia de un hablante y superar la performance del clasificador baseline. Elegimos varios clasificadores de distintos tipos para éste propósito. 
 
-\paragraph{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
+Recordemos que para cada grabación sólo se determinan los atributos que esa frase define y los demás quedan en valor desconocido. Es por ello, que nuestros clasificadores van a tener que manejar atributos desconocidos. Algunos clasificadores tienen la posibilidad de trabajar con estos atributos de forma natural, otros no. 
+
+Describimos cómo trabaja cada clasificador y además cómo trabaja con los valores desconocidos. Los clasificadores propuestos son: 
+
+\subsubsection*{Repeated Incremental Pruning to Produce Error Reduction (RIPPER) \cite{Cohen1995} - Implementación JRip:}
 
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/rules/JRip.html
 %http://www.cs.utsa.edu/~bylander/cs6243/cohen95ripper.pdf
 %https://indico.cern.ch/event/34666/session/13/material/slides/0?contribId=16 pag 21
 
-Este algoritmo intenta describir el conjunto de entrada definiendo pequeños grupos. Primero localiza un grupo que posee la característica a clasificar, y genera reglas que lo describan. Va agregando reglas de forma golosa. Luego cuando se supera una cierta condición (por ejemplo: cantidad de reglas), lo extrae y sigue con otro grupo. Finaliza cuando describe todos los grupos del conjunto de entrada. Este algoritmo es útil para datos no balanceados.
+Este algoritmo intenta describir el conjunto de entrada definiendo pequeños grupos. Primero localiza un grupo que posee la característica a clasificar, y genera reglas que lo describan. Va agregando reglas de forma golosa. Luego cuando se supera una cierta condición (por ejemplo: cantidad de reglas), lo extrae y sigue con otro grupo. Finaliza cuando describe todos los grupos del conjunto de entrada. Entonces la forma de clasificar es definiendo una serie de reglas lógicas utilizando los atributos.
 
-\paragraph{C4.5 \cite{Quinlan1993} - Implementación J48:}
+Cuando se producen las reglas en la fase de entrenamiento, las instancias que poseen atributo indefinido para la regla que se esta armando no son consideradas para el armado de la misma, o sea no se toman en consideración para las variables internas del algoritmo. Esto tiene la ventaja de que se dejan de lado para el final: primero se arman las reglas para las instancias que sí pueden ser clasificadas y luego, quedan solamente las instancias con valores indefinidos, pudiendo ser más fácil el armado de una regla que las identifique.  
+
+Si al momento de clasificar, una instancia posee un atributo desconocido y éste es necesario para una determinada regla de decisión, esta regla falla y sigue con la siguiente regla. Se evalúa la próxima regla de la misma forma hasta llegar a una posible clasificación.
+
+\subsubsection*{C4.5 \cite{Quinlan1993} - Implementación J48:}
 
 %http://en.wikipedia.org/wiki/C4.5_algorithm
 %http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/J48.html
 
-Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con varios atributos se realiza lo siguiente: para cada atributo se calcula su ganancia de información. Elige el atributo que tenga mejor ganancia entre todos los atributos y con él crea un nodo en el árbol. Por cada rama que se crea el algoritmo sigue de la misma forma. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea sólo una hoja.
+Este algoritmo se basa en un árbol de decisión. Tenemos nuestro conjunto de entrenamiento con instancias clasificadas y cada una de estas instancias consiste en un vector con sus atributos. El algoritmo realiza lo siguiente: para cada nodo del árbol se elige el atributo que efectivamente mejor separa a los dos grupos. El criterio para encontrar este atributo es utilizando la ganancia de información de cada atributo. El atributo con la mayor ganancia de información es utilizado como nodo del árbol. Luego se llama recursivamente por cada subconjunto que dividimos. Si las muestras pertenecen a la misma clase o los atributos no proveen información se crea sólo una hoja.
 
-\paragraph{Support Vector Machine \cite{Platt98sequentialminimal} - Implementación Function SMO:}
+Las instancias que poseen valores indefinidos para el atributo que mejor separa en subgrupos no son separados ni en uno ni en otro subconjunto, sino que son utilizados en ambos. Entonces estas instancias en este paso no aportan diferencia entre una rama u otra. Lo interesante es que más adelante, calculando otro nodo del árbol, sí pueden ir a un subconjunto específico.
+
+Si al momento de clasificar una instancia, el árbol utiliza un atributo desconocido se realiza lo siguiente: propaga por cada rama del nodo hacia abajo pero en cada camino sigue con un peso proporcional a la cantidad de elementos que fueron por cada rama en el entrenamiento. Luego, al llegar a los nodos hoja, combina los resultados utilizando esos pesos y elige la clase con mayor peso.
+
+\subsubsection*{Support Vector Machine \cite{Platt98sequentialminimal} - Implementación Function SMO:}
 
 %http://en.wikipedia.org/wiki/Support_vector_machine
 %http://machinelearning.wustl.edu/mlpapers/paper_files/BordesEWB05.pdf
@@ -42,12 +54,16 @@ Este algoritmo se basa en un árbol de decisión. Dada una serie de muestras con
 
 Support vector machine define uno o varios hiperplanos para intentar clasificar muestras. Este hiperplano se construye utilizando transformaciones lineales de los datos de entrada y sirve para clasificar las muestras en dos grupos. Utilizando este hiperplano, se puede etiquetar cada dato de entrada con su clasificación observando de qué lado del hiperplano se encuentra.
 
-\paragraph{Naive Bayes \cite{DBLP:conf/flairs/Zhang04} - Implementación homónima:}
+Este algoritmo no puede ejecutarse si se posee instancias con atributos desconocidos. Es por eso que antes de empezar el entrenamiento a cada instancia con atributos que poseen valores desconocidos se la define con el valor de la media de ese atributo de las demás instancias. De esta forma, vamos a otorgarle un lugar aproximado en el hiperplano para ese atributo. Esto también sucede si al momento de clasificar la instancia posee un atributo desconocido.  
+
+\subsubsection*{Naive Bayes \cite{DBLP:conf/flairs/Zhang04} - Implementación homónima:}
 
 %http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf
 %http://en.wikipedia.org/wiki/Naive_Bayes_classifier
 
 Un clasificador de tipo Naive Bayes supone que cada atributo describe una característica de su clase y no está relacionado con otro atributo. Cada uno de estos atributos contribuye de manera independiente a la clasificación de su clase. Se define una regla de decisión utilizando un modelo probabilístico basado en el teorema de Bayes para la clasificación de cada grupo.
+
+Si un valor es indefinido en una instancia de entrenamiento, simplemente no es incluida para el cálculo de la clasificación. Los valores que son tenidos en cuenta son los que están definidos, o sea los que ocurren realmente. Esto es posible gracias a que los atributos son tenidos en cuenta como independientes.
 
 \section{Tests estadísticos}
 
@@ -134,7 +150,7 @@ Los siguientes modelos de tests son los que probamos:
 	%\item Ídem anterior pero solamente promediando los atributos para valores desconocidos (sección  \ref{prom_los_atributos_de_cada_hablante_para_valores_desconocidos}) 
 \end{itemize}
 
-La extracción de atributos, su normalización y el tratamiento de los valores desconocidos fueron explicados en el capítulo \ref{extraccion}. No realizamos ningún cálculo extra para los valores desconocidos.
+%La extracción de atributos y su normalización fueron explicados en el capítulo \ref{extraccion}. 
 
 %viejo
 %\input{xvalidation-porGrupoViejo.tex}
